@@ -1,94 +1,153 @@
-I'm working with an agentic coding boilerplate project that includes authentication, database integration, and AI capabilities. Here's what's already set up:
+# Cultivo AI - AI Assistant Guidelines
 
-## Current Agentic Coding Boilerplate Structure
+## Project Overview
 
-- **Authentication**: Better Auth with Google OAuth integration
-- **Database**: Drizzle ORM with PostgreSQL setup
-- **AI Integration**: Vercel AI SDK with OpenAI integration
-- **UI**: shadcn/ui components with Tailwind CSS
-- **Current Routes**:
-  - `/` - Home page with setup instructions and feature overview
-  - `/dashboard` - Protected dashboard page (requires authentication)
-  - `/chat` - AI chat interface (requires OpenAI API key)
+**Cultivo AI** is a family-run AI consultancy website built from Colombia. This is NOT a corporate tech site - it's a warm, personal, human website where the family (Paul, Rocky, Marta) should feel present throughout.
+
+- **Website:** cultivoai.co
+- **Tagline:** "AI que crece contigo" / "AI that grows with you"
+- **Family:** Paul (founder), Rocky (14yo apprentice/son), Marta (holistic anchor)
+
+### What Cultivo AI Does
+
+- AI integration consulting for mission-driven businesses
+- Workflow automation, chatbots, business intelligence, content systems
+- Website development with AI built-in
+- Startup advisory based on real experience (successes and failures)
+- Semilla Fund: Rocky's donation-based program for small projects
+
+### Tech Stack
+
+- **Framework**: Next.js 16 with App Router, React 19, TypeScript
+- **AI Integration**: Vercel AI SDK 5 + OpenRouter (100+ AI models)
+- **Authentication**: BetterAuth with Google OAuth
+- **Database**: PostgreSQL with Drizzle ORM
+- **UI**: shadcn/ui components with Tailwind CSS 4
+- **Styling**: Tailwind CSS with dark mode support
+- **Deployment**: Vercel
 
 ## Important Context
 
-This is an **agentic coding boilerplate/starter template** - all existing pages and components are meant to be examples and should be **completely replaced** to build the actual AI-powered application.
+This is an **agentic coding boilerplate/starter template** - all existing pages and components are meant to be examples and should be **completely replaced** to build the Cultivo AI website.
 
 ### CRITICAL: You MUST Override All Boilerplate Content
 
 **DO NOT keep any boilerplate components, text, or UI elements unless explicitly requested.** This includes:
 
 - **Remove all placeholder/demo content** (setup checklists, welcome messages, boilerplate text)
-- **Replace the entire navigation structure** - don't keep the existing site header or nav items
+- **Replace the entire navigation structure** - build navigation for: Inicio | Servicios | Proyectos | Nosotros | Semilla | Contacto
 - **Override all page content completely** - don't append to existing pages, replace them entirely
 - **Remove or replace all example components** (setup-checklist, starter-prompt-modal, etc.)
-- **Replace placeholder routes and pages** with the actual application functionality
 
-### Required Actions:
+### What to Preserve
 
-1. **Start Fresh**: Treat existing components as temporary scaffolding to be removed
-2. **Complete Replacement**: Build the new application from scratch using the existing tech stack
-3. **No Hybrid Approach**: Don't try to integrate new features alongside existing boilerplate content
-4. **Clean Slate**: The final application should have NO trace of the original boilerplate UI or content
+- **All installed libraries and dependencies** (DO NOT uninstall packages)
+- **Authentication system** (customize UI/flow for Cultivo AI)
+- **Database setup** (modify schema per docs/project_info/database.md)
+- **Core configuration files** (next.config.ts, tsconfig.json, tailwind.config.ts)
+- **Build and development scripts**
 
-The only things to preserve are:
+## Design Principles
 
-- **All installed libraries and dependencies** (DO NOT uninstall or remove any packages from package.json)
-- **Authentication system** (but customize the UI/flow as needed)
-- **Database setup and schema** (but modify schema as needed for your use case)
-- **Core configuration files** (next.config.ts, tsconfig.json, tailwind.config.ts, etc.)
-- **Build and development scripts** (keep all npm/pnpm scripts in package.json)
+1. **Minimal, warm, human** - No corporate coldness
+2. **No emoji/icon overload** - Use sparingly if at all
+3. **Photography over illustrations** when possible
+4. **Generous whitespace** - Let content breathe
+5. **Earth tones** - Greens, terracotta, cream
+6. **Bilingual** - Spanish (primary) and English
 
-## Tech Stack
+## Page Structure
 
-- Next.js 16 with App Router
-- TypeScript
-- Tailwind CSS
-- Better Auth for authentication
-- Drizzle ORM + PostgreSQL
-- Vercel AI SDK
-- shadcn/ui components
-- Lucide React icons
+The website needs these sections (see docs/project_info/sections.md for full content):
+
+1. **Hero** - Paul and Rocky intro, personal, not corporate
+2. **Why Cultivo AI** - Contrast-led (what we're NOT vs what we ARE)
+3. **Services** - 6 service cards (from docs/project_info/services.md)
+4. **How We Add Value** - Real examples/case studies
+5. **Projects** - Chak, Raiz Capital, Munayki, this site
+6. **Our Story** - Family narrative (from docs/project_info/story.md)
+7. **Flexible Partnerships** - Payment structures (standard, reduced, deferred, revenue share, equity)
+8. **Who We Help** - Ideal fit criteria and sectors
+9. **Semilla Fund** - Rocky's program
+10. **Values** - Core beliefs
+11. **Give-Back Model** - How paid work funds community work
+12. **Testimonials** - (Paul to provide)
+13. **Promotions** - Dynamic promo section
+14. **What Happens Next** - Clear process after contact
+15. **Contact** - Form + direct contact options
+16. **Footer** - Links, social, legal
+
+## Key Features to Build
+
+1. **i18n** - `/es` (default) and `/en` routes with language switcher
+2. **Currency switcher** - COP | USD | EUR with auto-detection
+3. **AI Chatbot** - Floating widget, trained on Cultivo content (see docs/project_info/chatbot.md)
+4. **Contact form** - Saves to PostgreSQL leads table
+5. **Database schema** - Implement from docs/project_info/database.md
+
+## Database Schema
+
+Implement these tables (full schema in docs/project_info/database.md):
+
+- `leads` - Contact form and chatbot lead capture
+- `chat_conversations` - Chatbot session data
+- `chat_messages` - Individual messages
+- `email_subscribers` - Newsletter signups
+- `promotions` - Promo codes
+- `semilla_supporters` - Semilla Fund contributions
+
+## Chatbot Personality
+
+The chatbot represents the whole family/business (see docs/project_info/chatbot.md):
+
+- Warm, curious, genuinely interested
+- Bilingual - switches naturally
+- Honest about capabilities
+- Asks questions rather than pushing sales
+- Uses "nosotros/we" naturally
+- Conversational, not corporate
+
+## What NOT to Do
+
+- Don't list specific tool names (say "latest AI technology" not "Zapier, Make")
+- Don't overuse emojis or icons
+- Don't make it feel corporate or cold
+- Don't use generic stock photos
+- Don't over-format with bullets everywhere
+- Don't use the placeholder "todo list app" example from the boilerplate
+
+## Project Documentation
+
+Read these files for complete content and specifications:
+
+- `docs/project_info/sections.md` - All page copy in ES/EN
+- `docs/project_info/services.md` - Detailed service descriptions
+- `docs/project_info/story.md` - Family narrative content
+- `docs/project_info/chatbot.md` - AI chatbot specs and personality
+- `docs/project_info/database.md` - PostgreSQL/Drizzle schema
+- `docs/project_info/workflows.md` - n8n automation specs (external)
+- `docs/project_info/CLAUDE.md` - Additional project context
 
 ## Component Development Guidelines
 
-**Always prioritize shadcn/ui components** when building the application:
+**Always prioritize shadcn/ui components** when building:
 
 1. **First Choice**: Use existing shadcn/ui components from the project
 2. **Second Choice**: Install additional shadcn/ui components using `pnpm dlx shadcn@latest add <component-name>`
-3. **Last Resort**: Only create custom components or use other libraries if shadcn/ui doesn't provide a suitable option
-
-The project already includes several shadcn/ui components (button, dialog, avatar, etc.) and follows their design system. Always check the [shadcn/ui documentation](https://ui.shadcn.com/docs/components) for available components before implementing alternatives.
-
-## What I Want to Build
-
-Basic todo list app with the ability for users to add, remove, update, complete and view todos.
-
-## Request
-
-Please help me transform this boilerplate into my actual application. **You MUST completely replace all existing boilerplate code** to match my project requirements. The current implementation is just temporary scaffolding that should be entirely removed and replaced.
-
-## Final Reminder: COMPLETE REPLACEMENT REQUIRED
-
-🚨 **IMPORTANT**: Do not preserve any of the existing boilerplate UI, components, or content. The user expects a completely fresh application that implements their requirements from scratch. Any remnants of the original boilerplate (like setup checklists, welcome screens, demo content, or placeholder navigation) indicate incomplete implementation.
-
-**Success Criteria**: The final application should look and function as if it was built from scratch for the specific use case, with no evidence of the original boilerplate template.
+3. **Last Resort**: Only create custom components if shadcn/ui doesn't provide a suitable option
 
 ## Post-Implementation Documentation
 
-After completing the implementation, you MUST document any new features or significant changes in the `/docs/features/` directory:
+After completing features, document in `/docs/features/`:
 
-1. **Create Feature Documentation**: For each major feature implemented, create a markdown file in `/docs/features/` that explains:
+- What the feature does
+- How it works
+- Key components and files
+- Usage examples
+- Configuration required
 
-   - What the feature does
-   - How it works
-   - Key components and files involved
-   - Usage examples
-   - Any configuration or setup required
+## Request
 
-2. **Update Existing Documentation**: If you modify existing functionality, update the relevant documentation files to reflect the changes.
+Please help transform this boilerplate into the Cultivo AI website. **Completely replace all existing boilerplate code** to match the project requirements defined in the docs/project_info/ files.
 
-3. **Document Design Decisions**: Include any important architectural or design decisions made during implementation.
-
-This documentation helps maintain the project and assists future developers working with the codebase.
+**Success Criteria**: The final application should be a warm, personal, bilingual website for a family AI consultancy - with no evidence of the original boilerplate template.
