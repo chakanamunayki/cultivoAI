@@ -1,9 +1,25 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Bot, FileText, Loader2, MessageSquare, Minimize2, Send } from "lucide-react";
-import type { ChatContext } from "@/content/types";
+import {
+  Bot,
+  FileText,
+  Loader2,
+  MessageSquare,
+  Minimize2,
+  Phone,
+  Send,
+} from "lucide-react";
+import type { ChatContext, ChatContextType } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
+import {
+  buildWhatsAppMessage,
+  getWhatsAppUrl,
+} from "@/lib/chat/system-prompt";
+
+// ============================================
+// Types
+// ============================================
 
 interface Message {
   role: "user" | "model";
@@ -21,6 +37,15 @@ interface ChatResponse {
   error?: string;
 }
 
+interface LeadInfo {
+  name: string;
+  email: string;
+  company?: string | undefined;
+  phone?: string | undefined;
+  interestedServices?: string[] | undefined;
+  projectDescription?: string | undefined;
+}
+
 interface AIChatWidgetProps {
   isOpen: boolean;
   onToggle: (isOpen: boolean) => void;
@@ -30,6 +55,16 @@ interface AIChatWidgetProps {
   context?: ChatContext | null;
   onOpenForm?: () => void;
 }
+
+// ============================================
+// Constants
+// ============================================
+
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "573106172706";
+
+// ============================================
+// Component
+// ============================================
 
 export function AIChatWidget({
   isOpen,
@@ -44,6 +79,9 @@ export function AIChatWidget({
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substring(7)}`);
+  const [currentLeadId, setCurrentLeadId] = useState<string | null>(null);
+  const [whatsAppContext, setWhatsAppContext] = useState<string>("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const lastContextRef = useRef<ChatContext | null | undefined>(undefined);
 
@@ -81,11 +119,10 @@ export function AIChatWidget({
     const greeting = getContextualGreeting(context);
     setMessages([{ role: "model", text: greeting }]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locale]); // Only reset on locale change, not context change
+  }, [locale]);
 
   // Handle context changes (when user clicks different CTAs)
   useEffect(() => {
-    // Only update if context actually changed and chat is open
     if (isOpen && context !== lastContextRef.current) {
       const greeting = getContextualGreeting(context);
       setMessages([{ role: "model", text: greeting }]);
@@ -101,8 +138,97 @@ export function AIChatWidget({
     scrollToBottom();
   }, [messages, isOpen, scrollToBottom]);
 
+  // Handle lead capture API call
+  const handleLeadCapture = useCallback(async (info: LeadInfo): Promise<{ success: boolean; leadId?: string }> => {
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: info.name,
+          email: info.email,
+          company: info.company,
+          phone: info.phone,
+          interests: info.interestedServices,
+          projectDescription: info.projectDescription,
+          source: "chatbot",
+          preferredLanguage: locale,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to capture lead");
+      }
+
+      const data = await response.json();
+      setCurrentLeadId(data.leadId);
+      return { success: true, leadId: data.leadId };
+    } catch (error) {
+      console.error("Lead capture error:", error);
+      return { success: false };
+    }
+  }, [locale]);
+
+  // Handle lead qualification
+  const handleQualifyLead = useCallback(async (data: {
+    budgetIndicator: boolean;
+    timeline: boolean;
+    useCase: boolean;
+    decisionMaker: boolean;
+    sectorFit: boolean;
+    conversationSummary?: string | undefined;
+  }): Promise<{ score: number }> => {
+    if (!currentLeadId) {
+      // Calculate score locally if no lead yet
+      let score = 0;
+      if (data.budgetIndicator) score++;
+      if (data.timeline) score++;
+      if (data.useCase) score++;
+      if (data.decisionMaker) score++;
+      if (data.sectorFit) score++;
+      return { score };
+    }
+
+    try {
+      const response = await fetch("/api/leads", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          leadId: currentLeadId,
+          ...data,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update qualification");
+      }
+
+      const result = await response.json();
+      return { score: result.qualificationScore };
+    } catch (error) {
+      console.error("Qualification error:", error);
+      let score = 0;
+      if (data.budgetIndicator) score++;
+      if (data.timeline) score++;
+      if (data.useCase) score++;
+      if (data.decisionMaker) score++;
+      if (data.sectorFit) score++;
+      return { score };
+    }
+  }, [currentLeadId]);
+
+  // Open WhatsApp with context
+  const openWhatsApp = useCallback((contextMessage?: string) => {
+    const message = buildWhatsAppMessage(locale, {
+      conversationSummary: contextMessage || whatsAppContext,
+    });
+    const url = getWhatsAppUrl(WHATSAPP_NUMBER, message);
+    window.open(url, "_blank");
+  }, [locale, whatsAppContext]);
+
+  // Execute function calls from AI
   const executeFunctionCall = useCallback(
-    (call: FunctionCall) => {
+    async (call: FunctionCall): Promise<string> => {
       const { name, args } = call;
 
       switch (name) {
@@ -111,21 +237,81 @@ export function AIChatWidget({
           onNavigate(sectionId);
           return `Navigated to section: ${sectionId}`;
         }
+
         case "show_project_details": {
           const projectTitle = args.project_title as string;
           onOpenProjectModal(projectTitle);
           return `Opened project modal: ${projectTitle}`;
         }
+
         case "show_service_details": {
           const serviceTitle = args.service_title as string;
           onOpenServiceModal(serviceTitle);
           return `Opened service modal: ${serviceTitle}`;
         }
+
+        case "collect_lead_info": {
+          const leadInfo: LeadInfo = {
+            name: args.name as string,
+            email: args.email as string,
+            company: args.company as string | undefined,
+            phone: args.phone as string | undefined,
+            interestedServices: args.interested_services as string[] | undefined,
+            projectDescription: args.project_description as string | undefined,
+          };
+          const result = await handleLeadCapture(leadInfo);
+          return result.success
+            ? `Lead captured successfully`
+            : "Failed to capture lead";
+        }
+
+        case "qualify_lead": {
+          const result = await handleQualifyLead({
+            budgetIndicator: args.budget_indicator as boolean,
+            timeline: args.timeline as boolean,
+            useCase: args.use_case as boolean,
+            decisionMaker: args.decision_maker as boolean,
+            sectorFit: args.sector_fit as boolean,
+            conversationSummary: args.conversation_summary as string | undefined,
+          });
+          return `Lead qualified with score: ${result.score}/5`;
+        }
+
+        case "suggest_service": {
+          const serviceTitle = args.service_name as string;
+          onOpenServiceModal(serviceTitle);
+          return `Suggested and opened service: ${serviceTitle}`;
+        }
+
+        case "offer_whatsapp": {
+          const contextMessage = args.context_message as string;
+          setWhatsAppContext(contextMessage);
+          // Don't auto-open, just prepare the context
+          return `WhatsApp contact offered`;
+        }
+
+        case "schedule_call": {
+          // For now, navigate to the booking section or open form
+          if (onOpenForm) {
+            onOpenForm();
+          } else {
+            onNavigate("what-happens-next");
+          }
+          return `Call scheduling suggested`;
+        }
+
         default:
           return `Unknown function: ${name}`;
       }
     },
-    [onNavigate, onOpenProjectModal, onOpenServiceModal]
+    [
+      onNavigate,
+      onOpenProjectModal,
+      onOpenServiceModal,
+      onOpenForm,
+      handleLeadCapture,
+      handleQualifyLead,
+    ]
   );
 
   const handleSend = useCallback(async () => {
@@ -137,7 +323,10 @@ export function AIChatWidget({
     setIsLoading(true);
 
     try {
-      // Send message to API
+      // Get user timezone
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+      // Send message to API with enhanced context
       const response = await fetch("/api/chat/gemini", {
         method: "POST",
         headers: {
@@ -147,10 +336,15 @@ export function AIChatWidget({
           message: userMessage,
           history: messages,
           locale,
+          entryContext: context?.type as ChatContextType | undefined,
+          sessionId,
+          timezone,
+          pageUrl: typeof window !== "undefined" ? window.location.href : undefined,
           siteContent: {
             services: content.services.map((s) => ({
               title: s.title,
               description: s.description,
+              details: s.details,
             })),
             projects: content.projects.map((p) => ({
               title: p.title,
@@ -165,6 +359,13 @@ export function AIChatWidget({
               tagline: p.tagline,
               description: p.description,
             })),
+            whoWeHelp: content.whoWeHelp
+              ? {
+                  idealItems: content.whoWeHelp.idealItems,
+                  notIdealItems: content.whoWeHelp.notIdealItems,
+                  sectors: content.whoWeHelp.sectors,
+                }
+              : undefined,
           },
         }),
       });
@@ -178,14 +379,13 @@ export function AIChatWidget({
       // Handle function calls
       if (data.functionCalls && data.functionCalls.length > 0) {
         for (const call of data.functionCalls) {
-          executeFunctionCall(call);
+          await executeFunctionCall(call);
         }
       }
 
       // Add response text
       const responseText =
-        data.text ||
-        (locale === "es" ? "Entendido." : "Got it.");
+        data.text || (locale === "es" ? "Entendido." : "Got it.");
       setMessages((prev) => [...prev, { role: "model", text: responseText }]);
     } catch (error) {
       console.error("Chat error:", error);
@@ -197,7 +397,7 @@ export function AIChatWidget({
     } finally {
       setIsLoading(false);
     }
-  }, [input, isLoading, messages, locale, content, executeFunctionCall]);
+  }, [input, isLoading, messages, locale, content, context, sessionId, executeFunctionCall]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -238,6 +438,15 @@ export function AIChatWidget({
             </span>
           </div>
           <div className="flex items-center gap-2">
+            {/* WhatsApp button */}
+            <button
+              onClick={() => openWhatsApp()}
+              className="text-black hover:scale-110 transition-transform"
+              aria-label="WhatsApp"
+              title={locale === "es" ? "Contactar por WhatsApp" : "Contact via WhatsApp"}
+            >
+              <Phone size={20} />
+            </button>
             {onOpenForm && (
               <button
                 onClick={onOpenForm}
