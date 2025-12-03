@@ -1,20 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useModal } from "@/components/landing/ui/modal-provider";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { useLocale } from "@/hooks/use-locale";
 
-export function HeroSection() {
-  const { content } = useLocale();
-  const { openContactModal } = useModal();
+interface HeroSectionProps {
+  onOpenChatBooking: () => void;
+  onOpenChatStory: () => void;
+}
 
-  const scrollToAbout = () => {
-    const el = document.getElementById("about");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+export function HeroSection({ onOpenChatBooking, onOpenChatStory }: HeroSectionProps) {
+  const { content } = useLocale();
 
   return (
     <div id="hero" className="grid lg:grid-cols-2 min-h-[85vh]">
@@ -36,13 +32,13 @@ export function HeroSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button
-              onClick={openContactModal}
+              onClick={onOpenChatBooking}
               className="bg-black text-white px-6 md:px-8 py-4 md:py-5 font-black uppercase shadow-[8px_8px_0px_0px_#A855F7] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_#A855F7] transition-all border-2 border-transparent text-base md:text-lg"
             >
               {content.hero.cta}
             </button>
             <button
-              onClick={scrollToAbout}
+              onClick={onOpenChatStory}
               className="bg-white text-black border-4 border-black px-6 md:px-8 py-4 md:py-5 font-black uppercase shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-base md:text-lg"
             >
               {content.hero.secondaryCta}

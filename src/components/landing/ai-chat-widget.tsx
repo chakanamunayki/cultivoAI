@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Bot, Loader2, MessageSquare, Minimize2, Send } from "lucide-react";
+import { Bot, FileText, Loader2, MessageSquare, Minimize2, Send } from "lucide-react";
+import type { ChatContext } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 
 interface Message {
@@ -26,6 +27,8 @@ interface AIChatWidgetProps {
   onNavigate: (sectionId: string) => void;
   onOpenProjectModal: (projectTitle: string) => void;
   onOpenServiceModal: (serviceTitle: string) => void;
+  context?: ChatContext | null;
+  onOpenForm?: () => void;
 }
 
 export function AIChatWidget({
@@ -34,19 +37,61 @@ export function AIChatWidget({
   onNavigate,
   onOpenProjectModal,
   onOpenServiceModal,
+  context,
+  onOpenForm,
 }: AIChatWidgetProps) {
   const { content, locale } = useLocale();
-  const [messages, setMessages] = useState<Message[]>([
-    { role: "model", text: content.chat.welcomeMessage },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const lastContextRef = useRef<ChatContext | null | undefined>(undefined);
 
-  // Reset welcome message when locale changes
+  // Get contextual greeting based on context type
+  const getContextualGreeting = useCallback(
+    (ctx: ChatContext | null | undefined): string => {
+      if (!ctx) {
+        return content.chat.contextualGreetings.general;
+      }
+
+      const greetings = content.chat.contextualGreetings;
+
+      switch (ctx.type) {
+        case "booking":
+          return greetings.booking;
+        case "story":
+          return greetings.story;
+        case "semilla":
+          return greetings.semilla;
+        case "service":
+          return greetings.service.replace("{service}", ctx.serviceTitle || "");
+        case "partnership":
+          return greetings.partnership.replace("{partnership}", ctx.partnershipName || "");
+        case "qualification":
+          return greetings.qualification;
+        default:
+          return greetings.general;
+      }
+    },
+    [content.chat.contextualGreetings]
+  );
+
+  // Initialize messages with contextual greeting on locale change
   useEffect(() => {
-    setMessages([{ role: "model", text: content.chat.welcomeMessage }]);
-  }, [content.chat.welcomeMessage]);
+    const greeting = getContextualGreeting(context);
+    setMessages([{ role: "model", text: greeting }]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [locale]); // Only reset on locale change, not context change
+
+  // Handle context changes (when user clicks different CTAs)
+  useEffect(() => {
+    // Only update if context actually changed and chat is open
+    if (isOpen && context !== lastContextRef.current) {
+      const greeting = getContextualGreeting(context);
+      setMessages([{ role: "model", text: greeting }]);
+      lastContextRef.current = context;
+    }
+  }, [context, isOpen, getContextualGreeting]);
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -192,13 +237,25 @@ export function AIChatWidget({
               {content.chat.title}
             </span>
           </div>
-          <button
-            onClick={() => onToggle(false)}
-            className="text-black hover:scale-110 transition-transform"
-            aria-label="Close chat"
-          >
-            <Minimize2 size={20} />
-          </button>
+          <div className="flex items-center gap-2">
+            {onOpenForm && (
+              <button
+                onClick={onOpenForm}
+                className="text-black hover:scale-110 transition-transform"
+                aria-label={content.chat.contextualGreetings.formFallback}
+                title={content.chat.contextualGreetings.formFallback}
+              >
+                <FileText size={20} />
+              </button>
+            )}
+            <button
+              onClick={() => onToggle(false)}
+              className="text-black hover:scale-110 transition-transform"
+              aria-label="Close chat"
+            >
+              <Minimize2 size={20} />
+            </button>
+          </div>
         </div>
 
         {/* Messages */}

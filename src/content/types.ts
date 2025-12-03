@@ -5,6 +5,24 @@
 
 export type Locale = "es" | "en";
 
+/**
+ * Chat context types for contextual greetings
+ */
+export type ChatContextType =
+  | "general"
+  | "booking"
+  | "story"
+  | "semilla"
+  | "service"
+  | "partnership"
+  | "qualification";
+
+export interface ChatContext {
+  type: ChatContextType;
+  serviceTitle?: string;
+  partnershipName?: string;
+}
+
 export interface NavItem {
   label: string;
   href: string;
@@ -107,11 +125,23 @@ export interface FooterCopy {
   copyright: string;
 }
 
+export interface ChatContextualGreetings {
+  general: string;
+  booking: string;
+  story: string;
+  semilla: string;
+  service: string; // Use {service} as placeholder for service title
+  partnership: string; // Use {partnership} as placeholder for partnership name
+  qualification: string;
+  formFallback: string; // "Prefer a form?" prompt
+}
+
 export interface ChatCopy {
   title: string;
   placeholder: string;
   sendButton: string;
   welcomeMessage: string;
+  contextualGreetings: ChatContextualGreetings;
 }
 
 export interface ContactFormCopy {

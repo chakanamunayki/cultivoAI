@@ -16,12 +16,14 @@ import { StoriesSection } from "@/components/landing/sections/stories-section";
 import { WhyUsSection } from "@/components/landing/sections/why-us-section";
 import { useModal } from "@/components/landing/ui/modal-provider";
 import { ModalRenderer } from "@/components/landing/ui/modal-renderer";
+import type { ChatContext } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [chatContext, setChatContext] = useState<ChatContext | null>(null);
   const { content } = useLocale();
-  const { openProjectModal, openServiceModal, closeModal } = useModal();
+  const { openProjectModal, openServiceModal, openContactModal, closeModal } = useModal();
 
   const scrollTo = useCallback((id: string) => {
     const targetId = id.replace("#", "");
@@ -55,15 +57,43 @@ export default function Home() {
     [content.services, openServiceModal]
   );
 
-  const handleOpenChat = useCallback(() => {
-    closeModal();
-    setIsChatOpen(true);
-  }, [closeModal]);
+  // Open chat with optional context
+  const handleOpenChat = useCallback(
+    (context?: ChatContext) => {
+      closeModal();
+      setChatContext(context || null);
+      setIsChatOpen(true);
+    },
+    [closeModal]
+  );
+
+  // Convenience handlers for specific contexts
+  const handleOpenChatBooking = useCallback(() => {
+    handleOpenChat({ type: "booking" });
+  }, [handleOpenChat]);
+
+  const handleOpenChatStory = useCallback(() => {
+    handleOpenChat({ type: "story" });
+  }, [handleOpenChat]);
+
+  const handleOpenChatSemilla = useCallback(() => {
+    handleOpenChat({ type: "semilla" });
+  }, [handleOpenChat]);
+
+  const handleOpenChatGeneral = useCallback(() => {
+    handleOpenChat({ type: "general" });
+  }, [handleOpenChat]);
+
+  // Form fallback handler
+  const handleOpenFormFromChat = useCallback(() => {
+    setIsChatOpen(false);
+    openContactModal();
+  }, [openContactModal]);
 
   return (
     <div className="min-h-full bg-[#F3F4F6] text-black font-grotesk selection:bg-[#FFDE00] selection:text-black">
       {/* Modal Renderer */}
-      <ModalRenderer onChatClick={handleOpenChat} />
+      <ModalRenderer onChatClick={handleOpenChatGeneral} />
 
       {/* AI Chat Widget */}
       <AIChatWidget
@@ -72,6 +102,8 @@ export default function Home() {
         onNavigate={scrollTo}
         onOpenProjectModal={handleOpenProjectModal}
         onOpenServiceModal={handleOpenServiceModal}
+        context={chatContext}
+        onOpenForm={handleOpenFormFromChat}
       />
 
       {/* Top Bar Marquee */}
@@ -81,7 +113,10 @@ export default function Home() {
       <Nav onScrollTo={scrollTo} />
 
       {/* Section 1: Hero */}
-      <HeroSection />
+      <HeroSection
+        onOpenChatBooking={handleOpenChatBooking}
+        onOpenChatStory={handleOpenChatStory}
+      />
 
       {/* Section 2: About */}
       <AboutSection />
@@ -90,16 +125,16 @@ export default function Home() {
       <WhyUsSection />
 
       {/* Section 4: Services */}
-      <ServicesSection />
+      <ServicesSection onOpenChatBooking={handleOpenChatBooking} />
 
       {/* Section 5: AI Demos */}
       <DemosSection />
 
       {/* Section 6: Semilla */}
-      <SemillaSection />
+      <SemillaSection onOpenChatSemilla={handleOpenChatSemilla} />
 
       {/* Section 7: Partnerships */}
-      <PartnershipsSection />
+      <PartnershipsSection onOpenChatGeneral={handleOpenChatGeneral} />
 
       {/* Section 8: Projects */}
       <ProjectsSection />
@@ -108,7 +143,7 @@ export default function Home() {
       <StoriesSection />
 
       {/* Footer */}
-      <Footer onContactClick={handleOpenChat} />
+      <Footer onContactClick={handleOpenChatGeneral} />
     </div>
   );
 }
