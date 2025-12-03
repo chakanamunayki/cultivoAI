@@ -1,80 +1,235 @@
-# Agentic Coding Boilerplate - AI Assistant Guidelines
+# CultivoAI - AI Assistant Guidelines
 
 ## Project Overview
 
-This is a Next.js 16 boilerplate for building AI-powered applications with authentication, database, and modern UI components.
+CultivoAI is a bilingual (Spanish/English) AI and automation consultancy website for a father-son duo (Paul & Rocky) based in Colombia. The site uses a **Neo-Brutalist design** with an integrated Gemini AI chat assistant.
 
 ### Tech Stack
 
 - **Framework**: Next.js 16 with App Router, React 19, TypeScript
-- **AI Integration**: Vercel AI SDK 5 + OpenRouter (access to 100+ AI models)
+- **AI Integration (Chat Widget)**: Google Gemini AI (`@google/genai`) with function calling
+- **AI Integration (Backend)**: Vercel AI SDK 5 + OpenRouter (for other AI features)
 - **Authentication**: BetterAuth with Google OAuth
 - **Database**: PostgreSQL with Drizzle ORM
-- **UI**: shadcn/ui components with Tailwind CSS 4
-- **Styling**: Tailwind CSS with dark mode support (next-themes)
+- **UI**: Custom Brutalist components (NO shadcn theming - preserve exact design)
+- **Styling**: Tailwind CSS 4 (NO dark mode - single Brutalist theme only)
+- **Internationalization**: Browser language detection (Spanish/English)
 
-## AI Integration with OpenRouter
+---
 
-### Key Points
+## CultivoAI Frontend Design System
 
-- This project uses **OpenRouter** as the AI provider, NOT direct OpenAI
-- OpenRouter provides access to 100+ AI models through a single unified API
-- Default model: `openai/gpt-5-mini` (configurable via `OPENROUTER_MODEL` env var)
-- Users browse models at: https://openrouter.ai/models
-- Users get API keys from: https://openrouter.ai/settings/keys
+### CRITICAL: Design Preservation Rules
 
-### AI Implementation Files
+**DO NOT CHANGE THE DESIGN. EVER. NOT A SINGLE PIXEL.**
 
-- `src/app/api/chat/route.ts` - Chat API endpoint using OpenRouter
-- Package: `@openrouter/ai-sdk-provider` (not `@ai-sdk/openai`)
-- Import: `import { openrouter } from "@openrouter/ai-sdk-provider"`
+The template in `docs/template/App.tsx` (specifically `BrutalistDesign` component, lines 1372-1946) is the **exact visual specification**. When implementing:
+
+1. **Preserve ALL visual elements exactly** - colors, shadows, borders, animations, spacing
+2. **Preserve ALL effects** - hover states, transitions, scroll animations, marquee
+3. **Preserve the Brutalist theme ONLY** - No theme switcher, no Rocket/Playful theme
+4. **NO dark mode toggle** - Single theme, no light/dark switching
+5. **Preserve the AI chat widget** - Gemini integration with function calling
+6. **Split into components** but maintain pixel-perfect visual parity
+
+### Brutalist Design Characteristics
+
+```
+- 4px black borders on everything
+- Hard shadows: shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] or shadow-[8px_8px_0px_0px_#A855F7]
+- No rounded corners (or minimal)
+- High contrast, bold typography
+- Uppercase text for headings
+- Hover effects: translate + shadow reduction
+- Selection color: bg-[#FFDE00] text-black
+```
+
+### Color Palette (Do NOT deviate)
+
+```css
+/* Primary */
+--yellow-primary: #FFC805;
+--yellow-secondary: #FFDE00;
+
+/* Accents */
+--purple: #A855F7;
+--purple-dark: #9333EA;
+--green-semilla: #10B981;
+--green-light: #C4F9E0;
+--red-accent: #EF4444;
+
+/* Neutrals */
+--black: #000000;
+--near-black: #1a1a1a;
+--gray-bg: #F3F4F6;
+--white: #FFFFFF;
+```
+
+### Typography (Required fonts - load via next/font)
+
+```css
+font-grotesk: 'Space Grotesk'     /* Primary for Brutalist - headings, nav */
+font-sans: 'Inter'                 /* Body text */
+font-mono: 'JetBrains Mono'        /* Code, technical elements */
+```
+
+### Key Visual Elements (Must preserve exactly)
+
+1. **Top Marquee Bar**: Black bg, yellow text, infinite scroll animation
+2. **Navigation**: Sticky, white bg, 4px black border bottom, stretched nav items
+3. **Hero Split**: Yellow left panel, purple right panel with floating elements
+4. **Service Cards**: Black shadow offset, hover translate effect
+5. **Projects List**: Alternating layout, grayscale images with purple overlay on hover
+6. **AI Chat Widget**: Bottom-right floating, brutalist styling with shadows
+7. **Modals**: 4px black border, purple shadow offset, X close button
+
+### Animations (Must preserve)
+
+```css
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Reveal on scroll - use IntersectionObserver */
+transition: opacity 1000ms, transform 1000ms;
+/* Hidden: opacity-0 translate-y-12 */
+/* Visible: opacity-100 translate-y-0 */
+
+/* Hover transforms */
+hover:-translate-y-1, hover:-translate-y-2
+hover:translate-x-1 hover:translate-y-1
+hover:shadow-[4px_4px_0px_0px_...] /* reduced from 8px */
+
+/* Icon bounce */
+animate-bounce (on service card icons on hover)
+```
+
+---
+
+## Internationalization (i18n)
+
+### Language Detection
+
+- Detect browser language via `navigator.language` or `Accept-Language` header
+- Default to Spanish (`es`) for Spanish-speaking locales (es, es-*, etc.)
+- Default to English (`en`) for all others
+- Store user preference in localStorage for persistence
+- Provide language toggle in navigation (ES/EN)
+
+### Content Constants (from template)
+
+All text content must have Spanish and English versions:
+
+| Constant | Description |
+|----------|-------------|
+| `NAV_ITEMS` | Navigation menu labels |
+| `COPY.hero` | Hero section headlines and CTAs |
+| `SERVICES` | 6 service offerings with title, description, details |
+| `PROJECTS` | 5 portfolio projects |
+| `PARTNERSHIPS` | 5 flexible pricing models |
+| `USE_CASES` | 5 AI demo scenarios |
+| `REAL_STORIES` | 3 success stories/testimonials |
+| `SEMILLA_CONTENT` | Rocky's fund initiative (about, tiers, services, goal) |
+| `WHY_US` | Value proposition (what we're NOT vs what we ARE) |
+
+---
+
+## AI Chat Widget (Gemini)
+
+### Implementation Details
+
+- Package: `@google/genai`
+- Model: `gemini-2.5-flash`
+- Styling: Brutalist theme (see `AIChatWidget` component in template)
+- Position: Fixed bottom-right (`fixed bottom-6 right-6 z-[60]`)
+
+### Function Calling
+
+The chat widget can control the page via these functions:
+
+```typescript
+// Scroll to section
+navigate_to_section(section_id: string)
+// section_id: 'hero' | 'about' | 'services' | 'demos' | 'semilla' | 'partnerships' | 'projects' | 'stories'
+
+// Open project modal
+show_project_details(project_title: string)
+
+// Open service modal
+show_service_details(service_title: string)
+```
+
+### Chat Widget Styling (Brutalist)
+
+```
+Container: bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]
+Header: bg-[#FFC805] border-b-4 border-black
+User messages: bg-black text-white font-bold
+Bot messages: bg-white border-2 border-black shadow-[4px_4px_0px_0px_#A855F7]
+Input: bg-[#F3F4F6] border-2 border-black focus:shadow-[2px_2px_0px_0px_#A855F7]
+Send button: bg-[#A855F7] text-white border-2 border-black
+```
+
+### Environment Variable
+
+```env
+GEMINI_API_KEY=your-gemini-api-key
+```
+
+---
 
 ## Project Structure
 
 ```
 src/
-├── app/                          # Next.js App Router
+├── app/
 │   ├── api/
-│   │   ├── auth/[...all]/       # Better Auth catch-all route
-│   │   ├── chat/route.ts        # AI chat endpoint (OpenRouter)
-│   │   └── diagnostics/         # System diagnostics
-│   ├── chat/page.tsx            # AI chat interface (protected)
-│   ├── dashboard/page.tsx       # User dashboard (protected)
-│   ├── profile/page.tsx         # User profile (protected)
-│   ├── page.tsx                 # Home/landing page
-│   └── layout.tsx               # Root layout
+│   │   ├── auth/[...all]/        # Better Auth
+│   │   └── chat/route.ts         # Backend AI (OpenRouter)
+│   ├── page.tsx                  # Landing page (Brutalist design)
+│   └── layout.tsx                # Root layout with fonts
 ├── components/
-│   ├── auth/                    # Authentication components
-│   │   ├── sign-in-button.tsx
-│   │   ├── sign-out-button.tsx
-│   │   └── user-profile.tsx
-│   ├── ui/                      # shadcn/ui components
-│   │   ├── button.tsx
-│   │   ├── card.tsx
-│   │   ├── dialog.tsx
-│   │   ├── dropdown-menu.tsx
-│   │   ├── avatar.tsx
-│   │   ├── badge.tsx
-│   │   ├── separator.tsx
-│   │   ├── mode-toggle.tsx      # Dark/light mode toggle
-│   │   └── github-stars.tsx
-│   ├── site-header.tsx          # Main navigation header
-│   ├── site-footer.tsx          # Footer component
-│   ├── theme-provider.tsx       # Dark mode provider
-│   ├── setup-checklist.tsx      # Setup guide component
-│   └── starter-prompt-modal.tsx # Starter prompts modal
+│   ├── cultivoai/                # CultivoAI landing page components
+│   │   ├── nav.tsx               # Sticky navigation
+│   │   ├── hero.tsx              # Hero split section
+│   │   ├── about.tsx             # Team section (Paul & Rocky)
+│   │   ├── why-us.tsx            # Contrast section (NOT vs YES)
+│   │   ├── services.tsx          # Services grid
+│   │   ├── ai-demos.tsx          # Interactive AI use cases
+│   │   ├── semilla.tsx           # Rocky's fund section
+│   │   ├── partnerships.tsx      # Flexible pricing models
+│   │   ├── projects.tsx          # Portfolio list
+│   │   ├── stories.tsx           # Testimonials
+│   │   ├── footer.tsx            # Footer with CTA
+│   │   ├── marquee.tsx           # Top scrolling banner
+│   │   ├── ai-chat-widget.tsx    # Gemini chat (Client Component)
+│   │   ├── modal.tsx             # Modal wrapper
+│   │   ├── reveal.tsx            # Scroll animation wrapper
+│   │   └── demo-views/           # AI demo visualizations
+│   │       ├── chat-view.tsx
+│   │       ├── crm-view.tsx
+│   │       ├── code-view.tsx
+│   │       ├── dashboard-view.tsx
+│   │       └── mobile-view.tsx
+│   ├── auth/                     # Auth components
+│   └── ui/                       # shadcn/ui utilities (cn, etc.)
+├── content/
+│   ├── es.ts                     # Spanish content
+│   └── en.ts                     # English content
+├── hooks/
+│   └── use-locale.ts             # Language detection hook
 └── lib/
-    ├── auth.ts                  # Better Auth server config
-    ├── auth-client.ts           # Better Auth client hooks
-    ├── db.ts                    # Database connection
-    ├── schema.ts                # Drizzle schema (users, sessions, etc.)
-    ├── storage.ts               # File storage abstraction (Vercel Blob / local)
-    └── utils.ts                 # Utility functions (cn, etc.)
+    ├── auth.ts
+    ├── db.ts
+    ├── schema.ts
+    └── utils.ts
 ```
 
-## Environment Variables
+---
 
-Required environment variables (see `env.example`):
+## Environment Variables
 
 ```env
 # Database
@@ -87,160 +242,77 @@ BETTER_AUTH_SECRET=32-char-random-string
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 
-# AI via OpenRouter
+# Gemini AI (Chat Widget)
+GEMINI_API_KEY=your-gemini-api-key
+
+# OpenRouter (Backend AI)
 OPENROUTER_API_KEY=sk-or-v1-your-key
-OPENROUTER_MODEL=openai/gpt-5-mini  # or any model from openrouter.ai/models
+OPENROUTER_MODEL=openai/gpt-5-mini
 
 # App
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 # File Storage (optional)
-BLOB_READ_WRITE_TOKEN=  # Leave empty for local dev, set for Vercel Blob in production
+BLOB_READ_WRITE_TOKEN=
 ```
+
+---
 
 ## Available Scripts
 
 ```bash
-npm run dev          # Start dev server (DON'T run this yourself - ask user)
-npm run build        # Build for production (runs db:migrate first)
-npm run build:ci     # Build without database (for CI/CD pipelines)
-npm run start        # Start production server
-npm run lint         # Run ESLint (ALWAYS run after changes)
-npm run typecheck    # TypeScript type checking (ALWAYS run after changes)
-npm run db:generate  # Generate database migrations
-npm run db:migrate   # Run database migrations
-npm run db:push      # Push schema changes to database
-npm run db:studio    # Open Drizzle Studio (database GUI)
-npm run db:dev       # Push schema for development
-npm run db:reset     # Reset database (drop all tables)
+pnpm dev          # Start dev server (DON'T run this yourself - ask user)
+pnpm build        # Build for production
+pnpm lint         # Run ESLint (ALWAYS run after changes)
+pnpm typecheck    # TypeScript checking (ALWAYS run after changes)
+pnpm db:generate  # Generate database migrations
+pnpm db:migrate   # Run database migrations
+pnpm db:studio    # Open Drizzle Studio
 ```
 
-## Documentation Files
-
-The project includes technical documentation in `docs/`:
-
-- `docs/technical/ai/streaming.md` - AI streaming implementation guide
-- `docs/technical/ai/structured-data.md` - Structured data extraction
-- `docs/technical/react-markdown.md` - Markdown rendering guide
-- `docs/technical/betterauth/polar.md` - Polar payment integration
-- `docs/business/starter-prompt.md` - Business context for AI prompts
+---
 
 ## Guidelines for AI Assistants
 
 ### CRITICAL RULES
 
-1. **ALWAYS run lint and typecheck** after completing changes:
+1. **PRESERVE THE BRUTALIST DESIGN EXACTLY**
+   - Reference `docs/template/App.tsx` for all visual decisions
+   - Copy class names exactly - do not "improve" or "clean up" styling
+   - Maintain all animations, hover effects, shadows, borders
 
+2. **ALWAYS run lint and typecheck** after changes:
    ```bash
-   npm run lint && npm run typecheck
+   pnpm lint && pnpm typecheck
    ```
 
-2. **NEVER start the dev server yourself**
+3. **NEVER start the dev server yourself**
 
-   - If you need dev server output, ask the user to provide it
-   - Don't run `npm run dev` or `pnpm dev`
+4. **NO dark mode, NO theme switching**
+   - Single Brutalist theme only
+   - Remove any dark mode utilities or providers
 
-3. **Use OpenRouter, NOT OpenAI directly**
+5. **Bilingual content**
+   - All user-facing text must support Spanish and English
+   - Use content files in `src/content/`
 
-   - Import from `@openrouter/ai-sdk-provider`
-   - Use `openrouter()` function, not `openai()`
-   - Model names follow OpenRouter format: `provider/model-name`
+6. **Gemini for chat widget, OpenRouter for backend**
+   - Chat widget: `@google/genai` with function calling
+   - Other AI features: `@openrouter/ai-sdk-provider`
 
-4. **Styling Guidelines**
+### Template Reference
 
-   - Stick to standard Tailwind CSS utility classes
-   - Use shadcn/ui color tokens (e.g., `bg-background`, `text-foreground`)
-   - Avoid custom colors unless explicitly requested
-   - Support dark mode with appropriate Tailwind classes
+The source of truth for all visual specifications is:
+- **File**: `docs/template/App.tsx`
+- **Component**: `BrutalistDesign` (lines 1372-1946)
+- **Chat Widget**: `AIChatWidget` (lines 464-742)
+- **Animations**: `Reveal` component, marquee keyframes
+- **Modals**: `Modal`, `ProjectModalContent`, `ServiceModalContent`, `PartnershipModalContent`
 
-5. **Authentication**
+When implementing, always cross-reference these sections to ensure pixel-perfect accuracy.
 
-   - Server-side: Import from `@/lib/auth` (Better Auth instance)
-   - Client-side: Import hooks from `@/lib/auth-client`
-   - Protected routes should check session in Server Components
-   - Use existing auth components from `src/components/auth/`
-
-6. **Database Operations**
-
-   - Use Drizzle ORM (imported from `@/lib/db`)
-   - Schema is defined in `@/lib/schema`
-   - Always run migrations after schema changes
-   - PostgreSQL is the database (not SQLite, MySQL, etc.)
-
-7. **File Storage**
-
-   - Use the storage abstraction from `@/lib/storage`
-   - Automatically uses local storage (dev) or Vercel Blob (production)
-   - Import: `import { upload, deleteFile } from "@/lib/storage"`
-   - Example: `const result = await upload(buffer, "avatar.png", "avatars")`
-   - Storage switches based on `BLOB_READ_WRITE_TOKEN` environment variable
-
-8. **Component Creation**
-
-   - Use existing shadcn/ui components when possible
-   - Follow the established patterns in `src/components/ui/`
-   - Support both light and dark modes
-   - Use TypeScript with proper types
-
-9. **API Routes**
-   - Follow Next.js 16 App Router conventions
-   - Use Route Handlers (route.ts files)
-   - Return Response objects
-   - Handle errors appropriately
-
-### Best Practices
-
-- Read existing code patterns before creating new features
-- Maintain consistency with established file structure
-- Use the documentation files when implementing related features
-- Test changes with lint and typecheck before considering complete
-- When modifying AI functionality, refer to `docs/technical/ai/` guides
-
-### Common Tasks
-
-**Adding a new page:**
-
-1. Create in `src/app/[route]/page.tsx`
-2. Use Server Components by default
-3. Add to navigation if needed
-
-**Adding a new API route:**
-
-1. Create in `src/app/api/[route]/route.ts`
-2. Export HTTP method handlers (GET, POST, etc.)
-3. Use proper TypeScript types
-
-**Adding authentication to a page:**
-
-1. Import auth instance: `import { auth } from "@/lib/auth"`
-2. Get session: `const session = await auth.api.getSession({ headers: await headers() })`
-3. Check session and redirect if needed
-
-**Working with the database:**
-
-1. Update schema in `src/lib/schema.ts`
-2. Generate migration: `npm run db:generate`
-3. Apply migration: `npm run db:migrate`
-4. Import `db` from `@/lib/db` to query
-
-**Modifying AI chat:**
-
-1. Backend: `src/app/api/chat/route.ts`
-2. Frontend: `src/app/chat/page.tsx`
-3. Reference streaming docs: `docs/technical/ai/streaming.md`
-4. Remember to use OpenRouter, not direct OpenAI
-
-**Working with file storage:**
-
-1. Import storage functions: `import { upload, deleteFile } from "@/lib/storage"`
-2. Upload files: `const result = await upload(fileBuffer, "filename.png", "folder")`
-3. Delete files: `await deleteFile(result.url)`
-4. Storage automatically uses local filesystem in dev, Vercel Blob in production
-5. Local files are saved to `public/uploads/` and served at `/uploads/`
+---
 
 ## Package Manager
 
-This project uses **pnpm** (see `pnpm-lock.yaml`). When running commands:
-
-- Use `pnpm` instead of `npm` when possible
-- Scripts defined in package.json work with `pnpm run [script]`
+This project uses **pnpm**. Use `pnpm` for all commands.
