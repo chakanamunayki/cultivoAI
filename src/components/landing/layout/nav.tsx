@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, Sprout, X } from "lucide-react";
+import { Menu, MessageCircle, Sprout, X } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 
 interface NavProps {
   onScrollTo?: (id: string) => void;
+  onOpenChat?: () => void;
 }
 
-export function Nav({ onScrollTo }: NavProps) {
+export function Nav({ onScrollTo, onOpenChat }: NavProps) {
   const { locale, toggleLocale, content } = useLocale();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -23,6 +24,13 @@ export function Nav({ onScrollTo }: NavProps) {
     }
     setIsMobileMenuOpen(false);
   };
+
+  const handleChatClick = () => {
+    setIsMobileMenuOpen(false);
+    onOpenChat?.();
+  };
+
+  const ctaLabel = locale === "es" ? "Hablemos" : "Let's Talk";
 
   return (
     <nav className="sticky top-0 z-50 bg-white border-b-4 border-black">
@@ -39,6 +47,15 @@ export function Nav({ onScrollTo }: NavProps) {
             Cultivo<span className="text-[#A855F7]">AI</span>
           </span>
         </div>
+
+        {/* Mobile CTA Button */}
+        <button
+          onClick={handleChatClick}
+          className="lg:hidden px-4 border-l-4 border-black bg-[#FFC805] hover:bg-[#FFDE00] transition-colors font-bold uppercase text-sm flex items-center gap-2"
+        >
+          <MessageCircle size={18} />
+          <span className="hidden sm:inline">{ctaLabel}</span>
+        </button>
 
         {/* Language Toggle (Mobile) */}
         <button
@@ -63,11 +80,19 @@ export function Nav({ onScrollTo }: NavProps) {
             <button
               key={item.label}
               onClick={() => scrollTo(item.href)}
-              className="flex-1 px-4 border-r-4 border-black font-bold uppercase hover:bg-[#FFDE00] transition-colors text-sm last:border-r-0"
+              className="flex-1 px-4 border-r-4 border-black font-bold uppercase hover:bg-[#FFDE00] transition-colors text-sm"
             >
               {item.label}
             </button>
           ))}
+          {/* CTA Button (Desktop) */}
+          <button
+            onClick={handleChatClick}
+            className="px-6 border-l-4 border-black bg-[#FFC805] font-bold uppercase hover:bg-[#FFDE00] hover:-translate-y-0.5 transition-all text-sm flex items-center gap-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+          >
+            <MessageCircle size={18} />
+            {ctaLabel}
+          </button>
           {/* Language Toggle (Desktop) */}
           <button
             onClick={toggleLocale}
@@ -85,11 +110,19 @@ export function Nav({ onScrollTo }: NavProps) {
             <button
               key={item.label}
               onClick={() => scrollTo(item.href)}
-              className="w-full text-left p-4 border-b-4 border-black font-black uppercase hover:bg-[#FFDE00] hover:pl-6 transition-all last:border-b-0 text-lg"
+              className="w-full text-left p-4 border-b-4 border-black font-black uppercase hover:bg-[#FFDE00] hover:pl-6 transition-all text-lg"
             >
               {item.label}
             </button>
           ))}
+          {/* CTA Button in Mobile Menu */}
+          <button
+            onClick={handleChatClick}
+            className="w-full text-left p-4 border-b-4 border-black font-black uppercase bg-[#FFC805] hover:bg-[#FFDE00] hover:pl-6 transition-all text-lg flex items-center gap-3"
+          >
+            <MessageCircle size={22} />
+            {ctaLabel}
+          </button>
         </div>
       )}
     </nav>

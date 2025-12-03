@@ -119,10 +119,36 @@ export interface WhyUs {
   yesItems: string[];
 }
 
+export interface SocialLink {
+  platform: "linkedin" | "whatsapp" | "instagram" | "facebook";
+  url: string;
+  label: string;
+  comingSoon?: boolean;
+}
+
+export interface FooterContactInfo {
+  email: string;
+  whatsapp: string;
+  whatsappDisplay: string;
+  location: string;
+  locationSecondary: string;
+}
+
+export interface FooterQuickLink {
+  label: string;
+  href: string;
+}
+
 export interface FooterCopy {
   cta: string;
   ctaButton: string;
   copyright: string;
+  socialLinks: SocialLink[];
+  contactInfo: FooterContactInfo;
+  quickLinks: FooterQuickLink[];
+  quickLinksTitle: string;
+  contactTitle: string;
+  socialTitle: string;
 }
 
 export interface ChatContextualGreetings {

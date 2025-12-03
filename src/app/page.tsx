@@ -110,7 +110,7 @@ export default function Home() {
       <Marquee />
 
       {/* Navigation */}
-      <Nav onScrollTo={scrollTo} />
+      <Nav onScrollTo={scrollTo} onOpenChat={handleOpenChatGeneral} />
 
       {/* Section 1: Hero */}
       <HeroSection
@@ -143,7 +143,7 @@ export default function Home() {
       <StoriesSection />
 
       {/* Footer */}
-      <Footer onContactClick={handleOpenChatGeneral} />
+      <Footer onContactClick={handleOpenChatGeneral} onScrollTo={scrollTo} />
     </div>
   );
 }

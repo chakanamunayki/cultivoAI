@@ -384,6 +384,50 @@ export const es: SiteContent = {
     cta: "Tu proyecto puede ser el siguiente. Que podemos construir juntos?",
     ctaButton: "Hablemos",
     copyright: "2025 Cultivo AI. Hecho con carino por Paul y Rocky desde Colombia.",
+    socialLinks: [
+      {
+        platform: "linkedin",
+        url: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
+        label: "LinkedIn",
+      },
+      {
+        platform: "whatsapp",
+        url: "https://wa.me/573106172706",
+        label: "WhatsApp",
+      },
+      {
+        platform: "instagram",
+        url: "#",
+        label: "Instagram",
+        comingSoon: true,
+      },
+      {
+        platform: "facebook",
+        url: "#",
+        label: "Facebook",
+        comingSoon: true,
+      },
+    ],
+    contactInfo: {
+      email: "hola@cultivoai.co",
+      whatsapp: "+573106172706",
+      whatsappDisplay: "+57 310 617 2706",
+      location: "Bogota, Colombia",
+      locationSecondary: "Worldwide",
+    },
+    quickLinks: [
+      { label: "Inicio", href: "#hero" },
+      { label: "Nosotros", href: "#about" },
+      { label: "Servicios", href: "#services" },
+      { label: "Demos", href: "#demos" },
+      { label: "Semilla", href: "#semilla" },
+      { label: "Alianzas", href: "#partnerships" },
+      { label: "Proyectos", href: "#projects" },
+      { label: "Historias", href: "#stories" },
+    ],
+    quickLinksTitle: "Navegacion",
+    contactTitle: "Contacto",
+    socialTitle: "Siguenos",
   },
 
   chat: {
