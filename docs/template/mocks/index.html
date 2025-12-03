@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Nexus - Design Mocks Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@400;600;700&family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Plus Jakarta Sans', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+              grotesk: ['Space Grotesk', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            animation: {
+              marquee: 'marquee 25s linear infinite',
+            },
+            keyframes: {
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-100%)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        .design-section { display: none; }
+        .design-section.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* Hide scrollbar for nav */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Sticky Header for Switching Designs -->
+    <div class="fixed top-0 left-0 w-full bg-white border-b border-gray-200 z-[100] px-4 py-3 shadow-sm flex items-center justify-between overflow-x-auto">
+        <div class="font-bold text-gray-800 mr-4 whitespace-nowrap">AI Nexus Mocks (Updated)</div>
+        <div class="flex space-x-2">
+            <button onclick="showDesign('swiss')" class="px-3 py-1 text-sm rounded-full bg-gray-200 hover:bg-gray-300 focus:bg-black focus:text-white transition-colors" data-id="swiss">1. Swiss</button>
+            <button onclick="showDesign('terminal')" class="px-3 py-1 text-sm rounded-full bg-gray-200 hover:bg-gray-300 focus:bg-black focus:text-white transition-colors" data-id="terminal">2. Terminal</button>
+            <button onclick="showDesign('brutalist')" class="px-3 py-1 text-sm rounded-full bg-gray-200 hover:bg-gray-300 focus:bg-black focus:text-white transition-colors" data-id="brutalist">3. Brutalist</button>
+            <button onclick="showDesign('rocket')" class="px-3 py-1 text-sm rounded-full bg-gray-200 hover:bg-gray-300 focus:bg-black focus:text-white transition-colors" data-id="rocket">4. Playful</button>
+        </div>
+    </div>
+
+    <!-- Spacer for fixed header -->
+    <div class="h-14"></div>
+
+    <!-- ==========================================
+         DESIGN 1: SWISS 
+         ========================================== -->
+    <div id="swiss" class="design-section min-h-screen bg-[#F4F4F0] text-[#1a1a1a] font-sans">
+        <!-- Sticky Nav -->
+        <nav class="sticky top-14 z-40 bg-[#F4F4F0]/90 backdrop-blur-sm border-b border-[#1a1a1a] flex justify-between items-center px-6 py-4">
+            <div class="flex items-center gap-2">
+                <div class="w-4 h-4 bg-red-600 rounded-full"></div> 
+                <span class="font-bold tracking-tight text-lg">NEXUS / CO</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
+                <a href="#" class="hover:text-red-600">Inicio</a>
+                <a href="#" class="hover:text-red-600">Servicios</a>
+                <a href="#" class="hover:text-red-600">Proyectos</a>
+                <a href="#" class="hover:text-red-600">Nosotros</a>
+                <a href="#" class="hover:text-red-600">Semilla</a>
+                <a href="#" class="hover:text-red-600">Contacto</a>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <div class="grid grid-cols-12 border-b border-[#1a1a1a] min-h-[85vh]">
+            <div class="col-span-12 lg:col-span-7 p-8 lg:p-16 border-b lg:border-b-0 lg:border-r border-[#1a1a1a] flex flex-col justify-center relative">
+                <h1 class="text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8">
+                    Somos Paul y Rocky — padre e hijo.
+                </h1>
+                <div class="space-y-6 max-w-xl">
+                    <p class="text-xl lg:text-2xl font-medium leading-relaxed">
+                        No somos una agencia. No tenemos un equipo de 50 personas que te pasan de mano en mano. Somos nosotros. Trabajando contigo directamente desde Colombia.
+                    </p>
+                    <p class="text-lg text-neutral-600">
+                        Ayudamos a negocios con propósito a usar IA sin perderse en la complejidad — ni en presupuestos inflados.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <button class="bg-[#1a1a1a] text-white px-6 py-3 text-sm font-bold hover:bg-red-600 transition-colors">
+                            Agenda 15 minutos con Paul →
+                        </button>
+                        <button class="border border-[#1a1a1a] px-6 py-3 text-sm font-bold hover:bg-[#1a1a1a] hover:text-white transition-colors">
+                            Conoce nuestra historia
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-12 lg:col-span-5 bg-[#e0e0e0] relative flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 grid grid-cols-2 grid-rows-2">
+                    <div class="bg-red-600/10 border-r border-b border-[#1a1a1a]/10"></div>
+                    <div class="border-b border-[#1a1a1a]/10"></div>
+                    <div class="border-r border-[#1a1a1a]/10"></div>
+                    <div class="bg-[#1a1a1a] flex items-center justify-center text-white opacity-20 text-6xl font-bold">AI</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Why Us (Swiss) -->
+        <div class="border-b border-[#1a1a1a]">
+          <div class="grid grid-cols-1 md:grid-cols-2">
+             <div class="p-12 md:p-24 bg-[#1a1a1a] text-white border-b md:border-b-0 md:border-r border-white/20">
+                <h2 class="text-3xl font-bold mb-12 flex items-center gap-3"><div class="w-2 h-2 bg-red-600 rounded-full"></div> Lo que NO somos</h2>
+                <ul class="space-y-6 font-serif text-lg text-neutral-300">
+                   <li class="flex gap-4 items-start opacity-70"><span class="text-red-500 font-sans text-sm mt-1">01</span>Una agencia que te vende y luego te pasa a un junior.</li>
+                   <li class="flex gap-4 items-start opacity-70"><span class="text-red-500 font-sans text-sm mt-1">02</span>Consultores que cobran por hora mientras "investigan".</li>
+                   <li class="flex gap-4 items-start opacity-70"><span class="text-red-500 font-sans text-sm mt-1">03</span>Expertos que te hacen sentir ignorante.</li>
+                </ul>
+             </div>
+             <div class="p-12 md:p-24 bg-[#F4F4F0] text-[#1a1a1a]">
+                <h2 class="text-3xl font-bold mb-12 flex items-center gap-3"><div class="w-2 h-2 bg-green-600 rounded-full"></div> Lo que SÍ somos</h2>
+                <ul class="space-y-6 text-xl font-medium">
+                   <li class="flex gap-4 items-start">Un papá enseñándole a su hijo a construir cosas reales.</li>
+                   <li class="flex gap-4 items-start">Integradores — conectamos herramientas, no reinventamos la rueda.</li>
+                   <li class="flex gap-4 items-start">Colombianos trabajando para el mundo desde aquí.</li>
+                </ul>
+             </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 border-t border-[#1a1a1a]">
+             <div class="p-12 border-b md:border-b-0 border-[#1a1a1a] md:border-r hover:bg-white transition-colors">
+                <h3 class="text-lg font-bold mb-3">Precios reales</h3>
+                <p class="text-sm text-neutral-600">Proyectos simples desde $100 USD.</p>
+             </div>
+             <div class="p-12 border-b md:border-b-0 border-[#1a1a1a] md:border-r hover:bg-white transition-colors">
+                <h3 class="text-lg font-bold mb-3">Trato directo</h3>
+                <p class="text-sm text-neutral-600">Sin intermediarios. Sin "te paso con el equipo técnico".</p>
+             </div>
+             <div class="p-12 hover:bg-white transition-colors">
+                <h3 class="text-lg font-bold mb-3">Flexibilidad</h3>
+                <p class="text-sm text-neutral-600">¿Startup sin presupuesto? ¿Proyecto social? Hablemos.</p>
+             </div>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-b border-[#1a1a1a]">
+             <!-- Service 1 -->
+             <div class="p-8 border-b md:border-b-0 border-[#1a1a1a] lg:border-r hover:bg-white transition-colors h-64 flex flex-col justify-between">
+                <div class="flex justify-between items-start text-xs font-bold"><span>♦</span><span>01</span></div>
+                <div><h3 class="text-xl font-bold mb-2">Automatización</h3><p class="text-sm text-gray-600">Flujos que se ejecutan solos.</p></div>
+             </div>
+             <!-- Service 2 -->
+             <div class="p-8 border-b md:border-b-0 border-[#1a1a1a] lg:border-r hover:bg-white transition-colors h-64 flex flex-col justify-between">
+                <div class="flex justify-between items-start text-xs font-bold"><span>♦</span><span>02</span></div>
+                <div><h3 class="text-xl font-bold mb-2">Agentes IA</h3><p class="text-sm text-gray-600">Asistentes que entienden.</p></div>
+             </div>
+             <!-- Service 3 -->
+             <div class="p-8 border-b md:border-b-0 border-[#1a1a1a] lg:border-r hover:bg-white transition-colors h-64 flex flex-col justify-between">
+                <div class="flex justify-between items-start text-xs font-bold"><span>♦</span><span>03</span></div>
+                <div><h3 class="text-xl font-bold mb-2">Infraestructura</h3><p class="text-sm text-gray-600">Sistemas robustos.</p></div>
+             </div>
+             <!-- Service 4 -->
+             <div class="p-8 border-b md:border-b-0 hover:bg-white transition-colors h-64 flex flex-col justify-between">
+                <div class="flex justify-between items-start text-xs font-bold"><span>♦</span><span>04</span></div>
+                <div><h3 class="text-xl font-bold mb-2">Semilla Lab</h3><p class="text-sm text-gray-600">Prototipado rápido.</p></div>
+             </div>
+        </div>
+        
+        <!-- About / Semilla -->
+        <div class="grid grid-cols-12 bg-[#1a1a1a] text-white">
+            <div class="col-span-12 lg:col-span-4 p-12 border-b lg:border-b-0 lg:border-r border-white/20">
+                <span class="text-red-500 text-xs font-bold uppercase tracking-widest">Filosofía</span>
+                <h2 class="text-4xl font-bold mt-2">Semilla.</h2>
+            </div>
+            <div class="col-span-12 lg:col-span-8 p-12 lg:p-24">
+                <p class="text-2xl font-light">"No vendemos humo. Construimos herramientas."</p>
+                <p class="mt-4 text-neutral-500">Nuestro enfoque es pragmático. Implementamos soluciones que germinan.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         DESIGN 2: TERMINAL 
+         ========================================== -->
+    <div id="terminal" class="design-section min-h-screen bg-[#0c0c0c] text-[#33ff00] font-mono relative overflow-hidden">
+        <!-- Scanlines -->
+        <div class="pointer-events-none fixed inset-0 z-50 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,6px_100%] opacity-20"></div>
+
+        <div class="max-w-7xl mx-auto border-x border-[#33ff00]/20 min-h-screen relative">
+            <header class="border-b border-[#33ff00]/30 p-4 flex justify-between items-end bg-[#0c0c0c]/90 sticky top-14 z-40">
+                <div>
+                    <h1 class="text-xl font-bold">./NEXUS_AI</h1>
+                    <div class="text-xs text-[#33ff00]/60">sys_admin@paul-rocky:~$</div>
+                </div>
+                <nav class="hidden md:flex gap-4 text-xs uppercase tracking-widest">
+                    <a href="#" class="hover:bg-[#33ff00] hover:text-black px-1">[INICIO]</a>
+                    <a href="#" class="hover:bg-[#33ff00] hover:text-black px-1">[SERVICIOS]</a>
+                    <a href="#" class="hover:bg-[#33ff00] hover:text-black px-1">[PROYECTOS]</a>
+                    <a href="#" class="hover:bg-[#33ff00] hover:text-black px-1">[CONTACTO]</a>
+                </nav>
+            </header>
+
+            <div class="p-8 md:p-16 border-b border-[#33ff00]/20 grid lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="mb-6 inline-block bg-[#33ff00]/10 px-2 py-1 text-xs border border-[#33ff00]/30 rounded">STATUS: ONLINE (BOGOTÁ, CO)</div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">Somos Paul y Rocky — padre e hijo.<span class="animate-pulse">_</span></h2>
+                    <div class="space-y-4 text-[#33ff00]/80 border-l-2 border-[#33ff00]/30 pl-4">
+                        <p class="text-lg">No somos una agencia. No tenemos un equipo de 50 personas que te pasan de mano en mano. Somos nosotros.</p>
+                        <p>Ayudamos a negocios con propósito a usar IA sin perderse en la complejidad.</p>
+                    </div>
+                    <div class="mt-8 flex gap-4">
+                        <button class="bg-[#33ff00] text-black px-6 py-3 font-bold uppercase text-sm hover:bg-white">> Agenda 15 min</button>
+                    </div>
+                </div>
+                <div class="bg-[#001a00] border border-[#33ff00]/30 p-4 font-xs opacity-80 rounded shadow-[0_0_15px_rgba(51,255,0,0.1)]">
+                    <p class="text-sm mb-2"><span class="text-blue-400">root@nexus</span>:$ whoami</p>
+                    <p class="text-white text-sm mb-4">Paul & Rocky</p>
+                    <p class="text-sm mb-2"><span class="text-blue-400">root@nexus</span>:$ list_services</p>
+                    <div class="w-full bg-[#33ff00]/20 h-2 mt-1 relative overflow-hidden">
+                       <div class="absolute top-0 left-0 h-full bg-[#33ff00] w-3/4 animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Us (Terminal) -->
+            <div class="p-8 md:p-16 border-b border-[#33ff00]/20">
+               <div class="font-mono text-sm mb-6 border border-[#33ff00]/30 p-2 inline-block">git diff agency_vs_cultivo.txt</div>
+               <div class="grid lg:grid-cols-2 gap-8 font-mono text-sm">
+                  <div class="bg-red-900/10 p-6 border-l-2 border-red-500/50">
+                     <h3 class="text-red-500 mb-4 font-bold uppercase">// Lo que NO somos</h3>
+                     <ul class="space-y-3">
+                        <li class="text-red-400/80 flex gap-2"><span>-</span> Una agencia que te vende y luego te pasa a un junior.</li>
+                        <li class="text-red-400/80 flex gap-2"><span>-</span> Consultores que cobran por hora.</li>
+                        <li class="text-red-400/80 flex gap-2"><span>-</span> Expertos que te hacen sentir ignorante.</li>
+                     </ul>
+                  </div>
+                  <div class="bg-green-900/10 p-6 border-l-2 border-green-500/50">
+                     <h3 class="text-green-500 mb-4 font-bold uppercase">// Lo que SÍ somos</h3>
+                     <ul class="space-y-3">
+                        <li class="text-green-400/90 flex gap-2"><span>+</span> Un papá enseñándole a su hijo a construir cosas reales.</li>
+                        <li class="text-green-400/90 flex gap-2"><span>+</span> Integradores — no reinventamos la rueda.</li>
+                        <li class="text-green-400/90 flex gap-2"><span>+</span> Colombianos trabajando para el mundo.</li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="grid md:grid-cols-3 gap-4 mt-8">
+                  <div class="border border-[#33ff00]/30 p-4"><div class="font-bold uppercase text-[#33ff00] mb-1">Precios reales</div><p class="text-[#33ff00]/60 text-xs">Desde $100 USD.</p></div>
+                  <div class="border border-[#33ff00]/30 p-4"><div class="font-bold uppercase text-[#33ff00] mb-1">Trato directo</div><p class="text-[#33ff00]/60 text-xs">Sin intermediarios.</p></div>
+                  <div class="border border-[#33ff00]/30 p-4"><div class="font-bold uppercase text-[#33ff00] mb-1">Flexibilidad</div><p class="text-[#33ff00]/60 text-xs">Estructuras adaptables.</p></div>
+               </div>
+            </div>
+
+            <div class="p-8 md:p-16">
+                <h3 class="text-xl mb-6 border-b border-[#33ff00] inline-block pb-1">AVAILABLE_SERVICES.JSON</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="border border-[#33ff00]/30 p-4 hover:border-[#33ff00] transition-colors bg-[#33ff00]/5">
+                        <div class="font-bold text-lg mb-1">Automatización</div>
+                        <div class="text-sm opacity-70">"Flujos que se ejecutan solos."</div>
+                    </div>
+                    <div class="border border-[#33ff00]/30 p-4 hover:border-[#33ff00] transition-colors bg-[#33ff00]/5">
+                        <div class="font-bold text-lg mb-1">Agentes IA</div>
+                        <div class="text-sm opacity-70">"Asistentes virtuales."</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-[#33ff00]/30 p-8 text-center bg-[#33ff00]/5">
+                 <p class="mb-4 text-sm text-[#33ff00]/70">END OF LINE.</p>
+                 <a href="#" class="text-2xl font-bold decoration-wavy underline decoration-[#33ff00] underline-offset-8">CONTACTO@NEXUS.AI</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         DESIGN 3: BRUTALIST 
+         ========================================== -->
+    <div id="brutalist" class="design-section min-h-screen bg-[#E0E7FF] text-black font-grotesk">
+        <!-- Marquee -->
+        <div class="bg-black text-[#FFDE00] overflow-hidden whitespace-nowrap py-2 border-b-4 border-black">
+            <div class="animate-marquee inline-block font-bold tracking-widest uppercase">
+                Paul & Rocky — Direct Access — No Middlemen — AI for Purpose — Colombia to the World — Paul & Rocky — Direct Access —
+            </div>
+        </div>
+
+        <nav class="flex flex-wrap border-b-4 border-black bg-white sticky top-14 z-40">
+            <div class="p-4 border-r-4 border-black font-black text-2xl hover:bg-[#FF9900] cursor-pointer">NEXUS!!!</div>
+            <a href="#" class="p-4 border-r-4 border-black font-bold uppercase hover:bg-[#FFDE00] transition-colors">Inicio</a>
+            <a href="#" class="p-4 border-r-4 border-black font-bold uppercase hover:bg-[#FFDE00] transition-colors">Servicios</a>
+            <a href="#" class="p-4 border-r-4 border-black font-bold uppercase hover:bg-[#FFDE00] transition-colors">Proyectos</a>
+            <a href="#" class="p-4 border-r-4 border-black font-bold uppercase hover:bg-[#FFDE00] transition-colors">Nosotros</a>
+        </nav>
+
+        <div class="grid lg:grid-cols-2">
+            <div class="bg-[#FFDE00] p-8 md:p-16 border-b-4 lg:border-b-0 lg:border-r-4 border-black flex flex-col justify-center">
+                <div class="bg-white border-4 border-black p-2 inline-block shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-[-2deg] w-max mb-6">
+                    <span class="font-black uppercase tracking-tight">Padre e Hijo</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black uppercase leading-[0.9] mb-8">Somos Paul y Rocky.</h1>
+                <p class="text-xl md:text-2xl font-bold border-l-8 border-black pl-6 mb-8 bg-white/50 py-2">
+                    No somos una agencia. No tenemos un equipo de 50 personas que te pasan de mano en mano. Somos nosotros.
+                </p>
+                <div class="flex flex-col md:flex-row gap-4">
+                    <button class="bg-black text-white px-8 py-4 font-black uppercase shadow-[8px_8px_0px_0px_#A855F7] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                        Agenda 15 min
+                    </button>
+                </div>
+            </div>
+            <div class="bg-[#A855F7] p-8 md:p-16 border-b-4 border-black flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center opacity-20 font-black text-[200px] leading-none text-white pointer-events-none">AI</div>
+                <div class="relative z-10 bg-white border-4 border-black p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] rotate-3 max-w-sm">
+                    <h3 class="font-black text-2xl mb-4 bg-black text-white inline-block px-2">SIN DRAMA.</h3>
+                    <p class="font-bold text-lg">Ayudamos a negocios con propósito a usar IA sin perderse en la complejidad.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Why Us (Brutalist) -->
+        <div class="border-b-4 border-black bg-white">
+           <div class="grid md:grid-cols-2">
+              <div class="p-12 border-b-4 md:border-b-0 md:border-r-4 border-black bg-neutral-100">
+                 <h2 class="text-4xl font-black uppercase mb-8 decoration-4 underline decoration-red-500 underline-offset-4">Lo que NO somos</h2>
+                 <ul class="space-y-4 font-bold text-lg">
+                    <li class="flex gap-4 items-center"><span class="text-red-600 border-2 border-black p-0.5 bg-white font-mono">X</span> <span class="line-through decoration-red-500/50">Agencia masiva</span></li>
+                    <li class="flex gap-4 items-center"><span class="text-red-600 border-2 border-black p-0.5 bg-white font-mono">X</span> <span class="line-through decoration-red-500/50">Consultores lentos</span></li>
+                    <li class="flex gap-4 items-center"><span class="text-red-600 border-2 border-black p-0.5 bg-white font-mono">X</span> <span class="line-through decoration-red-500/50">Expertos arrogantes</span></li>
+                 </ul>
+              </div>
+              <div class="p-12 bg-[#bbf7d0]">
+                 <h2 class="text-4xl font-black uppercase mb-8 decoration-4 underline decoration-green-600 underline-offset-4">Lo que SÍ somos</h2>
+                 <ul class="space-y-4 font-bold text-lg">
+                    <li class="flex gap-4 items-center"><span class="text-green-600 border-2 border-black p-0.5 bg-white font-mono">✓</span> Un papá y un hijo.</li>
+                    <li class="flex gap-4 items-center"><span class="text-green-600 border-2 border-black p-0.5 bg-white font-mono">✓</span> Integradores ágiles.</li>
+                    <li class="flex gap-4 items-center"><span class="text-green-600 border-2 border-black p-0.5 bg-white font-mono">✓</span> Talento colombiano.</li>
+                 </ul>
+              </div>
+           </div>
+           <div class="grid md:grid-cols-3">
+              <div class="p-8 border-b-4 md:border-b-0 border-black md:border-r-4 hover:bg-[#FFDE00] transition-colors">
+                 <h3 class="text-xl font-black uppercase mb-2">Precios reales</h3>
+                 <p class="font-bold text-sm border-l-4 border-black pl-3">Desde $100 USD.</p>
+              </div>
+              <div class="p-8 border-b-4 md:border-b-0 border-black md:border-r-4 hover:bg-[#FFDE00] transition-colors">
+                 <h3 class="text-xl font-black uppercase mb-2">Trato directo</h3>
+                 <p class="font-bold text-sm border-l-4 border-black pl-3">Sin intermediarios.</p>
+              </div>
+              <div class="p-8 hover:bg-[#FFDE00] transition-colors">
+                 <h3 class="text-xl font-black uppercase mb-2">Flexibilidad</h3>
+                 <p class="font-bold text-sm border-l-4 border-black pl-3">Estructuras reales.</p>
+              </div>
+           </div>
+        </div>
+
+        <div class="bg-black text-white p-12 text-center">
+            <h2 class="text-4xl md:text-6xl font-black uppercase mb-6 hover:text-[#FFDE00] cursor-pointer">¿Hablamos?</h2>
+            <p class="font-mono text-[#FFDE00]">Bogotá, Colombia -> World</p>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         DESIGN 4: ROCKET 
+         ========================================== -->
+    <div id="rocket" class="design-section min-h-screen bg-[#FFC805] text-[#2D2D2D] font-display relative overflow-x-hidden">
+        <!-- Floating Nav -->
+        <div class="fixed top-20 left-0 right-0 z-50 flex justify-center px-4">
+            <nav class="bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-white/50 px-6 py-3 flex items-center gap-8 max-w-4xl w-full justify-between">
+                <div class="flex items-center gap-2 font-black text-xl">
+                    <div class="bg-[#FFC805] p-1.5 rounded-lg">🚀</div>
+                    <span>Nexus</span>
+                </div>
+                <div class="hidden md:flex gap-6 font-bold text-sm text-neutral-600">
+                    <a href="#" class="hover:text-black">Inicio</a>
+                    <a href="#" class="hover:text-black">Servicios</a>
+                    <a href="#" class="hover:text-black">Nosotros</a>
+                    <a href="#" class="hover:text-black">Semilla</a>
+                </div>
+                <button class="bg-black text-white px-5 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform">Contacto</button>
+            </nav>
+        </div>
+
+        <div class="relative pt-32 pb-20 px-6 max-w-7xl mx-auto min-h-screen flex flex-col justify-center">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="relative z-10">
+                    <div class="inline-block bg-white/50 backdrop-blur rounded-full px-4 py-1.5 mb-6 border border-white/60">
+                        <span class="font-bold text-xs uppercase tracking-wider">👋 Desde Colombia para el mundo</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-[#1a1a1a] leading-[1.1] mb-6 drop-shadow-sm">
+                        Somos Paul y Rocky — padre e hijo.
+                    </h1>
+                    <p class="text-xl font-medium leading-relaxed opacity-90 max-w-lg mb-8 bg-white/30 p-6 rounded-3xl backdrop-blur-sm border border-white/40 shadow-sm">
+                        No somos una agencia. No tenemos un equipo de 50 personas que te pasan de mano en mano. Somos nosotros.
+                    </p>
+                    <button class="bg-white text-black px-8 py-4 rounded-2xl font-bold text-lg shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all">
+                        Agenda 15 minutos con Paul
+                    </button>
+                </div>
+
+                <div class="relative h-[500px] flex items-center justify-center">
+                    <div class="absolute top-10 right-10 w-48 h-48 bg-orange-400 rounded-full blur-3xl opacity-40 animate-pulse"></div>
+                    <div class="absolute bottom-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl opacity-40"></div>
+                    
+                    <div class="relative z-10 w-full max-w-lg animate-[bounce_4s_infinite]">
+                         <img 
+                            src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=826&t=st=1709840000~exp=1709840600~hmac=xyz" 
+                            class="w-full h-auto drop-shadow-2xl rounded-[40px] rotate-[-2deg] border-4 border-white/50" 
+                            alt="Rocket Pilot"
+                            onerror="this.style.display='none'"
+                         />
+                         <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 rotate-3">
+                            <div class="bg-blue-500 rounded-full p-2 text-white">🚀</div>
+                            <div>
+                               <div class="font-bold text-sm">Status</div>
+                               <div class="text-xs text-neutral-500">Ready for takeoff</div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Us (Rocket) -->
+        <div class="px-6 py-20 bg-white/50 backdrop-blur-sm">
+           <div class="max-w-7xl mx-auto">
+              <div class="grid md:grid-cols-2 gap-8 mb-16">
+                 <div class="bg-white rounded-[32px] p-8 shadow-sm border border-neutral-100">
+                    <div class="bg-red-100 w-12 h-12 rounded-2xl flex items-center justify-center text-red-500 mb-6 font-bold">X</div>
+                    <h3 class="text-2xl font-black mb-6">Lo que NO somos</h3>
+                    <ul class="space-y-4 text-neutral-500 font-medium">
+                       <li class="flex gap-3"><span class="text-red-300">x</span> Agencia masiva</li>
+                       <li class="flex gap-3"><span class="text-red-300">x</span> Consultores lentos</li>
+                       <li class="flex gap-3"><span class="text-red-300">x</span> Expertos arrogantes</li>
+                    </ul>
+                 </div>
+                 <div class="bg-white rounded-[32px] p-8 shadow-xl border border-[#FFC805]/20 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-[#FFC805]/10 rounded-bl-full"></div>
+                    <div class="bg-[#FFC805] w-12 h-12 rounded-2xl flex items-center justify-center text-white mb-6 font-bold shadow-md">✓</div>
+                    <h3 class="text-2xl font-black mb-6">Lo que SÍ somos</h3>
+                    <ul class="space-y-4 text-neutral-800 font-bold">
+                       <li class="flex gap-3"><span class="text-green-500">✓</span> Un papá y un hijo</li>
+                       <li class="flex gap-3"><span class="text-green-500">✓</span> Integradores ágiles</li>
+                       <li class="flex gap-3"><span class="text-green-500">✓</span> Talento colombiano</li>
+                    </ul>
+                 </div>
+              </div>
+              <div class="grid md:grid-cols-3 gap-6">
+                 <div class="bg-white/80 rounded-[24px] p-6 text-center hover:scale-105 transition-transform">
+                    <h3 class="font-bold text-lg mb-2">Precios reales</h3>
+                    <p class="text-sm text-neutral-500">Desde $100 USD.</p>
+                 </div>
+                 <div class="bg-white/80 rounded-[24px] p-6 text-center hover:scale-105 transition-transform">
+                    <h3 class="font-bold text-lg mb-2">Trato directo</h3>
+                    <p class="text-sm text-neutral-500">Sin intermediarios.</p>
+                 </div>
+                 <div class="bg-white/80 rounded-[24px] p-6 text-center hover:scale-105 transition-transform">
+                    <h3 class="font-bold text-lg mb-2">Flexibilidad</h3>
+                    <p class="text-sm text-neutral-500">Estructuras reales.</p>
+                 </div>
+              </div>
+           </div>
+        </div>
+
+        <div class="px-6 py-20 bg-white rounded-t-[60px] shadow-[0_-20px_40px_rgba(0,0,0,0.05)] mt-8">
+            <div class="max-w-7xl mx-auto text-center mb-16">
+                <span class="bg-[#FFC805]/20 text-[#D97706] px-4 py-2 rounded-full font-bold text-sm uppercase">Nuestros Poderes</span>
+                <h2 class="text-4xl md:text-5xl font-black mt-6">Lo que hacemos mejor</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                 <div class="bg-neutral-50 rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all border border-neutral-100">
+                    <h3 class="text-xl font-bold mb-3">Automatización</h3>
+                    <p class="text-neutral-500">Flujos que se ejecutan solos.</p>
+                 </div>
+                 <div class="bg-neutral-50 rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all border border-neutral-100">
+                    <h3 class="text-xl font-bold mb-3">Semilla Lab</h3>
+                    <p class="text-neutral-500">Experimentación rápida.</p>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showDesign(id) {
+            document.querySelectorAll('.design-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            
+            document.querySelectorAll('button[data-id]').forEach(btn => {
+                if(btn.dataset.id === id) {
+                    btn.classList.add('bg-black', 'text-white');
+                    btn.classList.remove('bg-gray-200');
+                } else {
+                    btn.classList.remove('bg-black', 'text-white');
+                    btn.classList.add('bg-gray-200');
+                }
+            });
+        }
+        showDesign('swiss');
+    </script>
+</body>
+</html>

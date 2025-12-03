@@ -1,53 +1,64 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ModalProvider } from "@/components/landing/ui/modal-provider";
+import { LanguageProvider } from "@/components/providers/language-provider";
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Agentic Coding Boilerplate",
-    template: "%s | Agentic Coding Boilerplate",
+    default: "CultivoAI - Consultoria en IA y Automatizacion",
+    template: "%s | CultivoAI",
   },
   description:
-    "Complete agentic coding boilerplate with authentication, database, AI integration, and modern tooling - perfect for building AI-powered applications and autonomous agents by Leon van Zyl",
+    "Paul & Rocky - Padre e hijo construyendo soluciones de IA y automatizacion desde Colombia para el mundo. Acceso directo, sin intermediarios.",
   keywords: [
+    "IA",
+    "AI",
+    "Automatizacion",
+    "Colombia",
+    "Consultoria",
+    "Chatbots",
+    "CRM",
+    "Integraciones",
     "Next.js",
     "React",
     "TypeScript",
-    "AI",
-    "OpenRouter",
-    "Boilerplate",
-    "Authentication",
-    "PostgreSQL",
   ],
-  authors: [{ name: "Leon van Zyl" }],
-  creator: "Leon van Zyl",
+  authors: [{ name: "Paul Ronayne" }, { name: "Rocky Ronayne" }],
+  creator: "CultivoAI",
   openGraph: {
     type: "website",
-    locale: "en_US",
-    siteName: "Agentic Coding Boilerplate",
-    title: "Agentic Coding Boilerplate",
+    locale: "es_CO",
+    alternateLocale: "en_US",
+    siteName: "CultivoAI",
+    title: "CultivoAI - IA y Automatizacion",
     description:
-      "Complete agentic coding boilerplate with authentication, database, AI integration, and modern tooling",
+      "Padre e hijo construyendo soluciones de IA desde Colombia para el mundo.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agentic Coding Boilerplate",
+    title: "CultivoAI - IA y Automatizacion",
     description:
-      "Complete agentic coding boilerplate with authentication, database, AI integration, and modern tooling",
+      "Padre e hijo construyendo soluciones de IA desde Colombia para el mundo.",
   },
   robots: {
     index: true,
@@ -58,21 +69,23 @@ export const metadata: Metadata = {
 // JSON-LD structured data for SEO
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "Agentic Coding Boilerplate",
+  "@type": "Organization",
+  name: "CultivoAI",
   description:
-    "Complete agentic coding boilerplate with authentication, database, AI integration, and modern tooling",
-  applicationCategory: "DeveloperApplication",
-  operatingSystem: "Any",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-  author: {
-    "@type": "Person",
-    name: "Leon van Zyl",
-  },
+    "Consultoria en IA y automatizacion - Padre e hijo desde Colombia",
+  url: process.env.NEXT_PUBLIC_APP_URL || "https://cultivo.ai",
+  founders: [
+    {
+      "@type": "Person",
+      name: "Paul Ronayne",
+    },
+    {
+      "@type": "Person",
+      name: "Rocky Ronayne",
+    },
+  ],
+  areaServed: "Worldwide",
+  knowsLanguage: ["es", "en"],
 };
 
 export default function RootLayout({
@@ -81,7 +94,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -89,19 +102,14 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SiteHeader />
-          <main id="main-content">{children}</main>
-          <SiteFooter />
-          <Toaster richColors position="top-right" />
-        </ThemeProvider>
+        <LanguageProvider>
+          <ModalProvider>
+            {children}
+          </ModalProvider>
+        </LanguageProvider>
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );

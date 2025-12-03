@@ -1,0 +1,91 @@
+"use client";
+
+import Image from "next/image";
+import { useModal } from "@/components/landing/ui/modal-provider";
+import { Reveal } from "@/components/landing/ui/reveal";
+import { useLocale } from "@/hooks/use-locale";
+
+export function HeroSection() {
+  const { content } = useLocale();
+  const { openContactModal } = useModal();
+
+  const scrollToAbout = () => {
+    const el = document.getElementById("about");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <div id="hero" className="grid lg:grid-cols-2 min-h-[85vh]">
+      {/* Left Panel - Yellow */}
+      <div className="bg-[#FFC805] p-6 md:p-16 border-b-4 lg:border-b-0 lg:border-r-4 border-black flex flex-col justify-center relative overflow-hidden group">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
+        <Reveal>
+          <div className="bg-white border-4 border-black p-2 inline-block shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-[-2deg] w-max mb-6 md:mb-8 transform hover:rotate-0 transition-transform duration-300">
+            <span className="font-black uppercase tracking-tight text-sm md:text-base">
+              {content.hero.tagline}
+            </span>
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-8xl font-black uppercase leading-[0.9] md:leading-[0.85] mb-6 md:mb-8 tracking-tighter">
+            {content.hero.headline}
+          </h1>
+          <p className="text-lg md:text-xl lg:text-2xl font-bold border-l-8 border-black pl-4 md:pl-6 mb-8 md:mb-10 bg-white/50 py-4 max-w-xl">
+            {content.hero.subheadline}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={openContactModal}
+              className="bg-black text-white px-6 md:px-8 py-4 md:py-5 font-black uppercase shadow-[8px_8px_0px_0px_#A855F7] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_#A855F7] transition-all border-2 border-transparent text-base md:text-lg"
+            >
+              {content.hero.cta}
+            </button>
+            <button
+              onClick={scrollToAbout}
+              className="bg-white text-black border-4 border-black px-6 md:px-8 py-4 md:py-5 font-black uppercase shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-base md:text-lg"
+            >
+              {content.hero.secondaryCta}
+            </button>
+          </div>
+        </Reveal>
+      </div>
+
+      {/* Right Panel - Purple */}
+      <div className="bg-[#A855F7] p-8 md:p-16 border-b-4 border-black flex items-center justify-center relative overflow-hidden min-h-[400px]">
+        {/* Abstract Shapes */}
+        <div className="absolute top-10 left-10 w-16 md:w-24 h-16 md:h-24 bg-white border-4 border-black rounded-full animate-bounce duration-[3000ms]"></div>
+
+        {/* Yellow Square */}
+        <div className="absolute bottom-20 right-10 w-32 md:w-48 h-32 md:h-48 bg-[#FFC805] border-4 border-black rotate-12 transition-transform hover:rotate-45 duration-700 z-0"></div>
+
+        {/* AI Text */}
+        <div className="absolute bottom-24 right-[160px] md:right-[240px] opacity-20 font-black text-[100px] md:text-[200px] leading-none text-white pointer-events-none select-none z-0">
+          AI
+        </div>
+
+        {/* Rocket Image */}
+        <Image
+          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png"
+          alt="Rocket"
+          width={256}
+          height={256}
+          className="absolute left-1/2 top-1/2 w-48 md:w-64 -translate-x-1/2 -translate-y-[135%] -rotate-45 z-0 animate-[pulse_3s_infinite]"
+          unoptimized
+        />
+
+        <Reveal delay={200} className="relative z-10 w-full max-w-md">
+          <div className="bg-white border-4 border-black p-6 md:p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] md:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] rotate-3 hover:rotate-0 transition-transform duration-500 relative z-20">
+            <h3 className="font-black text-2xl md:text-3xl mb-4 bg-black text-white inline-block px-3 py-1 -rotate-2">
+              SIN DRAMA.
+            </h3>
+            <p className="font-bold text-lg md:text-xl leading-tight border-t-4 border-black pt-4">
+              Ayudamos a negocios con proposito a usar IA sin perderse en la
+              complejidad.
+            </p>
+          </div>
+        </Reveal>
+      </div>
+    </div>
+  );
+}
