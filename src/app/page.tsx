@@ -13,6 +13,8 @@ import { ProjectsSection } from "@/components/landing/sections/projects-section"
 import { SemillaSection } from "@/components/landing/sections/semilla-section";
 import { ServicesSection } from "@/components/landing/sections/services-section";
 import { StoriesSection } from "@/components/landing/sections/stories-section";
+import { WhatHappensNextSection } from "@/components/landing/sections/what-happens-next-section";
+import { WhoWeHelpSection } from "@/components/landing/sections/who-we-help-section";
 import { WhyUsSection } from "@/components/landing/sections/why-us-section";
 import { useModal } from "@/components/landing/ui/modal-provider";
 import { ModalRenderer } from "@/components/landing/ui/modal-renderer";
@@ -84,6 +86,10 @@ export default function Home() {
     handleOpenChat({ type: "general" });
   }, [handleOpenChat]);
 
+  const handleOpenChatQualification = useCallback(() => {
+    handleOpenChat({ type: "qualification" });
+  }, [handleOpenChat]);
+
   // Form fallback handler
   const handleOpenFormFromChat = useCallback(() => {
     setIsChatOpen(false);
@@ -130,17 +136,23 @@ export default function Home() {
       {/* Section 5: AI Demos */}
       <DemosSection />
 
-      {/* Section 6: Semilla */}
+      {/* Section 6: Who We Help */}
+      <WhoWeHelpSection onOpenChatQualification={handleOpenChatQualification} />
+
+      {/* Section 7: Semilla */}
       <SemillaSection onOpenChatSemilla={handleOpenChatSemilla} />
 
-      {/* Section 7: Partnerships */}
+      {/* Section 8: Partnerships */}
       <PartnershipsSection onOpenChatGeneral={handleOpenChatGeneral} />
 
-      {/* Section 8: Projects */}
+      {/* Section 9: Projects */}
       <ProjectsSection />
 
-      {/* Section 9: Stories */}
+      {/* Section 10: Stories */}
       <StoriesSection />
+
+      {/* Section 11: What Happens Next */}
+      <WhatHappensNextSection onOpenChat={handleOpenChatGeneral} />
 
       {/* Footer */}
       <Footer onContactClick={handleOpenChatGeneral} onScrollTo={scrollTo} />

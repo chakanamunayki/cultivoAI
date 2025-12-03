@@ -119,6 +119,38 @@ export interface WhyUs {
   yesItems: string[];
 }
 
+export interface Sector {
+  name: string;
+  description: string;
+  icon: string;
+}
+
+export interface WhoWeHelpContent {
+  title: string;
+  idealTitle: string;
+  idealItems: string[];
+  notIdealTitle: string;
+  notIdealItems: string[];
+  sectorsTitle: string;
+  sectors: Sector[];
+  cta: string;
+  ctaButton: string;
+}
+
+export interface ProcessStep {
+  number: string;
+  title: string;
+  description: string;
+}
+
+export interface WhatHappensNextContent {
+  title: string;
+  subtitle: string;
+  steps: ProcessStep[];
+  cta: string;
+  ctaButton: string;
+}
+
 export interface SocialLink {
   platform: "linkedin" | "whatsapp" | "instagram" | "facebook";
   url: string;
@@ -199,6 +231,7 @@ export interface SiteContent {
   demosTitle: string;
   demosSubtitle: string;
   useCases: UseCase[];
+  whoWeHelp: WhoWeHelpContent;
   semilla: SemillaContent;
   partnershipsTitle: string;
   partnershipsSubtitle: string;
@@ -209,6 +242,7 @@ export interface SiteContent {
   storiesTitle: string;
   storiesSubtitle: string;
   stories: RealStory[];
+  whatHappensNext: WhatHappensNextContent;
   footer: FooterCopy;
   chat: ChatCopy;
   contactForm: ContactFormCopy;

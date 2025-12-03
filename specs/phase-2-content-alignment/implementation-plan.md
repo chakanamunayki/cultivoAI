@@ -86,41 +86,41 @@
 ### Tasks
 
 #### 2B.1 - Content Types
-- [ ] Add `WhoWeHelpContent` interface to `src/content/types.ts`
-- [ ] Add `WhatHappensNextContent` interface to `src/content/types.ts`
-- [ ] Update `SiteContent` interface to include new content types
+- [x] Add `WhoWeHelpContent` interface to `src/content/types.ts`
+- [x] Add `WhatHappensNextContent` interface to `src/content/types.ts`
+- [x] Update `SiteContent` interface to include new content types
 
 #### 2B.2 - Spanish Content
-- [ ] Add `whoWeHelp` content to `src/content/es.ts` (from sections.md Section 8)
-- [ ] Add `whatHappensNext` content to `src/content/es.ts` (from sections.md Section 14)
+- [x] Add `whoWeHelp` content to `src/content/es.ts` (from sections.md Section 8)
+- [x] Add `whatHappensNext` content to `src/content/es.ts` (from sections.md Section 14)
 
 #### 2B.3 - English Content
-- [ ] Add `whoWeHelp` content to `src/content/en.ts` (from sections.md Section 8)
-- [ ] Add `whatHappensNext` content to `src/content/en.ts` (from sections.md Section 14)
+- [x] Add `whoWeHelp` content to `src/content/en.ts` (from sections.md Section 8)
+- [x] Add `whatHappensNext` content to `src/content/en.ts` (from sections.md Section 14)
 
 #### 2B.4 - Who We Help Section Component
-- [ ] Create `src/components/landing/sections/who-we-help-section.tsx`
-- [ ] Implement "Ideal for you if..." list with checkmark icons
-- [ ] Implement "Not ideal if..." list with X icons
-- [ ] Implement "Sectors we love" grid with sector cards
-- [ ] Add CTA button that opens chat with qualification context
-- [ ] Apply Brutalist styling (4px borders, hard shadows, uppercase headings)
-- [ ] Wrap content in `Reveal` component for scroll animation
+- [x] Create `src/components/landing/sections/who-we-help-section.tsx`
+- [x] Implement "Ideal for you if..." list with checkmark icons
+- [x] Implement "Not ideal if..." list with X icons
+- [x] Implement "Sectors we love" grid with sector cards
+- [x] Add CTA button that opens chat with qualification context
+- [x] Apply Brutalist styling (4px borders, hard shadows, uppercase headings)
+- [x] Wrap content in `Reveal` component for scroll animation
 
 #### 2B.5 - What Happens Next Section Component
-- [ ] Create `src/components/landing/sections/what-happens-next-section.tsx`
-- [ ] Implement numbered step visualization (1-5)
-- [ ] Each step shows number, title, and description
-- [ ] Add CTA button that opens chat
-- [ ] Apply Brutalist styling
-- [ ] Wrap content in `Reveal` component
+- [x] Create `src/components/landing/sections/what-happens-next-section.tsx`
+- [x] Implement numbered step visualization (1-5)
+- [x] Each step shows number, title, and description
+- [x] Add CTA button that opens chat
+- [x] Apply Brutalist styling
+- [x] Wrap content in `Reveal` component
 
 #### 2B.6 - Integrate New Sections into Page
-- [ ] Import new sections in `src/app/page.tsx`
-- [ ] Add `WhoWeHelpSection` after `DemosSection` (or appropriate position)
-- [ ] Add `WhatHappensNextSection` before `Footer` (or after Stories)
-- [ ] Add section IDs for navigation anchors
-- [ ] Update nav items in content files if needed
+- [x] Import new sections in `src/app/page.tsx`
+- [x] Add `WhoWeHelpSection` after `DemosSection` (or appropriate position)
+- [x] Add `WhatHappensNextSection` before `Footer` (or after Stories)
+- [x] Add section IDs for navigation anchors
+- [x] Update nav items in content files if needed
 
 ---
 
@@ -131,40 +131,40 @@
 ### Tasks
 
 #### 2C.1 - Navigation CTA Button
-- [ ] Add "Hablemos" / "Let's Talk" button to `Nav` component
-- [ ] Style as prominent CTA (yellow background, black border)
-- [ ] Wire button to open chat widget with general context
-- [ ] Ensure button is visible on both mobile and desktop
-- [ ] Position: right side of nav, before language toggle
+- [x] Add "Hablemos" / "Let's Talk" button to `Nav` component
+- [x] Style as prominent CTA (yellow background, black border)
+- [x] Wire button to open chat widget with general context
+- [x] Ensure button is visible on both mobile and desktop
+- [x] Position: right side of nav, before language toggle
 
 #### 2C.2 - Navigation Items Update
-- [ ] Add "Contacto" nav item to content files
-- [ ] Wire to scroll to footer or open chat (decide which)
+- [x] Add "Contacto" nav item to content files
+- [x] Wire to scroll to footer or open chat (decide which)
 
 #### 2C.3 - Footer Social Links
-- [ ] Create social links data structure in content files
-- [ ] Add LinkedIn icon/link (Paul's profile - URL placeholder until provided)
-- [ ] Add WhatsApp icon/link (Business number - placeholder until provided)
-- [ ] Add Instagram icon with "Coming Soon" tooltip or disabled state
-- [ ] Add Facebook icon with "Coming Soon" tooltip or disabled state
+- [x] Create social links data structure in content files
+- [x] Add LinkedIn icon/link (Paul's profile - URL placeholder until provided)
+- [x] Add WhatsApp icon/link (Business number - placeholder until provided)
+- [x] Add Instagram icon with "Coming Soon" tooltip or disabled state
+- [x] Add Facebook icon with "Coming Soon" tooltip or disabled state
 
 #### 2C.4 - Footer Contact Info
-- [ ] Add email display: hola@cultivoai.co
-- [ ] Add WhatsApp number display
-- [ ] Style as clickable links (mailto:, wa.me/)
+- [x] Add email display: hola@cultivoai.co
+- [x] Add WhatsApp number display
+- [x] Style as clickable links (mailto:, wa.me/)
 
 #### 2C.5 - Footer Quick Links
-- [ ] Add quick links column with all section anchors
-- [ ] Links: Inicio, Nosotros, Servicios, Demos, Semilla, Alianzas, Proyectos, Historias
-- [ ] Ensure smooth scroll behavior on click
+- [x] Add quick links column with all section anchors
+- [x] Links: Inicio, Nosotros, Servicios, Demos, Semilla, Alianzas, Proyectos, Historias
+- [x] Ensure smooth scroll behavior on click
 
 #### 2C.6 - Footer Layout Update
-- [ ] Restructure footer to multi-column layout:
+- [x] Restructure footer to multi-column layout:
   - Column 1: Logo + tagline + location
   - Column 2: Quick links
   - Column 3: Social + Contact
-- [ ] Maintain Brutalist styling
-- [ ] Ensure responsive layout (stacked on mobile)
+- [x] Maintain Brutalist styling
+- [x] Ensure responsive layout (stacked on mobile)
 
 ---
 
@@ -267,19 +267,19 @@
 
 After implementation, verify:
 
-- [ ] All CTAs open chat widget (not form)
-- [ ] Chat displays correct contextual greeting for each entry point
-- [ ] "Who We Help" section renders in both ES and EN
-- [ ] "What Happens Next" section renders in both ES and EN
-- [ ] Nav has prominent "Hablemos" button that opens chat
-- [ ] Footer has social links (LinkedIn, WhatsApp, Instagram placeholder, Facebook placeholder)
-- [ ] Footer has contact info (email, WhatsApp)
-- [ ] Footer has quick links column
-- [ ] Form modal still accessible via fallback option
+- [x] All CTAs open chat widget (not form)
+- [x] Chat displays correct contextual greeting for each entry point
+- [x] "Who We Help" section renders in both ES and EN
+- [x] "What Happens Next" section renders in both ES and EN
+- [x] Nav has prominent "Hablemos" button that opens chat
+- [x] Footer has social links (LinkedIn, WhatsApp, Instagram placeholder, Facebook placeholder)
+- [x] Footer has contact info (email, WhatsApp)
+- [x] Footer has quick links column
+- [x] Form modal still accessible via fallback option
 - [ ] Lazy loading working (check Network tab)
 - [ ] Lighthouse mobile score >= 80
-- [ ] No TypeScript errors (`pnpm typecheck`)
-- [ ] No lint errors (`pnpm lint`)
+- [x] No TypeScript errors (`pnpm typecheck`)
+- [x] No lint errors (`pnpm lint`)
 - [ ] Smooth scroll animations on mobile
 - [ ] All links/buttons keyboard accessible
 

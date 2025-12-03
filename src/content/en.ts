@@ -10,6 +10,7 @@ export const en: SiteContent = {
     { label: "Partners", href: "#partnerships" },
     { label: "Projects", href: "#projects" },
     { label: "Stories", href: "#stories" },
+    { label: "Process", href: "#what-happens-next" },
   ],
 
   marquee:
@@ -210,6 +211,60 @@ export const en: SiteContent = {
     },
   ],
 
+  whoWeHelp: {
+    title: "Are we the right fit?",
+    idealTitle: "We're ideal for you if...",
+    idealItems: [
+      "You have a business with purpose beyond just making money",
+      "You value relationships over transactions",
+      "You prefer working with real people, not an impersonal agency",
+      "You understand that good work takes time",
+      "You're building something you're proud of",
+      "You believe AI can help but don't know where to start",
+      "You appreciate honesty, even when uncomfortable",
+      "You're willing to learn alongside us",
+    ],
+    notIdealTitle: "We're probably not the fit if...",
+    notIdealItems: [
+      "You're just looking for 'cheap and fast'",
+      "Your business model is purely extractive",
+      "You treat service providers as disposable",
+      "You don't have time for a conversation before starting",
+      "You expect AI to solve everything magically without your input",
+      "You need a large agency with rotating teams",
+    ],
+    sectorsTitle: "Sectors we love",
+    sectors: [
+      {
+        name: "Agritech",
+        description: "Hydroponics, aquaponics, regenerative agriculture",
+        icon: "Sprout",
+      },
+      {
+        name: "Holistic wellness",
+        description: "Mental and physical health outside traditional models",
+        icon: "Heart",
+      },
+      {
+        name: "Alternative education",
+        description: "Personalized learning, family-led development",
+        icon: "GraduationCap",
+      },
+      {
+        name: "Self-sufficiency",
+        description: "Homesteading, sustainable living, local resilience",
+        icon: "Home",
+      },
+      {
+        name: "Mission-driven startups",
+        description: "Any early-stage team doing meaningful work",
+        icon: "Rocket",
+      },
+    ],
+    cta: "Sound like you? We'd love to hear more about what you're building.",
+    ctaButton: "Tell us about your project",
+  },
+
   semilla: {
     title: "Semilla Fund",
     subtitle: "Rocky's Journey",
@@ -380,6 +435,45 @@ export const en: SiteContent = {
     },
   ],
 
+  whatHappensNext: {
+    title: "What happens after you contact us?",
+    subtitle: "That simple. No surprises.",
+    steps: [
+      {
+        number: "1",
+        title: "We respond within 24 hours",
+        description:
+          "Usually much faster. We're two people, not a support team with tickets.",
+      },
+      {
+        number: "2",
+        title: "Initial conversation — 15 to 30 minutes",
+        description:
+          "Video call or WhatsApp, whatever you prefer. We want to understand your real situation, not sell you something.",
+      },
+      {
+        number: "3",
+        title: "We honestly tell you if we can help",
+        description:
+          "If we're not the right fit, we'll tell you. If we know someone better for your case, we'll refer you.",
+      },
+      {
+        number: "4",
+        title: "Clear proposal",
+        description:
+          "If we move forward, you receive a document with: exactly what we'll do, how much it costs and why, how long it will take, and what we need from you.",
+      },
+      {
+        number: "5",
+        title: "You decide",
+        description:
+          "No pressure. No 'this price only valid today' tactics. Take the time you need.",
+      },
+    ],
+    cta: "Let's start the conversation",
+    ctaButton: "Let's Talk",
+  },
+
   footer: {
     cta: "Your project could be next. What can we build together?",
     ctaButton: "Let's Talk",
@@ -424,6 +518,7 @@ export const en: SiteContent = {
       { label: "Partners", href: "#partnerships" },
       { label: "Projects", href: "#projects" },
       { label: "Stories", href: "#stories" },
+      { label: "Process", href: "#what-happens-next" },
     ],
     quickLinksTitle: "Navigation",
     contactTitle: "Contact",

@@ -10,6 +10,7 @@ export const es: SiteContent = {
     { label: "Alianzas", href: "#partnerships" },
     { label: "Proyectos", href: "#projects" },
     { label: "Historias", href: "#stories" },
+    { label: "Proceso", href: "#what-happens-next" },
   ],
 
   marquee:
@@ -210,6 +211,60 @@ export const es: SiteContent = {
     },
   ],
 
+  whoWeHelp: {
+    title: "Somos el fit correcto?",
+    idealTitle: "Somos ideales para ti si...",
+    idealItems: [
+      "Tienes un negocio con proposito mas alla de solo ganar dinero",
+      "Valoras las relaciones sobre las transacciones",
+      "Prefieres trabajar con personas reales, no una agencia impersonal",
+      "Entiendes que el buen trabajo toma tiempo",
+      "Estas construyendo algo de lo que te sientes orgulloso",
+      "Crees que la IA puede ayudar pero no sabes por donde empezar",
+      "Aprecias la honestidad, incluso cuando es incomoda",
+      "Estas dispuesto a aprender junto con nosotros",
+    ],
+    notIdealTitle: "Probablemente no somos el fit si...",
+    notIdealItems: [
+      "Solo buscas 'barato y rapido'",
+      "Tu modelo de negocio es puramente extractivo",
+      "Tratas a los proveedores de servicio como descartables",
+      "No tienes tiempo para una conversacion antes de empezar",
+      "Esperas que la IA resuelva todo magicamente sin tu input",
+      "Necesitas una agencia grande con equipos rotativos",
+    ],
+    sectorsTitle: "Sectores que nos encantan",
+    sectors: [
+      {
+        name: "Agritech",
+        description: "Hidroponia, acuaponia, agricultura regenerativa",
+        icon: "Sprout",
+      },
+      {
+        name: "Bienestar holistico",
+        description: "Salud mental y fisica fuera del modelo tradicional",
+        icon: "Heart",
+      },
+      {
+        name: "Educacion alternativa",
+        description: "Aprendizaje personalizado, desarrollo familiar",
+        icon: "GraduationCap",
+      },
+      {
+        name: "Autosuficiencia",
+        description: "Homesteading, vida sostenible, resiliencia local",
+        icon: "Home",
+      },
+      {
+        name: "Startups con mision",
+        description: "Cualquier equipo early-stage haciendo trabajo significativo",
+        icon: "Rocket",
+      },
+    ],
+    cta: "Te identificas? Nos encantaria saber mas sobre lo que estas construyendo.",
+    ctaButton: "Cuentanos sobre tu proyecto",
+  },
+
   semilla: {
     title: "Fondo Semilla",
     subtitle: "El Viaje de Rocky",
@@ -380,6 +435,45 @@ export const es: SiteContent = {
     },
   ],
 
+  whatHappensNext: {
+    title: "Que pasa despues de contactarnos?",
+    subtitle: "Asi de simple. Sin sorpresas.",
+    steps: [
+      {
+        number: "1",
+        title: "Te respondemos en menos de 24 horas",
+        description:
+          "Usualmente mucho mas rapido. Somos dos personas, no un equipo de soporte con tickets.",
+      },
+      {
+        number: "2",
+        title: "Conversacion inicial — 15 a 30 minutos",
+        description:
+          "Por videollamada o WhatsApp, lo que prefieras. Queremos entender tu situacion real, no venderte algo.",
+      },
+      {
+        number: "3",
+        title: "Te decimos honestamente si podemos ayudar",
+        description:
+          "Si no somos el fit correcto, te lo decimos. Si conocemos a alguien mejor para tu caso, te referimos.",
+      },
+      {
+        number: "4",
+        title: "Propuesta clara",
+        description:
+          "Si seguimos adelante, recibes un documento con: exactamente que vamos a hacer, cuanto cuesta y por que, cuanto tiempo tomara, y que necesitamos de ti.",
+      },
+      {
+        number: "5",
+        title: "Tu decides",
+        description:
+          "Sin presion. Sin tacticas de 'este precio solo vale hoy'. Tomate el tiempo que necesites.",
+      },
+    ],
+    cta: "Empecemos la conversacion",
+    ctaButton: "Hablemos",
+  },
+
   footer: {
     cta: "Tu proyecto puede ser el siguiente. Que podemos construir juntos?",
     ctaButton: "Hablemos",
@@ -424,6 +518,7 @@ export const es: SiteContent = {
       { label: "Alianzas", href: "#partnerships" },
       { label: "Proyectos", href: "#projects" },
       { label: "Historias", href: "#stories" },
+      { label: "Proceso", href: "#what-happens-next" },
     ],
     quickLinksTitle: "Navegacion",
     contactTitle: "Contacto",
