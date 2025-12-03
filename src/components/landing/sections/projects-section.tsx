@@ -74,6 +74,7 @@ export function ProjectsSection() {
                 fill
                 className="object-cover filter grayscale contrast-125 group-hover:scale-110 transition-transform duration-700"
                 sizes="(max-width: 1024px) 100vw, 40vw"
+                loading="lazy"
               />
               <div className="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
                 <ArrowRight size={48} className="text-white drop-shadow-md" />

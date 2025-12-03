@@ -37,6 +37,7 @@ export function AboutSection() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    loading="eager"
                   />
                 </div>
                 <h3 className="text-3xl md:text-4xl font-black uppercase mb-2">
@@ -64,6 +65,7 @@ export function AboutSection() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    loading="eager"
                   />
                 </div>
                 <h3 className="text-3xl md:text-4xl font-black uppercase mb-2">

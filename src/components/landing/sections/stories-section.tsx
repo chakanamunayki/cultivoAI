@@ -44,6 +44,7 @@ export function StoriesSection() {
                     fill
                     className="object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
                     sizes="(max-width: 1024px) 100vw, 33vw"
+                    loading="lazy"
                   />
                   <div
                     className={`absolute top-4 left-4 z-20 w-10 h-10 md:w-12 md:h-12 ${color} border-4 border-black flex items-center justify-center text-white`}

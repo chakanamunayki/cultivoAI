@@ -67,6 +67,7 @@ export function HeroSection({ onOpenChatBooking, onOpenChatStory }: HeroSectionP
           width={256}
           height={256}
           className="absolute left-1/2 top-1/2 w-48 md:w-64 -translate-x-1/2 -translate-y-[135%] -rotate-45 z-0 animate-[pulse_3s_infinite]"
+          priority
           unoptimized
         />
 
