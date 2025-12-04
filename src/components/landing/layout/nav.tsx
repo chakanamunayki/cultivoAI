@@ -1,7 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
-import { Menu, MessageCircle, Sprout, X } from "lucide-react";
+import { Menu, MessageCircle, Sprout, X, User } from "lucide-react";
+import { useSession } from "@/lib/auth-client";
+import { UserProfile } from "@/components/auth/user-profile";
 import { useLocale } from "@/hooks/use-locale";
 
 interface NavProps {
@@ -11,7 +14,10 @@ interface NavProps {
 
 export function Nav({ onScrollTo, onOpenChat }: NavProps) {
   const { locale, toggleLocale, content } = useLocale();
+  const { data: session } = useSession();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const signInLabel = locale === "es" ? "Entrar" : "Sign In";
 
   const scrollTo = (id: string) => {
     if (onScrollTo) {
@@ -100,6 +106,20 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
           >
             {locale === "es" ? "EN" : "ES"}
           </button>
+          {/* Auth Button (Desktop) */}
+          <div className="px-4 border-l-4 border-black flex items-center">
+            {session ? (
+              <UserProfile />
+            ) : (
+              <Link
+                href="/dashboard"
+                className="flex items-center gap-2 font-bold uppercase text-sm hover:text-[#A855F7] transition-colors"
+              >
+                <User size={18} />
+                {signInLabel}
+              </Link>
+            )}
+          </div>
         </div>
       </div>
 
@@ -123,6 +143,26 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
             <MessageCircle size={22} />
             {ctaLabel}
           </button>
+          {/* Auth in Mobile Menu */}
+          {session ? (
+            <Link
+              href="/dashboard"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-full text-left p-4 font-black uppercase hover:bg-[#FFDE00] hover:pl-6 transition-all text-lg flex items-center gap-3"
+            >
+              <User size={22} />
+              Dashboard
+            </Link>
+          ) : (
+            <Link
+              href="/dashboard"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-full text-left p-4 font-black uppercase hover:bg-[#FFDE00] hover:pl-6 transition-all text-lg flex items-center gap-3"
+            >
+              <User size={22} />
+              {signInLabel}
+            </Link>
+          )}
         </div>
       )}
     </nav>
