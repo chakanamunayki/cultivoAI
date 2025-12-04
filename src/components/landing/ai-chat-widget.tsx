@@ -80,10 +80,12 @@ export function AIChatWidget({
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substring(7)}`);
+  const [conversationId, setConversationId] = useState<string | null>(null);
   const [currentLeadId, setCurrentLeadId] = useState<string | null>(null);
   const [whatsAppContext, setWhatsAppContext] = useState<string>("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const lastContextRef = useRef<ChatContext | null | undefined>(undefined);
+  const conversationInitialized = useRef(false);
 
   // Get contextual greeting based on context type
   const getContextualGreeting = useCallback(
@@ -138,6 +140,84 @@ export function AIChatWidget({
     scrollToBottom();
   }, [messages, isOpen, scrollToBottom]);
 
+  // Initialize conversation when chat opens
+  const initializeConversation = useCallback(async () => {
+    if (conversationInitialized.current || conversationId) return;
+    conversationInitialized.current = true;
+
+    try {
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const response = await fetch("/api/chat/conversations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sessionId,
+          language: locale,
+          pageUrl: typeof window !== "undefined" ? window.location.href : undefined,
+          entryContext: context?.type,
+          userTimezone: timezone,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setConversationId(data.conversationId);
+      }
+    } catch (error) {
+      console.error("Failed to initialize conversation:", error);
+    }
+  }, [sessionId, locale, context?.type, conversationId]);
+
+  // Log message to database
+  const logMessage = useCallback(async (
+    role: "user" | "model",
+    messageContent: string,
+    metadata?: { modelUsed?: string; tokensUsed?: number; latencyMs?: number }
+  ) => {
+    if (!conversationId) return;
+
+    try {
+      await fetch("/api/chat/conversations?action=message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          conversationId,
+          role,
+          content: messageContent,
+          ...metadata,
+        }),
+      });
+    } catch (error) {
+      console.error("Failed to log message:", error);
+    }
+  }, [conversationId]);
+
+  // Update conversation with lead ID
+  const linkLeadToConversation = useCallback(async (leadId: string) => {
+    if (!conversationId) return;
+
+    try {
+      await fetch("/api/chat/conversations", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          conversationId,
+          leadId,
+          leadCaptured: true,
+        }),
+      });
+    } catch (error) {
+      console.error("Failed to link lead to conversation:", error);
+    }
+  }, [conversationId]);
+
+  // Initialize conversation when chat opens
+  useEffect(() => {
+    if (isOpen && !conversationInitialized.current) {
+      initializeConversation();
+    }
+  }, [isOpen, initializeConversation]);
+
   // Handle lead capture API call
   const handleLeadCapture = useCallback(async (info: LeadInfo): Promise<{ success: boolean; leadId?: string }> => {
     try {
@@ -162,12 +242,16 @@ export function AIChatWidget({
 
       const data = await response.json();
       setCurrentLeadId(data.leadId);
+      // Link lead to conversation
+      if (data.leadId) {
+        linkLeadToConversation(data.leadId);
+      }
       return { success: true, leadId: data.leadId };
     } catch (error) {
       console.error("Lead capture error:", error);
       return { success: false };
     }
-  }, [locale]);
+  }, [locale, linkLeadToConversation]);
 
   // Handle lead qualification
   const handleQualifyLead = useCallback(async (data: {
@@ -322,6 +406,11 @@ export function AIChatWidget({
     setMessages((prev) => [...prev, { role: "user", text: userMessage }]);
     setIsLoading(true);
 
+    // Log user message
+    logMessage("user", userMessage);
+
+    const startTime = Date.now();
+
     try {
       // Get user timezone
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -387,6 +476,13 @@ export function AIChatWidget({
       const responseText =
         data.text || (locale === "es" ? "Entendido." : "Got it.");
       setMessages((prev) => [...prev, { role: "model", text: responseText }]);
+
+      // Log assistant response with latency
+      const latencyMs = Date.now() - startTime;
+      logMessage("model", responseText, {
+        modelUsed: "gemini-2.0-flash",
+        latencyMs,
+      });
     } catch (error) {
       console.error("Chat error:", error);
       const errorMessage =
@@ -394,10 +490,13 @@ export function AIChatWidget({
           ? "Lo siento, hubo un error. Por favor intenta de nuevo."
           : "Sorry, there was an error. Please try again.";
       setMessages((prev) => [...prev, { role: "model", text: errorMessage }]);
+
+      // Log error message
+      logMessage("model", errorMessage);
     } finally {
       setIsLoading(false);
     }
-  }, [input, isLoading, messages, locale, content, context, sessionId, executeFunctionCall]);
+  }, [input, isLoading, messages, locale, content, context, sessionId, executeFunctionCall, logMessage]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {

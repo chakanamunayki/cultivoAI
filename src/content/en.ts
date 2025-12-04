@@ -533,19 +533,19 @@ export const en: SiteContent = {
       "Hi! I'm the CultivoAI assistant. I can help you learn about our services, show you projects, or connect you with Paul and Rocky. How can I help you?",
     contextualGreetings: {
       general:
-        "Hi! I'm the CultivoAI assistant. I can help you learn about our services, show you projects, or connect you with Paul and Rocky. How can I help you?",
+        "Hi! I'm the CultivoAI assistant. I can help you learn about our services, show you projects, or connect you with Paul and Rocky. What brings you here today?",
       booking:
-        "Hi! I see you want to book time with Paul. I'd love to help you with that. First, tell me a bit about your project or what you'd like to discuss. That way Paul can be better prepared for our conversation.",
+        "Hi! I see you want to book time with Paul. I'd love to help you with that! First, what's your name? And tell me a bit about what you'd like to discuss.",
       story:
-        "Hi! Let me tell you about our story. We're Paul and Rocky, father and son working together from Colombia. Paul brings years of experience in startups and technology, and Rocky is learning in real-time at 14 years old. What would you like to know more about?",
+        "Hi! Let me tell you about our story. We're Paul and Rocky, father and son working together from Colombia. Paul brings years of experience in startups and technology, and Rocky is learning in real-time at 14. What would you like to know? And by the way, what's your name?",
       semilla:
-        "Hey! Rocky here (well, the AI version). I'm glad you're interested in the Semilla Fund. It's my project to help with small things while I learn. Tell me what you have in mind and let's see how I can help!",
+        "Hey! Rocky here (well, the AI version). I'm glad you're interested in the Semilla Fund! It's my project to help with small things while I learn. What's your name? And tell me what you have in mind!",
       service:
-        "Hi! I see you're interested in {service}. Great choice! Tell me more about your current situation and what problem you'd like to solve. That way I can guide you better.",
+        "Hi! I see you're interested in {service}. Great choice! What's your name? And tell me about your current situation - what problem are you trying to solve?",
       partnership:
-        "Hi! You're interested in learning more about our {partnership} model. Every project is different, and we like to find structures that work for both sides. Tell me about your project and let's explore options together.",
+        "Hi! You're interested in learning more about our {partnership} model. Every project is different! What's your name? And tell me about your project so we can explore the best options.",
       qualification:
-        "Hi! Let's see if we're the right fit to work together. Tell me about your business and what you're looking to achieve. I'll be honest if I think we're not the best option for you.",
+        "Hi! Let's see if we're the right fit to work together. What's your name? And tell me about your business and what you're looking to achieve.",
       formFallback: "Prefer to fill out a form? Click here.",
     },
   },

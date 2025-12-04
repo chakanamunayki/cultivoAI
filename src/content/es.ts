@@ -533,19 +533,19 @@ export const es: SiteContent = {
       "Hola! Soy el asistente de CultivoAI. Puedo ayudarte a conocer nuestros servicios, mostrarte proyectos, o conectarte con Paul y Rocky. En que puedo ayudarte?",
     contextualGreetings: {
       general:
-        "Hola! Soy el asistente de CultivoAI. Puedo ayudarte a conocer nuestros servicios, mostrarte proyectos, o conectarte con Paul y Rocky. En que puedo ayudarte?",
+        "Hola! Soy el asistente de CultivoAI. Puedo ayudarte a conocer nuestros servicios, mostrarte proyectos, o conectarte con Paul y Rocky. Que te trae por aqui hoy?",
       booking:
-        "Hola! Veo que quieres agendar tiempo con Paul. Me encantaria ayudarte con eso. Primero, cuentame un poco sobre tu proyecto o lo que te gustaria discutir. Asi Paul puede prepararse mejor para nuestra conversacion.",
+        "Hola! Veo que quieres agendar tiempo con Paul. Me encantaria ayudarte! Primero, como te llamas? Y cuentame un poco sobre lo que te gustaria discutir.",
       story:
-        "Hola! Te cuento sobre nuestra historia. Somos Paul y Rocky, padre e hijo trabajando juntos desde Colombia. Paul trae anos de experiencia en startups y tecnologia, y Rocky esta aprendiendo en tiempo real a sus 14 anos. Que te gustaria saber mas?",
+        "Hola! Te cuento sobre nuestra historia. Somos Paul y Rocky, padre e hijo trabajando juntos desde Colombia. Paul trae anos de experiencia en startups y tecnologia, y Rocky esta aprendiendo en tiempo real a sus 14 anos. Que te gustaria saber? Y por cierto, como te llamas?",
       semilla:
-        "Hey! Aqui Rocky (bueno, la version IA). Me alegra que te interese el Fondo Semilla. Es mi proyecto para ayudar con cosas pequenas mientras aprendo. Cuentame que tienes en mente y vemos como puedo ayudarte!",
+        "Hey! Aqui Rocky (bueno, la version IA). Me alegra que te interese el Fondo Semilla! Es mi proyecto para ayudar con cosas pequenas mientras aprendo. Como te llamas? Y cuentame que tienes en mente!",
       service:
-        "Hola! Veo que te interesa {service}. Excelente eleccion! Cuentame mas sobre tu situacion actual y que problema te gustaria resolver. Asi puedo orientarte mejor.",
+        "Hola! Veo que te interesa {service}. Excelente eleccion! Como te llamas? Y cuentame sobre tu situacion actual - que problema quieres resolver?",
       partnership:
-        "Hola! Te interesa saber mas sobre nuestro modelo de {partnership}. Cada proyecto es diferente, y nos gusta encontrar estructuras que funcionen para ambos. Cuentame sobre tu proyecto y exploramos opciones juntos.",
+        "Hola! Te interesa saber mas sobre nuestro modelo de {partnership}. Cada proyecto es diferente! Como te llamas? Y cuentame sobre tu proyecto para explorar las mejores opciones.",
       qualification:
-        "Hola! Veamos si somos el fit correcto para trabajar juntos. Cuentame sobre tu negocio y que estas buscando lograr. Soy honesto si creo que no somos la mejor opcion para ti.",
+        "Hola! Veamos si somos el fit correcto para trabajar juntos. Como te llamas? Y cuentame sobre tu negocio y que estas buscando lograr.",
       formFallback: "Prefieres llenar un formulario? Haz clic aqui.",
     },
   },
