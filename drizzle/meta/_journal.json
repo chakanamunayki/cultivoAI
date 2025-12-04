@@ -15,6 +15,13 @@
       "when": 1764796509870,
       "tag": "0001_broken_rictor",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1764867655856,
+      "tag": "0002_brown_ben_urich",
+      "breakpoints": true
     }
   ]
 }

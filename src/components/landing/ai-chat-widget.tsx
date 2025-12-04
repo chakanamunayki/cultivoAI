@@ -6,16 +6,34 @@ import {
   FileText,
   Loader2,
   MessageSquare,
+  Mic,
   Minimize2,
   Phone,
   Send,
 } from "lucide-react";
 import type { ChatContext, ChatContextType } from "@/content/types";
+import { useAudioPlayer } from "@/hooks/use-audio-player";
 import { useLocale } from "@/hooks/use-locale";
 import {
   buildWhatsAppMessage,
   getWhatsAppUrl,
 } from "@/lib/chat/system-prompt";
+import { VoiceConversationMode } from "./voice-conversation-mode";
+
+// WhatsApp icon component
+function WhatsAppIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  );
+}
 
 // ============================================
 // Types
@@ -24,6 +42,7 @@ import {
 interface Message {
   role: "user" | "model";
   text: string;
+  showContactForm?: boolean; // Show inline contact form after this message
 }
 
 interface FunctionCall {
@@ -83,9 +102,21 @@ export function AIChatWidget({
   const [conversationId, setConversationId] = useState<string | null>(null);
   const [currentLeadId, setCurrentLeadId] = useState<string | null>(null);
   const [whatsAppContext, setWhatsAppContext] = useState<string>("");
+  const [showContactForm, setShowContactForm] = useState(false);
+  const [contactFormData, setContactFormData] = useState({ name: "", email: "" });
+  const [contactFormError, setContactFormError] = useState<string | null>(null);
+  const [isSubmittingContact, setIsSubmittingContact] = useState(false);
+  const [isVoiceModeOpen, setIsVoiceModeOpen] = useState(false);
+  const [showVoiceContactForm, setShowVoiceContactForm] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const lastContextRef = useRef<ChatContext | null | undefined>(undefined);
   const conversationInitialized = useRef(false);
+
+  // Audio player for TTS (used in voice mode)
+  const {
+    isPlaying: isPlayingAudio,
+    isLoading: isLoadingAudio,
+  } = useAudioPlayer();
 
   // Get contextual greeting based on context type
   const getContextualGreeting = useCallback(
@@ -253,6 +284,103 @@ export function AIChatWidget({
     }
   }, [locale, linkLeadToConversation]);
 
+  // Handle inline contact form submission
+  const handleContactFormSubmit = useCallback(async (e: React.FormEvent) => {
+    e.preventDefault();
+    setContactFormError(null);
+
+    const { name, email } = contactFormData;
+
+    // Validate
+    if (!name.trim()) {
+      setContactFormError(locale === "es" ? "Por favor ingresa tu nombre" : "Please enter your name");
+      return;
+    }
+
+    // Email validation - must have @ and valid domain
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!email.trim() || !emailRegex.test(email)) {
+      setContactFormError(
+        locale === "es"
+          ? "Por favor ingresa un email válido (ej: nombre@gmail.com)"
+          : "Please enter a valid email (e.g., name@gmail.com)"
+      );
+      return;
+    }
+
+    setIsSubmittingContact(true);
+
+    try {
+      const result = await handleLeadCapture({ name: name.trim(), email: email.trim() });
+
+      if (result.success) {
+        // Hide the form and add success message
+        setShowContactForm(false);
+        setContactFormData({ name: "", email: "" });
+
+        const successMessage = locale === "es"
+          ? `¡Perfecto ${name}! Ya tengo tu información. ¿En qué te puedo ayudar?`
+          : `Perfect ${name}! I've got your info. How can I help you?`;
+
+        setMessages(prev => [...prev, { role: "model", text: successMessage }]);
+      } else {
+        setContactFormError(
+          locale === "es"
+            ? "Hubo un error. Por favor intenta de nuevo."
+            : "There was an error. Please try again."
+        );
+      }
+    } catch {
+      setContactFormError(
+        locale === "es"
+          ? "Hubo un error. Por favor intenta de nuevo."
+          : "There was an error. Please try again."
+      );
+    } finally {
+      setIsSubmittingContact(false);
+    }
+  }, [contactFormData, locale, handleLeadCapture]);
+
+  // Trigger showing the contact form
+  const triggerContactForm = useCallback(() => {
+    // If voice mode is open, show the voice contact form instead
+    if (isVoiceModeOpen) {
+      setShowVoiceContactForm(true);
+      return;
+    }
+
+    const askMessage = locale === "es"
+      ? "Para poder ayudarte mejor, déjame tus datos:"
+      : "To help you better, please share your details:";
+
+    setMessages(prev => [...prev, { role: "model", text: askMessage, showContactForm: true }]);
+    setShowContactForm(true);
+  }, [locale, isVoiceModeOpen]);
+
+  // Handle voice contact form submission
+  const handleVoiceContactFormSubmit = useCallback(async (name: string, email: string): Promise<boolean> => {
+    try {
+      const result = await handleLeadCapture({ name, email });
+      if (result.success) {
+        setShowVoiceContactForm(false);
+        // Add success message to chat
+        const successMessage = locale === "es"
+          ? `¡Perfecto ${name}! Ya tengo tu información.`
+          : `Perfect ${name}! I've got your info.`;
+        setMessages(prev => [...prev, { role: "model", text: successMessage }]);
+        return true;
+      }
+      return false;
+    } catch {
+      return false;
+    }
+  }, [handleLeadCapture, locale]);
+
+  // Handle voice contact form dismiss
+  const handleVoiceContactFormDismiss = useCallback(() => {
+    setShowVoiceContactForm(false);
+  }, []);
+
   // Handle lead qualification
   const handleQualifyLead = useCallback(async (data: {
     budgetIndicator: boolean;
@@ -335,18 +463,13 @@ export function AIChatWidget({
         }
 
         case "collect_lead_info": {
-          const leadInfo: LeadInfo = {
-            name: args.name as string,
-            email: args.email as string,
-            company: args.company as string | undefined,
-            phone: args.phone as string | undefined,
-            interestedServices: args.interested_services as string[] | undefined,
-            projectDescription: args.project_description as string | undefined,
-          };
-          const result = await handleLeadCapture(leadInfo);
-          return result.success
-            ? `Lead captured successfully`
-            : "Failed to capture lead";
+          // Instead of directly capturing, trigger the inline form for accurate data entry
+          // This prevents typos and ensures proper email format
+          if (!currentLeadId) {
+            triggerContactForm();
+            return `Contact form displayed for user to fill in their details`;
+          }
+          return `Lead already captured`;
         }
 
         case "qualify_lead": {
@@ -393,34 +516,24 @@ export function AIChatWidget({
       onOpenProjectModal,
       onOpenServiceModal,
       onOpenForm,
-      handleLeadCapture,
       handleQualifyLead,
+      currentLeadId,
+      triggerContactForm,
     ]
   );
 
-  const handleSend = useCallback(async () => {
-    if (!input.trim() || isLoading) return;
-
-    const userMessage = input.trim();
-    setInput("");
-    setMessages((prev) => [...prev, { role: "user", text: userMessage }]);
+  // Core function to send message to API (reusable for voice and text)
+  const sendMessageToAPI = useCallback(async (userMessage: string) => {
     setIsLoading(true);
-
-    // Log user message
     logMessage("user", userMessage);
-
     const startTime = Date.now();
 
     try {
-      // Get user timezone
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-      // Send message to API with enhanced context
       const response = await fetch("/api/chat/gemini", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: userMessage,
           history: messages,
@@ -490,13 +603,109 @@ export function AIChatWidget({
           ? "Lo siento, hubo un error. Por favor intenta de nuevo."
           : "Sorry, there was an error. Please try again.";
       setMessages((prev) => [...prev, { role: "model", text: errorMessage }]);
-
-      // Log error message
       logMessage("model", errorMessage);
     } finally {
       setIsLoading(false);
     }
-  }, [input, isLoading, messages, locale, content, context, sessionId, executeFunctionCall, logMessage]);
+  }, [messages, locale, content, context, sessionId, executeFunctionCall, logMessage]);
+
+  // Send message for voice mode and return response text
+  const sendMessageForVoice = useCallback(async (userMessage: string): Promise<string | null> => {
+    // Add user message to chat
+    setMessages((prev) => [...prev, { role: "user", text: userMessage }]);
+    logMessage("user", userMessage);
+    const startTime = Date.now();
+
+    try {
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+      const response = await fetch("/api/chat/gemini", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: userMessage,
+          history: messages,
+          locale,
+          entryContext: context?.type as ChatContextType | undefined,
+          sessionId,
+          timezone,
+          pageUrl: typeof window !== "undefined" ? window.location.href : undefined,
+          siteContent: {
+            services: content.services.map((s) => ({
+              title: s.title,
+              description: s.description,
+              details: s.details,
+            })),
+            projects: content.projects.map((p) => ({
+              title: p.title,
+              desc: p.desc,
+              fullDesc: p.fullDesc,
+            })),
+            semilla: content.semilla,
+            stories: content.stories,
+            whyUs: content.whyUs,
+            partnerships: content.partnerships.map((p) => ({
+              name: p.name,
+              tagline: p.tagline,
+              description: p.description,
+            })),
+            whoWeHelp: content.whoWeHelp
+              ? {
+                  idealItems: content.whoWeHelp.idealItems,
+                  notIdealItems: content.whoWeHelp.notIdealItems,
+                  sectors: content.whoWeHelp.sectors,
+                }
+              : undefined,
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to get response");
+      }
+
+      const data: ChatResponse = await response.json();
+
+      // Handle function calls (execute but don't block voice)
+      if (data.functionCalls && data.functionCalls.length > 0) {
+        for (const call of data.functionCalls) {
+          await executeFunctionCall(call);
+        }
+      }
+
+      // Add response text to messages
+      const responseText =
+        data.text || (locale === "es" ? "Entendido." : "Got it.");
+      setMessages((prev) => [...prev, { role: "model", text: responseText }]);
+
+      // Log assistant response with latency
+      const latencyMs = Date.now() - startTime;
+      logMessage("model", responseText, {
+        modelUsed: "gemini-2.0-flash",
+        latencyMs,
+      });
+
+      return responseText;
+    } catch (error) {
+      console.error("Voice chat error:", error);
+      const errorMessage =
+        locale === "es"
+          ? "Lo siento, hubo un error."
+          : "Sorry, there was an error.";
+      setMessages((prev) => [...prev, { role: "model", text: errorMessage }]);
+      logMessage("model", errorMessage);
+      return errorMessage;
+    }
+  }, [messages, locale, content, context, sessionId, executeFunctionCall, logMessage]);
+
+  const handleSend = useCallback(async () => {
+    if (!input.trim() || isLoading) return;
+
+    const userMessage = input.trim();
+    setInput("");
+    setMessages((prev) => [...prev, { role: "user", text: userMessage }]);
+    await sendMessageToAPI(userMessage);
+  }, [input, isLoading, sendMessageToAPI]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -508,10 +717,30 @@ export function AIChatWidget({
     [handleSend]
   );
 
+  // Quick question suggestions based on locale
+  const quickQuestions = locale === "es"
+    ? [
+        "¿Qué servicios ofrecen?",
+        "¿Cómo funciona el Fondo Semilla?",
+        "¿Cuánto cuesta un chatbot?",
+      ]
+    : [
+        "What services do you offer?",
+        "How does the Semilla Fund work?",
+        "How much does a chatbot cost?",
+      ];
+
+  // Handle quick question click - auto-send the question
+  const handleQuickQuestion = useCallback((question: string) => {
+    if (isLoading) return;
+    setMessages((prev) => [...prev, { role: "user", text: question }]);
+    sendMessageToAPI(question);
+  }, [isLoading, sendMessageToAPI]);
+
   // Collapsed state - show toggle button
   if (!isOpen) {
     return (
-      <div className="fixed bottom-6 right-6 z-[60] flex flex-col items-end font-grotesk">
+      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[60] flex flex-col items-end font-grotesk">
         <button
           onClick={() => onToggle(true)}
           className="bg-black text-white p-4 border-4 border-transparent hover:border-black hover:bg-white hover:text-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-2 font-bold uppercase"
@@ -526,8 +755,9 @@ export function AIChatWidget({
 
   // Expanded state - show chat window
   return (
-    <div className="fixed bottom-6 right-6 z-[60] flex flex-col items-end font-grotesk">
-      <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-80 md:w-96 mb-4 flex flex-col transition-all duration-300 origin-bottom-right h-[500px] max-h-[80vh]">
+    <>
+    <div className="fixed bottom-0 left-0 right-0 md:bottom-6 md:right-6 md:left-auto z-[60] flex flex-col items-end font-grotesk">
+      <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full md:w-[600px] lg:w-[700px] xl:w-[800px] flex flex-col transition-all duration-300 origin-bottom-right h-[85vh] md:h-[600px] md:max-h-[80vh] md:mb-4">
         {/* Header */}
         <div className="bg-[#FFC805] border-b-4 border-black p-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
@@ -537,14 +767,27 @@ export function AIChatWidget({
             </span>
           </div>
           <div className="flex items-center gap-2">
+            {/* Voice Mode button - BIG AND OBVIOUS FOR TESTING */}
+            <button
+              onClick={() => {
+                console.log("Voice mode button clicked!");
+                setIsVoiceModeOpen(true);
+              }}
+              className="px-3 py-1.5 bg-[#A855F7] text-white border-2 border-black hover:bg-[#9333EA] hover:scale-105 transition-all font-bold text-xs uppercase"
+              aria-label={locale === "es" ? "Modo de voz" : "Voice mode"}
+              title={locale === "es" ? "Conversación por voz" : "Voice conversation"}
+            >
+              <Phone size={16} className="inline mr-1" />
+              VOZ
+            </button>
             {/* WhatsApp button */}
             <button
               onClick={() => openWhatsApp()}
-              className="text-black hover:scale-110 transition-transform"
+              className="text-[#25D366] hover:scale-110 transition-transform"
               aria-label="WhatsApp"
               title={locale === "es" ? "Contactar por WhatsApp" : "Contact via WhatsApp"}
             >
-              <Phone size={20} />
+              <WhatsAppIcon size={20} />
             </button>
             {onOpenForm && (
               <button
@@ -568,56 +811,171 @@ export function AIChatWidget({
 
         {/* Messages */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#F3F4F6]">
-          {messages.map((msg, idx) => (
-            <div
-              key={idx}
-              className={`flex ${
-                msg.role === "user" ? "justify-end" : "justify-start"
-              }`}
-            >
-              <div
-                className={`max-w-[85%] p-3 text-sm ${
-                  msg.role === "user"
-                    ? "bg-black text-white font-bold border-2 border-transparent"
-                    : "bg-white text-black border-2 border-black shadow-[4px_4px_0px_0px_#A855F7]"
-                }`}
-              >
-                {msg.text}
+          {messages.map((msg, idx) => {
+            const isLastBotMessage = msg.role === "model" && idx === messages.length - 1;
+            const showSpeakerIcon = isLastBotMessage && (isPlayingAudio || isLoadingAudio);
+            const shouldShowForm = msg.showContactForm && showContactForm && !currentLeadId;
+
+            return (
+              <div key={idx} className="space-y-3">
+                <div
+                  className={`flex ${
+                    msg.role === "user" ? "justify-end" : "justify-start"
+                  }`}
+                >
+                  <div
+                    className="max-w-[85%] p-3 text-sm border-2 font-medium"
+                    style={{
+                      backgroundColor: msg.role === "user" ? "#000000" : "#7C3AED",
+                      color: "#FFFFFF",
+                      borderColor: msg.role === "user" ? "transparent" : "#000000",
+                      boxShadow: msg.role === "user" ? "none" : "4px 4px 0px 0px rgba(0,0,0,1)",
+                      fontWeight: msg.role === "user" ? 700 : 500,
+                    }}
+                  >
+                    <div className="flex items-start gap-2">
+                      <span className="flex-1">{msg.text}</span>
+                      {showSpeakerIcon && (
+                        <span className="flex-shrink-0 mt-0.5">
+                          {isLoadingAudio ? (
+                            <Loader2 size={14} className="animate-spin" />
+                          ) : (
+                            <Mic size={14} className="animate-pulse" />
+                          )}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Inline Contact Form */}
+                {shouldShowForm && (
+                  <div className="flex justify-start">
+                    <form
+                      onSubmit={handleContactFormSubmit}
+                      className="bg-white border-4 border-black shadow-[4px_4px_0px_0px_#A855F7] p-4 space-y-3 w-full max-w-[85%]"
+                    >
+                      <div>
+                        <label className="block text-xs font-bold uppercase mb-1 text-black">
+                          {locale === "es" ? "Nombre" : "Name"}
+                        </label>
+                        <input
+                          type="text"
+                          value={contactFormData.name}
+                          onChange={(e) => setContactFormData(prev => ({ ...prev, name: e.target.value }))}
+                          placeholder={locale === "es" ? "Tu nombre" : "Your name"}
+                          className="w-full p-2 border-2 border-black bg-[#F3F4F6] font-bold text-sm focus:shadow-[2px_2px_0px_0px_#A855F7] outline-none"
+                          disabled={isSubmittingContact}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold uppercase mb-1 text-black">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          value={contactFormData.email}
+                          onChange={(e) => setContactFormData(prev => ({ ...prev, email: e.target.value }))}
+                          placeholder={locale === "es" ? "tu@email.com" : "your@email.com"}
+                          className="w-full p-2 border-2 border-black bg-[#F3F4F6] font-bold text-sm focus:shadow-[2px_2px_0px_0px_#A855F7] outline-none"
+                          disabled={isSubmittingContact}
+                        />
+                      </div>
+                      {contactFormError && (
+                        <p className="text-xs font-bold text-[#EF4444]">{contactFormError}</p>
+                      )}
+                      <button
+                        type="submit"
+                        disabled={isSubmittingContact}
+                        className="w-full p-2 bg-[#FFC805] text-black font-bold uppercase border-2 border-black hover:bg-[#FFDE00] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 transition-all flex items-center justify-center gap-2"
+                      >
+                        {isSubmittingContact ? (
+                          <>
+                            <Loader2 size={16} className="animate-spin" />
+                            {locale === "es" ? "Enviando..." : "Sending..."}
+                          </>
+                        ) : (
+                          locale === "es" ? "Continuar" : "Continue"
+                        )}
+                      </button>
+                    </form>
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
           {isLoading && (
             <div className="flex justify-start">
-              <div className="bg-[#FFDE00] border-2 border-black p-2">
+              <div className="bg-[#FFDE00] text-black border-2 border-black p-3 flex items-center gap-2">
                 <Loader2 size={16} className="animate-spin" />
+                <span className="text-sm font-bold">
+                  {locale === "es" ? "Pensando..." : "Thinking..."}
+                </span>
               </div>
             </div>
           )}
           <div ref={messagesEndRef} />
         </div>
 
+        {/* Quick Questions */}
+        <div className="px-3 py-2 bg-white border-t-2 border-black/20 flex gap-2 overflow-x-auto">
+          {quickQuestions.map((question, idx) => (
+            <button
+              key={idx}
+              onClick={() => handleQuickQuestion(question)}
+              className="flex-shrink-0 px-3 py-1.5 text-xs font-bold bg-[#F3F4F6] border-2 border-black hover:bg-[#7C3AED] hover:text-white hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all whitespace-nowrap"
+            >
+              {question}
+            </button>
+          ))}
+        </div>
+
         {/* Input */}
         <div className="p-3 bg-white border-t-4 border-black">
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
+            {/* Voice Mode Button */}
+            <button
+              onClick={() => setIsVoiceModeOpen(true)}
+              className="p-3 border-2 border-black transition-all bg-[#A855F7] text-white hover:bg-[#9333EA] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+              aria-label={locale === "es" ? "Modo de voz" : "Voice mode"}
+              title={locale === "es" ? "Conversación por voz" : "Voice conversation"}
+            >
+              <Mic size={20} />
+            </button>
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder={content.chat.placeholder}
-              className="flex-1 p-2 outline-none bg-[#F3F4F6] border-2 border-black focus:shadow-[2px_2px_0px_0px_#A855F7] font-bold"
+              className="flex-1 p-3 outline-none bg-[#F3F4F6] border-2 border-black focus:shadow-[2px_2px_0px_0px_#A855F7] font-bold text-base"
             />
             <button
               onClick={handleSend}
               disabled={isLoading || !input.trim()}
-              className="p-2 bg-[#A855F7] text-white border-2 border-black hover:bg-[#9333EA] disabled:opacity-50 transition-colors"
+              className="p-3 bg-orange-cta text-white border-2 border-black hover:bg-orange-cta-hover hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none transition-all"
               aria-label={content.chat.sendButton}
             >
-              <Send size={20} />
+              <Send size={22} />
             </button>
           </div>
         </div>
       </div>
     </div>
+
+    {/* Voice Conversation Mode Overlay - MUST be outside the chat container for proper z-index */}
+    <VoiceConversationMode
+      isOpen={isVoiceModeOpen}
+      onClose={() => {
+        setIsVoiceModeOpen(false);
+        setShowVoiceContactForm(false);
+      }}
+      locale={locale as "es" | "en"}
+      onSendMessage={sendMessageForVoice}
+      showContactForm={showVoiceContactForm}
+      onContactFormSubmit={handleVoiceContactFormSubmit}
+      onContactFormDismiss={handleVoiceContactFormDismiss}
+    />
+    </>
   );
 }

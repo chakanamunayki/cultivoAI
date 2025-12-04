@@ -218,6 +218,12 @@ export const chatMessages = pgTable(
     modelUsed: varchar("model_used", { length: 100 }),
     tokensUsed: integer("tokens_used"),
     latencyMs: integer("latency_ms"),
+
+    // Voice metadata (Phase 6)
+    inputType: varchar("input_type", { length: 20 }).default("text"), // "text" | "voice"
+    audioDurationMs: integer("audio_duration_ms"),
+    transcriptionConfidence: decimal("transcription_confidence", { precision: 5, scale: 4 }),
+    originalLanguage: varchar("original_language", { length: 10 }), // detected language from STT
   },
   (table) => [
     index("messages_conversation_idx").on(table.conversationId),
