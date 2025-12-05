@@ -40,16 +40,42 @@ export interface HeroCopy {
   subheadline: string;
   cta: string;
   secondaryCta: string;
+  noDrama: string;
+  noDramaText: string;
   footerBar: HeroFooterBar;
+}
+
+export interface TeamMemberBio {
+  headline: string;
+  sections: {
+    title: string;
+    content: string;
+  }[];
+  linkedinUrl?: string;
+  videoUrl?: string;
+  videoLabel?: string;
+}
+
+export interface TeamMember {
+  id: "paul" | "rocky" | "marta";
+  name: string;
+  title: string;
+  subtitle?: string;
+  badge?: string;
+  description: string;
+  imageUrl: string;
+  accentColor: string; // Tailwind color class for card accent
+  shadowColor: string; // Shadow color hex or class
+  linkedinUrl?: string;
+  bio: TeamMemberBio;
 }
 
 export interface AboutCopy {
   title: string;
   subtitle: string;
-  paulTitle: string;
-  paulDescription: string;
-  rockyTitle: string;
-  rockyDescription: string;
+  teamMembers: TeamMember[];
+  footerNote: string;
+  viewMoreLabel: string;
 }
 
 export interface Service {
@@ -59,6 +85,7 @@ export interface Service {
   description: string;
   details: string[];
   imageUrl: string;
+  pricing?: string; // e.g., "Desde $100 USD" / "From $100 USD"
 }
 
 export interface Project {
@@ -100,6 +127,7 @@ export interface RealStory {
   quote: string;
   author: string;
   imageUrl: string;
+  metric?: string; // e.g., "21 horas/semana recuperadas"
 }
 
 export interface SemillaTier {
@@ -130,6 +158,8 @@ export interface Sector {
   name: string;
   description: string;
   icon: string;
+  badge?: string;
+  chatButtonLabel?: string;
 }
 
 export interface WhoWeHelpContent {
@@ -231,6 +261,8 @@ export interface SiteContent {
   marquee: string;
   hero: HeroCopy;
   about: AboutCopy;
+  howWeWork: HowWeWorkContent;
+  whatWeDo: WhatWeDoContent;
   whyUs: WhyUs;
   servicesTitle: string;
   servicesSubtitle: string;
@@ -249,10 +281,71 @@ export interface SiteContent {
   storiesTitle: string;
   storiesSubtitle: string;
   stories: RealStory[];
+  values: ValuesContent;
+  mission: MissionContent;
   whatHappensNext: WhatHappensNextContent;
   footer: FooterCopy;
   chat: ChatCopy;
   contactForm: ContactFormCopy;
+}
+
+/**
+ * How We Work Section Types
+ */
+export interface HowWeWorkPillar {
+  icon: string;
+  title: string;
+  description: string;
+  isFullWidth?: boolean;
+}
+
+export interface HowWeWorkContent {
+  title: string;
+  subtitle: string;
+  pillars: HowWeWorkPillar[];
+}
+
+/**
+ * What We Do Section Types
+ */
+export interface WhatWeDoColumn {
+  title: string;
+  items: string[];
+}
+
+export interface WhatWeDoContent {
+  title: string;
+  subtitle: string;
+  intro: string;
+  columns: WhatWeDoColumn[];
+  servicesPreview: {
+    title: string;
+    linkText: string;
+  };
+}
+
+/**
+ * Values Section Types
+ */
+export interface Value {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface ValuesContent {
+  title: string;
+  subtitle: string;
+  values: Value[];
+}
+
+/**
+ * Mission Statement Section Types
+ */
+export interface MissionContent {
+  title: string;
+  statement: string[];
+  tagline: string;
 }
 
 /**

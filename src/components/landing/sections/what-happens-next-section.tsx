@@ -3,13 +3,13 @@
 import { Reveal } from "@/components/landing/ui/reveal";
 import { useLocale } from "@/hooks/use-locale";
 
+// Props kept for backwards compatibility even though CTA was removed
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface WhatHappensNextSectionProps {
-  onOpenChat: () => void;
+  onOpenChat?: () => void;
 }
 
-export function WhatHappensNextSection({
-  onOpenChat,
-}: WhatHappensNextSectionProps) {
+export function WhatHappensNextSection(_props: WhatHappensNextSectionProps) {
   const { content } = useLocale();
 
   return (
@@ -56,20 +56,6 @@ export function WhatHappensNextSection({
           ))}
         </div>
 
-        {/* CTA */}
-        <Reveal delay={600}>
-          <div className="text-center mt-12 md:mt-16">
-            <p className="text-lg md:text-xl font-bold mb-6">
-              {content.whatHappensNext.cta}
-            </p>
-            <button
-              onClick={onOpenChat}
-              className="bg-[#10B981] text-white font-black uppercase px-8 py-4 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:translate-x-1 transition-all text-lg"
-            >
-              {content.whatHappensNext.ctaButton}
-            </button>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

@@ -15,6 +15,22 @@ import type { ChatContext } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 
 // Lazy-loaded below-fold sections
+const HowWeWorkSection = dynamic(
+  () =>
+    import("@/components/landing/sections/how-we-work-section").then((m) => ({
+      default: m.HowWeWorkSection,
+    })),
+  { ssr: true }
+);
+
+const WhatWeDoSection = dynamic(
+  () =>
+    import("@/components/landing/sections/what-we-do-section").then((m) => ({
+      default: m.WhatWeDoSection,
+    })),
+  { ssr: true }
+);
+
 const WhyUsSection = dynamic(
   () =>
     import("@/components/landing/sections/why-us-section").then((m) => ({
@@ -75,6 +91,22 @@ const StoriesSection = dynamic(
   () =>
     import("@/components/landing/sections/stories-section").then((m) => ({
       default: m.StoriesSection,
+    })),
+  { ssr: true }
+);
+
+const ValuesSection = dynamic(
+  () =>
+    import("@/components/landing/sections/values-section").then((m) => ({
+      default: m.ValuesSection,
+    })),
+  { ssr: true }
+);
+
+const MissionSection = dynamic(
+  () =>
+    import("@/components/landing/sections/mission-section").then((m) => ({
+      default: m.MissionSection,
     })),
   { ssr: true }
 );
@@ -196,6 +228,15 @@ export default function Home() {
     handleOpenChat({ type: "qualification" });
   }, [handleOpenChat]);
 
+  // Handler for sector-specific chat
+  const handleOpenChatWithSector = useCallback(
+    (_sectorName: string) => {
+      // Open qualification chat - the sector context can be used for personalization later
+      handleOpenChat({ type: "qualification" });
+    },
+    [handleOpenChat]
+  );
+
   // Form fallback handler
   const handleOpenFormFromChat = useCallback(() => {
     setIsChatOpen(false);
@@ -243,12 +284,22 @@ export default function Home() {
       {/* Section 2: About - Eager loaded (above fold) */}
       <AboutSection />
 
-      {/* Section 3: Why Us - Lazy loaded */}
+      {/* Section 3: How We Work - Lazy loaded */}
+      <LazySection className="min-h-[400px]">
+        <HowWeWorkSection />
+      </LazySection>
+
+      {/* Section 4: What We Do - Lazy loaded */}
+      <LazySection className="min-h-[400px]">
+        <WhatWeDoSection />
+      </LazySection>
+
+      {/* Section 5: Why Us - Lazy loaded */}
       <LazySection className="min-h-[400px]">
         <WhyUsSection />
       </LazySection>
 
-      {/* Section 4: Services - Lazy loaded */}
+      {/* Section 6: Services - Lazy loaded */}
       <LazySection className="min-h-[600px]">
         <ServicesSection onOpenChatBooking={handleOpenChatBooking} />
       </LazySection>
@@ -262,6 +313,7 @@ export default function Home() {
       <LazySection className="min-h-[400px]">
         <WhoWeHelpSection
           onOpenChatQualification={handleOpenChatQualification}
+          onOpenChatWithSector={handleOpenChatWithSector}
         />
       </LazySection>
 
@@ -280,12 +332,22 @@ export default function Home() {
         <ProjectsSection />
       </LazySection>
 
-      {/* Section 10: Stories - Lazy loaded */}
+      {/* Section 12: Stories - Lazy loaded */}
       <LazySection className="min-h-[400px]">
         <StoriesSection />
       </LazySection>
 
-      {/* Section 11: What Happens Next - Lazy loaded */}
+      {/* Section 13: Values - Lazy loaded */}
+      <LazySection className="min-h-[400px]">
+        <ValuesSection />
+      </LazySection>
+
+      {/* Section 14: Mission - Lazy loaded */}
+      <LazySection className="min-h-[300px]">
+        <MissionSection />
+      </LazySection>
+
+      {/* Section 15: What Happens Next - Lazy loaded */}
       <LazySection className="min-h-[400px]">
         <WhatHappensNextSection onOpenChat={handleOpenChatGeneral} />
       </LazySection>

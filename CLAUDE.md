@@ -110,6 +110,37 @@ animate-bounce (on service card icons on hover)
 
 ## Internationalization (i18n)
 
+### CRITICAL: SSR Hydration Rules
+
+**NEVER use browser APIs in useState initializers.** This causes hydration mismatches.
+
+```typescript
+// ❌ WRONG - causes hydration mismatch
+const [locale, setLocale] = useState(() => {
+  if (typeof window !== "undefined") {
+    return localStorage.getItem("locale") || detectBrowserLocale();
+  }
+  return "es";
+});
+
+// ✅ CORRECT - always initialize with SSR default, update in useEffect
+const [locale, setLocale] = useState<Locale>("es"); // SSR default
+
+useEffect(() => {
+  // Safe to check localStorage/browser AFTER hydration
+  const clientLocale = getStoredLocale() || detectBrowserLocale();
+  if (clientLocale !== locale) {
+    setLocale(clientLocale);
+  }
+}, []);
+```
+
+**Why this matters:**
+- Server renders with default value (no window/localStorage)
+- Client useState initializer runs AGAIN and may return different value
+- React sees mismatch → hydration error → old cached content may persist
+- Changes appear not to take effect even after clearing caches
+
 ### Language Detection
 
 - Detect browser language via `navigator.language` or `Accept-Language` header

@@ -1,13 +1,13 @@
 "use client";
 
 import { createContext, useCallback, useContext, useMemo, useState } from "react";
-import type { Partnership, Project, Service } from "@/content/types";
+import type { Partnership, Project, Service, TeamMember } from "@/content/types";
 
-type ModalType = "project" | "service" | "partnership" | "contact" | null;
+type ModalType = "project" | "service" | "partnership" | "contact" | "teamMember" | null;
 
 interface ModalData {
   type: ModalType;
-  data: Project | Service | Partnership | null;
+  data: Project | Service | Partnership | TeamMember | null;
 }
 
 interface ModalContextValue {
@@ -16,6 +16,7 @@ interface ModalContextValue {
   openServiceModal: (service: Service) => void;
   openPartnershipModal: (partnership: Partnership) => void;
   openContactModal: () => void;
+  openTeamMemberModal: (member: TeamMember) => void;
   closeModal: () => void;
   isOpen: boolean;
 }
@@ -48,6 +49,10 @@ export function ModalProvider({ children }: ModalProviderProps) {
     setModalData({ type: "contact", data: null });
   }, []);
 
+  const openTeamMemberModal = useCallback((member: TeamMember) => {
+    setModalData({ type: "teamMember", data: member });
+  }, []);
+
   const closeModal = useCallback(() => {
     setModalData({ type: null, data: null });
   }, []);
@@ -61,6 +66,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
       openServiceModal,
       openPartnershipModal,
       openContactModal,
+      openTeamMemberModal,
       closeModal,
       isOpen,
     }),
@@ -70,6 +76,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
       openServiceModal,
       openPartnershipModal,
       openContactModal,
+      openTeamMemberModal,
       closeModal,
       isOpen,
     ]

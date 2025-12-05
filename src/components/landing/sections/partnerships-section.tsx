@@ -74,8 +74,8 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
                       {partner.tagline}
                     </p>
                   </div>
-                  <div className="bg-[#A855F7] text-white font-black uppercase text-xs p-2 text-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    Ver Detalles
+                  <div className="bg-black text-white font-black uppercase text-xs p-2 text-center border-t-4 border-black">
+                    Ver Detalles →
                   </div>
                 </div>
               </Reveal>

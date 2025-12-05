@@ -1,21 +1,8 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import Image from "next/image";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { useLocale } from "@/hooks/use-locale";
-
-// Lazy load the tree animation for performance
-const GrowingTree = dynamic(
-  () => import("@/components/landing/ui/growing-tree").then((mod) => mod.GrowingTree),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="w-full h-full min-h-[350px] flex items-center justify-center">
-        <div className="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin" />
-      </div>
-    ),
-  }
-);
 
 interface HeroSectionProps {
   onOpenChatBooking: () => void;
@@ -68,10 +55,39 @@ export function HeroSection({ onOpenChatBooking, onOpenChatStory }: HeroSectionP
           </Reveal>
         </div>
 
-        {/* Right Panel - Purple with Growing Tree Animation */}
-        <div className="bg-[#A855F7] p-4 md:p-8 border-b-4 border-black flex items-center justify-center relative overflow-hidden min-h-[450px]">
-          <Reveal delay={200} className="relative z-10 w-full h-full">
-            <GrowingTree />
+        {/* Right Panel - Purple */}
+        <div className="bg-[#A855F7] p-8 md:p-16 border-b-4 border-black flex items-center justify-center relative overflow-hidden min-h-[400px]">
+          {/* Abstract Shapes */}
+          <div className="absolute top-10 left-10 w-16 md:w-24 h-16 md:h-24 bg-white border-4 border-black rounded-full animate-bounce duration-[3000ms]"></div>
+
+          {/* Yellow Square */}
+          <div className="absolute bottom-20 right-10 w-32 md:w-48 h-32 md:h-48 bg-[#FFC805] border-4 border-black rotate-12 transition-transform hover:rotate-45 duration-700 z-0"></div>
+
+          {/* AI Text */}
+          <div className="absolute bottom-24 right-[160px] md:right-[240px] opacity-20 font-black text-[100px] md:text-[200px] leading-none text-white pointer-events-none select-none z-0">
+            AI
+          </div>
+
+          {/* Rocket Image */}
+          <Image
+            src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png"
+            alt="Rocket"
+            width={256}
+            height={256}
+            className="absolute left-1/2 top-1/2 w-48 md:w-64 -translate-x-1/2 -translate-y-[135%] -rotate-45 z-0 animate-[pulse_3s_infinite]"
+            priority
+            unoptimized
+          />
+
+          <Reveal delay={200} className="relative z-10 w-full max-w-md">
+            <div className="bg-white border-4 border-black p-6 md:p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] md:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] rotate-3 hover:rotate-0 transition-transform duration-500 relative z-20">
+              <h3 className="font-black text-2xl md:text-3xl mb-4 bg-black text-white inline-block px-3 py-1 -rotate-2">
+                {content.hero.noDrama}
+              </h3>
+              <p className="font-bold text-lg md:text-xl leading-tight border-t-4 border-black pt-4">
+                {content.hero.noDramaText}
+              </p>
+            </div>
           </Reveal>
         </div>
       </div>

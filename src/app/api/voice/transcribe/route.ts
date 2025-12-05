@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { groq, WHISPER_MODEL } from "@/lib/groq";
 import { toFile } from "groq-sdk";
+import { groq, WHISPER_MODEL } from "@/lib/groq";
 
 export async function POST(request: Request) {
   try {

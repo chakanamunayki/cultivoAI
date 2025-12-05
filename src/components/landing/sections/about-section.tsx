@@ -1,11 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import { Linkedin } from "lucide-react";
+import { useModal } from "@/components/landing/ui/modal-provider";
 import { Reveal } from "@/components/landing/ui/reveal";
+import type { TeamMember } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 
 export function AboutSection() {
   const { content } = useLocale();
+  const { openTeamMemberModal } = useModal();
+
+  const handleViewMore = (member: TeamMember) => {
+    openTeamMemberModal(member);
+  };
 
   return (
     <div
@@ -24,63 +32,79 @@ export function AboutSection() {
           </div>
         </Reveal>
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-24">
-          {/* Paul */}
-          <Reveal delay={100}>
-            <div className="relative group">
-              <div className="absolute inset-0 bg-black translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4"></div>
-              <div className="relative border-4 border-black bg-white p-4 h-full transform hover:-translate-y-2 transition-transform duration-300">
-                <div className="aspect-[4/5] border-4 border-black overflow-hidden mb-6 filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500 relative">
-                  <Image
-                    src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=800"
-                    alt="Paul"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    loading="eager"
-                  />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-8 lg:gap-12">
+          {content.about.teamMembers.map((member, index) => (
+            <Reveal key={member.id} delay={100 * (index + 1)}>
+              <div className={`relative group ${index > 0 ? "mt-8 md:mt-0" : ""}`}>
+                <div
+                  className={`absolute inset-0 ${member.shadowColor} translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4`}
+                ></div>
+                <div className="relative border-4 border-black bg-white p-4 h-full transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                  <div className="aspect-[4/5] border-4 border-black overflow-hidden mb-6 filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500 relative">
+                    <Image
+                      src={member.imageUrl}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      loading="eager"
+                    />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-black uppercase mb-2">
+                    {member.name}
+                  </h3>
+                  {member.badge && (
+                    <div className="bg-[#FFDE00] text-black font-bold text-xs inline-block px-2 py-1 mb-2 border-2 border-black w-fit">
+                      {member.badge}
+                    </div>
+                  )}
+                  <div
+                    className={`${member.accentColor} ${member.id === "rocky" ? "text-black" : "text-white"} font-bold text-xs md:text-sm inline-block px-3 py-1 mb-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-fit`}
+                  >
+                    {member.title}
+                  </div>
+                  {member.subtitle && (
+                    <p className="text-xs font-medium text-neutral-600 mb-3">
+                      {member.subtitle}
+                    </p>
+                  )}
+                  <p className="font-bold text-sm md:text-base leading-tight mb-4 flex-grow">
+                    &quot;{member.description}&quot;
+                  </p>
+                  {/* Action Buttons */}
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {member.linkedinUrl && (
+                      <a
+                        href={member.linkedinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 bg-[#0077B5] text-white font-bold text-xs px-3 py-2 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all"
+                      >
+                        <Linkedin className="w-3 h-3" />
+                        LinkedIn
+                      </a>
+                    )}
+                    <button
+                      onClick={() => handleViewMore(member)}
+                      className="inline-flex items-center gap-1 bg-black text-white font-bold text-xs px-3 py-2 border-2 border-black shadow-[3px_3px_0px_0px_#A855F7] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_#A855F7] transition-all"
+                    >
+                      {content.about.viewMoreLabel} →
+                    </button>
+                  </div>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-black uppercase mb-2">
-                  {content.about.paulTitle}
-                </h3>
-                <div className="bg-[#A855F7] text-white font-bold text-xs md:text-sm inline-block px-3 py-1 mb-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                  ESTRATEGIA & NEGOCIOS
-                </div>
-                <p className="font-bold text-base md:text-lg leading-tight">
-                  &quot;{content.about.paulDescription}&quot;
-                </p>
               </div>
-            </div>
-          </Reveal>
-
-          {/* Rocky */}
-          <Reveal delay={200}>
-            <div className="relative group mt-8 md:mt-0">
-              <div className="absolute inset-0 bg-[#FFDE00] translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4"></div>
-              <div className="relative border-4 border-black bg-white p-4 h-full transform hover:-translate-y-2 transition-transform duration-300">
-                <div className="aspect-[4/5] border-4 border-black overflow-hidden mb-6 filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500 relative">
-                  <Image
-                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800"
-                    alt="Rocky"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    loading="eager"
-                  />
-                </div>
-                <h3 className="text-3xl md:text-4xl font-black uppercase mb-2">
-                  {content.about.rockyTitle}
-                </h3>
-                <div className="bg-[#FFDE00] text-black font-bold text-xs md:text-sm inline-block px-3 py-1 mb-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                  TECH & AI LEAD
-                </div>
-                <p className="font-bold text-base md:text-lg leading-tight">
-                  &quot;{content.about.rockyDescription}&quot;
-                </p>
-              </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          ))}
         </div>
+
+        {/* Footer Note */}
+        <Reveal delay={400}>
+          <div className="mt-12 md:mt-16 text-center">
+            <p className="text-sm md:text-base font-medium text-neutral-600 border-t-2 border-black pt-6 max-w-2xl mx-auto">
+              {content.about.footerNote}
+            </p>
+          </div>
+        </Reveal>
       </div>
     </div>
   );

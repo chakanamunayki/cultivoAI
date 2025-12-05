@@ -1,6 +1,7 @@
 "use client";
 
-import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone, Sprout } from "lucide-react";
+import { useState } from "react";
+import { DollarSign, Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone, Sprout } from "lucide-react";
 import type { SocialLink } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 import { Reveal } from "../ui/reveal";
@@ -19,7 +20,10 @@ const socialIcons: Record<SocialLink["platform"], React.ReactNode> = {
 };
 
 export function Footer({ onContactClick, onScrollTo }: FooterProps) {
-  const { content } = useLocale();
+  const { content, locale } = useLocale();
+  const [currency, setCurrency] = useState<"USD" | "COP">("USD");
+
+  const currencyLabel = locale === "es" ? "Moneda" : "Currency";
 
   const scrollTo = (href: string) => {
     if (onScrollTo) {
@@ -167,11 +171,43 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
         </div>
       </div>
 
-      {/* Copyright */}
-      <div className="border-t-2 border-neutral-800 p-6 text-center">
-        <p className="text-neutral-600 text-xs md:text-sm font-bold uppercase">
-          {content.footer.copyright}
-        </p>
+      {/* Copyright + Currency Selector */}
+      <div className="border-t-2 border-neutral-800 p-6">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-neutral-600 text-xs md:text-sm font-bold uppercase">
+            {content.footer.copyright}
+          </p>
+
+          {/* Currency Selector */}
+          <div className="flex items-center gap-3">
+            <span className="text-neutral-500 text-xs font-bold uppercase flex items-center gap-1">
+              <DollarSign size={14} />
+              {currencyLabel}
+            </span>
+            <div className="flex border-2 border-neutral-700">
+              <button
+                onClick={() => setCurrency("USD")}
+                className={`px-3 py-1 text-xs font-black uppercase transition-colors ${
+                  currency === "USD"
+                    ? "bg-[#10B981] text-white"
+                    : "bg-transparent text-neutral-400 hover:text-white"
+                }`}
+              >
+                USD
+              </button>
+              <button
+                onClick={() => setCurrency("COP")}
+                className={`px-3 py-1 text-xs font-black uppercase transition-colors border-l-2 border-neutral-700 ${
+                  currency === "COP"
+                    ? "bg-[#10B981] text-white"
+                    : "bg-transparent text-neutral-400 hover:text-white"
+                }`}
+              >
+                COP
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );

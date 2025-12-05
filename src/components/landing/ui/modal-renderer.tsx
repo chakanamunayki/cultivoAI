@@ -6,7 +6,8 @@ import { useModal } from "@/components/landing/ui/modal-provider";
 import { PartnershipModal } from "@/components/landing/ui/partnership-modal";
 import { ProjectModal } from "@/components/landing/ui/project-modal";
 import { ServiceModal } from "@/components/landing/ui/service-modal";
-import type { Partnership, Project, Service } from "@/content/types";
+import { TeamMemberModal } from "@/components/landing/ui/team-member-modal";
+import type { Partnership, Project, Service, TeamMember } from "@/content/types";
 
 interface ModalRendererProps {
   onChatClick?: () => void;
@@ -30,6 +31,8 @@ export function ModalRenderer({ onChatClick }: ModalRendererProps) {
         );
       case "contact":
         return <ContactModal {...(onChatClick && { onChatClick })} />;
+      case "teamMember":
+        return <TeamMemberModal member={modalData.data as TeamMember} />;
       default:
         return null;
     }

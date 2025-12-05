@@ -7,6 +7,7 @@ import {
   MessageSquare,
   PieChart,
   Smartphone,
+  UserCircle,
   type LucideIcon,
 } from "lucide-react";
 import { ChatView } from "@/components/landing/demos/chat-view";
@@ -14,6 +15,7 @@ import { CodeView } from "@/components/landing/demos/code-view";
 import { CRMView } from "@/components/landing/demos/crm-view";
 import { DashboardView } from "@/components/landing/demos/dashboard-view";
 import { MobileView } from "@/components/landing/demos/mobile-view";
+import { Project19View } from "@/components/landing/demos/project19-view";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { useLocale } from "@/hooks/use-locale";
 
@@ -23,6 +25,7 @@ const DEMO_ICON_MAP: Record<string, LucideIcon> = {
   web: LayoutTemplate,
   dash: PieChart,
   social: Smartphone,
+  project19: UserCircle,
 };
 
 // Map use case IDs to visual types
@@ -32,6 +35,7 @@ const VISUAL_MAP: Record<string, string> = {
   web: "code",
   dash: "dashboard",
   social: "mobile",
+  project19: "project19",
 };
 
 function getUseCaseIcon(id: string): LucideIcon {
@@ -63,6 +67,8 @@ export function DemosSection({ className = "" }: DemosSectionProps) {
         return <DashboardView steps={activeCase.steps} />;
       case "crm":
         return <CRMView steps={activeCase.steps} />;
+      case "project19":
+        return <Project19View steps={activeCase.steps} activeTab={activeTab} />;
       case "chat":
       default:
         return <ChatView steps={activeCase.steps} activeTab={activeTab} />;

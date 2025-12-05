@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Zap, MessageSquare, BarChart3, type LucideIcon } from "lucide-react";
+import { Zap, MessageSquare, BarChart3, TrendingUp, type LucideIcon } from "lucide-react";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { useLocale } from "@/hooks/use-locale";
 
@@ -16,7 +16,11 @@ function getStoryIcon(industry: string): { icon: LucideIcon; color: string } {
 }
 
 export function StoriesSection() {
-  const { content } = useLocale();
+  const { content, locale } = useLocale();
+
+  const beforeLabel = locale === "es" ? "Antes" : "Before";
+  const afterLabel = locale === "es" ? "Despues" : "After";
+  const resultLabel = locale === "es" ? "Resultado" : "Result";
 
   return (
     <div id="stories" className="bg-[#A855F7] p-6 md:p-12 lg:p-24 border-b-4 border-black">
@@ -61,7 +65,7 @@ export function StoriesSection() {
                   <div className="space-y-4 md:space-y-6 flex-1">
                     <div>
                       <div className="font-black text-[10px] md:text-xs uppercase bg-red-500 text-white inline-block px-2 mb-2 border-2 border-black">
-                        Antes
+                        {beforeLabel}
                       </div>
                       <p className="font-bold text-sm leading-snug border-l-4 border-red-500 pl-3">
                         {story.before}
@@ -69,12 +73,25 @@ export function StoriesSection() {
                     </div>
                     <div>
                       <div className="font-black text-[10px] md:text-xs uppercase bg-green-600 text-white inline-block px-2 mb-2 border-2 border-black">
-                        Despues
+                        {afterLabel}
                       </div>
                       <p className="font-bold text-sm leading-snug border-l-4 border-green-600 pl-3">
                         {story.after}
                       </p>
                     </div>
+                    {story.metric && (
+                      <div className="pt-2">
+                        <div className="font-black text-[10px] md:text-xs uppercase bg-[#FFDE00] text-black inline-block px-2 mb-2 border-2 border-black">
+                          {resultLabel}
+                        </div>
+                        <div className="flex items-center gap-2 bg-[#10B981]/10 border-2 border-[#10B981] px-3 py-2">
+                          <TrendingUp size={18} className="text-[#10B981]" />
+                          <span className="font-black text-sm text-[#10B981]">
+                            {story.metric}
+                          </span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

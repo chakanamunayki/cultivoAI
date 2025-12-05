@@ -358,9 +358,9 @@ export function AIChatWidget({
   }, [locale, isVoiceModeOpen]);
 
   // Handle voice contact form submission
-  const handleVoiceContactFormSubmit = useCallback(async (name: string, email: string): Promise<boolean> => {
+  const handleVoiceContactFormSubmit = useCallback(async (name: string, email: string, phone?: string): Promise<boolean> => {
     try {
-      const result = await handleLeadCapture({ name, email });
+      const result = await handleLeadCapture({ name, email, phone });
       if (result.success) {
         setShowVoiceContactForm(false);
         // Add success message to chat
@@ -609,95 +609,6 @@ export function AIChatWidget({
     }
   }, [messages, locale, content, context, sessionId, executeFunctionCall, logMessage]);
 
-  // Send message for voice mode and return response text
-  const sendMessageForVoice = useCallback(async (userMessage: string): Promise<string | null> => {
-    // Add user message to chat
-    setMessages((prev) => [...prev, { role: "user", text: userMessage }]);
-    logMessage("user", userMessage);
-    const startTime = Date.now();
-
-    try {
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-      const response = await fetch("/api/chat/gemini", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: userMessage,
-          history: messages,
-          locale,
-          entryContext: context?.type as ChatContextType | undefined,
-          sessionId,
-          timezone,
-          pageUrl: typeof window !== "undefined" ? window.location.href : undefined,
-          siteContent: {
-            services: content.services.map((s) => ({
-              title: s.title,
-              description: s.description,
-              details: s.details,
-            })),
-            projects: content.projects.map((p) => ({
-              title: p.title,
-              desc: p.desc,
-              fullDesc: p.fullDesc,
-            })),
-            semilla: content.semilla,
-            stories: content.stories,
-            whyUs: content.whyUs,
-            partnerships: content.partnerships.map((p) => ({
-              name: p.name,
-              tagline: p.tagline,
-              description: p.description,
-            })),
-            whoWeHelp: content.whoWeHelp
-              ? {
-                  idealItems: content.whoWeHelp.idealItems,
-                  notIdealItems: content.whoWeHelp.notIdealItems,
-                  sectors: content.whoWeHelp.sectors,
-                }
-              : undefined,
-          },
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to get response");
-      }
-
-      const data: ChatResponse = await response.json();
-
-      // Handle function calls (execute but don't block voice)
-      if (data.functionCalls && data.functionCalls.length > 0) {
-        for (const call of data.functionCalls) {
-          await executeFunctionCall(call);
-        }
-      }
-
-      // Add response text to messages
-      const responseText =
-        data.text || (locale === "es" ? "Entendido." : "Got it.");
-      setMessages((prev) => [...prev, { role: "model", text: responseText }]);
-
-      // Log assistant response with latency
-      const latencyMs = Date.now() - startTime;
-      logMessage("model", responseText, {
-        modelUsed: "gemini-2.0-flash",
-        latencyMs,
-      });
-
-      return responseText;
-    } catch (error) {
-      console.error("Voice chat error:", error);
-      const errorMessage =
-        locale === "es"
-          ? "Lo siento, hubo un error."
-          : "Sorry, there was an error.";
-      setMessages((prev) => [...prev, { role: "model", text: errorMessage }]);
-      logMessage("model", errorMessage);
-      return errorMessage;
-    }
-  }, [messages, locale, content, context, sessionId, executeFunctionCall, logMessage]);
-
   const handleSend = useCallback(async () => {
     if (!input.trim() || isLoading) return;
 
@@ -770,7 +681,6 @@ export function AIChatWidget({
             {/* Voice Mode button - BIG AND OBVIOUS FOR TESTING */}
             <button
               onClick={() => {
-                console.log("Voice mode button clicked!");
                 setIsVoiceModeOpen(true);
               }}
               className="px-3 py-1.5 bg-[#A855F7] text-white border-2 border-black hover:bg-[#9333EA] hover:scale-105 transition-all font-bold text-xs uppercase"
@@ -963,19 +873,20 @@ export function AIChatWidget({
       </div>
     </div>
 
-    {/* Voice Conversation Mode Overlay - MUST be outside the chat container for proper z-index */}
-    <VoiceConversationMode
-      isOpen={isVoiceModeOpen}
-      onClose={() => {
-        setIsVoiceModeOpen(false);
-        setShowVoiceContactForm(false);
-      }}
-      locale={locale as "es" | "en"}
-      onSendMessage={sendMessageForVoice}
-      showContactForm={showVoiceContactForm}
-      onContactFormSubmit={handleVoiceContactFormSubmit}
-      onContactFormDismiss={handleVoiceContactFormDismiss}
-    />
+    {/* Voice Conversation Mode Overlay - Always render, let component handle visibility */}
+    {isVoiceModeOpen && (
+      <VoiceConversationMode
+        isOpen={true}
+        onClose={() => {
+          setIsVoiceModeOpen(false);
+          setShowVoiceContactForm(false);
+        }}
+        locale={locale as "es" | "en"}
+        showContactForm={showVoiceContactForm}
+        onContactFormSubmit={handleVoiceContactFormSubmit}
+        onContactFormDismiss={handleVoiceContactFormDismiss}
+      />
+    )}
     </>
   );
 }

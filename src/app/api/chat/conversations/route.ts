@@ -61,8 +61,12 @@ export async function POST(request: Request) {
     return await handleCreateConversation(body as CreateConversationRequest);
   } catch (error) {
     console.error("Conversations API error:", error);
+    // Provide more context in development
+    const errorMessage = process.env.NODE_ENV === "development"
+      ? `Failed to process request: ${error instanceof Error ? error.message : String(error)}`
+      : "Failed to process request";
     return NextResponse.json(
-      { error: "Failed to process request" },
+      { error: errorMessage },
       { status: 500 }
     );
   }

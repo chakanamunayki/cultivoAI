@@ -23,6 +23,9 @@ export const en: SiteContent = {
       "For businesses. For impact projects.\nWithout the complexity or high costs.\nWe help. We share. We grow together.",
     cta: "Let's talk",
     secondaryCta: "Read our story",
+    noDrama: "NO DRAMA.",
+    noDramaText:
+      "We help purpose-driven businesses use AI without getting lost in the complexity.",
     footerBar: {
       price: "From $100 USD",
       impactRates: "Special rates for impact projects",
@@ -33,12 +36,170 @@ export const en: SiteContent = {
   about: {
     title: "Who We Are",
     subtitle: "A family building something meaningful from Colombia",
-    paulTitle: "Paul Ronayne",
-    paulDescription:
-      "With over 20 years of experience in technology and business, Paul has worked in startups, corporations, and impact projects. Now he focuses his experience on helping purpose-driven businesses leverage AI in practical, accessible ways.",
-    rockyTitle: "Rocky Ronayne",
-    rockyDescription:
-      "14 years old, footballer, innovator. Rocky is learning to build AI solutions while balancing school and soccer. He leads the Semilla Fund, building small projects for clients who are just starting out.",
+    viewMoreLabel: "View more",
+    footerNote:
+      "For larger impact projects, we have technical experts who support us when needed.",
+    teamMembers: [
+      {
+        id: "paul",
+        name: "Paul Ronayne",
+        title: "STRATEGY & BUSINESS",
+        subtitle: "Co-founder nbn23 · nagi | Founder Raiz",
+        description:
+          "With over 20 years of experience in technology and business, Paul has worked in startups, corporations, and impact projects. Now he focuses his experience on helping purpose-driven businesses leverage AI in practical, accessible ways.",
+        imageUrl:
+          "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=800",
+        accentColor: "bg-[#A855F7]",
+        shadowColor: "bg-black",
+        linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
+        bio: {
+          headline: "20+ years building technology with purpose",
+          sections: [
+            {
+              title: "Background",
+              content:
+                "Co-founder of nbn23 (basketball stats for the NBA) and nagi (AI voice assistant). Founder of Raiz Capital, an impact investment platform for regenerative agriculture. Has worked with startups, corporations, and social projects across multiple countries.",
+            },
+            {
+              title: "Current Focus",
+              content:
+                "Helping purpose-driven businesses integrate AI in practical ways, without the complexity or inflated costs of traditional agencies. Teaching Rocky to build while building alongside him.",
+            },
+            {
+              title: "Philosophy",
+              content:
+                "Believes technology should serve people, not the other way around. Prefers long-term relationships over quick transactions. If a project isn't win-win, he'd rather not do it.",
+            },
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
+        },
+      },
+      {
+        id: "rocky",
+        name: "Rocky Ronayne",
+        title: "TECH & AI",
+        badge: "14 years old",
+        description:
+          "Footballer, innovator. Rocky is learning to build AI solutions while balancing school and soccer. He leads the Semilla Fund, building small projects for clients who are just starting out.",
+        imageUrl:
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800",
+        accentColor: "bg-[#FFDE00]",
+        shadowColor: "bg-[#FFDE00]",
+        bio: {
+          headline: "Learning to build while building",
+          sections: [
+            {
+              title: "Who I Am",
+              content:
+                "I'm 14 years old. I turn 15 in January. I still don't know exactly what I want to do with my life, and I think that's okay. I like football, video games, and I'm learning to build things with AI.",
+            },
+            {
+              title: "Project19",
+              content:
+                "My personal project: an AI coach that helps me organize my day. It sends me a message in the morning asking about my plans, and at night asks how it went. Everything saves to Notion automatically. Cost: ~$0.30/month.",
+            },
+            {
+              title: "Semilla Fund",
+              content:
+                "My initiative to help small projects while I learn. Basic chatbots, simple automations, Notion organization. Accessible prices because I'm also learning.",
+            },
+          ],
+          videoUrl: "https://www.youtube.com/watch?v=example",
+          videoLabel: "Watch Samsung project",
+        },
+      },
+      {
+        id: "marta",
+        name: "Marta Ronayne",
+        title: "THE ANCHOR",
+        subtitle: "Holistic Therapist | Munayki",
+        description:
+          "Holistic therapist and the family's center of gravity. Marta brings balance and human perspective to everything we do. Her practice Munayki is where Rocky applies what he learns in a real context.",
+        imageUrl:
+          "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800",
+        accentColor: "bg-[#10B981]",
+        shadowColor: "bg-[#10B981]",
+        linkedinUrl: "https://www.linkedin.com/in/marta-ronayne/",
+        bio: {
+          headline: "Balance and human perspective",
+          sections: [
+            {
+              title: "Munayki",
+              content:
+                "Holistic wellness practice focused on emotional healing and personal growth. Marta works with clients individually and in group workshops, integrating multiple therapeutic modalities.",
+            },
+            {
+              title: "The Anchor",
+              content:
+                "While Paul and Rocky build technology, Marta keeps everyone grounded. She's the voice that asks 'but does this actually help people?' before launching any project.",
+            },
+            {
+              title: "Connection to CultivoAI",
+              content:
+                "Munayki is where Rocky practices what he learns. The scheduling chatbot, follow-up automations, everything gets tested there first. It's our real-impact laboratory.",
+            },
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/marta-ronayne/",
+        },
+      },
+    ],
+  },
+
+  howWeWork: {
+    title: "How We Work",
+    subtitle: "Principles that guide every project",
+    pillars: [
+      {
+        icon: "RefreshCw",
+        title: "Win-Win or No Deal",
+        description:
+          "We only take on projects where both sides win. If we can't add real value, we'll tell you. If a project isn't sustainable for both of us, we'd rather not do it. Transparency is more important than any contract.",
+      },
+      {
+        icon: "Sprout",
+        title: "Holistic Business",
+        description:
+          "We don't just build for clients. We share what we learn. We support impact projects with reduced rates. And we measure our success not just in money, but in the real value we create.",
+      },
+      {
+        icon: "Users",
+        title: "Rocky Learns in Every Step",
+        description:
+          "This isn't just a business. It's an educational project. Rocky participates in every project in some way — sometimes leading, sometimes learning. When you work with us, you're contributing to his real-world education.",
+        isFullWidth: true,
+      },
+    ],
+  },
+
+  whatWeDo: {
+    title: "How We Help",
+    subtitle: "Practical AI integration for real businesses",
+    intro:
+      "We don't sell hype. We don't promise that AI will solve all your problems. What we do is integrate AI tools practically into your existing operations. We automate what makes sense to automate. We enhance what already works.",
+    columns: [
+      {
+        title: "OPTIMIZE",
+        items: [
+          "Automate repetitive tasks",
+          "Connect tools that don't talk to each other",
+          "Centralize scattered data",
+          "Reduce friction in processes",
+        ],
+      },
+      {
+        title: "EXPAND",
+        items: [
+          "24/7 customer service",
+          "Scalable content",
+          "Real-time business intelligence",
+          "New communication channels",
+        ],
+      },
+    ],
+    servicesPreview: {
+      title: "Our services include:",
+      linkText: "View all services",
+    },
   },
 
   whyUs: {
@@ -74,6 +235,7 @@ export const en: SiteContent = {
       ],
       imageUrl:
         "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600",
+      pricing: "From $100 USD",
     },
     {
       icon: "MessageSquare",
@@ -87,6 +249,7 @@ export const en: SiteContent = {
       ],
       imageUrl:
         "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=600",
+      pricing: "From $100 USD",
     },
     {
       icon: "BarChart3",
@@ -100,6 +263,7 @@ export const en: SiteContent = {
       ],
       imageUrl:
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600",
+      pricing: "From $200 USD",
     },
     {
       icon: "Layers",
@@ -113,6 +277,7 @@ export const en: SiteContent = {
       ],
       imageUrl:
         "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=600",
+      pricing: "From $150 USD",
     },
     {
       icon: "Monitor",
@@ -126,6 +291,7 @@ export const en: SiteContent = {
       ],
       imageUrl:
         "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=600",
+      pricing: "From $300 USD",
     },
     {
       icon: "Rocket",
@@ -139,6 +305,7 @@ export const en: SiteContent = {
       ],
       imageUrl:
         "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600",
+      pricing: "From $50 USD/hour",
     },
   ],
 
@@ -214,6 +381,21 @@ export const en: SiteContent = {
         { action: "", result: "LinkedIn: Professional article" },
       ],
     },
+    {
+      id: "project19",
+      title: "Project19 Coach",
+      description: "Personal AI coach via WhatsApp. Morning briefing and evening check-in.",
+      scenario: "A day with Rocky's coach",
+      steps: [
+        { action: "7:00 AM - Good morning Rocky!", result: "" },
+        { action: "", result: "What do you have planned for today? School, soccer, anything else?" },
+        { action: "Rocky: School until 3, then soccer practice", result: "" },
+        { action: "", result: "Saved to Notion. I'll text you at 8pm!" },
+        { action: "8:00 PM - How was your day?", result: "" },
+        { action: "Rocky: [Voice note 30s]", result: "" },
+        { action: "", result: "Transcribed and saved. Good day! Get some rest." },
+      ],
+    },
   ],
 
   whoWeHelp: {
@@ -244,26 +426,36 @@ export const en: SiteContent = {
         name: "Agritech",
         description: "Hydroponics, aquaponics, regenerative agriculture",
         icon: "Sprout",
+        badge: "Discounts available",
+        chatButtonLabel: "Let's talk",
       },
       {
         name: "Holistic wellness",
         description: "Mental and physical health outside traditional models",
         icon: "Heart",
+        badge: "Discounts available",
+        chatButtonLabel: "Let's talk",
       },
       {
         name: "Alternative education",
         description: "Personalized learning, family-led development",
         icon: "GraduationCap",
+        badge: "Discounts available",
+        chatButtonLabel: "Let's talk",
       },
       {
         name: "Self-sufficiency",
         description: "Homesteading, sustainable living, local resilience",
         icon: "Home",
+        badge: "Discounts available",
+        chatButtonLabel: "Let's talk",
       },
       {
         name: "Mission-driven startups",
         description: "Any early-stage team doing meaningful work",
         icon: "Rocket",
+        badge: "Discounts available",
+        chatButtonLabel: "Let's talk",
       },
     ],
     cta: "Sound like you? We'd love to hear more about what you're building.",
@@ -413,6 +605,7 @@ export const en: SiteContent = {
       author: "Store Owner",
       imageUrl:
         "https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=800&auto=format&fit=crop",
+      metric: "21 hours/week recovered",
     },
     {
       company: "Therapy Center",
@@ -425,6 +618,7 @@ export const en: SiteContent = {
       author: "Therapist",
       imageUrl:
         "https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=800&auto=format&fit=crop",
+      metric: "+40% consultations booked",
     },
     {
       company: "Multi-channel Business",
@@ -437,8 +631,64 @@ export const en: SiteContent = {
       author: "Business Owner",
       imageUrl:
         "https://images.unsplash.com/photo-1543286386-713df548e9cc?q=80&w=800&auto=format&fit=crop",
+      metric: "Real-time visibility",
     },
   ],
+
+  values: {
+    title: "Our Values",
+    subtitle: "What defines us",
+    values: [
+      {
+        icon: "Sprout",
+        title: "CULTIVATE, NOT EXTRACT",
+        description:
+          "We build for the long term. We prefer relationships that grow over quick transactions.",
+      },
+      {
+        icon: "Handshake",
+        title: "WIN-WIN OR NO DEAL",
+        description:
+          "We only take on projects where both sides win. If we can't add real value, we say so.",
+      },
+      {
+        icon: "User",
+        title: "ALWAYS HUMAN",
+        description:
+          "AI is a tool, not a replacement. We prioritize human connection in everything we do.",
+      },
+      {
+        icon: "Hammer",
+        title: "LEARN BY DOING",
+        description:
+          "We don't wait to know everything. We build, we learn, we improve. Every project is a lesson.",
+      },
+      {
+        icon: "Scale",
+        title: "INTEGRATE, NOT FRAGMENT",
+        description:
+          "We connect what you already have. We don't reinvent the wheel or create unnecessary dependencies.",
+      },
+      {
+        icon: "Mountain",
+        title: "BUILD FOR THE LONG TERM",
+        description:
+          "We think in 5 years, not 5 months. Today's decisions must make sense tomorrow.",
+      },
+    ],
+  },
+
+  mission: {
+    title: "Our Mission",
+    statement: [
+      "We're not just building a business.",
+      "We're documenting how a father teaches his son to build from scratch.",
+      "We share what works. We help impact projects integrate AI.",
+      "We create value in every step.",
+      "And we hope to inspire other families and young people to do the same.",
+    ],
+    tagline: "Win-win. Always.",
+  },
 
   whatHappensNext: {
     title: "What happens after you contact us?",
@@ -511,7 +761,7 @@ export const en: SiteContent = {
       email: "hola@cultivoai.co",
       whatsapp: "+573106172706",
       whatsappDisplay: "+57 310 617 2706",
-      location: "Bogota, Colombia",
+      location: "Medellin, Colombia",
       locationSecondary: "Worldwide",
     },
     quickLinks: [
