@@ -28,12 +28,19 @@ export interface NavItem {
   href: string;
 }
 
+export interface HeroFooterBar {
+  price: string;
+  impactRates: string;
+  familyTagline: string;
+}
+
 export interface HeroCopy {
   tagline: string;
   headline: string;
   subheadline: string;
   cta: string;
   secondaryCta: string;
+  footerBar: HeroFooterBar;
 }
 
 export interface AboutCopy {

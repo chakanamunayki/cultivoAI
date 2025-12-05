@@ -18,11 +18,16 @@ export const es: SiteContent = {
 
   hero: {
     tagline: "Padre e Hijo",
-    headline: "Somos Paul y Rocky",
+    headline: "INTEGRACION DE IA SIMPLIFICADA.",
     subheadline:
-      "No somos una agencia. No tenemos un equipo de 50 personas que te pasan de mano en mano. Somos nosotros. Trabajando contigo directamente desde Colombia. Ayudamos a negocios con proposito a usar IA sin perderse en la complejidad — ni en presupuestos inflados.",
-    cta: "Agenda 15 minutos con Paul",
+      "Para negocios. Para proyectos de impacto.\nSin complejidad ni costos inflados.\nAyudamos. Compartimos. Crecemos juntos.",
+    cta: "Hablemos",
     secondaryCta: "Conoce nuestra historia",
+    footerBar: {
+      price: "Desde $100 USD",
+      impactRates: "Tarifas especiales para proyectos de impacto",
+      familyTagline: "Padre e hijo desde Medellin",
+    },
   },
 
   about: {

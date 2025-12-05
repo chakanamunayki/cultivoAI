@@ -18,11 +18,16 @@ export const en: SiteContent = {
 
   hero: {
     tagline: "Father and Son",
-    headline: "We're Paul and Rocky",
+    headline: "AI INTEGRATION MADE SIMPLE.",
     subheadline:
-      "We're not an agency. We don't have a team of 50 people passing you around. It's us. Working with you directly from Colombia. We help purpose-driven businesses use AI without getting lost in complexity — or inflated budgets.",
-    cta: "Book 15 minutes with Paul",
+      "For businesses. For impact projects.\nWithout the complexity or high costs.\nWe help. We share. We grow together.",
+    cta: "Let's talk",
     secondaryCta: "Read our story",
+    footerBar: {
+      price: "From $100 USD",
+      impactRates: "Special rates for impact projects",
+      familyTagline: "Father & son from Medellin",
+    },
   },
 
   about: {
