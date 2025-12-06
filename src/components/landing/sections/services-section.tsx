@@ -28,9 +28,13 @@ function getServiceIcon(iconName: string): LucideIcon {
   return ICON_MAP[iconName] || Zap;
 }
 
-export function ServicesSection() {
+interface ServicesSectionProps {
+  onOpenChatBooking: () => void;
+}
+
+export function ServicesSection({ onOpenChatBooking }: ServicesSectionProps) {
   const { content } = useLocale();
-  const { openServiceModal, openContactModal } = useModal();
+  const { openServiceModal } = useModal();
 
   const handleServiceClick = (service: Service) => {
     openServiceModal(service);
@@ -112,7 +116,7 @@ export function ServicesSection() {
             </div>
 
             <button
-              onClick={openContactModal}
+              onClick={onOpenChatBooking}
               className="w-full lg:w-auto relative z-10 bg-[#FFDE00] text-black font-black uppercase text-lg md:text-xl px-6 md:px-10 py-4 md:py-6 border-4 border-transparent hover:border-white hover:bg-black hover:text-white transition-all shadow-[6px_6px_0px_0px_#A855F7] md:shadow-[8px_8px_0px_0px_#A855F7]"
             >
               Agenda 15 Minutos

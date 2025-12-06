@@ -56,9 +56,16 @@ export function ServiceModal({ service }: ServiceModalProps) {
         <h2 className="text-3xl md:text-5xl font-black uppercase mb-2 text-black">
           {service.title}
         </h2>
-        <h3 className="text-lg font-bold uppercase mb-8 tracking-wider text-[#A855F7]">
-          {service.eng}
-        </h3>
+        <div className="flex flex-wrap items-center gap-4 mb-8">
+          <h3 className="text-lg font-bold uppercase tracking-wider text-[#A855F7]">
+            {service.eng}
+          </h3>
+          {service.pricing && (
+            <span className="bg-[#10B981] text-white text-sm font-bold px-3 py-1 border-2 border-black">
+              {service.pricing}
+            </span>
+          )}
+        </div>
 
         <div className="prose prose-lg max-w-none">
           <p className="text-xl font-medium leading-relaxed mb-6 border-l-4 border-black pl-6">

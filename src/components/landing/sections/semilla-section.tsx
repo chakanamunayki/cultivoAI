@@ -1,10 +1,14 @@
 "use client";
 
-import { Leaf, Zap, GraduationCap, Send } from "lucide-react";
+import { Leaf, Zap, GraduationCap, MessageSquare, Sprout } from "lucide-react";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { useLocale } from "@/hooks/use-locale";
 
-export function SemillaSection() {
+interface SemillaSectionProps {
+  onOpenChatSemilla: () => void;
+}
+
+export function SemillaSection({ onOpenChatSemilla }: SemillaSectionProps) {
   const { content } = useLocale();
 
   return (
@@ -20,8 +24,32 @@ export function SemillaSection() {
         </Reveal>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24">
-          {/* Left Column: Story */}
+          {/* Left Column: Story + Image */}
           <Reveal>
+            {/* Image placeholder */}
+            <div className="mb-8 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+              <div className="aspect-[16/9] bg-white relative">
+                {/* Placeholder with icon - replace with actual image later */}
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#C4F9E0] to-[#10B981]/30">
+                  <div className="text-center">
+                    <Sprout size={80} className="mx-auto text-[#10B981]/40 mb-4" strokeWidth={1.5} />
+                    <p className="text-sm font-bold text-[#10B981]/60 uppercase tracking-wider">
+                      Semilla Fund Visual
+                    </p>
+                  </div>
+                </div>
+                {/* Uncomment and add actual image URL when ready:
+                <Image
+                  src="/images/semilla-fund.jpg"
+                  alt="Semilla Fund"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                */}
+              </div>
+            </div>
+
             <div className="bg-white border-4 border-black p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
               <h3 className="text-2xl font-black uppercase mb-6 bg-[#FFDE00] inline-block px-2 border-2 border-black">
                 {content.semilla.subtitle}
@@ -31,14 +59,8 @@ export function SemillaSection() {
               </div>
             </div>
 
-            <div className="mt-12 bg-black text-white p-8 border-4 border-white shadow-[12px_12px_0px_0px_#A855F7]">
-              <h3 className="text-2xl font-black uppercase mb-4 text-[#A855F7]">
-                {content.semilla.ctaTitle}
-              </h3>
-              <p className="font-bold text-xl mb-6">
-                {content.semilla.ctaDescription}
-              </p>
-              <p className="mt-6 pt-6 border-t-2 border-white/20 font-bold italic text-[#FFDE00]">
+            <div className="mt-8 bg-black text-white p-6 md:p-8 border-4 border-white shadow-[8px_8px_0px_0px_#A855F7]">
+              <p className="font-bold italic text-[#FFDE00] text-lg">
                 &quot;{content.semilla.goal}&quot;
               </p>
             </div>
@@ -95,38 +117,23 @@ export function SemillaSection() {
               ))}
             </div>
 
-            {/* Form */}
-            <div className="bg-[#F3F4F6] border-4 border-black p-8 relative">
-              <div className="absolute -top-4 -right-4 bg-red-500 text-white border-4 border-black px-4 py-2 font-black uppercase rotate-3">
+            {/* CTA to Chat - Compact on desktop */}
+            <div className="bg-[#F3F4F6] border-4 border-black p-4 md:p-6 relative flex flex-col md:flex-row md:items-center md:gap-6">
+              <div className="absolute -top-3 -right-3 bg-red-500 text-white border-3 border-black px-3 py-1 font-black uppercase text-xs rotate-3">
                 Escribeme!
               </div>
-              <h3 className="text-2xl font-black uppercase mb-2">
-                {content.semilla.ctaTitle}
-              </h3>
-              <p className="font-bold mb-6">{content.semilla.ctaDescription}</p>
-              <form className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Nombre"
-                  className="w-full bg-white border-4 border-black p-3 font-bold focus:outline-none focus:shadow-[4px_4px_0px_0px_#A855F7]"
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full bg-white border-4 border-black p-3 font-bold focus:outline-none focus:shadow-[4px_4px_0px_0px_#A855F7]"
-                />
-                <textarea
-                  placeholder="Que necesitas?"
-                  rows={3}
-                  className="w-full bg-white border-4 border-black p-3 font-bold focus:outline-none focus:shadow-[4px_4px_0px_0px_#A855F7]"
-                ></textarea>
-                <button
-                  type="submit"
-                  className="w-full bg-black text-white border-4 border-transparent p-4 font-black uppercase hover:bg-white hover:text-black hover:border-black transition-all flex justify-center items-center gap-2"
-                >
-                  Enviar <Send size={20} />
-                </button>
-              </form>
+              <div className="flex-1 mb-4 md:mb-0">
+                <h3 className="text-lg md:text-xl font-black uppercase mb-1">
+                  {content.semilla.ctaTitle}
+                </h3>
+                <p className="font-bold text-sm">{content.semilla.ctaDescription}</p>
+              </div>
+              <button
+                onClick={onOpenChatSemilla}
+                className="shrink-0 bg-black text-white border-4 border-transparent px-6 py-3 font-black uppercase hover:bg-white hover:text-black hover:border-black transition-all flex items-center justify-center gap-2 shadow-[6px_6px_0px_0px_#A855F7] hover:translate-x-1 hover:translate-y-1 hover:shadow-[3px_3px_0px_0px_#A855F7]"
+              >
+                {content.semilla.ctaButton} <MessageSquare size={18} />
+              </button>
             </div>
           </Reveal>
         </div>

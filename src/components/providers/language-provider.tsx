@@ -6,6 +6,7 @@ import { es } from "@/content/es";
 import type { Locale, SiteContent } from "@/content/types";
 
 const STORAGE_KEY = "cultivoai-locale";
+const SSR_DEFAULT_LOCALE: Locale = "es";
 
 interface LanguageContextValue {
   locale: Locale;
@@ -17,8 +18,6 @@ interface LanguageContextValue {
 export const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 function detectBrowserLocale(): Locale {
-  if (typeof window === "undefined") return "es";
-
   const browserLang = navigator.language.toLowerCase();
 
   // Check for Spanish locales
@@ -36,8 +35,6 @@ function detectBrowserLocale(): Locale {
 }
 
 function getStoredLocale(): Locale | null {
-  if (typeof window === "undefined") return null;
-
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored === "es" || stored === "en") {
@@ -51,8 +48,6 @@ function getStoredLocale(): Locale | null {
 }
 
 function storeLocale(locale: Locale): void {
-  if (typeof window === "undefined") return;
-
   try {
     localStorage.setItem(STORAGE_KEY, locale);
   } catch {
@@ -65,13 +60,8 @@ const contentMap: Record<Locale, SiteContent> = {
   en,
 };
 
-function getInitialLocale(defaultLocale?: Locale): Locale {
-  // During SSR, use default
-  if (typeof window === "undefined") {
-    return defaultLocale ?? "es";
-  }
-
-  // On client, check storage first, then detect from browser
+function getClientLocale(defaultLocale?: Locale): Locale {
+  // Check storage first, then detect from browser
   const storedLocale = getStoredLocale();
   if (storedLocale) {
     return storedLocale;
@@ -90,26 +80,21 @@ interface LanguageProviderProps {
 }
 
 export function LanguageProvider({ children, defaultLocale }: LanguageProviderProps) {
-  // Use lazy initialization to get the initial locale
-  const [locale, setLocaleState] = useState<Locale>(() => getInitialLocale(defaultLocale));
-  const [isHydrated, setIsHydrated] = useState(false);
+  // CRITICAL: Always initialize with SSR_DEFAULT_LOCALE to match server render
+  // This prevents hydration mismatch - we detect and update to client locale after mount
+  const [locale, setLocaleState] = useState<Locale>(defaultLocale ?? SSR_DEFAULT_LOCALE);
 
-  // Mark as hydrated after mount
+  // Two-pass rendering to avoid hydration mismatch:
+  // 1. Server and client both render with SSR_DEFAULT_LOCALE (no mismatch)
+  // 2. After mount, detect client locale and update if different
   useEffect(() => {
-    setIsHydrated(true);
-  }, []);
-
-  // Sync locale with storage on client after hydration
-  useEffect(() => {
-    if (!isHydrated) return;
-
-    // Re-check locale from storage/browser after hydration
-    const clientLocale = getInitialLocale(defaultLocale);
+    // Now safe to check localStorage/browser and update
+    const clientLocale = getClientLocale(defaultLocale);
     if (clientLocale !== locale) {
       setLocaleState(clientLocale);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isHydrated]);
+  }, []);
 
   const setLocale = useCallback((newLocale: Locale) => {
     setLocaleState(newLocale);
@@ -130,12 +115,12 @@ export function LanguageProvider({ children, defaultLocale }: LanguageProviderPr
   // Memoize the context value to prevent unnecessary re-renders
   const value = useMemo<LanguageContextValue>(
     () => ({
-      locale: isHydrated ? locale : (defaultLocale ?? "es"),
+      locale,
       setLocale,
       toggleLocale,
-      content: isHydrated ? content : contentMap[defaultLocale ?? "es"],
+      content,
     }),
-    [locale, setLocale, toggleLocale, content, isHydrated, defaultLocale]
+    [locale, setLocale, toggleLocale, content]
   );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;

@@ -133,11 +133,25 @@ export const leads = pgTable(
     // Display preferences
     displayCurrency: varchar("display_currency", { length: 3 }).default("USD"),
     newsletterConsent: boolean("newsletter_consent").default(false),
+
+    // Lead qualification (Phase 3B)
+    qualificationScore: integer("qualification_score").default(0),
+    qualificationLevel: varchar("qualification_level", { length: 20 }).default("cold"),
+    interests: text("interests"), // JSON array of service interests
+    conversationSummary: text("conversation_summary"),
+
+    // Qualification factors (booleans)
+    hasBudget: boolean("has_budget").default(false),
+    hasTimeline: boolean("has_timeline").default(false),
+    hasClearUseCase: boolean("has_clear_use_case").default(false),
+    isDecisionMaker: boolean("is_decision_maker").default(false),
+    isSectorFit: boolean("is_sector_fit").default(false),
   },
   (table) => [
     index("leads_email_idx").on(table.email),
     index("leads_status_idx").on(table.status),
     index("leads_created_idx").on(table.createdAt),
+    index("leads_qualification_idx").on(table.qualificationScore),
   ]
 );
 
@@ -156,6 +170,10 @@ export const chatConversations = pgTable(
     language: varchar("language", { length: 2 }).default("es"),
     pageUrl: varchar("page_url", { length: 500 }),
 
+    // Entry context (Phase 3A)
+    entryContext: varchar("entry_context", { length: 50 }),
+    userTimezone: varchar("user_timezone", { length: 100 }),
+
     // Escalation
     escalatedToHuman: boolean("escalated_to_human").default(false),
     escalationMethod: varchar("escalation_method", { length: 50 }),
@@ -168,11 +186,18 @@ export const chatConversations = pgTable(
     // Metrics
     messageCount: integer("message_count").default(0),
     totalTokensUsed: integer("total_tokens_used").default(0),
+
+    // Analytics events (Phase 3D)
+    functionCallsUsed: text("function_calls_used"), // JSON array of function names called
+    leadCaptured: boolean("lead_captured").default(false),
+    whatsappClicked: boolean("whatsapp_clicked").default(false),
+    formOpened: boolean("form_opened").default(false),
   },
   (table) => [
     index("conversations_lead_idx").on(table.leadId),
     index("conversations_session_idx").on(table.sessionId),
     index("conversations_started_idx").on(table.startedAt),
+    index("conversations_entry_context_idx").on(table.entryContext),
   ]
 );
 
@@ -193,6 +218,12 @@ export const chatMessages = pgTable(
     modelUsed: varchar("model_used", { length: 100 }),
     tokensUsed: integer("tokens_used"),
     latencyMs: integer("latency_ms"),
+
+    // Voice metadata (Phase 6)
+    inputType: varchar("input_type", { length: 20 }).default("text"), // "text" | "voice"
+    audioDurationMs: integer("audio_duration_ms"),
+    transcriptionConfidence: decimal("transcription_confidence", { precision: 5, scale: 4 }),
+    originalLanguage: varchar("original_language", { length: 10 }), // detected language from STT
   },
   (table) => [
     index("messages_conversation_idx").on(table.conversationId),

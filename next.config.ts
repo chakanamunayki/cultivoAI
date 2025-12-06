@@ -21,12 +21,30 @@ const nextConfig: NextConfig = {
         hostname: "raw.githubusercontent.com",
       },
     ],
+    // Optimize image formats
+    formats: ["image/avif", "image/webp"],
+    // Minimize image sizes
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
   },
 
   // Enable compression
   compress: true,
 
-  // Security headers
+  // Experimental performance features
+  experimental: {
+    // Enable optimized package imports for smaller bundles
+    optimizePackageImports: [
+      "lucide-react",
+      "@radix-ui/react-avatar",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-label",
+      "@radix-ui/react-slot",
+    ],
+  },
+
+  // Security and cache headers
   async headers() {
     return [
       {
@@ -50,7 +68,37 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=()",
+            value: "camera=(), microphone=(self), geolocation=()",
+          },
+        ],
+      },
+      // Cache static assets aggressively
+      {
+        source: "/_next/static/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // Cache images
+      {
+        source: "/_next/image(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      // Cache fonts
+      {
+        source: "/fonts/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Lock } from "lucide-react";
+import { Lock, ArrowLeft } from "lucide-react";
 import { UserProfile } from "@/components/auth/user-profile";
 import { Button } from "@/components/ui/button";
 import { useDiagnostics } from "@/hooks/use-diagnostics";
@@ -37,12 +37,29 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="container mx-auto p-6">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-      </div>
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex h-14 items-center">
+          <div className="flex items-center gap-4">
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              <span className="hidden sm:inline">Back to site</span>
+            </Link>
+            <div className="h-4 w-px bg-border" />
+            <h1 className="font-semibold">Dashboard</h1>
+          </div>
+          <div className="ml-auto flex items-center gap-4">
+            <UserProfile />
+          </div>
+        </div>
+      </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="container py-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="p-6 border border-border rounded-lg">
           <h2 className="text-xl font-semibold mb-2">AI Chat</h2>
           <p className="text-muted-foreground mb-4">
@@ -72,6 +89,7 @@ export default function DashboardPage() {
               <strong>Email:</strong> {session.user.email}
             </p>
           </div>
+        </div>
         </div>
       </div>
     </div>

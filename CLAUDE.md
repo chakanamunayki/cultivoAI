@@ -110,6 +110,37 @@ animate-bounce (on service card icons on hover)
 
 ## Internationalization (i18n)
 
+### CRITICAL: SSR Hydration Rules
+
+**NEVER use browser APIs in useState initializers.** This causes hydration mismatches.
+
+```typescript
+// ❌ WRONG - causes hydration mismatch
+const [locale, setLocale] = useState(() => {
+  if (typeof window !== "undefined") {
+    return localStorage.getItem("locale") || detectBrowserLocale();
+  }
+  return "es";
+});
+
+// ✅ CORRECT - always initialize with SSR default, update in useEffect
+const [locale, setLocale] = useState<Locale>("es"); // SSR default
+
+useEffect(() => {
+  // Safe to check localStorage/browser AFTER hydration
+  const clientLocale = getStoredLocale() || detectBrowserLocale();
+  if (clientLocale !== locale) {
+    setLocale(clientLocale);
+  }
+}, []);
+```
+
+**Why this matters:**
+- Server renders with default value (no window/localStorage)
+- Client useState initializer runs AGAIN and may return different value
+- React sees mismatch → hydration error → old cached content may persist
+- Changes appear not to take effect even after clearing caches
+
 ### Language Detection
 
 - Detect browser language via `navigator.language` or `Accept-Language` header
@@ -187,44 +218,53 @@ src/
 ├── app/
 │   ├── api/
 │   │   ├── auth/[...all]/        # Better Auth
-│   │   └── chat/route.ts         # Backend AI (OpenRouter)
+│   │   ├── chat/                 # Chat API routes
+│   │   │   ├── route.ts          # Backend AI (OpenRouter)
+│   │   │   ├── gemini/route.ts   # Gemini chat endpoint
+│   │   │   └── conversations/    # Conversation logging
+│   │   ├── leads/route.ts        # Lead capture API
+│   │   └── admin/                # Admin API routes
+│   │       ├── stats/route.ts    # Dashboard statistics
+│   │       ├── leads/            # Lead management
+│   │       ├── conversations/    # Conversation metrics
+│   │       └── export/route.ts   # CSV/JSON export
+│   ├── admin/                    # Admin dashboard (Phase 4)
+│   │   ├── layout.tsx            # Admin layout with nav
+│   │   ├── page.tsx              # Dashboard overview
+│   │   ├── leads/                # Lead management pages
+│   │   ├── conversations/        # Conversation analytics
+│   │   └── export/               # Export functionality
+│   ├── dashboard/                # User dashboard
+│   │   └── page.tsx              # User dashboard page
 │   ├── page.tsx                  # Landing page (Brutalist design)
 │   └── layout.tsx                # Root layout with fonts
 ├── components/
-│   ├── cultivoai/                # CultivoAI landing page components
-│   │   ├── nav.tsx               # Sticky navigation
-│   │   ├── hero.tsx              # Hero split section
-│   │   ├── about.tsx             # Team section (Paul & Rocky)
-│   │   ├── why-us.tsx            # Contrast section (NOT vs YES)
-│   │   ├── services.tsx          # Services grid
-│   │   ├── ai-demos.tsx          # Interactive AI use cases
-│   │   ├── semilla.tsx           # Rocky's fund section
-│   │   ├── partnerships.tsx      # Flexible pricing models
-│   │   ├── projects.tsx          # Portfolio list
-│   │   ├── stories.tsx           # Testimonials
-│   │   ├── footer.tsx            # Footer with CTA
-│   │   ├── marquee.tsx           # Top scrolling banner
-│   │   ├── ai-chat-widget.tsx    # Gemini chat (Client Component)
-│   │   ├── modal.tsx             # Modal wrapper
-│   │   ├── reveal.tsx            # Scroll animation wrapper
-│   │   └── demo-views/           # AI demo visualizations
-│   │       ├── chat-view.tsx
-│   │       ├── crm-view.tsx
-│   │       ├── code-view.tsx
-│   │       ├── dashboard-view.tsx
-│   │       └── mobile-view.tsx
-│   ├── auth/                     # Auth components
-│   └── ui/                       # shadcn/ui utilities (cn, etc.)
+│   ├── landing/                  # CultivoAI landing page components
+│   │   ├── layout/               # Nav, Footer, Marquee
+│   │   ├── sections/             # Page sections
+│   │   ├── demos/                # AI demo visualizations
+│   │   ├── ui/                   # Modals, Reveal, etc.
+│   │   └── ai-chat-widget.tsx    # Gemini chat (Client Component)
+│   ├── auth/                     # Auth components (SignIn, UserProfile)
+│   ├── providers/                # Context providers
+│   └── ui/                       # shadcn/ui components
 ├── content/
 │   ├── es.ts                     # Spanish content
-│   └── en.ts                     # English content
+│   ├── en.ts                     # English content
+│   ├── admin.ts                  # Admin dashboard content (ES/EN)
+│   └── types.ts                  # Content type definitions
+├── types/
+│   └── admin.ts                  # Admin TypeScript types
 ├── hooks/
-│   └── use-locale.ts             # Language detection hook
+│   ├── use-locale.ts             # Language detection hook
+│   └── use-admin-content.ts      # Admin content hook
 └── lib/
-    ├── auth.ts
-    ├── db.ts
-    ├── schema.ts
-    └── utils.ts
+    ├── auth.ts                   # Better Auth config
+    ├── auth-client.ts            # Auth client hooks
+    ├── db.ts                     # Drizzle database
+    ├── schema.ts                 # Database schema
+    └── chat/                     # Chat utilities
+        └── system-prompt.ts      # Gemini system prompt & qualification
 ```
 
 ---

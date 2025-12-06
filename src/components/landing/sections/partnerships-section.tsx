@@ -25,9 +25,13 @@ function getPartnershipIcon(iconName: string): LucideIcon {
   return PARTNERSHIP_ICON_MAP[iconName] || Briefcase;
 }
 
-export function PartnershipsSection() {
+interface PartnershipsSectionProps {
+  onOpenChatGeneral: () => void;
+}
+
+export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionProps) {
   const { content } = useLocale();
-  const { openPartnershipModal, openContactModal } = useModal();
+  const { openPartnershipModal } = useModal();
 
   const handlePartnershipClick = (partnership: Partnership) => {
     openPartnershipModal(partnership);
@@ -70,8 +74,8 @@ export function PartnershipsSection() {
                       {partner.tagline}
                     </p>
                   </div>
-                  <div className="bg-[#A855F7] text-white font-black uppercase text-xs p-2 text-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    Ver Detalles
+                  <div className="bg-black text-white font-black uppercase text-xs p-2 text-center border-t-4 border-black">
+                    Ver Detalles →
                   </div>
                 </div>
               </Reveal>
@@ -81,7 +85,7 @@ export function PartnershipsSection() {
 
         <Reveal delay={300} className="mt-12 text-center">
           <button
-            onClick={openContactModal}
+            onClick={onOpenChatGeneral}
             className="bg-black text-white border-4 border-transparent px-8 py-4 font-black uppercase text-lg shadow-[8px_8px_0px_0px_#A855F7] hover:bg-white hover:text-black hover:border-black hover:shadow-[4px_4px_0px_0px_#A855F7] transition-all"
           >
             Presupuesto Limitado? Hablemos.
