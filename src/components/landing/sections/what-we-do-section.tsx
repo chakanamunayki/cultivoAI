@@ -53,53 +53,62 @@ export function WhatWeDoSection({ onScrollToServices }: WhatWeDoSectionProps) {
           </div>
         </Reveal>
 
-        {/* Two columns: Optimize & Expand - Improved format */}
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16">
+        {/* Two columns: Optimize & Expand - Card format with prominent styling */}
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16">
           {whatWeDo.columns.map((column, columnIndex) => {
             const IconComponent = columnIcons[columnIndex] ?? Settings;
+            const isOptimize = columnIndex === 0;
             return (
-              <Reveal key={column.title} delay={columnIndex * 100 + 150}>
+              <Reveal key={column.title} delay={columnIndex * 150 + 150}>
                 <div
-                  className={`h-full border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all ${
-                    columnIndex === 0 ? "bg-[#FFC805]" : "bg-[#A855F7]"
+                  className={`h-full border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all duration-300 ${
+                    isOptimize ? "bg-[#FFC805]" : "bg-[#A855F7]"
                   }`}
                 >
-                  {/* Image placeholder header */}
-                  <div className="h-32 md:h-40 border-b-4 border-black overflow-hidden relative bg-black/10">
-                    <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Header with icon and title */}
+                  <div className="p-6 md:p-8 border-b-4 border-black flex items-center gap-4 md:gap-6">
+                    <div
+                      className={`w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
+                        isOptimize ? "bg-black" : "bg-white"
+                      }`}
+                    >
                       <IconComponent
-                        size={64}
-                        className={columnIndex === 0 ? "text-black/20" : "text-white/20"}
-                        strokeWidth={1.5}
+                        size={36}
+                        className={isOptimize ? "text-[#FFC805]" : "text-[#A855F7]"}
+                        strokeWidth={2.5}
                       />
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/20 to-transparent" />
-                  </div>
-
-                  <div className="p-6 md:p-8">
                     <h3
-                      className={`text-2xl md:text-3xl font-black uppercase mb-6 ${
-                        columnIndex === 0 ? "text-black" : "text-white"
+                      className={`text-3xl md:text-4xl font-black uppercase tracking-tight ${
+                        isOptimize ? "text-black" : "text-white"
                       }`}
                     >
                       {column.title}
                     </h3>
-                    <ul className="space-y-3">
+                  </div>
+
+                  {/* Items list with better spacing and visibility */}
+                  <div className="p-6 md:p-8">
+                    <ul className="space-y-4 md:space-y-5">
                       {column.items.map((item, itemIndex) => (
                         <li
                           key={itemIndex}
-                          className={`flex gap-3 items-start ${
-                            columnIndex === 0 ? "text-black" : "text-white"
+                          className={`flex gap-4 items-center group ${
+                            isOptimize ? "text-black" : "text-white"
                           }`}
                         >
-                          <Check
-                            size={20}
-                            className={`shrink-0 mt-0.5 ${
-                              columnIndex === 0 ? "text-black" : "text-white"
+                          <div
+                            className={`w-8 h-8 flex items-center justify-center border-2 border-current shrink-0 group-hover:scale-110 transition-transform ${
+                              isOptimize ? "bg-black/10" : "bg-white/20"
                             }`}
-                            strokeWidth={3}
-                          />
-                          <span className="text-sm md:text-base font-bold">
+                          >
+                            <Check
+                              size={18}
+                              className="shrink-0"
+                              strokeWidth={3}
+                            />
+                          </div>
+                          <span className="text-base md:text-lg font-bold leading-snug">
                             {item}
                           </span>
                         </li>

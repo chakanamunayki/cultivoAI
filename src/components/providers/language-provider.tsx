@@ -81,10 +81,12 @@ interface LanguageProviderProps {
 
 export function LanguageProvider({ children, defaultLocale }: LanguageProviderProps) {
   // CRITICAL: Always initialize with SSR_DEFAULT_LOCALE to match server render
-  // This prevents hydration mismatch - we update to the real locale after mount
+  // This prevents hydration mismatch - we detect and update to client locale after mount
   const [locale, setLocaleState] = useState<Locale>(defaultLocale ?? SSR_DEFAULT_LOCALE);
 
-  // After hydration, sync to the actual client locale
+  // Two-pass rendering to avoid hydration mismatch:
+  // 1. Server and client both render with SSR_DEFAULT_LOCALE (no mismatch)
+  // 2. After mount, detect client locale and update if different
   useEffect(() => {
     // Now safe to check localStorage/browser and update
     const clientLocale = getClientLocale(defaultLocale);

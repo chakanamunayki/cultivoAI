@@ -14,7 +14,7 @@ export const es: SiteContent = {
   ],
 
   marquee:
-    "Paul & Rocky — Acceso Directo — Sin Intermediarios — IA con Proposito — Colombia para el Mundo —",
+    "Paul & Rocky 🇬🇧🇨🇴 — Chatbots $100 — Automatización — Marketing IA — Dashboards — Web+IA — Medellín→Mundo — Win-Win Siempre — Trato Directo — Proyectos de Impacto — Respuesta 24hrs —",
 
   hero: {
     tagline: "Padre e Hijo",
@@ -428,6 +428,24 @@ export const es: SiteContent = {
         icon: "Sprout",
         badge: "Descuentos disponibles",
         chatButtonLabel: "Hablemos",
+        detailsButtonLabel: "Saber mas",
+        whoWeHelp: [
+          "Granjas urbanas y operaciones de agricultura vertical",
+          "Colectivos de agricultura regenerativa y organica",
+          "Cooperativas agricolas y granjas familiares",
+          "Startups AgTech desarrollando soluciones sostenibles",
+        ],
+        howWeHelp: [
+          "Monitoreo de cultivos con IA y prediccion de rendimiento",
+          "Sistemas automatizados de riego y gestion de nutrientes",
+          "Optimizacion de cadena de suministro y acceso a mercados",
+          "Engagement de clientes y plataformas directo al consumidor",
+        ],
+        exampleProjects: [
+          "Bot de WhatsApp para pedidos granja-a-mesa",
+          "Dashboard IoT para monitoreo de invernaderos",
+          "Analitica predictiva para planificacion de cosechas",
+        ],
       },
       {
         name: "Bienestar holistico",
@@ -435,6 +453,24 @@ export const es: SiteContent = {
         icon: "Heart",
         badge: "Descuentos disponibles",
         chatButtonLabel: "Hablemos",
+        detailsButtonLabel: "Saber mas",
+        whoWeHelp: [
+          "Terapeutas y consejeros independientes",
+          "Estudios de yoga y centros de meditacion",
+          "Practicantes de medicina funcional",
+          "Centros de retiro de bienestar",
+        ],
+        howWeHelp: [
+          "Programacion de citas y gestion de clientes",
+          "Seguimiento personalizado del viaje de bienestar",
+          "Herramientas de intake y evaluacion asistidas por IA",
+          "Construccion de comunidad y plataformas de cursos",
+        ],
+        exampleProjects: [
+          "Chatbot de recordatorios y progreso de meditacion",
+          "Automatizacion de intake con seguimientos personalizados",
+          "Plataforma de comunidad de bienestar con coaching IA",
+        ],
       },
       {
         name: "Educacion alternativa",
@@ -442,6 +478,24 @@ export const es: SiteContent = {
         icon: "GraduationCap",
         badge: "Descuentos disponibles",
         chatButtonLabel: "Hablemos",
+        detailsButtonLabel: "Saber mas",
+        whoWeHelp: [
+          "Familias y cooperativas de homeschooling",
+          "Microescuelas y pods de aprendizaje",
+          "Creadores de contenido educativo",
+          "Plataformas de aprendizaje alternativo",
+        ],
+        howWeHelp: [
+          "Generacion y seguimiento de curriculo personalizado",
+          "Asistentes de tutoria IA para aprendizaje a ritmo propio",
+          "Dashboards de monitoreo de progreso para padres",
+          "Herramientas de coordinacion comunitaria y recursos compartidos",
+        ],
+        exampleProjects: [
+          "Companero de estudio IA para estudiantes homeschool",
+          "Automatizacion de planificacion curricular",
+          "Plataforma de comunidad de padres con recursos compartidos",
+        ],
       },
       {
         name: "Autosuficiencia",
@@ -449,6 +503,24 @@ export const es: SiteContent = {
         icon: "Home",
         badge: "Descuentos disponibles",
         chatButtonLabel: "Hablemos",
+        detailsButtonLabel: "Saber mas",
+        whoWeHelp: [
+          "Homesteaders y practicantes de permacultura",
+          "Comunidades off-grid y de vida sostenible",
+          "Redes locales de alimentos y grupos de compra",
+          "Espacios maker y grupos de intercambio de habilidades",
+        ],
+        howWeHelp: [
+          "Gestion del conocimiento y plataformas de intercambio de habilidades",
+          "Seguimiento de recursos y gestion de inventario",
+          "Coordinacion comunitaria y sistemas de trueque",
+          "Planificacion estacional y recordatorios de actividades",
+        ],
+        exampleProjects: [
+          "Gestor de tareas de homestead con recordatorios estacionales",
+          "Plataforma de intercambio y trueque local",
+          "Directorio comunitario de intercambio de habilidades",
+        ],
       },
       {
         name: "Startups con mision",
@@ -456,6 +528,24 @@ export const es: SiteContent = {
         icon: "Rocket",
         badge: "Descuentos disponibles",
         chatButtonLabel: "Hablemos",
+        detailsButtonLabel: "Saber mas",
+        whoWeHelp: [
+          "Empresas sociales y B-corps",
+          "Startups tech enfocadas en impacto",
+          "ONGs con programas innovadores",
+          "Organizaciones comunitarias escalando su impacto",
+        ],
+        howWeHelp: [
+          "Desarrollo de MVP y prototipado rapido",
+          "Automatizacion para hacer mas con menos",
+          "Soporte al cliente y engagement potenciado por IA",
+          "Insights de datos y medicion de impacto",
+        ],
+        exampleProjects: [
+          "Automatizacion de engagement de donantes",
+          "Dashboard de reportes de impacto",
+          "Plataforma de matching y coordinacion comunitaria",
+        ],
       },
     ],
     cta: "Te identificas? Nos encantaria saber mas sobre lo que estas construyendo.",

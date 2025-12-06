@@ -4,7 +4,6 @@ import { useCallback, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { MessageSquare } from "lucide-react";
 import { Footer } from "@/components/landing/layout/footer";
-import { Marquee } from "@/components/landing/layout/marquee";
 import { Nav } from "@/components/landing/layout/nav";
 import { AboutSection } from "@/components/landing/sections/about-section";
 import { HeroSection } from "@/components/landing/sections/hero-section";
@@ -269,10 +268,7 @@ export default function Home() {
         <ChatButtonPlaceholder onClick={handlePlaceholderClick} />
       )}
 
-      {/* Top Bar Marquee */}
-      <Marquee />
-
-      {/* Navigation */}
+      {/* Navigation with integrated ticker */}
       <Nav onScrollTo={scrollTo} onOpenChat={handleOpenChatGeneral} />
 
       {/* Section 1: Hero - Eager loaded (above fold) */}

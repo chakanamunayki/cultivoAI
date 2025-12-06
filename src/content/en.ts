@@ -14,7 +14,7 @@ export const en: SiteContent = {
   ],
 
   marquee:
-    "Paul & Rocky — Direct Access — No Middlemen — AI for Purpose — Colombia to the World —",
+    "Paul & Rocky 🇬🇧🇨🇴 — Chatbots $100 — Automation — AI Marketing — Dashboards — Web+AI — Medellín→World — Win-Win Always — Direct Deal — Impact Projects — 24hr Reply —",
 
   hero: {
     tagline: "Father and Son",
@@ -428,6 +428,24 @@ export const en: SiteContent = {
         icon: "Sprout",
         badge: "Discounts available",
         chatButtonLabel: "Let's talk",
+        detailsButtonLabel: "Learn more",
+        whoWeHelp: [
+          "Urban farms and vertical agriculture operations",
+          "Regenerative and organic farming collectives",
+          "Agricultural cooperatives and family farms",
+          "AgTech startups developing sustainable solutions",
+        ],
+        howWeHelp: [
+          "AI-powered crop monitoring and yield prediction",
+          "Automated irrigation and nutrient management systems",
+          "Supply chain optimization and market access tools",
+          "Customer engagement and direct-to-consumer platforms",
+        ],
+        exampleProjects: [
+          "WhatsApp bot for farm-to-table ordering",
+          "IoT dashboard for greenhouse monitoring",
+          "Predictive analytics for harvest planning",
+        ],
       },
       {
         name: "Holistic wellness",
@@ -435,6 +453,24 @@ export const en: SiteContent = {
         icon: "Heart",
         badge: "Discounts available",
         chatButtonLabel: "Let's talk",
+        detailsButtonLabel: "Learn more",
+        whoWeHelp: [
+          "Independent therapists and counselors",
+          "Yoga studios and meditation centers",
+          "Functional medicine practitioners",
+          "Wellness retreat centers",
+        ],
+        howWeHelp: [
+          "Appointment scheduling and client management",
+          "Personalized wellness journey tracking",
+          "AI-assisted intake and assessment tools",
+          "Community building and course platforms",
+        ],
+        exampleProjects: [
+          "Meditation reminder and progress chatbot",
+          "Client intake automation with personalized follow-ups",
+          "Wellness community platform with AI coaching",
+        ],
       },
       {
         name: "Alternative education",
@@ -442,6 +478,24 @@ export const en: SiteContent = {
         icon: "GraduationCap",
         badge: "Discounts available",
         chatButtonLabel: "Let's talk",
+        detailsButtonLabel: "Learn more",
+        whoWeHelp: [
+          "Homeschooling families and co-ops",
+          "Microschools and learning pods",
+          "Educational content creators",
+          "Alternative learning platforms",
+        ],
+        howWeHelp: [
+          "Personalized curriculum generation and tracking",
+          "AI tutoring assistants for self-paced learning",
+          "Progress monitoring dashboards for parents",
+          "Community coordination and resource sharing tools",
+        ],
+        exampleProjects: [
+          "AI study buddy for homeschool students",
+          "Curriculum planning automation",
+          "Parent community platform with resource sharing",
+        ],
       },
       {
         name: "Self-sufficiency",
@@ -449,6 +503,24 @@ export const en: SiteContent = {
         icon: "Home",
         badge: "Discounts available",
         chatButtonLabel: "Let's talk",
+        detailsButtonLabel: "Learn more",
+        whoWeHelp: [
+          "Homesteaders and permaculture practitioners",
+          "Off-grid and sustainable living communities",
+          "Local food networks and buying clubs",
+          "Maker spaces and skill-sharing groups",
+        ],
+        howWeHelp: [
+          "Knowledge management and skill-sharing platforms",
+          "Resource tracking and inventory management",
+          "Community coordination and barter systems",
+          "Seasonal planning and activity reminders",
+        ],
+        exampleProjects: [
+          "Homestead task manager with seasonal reminders",
+          "Local exchange and barter platform",
+          "Skill-sharing community directory",
+        ],
       },
       {
         name: "Mission-driven startups",
@@ -456,6 +528,24 @@ export const en: SiteContent = {
         icon: "Rocket",
         badge: "Discounts available",
         chatButtonLabel: "Let's talk",
+        detailsButtonLabel: "Learn more",
+        whoWeHelp: [
+          "Social enterprises and B-corps",
+          "Impact-focused tech startups",
+          "Non-profits with innovative programs",
+          "Community organizations scaling their impact",
+        ],
+        howWeHelp: [
+          "MVP development and rapid prototyping",
+          "Automation to do more with less",
+          "AI-powered customer support and engagement",
+          "Data insights and impact measurement",
+        ],
+        exampleProjects: [
+          "Donor engagement automation",
+          "Impact reporting dashboard",
+          "Community matching and coordination platform",
+        ],
       },
     ],
     cta: "Sound like you? We'd love to hear more about what you're building.",

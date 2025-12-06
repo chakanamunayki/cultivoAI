@@ -200,7 +200,7 @@ EXCHANGERATE_API_KEY=your-api-key-here
 - `src/lib/currency/exchange-rates.ts`
 - `src/hooks/use-currency.ts`
 - `src/components/ui/price.tsx`
-- `src/app/api/currency/rates/route.ts`
+- `src/app/api/currency/rhave done ates/route.ts`
 - `src/app/api/admin/currency/route.ts`
 - `src/app/admin/currency/page.tsx`
 

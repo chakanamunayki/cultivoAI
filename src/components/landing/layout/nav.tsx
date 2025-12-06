@@ -68,9 +68,15 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
     setExpandedSubmenu(expandedSubmenu === submenu ? null : submenu);
   };
 
+  // Use client-only rendering for marquee to avoid hydration mismatch
+  const isClient = useSyncExternalStore(emptySubscribe, getSnapshot, getServerSnapshot);
+
+  // Duplicate the marquee text for seamless infinite scroll
+  const marqueeText = isClient ? `${content.marquee} ${content.marquee} ` : "";
+
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b-4 border-black">
-      <div className="flex justify-between items-stretch relative bg-white z-50">
+    <nav className="sticky top-0 z-50 bg-white">
+      <div className="flex justify-between items-stretch relative bg-white z-50 border-b-4 border-black">
         {/* Logo Section */}
         <div
           className="p-3 md:p-4 border-r-4 border-black flex items-center gap-3 cursor-pointer group hover:bg-gray-50 transition-colors"
@@ -240,6 +246,13 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
           )}
         </div>
       )}
+
+      {/* Sticky Ticker under nav */}
+      <div className="bg-black text-white overflow-hidden whitespace-nowrap py-2 md:py-2.5 border-b-4 border-black">
+        <div className="animate-marquee inline-block font-bold tracking-wide uppercase text-xs md:text-sm">
+          {marqueeText}
+        </div>
+      </div>
     </nav>
   );
 }

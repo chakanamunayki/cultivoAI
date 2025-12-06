@@ -80,13 +80,25 @@ export function HeroSection({ onOpenChatBooking, onOpenChatStory }: HeroSectionP
           />
 
           <Reveal delay={200} className="relative z-10 w-full max-w-md">
-            <div className="bg-white border-4 border-black p-6 md:p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] md:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] rotate-3 hover:rotate-0 transition-transform duration-500 relative z-20">
-              <h3 className="font-black text-2xl md:text-3xl mb-4 bg-black text-white inline-block px-3 py-1 -rotate-2">
-                {content.hero.noDrama}
-              </h3>
-              <p className="font-bold text-lg md:text-xl leading-tight border-t-4 border-black pt-4">
-                {content.hero.noDramaText}
-              </p>
+            <div className="bg-white border-4 border-black p-8 md:p-10 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] md:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] rotate-3 hover:rotate-0 transition-transform duration-500 relative z-20">
+              <div className="space-y-4">
+                <p className="font-black text-xl md:text-2xl leading-tight uppercase tracking-tight">
+                  For businesses.
+                </p>
+                <p className="font-black text-xl md:text-2xl leading-tight uppercase tracking-tight">
+                  For impact projects.
+                </p>
+                <div className="border-t-4 border-black pt-4 mt-4">
+                  <p className="font-bold text-base md:text-lg leading-snug italic">
+                    Without the complexity or high costs.
+                  </p>
+                </div>
+                <div className="border-t-4 border-[#A855F7] pt-4 mt-4">
+                  <p className="font-black text-lg md:text-xl leading-tight">
+                    We help. We share. We grow together.
+                  </p>
+                </div>
+              </div>
             </div>
           </Reveal>
         </div>

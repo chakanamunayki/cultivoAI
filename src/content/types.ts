@@ -160,6 +160,11 @@ export interface Sector {
   icon: string;
   badge?: string;
   chatButtonLabel?: string;
+  // Extended details for popup
+  whoWeHelp?: string[];
+  howWeHelp?: string[];
+  exampleProjects?: string[];
+  detailsButtonLabel?: string;
 }
 
 export interface WhoWeHelpContent {
