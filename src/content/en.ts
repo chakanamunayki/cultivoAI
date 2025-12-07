@@ -19,7 +19,14 @@ export const en: SiteContent = {
   hero: {
     tagline: "FOR THE ONES CHANGING THINGS",
     line1: "AI INTEGRATION.",
-    services: ["CHATBOTS", "AUTOMATION", "MARKETING", "BI DASHBOARDS"],
+    services: [
+      "Workflow Automation",
+      "AI Assistants & Chatbots",
+      "Business Intelligence",
+      "Content Systems",
+      "Website Development + AI",
+      "Startup Advisory"
+    ],
     servicesDone: "Done.",
     audience: ["Farmers.", "Self sustainability.", "Innovation.", "Holistic Healers.", "Educators.", "Sustainable Builders."],
     line3: "Impact rates. Human approach. Father & son.",

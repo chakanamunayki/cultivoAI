@@ -140,6 +140,8 @@ export function AIChatWidget({
           return greetings.partnership.replace("{partnership}", ctx.partnershipName || "");
         case "qualification":
           return greetings.qualification;
+        case "impact":
+          return greetings.impact;
         default:
           return greetings.general;
       }

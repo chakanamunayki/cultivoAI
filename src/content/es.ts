@@ -19,7 +19,14 @@ export const es: SiteContent = {
   hero: {
     tagline: "PARA LOS QUE ESTÁN CAMBIANDO LAS COSAS",
     line1: "INTEGRACIÓN DE IA.",
-    services: ["CHATBOTS", "AUTOMATIZACIÓN", "MARKETING", "DASHBOARDS BI"],
+    services: [
+      "Automatización de Flujos",
+      "Asistentes IA y Chatbots",
+      "Inteligencia de Negocios",
+      "Sistemas de Contenido",
+      "Desarrollo Web con IA",
+      "Asesoría para Startups"
+    ],
     servicesDone: "Hecho.",
     audience: ["Agricultores.", "Autosuficiencia.", "Innovación.", "Sanadores Holísticos.", "Educadores.", "Constructores Sostenibles."],
     line3: "Tarifas de impacto. Enfoque humano. Padre e hijo.",

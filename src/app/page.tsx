@@ -227,6 +227,10 @@ export default function Home() {
     handleOpenChat({ type: "qualification" });
   }, [handleOpenChat]);
 
+  const handleOpenChatImpact = useCallback(() => {
+    handleOpenChat({ type: "impact" });
+  }, [handleOpenChat]);
+
   // Handler for sector-specific chat
   const handleOpenChatWithSector = useCallback(
     (_sectorName: string) => {
@@ -275,6 +279,8 @@ export default function Home() {
       <HeroSection
         onOpenChatBooking={handleOpenChatBooking}
         onOpenChatStory={handleOpenChatStory}
+        onOpenChatImpact={handleOpenChatImpact}
+        onOpenServiceModal={handleOpenServiceModal}
       />
 
       {/* Section 2: About - Eager loaded (above fold) */}

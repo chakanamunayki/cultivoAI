@@ -1,8 +1,10 @@
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 import { ModalProvider } from "@/components/landing/ui/modal-provider";
 import { LanguageProvider } from "@/components/providers/language-provider";
 import { Toaster } from "@/components/ui/sonner";
+import type { Locale } from "@/content/types";
 import type { Metadata } from "next";
 
 const spaceGrotesk = Space_Grotesk({
@@ -22,6 +24,31 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
 });
+
+/**
+ * Detect locale from Accept-Language header
+ * Server-side detection prevents hydration mismatch
+ */
+async function detectServerLocale(): Promise<Locale> {
+  const headersList = await headers();
+  const acceptLanguage = headersList.get("accept-language") || "";
+
+  // Parse Accept-Language header (e.g., "es-CO,es;q=0.9,en;q=0.8")
+  const languages = acceptLanguage
+    .split(",")
+    .map((lang: string) => lang.split(";")[0]?.trim().toLowerCase())
+    .filter((lang): lang is string => Boolean(lang));
+
+  // Check for Spanish locales
+  for (const lang of languages) {
+    if (lang.startsWith("es")) {
+      return "es";
+    }
+  }
+
+  // Default to English
+  return "en";
+}
 
 export const metadata: Metadata = {
   title: {
@@ -88,13 +115,16 @@ const jsonLd = {
   knowsLanguage: ["es", "en"],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Detect locale server-side to prevent hydration mismatch
+  const serverLocale = await detectServerLocale();
+
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang={serverLocale} suppressHydrationWarning>
       <head>
         {/* Preconnect to external resources for faster loading */}
         <link rel="preconnect" href="https://images.unsplash.com" />
@@ -109,7 +139,7 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
-        <LanguageProvider>
+        <LanguageProvider defaultLocale={serverLocale}>
           <ModalProvider>
             {children}
           </ModalProvider>

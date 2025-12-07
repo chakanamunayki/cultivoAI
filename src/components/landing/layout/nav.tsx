@@ -86,7 +86,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
             <Sprout size={24} fill="currentColor" />
           </div>
           <span className="font-black text-2xl tracking-tight leading-none">
-            Cultivo<span className="text-[#A855F7]">AI</span>
+            Cultivo<span className="text-[#43B316]">AI</span>
           </span>
         </div>
 

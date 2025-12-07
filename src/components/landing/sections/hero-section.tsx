@@ -9,9 +9,10 @@ interface HeroSectionProps {
   onOpenChatBooking: () => void;
   onOpenChatStory: () => void;
   onOpenChatImpact: () => void;
+  onOpenServiceModal: (serviceTitle: string) => void;
 }
 
-export function HeroSection({ onOpenChatBooking, onOpenChatStory, onOpenChatImpact }: HeroSectionProps) {
+export function HeroSection({ onOpenChatBooking, onOpenChatStory, onOpenChatImpact, onOpenServiceModal }: HeroSectionProps) {
   const { content } = useLocale();
 
   return (
@@ -44,12 +45,13 @@ export function HeroSection({ onOpenChatBooking, onOpenChatStory, onOpenChatImpa
               {content.hero.line1}
             </motion.h1>
 
-            {/* Services: Brutalist tags that stagger in */}
+            {/* Services: Brutalist tags that stagger in and open modals */}
             <div className="flex flex-wrap gap-3 mb-6 md:mb-8 items-center">
               {content.hero.services?.map((service, index) => (
-                <motion.span
+                <motion.button
                   key={index}
-                  className="bg-white border-2 border-black px-3 py-1.5 md:px-4 md:py-2 font-black uppercase text-xs md:text-sm shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all inline-block"
+                  onClick={() => onOpenServiceModal(service)}
+                  className="bg-white border-2 border-black px-3 py-1.5 md:px-4 md:py-2 font-black uppercase text-xs md:text-sm shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all inline-block cursor-pointer"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{
@@ -59,7 +61,7 @@ export function HeroSection({ onOpenChatBooking, onOpenChatStory, onOpenChatImpa
                   }}
                 >
                   {service}
-                </motion.span>
+                </motion.button>
               ))}
               <motion.span
                 className="font-black text-xl md:text-2xl text-black"

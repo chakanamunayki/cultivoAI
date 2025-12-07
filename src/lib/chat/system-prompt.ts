@@ -433,6 +433,10 @@ export function buildSystemPrompt(
         es: "El usuario quiere saber si somos el fit correcto. Se honesto sobre nuestras fortalezas y limitaciones.",
         en: "The user wants to know if we're the right fit. Be honest about our strengths and limitations.",
       },
+      impact: {
+        es: "El usuario hizo clic en 'Propósito antes que beneficio' y está interesado en proyectos de impacto. Enfócate en entender su proyecto y cómo podemos ayudar.",
+        en: "The user clicked 'Purpose over profit' and is interested in impact projects. Focus on understanding their project and how we can help.",
+      },
     };
     contextIntro = isSpanish
       ? `\n**Contexto de Entrada:** ${contextMap[context.entryContext].es}\n`
