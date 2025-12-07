@@ -14,23 +14,23 @@ export const en: SiteContent = {
   ],
 
   marquee:
-    "Paul & Rocky 🇬🇧🇨🇴 — Chatbots $100 — Automation — AI Marketing — Dashboards — Web+AI — Medellín→World — Win-Win Always — Direct Deal — Impact Projects — 24hr Reply —",
+    "Paul & Rocky 🇬🇧🇨🇴  •  Chatbots $100  •  Automation  •  AI Marketing  •  Dashboards  •  Web+AI  •  Medellín→World  •  Win-Win Always  •  Direct Deal  •  Impact Projects  •  24hr Reply  •  ",
 
   hero: {
-    tagline: "Father and Son",
-    headline: "AI INTEGRATION MADE SIMPLE.",
-    subheadline:
-      "For businesses. For impact projects.\nWithout the complexity or high costs.\nWe help. We share. We grow together.",
+    tagline: "FOR THE ONES CHANGING THINGS",
+    line1: "AI INTEGRATION.",
+    services: ["CHATBOTS", "AUTOMATION", "MARKETING", "BI DASHBOARDS"],
+    servicesDone: "Done.",
+    audience: ["Farmers.", "Self sustainability.", "Innovation.", "Holistic Healers.", "Educators.", "Sustainable Builders."],
+    line3: "Impact rates. Human approach. Father & son.",
     cta: "Let's talk",
     secondaryCta: "Read our story",
     noDrama: "NO DRAMA.",
     noDramaText:
       "We help purpose-driven businesses use AI without getting lost in the complexity.",
-    footerBar: {
-      price: "IMPACT PROJECT? SPECIAL RATES.",
-      impactRates: "Not all valuable work comes with big budgets. We offer significant discounts for agritech, wellness, education, self-sufficiency, and mission-driven startups.",
-      familyTagline: "Win-win or no deal.",
-      ctaButton: "Let's talk →",
+    impactSection: {
+      text: "Purpose over profit. Always.",
+      cta: "Let's talk",
     },
   },
 
@@ -166,7 +166,7 @@ export const en: SiteContent = {
         icon: "Users",
         title: "Rocky Learns in Every Step",
         description:
-          "This isn't just a business. It's an educational project. Rocky participates in every project in some way — sometimes leading, sometimes learning. When you work with us, you're contributing to his real-world education.",
+          "This isn't just a business. It's an educational project. Rocky participates in every project in some way - sometimes leading, sometimes learning. When you work with us, you're contributing to his real-world education.",
         isFullWidth: true,
       },
     ],
@@ -215,7 +215,7 @@ export const en: SiteContent = {
     yesItems: [
       "A dad teaching his son to build real things.",
       "People who've failed at projects, learned, and keep trying.",
-      "Integrators — we connect tools, we don't reinvent the wheel.",
+      "Integrators - we connect tools, we don't reinvent the wheel.",
       "Colombians working for the world from here.",
     ],
   },
@@ -557,7 +557,7 @@ export const en: SiteContent = {
     title: "Semilla Fund",
     subtitle: "Rocky's Journey",
     about:
-      "I'm 14 years old. I turn 15 in January. I still don't know exactly what I want to do with my life, and I think that's okay. But I do know some things: I like to build. My dad is teaching me to make things with AI — chatbots, automations, stuff like that. Sometimes he teaches me. Sometimes I teach him.",
+      "I'm 14 years old. I turn 15 in January. I still don't know exactly what I want to do with my life, and I think that's okay. But I do know some things: I like to build. My dad is teaching me to make things with AI - chatbots, automations, stuff like that. Sometimes he teaches me. Sometimes I teach him.",
     tiers: [
       { name: "Seed ($10-50)", description: "Progress updates, name on supporters page" },
       { name: "Sprout ($50-200)", description: "Early access to tools, input on features" },
@@ -793,7 +793,7 @@ export const en: SiteContent = {
       },
       {
         number: "2",
-        title: "Initial conversation — 15 to 30 minutes",
+        title: "Initial conversation - 15 to 30 minutes",
         description:
           "Video call or WhatsApp, whatever you prefer. We want to understand your real situation, not sell you something.",
       },
@@ -892,6 +892,8 @@ export const en: SiteContent = {
         "Hi! You're interested in learning more about our {partnership} model. Every project is different! What's your name? And tell me about your project so we can explore the best options.",
       qualification:
         "Hi! Let's see if we're the right fit to work together. What's your name? And tell me about your business and what you're looking to achieve.",
+      impact:
+        "Hi! I clicked 'Purpose over profit' I'm interested in learning about how you can help.",
       formFallback: "Prefer to fill out a form? Click here.",
     },
   },
@@ -914,7 +916,7 @@ export const en: SiteContent = {
       "Website with AI",
       "Startup advisory",
       "Semilla Fund (small projects)",
-      "Not sure — need guidance",
+      "Not sure - need guidance",
       "Other",
     ],
     descriptionLabel: "Tell us briefly about your project",

@@ -15,7 +15,8 @@ export type ChatContextType =
   | "semilla"
   | "service"
   | "partnership"
-  | "qualification";
+  | "qualification"
+  | "impact";
 
 export interface ChatContext {
   type: ChatContextType;
@@ -28,22 +29,23 @@ export interface NavItem {
   href: string;
 }
 
-export interface HeroFooterBar {
-  price: string;
-  impactRates: string;
-  familyTagline: string;
-  ctaButton: string;
+export interface ImpactSection {
+  text: string;
+  cta: string;
 }
 
 export interface HeroCopy {
   tagline: string;
-  headline: string;
-  subheadline: string;
+  line1: string;
+  services: string[];
+  servicesDone: string;
+  audience: string[];
+  line3: string;
   cta: string;
   secondaryCta: string;
   noDrama: string;
   noDramaText: string;
-  footerBar: HeroFooterBar;
+  impactSection: ImpactSection;
 }
 
 export interface TeamMemberBio {
@@ -234,6 +236,7 @@ export interface ChatContextualGreetings {
   service: string; // Use {service} as placeholder for service title
   partnership: string; // Use {partnership} as placeholder for partnership name
   qualification: string;
+  impact: string;
   formFallback: string; // "Prefer a form?" prompt
 }
 

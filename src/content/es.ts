@@ -14,23 +14,23 @@ export const es: SiteContent = {
   ],
 
   marquee:
-    "Paul & Rocky 🇬🇧🇨🇴 — Chatbots $100 — Automatización — Marketing IA — Dashboards — Web+IA — Medellín→Mundo — Win-Win Siempre — Trato Directo — Proyectos de Impacto — Respuesta 24hrs —",
+    "Paul & Rocky 🇬🇧🇨🇴  •  Chatbots $100  •  Automatización  •  Marketing IA  •  Dashboards  •  Web+IA  •  Medellín→Mundo  •  Win-Win Siempre  •  Trato Directo  •  Proyectos de Impacto  •  Respuesta 24hrs  •  ",
 
   hero: {
-    tagline: "Padre e Hijo",
-    headline: "INTEGRACION DE IA SIMPLIFICADA.",
-    subheadline:
-      "Para negocios. Para proyectos de impacto.\nSin complejidad ni costos inflados.\nAyudamos. Compartimos. Crecemos juntos.",
+    tagline: "PARA LOS QUE ESTÁN CAMBIANDO LAS COSAS",
+    line1: "INTEGRACIÓN DE IA.",
+    services: ["CHATBOTS", "AUTOMATIZACIÓN", "MARKETING", "DASHBOARDS BI"],
+    servicesDone: "Hecho.",
+    audience: ["Agricultores.", "Autosuficiencia.", "Innovación.", "Sanadores Holísticos.", "Educadores.", "Constructores Sostenibles."],
+    line3: "Tarifas de impacto. Enfoque humano. Padre e hijo.",
     cta: "Hablemos",
     secondaryCta: "Conoce nuestra historia",
     noDrama: "SIN DRAMA.",
     noDramaText:
       "Ayudamos a negocios con proposito a usar IA sin perderse en la complejidad.",
-    footerBar: {
-      price: "¿PROYECTO DE IMPACTO? TARIFAS ESPECIALES.",
-      impactRates: "No todos los trabajos valiosos vienen con presupuestos grandes. Ofrecemos descuentos significativos para agritech, wellness, educación, autosuficiencia y startups con misión.",
-      familyTagline: "Win-win o no hay trato.",
-      ctaButton: "Hablemos →",
+    impactSection: {
+      text: "Propósito antes que beneficio. Siempre.",
+      cta: "Hablemos",
     },
   },
 
@@ -166,7 +166,7 @@ export const es: SiteContent = {
         icon: "Users",
         title: "Rocky Aprende en Cada Paso",
         description:
-          "Este no es solo un negocio. Es un proyecto educativo. Rocky participa en cada proyecto de alguna forma — a veces liderando, a veces aprendiendo. Cuando trabajas con nosotros, estas contribuyendo a su aprendizaje real.",
+          "Este no es solo un negocio. Es un proyecto educativo. Rocky participa en cada proyecto de alguna forma - a veces liderando, a veces aprendiendo. Cuando trabajas con nosotros, estas contribuyendo a su aprendizaje real.",
         isFullWidth: true,
       },
     ],
@@ -215,7 +215,7 @@ export const es: SiteContent = {
     yesItems: [
       "Un papa ensenandole a su hijo a construir cosas reales.",
       "Gente que ha quebrado proyectos, aprendido, y sigue intentando.",
-      "Integradores — conectamos herramientas, no reinventamos la rueda.",
+      "Integradores - conectamos herramientas, no reinventamos la rueda.",
       "Colombianos trabajando para el mundo desde aqui.",
     ],
   },
@@ -557,7 +557,7 @@ export const es: SiteContent = {
     title: "Fondo Semilla",
     subtitle: "El Viaje de Rocky",
     about:
-      "Tengo 14 anos. Cumplo 15 en enero. Todavia no se exactamente que quiero hacer con mi vida, y creo que esta bien no saberlo todavia. Pero si se algunas cosas: Me gusta construir. Mi papa me esta ensenando a hacer cosas con IA — chatbots, automatizaciones, cosas asi. A veces el me ensena. A veces yo le enseno a el.",
+      "Tengo 14 anos. Cumplo 15 en enero. Todavia no se exactamente que quiero hacer con mi vida, y creo que esta bien no saberlo todavia. Pero si se algunas cosas: Me gusta construir. Mi papa me esta ensenando a hacer cosas con IA - chatbots, automatizaciones, cosas asi. A veces el me ensena. A veces yo le enseno a el.",
     tiers: [
       { name: "Semilla ($10-50)", description: "Actualizaciones de progreso, nombre en supporters" },
       { name: "Brote ($50-200)", description: "Acceso temprano a herramientas, input en features" },
@@ -793,7 +793,7 @@ export const es: SiteContent = {
       },
       {
         number: "2",
-        title: "Conversacion inicial — 15 a 30 minutos",
+        title: "Conversacion inicial - 15 a 30 minutos",
         description:
           "Por videollamada o WhatsApp, lo que prefieras. Queremos entender tu situacion real, no venderte algo.",
       },
@@ -892,6 +892,8 @@ export const es: SiteContent = {
         "Hola! Te interesa saber mas sobre nuestro modelo de {partnership}. Cada proyecto es diferente! Como te llamas? Y cuentame sobre tu proyecto para explorar las mejores opciones.",
       qualification:
         "Hola! Veamos si somos el fit correcto para trabajar juntos. Como te llamas? Y cuentame sobre tu negocio y que estas buscando lograr.",
+      impact:
+        "Hola! Hice clic en 'Propósito antes que beneficio' Estoy interesado en aprender sobre cómo pueden ayudar.",
       formFallback: "Prefieres llenar un formulario? Haz clic aqui.",
     },
   },
@@ -914,7 +916,7 @@ export const es: SiteContent = {
       "Sitio web con IA",
       "Asesoria startup",
       "Fondo Semilla (proyectos pequenos)",
-      "No estoy seguro — necesito orientacion",
+      "No estoy seguro - necesito orientacion",
       "Otro",
     ],
     descriptionLabel: "Cuentanos brevemente sobre tu proyecto",
