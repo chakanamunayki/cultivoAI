@@ -27,9 +27,10 @@ export const en: SiteContent = {
     noDramaText:
       "We help purpose-driven businesses use AI without getting lost in the complexity.",
     footerBar: {
-      price: "From $100 USD",
-      impactRates: "Special rates for impact projects",
-      familyTagline: "Father & son from Medellin",
+      price: "IMPACT PROJECT? SPECIAL RATES.",
+      impactRates: "Not all valuable work comes with big budgets. We offer significant discounts for agritech, wellness, education, self-sufficiency, and mission-driven startups.",
+      familyTagline: "Win-win or no deal.",
+      ctaButton: "Let's talk →",
     },
   },
 
@@ -920,5 +921,27 @@ export const en: SiteContent = {
     descriptionPlaceholder: "What problem do you want to solve? What outcome do you expect?",
     submitButton: "Send message",
     chatPrompt: "Prefer to chat? Our AI assistant can help!",
+  },
+
+  terminal: {
+    welcomeLine1: "Last login: ",
+    welcomeLine2: "Cultivo AI Automation Suite v2.5.0",
+    script: [
+      { text: "cultivo start --mode=growth", type: "command", delay: 800 },
+      { text: "Initializing neural core v2.5.0...", type: "info", delay: 400 },
+      { text: "Authenticating LinkedIn Sales Navigator...", type: "info", delay: 300 },
+      { text: "Connected to LinkedIn Secure Gateway", type: "success", delay: 200 },
+      { text: "Connected to HubSpot CRM", type: "success", delay: 600 },
+      { text: "Growth engine active. Scouting leads...", type: "info", delay: 2000 },
+      { text: "Prospect detected: Sofia R. (CMO @ TechFlow)", type: "event", delay: 600 },
+      { text: "Source: LinkedIn | Location: Bogota", type: "info", delay: 1000, className: "text-slate-400 pl-6" },
+      { text: "Analyzing profile & activity...", type: "info", delay: 1000 },
+      { text: "Insight: High intent. Posted about 'AI Automation'", type: "ai", delay: 800 },
+      { text: "Generating personalized outreach...", type: "command", delay: 1000 },
+      { text: 'Draft: "Hola Sofia, vi tu post sobre IA..."', type: "info", delay: 800, className: "text-slate-400 italic pl-6" },
+      { text: "Action: Connection request sent", type: "success", delay: 800, className: "text-emerald-300" },
+      { text: "Syncing lead to HubSpot...", type: "command", delay: 600 },
+      { text: "Lead successfully created: ID #8842", type: "success", delay: 4000 },
+    ],
   },
 };

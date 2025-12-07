@@ -27,9 +27,10 @@ export const es: SiteContent = {
     noDramaText:
       "Ayudamos a negocios con proposito a usar IA sin perderse en la complejidad.",
     footerBar: {
-      price: "Desde $100 USD",
-      impactRates: "Tarifas especiales para proyectos de impacto",
-      familyTagline: "Padre e hijo desde Medellin",
+      price: "¿PROYECTO DE IMPACTO? TARIFAS ESPECIALES.",
+      impactRates: "No todos los trabajos valiosos vienen con presupuestos grandes. Ofrecemos descuentos significativos para agritech, wellness, educación, autosuficiencia y startups con misión.",
+      familyTagline: "Win-win o no hay trato.",
+      ctaButton: "Hablemos →",
     },
   },
 
@@ -920,5 +921,27 @@ export const es: SiteContent = {
     descriptionPlaceholder: "Que problema quieres resolver? Que resultado esperas?",
     submitButton: "Enviar mensaje",
     chatPrompt: "Prefieres chatear? Nuestro asistente IA puede ayudarte!",
+  },
+
+  terminal: {
+    welcomeLine1: "Ultimo acceso: ",
+    welcomeLine2: "Suite de Automatizacion Cultivo AI v2.5.0",
+    script: [
+      { text: "cultivo start --mode=crecimiento", type: "command", delay: 800 },
+      { text: "Inicializando nucleo neuronal v2.5.0...", type: "info", delay: 400 },
+      { text: "Autenticando LinkedIn Sales Navigator...", type: "info", delay: 300 },
+      { text: "Conectado a LinkedIn Secure Gateway", type: "success", delay: 200 },
+      { text: "Conectado a HubSpot CRM", type: "success", delay: 600 },
+      { text: "Motor de crecimiento activo. Buscando prospectos...", type: "info", delay: 2000 },
+      { text: "Prospecto detectado: Sofia R. (CMO @ TechFlow)", type: "event", delay: 600 },
+      { text: "Fuente: LinkedIn | Ubicacion: Bogota", type: "info", delay: 1000, className: "text-slate-400 pl-6" },
+      { text: "Analizando perfil y actividad...", type: "info", delay: 1000 },
+      { text: "Insight: Alta intencion. Publico sobre 'Automatizacion IA'", type: "ai", delay: 800 },
+      { text: "Generando mensaje personalizado...", type: "command", delay: 1000 },
+      { text: 'Borrador: "Hola Sofia, vi tu post sobre IA..."', type: "info", delay: 800, className: "text-slate-400 italic pl-6" },
+      { text: "Accion: Solicitud de conexion enviada", type: "success", delay: 800, className: "text-emerald-300" },
+      { text: "Sincronizando prospecto con HubSpot...", type: "command", delay: 600 },
+      { text: "Prospecto creado exitosamente: ID #8842", type: "success", delay: 4000 },
+    ],
   },
 };

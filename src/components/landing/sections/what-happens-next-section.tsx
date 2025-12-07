@@ -4,7 +4,7 @@ import { Reveal } from "@/components/landing/ui/reveal";
 import { useLocale } from "@/hooks/use-locale";
 
 // Props kept for backwards compatibility even though CTA was removed
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+ 
 interface WhatHappensNextSectionProps {
   onOpenChat?: () => void;
 }

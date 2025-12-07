@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { CodeTerminal } from "@/components/landing/ui/code-terminal";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { useLocale } from "@/hooks/use-locale";
 
@@ -31,12 +31,14 @@ export function HeroSection({ onOpenChatBooking, onOpenChatStory }: HeroSectionP
             <h1 className="text-3xl md:text-4xl lg:text-6xl font-black uppercase leading-[0.95] mb-6 md:mb-8 tracking-tight">
               {content.hero.headline}
             </h1>
-            <div className="text-lg md:text-xl lg:text-2xl font-bold border-l-8 border-black pl-4 md:pl-6 mb-8 md:mb-10 bg-white/50 py-4 max-w-xl">
-              {subheadlineLines.map((line, index) => (
-                <p key={index} className={index > 0 ? "mt-2" : ""}>
-                  {line}
-                </p>
-              ))}
+            <div className="bg-white border-4 border-black p-6 md:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rotate-2 hover:rotate-0 transition-transform duration-500 mb-8 md:mb-10 max-w-lg">
+              <div className="space-y-3">
+                {subheadlineLines.map((line, index) => (
+                  <p key={index} className="font-black text-lg md:text-xl leading-tight">
+                    {line}
+                  </p>
+                ))}
+              </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
@@ -56,9 +58,9 @@ export function HeroSection({ onOpenChatBooking, onOpenChatStory }: HeroSectionP
         </div>
 
         {/* Right Panel - Purple */}
-        <div className="bg-[#A855F7] p-8 md:p-16 border-b-4 border-black flex items-center justify-center relative overflow-hidden min-h-[400px]">
+        <div className="bg-[#A855F7] p-8 md:p-16 border-b-4 border-black flex flex-col items-center justify-center relative overflow-hidden min-h-[400px] lg:min-h-[600px]">
           {/* Abstract Shapes */}
-          <div className="absolute top-10 left-10 w-16 md:w-24 h-16 md:h-24 bg-white border-4 border-black rounded-full animate-bounce duration-[3000ms]"></div>
+          <div className="absolute top-10 left-10 w-16 md:w-24 h-16 md:h-24 bg-white border-4 border-black rounded-full animate-bounce duration-[3000ms] z-0"></div>
 
           {/* Yellow Square */}
           <div className="absolute bottom-20 right-10 w-32 md:w-48 h-32 md:h-48 bg-[#FFC805] border-4 border-black rotate-12 transition-transform hover:rotate-45 duration-700 z-0"></div>
@@ -68,37 +70,20 @@ export function HeroSection({ onOpenChatBooking, onOpenChatStory }: HeroSectionP
             AI
           </div>
 
-          {/* Rocket Image */}
-          <Image
-            src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png"
-            alt="Rocket"
-            width={256}
-            height={256}
-            className="absolute left-1/2 top-1/2 w-48 md:w-64 -translate-x-1/2 -translate-y-[135%] -rotate-45 z-0 animate-[pulse_3s_infinite]"
-            priority
-            unoptimized
-          />
+          {/* Code Terminal - Top Center */}
+          <div className="relative z-10 w-full max-w-2xl mb-6 lg:mb-8">
+            <CodeTerminal />
+          </div>
 
-          <Reveal delay={200} className="relative z-10 w-full max-w-md">
-            <div className="bg-white border-4 border-black p-8 md:p-10 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] md:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] rotate-3 hover:rotate-0 transition-transform duration-500 relative z-20">
-              <div className="space-y-4">
-                <p className="font-black text-xl md:text-2xl leading-tight uppercase tracking-tight">
-                  For businesses.
-                </p>
-                <p className="font-black text-xl md:text-2xl leading-tight uppercase tracking-tight">
-                  For impact projects.
-                </p>
-                <div className="border-t-4 border-black pt-4 mt-4">
-                  <p className="font-bold text-base md:text-lg leading-snug italic">
-                    Without the complexity or high costs.
-                  </p>
-                </div>
-                <div className="border-t-4 border-[#A855F7] pt-4 mt-4">
-                  <p className="font-black text-lg md:text-xl leading-tight">
-                    We help. We share. We grow together.
-                  </p>
-                </div>
-              </div>
+          {/* No Drama Box - Bottom */}
+          <Reveal delay={200} className="relative z-10 w-full max-w-sm">
+            <div className="bg-white border-4 border-black p-5 md:p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rotate-3 hover:rotate-0 transition-transform duration-500 relative z-20">
+              <h3 className="font-black text-xl md:text-2xl mb-3 bg-black text-white inline-block px-3 py-1 -rotate-2">
+                {content.hero.noDrama}
+              </h3>
+              <p className="font-bold text-base md:text-lg leading-snug border-t-4 border-black pt-3">
+                {content.hero.noDramaText}
+              </p>
             </div>
           </Reveal>
         </div>
@@ -106,19 +91,26 @@ export function HeroSection({ onOpenChatBooking, onOpenChatStory }: HeroSectionP
 
       {/* Hero Footer Bar */}
       <div className="bg-black border-b-4 border-black">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 py-4 px-6">
-          <span className="text-[#FFC805] font-black text-sm md:text-base uppercase tracking-wide">
-            {content.hero.footerBar.price}
-          </span>
-          <span className="hidden md:block text-white/40">|</span>
-          <span className="text-white font-bold text-sm md:text-base">
-            {content.hero.footerBar.impactRates}
-          </span>
-          <span className="hidden md:block text-white/40">|</span>
-          <span className="text-white/80 font-medium text-sm md:text-base flex items-center gap-2">
-            <span className="text-base">🇬🇧🇨🇴</span>
-            {content.hero.footerBar.familyTagline}
-          </span>
+        <div className="max-w-5xl mx-auto px-6 py-8 md:py-10">
+          <div className="text-center space-y-4">
+            <h3 className="text-[#FFC805] font-black text-xl md:text-2xl uppercase tracking-tight">
+              {content.hero.footerBar.price}
+            </h3>
+            <p className="text-white font-medium text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+              {content.hero.footerBar.impactRates}
+            </p>
+            <p className="text-white/90 font-bold text-base md:text-lg pt-2">
+              {content.hero.footerBar.familyTagline}
+            </p>
+            <div className="pt-4">
+              <button
+                onClick={onOpenChatBooking}
+                className="bg-[#FFC805] text-black px-8 py-4 font-black uppercase shadow-[8px_8px_0px_0px_rgba(255,255,255,0.2)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] transition-all border-2 border-white text-base md:text-lg"
+              >
+                {content.hero.footerBar.ctaButton}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -32,6 +32,7 @@ export interface HeroFooterBar {
   price: string;
   impactRates: string;
   familyTagline: string;
+  ctaButton: string;
 }
 
 export interface HeroCopy {
@@ -292,6 +293,7 @@ export interface SiteContent {
   footer: FooterCopy;
   chat: ChatCopy;
   contactForm: ContactFormCopy;
+  terminal: TerminalContent;
 }
 
 /**
@@ -351,6 +353,22 @@ export interface MissionContent {
   title: string;
   statement: string[];
   tagline: string;
+}
+
+/**
+ * Code Terminal Animation Content
+ */
+export interface TerminalScriptLine {
+  text: string;
+  type: 'command' | 'success' | 'info' | 'error' | 'event' | 'ai';
+  delay: number;
+  className?: string;
+}
+
+export interface TerminalContent {
+  welcomeLine1: string;
+  welcomeLine2: string;
+  script: TerminalScriptLine[];
 }
 
 /**

@@ -15,8 +15,8 @@ import {
   Lightbulb,
 } from "lucide-react";
 import { Reveal } from "@/components/landing/ui/reveal";
-import { useLocale } from "@/hooks/use-locale";
 import type { Sector } from "@/content/types";
+import { useLocale } from "@/hooks/use-locale";
 
 const iconMap: Record<string, React.ElementType> = {
   Sprout,
