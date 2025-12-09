@@ -46,6 +46,8 @@ const nextConfig: NextConfig = {
 
   // Security and cache headers
   async headers() {
+    const isDev = process.env.NODE_ENV === "development";
+
     return [
       {
         source: "/(.*)",
@@ -70,38 +72,59 @@ const nextConfig: NextConfig = {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(self), geolocation=()",
           },
+          // DISABLE CACHING IN DEVELOPMENT
+          ...(isDev
+            ? [
+                {
+                  key: "Cache-Control",
+                  value: "no-store, no-cache, must-revalidate, proxy-revalidate",
+                },
+                {
+                  key: "Pragma",
+                  value: "no-cache",
+                },
+                {
+                  key: "Expires",
+                  value: "0",
+                },
+              ]
+            : []),
         ],
       },
-      // Cache static assets aggressively
-      {
-        source: "/_next/static/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      // Cache images
-      {
-        source: "/_next/image(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=86400, stale-while-revalidate=604800",
-          },
-        ],
-      },
-      // Cache fonts
-      {
-        source: "/fonts/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
+      // Cache static assets aggressively (PRODUCTION ONLY)
+      ...(isDev
+        ? []
+        : [
+            {
+              source: "/_next/static/(.*)",
+              headers: [
+                {
+                  key: "Cache-Control",
+                  value: "public, max-age=31536000, immutable",
+                },
+              ],
+            },
+            // Cache images
+            {
+              source: "/_next/image(.*)",
+              headers: [
+                {
+                  key: "Cache-Control",
+                  value: "public, max-age=86400, stale-while-revalidate=604800",
+                },
+              ],
+            },
+            // Cache fonts
+            {
+              source: "/fonts/(.*)",
+              headers: [
+                {
+                  key: "Cache-Control",
+                  value: "public, max-age=31536000, immutable",
+                },
+              ],
+            },
+          ]),
     ];
   },
 };
