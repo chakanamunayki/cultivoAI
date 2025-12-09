@@ -21,11 +21,18 @@ If content changes aren't appearing after editing `src/content/es.ts` or `src/co
 3. **Hard refresh browser:** `Ctrl+Shift+R`
 
 **Why this happens:**
-- Webpack/module resolution cache may point to committed files
+- **Next.js 16.0.3 bug**: File watching on Windows + pnpm doesn't detect uncommitted changes
+- Next.js reads from git-committed files instead of working directory
 - Hydration errors cause React to discard server HTML and use stale client state
-- Browser cache (fixed via `next.config.ts` but needs hard refresh)
+- Browser cache compounds the problem
 
-**Prevention:** Always commit content changes before testing them in the browser.
+**Permanent fix (recommended):**
+```bash
+pnpm update next@latest
+# Upgrades from 16.0.3 to 16.0.8+ which fixes the file watching bug
+```
+
+**Workaround until upgrade:** Always commit content changes before testing them in the browser.
 
 ---
 
