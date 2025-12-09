@@ -94,7 +94,7 @@ export function DemosSection({ className = "" }: DemosSectionProps) {
 
         {/* Navigation Menu */}
         <div className="mb-12">
-          <div className="flex overflow-x-auto pt-2 pb-4 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide gap-3 md:flex-wrap md:justify-center">
+          <div className="flex flex-wrap gap-3 justify-center">
             {content.useCases.map((useCase, index) => {
               const isActive = activeTab === index;
               const IconComponent = getUseCaseIcon(useCase.id);
@@ -103,14 +103,14 @@ export function DemosSection({ className = "" }: DemosSectionProps) {
                 <button
                   key={index}
                   onClick={() => setActiveTab(index)}
-                  className={`flex items-center gap-2 px-5 py-3 transition-all whitespace-nowrap shrink-0 ${
+                  className={`flex items-center gap-2 px-4 py-3 md:px-5 transition-all ${
                     isActive
                       ? "bg-[#A855F7] text-white border-4 border-black shadow-[4px_4px_0px_0px_black] -translate-y-1"
                       : "bg-white text-black border-4 border-black hover:bg-gray-100"
                   }`}
                 >
                   <IconComponent size={18} />
-                  <span className="font-bold text-sm uppercase tracking-wide">
+                  <span className="font-bold text-xs md:text-sm uppercase tracking-wide">
                     {useCase.title}
                   </span>
                 </button>

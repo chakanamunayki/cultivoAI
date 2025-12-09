@@ -46,7 +46,7 @@ export const es: SiteContent = {
     subtitle: "Una familia construyendo algo significativo desde Colombia",
     viewMoreLabel: "Ver mas",
     footerNote:
-      "Para proyectos de mayor impacto, contamos con expertos tecnicos que nos apoyan cuando es necesario.",
+      "**Para proyectos de mayor impacto, contamos con expertos técnicos que nos apoyan cuando es necesario.**",
     teamMembers: [
       {
         id: "paul",

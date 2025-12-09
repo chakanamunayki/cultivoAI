@@ -100,9 +100,14 @@ export function AboutSection() {
         {/* Footer Note */}
         <Reveal delay={400}>
           <div className="mt-12 md:mt-16 text-center">
-            <p className="text-sm md:text-base font-medium text-neutral-600 border-t-2 border-black pt-6 max-w-2xl mx-auto">
-              {content.about.footerNote}
-            </p>
+            <div className="relative inline-block">
+              <div className="absolute inset-0 bg-[#A855F7] translate-x-2 translate-y-2"></div>
+              <div className="relative bg-[#FFDE00] border-4 border-black px-6 py-4 md:px-8 md:py-6">
+                <p className="text-base md:text-lg font-black uppercase text-black">
+                  {content.about.footerNote.replace(/\*\*/g, '')}
+                </p>
+              </div>
+            </div>
           </div>
         </Reveal>
       </div>

@@ -46,7 +46,7 @@ export const en: SiteContent = {
     subtitle: "A family building something meaningful from Colombia",
     viewMoreLabel: "View more",
     footerNote:
-      "For larger impact projects, we have technical experts who support us when needed.",
+      "**For larger impact projects, we have technical experts who support us when needed.**",
     teamMembers: [
       {
         id: "paul",
