@@ -1,5 +1,34 @@
 # CultivoAI - AI Assistant Guidelines
 
+## 🚨 CRITICAL: Content Changes Not Showing? Read This First!
+
+If content changes aren't appearing after editing `src/content/es.ts` or `src/content/en.ts`:
+
+**ROOT CAUSE:** Next.js dev server may be reading from **committed git version** instead of working directory files.
+
+**SOLUTION:**
+1. **Commit your content changes immediately:**
+   ```bash
+   git add src/content/es.ts src/content/en.ts
+   git commit -m "update content"
+   ```
+2. **Kill server + delete cache:**
+   ```bash
+   # Kill server (Ctrl+C)
+   rm -rf .next
+   pnpm dev
+   ```
+3. **Hard refresh browser:** `Ctrl+Shift+R`
+
+**Why this happens:**
+- Webpack/module resolution cache may point to committed files
+- Hydration errors cause React to discard server HTML and use stale client state
+- Browser cache (fixed via `next.config.ts` but needs hard refresh)
+
+**Prevention:** Always commit content changes before testing them in the browser.
+
+---
+
 ## Project Overview
 
 CultivoAI is a bilingual (Spanish/English) AI and automation consultancy website for a father-son duo (Paul & Rocky) based in Colombia. The site uses a **Neo-Brutalist design** with an integrated Gemini AI chat assistant.
@@ -161,7 +190,7 @@ All text content must have Spanish and English versions:
 | `PROJECTS` | 5 portfolio projects |
 | `PARTNERSHIPS` | 5 flexible pricing models |
 | `USE_CASES` | 5 AI demo scenarios |
-| `REAL_STORIES` | 3 success stories/testimonials |
+| `REAL_STORIES` | 11 success stories/testimonials |
 | `SEMILLA_CONTENT` | Rocky's fund initiative (about, tiers, services, goal) |
 | `WHY_US` | Value proposition (what we're NOT vs what we ARE) |
 
