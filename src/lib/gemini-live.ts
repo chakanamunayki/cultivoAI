@@ -17,7 +17,8 @@ export const GEMINI_LIVE_CONFIG = {
     "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent",
 
   // Model to use for Live API
-  // gemini-2.0-flash-exp works with the Live API
+  // Using gemini-2.0-flash-exp which is confirmed working with Live API
+  // The model name MUST include "models/" prefix for the API to recognize it
   MODEL: "models/gemini-2.0-flash-exp",
 
   // Token refresh interval (refresh 10 seconds before expiry)
@@ -125,6 +126,17 @@ export interface GeminiSetupMessage {
     };
     systemInstruction?: {
       parts: Array<{ text: string }>;
+    };
+    realtimeInput?: {
+      automaticActivityDetection?: {
+        disabled?: boolean;
+        startOfSpeechSensitivity?: string;
+        endOfSpeechSensitivity?: string;
+        prefixPaddingMs?: number;
+        silenceDurationMs?: number;
+      };
+      activityHandling?: string;
+      turnCoverage?: string;
     };
   };
 }

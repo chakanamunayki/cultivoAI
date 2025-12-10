@@ -155,6 +155,8 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
   const fetchToken = useCallback(async (): Promise<boolean> => {
     try {
+      console.log("[Gemini Live Token] Fetching token for locale:", locale);
+
       const response = await fetch("/api/voice/token", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -162,14 +164,24 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       });
 
       if (!response.ok) {
-        throw new Error("Failed to fetch token");
+        const errorText = await response.text();
+        console.error("[Gemini Live Token] Failed to fetch token. Status:", response.status, "Response:", errorText);
+        throw new Error(`Failed to fetch token: ${response.status} ${errorText}`);
       }
 
       const data = await response.json();
+      console.log("[Gemini Live Token] Token received, expires in:", data.expiresIn, "seconds");
+
       const decoded = decodeToken(data.token);
 
       if (!decoded) {
+        console.error("[Gemini Live Token] Invalid token format");
         throw new Error("Invalid token format");
+      }
+
+      if (!decoded.apiKey) {
+        console.error("[Gemini Live Token] Token missing API key");
+        throw new Error("Token missing API key");
       }
 
       tokenRef.current = {
@@ -177,12 +189,20 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
         expiresAt: decoded.expiresAt,
       };
 
+      console.log("[Gemini Live Token] Token successfully decoded and stored");
       return true;
     } catch (err) {
-      console.error("Token fetch error:", err);
+      console.error("[Gemini Live Token] Token fetch error:", err);
+      const error = new Error(
+        locale === "es"
+          ? `Error al obtener token: ${err instanceof Error ? err.message : "Desconocido"}`
+          : `Failed to fetch token: ${err instanceof Error ? err.message : "Unknown"}`
+      );
+      setError(error);
+      onError?.(error);
       return false;
     }
-  }, [locale]);
+  }, [locale, onError]);
 
   // ============================================
   // Audio Playback (Streaming)
@@ -272,14 +292,43 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   // WebSocket Message Handling
   // ============================================
 
-  const handleWebSocketMessage = useCallback(
-    (event: MessageEvent) => {
+  // Use ref to store the latest handler logic
+  const handleWebSocketMessageRef = useRef<(event: MessageEvent) => void>(() => {});
+
+  // Update ref with latest handler logic on every render
+  useEffect(() => {
+    handleWebSocketMessageRef.current = (event: MessageEvent) => {
       try {
-        const message = JSON.parse(event.data);
+        // Decode binary data from Gemini (sent as ArrayBuffer)
+        let text: string;
+        if (event.data instanceof ArrayBuffer) {
+          text = new TextDecoder().decode(event.data);
+        } else {
+          text = event.data;
+        }
+
+        const message = JSON.parse(text);
+        // eslint-disable-next-line no-console
+        console.log("[Gemini Live WS] Received message:", message);
 
         if (isSetupComplete(message as GeminiServerMessage)) {
+          // eslint-disable-next-line no-console
+          console.log("[Gemini Live WS] Setup complete!");
           isSetupCompleteRef.current = true;
           updateConversationState("idle");
+          return;
+        }
+
+        // Check for error messages
+        if ("error" in message) {
+          console.error("[Gemini Live WS] Server error:", message);
+          const error = new Error(
+            locale === "es"
+              ? `Error del servidor: ${JSON.stringify(message.error)}`
+              : `Server error: ${JSON.stringify(message.error)}`
+          );
+          setError(error);
+          onError?.(error);
           return;
         }
 
@@ -330,12 +379,17 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
             onTranscript?.(sc.inputTranscript, false, true);
           }
         }
-      } catch {
-        // WebSocket message parse error - ignore malformed messages
+      } catch (error) {
+        // WebSocket message parse error - log and ignore malformed messages
+        console.error("[Gemini Live WS] Message parse error:", error);
       }
-    },
-    [clearAudioQueue, queueAudioChunk, updateConversationState, onTranscript]
-  );
+    };
+  }, [locale, clearAudioQueue, queueAudioChunk, updateConversationState, onTranscript, onError]);
+
+  // Stable wrapper function that NEVER changes identity across re-renders
+  const handleWebSocketMessage = useCallback((event: MessageEvent) => {
+    handleWebSocketMessageRef.current(event);
+  }, []);
 
   // ============================================
   // Audio Input Setup
@@ -429,45 +483,79 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
     return new Promise((resolve) => {
       const url = buildWebSocketUrl(tokenRef.current!.apiKey);
-      const ws = new WebSocket(url);
-      wsRef.current = ws;
+
+      // Log the WebSocket URL for debugging (without the API key)
+      console.log("[Gemini Live WS] Attempting connection to:", url.split('?')[0]);
+
+      let ws: WebSocket;
+
+      try {
+        ws = new WebSocket(url);
+        ws.binaryType = 'arraybuffer'; // CRITICAL: Handle binary messages from Gemini
+        wsRef.current = ws;
+      } catch (err) {
+        console.error("[Gemini Live WS] Failed to create WebSocket:", err);
+        const error = new Error(
+          locale === "es"
+            ? "Error al crear conexión de voz"
+            : "Failed to create voice connection"
+        );
+        setError(error);
+        onError?.(error);
+        resolve(false);
+        return;
+      }
 
       const connectionTimeout = setTimeout(() => {
         if (ws.readyState !== WebSocket.OPEN) {
-          console.error("[Gemini Live WS] Connection timeout");
+          console.error("[Gemini Live WS] Connection timeout after 10s");
           ws.close();
+          const error = new Error(
+            locale === "es"
+              ? "Tiempo de espera de conexión agotado"
+              : "Connection timeout"
+          );
+          setError(error);
+          onError?.(error);
           resolve(false);
         }
       }, GEMINI_LIVE_CONFIG.CONNECTION_TIMEOUT_MS);
 
-      ws.onopen = () => {
-        clearTimeout(connectionTimeout);
+      // CRITICAL: Set event handlers BEFORE connection opens to catch all messages
+      console.log("[Gemini Live WS] Attaching onmessage handler");
 
-        // Send setup message
-        const setupMessage = buildSetupMessage(systemPrompt, locale);
-        ws.send(JSON.stringify(setupMessage));
-
-        updateConnectionState("connected");
-        reconnectAttemptsRef.current = 0;
-        resolve(true);
+      // ULTRA CRITICAL DEBUG: Test if handler fires AT ALL
+      ws.onmessage = (event) => {
+        console.log("[Gemini Live WS] !!! RAW MESSAGE EVENT FIRED !!!", typeof event.data);
+        handleWebSocketMessage(event);
       };
 
-      ws.onmessage = handleWebSocketMessage;
-
-      ws.onerror = () => {
+      ws.onerror = (event) => {
         clearTimeout(connectionTimeout);
-        const error = new Error(
-          locale === "es"
-            ? "Error de conexion de voz"
-            : "Voice connection error"
-        );
+        console.error("[Gemini Live WS] WebSocket error event:", event);
+
+        // More detailed error message based on readyState
+        let errorMsg = locale === "es" ? "Error de conexión de voz" : "Voice connection error";
+
+        if (ws.readyState === WebSocket.CONNECTING) {
+          errorMsg = locale === "es"
+            ? "No se pudo conectar al servidor de voz. Verifica tu clave API de Gemini."
+            : "Could not connect to voice server. Check your Gemini API key.";
+        } else if (ws.readyState === WebSocket.CLOSING || ws.readyState === WebSocket.CLOSED) {
+          errorMsg = locale === "es"
+            ? "La conexión de voz se cerró inesperadamente"
+            : "Voice connection closed unexpectedly";
+        }
+
+        const error = new Error(errorMsg);
         setError(error);
         onError?.(error);
         resolve(false);
       };
 
-      ws.onclose = () => {
+      ws.onclose = (event) => {
         clearTimeout(connectionTimeout);
+        console.log("[Gemini Live WS] Connection closed. Code:", event.code, "Reason:", event.reason);
         isSetupCompleteRef.current = false;
 
         // Attempt reconnection if not intentionally disconnected
@@ -476,6 +564,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
           reconnectAttemptsRef.current < GEMINI_LIVE_CONFIG.MAX_RECONNECT_ATTEMPTS
         ) {
           reconnectAttemptsRef.current++;
+          console.log(`[Gemini Live WS] Reconnecting (attempt ${reconnectAttemptsRef.current}/${GEMINI_LIVE_CONFIG.MAX_RECONNECT_ATTEMPTS})`);
           updateConnectionState("reconnecting");
           setTimeout(() => {
             connectWebSocket();
@@ -483,6 +572,20 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
         } else {
           updateConnectionState("disconnected");
         }
+      };
+
+      ws.onopen = () => {
+        clearTimeout(connectionTimeout);
+        console.log("[Gemini Live WS] Connected successfully");
+
+        // Send setup message
+        const setupMessage = buildSetupMessage(systemPrompt, locale);
+        console.log("[Gemini Live WS] Sending setup message:", JSON.stringify(setupMessage, null, 2));
+        ws.send(JSON.stringify(setupMessage));
+
+        updateConnectionState("connected");
+        reconnectAttemptsRef.current = 0;
+        resolve(true);
       };
     });
   }, [
