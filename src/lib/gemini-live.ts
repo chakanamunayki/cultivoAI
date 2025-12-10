@@ -303,6 +303,17 @@ export function buildSetupMessage(
       systemInstruction: {
         parts: [{ text: systemPrompt }],
       },
+      realtimeInput: {
+        automaticActivityDetection: {
+          disabled: REALTIME_INPUT_CONFIG.automaticActivityDetection.disabled,
+          startOfSpeechSensitivity: REALTIME_INPUT_CONFIG.automaticActivityDetection.startOfSpeechSensitivity,
+          endOfSpeechSensitivity: REALTIME_INPUT_CONFIG.automaticActivityDetection.endOfSpeechSensitivity,
+          prefixPaddingMs: REALTIME_INPUT_CONFIG.automaticActivityDetection.prefixPaddingMs,
+          silenceDurationMs: REALTIME_INPUT_CONFIG.automaticActivityDetection.silenceDurationMs,
+        },
+        activityHandling: REALTIME_INPUT_CONFIG.activityHandling,
+        turnCoverage: REALTIME_INPUT_CONFIG.turnCoverage,
+      },
     },
   };
 }
