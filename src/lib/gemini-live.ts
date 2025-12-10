@@ -113,32 +113,30 @@ export const VOICE_CONFIG: Record<
 
 // Client → Server message types
 export interface GeminiSetupMessage {
-  setup: {
-    model: string;
-    generationConfig?: {
-      responseModalities: string[]; // ["AUDIO"] for voice output
-      speechConfig?: {
-        voiceConfig?: {
-          prebuiltVoiceConfig?: {
-            voiceName: string;
-          };
+  model: string;
+  generationConfig?: {
+    responseModalities?: string[]; // ["AUDIO"] for voice output
+    speechConfig?: {
+      voiceConfig?: {
+        prebuiltVoiceConfig?: {
+          voiceName: string;
         };
       };
     };
-    systemInstruction?: {
-      parts: Array<{ text: string }>;
+  };
+  systemInstruction?: {
+    parts: Array<{ text: string }>;
+  };
+  realtimeInputConfig?: {
+    automaticActivityDetection?: {
+      disabled?: boolean;
+      startOfSpeechSensitivity?: string;
+      endOfSpeechSensitivity?: string;
+      prefixPaddingMs?: number;
+      silenceDurationMs?: number;
     };
-    realtimeInputConfig?: {
-      automaticActivityDetection?: {
-        disabled?: boolean;
-        startOfSpeechSensitivity?: string;
-        endOfSpeechSensitivity?: string;
-        prefixPaddingMs?: number;
-        silenceDurationMs?: number;
-      };
-      activityHandling?: string;
-      turnCoverage?: string;
-    };
+    activityHandling?: string;
+    turnCoverage?: string;
   };
 }
 
@@ -289,32 +287,30 @@ export function buildSetupMessage(
   const voiceConfig = VOICE_CONFIG[locale];
 
   return {
-    setup: {
-      model: GEMINI_LIVE_CONFIG.MODEL,
-      generationConfig: {
-        responseModalities: ["AUDIO"],
-        speechConfig: {
-          voiceConfig: {
-            prebuiltVoiceConfig: {
-              voiceName: voiceConfig.voiceName,
-            },
+    model: GEMINI_LIVE_CONFIG.MODEL,
+    generationConfig: {
+      responseModalities: ["AUDIO"],
+      speechConfig: {
+        voiceConfig: {
+          prebuiltVoiceConfig: {
+            voiceName: voiceConfig.voiceName,
           },
         },
       },
-      systemInstruction: {
-        parts: [{ text: systemPrompt }],
+    },
+    systemInstruction: {
+      parts: [{ text: systemPrompt }],
+    },
+    realtimeInputConfig: {
+      automaticActivityDetection: {
+        disabled: REALTIME_INPUT_CONFIG.automaticActivityDetection.disabled,
+        startOfSpeechSensitivity: REALTIME_INPUT_CONFIG.automaticActivityDetection.startOfSpeechSensitivity,
+        endOfSpeechSensitivity: REALTIME_INPUT_CONFIG.automaticActivityDetection.endOfSpeechSensitivity,
+        prefixPaddingMs: REALTIME_INPUT_CONFIG.automaticActivityDetection.prefixPaddingMs,
+        silenceDurationMs: REALTIME_INPUT_CONFIG.automaticActivityDetection.silenceDurationMs,
       },
-      realtimeInputConfig: {
-        automaticActivityDetection: {
-          disabled: REALTIME_INPUT_CONFIG.automaticActivityDetection.disabled,
-          startOfSpeechSensitivity: REALTIME_INPUT_CONFIG.automaticActivityDetection.startOfSpeechSensitivity,
-          endOfSpeechSensitivity: REALTIME_INPUT_CONFIG.automaticActivityDetection.endOfSpeechSensitivity,
-          prefixPaddingMs: REALTIME_INPUT_CONFIG.automaticActivityDetection.prefixPaddingMs,
-          silenceDurationMs: REALTIME_INPUT_CONFIG.automaticActivityDetection.silenceDurationMs,
-        },
-        activityHandling: REALTIME_INPUT_CONFIG.activityHandling,
-        turnCoverage: REALTIME_INPUT_CONFIG.turnCoverage,
-      },
+      activityHandling: REALTIME_INPUT_CONFIG.activityHandling,
+      turnCoverage: REALTIME_INPUT_CONFIG.turnCoverage,
     },
   };
 }
