@@ -69,6 +69,15 @@ export async function POST(request: Request) {
       );
     }
 
+    // Validate API key format (should start with AIza for Google API keys)
+    if (!apiKey.startsWith("AIza")) {
+      console.error("GEMINI_API_KEY appears to be invalid format (should start with AIza)");
+      return NextResponse.json(
+        { error: "Invalid API key format" },
+        { status: 500 }
+      );
+    }
+
     // Parse request body for optional parameters
     let locale: "es" | "en" = "es";
     try {

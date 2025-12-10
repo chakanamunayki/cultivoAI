@@ -172,7 +172,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
 
       {/* Dropdown Menu (Mobile & Desktop) */}
       {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-white border-b-4 border-black animate-in slide-in-from-top-2 duration-200 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.5)] z-40">
+        <div className="absolute top-full left-0 w-full bg-white border-b-4 border-black animate-in slide-in-from-top-2 duration-200 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.5)] z-40 max-h-[calc(100vh-120px)] overflow-y-auto">
           {/* Main nav items */}
           {mobileMainItems.map((item) => (
             <button

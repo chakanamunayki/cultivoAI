@@ -20,6 +20,8 @@ const serverEnvSchema = z.object({
   // AI
   OPENROUTER_API_KEY: z.string().optional(),
   OPENROUTER_MODEL: z.string().default("openai/gpt-5-mini"),
+  GEMINI_API_KEY: z.string().optional(),
+  GROQ_API_KEY: z.string().optional(),
 
   // Storage
   BLOB_READ_WRITE_TOKEN: z.string().optional(),
@@ -101,7 +103,15 @@ export function checkEnv(): void {
   }
 
   if (!process.env.OPENROUTER_API_KEY) {
-    warnings.push("OPENROUTER_API_KEY is not set. AI chat will not work.");
+    warnings.push("OPENROUTER_API_KEY is not set. Authenticated AI chat will not work.");
+  }
+
+  if (!process.env.GEMINI_API_KEY) {
+    warnings.push("GEMINI_API_KEY is not set. Landing page chat widget will not work.");
+  }
+
+  if (!process.env.GROQ_API_KEY) {
+    warnings.push("GROQ_API_KEY is not set. Voice transcription will not work.");
   }
 
   if (!process.env.BLOB_READ_WRITE_TOKEN) {

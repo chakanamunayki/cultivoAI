@@ -555,23 +555,28 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
       ws.onclose = (event) => {
         clearTimeout(connectionTimeout);
-        console.log("[Gemini Live WS] Connection closed. Code:", event.code, "Reason:", event.reason);
+        console.error("[Gemini Live WS] Connection closed. Code:", event.code, "Reason:", event.reason, "Was Clean:", event.wasClean);
+
+        // Log more details about why it closed
+        if (event.code === 1000) {
+          console.error("[Gemini Live WS] Normal closure (1000) - Server may have rejected setup message");
+        } else if (event.code === 1006) {
+          console.error("[Gemini Live WS] Abnormal closure (1006) - Connection lost without close frame");
+        }
+
         isSetupCompleteRef.current = false;
 
-        // Attempt reconnection if not intentionally disconnected
-        if (
-          connectionState === "connected" &&
-          reconnectAttemptsRef.current < GEMINI_LIVE_CONFIG.MAX_RECONNECT_ATTEMPTS
-        ) {
-          reconnectAttemptsRef.current++;
-          console.log(`[Gemini Live WS] Reconnecting (attempt ${reconnectAttemptsRef.current}/${GEMINI_LIVE_CONFIG.MAX_RECONNECT_ATTEMPTS})`);
-          updateConnectionState("reconnecting");
-          setTimeout(() => {
-            connectWebSocket();
-          }, GEMINI_LIVE_CONFIG.RECONNECT_DELAY_MS);
-        } else {
-          updateConnectionState("disconnected");
-        }
+        // Only disconnect if it was an intentional disconnect from our side
+        // Otherwise show error state
+        updateConnectionState("error");
+
+        const error = new Error(
+          locale === "es"
+            ? `Conexión cerrada por el servidor (código ${event.code}). Verifica la configuración de la API de Gemini.`
+            : `Connection closed by server (code ${event.code}). Check Gemini API configuration.`
+        );
+        setError(error);
+        onError?.(error);
       };
 
       ws.onopen = () => {
@@ -580,8 +585,26 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
         // Send setup message
         const setupMessage = buildSetupMessage(systemPrompt, locale);
-        console.log("[Gemini Live WS] Sending setup message:", JSON.stringify(setupMessage, null, 2));
-        ws.send(JSON.stringify(setupMessage));
+        const setupJson = JSON.stringify(setupMessage, null, 2);
+        console.log("[Gemini Live WS] Sending setup message:");
+        console.log(setupJson);
+
+        try {
+          ws.send(setupJson);
+          console.log("[Gemini Live WS] Setup message sent successfully");
+        } catch (sendError) {
+          console.error("[Gemini Live WS] Failed to send setup message:", sendError);
+          const error = new Error(
+            locale === "es"
+              ? "Error al enviar mensaje de configuración"
+              : "Failed to send setup message"
+          );
+          setError(error);
+          onError?.(error);
+          ws.close();
+          resolve(false);
+          return;
+        }
 
         updateConnectionState("connected");
         reconnectAttemptsRef.current = 0;
