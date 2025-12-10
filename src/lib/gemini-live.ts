@@ -12,9 +12,10 @@ import type { Locale } from "@/content/types";
 // ============================================
 
 export const GEMINI_LIVE_CONFIG = {
-  // WebSocket endpoint for Gemini Live API (v1alpha for realtime)
+  // WebSocket endpoint for Gemini Live API (v1beta for stable API)
+  // Note: Updated from v1alpha to v1beta per 2025 documentation
   WEBSOCKET_URL:
-    "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent",
+    "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent",
 
   // Model to use for Live API
   // Using gemini-2.0-flash-exp which is confirmed working with Live API
