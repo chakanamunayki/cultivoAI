@@ -128,7 +128,7 @@ export interface GeminiSetupMessage {
     systemInstruction?: {
       parts: Array<{ text: string }>;
     };
-    realtimeInput?: {
+    realtimeInputConfig?: {
       automaticActivityDetection?: {
         disabled?: boolean;
         startOfSpeechSensitivity?: string;
@@ -304,7 +304,7 @@ export function buildSetupMessage(
       systemInstruction: {
         parts: [{ text: systemPrompt }],
       },
-      realtimeInput: {
+      realtimeInputConfig: {
         automaticActivityDetection: {
           disabled: REALTIME_INPUT_CONFIG.automaticActivityDetection.disabled,
           startOfSpeechSensitivity: REALTIME_INPUT_CONFIG.automaticActivityDetection.startOfSpeechSensitivity,
