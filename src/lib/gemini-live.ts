@@ -113,30 +113,21 @@ export const VOICE_CONFIG: Record<
 
 // Client → Server message types
 export interface GeminiSetupMessage {
-  model: string;
-  generationConfig?: {
-    responseModalities?: string[]; // ["AUDIO"] for voice output
-    speechConfig?: {
-      voiceConfig?: {
-        prebuiltVoiceConfig?: {
-          voiceName: string;
+  setup: {
+    model: string;
+    generationConfig?: {
+      responseModalities?: string; // "audio" for voice output (STRING not array!)
+      speechConfig?: {
+        voiceConfig?: {
+          prebuiltVoiceConfig?: {
+            voiceName: string;
+          };
         };
       };
     };
-  };
-  systemInstruction?: {
-    parts: Array<{ text: string }>;
-  };
-  realtimeInputConfig?: {
-    automaticActivityDetection?: {
-      disabled?: boolean;
-      startOfSpeechSensitivity?: string;
-      endOfSpeechSensitivity?: string;
-      prefixPaddingMs?: number;
-      silenceDurationMs?: number;
+    systemInstruction?: {
+      parts: Array<{ text: string }>;
     };
-    activityHandling?: string;
-    turnCoverage?: string;
   };
 }
 
@@ -287,30 +278,21 @@ export function buildSetupMessage(
   const voiceConfig = VOICE_CONFIG[locale];
 
   return {
-    model: GEMINI_LIVE_CONFIG.MODEL,
-    generationConfig: {
-      responseModalities: ["AUDIO"],
-      speechConfig: {
-        voiceConfig: {
-          prebuiltVoiceConfig: {
-            voiceName: voiceConfig.voiceName,
+    setup: {
+      model: GEMINI_LIVE_CONFIG.MODEL,
+      generationConfig: {
+        responseModalities: "audio", // STRING not array!
+        speechConfig: {
+          voiceConfig: {
+            prebuiltVoiceConfig: {
+              voiceName: voiceConfig.voiceName,
+            },
           },
         },
       },
-    },
-    systemInstruction: {
-      parts: [{ text: systemPrompt }],
-    },
-    realtimeInputConfig: {
-      automaticActivityDetection: {
-        disabled: REALTIME_INPUT_CONFIG.automaticActivityDetection.disabled,
-        startOfSpeechSensitivity: REALTIME_INPUT_CONFIG.automaticActivityDetection.startOfSpeechSensitivity,
-        endOfSpeechSensitivity: REALTIME_INPUT_CONFIG.automaticActivityDetection.endOfSpeechSensitivity,
-        prefixPaddingMs: REALTIME_INPUT_CONFIG.automaticActivityDetection.prefixPaddingMs,
-        silenceDurationMs: REALTIME_INPUT_CONFIG.automaticActivityDetection.silenceDurationMs,
+      systemInstruction: {
+        parts: [{ text: systemPrompt }],
       },
-      activityHandling: REALTIME_INPUT_CONFIG.activityHandling,
-      turnCoverage: REALTIME_INPUT_CONFIG.turnCoverage,
     },
   };
 }
