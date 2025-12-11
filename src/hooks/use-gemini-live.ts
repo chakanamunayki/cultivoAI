@@ -389,9 +389,11 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
             // Handle audio responses
             if (message.serverContent?.modelTurn?.parts) {
+              console.log("[Gemini Live SDK] Processing modelTurn with", message.serverContent.modelTurn.parts.length, "parts");
               for (const part of message.serverContent.modelTurn.parts) {
                 // Audio data
                 if (part.inlineData?.data) {
+                  console.log("[Gemini Live SDK] Received audio data, length:", part.inlineData.data.length);
                   updateConversationState("speaking");
 
                   // Decode base64 to ArrayBuffer
@@ -406,6 +408,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
                 // Text transcription
                 if (part.text) {
+                  console.log("[Gemini Live SDK] Received text:", part.text);
                   setAiTranscript((prev) => prev + part.text);
                   onTranscript?.(part.text, false, false);
                 }
@@ -612,10 +615,18 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       }
       // Close audio contexts
       if (audioContextRef.current?.state !== "closed") {
-        audioContextRef.current?.close();
+        try {
+          audioContextRef.current?.close();
+        } catch (err) {
+          // Ignore already closed error
+        }
       }
       if (playbackContextRef.current?.state !== "closed") {
-        playbackContextRef.current?.close();
+        try {
+          playbackContextRef.current?.close();
+        } catch (err) {
+          // Ignore already closed error
+        }
       }
     };
   }, []); // Empty deps - cleanup ONLY on unmount
