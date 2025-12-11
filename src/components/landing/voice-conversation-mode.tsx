@@ -13,7 +13,8 @@ interface VoiceConversationModeProps {
   isOpen: boolean;
   onClose: () => void;
   locale: "es" | "en";
-  showContactForm?: boolean;
+  showInitialForm?: boolean; // Show form BEFORE connection (Phase 2)
+  showContactForm?: boolean; // Show form DURING conversation (backward compat)
   onContactFormSubmit?: (name: string, email: string, phone?: string) => Promise<boolean>;
   onContactFormDismiss?: () => void;
 }
@@ -43,6 +44,9 @@ interface VoiceLabels {
   connectionError: string;
   microphoneError: string;
   retry: string;
+  preFormTitle: string;
+  preFormSubtitle: string;
+  skipForm: string;
 }
 
 // ============================================
@@ -75,6 +79,9 @@ const LABELS: Record<"es" | "en", VoiceLabels> = {
     connectionError: "No se pudo conectar. Verifica tu conexion.",
     microphoneError: "No se pudo acceder al microfono.",
     retry: "Reintentar",
+    preFormTitle: "ANTES DE EMPEZAR",
+    preFormSubtitle: "Opcional - para personalizar tu experiencia",
+    skipForm: "Saltar por ahora",
   },
   en: {
     connecting: "CONNECTING",
@@ -101,6 +108,9 @@ const LABELS: Record<"es" | "en", VoiceLabels> = {
     connectionError: "Could not connect. Check your connection.",
     microphoneError: "Could not access microphone.",
     retry: "Retry",
+    preFormTitle: "BEFORE WE START",
+    preFormSubtitle: "Optional - to personalize your experience",
+    skipForm: "Skip for now",
   },
 };
 
@@ -205,16 +215,13 @@ function SpeakingAnimation() {
   );
 }
 
-function IdleAnimation({ onClick }: { onClick?: () => void }) {
+function IdleAnimation() {
   return (
-    <div
-      className="relative w-48 h-48 flex items-center justify-center cursor-pointer"
-      onClick={onClick}
-    >
+    <div className="relative w-48 h-48 flex items-center justify-center">
       {/* Static outer ring */}
       <div className="absolute w-40 h-40 border-4 border-white/20" />
-      {/* Center mic icon */}
-      <div className="w-24 h-24 bg-[#10B981] border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center hover:bg-[#059669] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
+      {/* Center mic icon - no longer clickable, just visual indicator */}
+      <div className="w-24 h-24 bg-[#10B981] border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
         <Mic size={32} className="text-white" />
       </div>
     </div>
@@ -245,11 +252,17 @@ export function VoiceConversationMode({
   isOpen,
   onClose,
   locale,
+  showInitialForm = true, // Default to true for Phase 2 - form appears first
   showContactForm = false,
   onContactFormSubmit,
   onContactFormDismiss,
 }: VoiceConversationModeProps) {
 
+  // Pre-connection form state (Phase 2)
+  const [showPreConnectionForm, setShowPreConnectionForm] = useState(showInitialForm);
+  const [capturedUserInfo, setCapturedUserInfo] = useState<{ name: string; email: string; phone?: string } | null>(null);
+
+  // Mid-conversation form state (backward compat)
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
   const [formError, setFormError] = useState<string | null>(null);
@@ -344,6 +357,9 @@ export function VoiceConversationMode({
     }
   }, []);
 
+  // Auto-greeting state
+  const hasGreetedRef = useRef(false);
+
   // Gemini Live hook
   const {
     connectionState,
@@ -351,6 +367,7 @@ export function VoiceConversationMode({
     isConnected,
     connect,
     disconnect,
+    sendTextPrompt,
     userTranscript,
     aiTranscript,
     error,
@@ -372,6 +389,31 @@ export function VoiceConversationMode({
     onConversationChange: () => {
       // Conversation state changes are handled by the hook
     },
+    onConnected: () => {
+      // Trigger auto-greeting when connection opens
+      if (!hasGreetedRef.current) {
+        hasGreetedRef.current = true;
+        // Send direct greeting - personalized with name if provided
+        let greetingText: string;
+
+        if (capturedUserInfo?.name) {
+          // Personalized greeting thanking them for form submission
+          greetingText = locale === "es"
+            ? `Hola ${capturedUserInfo.name}! Gracias por compartir tus datos. Soy el asistente de CultivoAI. ¿En qué te puedo ayudar?`
+            : `Hi ${capturedUserInfo.name}! Thanks for sharing your details. I'm the CultivoAI assistant. How can I help you?`;
+        } else {
+          // Generic greeting (form was skipped)
+          greetingText = locale === "es"
+            ? "Hola! Soy el asistente de CultivoAI. ¿En qué te puedo ayudar?"
+            : "Hi! I'm the CultivoAI assistant. How can I help you?";
+        }
+
+        // Small delay to ensure audio is ready
+        setTimeout(() => {
+          sendTextPrompt(greetingText);
+        }, 500);
+      }
+    },
   });
 
   // Show contact form when requested
@@ -391,10 +433,20 @@ export function VoiceConversationMode({
     initConversationRef.current = initConversation;
   }, [connect, initConversation]);
 
-  // Auto-connect when component mounts (since we only render when modal is open)
+  // Auto-connect when component mounts (WAIT for form completion or skip in Phase 2)
   useEffect(() => {
-    // Connect immediately since component only renders when modal is open
-    if (connectionState === "disconnected" && !showForm && !hasAttemptedConnectionRef.current) {
+    // Only connect if:
+    // 1. Modal is open
+    // 2. Not showing pre-connection form (Phase 2) OR not showing mid-conversation form
+    // 3. Haven't attempted connection yet
+    const shouldConnect =
+      isOpen &&
+      !showPreConnectionForm &&
+      !showForm &&
+      connectionState === "disconnected" &&
+      !hasAttemptedConnectionRef.current;
+
+    if (shouldConnect) {
       hasAttemptedConnectionRef.current = true;
       // Initialize conversation logging (non-blocking)
       initConversationRef.current().catch(() => {
@@ -409,15 +461,90 @@ export function VoiceConversationMode({
         hasAttemptedConnectionRef.current = false;
       }
     };
-  }, [isOpen, connectionState, showForm]); // Stable dependencies - no function refs
+  }, [isOpen, connectionState, showForm, showPreConnectionForm]); // Stable dependencies - no function refs
+
+  // Handle pre-connection form submission (Phase 2)
+  const handlePreConnectionFormSubmit = useCallback(async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormError(null);
+
+    const { name, email, phone } = formData;
+
+    // Validate name
+    if (!name.trim()) {
+      setFormError(labels.formError);
+      return;
+    }
+
+    // Email validation (must have @ and domain)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!email.trim() || !emailRegex.test(email)) {
+      setFormError(labels.formError);
+      return;
+    }
+
+    setIsSubmittingForm(true);
+
+    try {
+      if (onContactFormSubmit) {
+        const success = await onContactFormSubmit(
+          name.trim(),
+          email.trim(),
+          phone.trim() || undefined
+        );
+        if (success) {
+          // Capture user info for personalized greeting
+          const userInfo: { name: string; email: string; phone?: string } = {
+            name: name.trim(),
+            email: email.trim(),
+          };
+          if (phone.trim()) {
+            userInfo.phone = phone.trim();
+          }
+          setCapturedUserInfo(userInfo);
+          setFormData({ name: "", email: "", phone: "" });
+          setShowPreConnectionForm(false); // Hide form, trigger connection
+        } else {
+          setFormError(labels.formError);
+        }
+      } else {
+        // No submit handler provided, just capture info locally
+        const userInfo: { name: string; email: string; phone?: string } = {
+          name: name.trim(),
+          email: email.trim(),
+        };
+        if (phone.trim()) {
+          userInfo.phone = phone.trim();
+        }
+        setCapturedUserInfo(userInfo);
+        setFormData({ name: "", email: "", phone: "" });
+        setShowPreConnectionForm(false); // Hide form, trigger connection
+      }
+    } catch {
+      setFormError(labels.formError);
+    } finally {
+      setIsSubmittingForm(false);
+    }
+  }, [formData, labels.formError, onContactFormSubmit]);
+
+  // Handle pre-connection form skip (Phase 2)
+  const handlePreConnectionFormSkip = useCallback(() => {
+    setFormData({ name: "", email: "", phone: "" });
+    setFormError(null);
+    setCapturedUserInfo(null); // No user info captured
+    setShowPreConnectionForm(false); // Hide form, trigger connection
+  }, []);
 
   // Handle close - disconnect and end conversation logging
   const handleClose = useCallback(() => {
     disconnect();
     endConversation(); // Log final stats before closing
     setShowForm(false);
+    setShowPreConnectionForm(false);
+    setCapturedUserInfo(null);
     setFormData({ name: "", email: "", phone: "" });
     setFormError(null);
+    hasGreetedRef.current = false; // Reset greeting flag for next time
     onClose();
   }, [disconnect, endConversation, onClose]);
 
@@ -574,8 +701,92 @@ export function VoiceConversationMode({
 
       {/* Main content */}
       <div className="flex flex-col items-center gap-8 max-w-lg w-full px-6">
-        {/* Contact Form - shown when showForm is true */}
-        {showForm ? (
+        {/* Pre-Connection Form (Phase 2) - shown FIRST before connection */}
+        {showPreConnectionForm ? (
+          <div className="w-full max-w-sm">
+            {/* Form Title */}
+            <div className="text-center mb-6">
+              <h2 className="text-white text-2xl font-bold uppercase mb-2">
+                {labels.preFormTitle}
+              </h2>
+              <p className="text-white/70 text-sm font-medium">
+                {labels.preFormSubtitle}
+              </p>
+            </div>
+
+            {/* Form */}
+            <form
+              onSubmit={handlePreConnectionFormSubmit}
+              className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_#A855F7] p-6 space-y-4"
+            >
+              <div>
+                <label className="block text-sm font-bold uppercase mb-2 text-black">
+                  {labels.name}
+                </label>
+                <input
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                  placeholder={locale === "es" ? "Tu nombre" : "Your name"}
+                  className="w-full p-3 border-4 border-black bg-[#F3F4F6] font-bold text-base focus:shadow-[4px_4px_0px_0px_#A855F7] outline-none transition-shadow"
+                  disabled={isSubmittingForm}
+                  autoFocus
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-bold uppercase mb-2 text-black">
+                  {labels.email}
+                </label>
+                <input
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                  placeholder={locale === "es" ? "tu@email.com" : "your@email.com"}
+                  className="w-full p-3 border-4 border-black bg-[#F3F4F6] font-bold text-base focus:shadow-[4px_4px_0px_0px_#A855F7] outline-none transition-shadow"
+                  disabled={isSubmittingForm}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-bold uppercase mb-2 text-black">
+                  {labels.phone}
+                </label>
+                <input
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                  placeholder={locale === "es" ? "+57 300 123 4567" : "+1 555 123 4567"}
+                  className="w-full p-3 border-4 border-black bg-[#F3F4F6] font-bold text-base focus:shadow-[4px_4px_0px_0px_#A855F7] outline-none transition-shadow"
+                  disabled={isSubmittingForm}
+                />
+              </div>
+              {formError && (
+                <p className="text-sm font-bold text-[#EF4444]">{formError}</p>
+              )}
+              <button
+                type="submit"
+                disabled={isSubmittingForm}
+                className="w-full p-3 bg-[#FFC805] text-black font-bold uppercase border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#FFDE00] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+              >
+                {isSubmittingForm ? (
+                  <>
+                    <Loader2 size={20} className="animate-spin" />
+                    {labels.submitting}
+                  </>
+                ) : (
+                  labels.submit
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={handlePreConnectionFormSkip}
+                disabled={isSubmittingForm}
+                className="w-full p-2 text-sm font-bold text-white/60 uppercase hover:text-white disabled:opacity-50 transition-colors"
+              >
+                {labels.skipForm}
+              </button>
+            </form>
+          </div>
+        ) : showForm ? (
           <div className="w-full max-w-sm">
             {/* Form Title */}
             <h2 className="text-white text-2xl font-bold uppercase text-center mb-6">
@@ -680,7 +891,8 @@ export function VoiceConversationMode({
               </div>
             )}
 
-            {/* Transcripts */}
+            {/* Transcripts - HIDDEN to prevent system prompt from showing */}
+            {false && (
             <div className="w-full space-y-4 max-h-48 overflow-y-auto">
               {/* User transcript */}
               {userTranscript && (
@@ -702,13 +914,9 @@ export function VoiceConversationMode({
                 </div>
               )}
             </div>
-
-            {/* Instructions based on state */}
-            {conversationState === "idle" && connectionState === "connected" && (
-              <p className="text-white/60 font-bold uppercase text-sm">
-                {labels.tapToSpeak}
-              </p>
             )}
+
+            {/* No instructions needed - AI greets automatically */}
 
             {connectionState === "error" && (
               <button

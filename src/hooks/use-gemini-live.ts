@@ -19,6 +19,7 @@ export interface UseGeminiLiveOptions {
   onError?: (error: Error) => void;
   onConnectionChange?: (state: GeminiConnectionState) => void;
   onConversationChange?: (state: GeminiConversationState) => void;
+  onConnected?: () => void; // Called when connection opens successfully
 }
 
 export interface UseGeminiLiveReturn {
@@ -32,6 +33,7 @@ export interface UseGeminiLiveReturn {
   // Control methods
   connect: () => Promise<void>;
   disconnect: () => void;
+  sendTextPrompt: (text: string) => void; // Send text input to trigger AI response
 
   // Transcripts
   userTranscript: string;
@@ -59,6 +61,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     onError,
     onConnectionChange,
     onConversationChange,
+    onConnected,
   } = options;
 
   // State
@@ -411,6 +414,8 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
             updateConversationState("idle");
             // Start recording immediately after connection
             isRecordingRef.current = true;
+            // Trigger auto-greeting if callback provided
+            onConnected?.();
             resolveConnection(true);
           },
           onmessage: (message: any) => {
@@ -625,6 +630,27 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   }, [clearAudioQueue, updateConnectionState, updateConversationState]);
 
   // ============================================
+  // Send Text Prompt (for auto-greeting)
+  // ============================================
+
+  const sendTextPrompt = useCallback((text: string) => {
+    if (!sessionRef.current || connectionState !== "connected") {
+      console.warn("[Gemini Live SDK] Cannot send text: not connected");
+      return;
+    }
+
+    try {
+      // Send text input to trigger AI response
+      sessionRef.current.sendRealtimeInput({
+        text: text,
+      });
+      console.log("[Gemini Live SDK] Sent text prompt:", text);
+    } catch (err) {
+      console.error("[Gemini Live SDK] Error sending text prompt:", err);
+    }
+  }, [connectionState]);
+
+  // ============================================
   // Cleanup on Unmount
   // ============================================
 
@@ -673,6 +699,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     isSpeaking: conversationState === "speaking",
     connect,
     disconnect,
+    sendTextPrompt,
     userTranscript,
     aiTranscript,
     error,
