@@ -79,6 +79,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   // Audio playback queue
   const audioQueueRef = useRef<ArrayBuffer[]>([]);
   const isPlayingRef = useRef(false);
+  const nextPlayTimeRef = useRef<number>(0); // Track when next chunk should start
 
   // ============================================
   // Connection State Updates
@@ -184,11 +185,19 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       const audioBuffer = ctx.createBuffer(1, numSamples, 24000);
       audioBuffer.getChannelData(0).set(float32);
 
-      // Play audio
+      // Calculate when to start this chunk (scheduled playback eliminates gaps)
+      const currentTime = ctx.currentTime;
+      const startTime = Math.max(currentTime, nextPlayTimeRef.current);
+
+      // Schedule next chunk right after this one
+      const duration = audioBuffer.duration;
+      nextPlayTimeRef.current = startTime + duration;
+
+      // Play audio at scheduled time
       const source = ctx.createBufferSource();
       source.buffer = audioBuffer;
       source.connect(ctx.destination);
-      source.start();
+      source.start(startTime);
 
       // When audio ends, check for more in queue
       source.onended = () => {
@@ -200,6 +209,8 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
           }
         } else {
           updateConversationState("idle");
+          // Reset play time when idle
+          nextPlayTimeRef.current = 0;
         }
       };
 
