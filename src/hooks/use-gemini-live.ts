@@ -232,7 +232,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
             playAudioChunk(nextChunk);
           }
         } else {
-          updateConversationState("idle");
+          updateConversationState("listening"); // Return to listening state after speaking
           // Reset play time when idle
           nextPlayTimeRef.current = 0;
         }
@@ -445,7 +445,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
           onopen: () => {
             console.log("[Gemini Live SDK] Connection opened");
             updateConnectionState("connected");
-            updateConversationState("idle");
+            updateConversationState("listening"); // Start in listening state to show mic level
             // Start recording immediately after connection
             isRecordingRef.current = true;
             // Trigger auto-greeting if callback provided
@@ -497,7 +497,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
             if (message.serverContent?.turnComplete) {
               console.log("[Gemini Live SDK] Turn complete");
               if (audioQueueRef.current.length === 0) {
-                updateConversationState("idle");
+                updateConversationState("listening"); // Return to listening after turn complete
               }
             }
 
@@ -505,7 +505,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
             if (message.serverContent?.interrupted) {
               console.log("[Gemini Live SDK] Interrupted");
               clearAudioQueue();
-              updateConversationState("idle");
+              updateConversationState("listening"); // Return to listening after interruption
             }
           },
           onerror: (event: ErrorEvent) => {
@@ -714,8 +714,8 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   // ============================================
 
   const sendTextPrompt = useCallback((text: string) => {
-    if (!sessionRef.current || connectionState !== "connected") {
-      console.warn("[Gemini Live SDK] Cannot send text: not connected");
+    if (!sessionRef.current) {
+      console.warn("[Gemini Live SDK] Cannot send text: session not available");
       return;
     }
 
@@ -728,7 +728,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     } catch (err) {
       console.error("[Gemini Live SDK] Error sending text prompt:", err);
     }
-  }, [connectionState]);
+  }, []); // No dependencies - only check sessionRef which is stable
 
   // ============================================
   // Cleanup on Unmount
