@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Loader2, Mic, Phone, X, AlertCircle, WifiOff } from "lucide-react";
 import { useGeminiLive } from "@/hooks/use-gemini-live";
 import { buildVoiceSystemPrompt } from "@/lib/chat/system-prompt";
+import { VoiceMicLevel } from "./voice-mic-level";
 
 // ============================================
 // Types
@@ -77,7 +78,7 @@ const LABELS: Record<"es" | "en", VoiceLabels> = {
     formTitle: "Para ayudarte mejor",
     formError: "Por favor completa todos los campos correctamente",
     connectionError: "No se pudo conectar. Verifica tu conexion.",
-    microphoneError: "No se pudo acceder al microfono.",
+    microphoneError: "Click 🔒 en la barra de direcciones para permitir microfono",
     retry: "Reintentar",
     preFormTitle: "ANTES DE EMPEZAR",
     preFormSubtitle: "Opcional - para personalizar tu experiencia",
@@ -106,7 +107,7 @@ const LABELS: Record<"es" | "en", VoiceLabels> = {
     formTitle: "To help you better",
     formError: "Please fill in all fields correctly",
     connectionError: "Could not connect. Check your connection.",
-    microphoneError: "Could not access microphone.",
+    microphoneError: "Click 🔒 in address bar to allow microphone",
     retry: "Retry",
     preFormTitle: "BEFORE WE START",
     preFormSubtitle: "Optional - to personalize your experience",
@@ -360,6 +361,9 @@ export function VoiceConversationMode({
   // Auto-greeting state
   const hasGreetedRef = useRef(false);
 
+  // Retry status state
+  const [retryStatus, setRetryStatus] = useState<string | null>(null);
+
   // Gemini Live hook
   const {
     connectionState,
@@ -370,7 +374,11 @@ export function VoiceConversationMode({
     sendTextPrompt,
     userTranscript,
     aiTranscript,
+    audioLevel,
+    retryAttempt,
+    maxRetries,
     error,
+    errorType,
   } = useGeminiLive({
     locale,
     systemPrompt,
@@ -413,6 +421,21 @@ export function VoiceConversationMode({
           sendTextPrompt(greetingText);
         }, 500);
       }
+    },
+    onRetrying: (attempt, delay) => {
+      // Update retry status message
+      const message = locale === "es"
+        ? delay > 0
+          ? `Reintentando en ${delay / 1000}s... (${attempt}/${maxRetries})`
+          : `Reintentando ahora... (${attempt}/${maxRetries})`
+        : delay > 0
+        ? `Retrying in ${delay / 1000}s... (${attempt}/${maxRetries})`
+        : `Retrying now... (${attempt}/${maxRetries})`;
+
+      setRetryStatus(message);
+
+      // Clear after delay
+      setTimeout(() => setRetryStatus(null), delay + 1000);
     },
   });
 
@@ -661,28 +684,35 @@ export function VoiceConversationMode({
     }
   };
 
-  // Render animation based on state
+  // Render animation based on state with smooth transitions
   const renderAnimation = () => {
     if (showForm) return null;
 
+    // Wrapper with fade transition for all state changes
+    const AnimationWrapper = ({ children }: { children: React.ReactNode }) => (
+      <div className="transition-all duration-300 ease-in-out animate-in fade-in-0 zoom-in-95">
+        {children}
+      </div>
+    );
+
     if (connectionState === "connecting" || connectionState === "reconnecting") {
-      return <ConnectingAnimation />;
+      return <AnimationWrapper><ConnectingAnimation /></AnimationWrapper>;
     }
 
     if (connectionState === "error") {
-      return <ErrorAnimation onClick={handleRetry} />;
+      return <AnimationWrapper><ErrorAnimation onClick={handleRetry} /></AnimationWrapper>;
     }
 
     switch (conversationState) {
       case "listening":
-        return <ListeningAnimation />;
+        return <AnimationWrapper><ListeningAnimation /></AnimationWrapper>;
       case "processing":
       case "interrupted":
-        return <ProcessingAnimation />;
+        return <AnimationWrapper><ProcessingAnimation /></AnimationWrapper>;
       case "speaking":
-        return <SpeakingAnimation />;
+        return <AnimationWrapper><SpeakingAnimation /></AnimationWrapper>;
       default:
-        return <IdleAnimation />;
+        return <AnimationWrapper><IdleAnimation /></AnimationWrapper>;
     }
   };
 
@@ -866,28 +896,73 @@ export function VoiceConversationMode({
           </div>
         ) : (
           <>
-            {/* Animation container */}
-            <div className="relative">
-              {renderAnimation()}
+            {/* Main content row - animation and mic level */}
+            <div className="flex items-center justify-center gap-8 w-full">
+              {/* Animation container */}
+              <div className="relative">
+                {renderAnimation()}
+              </div>
+
+              {/* Mic level indicator - only show when connected and listening */}
+              {isConnected && conversationState === "listening" && (
+                <VoiceMicLevel level={audioLevel} locale={locale} />
+              )}
             </div>
 
-            {/* State label */}
+            {/* State label - enhanced with smooth transitions */}
             <div
-              className="px-6 py-3 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold text-xl uppercase tracking-wider"
+              className="px-6 py-3 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold text-xl uppercase tracking-wider transition-all duration-300 ease-in-out relative overflow-hidden"
               style={{ backgroundColor: getStateColor(), color: "#000000" }}
             >
-              {getStateLabel()}
+              {/* Gradient accent on active states */}
+              {(conversationState === "speaking" || conversationState === "processing") && (
+                <div
+                  className="absolute inset-0 opacity-20 animate-pulse"
+                  style={{
+                    background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%)",
+                    backgroundSize: "200% 100%",
+                    animation: "shimmer 2s infinite",
+                  }}
+                />
+              )}
+              {/* Glow effect on speaking state */}
+              {conversationState === "speaking" && (
+                <div className="absolute -inset-1 bg-[#A855F7] opacity-30 blur-md -z-10 animate-pulse" />
+              )}
+              <span className="relative z-10">{getStateLabel()}</span>
             </div>
 
-            {/* Error message */}
+            {/* Error message with specific type and retry status */}
             {connectionState === "error" && error && (
-              <div className="flex items-center gap-2 px-4 py-2 bg-[#EF4444] text-white border-2 border-black">
-                <AlertCircle size={20} />
-                <span className="font-bold text-sm">
-                  {error.message.includes("microfono") || error.message.includes("microphone")
-                    ? labels.microphoneError
-                    : labels.connectionError}
-                </span>
+              <div className="flex flex-col gap-2 w-full max-w-md">
+                <div className="flex items-center gap-2 px-4 py-2 bg-[#EF4444] text-white border-2 border-black">
+                  <AlertCircle size={20} />
+                  <span className="font-bold text-sm">
+                    {errorType === "microphone"
+                      ? labels.microphoneError
+                      : errorType === "network"
+                      ? locale === "es"
+                        ? "Reintentando automaticamente..."
+                        : "Retrying automatically..."
+                      : labels.connectionError}
+                  </span>
+                </div>
+                {/* Retry status */}
+                {retryStatus && retryAttempt < maxRetries && (
+                  <div className="px-4 py-2 bg-[#FFDE00] text-black border-2 border-black text-center">
+                    <span className="font-bold text-sm">{retryStatus}</span>
+                  </div>
+                )}
+                {/* Max retries reached */}
+                {retryAttempt >= maxRetries && errorType !== "microphone" && (
+                  <div className="px-4 py-2 bg-white border-2 border-black text-center">
+                    <span className="font-bold text-sm text-black">
+                      {locale === "es"
+                        ? "Intentalo de nuevo mas tarde"
+                        : "Please try again later"}
+                    </span>
+                  </div>
+                )}
               </div>
             )}
 
@@ -918,7 +993,8 @@ export function VoiceConversationMode({
 
             {/* No instructions needed - AI greets automatically */}
 
-            {connectionState === "error" && (
+            {/* Manual retry button - only show if max retries reached or microphone error */}
+            {connectionState === "error" && (retryAttempt >= maxRetries || errorType === "microphone") && (
               <button
                 onClick={handleRetry}
                 className="px-6 py-3 bg-[#FFC805] text-black border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold uppercase hover:bg-[#FFDE00] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all"

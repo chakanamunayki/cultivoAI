@@ -16,6 +16,12 @@ class PCMProcessor extends AudioWorkletProcessor {
     this.chunkSize = 320; // 16000 Hz * 0.02s = 320 samples
     this.buffer = new Float32Array(this.chunkSize);
     this.bufferIndex = 0;
+
+    // Audio level calculation (for visualization)
+    this.levelUpdateInterval = 100; // Send level updates every 100ms (10fps)
+    this.levelSampleCount = 0;
+    this.levelSumSquares = 0;
+    this.lastLevelUpdate = 0;
   }
 
   /**
@@ -39,10 +45,27 @@ class PCMProcessor extends AudioWorkletProcessor {
   }
 
   /**
+   * Calculate RMS (Root Mean Square) level from audio samples
+   * Returns value 0-100 representing audio level
+   */
+  calculateLevel(samples) {
+    // Calculate RMS
+    const rms = Math.sqrt(this.levelSumSquares / this.levelSampleCount);
+
+    // Convert to percentage (0-100)
+    // Assume -40dB to 0dB range maps to 0-100%
+    // RMS of 0.01 (-40dB) = 0%, RMS of 1.0 (0dB) = 100%
+    const db = 20 * Math.log10(Math.max(rms, 0.001)); // Avoid log(0)
+    const percentage = Math.max(0, Math.min(100, ((db + 40) / 40) * 100));
+
+    return percentage;
+  }
+
+  /**
    * Process audio input
    * Called automatically by Web Audio API for each 128-sample block
    */
-  process(inputs, outputs, parameters) {
+  process(inputs, _outputs, _parameters) {
     const input = inputs[0];
 
     // No input available
@@ -51,10 +74,16 @@ class PCMProcessor extends AudioWorkletProcessor {
     }
 
     const channelData = input[0]; // Mono channel
+    const currentTime = currentFrame / sampleRate * 1000; // Convert to milliseconds
 
-    // Collect samples into buffer
+    // Collect samples into buffer and calculate level
     for (let i = 0; i < channelData.length; i++) {
-      this.buffer[this.bufferIndex++] = channelData[i];
+      const sample = channelData[i];
+      this.buffer[this.bufferIndex++] = sample;
+
+      // Accumulate for level calculation (RMS)
+      this.levelSumSquares += sample * sample;
+      this.levelSampleCount++;
 
       // When we have a full 20ms chunk, send it to main thread
       if (this.bufferIndex >= this.chunkSize) {
@@ -69,6 +98,23 @@ class PCMProcessor extends AudioWorkletProcessor {
 
         // Reset buffer
         this.bufferIndex = 0;
+      }
+    }
+
+    // Send level updates every 100ms (10fps)
+    if (currentTime - this.lastLevelUpdate >= this.levelUpdateInterval) {
+      if (this.levelSampleCount > 0) {
+        const level = this.calculateLevel();
+
+        this.port.postMessage({
+          type: 'level',
+          level: level
+        });
+
+        // Reset level calculation
+        this.levelSumSquares = 0;
+        this.levelSampleCount = 0;
+        this.lastLevelUpdate = currentTime;
       }
     }
 

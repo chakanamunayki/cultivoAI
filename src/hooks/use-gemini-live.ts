@@ -20,6 +20,7 @@ export interface UseGeminiLiveOptions {
   onConnectionChange?: (state: GeminiConnectionState) => void;
   onConversationChange?: (state: GeminiConversationState) => void;
   onConnected?: () => void; // Called when connection opens successfully
+  onRetrying?: (attempt: number, delay: number) => void; // Called when auto-retry starts
 }
 
 export interface UseGeminiLiveReturn {
@@ -39,8 +40,16 @@ export interface UseGeminiLiveReturn {
   userTranscript: string;
   aiTranscript: string;
 
+  // Audio level (0-100)
+  audioLevel: number;
+
+  // Retry state
+  retryAttempt: number;
+  maxRetries: number;
+
   // Error state
   error: Error | null;
+  errorType: "microphone" | "network" | "server" | null;
 }
 
 // Voice configuration by locale
@@ -62,6 +71,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     onConnectionChange,
     onConversationChange,
     onConnected,
+    onRetrying,
   } = options;
 
   // State
@@ -69,7 +79,14 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   const [conversationState, setConversationState] = useState<GeminiConversationState>("idle");
   const [userTranscript, setUserTranscript] = useState("");
   const [aiTranscript, setAiTranscript] = useState("");
+  const [audioLevel, setAudioLevel] = useState(0);
   const [error, setError] = useState<Error | null>(null);
+  const [errorType, setErrorType] = useState<"microphone" | "network" | "server" | null>(null);
+  const [retryAttempt, setRetryAttempt] = useState(0);
+
+  // Retry configuration
+  const MAX_RETRIES = 3;
+  const RETRY_DELAYS = [0, 2000, 5000]; // Instant, 2s, 5s
 
   // Refs for session and audio
   const sessionRef = useRef<any>(null);
@@ -136,6 +153,10 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       }
     } catch (err) {
       console.error("[Gemini Live SDK] Token fetch error:", err);
+
+      // Classify error type
+      setErrorType(err instanceof TypeError ? "network" : "server");
+
       const errorMsg = new Error(
         locale === "es"
           ? `Error al obtener token: ${err instanceof Error ? err.message : "Desconocido"}`
@@ -280,6 +301,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
       // Handle audio data from worklet
       workletNode.port.onmessage = (event) => {
+        // Handle PCM audio data
         if (
           event.data.type === "pcm" &&
           sessionRef.current &&
@@ -313,12 +335,24 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
             }
           }
         }
+
+        // Handle audio level updates (for visualization)
+        if (event.data.type === "level") {
+          setAudioLevel(event.data.level);
+        }
       };
 
       console.log("[Gemini Live SDK] Audio input setup complete");
       return true;
     } catch (err) {
       console.error("[Gemini Live SDK] Audio input setup failed:", err);
+
+      // Classify error type
+      const isMicPermission = err instanceof Error &&
+        (err.name === "NotAllowedError" || err.name === "PermissionDeniedError");
+
+      setErrorType(isMicPermission ? "microphone" : "network");
+
       const errorMsg = new Error(
         locale === "es"
           ? "No se pudo acceder al micrófono"
@@ -540,15 +574,17 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   // Public Connect Method
   // ============================================
 
-  const connect = useCallback(async () => {
+  const connect = useCallback(async (isRetry = false) => {
     if (connectionState === "connected" || connectionState === "connecting") {
       return;
     }
 
-    console.log("[Gemini Live SDK] Starting connection sequence");
+    console.log("[Gemini Live SDK] Starting connection sequence", isRetry ? `(retry ${retryAttempt + 1})` : "");
     setError(null);
+    setErrorType(null);
     setUserTranscript("");
     setAiTranscript("");
+    setAudioLevel(0);
     clearAudioQueue();
 
     updateConnectionState("connecting");
@@ -557,7 +593,9 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     const outputSuccess = setupAudioOutput();
     if (!outputSuccess) {
       console.error("[Gemini Live SDK] Audio output setup failed");
+      setErrorType("network");
       updateConnectionState("error");
+      await attemptRetry();
       return;
     }
 
@@ -565,7 +603,9 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     const sessionSuccess = await initializeSession();
     if (!sessionSuccess) {
       console.error("[Gemini Live SDK] Session initialization failed");
+      // Error type already set in initializeSession or fetchEphemeralToken
       updateConnectionState("error");
+      await attemptRetry();
       return;
     }
 
@@ -573,16 +613,48 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     const inputSuccess = await setupAudioInput();
     if (!inputSuccess) {
       console.error("[Gemini Live SDK] Audio input setup failed");
+      // Error type already set in setupAudioInput
       updateConnectionState("error");
+      // Don't retry on microphone permission errors (user must manually grant)
+      if (errorType !== "microphone") {
+        await attemptRetry();
+      }
+    } else {
+      // Success - reset retry counter
+      setRetryAttempt(0);
     }
   }, [
     connectionState,
+    retryAttempt,
+    errorType,
     clearAudioQueue,
     setupAudioOutput,
     setupAudioInput,
     initializeSession,
     updateConnectionState,
   ]);
+
+  // Auto-retry with exponential backoff
+  const attemptRetry = useCallback(async () => {
+    const currentAttempt = retryAttempt;
+
+    if (currentAttempt >= MAX_RETRIES) {
+      console.log("[Gemini Live SDK] Max retries reached");
+      return;
+    }
+
+    const delay = RETRY_DELAYS[currentAttempt] || 5000;
+    console.log(`[Gemini Live SDK] Retrying in ${delay}ms (attempt ${currentAttempt + 1}/${MAX_RETRIES})`);
+
+    setRetryAttempt(currentAttempt + 1);
+    onRetrying?.(currentAttempt + 1, delay);
+
+    if (delay > 0) {
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+
+    connect(true); // Retry connection
+  }, [retryAttempt, connect, onRetrying, MAX_RETRIES, RETRY_DELAYS]);
 
   // ============================================
   // Public Disconnect Method
@@ -624,6 +696,14 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
     // Clear audio queue
     clearAudioQueue();
+
+    // Reset audio level
+    setAudioLevel(0);
+
+    // Reset retry state
+    setRetryAttempt(0);
+    setError(null);
+    setErrorType(null);
 
     updateConnectionState("disconnected");
     updateConversationState("idle");
@@ -702,6 +782,10 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     sendTextPrompt,
     userTranscript,
     aiTranscript,
+    audioLevel,
+    retryAttempt,
+    maxRetries: MAX_RETRIES,
     error,
+    errorType,
   };
 }
