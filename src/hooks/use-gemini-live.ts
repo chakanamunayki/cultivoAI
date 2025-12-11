@@ -124,6 +124,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       // Decode the base64 token to extract the API key
       try {
         const tokenPayload = JSON.parse(atob(data.token));
+        console.log("[Gemini Live SDK] Decoded token, API key starts with:", tokenPayload.apiKey?.substring(0, 10));
         return tokenPayload.apiKey;
       } catch (decodeErr) {
         console.error("[Gemini Live SDK] Failed to decode token:", decodeErr);
