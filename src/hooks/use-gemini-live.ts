@@ -357,6 +357,12 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       console.log("[Gemini Live SDK] Connecting to Gemini Live API");
 
       // Step 4: Connect with callbacks
+      // Use a Promise to wait for connection to open
+      let resolveConnection: (value: boolean) => void;
+      const connectionPromise = new Promise<boolean>((resolve) => {
+        resolveConnection = resolve;
+      });
+
       const session = await ai.live.connect({
         model: "gemini-2.5-flash-native-audio-preview-09-2025",
         config: config,
@@ -367,6 +373,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
             updateConversationState("idle");
             // Start recording immediately after connection
             isRecordingRef.current = true;
+            resolveConnection(true);
           },
           onmessage: (message: any) => {
             console.log("[Gemini Live SDK] Message received:", message);
@@ -428,17 +435,32 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
             setError(errorMsg);
             onError?.(errorMsg);
             updateConnectionState("error");
+            resolveConnection(false);
           },
-          onclose: () => {
-            console.log("[Gemini Live SDK] Connection closed");
+          onclose: (event?: CloseEvent) => {
+            console.log("[Gemini Live SDK] Connection closed", {
+              code: event?.code,
+              reason: event?.reason,
+              wasClean: event?.wasClean,
+            });
             isRecordingRef.current = false;
             updateConnectionState("disconnected");
             updateConversationState("idle");
+            resolveConnection(false);
           },
         },
       });
 
       sessionRef.current = session;
+      console.log("[Gemini Live SDK] Waiting for connection to open...");
+
+      // Wait for connection to actually open before proceeding
+      const connected = await connectionPromise;
+      if (!connected) {
+        console.error("[Gemini Live SDK] Connection failed to open");
+        return false;
+      }
+
       console.log("[Gemini Live SDK] Session initialized successfully");
       return true;
     } catch (err) {
