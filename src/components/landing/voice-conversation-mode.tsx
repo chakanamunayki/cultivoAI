@@ -810,7 +810,7 @@ export function VoiceConversationMode({
                 type="button"
                 onClick={handlePreConnectionFormSkip}
                 disabled={isSubmittingForm}
-                className="w-full p-2 text-sm font-bold text-white/60 uppercase hover:text-white disabled:opacity-50 transition-colors"
+                className="w-full p-2 text-sm font-bold text-black/60 uppercase hover:text-black disabled:opacity-50 transition-colors"
               >
                 {labels.skipForm}
               </button>
