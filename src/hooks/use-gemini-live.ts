@@ -8,6 +8,64 @@ import {
   type GeminiConversationState,
 } from "@/lib/gemini-live";
 
+// Inline worklet code as string to avoid Next.js module loading issues
+const AUDIO_PLAYBACK_WORKLET_CODE = `
+class AudioPlaybackProcessor extends AudioWorkletProcessor {
+  constructor() {
+    super();
+    this.bufferSize = 24000 * 2;
+    this.buffer = new Float32Array(this.bufferSize);
+    this.writePos = 0;
+    this.readPos = 0;
+    this.samplesAvailable = 0;
+
+    this.port.onmessage = (event) => {
+      if (event.data.type === 'audio') {
+        this.enqueueAudio(event.data.data);
+      } else if (event.data.type === 'reset') {
+        this.reset();
+      }
+    };
+  }
+
+  enqueueAudio(float32Samples) {
+    for (let i = 0; i < float32Samples.length; i++) {
+      this.buffer[this.writePos] = float32Samples[i];
+      this.writePos = (this.writePos + 1) % this.bufferSize;
+      this.samplesAvailable++;
+      if (this.samplesAvailable > this.bufferSize) {
+        this.samplesAvailable = this.bufferSize;
+        this.readPos = this.writePos;
+      }
+    }
+  }
+
+  reset() {
+    this.writePos = 0;
+    this.readPos = 0;
+    this.samplesAvailable = 0;
+    this.buffer.fill(0);
+  }
+
+  process(inputs, outputs, parameters) {
+    const output = outputs[0];
+    const outputChannel = output[0];
+    for (let i = 0; i < outputChannel.length; i++) {
+      if (this.samplesAvailable > 0) {
+        outputChannel[i] = this.buffer[this.readPos];
+        this.readPos = (this.readPos + 1) % this.bufferSize;
+        this.samplesAvailable--;
+      } else {
+        outputChannel[i] = 0;
+      }
+    }
+    return true;
+  }
+}
+
+registerProcessor('audio-playback-processor', AudioPlaybackProcessor);
+`;
+
 // ============================================
 // Types
 // ============================================
@@ -308,17 +366,21 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
       console.log("[Gemini Live SDK] Loading audio playback worklet...");
 
-      // Load audio playback worklet with retry
+      // Load worklet from Blob URL (avoids Next.js module loading issues)
+      const blob = new Blob([AUDIO_PLAYBACK_WORKLET_CODE], { type: 'application/javascript' });
+      const workletUrl = URL.createObjectURL(blob);
+
       try {
-        await ctx.audioWorklet.addModule("/audio-playback-processor.js");
-        console.log("[Gemini Live SDK] Worklet module loaded successfully");
+        await ctx.audioWorklet.addModule(workletUrl);
+        console.log("[Gemini Live SDK] Worklet module loaded successfully from Blob");
       } catch (moduleErr) {
         console.error("[Gemini Live SDK] Failed to load worklet module:", moduleErr);
+        URL.revokeObjectURL(workletUrl);
         throw moduleErr;
       }
 
-      // Wait a moment for module to register
-      await new Promise(resolve => setTimeout(resolve, 100));
+      // Clean up Blob URL
+      URL.revokeObjectURL(workletUrl);
 
       // Create playback worklet node
       const playbackWorklet = new AudioWorkletNode(ctx, "audio-playback-processor");
