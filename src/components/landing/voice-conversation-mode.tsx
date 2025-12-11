@@ -381,16 +381,26 @@ export function VoiceConversationMode({
     }
   }, [showContactForm, isOpen]);
 
+  // Store stable references to connect and initConversation
+  const connectRef = useRef(connect);
+  const initConversationRef = useRef(initConversation);
+
+  // Update refs when functions change
+  useEffect(() => {
+    connectRef.current = connect;
+    initConversationRef.current = initConversation;
+  }, [connect, initConversation]);
+
   // Auto-connect when component mounts (since we only render when modal is open)
   useEffect(() => {
     // Connect immediately since component only renders when modal is open
     if (connectionState === "disconnected" && !showForm && !hasAttemptedConnectionRef.current) {
       hasAttemptedConnectionRef.current = true;
       // Initialize conversation logging (non-blocking)
-      initConversation().catch(() => {
+      initConversationRef.current().catch(() => {
         // Conversation logging unavailable - continue silently
       });
-      connect();
+      connectRef.current();
     }
 
     // Reset attempt flag when closed
@@ -399,7 +409,7 @@ export function VoiceConversationMode({
         hasAttemptedConnectionRef.current = false;
       }
     };
-  }, [isOpen, connectionState, showForm, connect, initConversation]);
+  }, [isOpen, connectionState, showForm]); // Stable dependencies - no function refs
 
   // Handle close - disconnect and end conversation logging
   const handleClose = useCallback(() => {
