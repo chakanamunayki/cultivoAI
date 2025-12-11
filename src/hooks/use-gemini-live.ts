@@ -564,20 +564,30 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   // Cleanup on Unmount
   // ============================================
 
-  // Store stable reference to disconnect
-  const disconnectRef = useRef(disconnect);
-
-  // Update ref when disconnect changes
-  useEffect(() => {
-    disconnectRef.current = disconnect;
-  }, [disconnect]);
-
-  // Cleanup only on unmount
+  // Cleanup on unmount only - using ref to avoid recreating effect
   useEffect(() => {
     return () => {
-      disconnectRef.current();
+      // Disconnect when hook unmounts
+      if (sessionRef.current) {
+        try {
+          sessionRef.current.disconnect?.();
+        } catch (err) {
+          console.error("[Gemini Live SDK] Cleanup error:", err);
+        }
+      }
+      // Stop media stream
+      if (mediaStreamRef.current) {
+        mediaStreamRef.current.getTracks().forEach((track) => track.stop());
+      }
+      // Close audio contexts
+      if (audioContextRef.current?.state !== "closed") {
+        audioContextRef.current?.close();
+      }
+      if (playbackContextRef.current?.state !== "closed") {
+        playbackContextRef.current?.close();
+      }
     };
-  }, []); // Empty deps - only run cleanup on unmount
+  }, []); // Empty deps - cleanup ONLY on unmount
 
   // ============================================
   // Return
