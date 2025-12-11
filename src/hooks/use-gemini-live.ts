@@ -120,7 +120,15 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
       const data = await response.json();
       console.log("[Gemini Live SDK] Token received");
-      return data.token;
+
+      // Decode the base64 token to extract the API key
+      try {
+        const tokenPayload = JSON.parse(atob(data.token));
+        return tokenPayload.apiKey;
+      } catch (decodeErr) {
+        console.error("[Gemini Live SDK] Failed to decode token:", decodeErr);
+        throw new Error("Invalid token format");
+      }
     } catch (err) {
       console.error("[Gemini Live SDK] Token fetch error:", err);
       const errorMsg = new Error(
