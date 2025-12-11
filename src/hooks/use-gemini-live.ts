@@ -158,7 +158,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
       // Check if context is closed
       if (ctx.state === "closed") {
-        console.error("[Gemini Live SDK] AudioContext is closed, recreating...");
+        console.warn("[Gemini Live SDK] AudioContext was closed, recreating...");
         playbackContextRef.current = new AudioContext({ sampleRate: 24000 });
         return playAudioChunk(audioData); // Retry with new context
       }
@@ -320,6 +320,12 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
   const setupAudioOutput = useCallback((): boolean => {
     try {
+      // Reuse existing context if it's still open
+      if (playbackContextRef.current && playbackContextRef.current.state !== "closed") {
+        console.log("[Gemini Live SDK] Reusing existing audio output context");
+        return true;
+      }
+
       // Create AudioContext for playback at 24kHz (Gemini output)
       playbackContextRef.current = new AudioContext({ sampleRate: 24000 });
       console.log("[Gemini Live SDK] Audio output setup complete");
