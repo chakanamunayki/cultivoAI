@@ -148,10 +148,20 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   // ============================================
 
   const playAudioChunk = useCallback(async (audioData: ArrayBuffer) => {
-    if (!playbackContextRef.current) return;
+    if (!playbackContextRef.current) {
+      console.warn("[Gemini Live SDK] No playback context available");
+      return;
+    }
 
     try {
       const ctx = playbackContextRef.current;
+
+      // Check if context is closed
+      if (ctx.state === "closed") {
+        console.error("[Gemini Live SDK] AudioContext is closed, recreating...");
+        playbackContextRef.current = new AudioContext({ sampleRate: 24000 });
+        return playAudioChunk(audioData); // Retry with new context
+      }
 
       // Resume if suspended
       if (ctx.state === "suspended") {
@@ -573,16 +583,14 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       mediaStreamRef.current = null;
     }
 
-    // Close audio contexts
+    // Close input audio context only (keep playback for queued audio)
     if (audioContextRef.current) {
       audioContextRef.current.close();
       audioContextRef.current = null;
     }
 
-    if (playbackContextRef.current) {
-      playbackContextRef.current.close();
-      playbackContextRef.current = null;
-    }
+    // Don't close playback context - let queued audio finish playing
+    // It will be closed on component unmount only
 
     // Clear worklet
     workletNodeRef.current = null;
