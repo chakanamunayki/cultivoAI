@@ -409,7 +409,10 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
               for (const part of message.serverContent.modelTurn.parts) {
                 // Audio data
                 if (part.inlineData?.data) {
-                  console.log("[Gemini Live SDK] Received audio data, length:", part.inlineData.data.length);
+                  console.log("[Gemini Live SDK] Received audio data:", {
+                    length: part.inlineData.data.length,
+                    mimeType: part.inlineData.mimeType
+                  });
                   updateConversationState("speaking");
 
                   // Decode base64 to ArrayBuffer
