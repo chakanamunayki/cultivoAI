@@ -168,18 +168,20 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
         await ctx.resume();
       }
 
-      // Decode base64 to PCM (assuming 24kHz from Gemini)
-      const pcm16 = new Int16Array(audioData);
-      const float32 = new Float32Array(pcm16.length);
+      // PCM16 data from Gemini (24kHz, mono, 16-bit little-endian)
+      const dataView = new DataView(audioData);
+      const numSamples = audioData.byteLength / 2; // 2 bytes per 16-bit sample
+      const float32 = new Float32Array(numSamples);
 
-      // Convert PCM16 to Float32
-      for (let i = 0; i < pcm16.length; i++) {
-        const sample = pcm16[i];
-        float32[i] = sample !== undefined ? sample / (sample < 0 ? 0x8000 : 0x7fff) : 0;
+      // Convert PCM16 to Float32 with proper endianness handling
+      for (let i = 0; i < numSamples; i++) {
+        const sample = dataView.getInt16(i * 2, true); // true = little-endian
+        // Normalize to -1.0 to 1.0
+        float32[i] = sample / 32768.0;
       }
 
       // Create audio buffer at 24kHz
-      const audioBuffer = ctx.createBuffer(1, float32.length, 24000);
+      const audioBuffer = ctx.createBuffer(1, numSamples, 24000);
       audioBuffer.getChannelData(0).set(float32);
 
       // Play audio
