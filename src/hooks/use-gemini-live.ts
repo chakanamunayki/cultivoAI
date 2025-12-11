@@ -229,8 +229,9 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       // Convert PCM16 to Float32 with proper endianness handling
       for (let i = 0; i < numSamples; i++) {
         const sample = dataView.getInt16(i * 2, true); // true = little-endian
-        // Normalize to -1.0 to 1.0
-        float32[i] = sample / 32768.0;
+        // Normalize to -1.0 to 1.0 (use 32767 to avoid clipping/distortion)
+        // PCM16 range is asymmetric: -32768 to +32767
+        float32[i] = sample / 32767.0;
       }
 
       // Send audio to worklet for smooth buffered playback
