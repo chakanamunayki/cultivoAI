@@ -260,16 +260,22 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
           }
           const base64Audio = btoa(binary);
 
-          // Send to Gemini via SDK
+          // Send to Gemini via SDK (with safety check for WebSocket state)
           try {
-            sessionRef.current.sendRealtimeInput({
-              audio: {
-                data: base64Audio,
-                mimeType: "audio/pcm;rate=16000",
-              },
-            });
+            // Only send if session exists and has sendRealtimeInput method
+            if (sessionRef.current && typeof sessionRef.current.sendRealtimeInput === 'function') {
+              sessionRef.current.sendRealtimeInput({
+                audio: {
+                  data: base64Audio,
+                  mimeType: "audio/pcm;rate=16000",
+                },
+              });
+            }
           } catch (err) {
-            console.error("[Gemini Live SDK] Error sending audio:", err);
+            // Silently ignore errors if WebSocket is closing/closed
+            if (err instanceof Error && !err.message.includes('CLOSING') && !err.message.includes('CLOSED')) {
+              console.error("[Gemini Live SDK] Error sending audio:", err);
+            }
           }
         }
       };
@@ -484,18 +490,18 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       return;
     }
 
-    // Step 2: Setup audio input
-    const inputSuccess = await setupAudioInput();
-    if (!inputSuccess) {
-      console.error("[Gemini Live SDK] Audio input setup failed");
+    // Step 2: Initialize SDK session FIRST (before audio input)
+    const sessionSuccess = await initializeSession();
+    if (!sessionSuccess) {
+      console.error("[Gemini Live SDK] Session initialization failed");
       updateConnectionState("error");
       return;
     }
 
-    // Step 3: Initialize SDK session
-    const sessionSuccess = await initializeSession();
-    if (!sessionSuccess) {
-      console.error("[Gemini Live SDK] Session initialization failed");
+    // Step 3: Setup audio input AFTER session is connected
+    const inputSuccess = await setupAudioInput();
+    if (!inputSuccess) {
+      console.error("[Gemini Live SDK] Audio input setup failed");
       updateConnectionState("error");
     }
   }, [
