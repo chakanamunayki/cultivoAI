@@ -306,8 +306,19 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       const ctx = new AudioContext({ sampleRate: 24000 });
       playbackContextRef.current = ctx;
 
-      // Load audio playback worklet
-      await ctx.audioWorklet.addModule("/audio-playback-processor.js");
+      console.log("[Gemini Live SDK] Loading audio playback worklet...");
+
+      // Load audio playback worklet with retry
+      try {
+        await ctx.audioWorklet.addModule("/audio-playback-processor.js");
+        console.log("[Gemini Live SDK] Worklet module loaded successfully");
+      } catch (moduleErr) {
+        console.error("[Gemini Live SDK] Failed to load worklet module:", moduleErr);
+        throw moduleErr;
+      }
+
+      // Wait a moment for module to register
+      await new Promise(resolve => setTimeout(resolve, 100));
 
       // Create playback worklet node
       const playbackWorklet = new AudioWorkletNode(ctx, "audio-playback-processor");
