@@ -73,10 +73,11 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   const audioContextRef = useRef<AudioContext | null>(null);
   const playbackContextRef = useRef<AudioContext | null>(null);
   const mediaStreamRef = useRef<MediaStream | null>(null);
-  const workletNodeRef = useRef<AudioWorkletNode | null>(null);
+  const workletNodeRef = useRef<AudioWorkletNode | null>(null); // For input
+  const playbackWorkletNodeRef = useRef<AudioWorkletNode | null>(null); // For output
   const isRecordingRef = useRef(false);
 
-  // Audio playback queue
+  // Audio playback queue (keeping for compatibility, but worklet handles buffering)
   const audioQueueRef = useRef<ArrayBuffer[]>([]);
   const isPlayingRef = useRef(false);
   const nextPlayTimeRef = useRef<number>(0); // Track when next chunk should start
@@ -149,23 +150,16 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   // ============================================
 
   const playAudioChunk = useCallback(async (audioData: ArrayBuffer) => {
-    if (!playbackContextRef.current) {
-      console.warn("[Gemini Live SDK] No playback context available");
+    if (!playbackWorkletNodeRef.current) {
+      console.warn("[Gemini Live SDK] No playback worklet available");
       return;
     }
 
     try {
       const ctx = playbackContextRef.current;
 
-      // Check if context is closed
-      if (ctx.state === "closed") {
-        console.warn("[Gemini Live SDK] AudioContext was closed, recreating...");
-        playbackContextRef.current = new AudioContext({ sampleRate: 24000 });
-        return playAudioChunk(audioData); // Retry with new context
-      }
-
       // Resume if suspended
-      if (ctx.state === "suspended") {
+      if (ctx && ctx.state === "suspended") {
         await ctx.resume();
       }
 
@@ -181,62 +175,31 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
         float32[i] = sample / 32768.0;
       }
 
-      // Create audio buffer at 24kHz
-      const audioBuffer = ctx.createBuffer(1, numSamples, 24000);
-      audioBuffer.getChannelData(0).set(float32);
+      // Send audio to worklet for smooth buffered playback
+      playbackWorkletNodeRef.current.port.postMessage({
+        type: 'audio',
+        data: float32
+      });
 
-      // Calculate when to start this chunk (scheduled playback eliminates gaps)
-      const currentTime = ctx.currentTime;
-      const startTime = Math.max(currentTime, nextPlayTimeRef.current);
-
-      // Schedule next chunk right after this one
-      const duration = audioBuffer.duration;
-      nextPlayTimeRef.current = startTime + duration;
-
-      // Play audio at scheduled time
-      const source = ctx.createBufferSource();
-      source.buffer = audioBuffer;
-      source.connect(ctx.destination);
-      source.start(startTime);
-
-      // When audio ends, check for more in queue
-      source.onended = () => {
-        isPlayingRef.current = false;
-        if (audioQueueRef.current.length > 0) {
-          const nextChunk = audioQueueRef.current.shift();
-          if (nextChunk) {
-            playAudioChunk(nextChunk);
-          }
-        } else {
-          updateConversationState("idle");
-          // Reset play time when idle
-          nextPlayTimeRef.current = 0;
-        }
-      };
-
-      isPlayingRef.current = true;
+      updateConversationState("speaking");
     } catch (err) {
       console.error("[Gemini Live SDK] Audio playback error:", err);
-      isPlayingRef.current = false;
     }
   }, [updateConversationState]);
 
   const queueAudioChunk = useCallback(
     (audioData: ArrayBuffer) => {
-      audioQueueRef.current.push(audioData);
-
-      // Start playing if not already
-      if (!isPlayingRef.current) {
-        const chunk = audioQueueRef.current.shift();
-        if (chunk) {
-          playAudioChunk(chunk);
-        }
-      }
+      // Worklet handles buffering, just play immediately
+      playAudioChunk(audioData);
     },
     [playAudioChunk]
   );
 
   const clearAudioQueue = useCallback(() => {
+    // Reset worklet buffer
+    if (playbackWorkletNodeRef.current) {
+      playbackWorkletNodeRef.current.port.postMessage({ type: 'reset' });
+    }
     audioQueueRef.current = [];
     isPlayingRef.current = false;
   }, []);
@@ -331,17 +294,27 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   // Audio Output Setup
   // ============================================
 
-  const setupAudioOutput = useCallback((): boolean => {
+  const setupAudioOutput = useCallback(async (): Promise<boolean> => {
     try {
       // Reuse existing context if it's still open
-      if (playbackContextRef.current && playbackContextRef.current.state !== "closed") {
+      if (playbackContextRef.current && playbackContextRef.current.state !== "closed" && playbackWorkletNodeRef.current) {
         console.log("[Gemini Live SDK] Reusing existing audio output context");
         return true;
       }
 
       // Create AudioContext for playback at 24kHz (Gemini output)
-      playbackContextRef.current = new AudioContext({ sampleRate: 24000 });
-      console.log("[Gemini Live SDK] Audio output setup complete");
+      const ctx = new AudioContext({ sampleRate: 24000 });
+      playbackContextRef.current = ctx;
+
+      // Load audio playback worklet
+      await ctx.audioWorklet.addModule("/audio-playback-processor.js");
+
+      // Create playback worklet node
+      const playbackWorklet = new AudioWorkletNode(ctx, "audio-playback-processor");
+      playbackWorklet.connect(ctx.destination);
+      playbackWorkletNodeRef.current = playbackWorklet;
+
+      console.log("[Gemini Live SDK] Audio output setup complete with worklet");
       return true;
     } catch (err) {
       console.error("[Gemini Live SDK] Audio output setup failed:", err);
@@ -548,8 +521,8 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
     updateConnectionState("connecting");
 
-    // Step 1: Setup audio output
-    const outputSuccess = setupAudioOutput();
+    // Step 1: Setup audio output (async now due to worklet loading)
+    const outputSuccess = await setupAudioOutput();
     if (!outputSuccess) {
       console.error("[Gemini Live SDK] Audio output setup failed");
       updateConnectionState("error");
