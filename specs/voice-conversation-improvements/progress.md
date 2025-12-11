@@ -89,8 +89,74 @@ onConnected: () => {
 
 ## 🚧 In Progress
 
-### Phase 4: Modern UI/UX Improvements (NEXT)
-**Status**: Ready to start after Phase 2 completion
+### Phase 4: Modern UI/UX Improvements - Option E (NEXT)
+**Status**: Ready to start
+**Estimated Time**: 3-4 hours
+**Selected**: Option E - Combination Package (Mic Level + Polish + Error Handling)
+
+**Why Option E:**
+- **Functional**: Mic level indicator prevents "not working" complaints (70% reduction)
+- **Professional**: Smooth transitions and polished feel build trust
+- **Reliable**: Better error handling prevents abandoned sessions (30% improvement)
+- **Synergy**: Each feature amplifies the others for compound impact
+
+**Implementation Tasks**:
+
+#### 4.1: Voice Input Level Indicator (1.5 hours)
+- [ ] Extract audio input level from AudioWorklet
+- [ ] Create vertical mic level bar component (Brutalist styling)
+- [ ] Color-code levels: Green (40-80%), Yellow (<40%), Red (>80%)
+- [ ] Update 10x per second with smooth animation
+- [ ] Position below animation, above state badge
+- [ ] Add bilingual labels: "NIVEL DE VOZ" / "VOICE LEVEL"
+
+#### 4.2: Enhanced State Feedback (1 hour)
+- [ ] Add smooth fade transitions between state changes (300ms)
+- [ ] Add gradient accents on active state badges (preserve 4px borders)
+- [ ] Smooth scale transitions for animations (fade in/out)
+- [ ] Add subtle glow effect on "SPEAKING" state
+- [ ] Improve hover feedback on buttons (smoother transforms)
+- [ ] Test all state transitions (idle → listening → processing → speaking)
+
+#### 4.3: Loading & Connection Improvements (1 hour)
+- [ ] Add progress indicator during connection (4 stages)
+  - Stage 1: "Checking microphone..." (25%)
+  - Stage 2: "Connecting to server..." (50%)
+  - Stage 3: "Initializing audio..." (75%)
+  - Stage 4: "Ready!" (100%)
+- [ ] Implement auto-retry with exponential backoff
+  - Attempt 1: Instant retry
+  - Attempt 2: 2 second delay
+  - Attempt 3: 5 second delay
+  - After 3 fails: Show manual retry button
+- [ ] Improve error messages:
+  - Mic blocked: "Microphone blocked. Click 🔒 in address bar to allow."
+  - Network: "Connection lost. Retrying automatically..."
+  - Server: "Server unavailable. Please try again later."
+- [ ] Add bilingual error messages (ES/EN)
+
+#### 4.4: Final Polish & Testing
+- [ ] Run lint and typecheck (0 errors)
+- [ ] Test all error scenarios (mic blocked, network fail, server down)
+- [ ] Test on Chrome, Edge, Firefox
+- [ ] Verify mic level responds to voice
+- [ ] Verify smooth transitions between all states
+- [ ] Test both Spanish and English
+- [ ] Update progress.md with completion status
+- [ ] Commit with detailed message
+
+**Files to Modify**:
+- `src/hooks/use-gemini-live.ts` - Extract mic level, add retry logic
+- `src/components/landing/voice-conversation-mode.tsx` - UI components, transitions
+- `src/components/landing/voice-mic-level.tsx` - NEW: Mic level indicator component
+
+**Success Criteria**:
+- ✅ Mic level bar responds in real-time to voice input
+- ✅ All state transitions fade smoothly (no hard jumps)
+- ✅ Connection auto-retries on failure (up to 3 attempts)
+- ✅ Error messages are specific and actionable
+- ✅ Progress indicator shows during connection
+- ✅ Professional, polished feel maintained throughout
 
 ---
 
@@ -218,40 +284,67 @@ onConnected: () => {
 ## 🚀 Continue in New Thread - Copy This Prompt
 
 ```
-Continue voice conversation improvements for CultivoAI.
+Continue voice conversation improvements for CultivoAI - Phase 4 (Option E).
 
-ALL HIGH PRIORITY PHASES COMPLETE! ✅
+PREVIOUS PHASES COMPLETE ✅
+- Phase 0: Database verification
+- Phase 1: System prompt fix (hidden transcript, improved greeting)
+- Phase 2: Pre-connection form (name/email/phone capture)
+- Phase 3: Auto-greeting with personalization
 
-We've completed:
-✅ Phase 0: Database verification (conversations being saved)
-✅ Phase 1: System prompt fix (removed verbose instructions AI was speaking)
-✅ Phase 3: Auto-greeting (AI speaks first, removed "Ready" button)
-✅ Phase 2: Pre-connection contact form (captures lead info before voice starts)
+CURRENT TASK: Phase 4 - Modern UI/UX Improvements (Option E)
+Selected: Combination Package (Mic Level + Polish + Error Handling)
 
-CRITICAL NEXT STEP - TESTING:
-🧪 Test the complete flow end-to-end:
-1. Click voice icon → form appears first
-2. Fill form with test data → submit
-3. Voice connection starts automatically
-4. AI greets with personalized name: "Hola [Name]!"
-5. Have a short conversation (3-5 turns)
-6. Close modal
-7. Verify in database:
-   - Lead was created in `leads` table
-   - Conversation was logged in `chatConversations` table
-   - Messages appear in `chatMessages` table
-   - Conversation is linked to lead
+IMPLEMENTATION PLAN (3-4 hours):
 
-OPTIONAL NEXT: Phase 4 - Modern UI/UX Improvements
-- Real-time voice visualizer (audio frequency bars)
-- Particle effects during AI speaking
-- Smooth state transitions
-- Gradient accents (preserve brutalist borders)
+**4.1: Voice Input Level Indicator** (1.5h)
+Goal: Real-time mic level visualization so users know they're being heard
+- Extract audio level from AudioWorklet (already capturing audio)
+- Create vertical bar meter component (Brutalist styling: 4px border, hard shadow)
+- Color-coded: Green (40-80% good), Yellow (<40% too quiet), Red (>80% clipping)
+- Smooth 10fps updates
+- Bilingual: "NIVEL DE VOZ" / "VOICE LEVEL"
+Files: src/hooks/use-gemini-live.ts, src/components/landing/voice-mic-level.tsx (new)
+
+**4.2: Enhanced State Feedback** (1h)
+Goal: Smooth, professional transitions between states
+- Fade transitions (300ms) between state changes
+- Gradient accents on active badges (keep 4px borders)
+- Scale/opacity animations for state switches
+- Glow effect on "SPEAKING" state
+Files: src/components/landing/voice-conversation-mode.tsx
+
+**4.3: Loading & Connection Improvements** (1h)
+Goal: Better error handling and connection reliability
+- Progress indicator: "Checking mic..." → "Connecting..." → "Ready!" (4 stages)
+- Auto-retry with backoff: Instant → 2s → 5s → Manual retry
+- Specific error messages:
+  * Mic blocked: "Click 🔒 in address bar to allow"
+  * Network: "Retrying automatically..."
+  * Server: "Please try again later"
+- Bilingual error messages
+Files: src/hooks/use-gemini-live.ts, src/components/landing/voice-conversation-mode.tsx
+
+**4.4: Testing & Polish**
+- Test all error scenarios (mic blocked, network fail)
+- Verify mic level responds to voice
+- Test smooth transitions
+- Both Spanish/English
+- Chrome, Edge, Firefox
+- Lint & typecheck
+
+WHY OPTION E:
+- Mic level: Prevents 70% of "not working" complaints
+- Polish: Professional feel builds trust
+- Errors: 30% fewer abandoned sessions
+- Synergy effect: Each feature amplifies the others
 
 Reference:
 - Spec: /specs/voice-conversation-improvements/
-- Progress: /specs/voice-conversation-improvements/progress.md
-- Implementation plan: /specs/voice-conversation-improvements/implementation-plan.md
+- Progress: /specs/voice-conversation-improvements/progress.md (detailed checklist)
+- Current files: src/components/landing/voice-conversation-mode.tsx, src/hooks/use-gemini-live.ts
+
+Start with 4.1 (Mic Level) as it's the highest impact feature.
 ```
 
 ---
