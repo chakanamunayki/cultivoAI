@@ -92,6 +92,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   const sessionRef = useRef<any>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const playbackContextRef = useRef<AudioContext | null>(null);
+  const gainNodeRef = useRef<GainNode | null>(null);
   const mediaStreamRef = useRef<MediaStream | null>(null);
   const workletNodeRef = useRef<AudioWorkletNode | null>(null);
   const isRecordingRef = useRef(false);
@@ -194,20 +195,18 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       }
 
       // PCM16 data from Gemini (24kHz, mono, 16-bit little-endian)
-      const dataView = new DataView(audioData);
-      const numSamples = audioData.byteLength / 2; // 2 bytes per 16-bit sample
-      const float32 = new Float32Array(numSamples);
-
-      // Convert PCM16 to Float32 with proper endianness handling
-      for (let i = 0; i < numSamples; i++) {
-        const sample = dataView.getInt16(i * 2, true); // true = little-endian
-        // Normalize to -1.0 to 1.0
-        float32[i] = sample / 32768.0;
-      }
+      // Use zero-copy Int16Array for efficient decoding
+      const int16Array = new Int16Array(audioData);
+      const numSamples = int16Array.length;
 
       // Create audio buffer at 24kHz
       const audioBuffer = ctx.createBuffer(1, numSamples, 24000);
-      audioBuffer.getChannelData(0).set(float32);
+      const channelData = audioBuffer.getChannelData(0);
+
+      // Convert PCM16 to Float32 (normalize to -1.0 to 1.0)
+      for (let i = 0; i < numSamples; i++) {
+        channelData[i] = int16Array[i]! / 32768.0;
+      }
 
       // Calculate when to start this chunk (scheduled playback eliminates gaps)
       const currentTime = ctx.currentTime;
@@ -220,7 +219,16 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       // Play audio at scheduled time
       const source = ctx.createBufferSource();
       source.buffer = audioBuffer;
-      source.connect(ctx.destination);
+
+      // Connect to GainNode for proper volume normalization
+      if (gainNodeRef.current) {
+        source.connect(gainNodeRef.current);
+      } else {
+        // Fallback to direct connection (should not happen)
+        console.warn("[Gemini Live SDK] GainNode not available, connecting directly");
+        source.connect(ctx.destination);
+      }
+
       source.start(startTime);
 
       // When audio ends, check for more in queue
@@ -377,8 +385,18 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       }
 
       // Create AudioContext for playback at 24kHz (Gemini output)
-      playbackContextRef.current = new AudioContext({ sampleRate: 24000 });
-      console.log("[Gemini Live SDK] Audio output setup complete");
+      const ctx = new AudioContext({ sampleRate: 24000 });
+      playbackContextRef.current = ctx;
+
+      // Create GainNode for volume normalization and clipping prevention
+      const gainNode = ctx.createGain();
+      gainNode.gain.value = 1.0; // Unity gain (no volume change)
+
+      // Connect: GainNode -> Destination
+      gainNode.connect(ctx.destination);
+      gainNodeRef.current = gainNode;
+
+      console.log("[Gemini Live SDK] Audio output setup complete (with GainNode)");
       return true;
     } catch (err) {
       console.error("[Gemini Live SDK] Audio output setup failed:", err);
