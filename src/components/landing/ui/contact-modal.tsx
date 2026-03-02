@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
 import { MessageSquare } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 
@@ -26,10 +27,14 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
     <div className="p-8 md:p-12 bg-white">
       {/* Header */}
       <div className="mb-8 border-b-4 border-black pb-6">
-        <h2 className="text-3xl md:text-4xl font-black uppercase leading-none text-black mb-2">
-          {content.contactForm.title}
-        </h2>
-        <p className="font-bold text-neutral-600">{content.contactForm.subtitle}</p>
+        <Dialog.Title asChild>
+          <h2 className="text-3xl md:text-4xl font-black uppercase leading-none text-black mb-2">
+            {content.contactForm.title}
+          </h2>
+        </Dialog.Title>
+        <Dialog.Description asChild>
+          <p className="font-bold text-neutral-600">{content.contactForm.subtitle}</p>
+        </Dialog.Description>
       </div>
 
       {/* Form */}

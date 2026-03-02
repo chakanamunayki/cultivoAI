@@ -1,5 +1,6 @@
 "use client";
 
+import * as Dialog from "@radix-ui/react-dialog";
 import {
   Briefcase,
   HeartHandshake,
@@ -41,10 +42,14 @@ export function PartnershipModal({ partnership, onChatClick }: PartnershipModalP
           <Icon size={32} />
         </div>
         <div>
-          <h2 className="text-3xl md:text-4xl font-black uppercase leading-none text-black">
-            {partnership.name}
-          </h2>
-          <p className="font-bold text-[#A855F7] uppercase">{partnership.tagline}</p>
+          <Dialog.Title asChild>
+            <h2 className="text-3xl md:text-4xl font-black uppercase leading-none text-black">
+              {partnership.name}
+            </h2>
+          </Dialog.Title>
+          <Dialog.Description asChild>
+            <p className="font-bold text-[#A855F7] uppercase">{partnership.tagline}</p>
+          </Dialog.Description>
         </div>
       </div>
 

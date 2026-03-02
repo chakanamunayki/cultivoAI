@@ -12,6 +12,7 @@ const config = [
       "drizzle/**",
       "scripts/**",
       "docs/**",
+      "specs/**",
     ],
   },
   ...nextConfig,

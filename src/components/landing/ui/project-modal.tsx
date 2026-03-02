@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import * as Dialog from "@radix-ui/react-dialog";
 import type { Project } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 
@@ -40,9 +41,11 @@ export function ProjectModal({ project }: ProjectModalProps) {
         </div>
 
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-black uppercase mb-4 leading-tight">
-          {project.title}
-        </h2>
+        <Dialog.Title asChild>
+          <h2 className="text-3xl md:text-4xl font-black uppercase mb-4 leading-tight">
+            {project.title}
+          </h2>
+        </Dialog.Title>
 
         {/* Status */}
         <div className="inline-block mb-6 bg-[#FFDE00] border-2 border-black px-3 py-1 font-bold uppercase text-xs">

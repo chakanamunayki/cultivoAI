@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import * as Dialog from "@radix-ui/react-dialog";
 import { Linkedin, Play } from "lucide-react";
 import type { TeamMember } from "@/content/types";
 
@@ -31,9 +32,11 @@ export function TeamMemberModal({ member }: TeamMemberModalProps) {
         )}
 
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-black uppercase mb-2 leading-tight">
-          {member.name}
-        </h2>
+        <Dialog.Title asChild>
+          <h2 className="text-3xl md:text-4xl font-black uppercase mb-2 leading-tight">
+            {member.name}
+          </h2>
+        </Dialog.Title>
 
         {/* Role */}
         <div

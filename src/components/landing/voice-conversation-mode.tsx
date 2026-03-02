@@ -5,6 +5,8 @@ import { Loader2, Mic, Phone, X, AlertCircle, WifiOff } from "lucide-react";
 import { useGeminiLive } from "@/hooks/use-gemini-live";
 import { buildVoiceSystemPrompt } from "@/lib/chat/system-prompt";
 import { VoiceMicLevel } from "./voice-mic-level";
+import VisualizerCanvas from "./voice-visualizer-canvas";
+import { VisualizerMode } from "./voice-visualizer-types";
 
 // ============================================
 // Types
@@ -18,6 +20,7 @@ interface VoiceConversationModeProps {
   showContactForm?: boolean; // Show form DURING conversation (backward compat)
   onContactFormSubmit?: (name: string, email: string, phone?: string) => Promise<boolean>;
   onContactFormDismiss?: () => void;
+  capturedUserInfo?: { name: string; email: string; phone?: string } | null; // User info from parent (persists across modal close/reopen)
 }
 
 interface VoiceLabels {
@@ -133,89 +136,6 @@ function ConnectingAnimation() {
   );
 }
 
-function ListeningAnimation() {
-  return (
-    <div className="relative w-48 h-48 flex items-center justify-center">
-      {/* Outer pulsing ring */}
-      <div className="absolute w-48 h-48 border-4 border-[#FFC805] animate-voice-pulse" />
-      {/* Middle pulsing ring */}
-      <div className="absolute w-36 h-36 border-4 border-[#FFC805] animate-voice-pulse-delay-1" />
-      {/* Inner solid ring */}
-      <div className="absolute w-24 h-24 bg-[#FFC805] border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-        <div className="w-full h-full flex items-center justify-center">
-          <Mic size={32} className="text-black" />
-        </div>
-      </div>
-      {/* Soundwave bars */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-1">
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={i}
-            className="w-2 bg-[#FFC805] border border-black animate-soundwave"
-            style={{
-              animationDelay: `${i * 0.1}s`,
-              height: "8px",
-            }}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ProcessingAnimation() {
-  return (
-    <div className="relative w-48 h-48 flex items-center justify-center">
-      {/* Pulsing purple rings */}
-      <div className="absolute w-48 h-48 border-4 border-[#A855F7] animate-voice-pulse-fast" />
-      <div className="absolute w-36 h-36 border-4 border-[#9333EA] animate-voice-pulse-fast-delay-1" />
-      <div className="absolute w-24 h-24 border-4 border-[#A855F7] animate-voice-pulse-fast-delay-2" />
-      {/* Center brain icon representation */}
-      <div className="absolute w-16 h-16 bg-[#A855F7] border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
-        <div className="flex gap-1">
-          <div className="w-2 h-2 bg-white animate-bounce" style={{ animationDuration: "0.6s" }} />
-          <div className="w-2 h-2 bg-white animate-bounce" style={{ animationDuration: "0.6s", animationDelay: "0.1s" }} />
-          <div className="w-2 h-2 bg-white animate-bounce" style={{ animationDuration: "0.6s", animationDelay: "0.2s" }} />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function SpeakingAnimation() {
-  return (
-    <div className="relative w-48 h-48 flex items-center justify-center">
-      {/* Outer glow effect */}
-      <div className="absolute w-48 h-48 border-4 border-[#A855F7] opacity-50" />
-      {/* Center speaker icon */}
-      <div className="absolute w-24 h-24 bg-[#A855F7] border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
-        <div className="relative">
-          <div className="w-4 h-4 bg-white" />
-          {/* Sound waves emanating */}
-          <div className="absolute left-6 top-1/2 -translate-y-1/2 flex flex-col gap-1">
-            <div className="w-3 h-0.5 bg-white animate-fade-in-out" />
-            <div className="w-4 h-0.5 bg-white animate-fade-in-out" style={{ animationDelay: "0.1s" }} />
-            <div className="w-3 h-0.5 bg-white animate-fade-in-out" style={{ animationDelay: "0.2s" }} />
-          </div>
-        </div>
-      </div>
-      {/* Animated soundwave bars at bottom */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1">
-        {[...Array(7)].map((_, i) => (
-          <div
-            key={i}
-            className="w-2 bg-[#A855F7] border border-black animate-soundwave-tall"
-            style={{
-              animationDelay: `${i * 0.08}s`,
-              height: "12px",
-            }}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function IdleAnimation() {
   return (
     <div className="relative w-48 h-48 flex items-center justify-center">
@@ -257,11 +177,11 @@ export function VoiceConversationMode({
   showContactForm = false,
   onContactFormSubmit,
   onContactFormDismiss,
+  capturedUserInfo: capturedUserInfoProp = null, // User info from parent (survives modal close/reopen)
 }: VoiceConversationModeProps) {
 
   // Pre-connection form state (Phase 2)
   const [showPreConnectionForm, setShowPreConnectionForm] = useState(showInitialForm);
-  const [capturedUserInfo, setCapturedUserInfo] = useState<{ name: string; email: string; phone?: string } | null>(null);
 
   // Mid-conversation form state (backward compat)
   const [showForm, setShowForm] = useState(false);
@@ -375,6 +295,8 @@ export function VoiceConversationMode({
     userTranscript,
     aiTranscript,
     audioLevel,
+    frequencyData,
+    audioSource,
     retryAttempt,
     maxRetries,
     error,
@@ -398,19 +320,19 @@ export function VoiceConversationMode({
       // Conversation state changes are handled by the hook
     },
     onConnected: () => {
-      // Trigger auto-greeting when connection opens
+      // Trigger auto-greeting when connection opens (first time only)
       if (!hasGreetedRef.current) {
         hasGreetedRef.current = true;
-        // Send direct greeting - personalized with name if provided
+        // Send direct greeting - personalized with name if provided from parent
         let greetingText: string;
 
-        if (capturedUserInfo?.name) {
+        if (capturedUserInfoProp?.name) {
           // Personalized greeting thanking them for form submission
           greetingText = locale === "es"
-            ? `Hola ${capturedUserInfo.name}! Gracias por compartir tus datos. Soy el asistente de CultivoAI. ¿En qué te puedo ayudar?`
-            : `Hi ${capturedUserInfo.name}! Thanks for sharing your details. I'm the CultivoAI assistant. How can I help you?`;
+            ? `Hola ${capturedUserInfoProp.name}! Gracias por compartir tus datos. Soy el asistente de CultivoAI. ¿En qué te puedo ayudar?`
+            : `Hi ${capturedUserInfoProp.name}! Thanks for sharing your details. I'm the CultivoAI assistant. How can I help you?`;
         } else {
-          // Generic greeting (form was skipped)
+          // Generic greeting (form was skipped or not yet filled)
           greetingText = locale === "es"
             ? "Hola! Soy el asistente de CultivoAI. ¿En qué te puedo ayudar?"
             : "Hi! I'm the CultivoAI assistant. How can I help you?";
@@ -516,30 +438,15 @@ export function VoiceConversationMode({
           phone.trim() || undefined
         );
         if (success) {
-          // Capture user info for personalized greeting
-          const userInfo: { name: string; email: string; phone?: string } = {
-            name: name.trim(),
-            email: email.trim(),
-          };
-          if (phone.trim()) {
-            userInfo.phone = phone.trim();
-          }
-          setCapturedUserInfo(userInfo);
+          // Parent handles capturing user info via onContactFormSubmit
+          // User info will be passed back as capturedUserInfoProp
           setFormData({ name: "", email: "", phone: "" });
           setShowPreConnectionForm(false); // Hide form, trigger connection
         } else {
           setFormError(labels.formError);
         }
       } else {
-        // No submit handler provided, just capture info locally
-        const userInfo: { name: string; email: string; phone?: string } = {
-          name: name.trim(),
-          email: email.trim(),
-        };
-        if (phone.trim()) {
-          userInfo.phone = phone.trim();
-        }
-        setCapturedUserInfo(userInfo);
+        // No submit handler provided, just hide form
         setFormData({ name: "", email: "", phone: "" });
         setShowPreConnectionForm(false); // Hide form, trigger connection
       }
@@ -554,7 +461,7 @@ export function VoiceConversationMode({
   const handlePreConnectionFormSkip = useCallback(() => {
     setFormData({ name: "", email: "", phone: "" });
     setFormError(null);
-    setCapturedUserInfo(null); // No user info captured
+    // No user info captured when skipped (parent state remains null)
     setShowPreConnectionForm(false); // Hide form, trigger connection
   }, []);
 
@@ -564,7 +471,7 @@ export function VoiceConversationMode({
     endConversation(); // Log final stats before closing
     setShowForm(false);
     setShowPreConnectionForm(false);
-    setCapturedUserInfo(null);
+    // Note: capturedUserInfo is managed by parent, persists across modal close/reopen
     setFormData({ name: "", email: "", phone: "" });
     setFormError(null);
     hasGreetedRef.current = false; // Reset greeting flag for next time
@@ -695,6 +602,32 @@ export function VoiceConversationMode({
       </div>
     );
 
+    // Use visualizer when connected (listening, processing, speaking)
+    // Use static animations when connecting/error/idle
+    const useVisualizer = isConnected && (
+      conversationState === "listening" ||
+      conversationState === "processing" ||
+      conversationState === "speaking" ||
+      conversationState === "interrupted"
+    );
+
+    if (useVisualizer) {
+      // Show frequency visualizer during active conversation
+      return (
+        <AnimationWrapper>
+          <div className="w-64 h-64 relative border-4 border-black bg-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <VisualizerCanvas
+              mode={VisualizerMode.BARS}
+              frequencyData={frequencyData}
+              source={audioSource}
+              isActive={true}
+            />
+          </div>
+        </AnimationWrapper>
+      );
+    }
+
+    // Fallback to static animations for other states
     if (connectionState === "connecting" || connectionState === "reconnecting") {
       return <AnimationWrapper><ConnectingAnimation /></AnimationWrapper>;
     }
@@ -703,17 +636,8 @@ export function VoiceConversationMode({
       return <AnimationWrapper><ErrorAnimation onClick={handleRetry} /></AnimationWrapper>;
     }
 
-    switch (conversationState) {
-      case "listening":
-        return <AnimationWrapper><ListeningAnimation /></AnimationWrapper>;
-      case "processing":
-      case "interrupted":
-        return <AnimationWrapper><ProcessingAnimation /></AnimationWrapper>;
-      case "speaking":
-        return <AnimationWrapper><SpeakingAnimation /></AnimationWrapper>;
-      default:
-        return <AnimationWrapper><IdleAnimation /></AnimationWrapper>;
-    }
+    // Idle state (just connected but not active yet)
+    return <AnimationWrapper><IdleAnimation /></AnimationWrapper>;
   };
 
   if (!isOpen) return null;

@@ -43,6 +43,12 @@ export interface UseGeminiLiveReturn {
   // Audio level (0-100)
   audioLevel: number;
 
+  // Frequency data for visualizer (stable reference; contents update in-place)
+  frequencyData: Uint8Array;
+
+  // Active audio source for visualizer
+  audioSource: "mic" | "ai" | "idle";
+
   // Retry state
   retryAttempt: number;
   maxRetries: number;
@@ -80,6 +86,8 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   const [userTranscript, setUserTranscript] = useState("");
   const [aiTranscript, setAiTranscript] = useState("");
   const [audioLevel, setAudioLevel] = useState(0);
+  const frequencyDataRef = useRef<Uint8Array>(new Uint8Array(128));
+  const [audioSource, setAudioSource] = useState<"mic" | "ai" | "idle">("idle");
   const [error, setError] = useState<Error | null>(null);
   const [errorType, setErrorType] = useState<"microphone" | "network" | "server" | null>(null);
   const [retryAttempt, setRetryAttempt] = useState(0);
@@ -97,10 +105,75 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   const workletNodeRef = useRef<AudioWorkletNode | null>(null);
   const isRecordingRef = useRef(false);
 
+  // AnalyserNode refs for frequency data
+  const inputAnalyserRef = useRef<AnalyserNode | null>(null);
+  const outputAnalyserRef = useRef<AnalyserNode | null>(null);
+  const frequencyRafRef = useRef<number | null>(null);
+
   // Audio playback queue
   const audioQueueRef = useRef<ArrayBuffer[]>([]);
   const isPlayingRef = useRef(false);
   const nextPlayTimeRef = useRef<number>(0); // Track when next chunk should start
+
+  // ============================================
+  // Frequency Analysis Loop (for visualizer)
+  // ============================================
+
+  const stopFrequencyAnalysis = useCallback(() => {
+    if (frequencyRafRef.current != null) {
+      cancelAnimationFrame(frequencyRafRef.current);
+      frequencyRafRef.current = null;
+    }
+    frequencyDataRef.current.fill(0);
+    setAudioSource("idle");
+  }, []);
+
+  const startFrequencyAnalysis = useCallback(() => {
+    stopFrequencyAnalysis();
+
+    const micData = new Uint8Array(128);
+    const aiData = new Uint8Array(128);
+
+    const analyze = () => {
+      const inputAnalyser = inputAnalyserRef.current;
+      const outputAnalyser = outputAnalyserRef.current;
+
+      if (inputAnalyser) {
+        inputAnalyser.getByteFrequencyData(micData);
+      } else {
+        micData.fill(0);
+      }
+
+      if (outputAnalyser) {
+        outputAnalyser.getByteFrequencyData(aiData);
+      } else {
+        aiData.fill(0);
+      }
+
+      const micVol =
+        micData.reduce((a, b) => a + b, 0) / (micData.length || 1);
+      const aiVol = aiData.reduce((a, b) => a + b, 0) / (aiData.length || 1);
+
+      // Thresholds to avoid jitter from background noise
+      const AI_THRESHOLD = 2;
+      const MIC_THRESHOLD = 5;
+
+      if (aiVol > AI_THRESHOLD) {
+        frequencyDataRef.current.set(aiData);
+        setAudioSource((prev) => (prev === "ai" ? prev : "ai"));
+      } else if (micVol > MIC_THRESHOLD) {
+        frequencyDataRef.current.set(micData);
+        setAudioSource((prev) => (prev === "mic" ? prev : "mic"));
+      } else {
+        frequencyDataRef.current.set(micData);
+        setAudioSource((prev) => (prev === "idle" ? prev : "idle"));
+      }
+
+      frequencyRafRef.current = requestAnimationFrame(analyze);
+    };
+
+    analyze();
+  }, [stopFrequencyAnalysis]);
 
   // ============================================
   // Connection State Updates
@@ -303,8 +376,15 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       const workletNode = new AudioWorkletNode(ctx, "pcm-processor");
       workletNodeRef.current = workletNode;
 
-      // Connect microphone to worklet
+      // Create AnalyserNode for input (microphone) frequency data
+      const inputAnalyser = ctx.createAnalyser();
+      inputAnalyser.fftSize = 256; // 128 frequency bins
+      inputAnalyser.smoothingTimeConstant = 0.5;
+      inputAnalyserRef.current = inputAnalyser;
+
+      // Connect microphone to both analyser and worklet
       const source = ctx.createMediaStreamSource(stream);
+      source.connect(inputAnalyser);
       source.connect(workletNode);
 
       // Handle audio data from worklet
@@ -392,8 +472,15 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       const gainNode = ctx.createGain();
       gainNode.gain.value = 1.0; // Unity gain (no volume change)
 
-      // Connect: GainNode -> Destination
-      gainNode.connect(ctx.destination);
+      // Create AnalyserNode for output (AI) frequency data
+      const outputAnalyser = ctx.createAnalyser();
+      outputAnalyser.fftSize = 256; // 128 frequency bins
+      outputAnalyser.smoothingTimeConstant = 0.5;
+      outputAnalyserRef.current = outputAnalyser;
+
+      // Connect: GainNode -> Analyser -> Destination
+      gainNode.connect(outputAnalyser);
+      outputAnalyser.connect(ctx.destination);
       gainNodeRef.current = gainNode;
 
       console.log("[Gemini Live SDK] Audio output setup complete (with GainNode)");
@@ -640,6 +727,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     } else {
       // Success - reset retry counter
       setRetryAttempt(0);
+      startFrequencyAnalysis();
     }
   }, [
     connectionState,
@@ -650,6 +738,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     setupAudioInput,
     initializeSession,
     updateConnectionState,
+    startFrequencyAnalysis,
   ]);
 
   // Auto-retry with exponential backoff
@@ -683,6 +772,9 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
     // Stop recording
     isRecordingRef.current = false;
+
+    // Stop frequency analysis
+    stopFrequencyAnalysis();
 
     // Close session
     if (sessionRef.current) {
@@ -725,7 +817,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
     updateConnectionState("disconnected");
     updateConversationState("idle");
-  }, [clearAudioQueue, updateConnectionState, updateConversationState]);
+  }, [clearAudioQueue, stopFrequencyAnalysis, updateConnectionState, updateConversationState]);
 
   // ============================================
   // Send Text Prompt (for auto-greeting)
@@ -755,6 +847,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   // Cleanup on unmount only - using ref to avoid recreating effect
   useEffect(() => {
     return () => {
+      stopFrequencyAnalysis();
       // Disconnect when hook unmounts
       if (sessionRef.current) {
         try {
@@ -783,7 +876,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
         }
       }
     };
-  }, []); // Empty deps - cleanup ONLY on unmount
+  }, [stopFrequencyAnalysis]);
 
   // ============================================
   // Return
@@ -801,6 +894,8 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     userTranscript,
     aiTranscript,
     audioLevel,
+    frequencyData: frequencyDataRef.current,
+    audioSource,
     retryAttempt,
     maxRetries: MAX_RETRIES,
     error,

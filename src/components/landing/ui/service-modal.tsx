@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import * as Dialog from "@radix-ui/react-dialog";
 import {
   BarChart3,
   Layers,
@@ -53,9 +54,11 @@ export function ServiceModal({ service }: ServiceModalProps) {
 
       {/* Content */}
       <div className="p-8 md:p-12">
-        <h2 className="text-3xl md:text-5xl font-black uppercase mb-2 text-black">
-          {service.title}
-        </h2>
+        <Dialog.Title asChild>
+          <h2 className="text-3xl md:text-5xl font-black uppercase mb-2 text-black">
+            {service.title}
+          </h2>
+        </Dialog.Title>
         <div className="flex flex-wrap items-center gap-4 mb-8">
           <h3 className="text-lg font-bold uppercase tracking-wider text-[#A855F7]">
             {service.eng}

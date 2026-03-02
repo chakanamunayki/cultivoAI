@@ -4,6 +4,20 @@ import { useState, useEffect } from "react";
 import { Code2, Eye, Sparkles, Check, Loader2 } from "lucide-react";
 import type { Step } from "@/content/types";
 
+const GENERATED_CODE = [
+  '<div className="hero-section">',
+  '  <h1 className="text-5xl font-black">',
+  "    Welcome to Our Platform",
+  "  </h1>",
+  '  <p className="text-xl mt-4">',
+  "    AI-powered solutions for your business",
+  "  </p>",
+  '  <button className="cta-button">',
+  "    Get Started →",
+  "  </button>",
+  "</div>",
+] as const;
+
 interface CodeViewProps {
   steps: Step[];
 }
@@ -14,20 +28,6 @@ export function CodeView({ steps }: CodeViewProps) {
   const [viewMode, setViewMode] = useState<ViewMode>("code");
   const [codeLines, setCodeLines] = useState<string[]>([]);
   const [currentLine, setCurrentLine] = useState(0);
-
-  const generatedCode = [
-    '<div className="hero-section">',
-    '  <h1 className="text-5xl font-black">',
-    '    Welcome to Our Platform',
-    '  </h1>',
-    '  <p className="text-xl mt-4">',
-    '    AI-powered solutions for your business',
-    '  </p>',
-    '  <button className="cta-button">',
-    '    Get Started →',
-    '  </button>',
-    '</div>',
-  ];
 
   // Animation sequence
   useEffect(() => {
@@ -41,8 +41,8 @@ export function CodeView({ steps }: CodeViewProps) {
       setCodeLines([]);
       setCurrentLine(0);
 
-      for (let i = 0; i < generatedCode.length; i++) {
-        const line = generatedCode[i] ?? "";
+      for (let i = 0; i < GENERATED_CODE.length; i++) {
+        const line = GENERATED_CODE[i] ?? "";
         await new Promise(resolve => {
           timeout = setTimeout(resolve, 400);
         });
