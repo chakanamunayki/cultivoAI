@@ -13,6 +13,8 @@ import {
   type SystemPromptContext,
 } from "@/lib/chat/system-prompt";
 
+const DEFAULT_GEMINI_CHAT_MODEL = "gemini-2.5-flash";
+
 // ============================================
 // Types
 // ============================================
@@ -38,13 +40,51 @@ interface FunctionCallResult {
   args: Record<string, unknown>;
 }
 
+function getGeminiErrorDetails(error: unknown): {
+  status: number;
+  providerMessage?: string;
+} {
+  if (!(error instanceof Error)) {
+    return { status: 500 };
+  }
+
+  let providerMessage: string | undefined;
+  let status = 500;
+
+  try {
+    const parsed = JSON.parse(error.message) as {
+      error?: { code?: number; message?: string; status?: string };
+    };
+    if (parsed.error?.code) {
+      status = parsed.error.code;
+    }
+    if (parsed.error?.message) {
+      providerMessage = parsed.error.message;
+    }
+  } catch {
+    if (error.message.toLowerCase().includes("quota")) {
+      status = 429;
+    }
+    providerMessage = error.message;
+  }
+
+  if (status < 400 || status > 599) {
+    status = 500;
+  }
+
+  return providerMessage ? { status, providerMessage } : { status };
+}
+
 // ============================================
 // API Route Handler
 // ============================================
 
 export async function POST(request: Request) {
+  let requestLocale: "es" | "en" = "es";
+
   try {
     const apiKey = process.env.GEMINI_API_KEY;
+    const chatModel = process.env.GEMINI_CHAT_MODEL || DEFAULT_GEMINI_CHAT_MODEL;
 
     if (!apiKey) {
       console.error("GEMINI_API_KEY is not configured");
@@ -75,10 +115,20 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+    const safeLocale = locale === "en" ? "en" : "es";
+    requestLocale = safeLocale;
+    const safeHistory = Array.isArray(history) ? history : [];
+
+    if (!siteContent) {
+      return NextResponse.json(
+        { error: "Site content is required" },
+        { status: 400 }
+      );
+    }
 
     // Build enhanced system prompt with context
     const promptContext: SystemPromptContext = {
-      locale,
+      locale: safeLocale,
       entryContext,
       timezone,
       pageUrl,
@@ -90,16 +140,15 @@ export async function POST(request: Request) {
     const ai = new GoogleGenAI({ apiKey });
 
     // Convert history to Gemini format
-    const geminiHistory = history
-      .filter((msg) => msg.text)
+    const geminiHistory = safeHistory
+      .filter((msg) => msg?.text)
       .map((msg) => ({
         role: msg.role,
         parts: [{ text: msg.text }],
       }));
 
-    // Create chat session with enhanced configuration
     const chat = ai.chats.create({
-      model: "gemini-2.0-flash",
+      model: chatModel,
       config: {
         systemInstruction,
         tools: [chatFunctionDeclarations],
@@ -131,23 +180,39 @@ export async function POST(request: Request) {
       const finalResult = await chat.sendMessage({ message: toolResponses });
 
       return NextResponse.json({
-        text: finalResult.text || (locale === "es" ? "Listo!" : "Done!"),
+        text: finalResult.text || (safeLocale === "es" ? "Listo!" : "Done!"),
         functionCalls,
       });
     }
 
     return NextResponse.json({
-      text: result.text || (locale === "es" ? "Entendido." : "Got it."),
+      text: result.text || (safeLocale === "es" ? "Entendido." : "Got it."),
       functionCalls: [],
     });
   } catch (error) {
-    console.error("Gemini API error:", error);
+    const { status, providerMessage } = getGeminiErrorDetails(error);
+    const isQuota = status === 429;
+    const isSpanish = requestLocale === "es";
+    const userText = isQuota
+      ? isSpanish
+        ? "Estamos con alta demanda del servicio de IA. Intenta de nuevo en unos segundos o usa WhatsApp."
+        : "We're at high AI capacity right now. Please try again in a few seconds or use WhatsApp."
+      : isSpanish
+      ? "Lo siento, hubo un error procesando tu mensaje. Por favor intenta de nuevo."
+      : "Sorry, there was an error processing your message. Please try again.";
+
+    console.error("Gemini API error:", {
+      status,
+      providerMessage,
+      error,
+    });
+
     return NextResponse.json(
       {
         error: "Failed to process message",
-        text: "Lo siento, hubo un error procesando tu mensaje. Por favor intenta de nuevo.",
+        text: userText,
       },
-      { status: 500 }
+      { status }
     );
   }
 }

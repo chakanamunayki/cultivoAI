@@ -40,8 +40,7 @@ export const es: SiteContent = {
     cta: "Hablemos",
     secondaryCta: "Ver proyectos",
     noDrama: "Sin caos.",
-    noDramaText:
-      "Alcance claro. Versión uno rápida. Iteración directa.",
+    noDramaText: "Alcance claro. Versión uno rápida. Iteración directa.",
     impactSection: {
       text: "Desde Colombia, trabajando para todo el mundo. Colaboración directa. Alcance claro.",
       cta: "Hablemos",
@@ -58,41 +57,43 @@ export const es: SiteContent = {
       {
         id: "paul",
         name: "Paul Ronayne",
-        title: "Estrategia y entrega",
+        title: "Desarrollador y consultor de IA",
+        subtitle: "Cofundador de nbn23.com y nagi.es en Espana",
         description:
-          "Paul aporta más de 20 años entre startups, corporaciones y proyectos de impacto. Convierte realidades complejas en sistemas claros que se implementan.",
+          "Llevo mas de 20 anos en tecnologia, incluyendo la cofundacion de dos negocios tech/data en Espana: nbn23.com y nagi.es. Hoy uno disciplina startup con IA human-first para ayudar a negocios holisticos a crecer con claridad y cuidado.",
         imageUrl:
           "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=800",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
         bio: {
-          headline: "Convertir realidades complejas en sistemas claros que se implementan",
+          headline:
+            "Integro experiencia startup y de datos con IA aterrizada y human-first para negocios holisticos",
           sections: [
             {
               title: "Que significa",
               content:
-                "Traduzco objetivos en un plan claro y un sistema implementado. Alcance claro, decisiones claras y ejecucion constante.",
+                "Empiezo escuchando a fondo como trabaja tu equipo y como se siente tu cliente, y desde ahi diseno sistemas de IA que cuidan operacion y conexion humana.",
             },
             {
               title: "Por que importa",
               content:
-                "Los equipos con mision estan ocupados. Si el sistema es confuso o fragil, la gente deja de usarlo. Mi trabajo es mantenerlo practico y usable.",
+                "Muchos equipos wellness y holisticos cargan demasiado. La IA correcta trae calma, consistencia y capacidad para servir mejor sin agotarse.",
             },
             {
               title: "Que incluye",
               content:
-                "descubrimiento y alcance. Prioridades y tradeoffs explicitos. Un ritmo de entrega que mantiene progreso visible y hace facil iterar.",
+                "Estrategia aplicada, roadmap de IA, diseno de flujos y asistentes, y acompanamiento real de delivery. Definimos alcance juntos, lanzamos por fases y medimos impacto de negocio.",
             },
             {
               title: "Ideal para",
               content:
-                "Equipos que valoran claridad, colaboracion directa y consejo honesto por encima de hype o complejidad.",
+                "Fundadores y equipos pequenos en bienestar, holistico e impacto que quieren alma y estructura: cuidado humano con ejecucion tipo startup.",
             },
             {
               title: "Resultado tipico",
               content:
-                "Una versión uno que se lanza con ownership claro y luego mejora con uso real.",
+                "Operacion mas tranquila, decisiones mas claras, crecimiento mas sano y mas tiempo para el trabajo humano de mayor valor con clientes y comunidad.",
             },
           ],
           linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
@@ -469,8 +470,7 @@ export const es: SiteContent = {
       ],
       imageUrl: "/landing/photos/services/startup-advisory.png",
       modal: {
-        whatItMeans:
-          "Guia directa y practica para lanzar versión uno sin sobreconstruir.",
+        whatItMeans: "Guia directa y practica para lanzar versión uno sin sobreconstruir.",
         whyItMatters:
           "Evitas desvíos costosos, eliges lo que importa ahora y obtienes feedback más rapido.",
         whatsIncluded: [
@@ -492,8 +492,7 @@ export const es: SiteContent = {
   ],
 
   demosTitle: "IA en Accion",
-  demosSubtitle:
-    "Mira ejemplos de asistentes, dashboards y sistemas de trabajo en accion.",
+  demosSubtitle: "Mira ejemplos de asistentes, dashboards y sistemas de trabajo en accion.",
   useCases: [
     {
       id: "chat",
@@ -771,8 +770,7 @@ export const es: SiteContent = {
         ],
       },
     ],
-    cta:
-      "Hacemos espacio para equipos de alto impacto, incluso con presupuestos ajustados.",
+    cta: "Hacemos espacio para equipos de alto impacto, incluso con presupuestos ajustados.",
     ctaButton: "Cuentanos sobre tu proyecto",
   },
 
@@ -782,9 +780,15 @@ export const es: SiteContent = {
     about:
       "Tengo 14 años. Cumplo 15 en enero. Todavia no se exactamente que quiero hacer con mi vida, y creo que esta bien no saberlo todavia. Pero si se algunas cosas: Me gusta construir. Mi papa me esta ensenando a hacer cosas con IA - chatbots, automatizaciones, cosas asi. A veces el me ensena. A veces yo le enseno a el.",
     tiers: [
-      { name: "Semilla ($10-50)", description: "Actualizaciones de progreso, nombre en supporters" },
+      {
+        name: "Semilla ($10-50)",
+        description: "Actualizaciones de progreso, nombre en supporters",
+      },
       { name: "Brote ($50-200)", description: "Acceso temprano a herramientas, input en features" },
-      { name: "Crecer ($200-500)", description: "Acceso gratuito de por vida a lo que Rocky construya" },
+      {
+        name: "Crecer ($200-500)",
+        description: "Acceso gratuito de por vida a lo que Rocky construya",
+      },
       { name: "Socio ($500+)", description: "Adaptacion personalizada, involucracion directa" },
     ],
     services: [
@@ -1012,7 +1016,8 @@ export const es: SiteContent = {
         "Revisaba pH, EC y temperatura manualmente 4 veces al dia. Iba al invernadero a las 6am y 10pm. Un fin de semana fuera significaba pedirle a un vecino que no entendia el sistema.",
       after:
         "Sensores alimentan un dashboard. Alertas a WhatsApp cuando algo esta mal. Resumen semanal de IA con tendencias y recomendaciones.",
-      quote: "Detecte una deriva de pH a las 2am que habria matado un cultivo de lechugas. Ahora tomo fines de semana libres.",
+      quote:
+        "Detecte una deriva de pH a las 2am que habria matado un cultivo de lechugas. Ahora tomo fines de semana libres.",
       author: "Dueno de Granja",
       imageUrl:
         "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?q=80&w=800&auto=format&fit=crop",
@@ -1025,7 +1030,8 @@ export const es: SiteContent = {
         "Clientes enviaban mensajes a todas horas preguntando sobre tipos de sesiones, precios, disponibilidad. No podia responder durante sesiones. Perdia reservas ante practicantes que respondian más rapido.",
       after:
         "Bot de WhatsApp explica servicios, responde preguntas sobre Reiki vs. sanacion sonora vs. respiracion, revisa calendario y reserva directamente. Calido, no robotico.",
-      quote: "40% más sesiones reservadas. Respondo preguntas complejas cuando estoy centrada, no en medio de sesion.",
+      quote:
+        "40% más sesiones reservadas. Respondo preguntas complejas cuando estoy centrada, no en medio de sesion.",
       author: "Practicante de Bienestar",
       imageUrl:
         "https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=800&auto=format&fit=crop",
@@ -1038,7 +1044,8 @@ export const es: SiteContent = {
         "Mama pasaba noches de domingo planificando la semana. Seguimiento del progreso de 3 ninos en hojas de calculo. Sin idea si realmente retenian el material.",
       after:
         "IA ayuda a generar planes semanales basados en el ritmo de cada nino. Progreso rastreado automaticamente. Brechas senaladas antes de convertirse en problemas.",
-      quote: "Planificacion dominical: 3 horas a 45 minutos. Los ninos reciben más atencion personalizada, menos estres administrativo.",
+      quote:
+        "Planificacion dominical: 3 horas a 45 minutos. Los ninos reciben más atencion personalizada, menos estres administrativo.",
       author: "Padre Educador en Casa",
       imageUrl:
         "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop",
@@ -1051,7 +1058,8 @@ export const es: SiteContent = {
         "Ventas de huevos, vegetales, inscripciones a talleres todo rastreado diferente. Algo en cuaderno. Algo en WhatsApp. Sin idea de que era realmente rentable.",
       after:
         "Dashboard simple conecta canales de venta. Ve que productos dan dinero, cuales no. Rastrea clientes recurrentes.",
-      quote: "Descubri que las ventas de mermelada perdian dinero despues de contabilizar tiempo. Subi precios, me enfoque en lo que funcionaba.",
+      quote:
+        "Descubri que las ventas de mermelada perdian dinero despues de contabilizar tiempo. Subi precios, me enfoque en lo que funcionaba.",
       author: "Agricultor Familiar",
       imageUrl:
         "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=800&auto=format&fit=crop",
@@ -1064,7 +1072,8 @@ export const es: SiteContent = {
         "30 familias, recursos compartidos, cero sistema central. Biblioteca de herramientas en cuaderno. Turnos de trabajo coordinados via caos de chat grupal. Cosechas del bosque de alimentos para quien llegara primero. Disputas sobre equidad.",
       after:
         "Portal simple para miembros. IA ayuda a programar rotaciones de trabajo equitativamente, rastrea prestamo de herramientas, anuncia que esta listo para cosechar y sugiere distribucion equitativa. Envia recordatorios suaves, no molestos.",
-      quote: "Menos drama administrativo, más comunidad. Decisiones basadas en datos, no en quien habla más fuerte.",
+      quote:
+        "Menos drama administrativo, más comunidad. Decisiones basadas en datos, no en quien habla más fuerte.",
       author: "Coordinador Comunitario",
       imageUrl:
         "https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=800&auto=format&fit=crop",
@@ -1077,7 +1086,8 @@ export const es: SiteContent = {
         "Fundador haciendo todo. Preguntas de clientes, actualizaciones a inversionistas, contenido, ops. Sin sistema. Las cosas caian constantemente por las grietas.",
       after:
         "Leads auto-capturados y calificados. FAQ manejadas por chatbot. Reporte de metricas semanal generado automaticamente. Fundador se enfoca en producto y recaudacion.",
-      quote: "Deje de perder leads. Los inversionistas empezaron a comentar lo organizadas que eran las actualizaciones.",
+      quote:
+        "Deje de perder leads. Los inversionistas empezaron a comentar lo organizadas que eran las actualizaciones.",
       author: "Fundador de Startup",
       imageUrl:
         "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=800&auto=format&fit=crop",
@@ -1090,7 +1100,8 @@ export const es: SiteContent = {
         "Alimentacion de peces, calidad del agua, salud de plantas todo monitoreado por separado. Datos en tres apps diferentes. Correlacionar problemas tomaba horas de trabajo detectivesco.",
       after:
         "Dashboard unificado. IA senala cuando comportamiento de peces + temperatura del agua + crecimiento de plantas sugieren un problema gestandose.",
-      quote: "Predije un problema de filtro 3 dias antes de que colapsara el sistema. Un dashboard en lugar de tres apps.",
+      quote:
+        "Predije un problema de filtro 3 dias antes de que colapsara el sistema. Un dashboard en lugar de tres apps.",
       author: "Agricultor Acuaponico",
       imageUrl:
         "https://images.unsplash.com/photo-1535591273668-578e31182c4f?q=80&w=800&auto=format&fit=crop",
@@ -1103,7 +1114,8 @@ export const es: SiteContent = {
         "4 practicantes, 4 calendarios separados, clientes confundidos sobre quien hace que. Recepcionista pasaba mitad del dia solo enrutando consultas.",
       after:
         "Sistema de reservas unico con IA que pregunta que necesita el cliente y los empareja con el practicante correcto. Maneja conflictos de horarios automaticamente.",
-      quote: "La recepcionista ahora hace seguimiento de clientes en lugar de tetris de calendarios. Errores de reserva cayeron a casi cero.",
+      quote:
+        "La recepcionista ahora hace seguimiento de clientes en lugar de tetris de calendarios. Errores de reserva cayeron a casi cero.",
       author: "Gerente de Centro",
       imageUrl:
         "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop",
@@ -1116,7 +1128,8 @@ export const es: SiteContent = {
         "Administrador pasaba más de 2 horas diarias respondiendo las mismas preguntas. Precios, horarios, niveles, metodos de pago. Una y otra vez.",
       after:
         "Chatbot maneja 80% de consultas. Conoce cursos, revisa disponibilidad, envia enlaces de inscripcion, responde en espanol o ingles.",
-      quote: "El administrador se enfoca en experiencia del estudiante. Inscripcion subio porque respuestas ocurren instantaneamente, no el siguiente dia habil.",
+      quote:
+        "El administrador se enfoca en experiencia del estudiante. Inscripcion subio porque respuestas ocurren instantaneamente, no el siguiente dia habil.",
       author: "Administrador de Escuela",
       imageUrl:
         "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=800&auto=format&fit=crop",
@@ -1129,7 +1142,8 @@ export const es: SiteContent = {
         "Datos de granjas de clientes dispersos en correos, PDFs y notas de voz. Preparar un reporte de salud del suelo significaba buscar en meses de mensajes.",
       after:
         "Clientes envian datos a traves de un formulario simple. IA los organiza, senala anomalias, redacta la estructura inicial del reporte.",
-      quote: "Tiempo de preparacion de reportes reducido a la mitad. más tiempo en el campo, menos tiempo en correo.",
+      quote:
+        "Tiempo de preparacion de reportes reducido a la mitad. más tiempo en el campo, menos tiempo en correo.",
       author: "Consultor Agricola",
       imageUrl:
         "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=800&auto=format&fit=crop",
@@ -1142,7 +1156,8 @@ export const es: SiteContent = {
         "Plan de bosque de alimentos de 5 años existia mayormente en la cabeza del fundador. Voluntarios llegaban sin saber que hacer. Gremios de plantas, flujos de agua, tareas estacionales dispersos en cuadernos, PDFs y conversaciones medio recordadas. Conocimiento se iba con personas clave.",
       after:
         "Sistema central rastrea que esta plantado donde, que necesita hacerse este mes y por que. Voluntarios reciben tareas claras segun sus habilidades. IA ayuda a responder 'que deberia ir junto al gremio de manzanas?' basado en los datos propios del sitio.",
-      quote: "Nuevos voluntarios productivos desde el dia uno. Conocimiento institucional permanece incluso cuando personas se van.",
+      quote:
+        "Nuevos voluntarios productivos desde el dia uno. Conocimiento institucional permanece incluso cuando personas se van.",
       author: "Fundador de Proyecto",
       imageUrl:
         "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=800&auto=format&fit=crop",
@@ -1192,20 +1207,17 @@ export const es: SiteContent = {
       {
         number: "1",
         title: "Respondemos rapido",
-        description:
-          "Recibes respuesta directa y un siguiente paso claro.",
+        description: "Recibes respuesta directa y un siguiente paso claro.",
       },
       {
         number: "2",
         title: "Mapeamos tu flujo y proponemos un plan simple",
-        description:
-          "Nos enfocamos en cambios practicos que reducen fricción rapido.",
+        description: "Nos enfocamos en cambios practicos que reducen fricción rapido.",
       },
       {
         number: "3",
         title: "Construimos versión uno e iteramos",
-        description:
-          "Luego mejoramos contigo en base a uso real.",
+        description: "Luego mejoramos contigo en base a uso real.",
       },
     ],
     cta: "Empecemos la conversacion",
@@ -1329,5 +1341,3 @@ export const es: SiteContent = {
     ],
   },
 };
-
-

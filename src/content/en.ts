@@ -40,8 +40,7 @@ export const en: SiteContent = {
     cta: "Let's talk",
     secondaryCta: "View projects",
     noDrama: "No chaos.",
-    noDramaText:
-      "Clear scope. Fast version one. Direct iteration.",
+    noDramaText: "Clear scope. Fast version one. Direct iteration.",
     impactSection: {
       text: "Colombia-based, working worldwide. Direct collaboration. Clear scope.",
       cta: "Let's talk",
@@ -58,41 +57,43 @@ export const en: SiteContent = {
       {
         id: "paul",
         name: "Paul Ronayne",
-        title: "Strategy and delivery",
+        title: "AI developer and consultant",
+        subtitle: "Co-founder of nbn23.com and nagi.es in Spain",
         description:
-          "Paul brings 20+ years across startups, corporations, and impact projects. He focuses on turning messy reality into clear systems that ship.",
+          "I've spent 20+ years in tech, including co-founding two tech/data businesses in Spain: nbn23.com and nagi.es. Today I blend startup discipline with human-first AI to help holistic businesses grow with clarity and care.",
         imageUrl:
           "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=800",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
         bio: {
-          headline: "Turning messy reality into clear systems that ship",
+          headline:
+            "I combine startup and data experience with grounded, human-first AI for holistic businesses",
           sections: [
             {
               title: "What it means",
               content:
-                "I translate goals into a clear plan and a shipped system. Clear scope, clear decisions, and steady execution.",
+                "I start by listening deeply to how your team works and how your clients feel, then design AI systems that support both operations and human connection.",
             },
             {
               title: "Why it matters",
               content:
-                "Mission-led teams are busy. If the system is unclear or fragile, people stop using it. My job is to keep it practical and usable.",
+                "Many wellness and holistic teams carry too much. The right AI creates calm, consistency, and capacity so you can serve better without burning out.",
             },
             {
               title: "What's included",
               content:
-                "Discovery and scope. Priorities and tradeoffs made explicit. A delivery rhythm that keeps progress visible and makes iteration easy.",
+                "Hands-on strategy, AI roadmap, workflow and assistant design, and practical delivery support. We define scope together, ship in phases, and track real business outcomes.",
             },
             {
               title: "Ideal fit",
               content:
-                "Teams who value clarity, direct collaboration, and honest advice over hype or complexity.",
+                "Founders and small teams in wellness, holistic, and purpose-led spaces who want both soul and structure: human care plus startup-level execution.",
             },
             {
               title: "Typical outcome",
               content:
-                "A version one that ships with clear ownership, then improves based on real usage.",
+                "Calmer operations, clearer decisions, healthier growth, and more time for high-value human work with your clients and community.",
             },
           ],
           linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
@@ -274,8 +275,7 @@ export const en: SiteContent = {
       ],
       imageUrl: "/landing/photos/services/workflows-automation.png",
       modal: {
-        whatItMeans:
-          "Turn repetitive, manual steps into a simple workflow your team can trust.",
+        whatItMeans: "Turn repetitive, manual steps into a simple workflow your team can trust.",
         whyItMatters:
           "Less follow-up chasing, fewer dropped handoffs, and a calmer day-to-day operation.",
         whatsIncluded: [
@@ -306,8 +306,7 @@ export const en: SiteContent = {
       ],
       imageUrl: "/landing/photos/services/ai-assistants.png",
       modal: {
-        whatItMeans:
-          "LLM-based assistants trained on your business information.",
+        whatItMeans: "LLM-based assistants trained on your business information.",
         whyItMatters:
           "Customer support, internal help, scheduling, and quotes happen faster without overloading your team.",
         whatsIncluded: [
@@ -330,8 +329,7 @@ export const en: SiteContent = {
       icon: "CalendarCheck",
       title: "Retreat Ops Systems",
       eng: "Retreat Ops Systems",
-      description:
-        "Ops without chaos. Human experience.",
+      description: "Ops without chaos. Human experience.",
       details: [
         "Bookings, payments, invoicing.",
         "Guest messaging before, during, after.",
@@ -342,8 +340,7 @@ export const en: SiteContent = {
       modal: {
         whatItMeans:
           "A retreat ops system covering bookings, payments, messaging, itineraries, checklists, feedback, follow-up, dashboards.",
-        whyItMatters:
-          "Less operational chaos. Better guest experience. Fewer dropped details.",
+        whyItMatters: "Less operational chaos. Better guest experience. Fewer dropped details.",
         whatsIncluded: [
           "Bookings, payments, invoicing.",
           "Guest messaging before, during, after.",
@@ -356,8 +353,7 @@ export const en: SiteContent = {
           "You want clarity across booking, prep, delivery, follow-up",
           "You want a calmer ops rhythm",
         ],
-        typicalOutcome:
-          "Smoother operations. Clearer follow-through. Better guest experience.",
+        typicalOutcome: "Smoother operations. Clearer follow-through. Better guest experience.",
       },
     },
     {
@@ -468,10 +464,8 @@ export const en: SiteContent = {
       ],
       imageUrl: "/landing/photos/services/startup-advisory.png",
       modal: {
-        whatItMeans:
-          "Straight, practical guidance to ship version one without overbuilding.",
-        whyItMatters:
-          "You avoid costly detours, choose what matters now, and get feedback sooner.",
+        whatItMeans: "Straight, practical guidance to ship version one without overbuilding.",
+        whyItMatters: "You avoid costly detours, choose what matters now, and get feedback sooner.",
         whatsIncluded: [
           "Scope and roadmap: what to build now vs later",
           "Product and technical decisions (simple, defensible tradeoffs)",
@@ -491,8 +485,7 @@ export const en: SiteContent = {
   ],
 
   demosTitle: "AI in Action",
-  demosSubtitle:
-    "See examples of assistants, dashboards, and workflow systems in action.",
+  demosSubtitle: "See examples of assistants, dashboards, and workflow systems in action.",
   useCases: [
     {
       id: "chat",
@@ -570,7 +563,10 @@ export const en: SiteContent = {
       scenario: "A day with Rocky's coach",
       steps: [
         { action: "7:00 AM - Good morning Rocky!", result: "" },
-        { action: "", result: "What do you have planned for today? School, soccer, anything else?" },
+        {
+          action: "",
+          result: "What do you have planned for today? School, soccer, anything else?",
+        },
         { action: "Rocky: School until 3, then soccer practice", result: "" },
         { action: "", result: "Saved to Notion. I'll text you at 8pm!" },
         { action: "8:00 PM - How was your day?", result: "" },
@@ -770,8 +766,7 @@ export const en: SiteContent = {
         ],
       },
     ],
-    cta:
-      "We make room for high-impact teams, even when budgets are tight.",
+    cta: "We make room for high-impact teams, even when budgets are tight.",
     ctaButton: "Tell us about your project",
   },
 
@@ -960,8 +955,7 @@ export const en: SiteContent = {
           "Projects that need clarity more than hype",
           "Decision-makers who value structured thinking",
         ],
-        typicalOutcome:
-          "Faster evaluation, clearer tradeoffs, and fewer circular discussions.",
+        typicalOutcome: "Faster evaluation, clearer tradeoffs, and fewer circular discussions.",
       },
     },
     {
@@ -1011,7 +1005,8 @@ export const en: SiteContent = {
         "Checking pH, EC, and temperature manually 4x daily. Drove to the greenhouse at 6am and 10pm. One weekend away meant asking a neighbor who didn't really understand the system.",
       after:
         "Sensors feed into a dashboard. Alerts go to WhatsApp when something's off. Weekly AI summary of trends and recommendations.",
-      quote: "Caught a pH drift at 2am that would have killed a lettuce crop. Now takes weekends off.",
+      quote:
+        "Caught a pH drift at 2am that would have killed a lettuce crop. Now takes weekends off.",
       author: "Farm Owner",
       imageUrl:
         "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?q=80&w=800&auto=format&fit=crop",
@@ -1024,7 +1019,8 @@ export const en: SiteContent = {
         "Clients messaged at all hours asking about session types, prices, availability. Couldn't respond during sessions. Lost bookings to practitioners who replied faster.",
       after:
         "WhatsApp bot explains services, answers questions about Reiki vs. sound healing vs. breathwork, checks calendar, and books directly. Warm, not robotic.",
-      quote: "40% more sessions booked. I respond to complex questions when centered, not mid-session.",
+      quote:
+        "40% more sessions booked. I respond to complex questions when centered, not mid-session.",
       author: "Wellness Practitioner",
       imageUrl:
         "https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=800&auto=format&fit=crop",
@@ -1037,7 +1033,8 @@ export const en: SiteContent = {
         "Mom spent Sunday nights planning the week. Tracking progress across 3 kids in spreadsheets. No idea if they were actually retaining material.",
       after:
         "AI helps generate weekly plans based on each kid's pace. Progress tracked automatically. Gaps flagged before they become problems.",
-      quote: "Sunday planning: 3 hours down to 45 minutes. Kids get more personalized attention, less admin stress.",
+      quote:
+        "Sunday planning: 3 hours down to 45 minutes. Kids get more personalized attention, less admin stress.",
       author: "Homeschool Parent",
       imageUrl:
         "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop",
@@ -1050,7 +1047,8 @@ export const en: SiteContent = {
         "Egg sales, vegetables, workshop signups all tracked differently. Some in a notebook. Some in WhatsApp. No idea what was actually profitable.",
       after:
         "Simple dashboard connects sales channels. Sees which products make money, which don't. Tracks repeat customers.",
-      quote: "Discovered jam sales lost money after accounting for time. Raised prices, focused on what worked.",
+      quote:
+        "Discovered jam sales lost money after accounting for time. Raised prices, focused on what worked.",
       author: "Homesteader",
       imageUrl:
         "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=800&auto=format&fit=crop",
@@ -1063,7 +1061,8 @@ export const en: SiteContent = {
         "30 families, shared resources, zero central system. Tool library tracked in a notebook. Work shifts coordinated via group chat chaos. Food forest harvests went to whoever showed up first. Disputes over fairness.",
       after:
         "Simple member portal. AI helps schedule work rotations fairly, tracks tool borrowing, announces what's ready to harvest and suggests equitable distribution. Sends gentle reminders, not nagging.",
-      quote: "Less admin drama, more community. Decisions based on data, not whoever talks loudest.",
+      quote:
+        "Less admin drama, more community. Decisions based on data, not whoever talks loudest.",
       author: "Community Coordinator",
       imageUrl:
         "https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=800&auto=format&fit=crop",
@@ -1076,7 +1075,8 @@ export const en: SiteContent = {
         "Founder doing everything. Customer questions, investor updates, content, ops. No system. Things fell through cracks constantly.",
       after:
         "Leads auto-captured and scored. FAQ handled by chatbot. Weekly metrics report generated automatically. Founder focuses on product and fundraising.",
-      quote: "Stopped losing leads. Investors started commenting on how organized the updates were.",
+      quote:
+        "Stopped losing leads. Investors started commenting on how organized the updates were.",
       author: "Startup Founder",
       imageUrl:
         "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=800&auto=format&fit=crop",
@@ -1089,7 +1089,8 @@ export const en: SiteContent = {
         "Fish feeding, water quality, plant health all monitored separately. Data in three different apps. Correlating problems took hours of detective work.",
       after:
         "Unified dashboard. AI flags when fish behavior + water temp + plant growth suggest a problem brewing.",
-      quote: "Predicted a filter issue 3 days before it would have crashed the system. One dashboard instead of three apps.",
+      quote:
+        "Predicted a filter issue 3 days before it would have crashed the system. One dashboard instead of three apps.",
       author: "Aquaponics Farmer",
       imageUrl:
         "https://images.unsplash.com/photo-1535591273668-578e31182c4f?q=80&w=800&auto=format&fit=crop",
@@ -1102,7 +1103,8 @@ export const en: SiteContent = {
         "4 practitioners, 4 separate calendars, clients confused about who does what. Receptionist spent half her day just routing inquiries.",
       after:
         "Single booking system with AI that asks what the client needs and matches them to the right practitioner. Handles scheduling conflicts automatically.",
-      quote: "Receptionist now does client follow-up instead of calendar tetris. Booking errors dropped to near zero.",
+      quote:
+        "Receptionist now does client follow-up instead of calendar tetris. Booking errors dropped to near zero.",
       author: "Center Manager",
       imageUrl:
         "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop",
@@ -1115,7 +1117,8 @@ export const en: SiteContent = {
         "Admin spent 2+ hours daily answering the same questions. Prices, schedules, levels, payment methods. Over and over.",
       after:
         "Chatbot handles 80% of inquiries. Knows courses, checks availability, sends enrollment links, answers in Spanish or English.",
-      quote: "Admin focuses on student experience. Enrollment up because responses happen instantly, not next business day.",
+      quote:
+        "Admin focuses on student experience. Enrollment up because responses happen instantly, not next business day.",
       author: "School Administrator",
       imageUrl:
         "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=800&auto=format&fit=crop",
@@ -1141,7 +1144,8 @@ export const en: SiteContent = {
         "5-year food forest plan existed mostly in the founder's head. Volunteers showed up not knowing what to do. Plant guilds, water flows, seasonal tasks scattered across notebooks, PDFs, and half-remembered conversations. Knowledge walked out the door when key people left.",
       after:
         "Central system tracks what's planted where, what needs doing this month, and why. Volunteers get clear tasks matched to their skills. AI helps answer 'what should go next to the apple guild?' based on the site's own data.",
-      quote: "New volunteers productive on day one. Institutional knowledge stays even when people move on.",
+      quote:
+        "New volunteers productive on day one. Institutional knowledge stays even when people move on.",
       author: "Project Founder",
       imageUrl:
         "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=800&auto=format&fit=crop",
@@ -1191,20 +1195,17 @@ export const en: SiteContent = {
       {
         number: "1",
         title: "We reply quickly",
-        description:
-          "You get a direct response and a clear next step.",
+        description: "You get a direct response and a clear next step.",
       },
       {
         number: "2",
         title: "We map your workflow and propose a simple plan",
-        description:
-          "We focus on practical changes that reduce friction fast.",
+        description: "We focus on practical changes that reduce friction fast.",
       },
       {
         number: "3",
         title: "We build version one and iterate",
-        description:
-          "Then we improve with your team based on real usage.",
+        description: "Then we improve with your team based on real usage.",
       },
     ],
     cta: "Let's start the conversation",
@@ -1280,8 +1281,7 @@ export const en: SiteContent = {
         "Hi! You're interested in learning more about our {partnership} model. Every project is different! What's your name? And tell me about your project so we can explore the best options.",
       qualification:
         "Hi! Let's see if we're the right fit to work together. What's your name? And tell me about your business and what you're looking to achieve.",
-      impact:
-        "Hi! I want to learn how you can help with a practical, human-first AI system.",
+      impact: "Hi! I want to learn how you can help with a practical, human-first AI system.",
       formFallback: "Prefer to fill out a form? Click here.",
     },
   },
@@ -1329,5 +1329,3 @@ export const en: SiteContent = {
     ],
   },
 };
-
-

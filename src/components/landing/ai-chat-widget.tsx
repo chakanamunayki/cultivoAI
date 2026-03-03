@@ -65,6 +65,12 @@ interface LeadInfo {
   projectDescription?: string | undefined;
 }
 
+interface VoiceUserInfo {
+  name: string;
+  email: string;
+  phone?: string;
+}
+
 interface AIChatWidgetProps {
   isOpen: boolean;
   onToggle: (isOpen: boolean) => void;
@@ -108,6 +114,7 @@ export function AIChatWidget({
   const [isSubmittingContact, setIsSubmittingContact] = useState(false);
   const [isVoiceModeOpen, setIsVoiceModeOpen] = useState(false);
   const [showVoiceContactForm, setShowVoiceContactForm] = useState(false);
+  const [voiceUserInfo, setVoiceUserInfo] = useState<VoiceUserInfo | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const lastContextRef = useRef<ChatContext | null | undefined>(undefined);
   const conversationInitialized = useRef(false);
@@ -365,6 +372,11 @@ export function AIChatWidget({
       const result = await handleLeadCapture({ name, email, phone });
       if (result.success) {
         setShowVoiceContactForm(false);
+        setVoiceUserInfo({
+          name,
+          email,
+          ...(phone ? { phone } : {}),
+        });
         // Add success message to chat
         const successMessage = locale === "es"
           ? `¡Perfecto ${name}! Ya tengo tu información.`
@@ -381,6 +393,10 @@ export function AIChatWidget({
   // Handle voice contact form dismiss
   const handleVoiceContactFormDismiss = useCallback(() => {
     setShowVoiceContactForm(false);
+  }, []);
+
+  const openVoiceMode = useCallback(() => {
+    setIsVoiceModeOpen(true);
   }, []);
 
   // Handle lead qualification
@@ -574,11 +590,17 @@ export function AIChatWidget({
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to get response");
-      }
-
       const data: ChatResponse = await response.json();
+
+      if (!response.ok) {
+        const apiError =
+          data.text ||
+          data.error ||
+          (locale === "es"
+            ? "Lo siento, hubo un error. Por favor intenta de nuevo."
+            : "Sorry, there was an error. Please try again.");
+        throw new Error(apiError);
+      }
 
       // Handle function calls
       if (data.functionCalls && data.functionCalls.length > 0) {
@@ -595,15 +617,22 @@ export function AIChatWidget({
       // Log assistant response with latency
       const latencyMs = Date.now() - startTime;
       logMessage("model", responseText, {
-        modelUsed: "gemini-2.0-flash",
+        modelUsed: "gemini-2.5-flash",
         latencyMs,
       });
     } catch (error) {
       console.error("Chat error:", error);
-      const errorMessage =
+      const fallbackMessage =
         locale === "es"
           ? "Lo siento, hubo un error. Por favor intenta de nuevo."
           : "Sorry, there was an error. Please try again.";
+      const hasTechnicalError =
+        error instanceof Error &&
+        /(Unexpected token|JSON|NetworkError|Failed to fetch|Load failed)/i.test(error.message);
+      const errorMessage =
+        error instanceof Error && error.message && !hasTechnicalError
+          ? error.message
+          : fallbackMessage;
       setMessages((prev) => [...prev, { role: "model", text: errorMessage }]);
       logMessage("model", errorMessage);
     } finally {
@@ -633,14 +662,14 @@ export function AIChatWidget({
   // Quick question suggestions based on locale
   const quickQuestions = locale === "es"
     ? [
-        "¿Qué servicios ofrecen?",
-        "¿Cómo funciona el Fondo Semilla?",
-        "¿Cuánto cuesta un chatbot?",
+        "Quiero automatizar tareas repetitivas. Por donde empezamos?",
+        "Necesito un asistente IA para web o WhatsApp. Que recomiendan?",
+        "Como seria el primer proyecto con ustedes?",
       ]
     : [
-        "What services do you offer?",
-        "How does the Semilla Fund work?",
-        "How much does a chatbot cost?",
+        "I need to automate repetitive tasks. Where should we start?",
+        "I need an AI assistant for web or WhatsApp. What do you recommend?",
+        "What would a first project with you look like?",
       ];
 
   // Handle quick question click - auto-send the question
@@ -682,9 +711,7 @@ export function AIChatWidget({
           <div className="flex items-center gap-2">
             {/* Voice Mode button - BIG AND OBVIOUS FOR TESTING */}
             <button
-              onClick={() => {
-                setIsVoiceModeOpen(true);
-              }}
+              onClick={openVoiceMode}
               className="px-3 py-1.5 bg-primary text-primary-foreground border-2 border-black hover:bg-primary/90 hover:scale-105 transition-all font-bold text-xs uppercase"
               aria-label={locale === "es" ? "Modo de voz" : "Voice mode"}
               title={locale === "es" ? "Conversación por voz" : "Voice conversation"}
@@ -847,7 +874,7 @@ export function AIChatWidget({
           <div className="flex gap-2 items-center">
             {/* Voice Mode Button */}
             <button
-              onClick={() => setIsVoiceModeOpen(true)}
+              onClick={openVoiceMode}
               className="p-3 border-2 border-black transition-all bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
               aria-label={locale === "es" ? "Modo de voz" : "Voice mode"}
               title={locale === "es" ? "Conversación por voz" : "Voice conversation"}
@@ -884,9 +911,12 @@ export function AIChatWidget({
           setShowVoiceContactForm(false);
         }}
         locale={locale as "es" | "en"}
+        showInitialForm={!voiceUserInfo}
+        requirePreForm={!voiceUserInfo}
         showContactForm={showVoiceContactForm}
         onContactFormSubmit={handleVoiceContactFormSubmit}
         onContactFormDismiss={handleVoiceContactFormDismiss}
+        capturedUserInfo={voiceUserInfo}
       />
     )}
     </>

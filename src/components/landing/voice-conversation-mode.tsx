@@ -17,6 +17,7 @@ interface VoiceConversationModeProps {
   onClose: () => void;
   locale: "es" | "en";
   showInitialForm?: boolean; // Show form BEFORE connection (Phase 2)
+  requirePreForm?: boolean; // Block skip until main info is captured
   showContactForm?: boolean; // Show form DURING conversation (backward compat)
   onContactFormSubmit?: (name: string, email: string, phone?: string) => Promise<boolean>;
   onContactFormDismiss?: () => void;
@@ -84,7 +85,7 @@ const LABELS: Record<"es" | "en", VoiceLabels> = {
     microphoneError: "Click 🔒 en la barra de direcciones para permitir microfono",
     retry: "Reintentar",
     preFormTitle: "ANTES DE EMPEZAR",
-    preFormSubtitle: "Opcional - para personalizar tu experiencia",
+    preFormSubtitle: "Comparte tus datos principales para activar el modo voz",
     skipForm: "Saltar por ahora",
   },
   en: {
@@ -113,7 +114,7 @@ const LABELS: Record<"es" | "en", VoiceLabels> = {
     microphoneError: "Click 🔒 in address bar to allow microphone",
     retry: "Retry",
     preFormTitle: "BEFORE WE START",
-    preFormSubtitle: "Optional - to personalize your experience",
+    preFormSubtitle: "Share your main details to activate voice mode",
     skipForm: "Skip for now",
   },
 };
@@ -174,6 +175,7 @@ export function VoiceConversationMode({
   onClose,
   locale,
   showInitialForm = true, // Default to true for Phase 2 - form appears first
+  requirePreForm = false,
   showContactForm = false,
   onContactFormSubmit,
   onContactFormDismiss,
@@ -181,7 +183,9 @@ export function VoiceConversationMode({
 }: VoiceConversationModeProps) {
 
   // Pre-connection form state (Phase 2)
-  const [showPreConnectionForm, setShowPreConnectionForm] = useState(showInitialForm);
+  const [showPreConnectionForm, setShowPreConnectionForm] = useState(
+    showInitialForm && !capturedUserInfoProp
+  );
 
   // Mid-conversation form state (backward compat)
   const [showForm, setShowForm] = useState(false);
@@ -459,11 +463,12 @@ export function VoiceConversationMode({
 
   // Handle pre-connection form skip (Phase 2)
   const handlePreConnectionFormSkip = useCallback(() => {
+    if (requirePreForm) return;
     setFormData({ name: "", email: "", phone: "" });
     setFormError(null);
     // No user info captured when skipped (parent state remains null)
     setShowPreConnectionForm(false); // Hide form, trigger connection
-  }, []);
+  }, [requirePreForm]);
 
   // Handle close - disconnect and end conversation logging
   const handleClose = useCallback(() => {
@@ -730,14 +735,16 @@ export function VoiceConversationMode({
                   labels.submit
                 )}
               </button>
-              <button
-                type="button"
-                onClick={handlePreConnectionFormSkip}
-                disabled={isSubmittingForm}
-                className="w-full p-2 text-sm font-bold text-black/60 uppercase hover:text-black disabled:opacity-50 transition-colors"
-              >
-                {labels.skipForm}
-              </button>
+              {!requirePreForm && (
+                <button
+                  type="button"
+                  onClick={handlePreConnectionFormSkip}
+                  disabled={isSubmittingForm}
+                  className="w-full p-2 text-sm font-bold text-black/60 uppercase hover:text-black disabled:opacity-50 transition-colors"
+                >
+                  {labels.skipForm}
+                </button>
+              )}
             </form>
           </div>
         ) : showForm ? (
