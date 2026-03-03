@@ -7,6 +7,7 @@ import { Footer } from "@/components/landing/layout/footer";
 import { Nav } from "@/components/landing/layout/nav";
 import { AboutSection } from "@/components/landing/sections/about-section";
 import { HeroSection } from "@/components/landing/sections/hero-section";
+import { ProcessTerminalSection } from "@/components/landing/sections/process-terminal-section";
 import { LazySection } from "@/components/landing/ui/lazy-section";
 import { useModal } from "@/components/landing/ui/modal-provider";
 import { ModalRenderer } from "@/components/landing/ui/modal-renderer";
@@ -260,13 +261,15 @@ export default function Home() {
         onPrimaryCta={handleOpenContactModal}
         onSecondaryCta={handleScrollToProjects}
         onTertiaryCta={handleScrollToServices}
-        onImpactCta={handleOpenContactModal}
       />
 
       {/* Section 2: About - Eager loaded (above fold) */}
       <AboutSection />
 
-      {/* Section 3: How We Work - Lazy loaded */}
+      {/* Section 3: Process Terminal - placed immediately after Team */}
+      <ProcessTerminalSection />
+
+      {/* Section 4: How We Work - Lazy loaded */}
       <LazySection className="min-h-[400px]">
         <HowWeWorkSection />
       </LazySection>

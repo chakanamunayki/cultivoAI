@@ -390,6 +390,8 @@ export interface TerminalScriptLine {
 }
 
 export interface TerminalContent {
+  sectionTitle: string;
+  summary: string;
   welcomeLine1: string;
   welcomeLine2: string;
   script: TerminalScriptLine[];

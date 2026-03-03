@@ -11,30 +11,39 @@ export const en: SiteContent = {
 
   marquee: [
     "Human-first AI",
-    "Less busywork",
-    "Decision dashboards",
+    "Dashboards",
     "Useful assistants",
+    "Retreat operations",
     "Living knowledge",
-    "Retreat ops",
-    "Market signals",
-    "Data stays private",
-    "Offline when needed",
-    "24h reply",
+    "Automation",
+    "Private data",
+    "Offline",
+    "Direct collaboration",
+    "24h response",
   ],
 
   hero: {
     tagline: "FOR GOOD PROJECTS",
-    line1: "AI systems that help good projects scale",
+    line1: "AI systems to scale valuable work",
     subheadline:
-      "Automation that cuts busywork.\nDashboards that show what matters.\nKnowledge you can reuse.\nShared building blocks keep costs down. Templates. Automations. Dashboard patterns.\nKeep your data private. Offline setups available when needed.",
+      "We automate repetitive work.\nWe surface what matters in dashboards.\nWe turn your knowledge into a reusable system.",
     services: [],
     servicesDone: "",
     audience: [],
     outcomes: ["Less manual work", "Clearer decisions", "Better follow-through"],
     audienceLabel: "Built for:",
-    audienceChips: ["Wellness retreats", "Sustainability projects", "Impact startups"],
+    audienceChips: [
+      "Wellness retreats",
+      "Off-grid communities",
+      "Self-sufficiency projects",
+      "Hydroponics",
+      "Holistic wellbeing",
+      "Regenerative projects",
+      "Impact startups",
+    ],
     tertiaryCta: "Explore services",
-    microcopy: "Win-win partnerships. Impact-friendly options. Direct collaboration.",
+    microcopy:
+      "Private data. Offline setup when needed. Shared templates to reduce costs.",
     terminalLabel: "How we work:",
     line3: "",
     cta: "Let's talk",
@@ -61,8 +70,7 @@ export const en: SiteContent = {
         subtitle: "Co-founder of nbn23.com and nagi.es in Spain",
         description:
           "I've spent 20+ years in tech, including co-founding two tech/data businesses in Spain: nbn23.com and nagi.es. Today I blend startup discipline with human-first AI to help holistic businesses grow with clarity and care.",
-        imageUrl:
-          "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=800",
+        imageUrl: "/landing/photos/team/paul.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
@@ -105,8 +113,7 @@ export const en: SiteContent = {
         title: "AI systems specialist",
         description:
           "Rocky builds AI workflows, assistants, and dashboards that help teams move faster and stay consistent. Practical, design-aware, and focused on real outcomes.",
-        imageUrl:
-          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800",
+        imageUrl: "/landing/photos/team/rocky.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
@@ -146,8 +153,7 @@ export const en: SiteContent = {
         title: "Human-centered design and wellness context",
         description:
           "Marta brings a grounded human perspective, helping shape tone, trust, and user experience, especially for wellness and wellbeing projects.",
-        imageUrl:
-          "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800",
+        imageUrl: "/landing/photos/team/marta.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         linkedinUrl: "https://www.linkedin.com/in/marta-ronayne/",
@@ -1313,12 +1319,13 @@ export const en: SiteContent = {
   },
 
   terminal: {
+    sectionTitle: "How we work",
+    summary: "No chaos. Clear scope. Fast version one. Direct iteration.",
     welcomeLine1: "Last login: ",
     welcomeLine2: "Cultivo AI Automation Suite v2.5.0",
     script: [
       { text: "Starting discovery...", type: "command", delay: 800 },
       { text: "Mapping your workflow...", type: "info", delay: 600 },
-      { text: "Finding busywork...", type: "info", delay: 650 },
       { text: "Finding friction points...", type: "info", delay: 700 },
       { text: "Designing a simple version one...", type: "ai", delay: 700 },
       { text: "Building the dashboard...", type: "command", delay: 700 },

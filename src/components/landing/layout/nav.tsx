@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore, useState } from "react";
+import { useMemo, useState } from "react";
 import { Menu, MessageCircle, Sprout, X } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 
@@ -28,14 +28,10 @@ const VALID_SECTION_IDS = new Set([
 // Desktop nav shows only these key items
 const DESKTOP_NAV_KEYS = ["services", "projects", "about"];
 
-// Hydration-safe mounted state using useSyncExternalStore
-const emptySubscribe = () => () => {};
-const getSnapshot = () => true;
-const getServerSnapshot = () => false;
-
 export function Nav({ onScrollTo, onOpenChat }: NavProps) {
   const { locale, toggleLocale, content } = useLocale();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileChipsExpanded, setIsMobileChipsExpanded] = useState(false);
 
   const ctaLabel = locale === "es" ? "Hablemos" : "Let's Talk";
 
@@ -69,12 +65,13 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
     onOpenChat?.();
   };
 
-  // Use client-only rendering for marquee to avoid hydration mismatch
-  const isClient = useSyncExternalStore(emptySubscribe, getSnapshot, getServerSnapshot);
+  const chipItems = useMemo(
+    () => Array.from(new Set(content.marquee)).slice(0, 10),
+    [content.marquee]
+  );
 
-  // Render a single marquee sequence to avoid visible duplication.
-  const marqueeItems = isClient ? Array.from(new Set(content.marquee)) : [];
-  const marqueeText = isClient && marqueeItems.length ? `${marqueeItems.join(" | ")} | ` : "";
+  const showMoreLabel = locale === "es" ? "Ver más" : "Show more";
+  const showLessLabel = locale === "es" ? "Ver menos" : "Show less";
 
   return (
     <nav className="sticky top-0 z-50 bg-white">
@@ -193,10 +190,34 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
         </div>
       )}
 
-      {/* Sticky Ticker under nav */}
-      <div className="bg-black text-white overflow-hidden whitespace-nowrap py-2 md:py-2.5 border-b-4 border-black">
-        <div className="animate-marquee inline-block font-bold tracking-wide uppercase text-xs md:text-sm">
-          {marqueeText}
+      {/* Calm chips row under nav */}
+      <div className="bg-[#F6F8F7] border-b-4 border-black">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-3">
+          <div className="flex flex-wrap gap-2">
+            {chipItems.map((chip, index) => {
+              const isCollapsibleMobile = index >= 6 && !isMobileChipsExpanded;
+              return (
+                <span
+                  key={chip}
+                  className={[
+                    "px-2.5 py-1 rounded-full border border-black/15 bg-white text-[11px] md:text-xs font-semibold text-neutral-800",
+                    isCollapsibleMobile ? "hidden md:inline-flex" : "inline-flex",
+                  ].join(" ")}
+                >
+                  {chip}
+                </span>
+              );
+            })}
+            {chipItems.length > 6 && (
+              <button
+                type="button"
+                onClick={() => setIsMobileChipsExpanded((prev) => !prev)}
+                className="md:hidden px-2.5 py-1 rounded-full border border-black/20 text-[11px] font-semibold text-neutral-700 bg-white"
+              >
+                {isMobileChipsExpanded ? showLessLabel : showMoreLabel}
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </nav>

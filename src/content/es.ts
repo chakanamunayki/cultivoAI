@@ -11,30 +11,39 @@ export const es: SiteContent = {
 
   marquee: [
     "IA human-first",
-    "Menos fricción",
-    "Dashboards de decisión",
+    "Dashboards",
     "Asistentes útiles",
-    "Sistemas de conocimiento vivos",
     "Operación de retiros",
-    "Win-win real",
+    "Sistemas de conocimiento vivos",
+    "Automatización",
+    "Datos privados",
+    "Offline",
     "Colaboración directa",
-    "Colombia → mundo",
     "Respuesta en 24h",
   ],
 
   hero: {
     tagline: "PARA BUENOS PROYECTOS",
-    line1: "Sistemas de IA que ayudan a escalar buenos proyectos",
+    line1: "Sistemas de IA para escalar trabajo valioso",
     subheadline:
-      "Automatizacion que reduce trabajo repetitivo.\nDashboards que muestran lo que importa.\nConocimiento que puedes reutilizar.\nBloques compartidos que reducen costos entre proyectos alineados. Plantillas. Automatizaciones. Patrones de dashboard.\nMantén tus datos privados. Configuraciones offline disponibles cuando se necesite.",
+      "Automatizamos lo repetitivo.\nMostramos lo que importa en dashboards.\nConvertimos tu conocimiento en un sistema reutilizable.",
     services: [],
     servicesDone: "",
     audience: [],
     outcomes: ["Menos trabajo manual", "Decisiones más claras", "Mejor seguimiento"],
     audienceLabel: "Hecho para:",
-    audienceChips: ["Retiros wellness", "Equipos de sostenibilidad", "Startups de impacto"],
+    audienceChips: [
+      "Retiros wellness",
+      "Comunidades off-grid",
+      "Proyectos de autosuficiencia",
+      "Hidroponía",
+      "Bienestar holístico",
+      "Proyectos regenerativos",
+      "Startups de impacto",
+    ],
     tertiaryCta: "Ver servicios",
-    microcopy: "Alianzas win-win. Opciones para impacto. Colaboración directa.",
+    microcopy:
+      "Datos privados. Configuración offline cuando haga falta. Plantillas compartidas para reducir costos.",
     terminalLabel: "Así trabajamos:",
     line3: "",
     cta: "Hablemos",
@@ -61,8 +70,7 @@ export const es: SiteContent = {
         subtitle: "Cofundador de nbn23.com y nagi.es en Espana",
         description:
           "Llevo mas de 20 anos en tecnologia, incluyendo la cofundacion de dos negocios tech/data en Espana: nbn23.com y nagi.es. Hoy uno disciplina startup con IA human-first para ayudar a negocios holisticos a crecer con claridad y cuidado.",
-        imageUrl:
-          "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=800",
+        imageUrl: "/landing/photos/team/paul.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
@@ -105,8 +113,7 @@ export const es: SiteContent = {
         title: "Especialista en sistemas IA",
         description:
           "Rocky construye flujos, asistentes y dashboards de IA que ayudan a los equipos a avanzar más rapido y con consistencia. Practico, con criterio de diseno y enfoque en resultados.",
-        imageUrl:
-          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800",
+        imageUrl: "/landing/photos/team/rocky.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
@@ -146,8 +153,7 @@ export const es: SiteContent = {
         title: "Diseno centrado en personas y contexto wellness",
         description:
           "Marta aporta una mirada humana y aterrizada para construir tono, confianza y experiencia de usuario, especialmente en proyectos de bienestar.",
-        imageUrl:
-          "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800",
+        imageUrl: "/landing/photos/team/marta.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         linkedinUrl: "https://www.linkedin.com/in/marta-ronayne/",
@@ -1326,8 +1332,10 @@ export const es: SiteContent = {
   },
 
   terminal: {
-    welcomeLine1: "Ultimo acceso: ",
-    welcomeLine2: "Suite de Automatizacion Cultivo AI v2.5.0",
+    sectionTitle: "Así trabajamos",
+    summary: "Sin caos. Alcance claro. Versión uno rápida. Iteración directa.",
+    welcomeLine1: "Último acceso: ",
+    welcomeLine2: "Suite de Automatización Cultivo AI v2.5.0",
     script: [
       { text: "Iniciando descubrimiento...", type: "command", delay: 800 },
       { text: "Mapeando tu flujo de trabajo...", type: "info", delay: 600 },
