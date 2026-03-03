@@ -2,41 +2,48 @@ import type { SiteContent } from "./types";
 
 export const en: SiteContent = {
   nav: [
-    { label: "Home", href: "#hero" },
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
-    { label: "Demos", href: "#demos" },
-    { label: "Semilla", href: "#semilla" },
     { label: "Partners", href: "#partnerships" },
     { label: "Projects", href: "#projects" },
-    { label: "Stories", href: "#stories" },
     { label: "Process", href: "#what-happens-next" },
   ],
 
-  marquee:
-    "Paul & Rocky 🇬🇧🇨🇴  •  Chatbots $100  •  Automation  •  AI Marketing  •  Dashboards  •  Web+AI  •  Medellín→World  •  Win-Win Always  •  Direct Deal  •  Impact Projects  •  24hr Reply  •  ",
+  marquee: [
+    "Human-first AI",
+    "Less busywork",
+    "Decision dashboards",
+    "Useful assistants",
+    "Living knowledge",
+    "Retreat ops",
+    "Market signals",
+    "Data stays private",
+    "Offline when needed",
+    "24h reply",
+  ],
 
   hero: {
-    tagline: "FOR THE ONES CHANGING THINGS",
-    line1: "AI INTEGRATION.",
-    services: [
-      "Workflow Automation",
-      "AI Assistants & Chatbots",
-      "Business Intelligence",
-      "Content Systems",
-      "Website Development + AI",
-      "Startup Advisory"
-    ],
-    servicesDone: "Done.",
-    audience: ["Farmers.", "Self sustainability.", "Innovation.", "Holistic Healers.", "Educators.", "Sustainable Builders."],
-    line3: "Impact rates. Human approach. Father & son.",
+    tagline: "FOR GOOD PROJECTS",
+    line1: "AI systems that help good projects scale",
+    subheadline:
+      "Automation that cuts busywork.\nDashboards that show what matters.\nKnowledge you can reuse.\nShared building blocks keep costs down. Templates. Automations. Dashboard patterns.\nKeep your data private. Offline setups available when needed.",
+    services: [],
+    servicesDone: "",
+    audience: [],
+    outcomes: ["Less manual work", "Clearer decisions", "Better follow-through"],
+    audienceLabel: "Built for:",
+    audienceChips: ["Wellness retreats", "Sustainability projects", "Impact startups"],
+    tertiaryCta: "Explore services",
+    microcopy: "Win-win partnerships. Impact-friendly options. Direct collaboration.",
+    terminalLabel: "How we work:",
+    line3: "",
     cta: "Let's talk",
-    secondaryCta: "Read our story",
-    noDrama: "NO DRAMA.",
+    secondaryCta: "View projects",
+    noDrama: "No chaos.",
     noDramaText:
-      "We help purpose-driven businesses use AI without getting lost in the complexity.",
+      "Clear scope. Fast version one. Direct iteration.",
     impactSection: {
-      text: "Purpose over profit. Always.",
+      text: "Colombia-based, working worldwide. Direct collaboration. Clear scope.",
       cta: "Let's talk",
     },
   },
@@ -51,32 +58,41 @@ export const en: SiteContent = {
       {
         id: "paul",
         name: "Paul Ronayne",
-        title: "STRATEGY & BUSINESS",
-        subtitle: "Co-founder nbn23 · nagi | Founder Raiz",
+        title: "Strategy and delivery",
         description:
-          "With over 20 years of experience in technology and business, Paul has worked in startups, corporations, and impact projects. Now he focuses his experience on helping purpose-driven businesses leverage AI in practical, accessible ways.",
+          "Paul brings 20+ years across startups, corporations, and impact projects. He focuses on turning messy reality into clear systems that ship.",
         imageUrl:
           "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=800",
-        accentColor: "bg-[#A855F7]",
+        accentColor: "bg-primary",
         shadowColor: "bg-black",
         linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
         bio: {
-          headline: "20+ years building technology with purpose",
+          headline: "Turning messy reality into clear systems that ship",
           sections: [
             {
-              title: "Background",
+              title: "What it means",
               content:
-                "Co-founder of nbn23 (basketball stats for the NBA) and nagi (AI voice assistant). Founder of Raiz Capital, an impact investment platform for regenerative agriculture. Has worked with startups, corporations, and social projects across multiple countries.",
+                "I translate goals into a clear plan and a shipped system. Clear scope, clear decisions, and steady execution.",
             },
             {
-              title: "Current Focus",
+              title: "Why it matters",
               content:
-                "Helping purpose-driven businesses integrate AI in practical ways, without the complexity or inflated costs of traditional agencies. Teaching Rocky to build while building alongside him.",
+                "Mission-led teams are busy. If the system is unclear or fragile, people stop using it. My job is to keep it practical and usable.",
             },
             {
-              title: "Philosophy",
+              title: "What's included",
               content:
-                "Believes technology should serve people, not the other way around. Prefers long-term relationships over quick transactions. If a project isn't win-win, he'd rather not do it.",
+                "Discovery and scope. Priorities and tradeoffs made explicit. A delivery rhythm that keeps progress visible and makes iteration easy.",
+            },
+            {
+              title: "Ideal fit",
+              content:
+                "Teams who value clarity, direct collaboration, and honest advice over hype or complexity.",
+            },
+            {
+              title: "Typical outcome",
+              content:
+                "A version one that ships with clear ownership, then improves based on real usage.",
             },
           ],
           linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
@@ -85,66 +101,82 @@ export const en: SiteContent = {
       {
         id: "rocky",
         name: "Rocky Ronayne",
-        title: "TECH & AI",
-        badge: "14 years old",
+        title: "AI systems specialist",
         description:
-          "Footballer, innovator. Rocky is learning to build AI solutions while balancing school and soccer. He leads the Semilla Fund, building small projects for clients who are just starting out.",
+          "Rocky builds AI workflows, assistants, and dashboards that help teams move faster and stay consistent. Practical, design-aware, and focused on real outcomes.",
         imageUrl:
           "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800",
-        accentColor: "bg-[#FFDE00]",
-        shadowColor: "bg-[#FFDE00]",
+        accentColor: "bg-primary",
+        shadowColor: "bg-black",
         bio: {
-          headline: "Learning to build while building",
+          headline: "Practical AI systems that support real outcomes",
           sections: [
             {
-              title: "Who I Am",
+              title: "What it means",
               content:
-                "I'm 14 years old. I turn 15 in January. I still don't know exactly what I want to do with my life, and I think that's okay. I like football, video games, and I'm learning to build things with AI.",
+                "I build AI workflows, assistants, and dashboards that help teams stay consistent and reduce repetitive work.",
             },
             {
-              title: "Project19",
+              title: "Why it matters",
               content:
-                "My personal project: an AI coach that helps me organize my day. It sends me a message in the morning asking about my plans, and at night asks how it went. Everything saves to Notion automatically. Cost: ~$0.30/month.",
+                "A system is only useful if people actually use it. I focus on clarity, reliability, and making the next step obvious.",
             },
             {
-              title: "Semilla Fund",
+              title: "What's included",
               content:
-                "My initiative to help small projects while I learn. Basic chatbots, simple automations, Notion organization. Accessible prices because I'm also learning.",
+                "A simple version one, built and tested end-to-end. Clear handoff notes, and iteration based on what we learn from real use.",
+            },
+            {
+              title: "Ideal fit",
+              content:
+                "Teams who want practical AI help without complexity, and who care about the user experience and tone.",
+            },
+            {
+              title: "Typical outcome",
+              content:
+                "A workflow or assistant that reduces manual work and keeps follow-through consistent week to week.",
             },
           ],
-          videoUrl: "https://www.youtube.com/watch?v=example",
-          videoLabel: "Watch Samsung project",
         },
       },
       {
         id: "marta",
         name: "Marta Ronayne",
-        title: "THE ANCHOR",
-        subtitle: "Holistic Therapist | Munayki",
+        title: "Human-centered design and wellness context",
         description:
-          "Holistic therapist and the family's center of gravity. Marta brings balance and human perspective to everything we do. Her practice Munayki is where Rocky applies what he learns in a real context.",
+          "Marta brings a grounded human perspective, helping shape tone, trust, and user experience, especially for wellness and wellbeing projects.",
         imageUrl:
           "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800",
-        accentColor: "bg-[#10B981]",
-        shadowColor: "bg-[#10B981]",
+        accentColor: "bg-primary",
+        shadowColor: "bg-black",
         linkedinUrl: "https://www.linkedin.com/in/marta-ronayne/",
         bio: {
-          headline: "Balance and human perspective",
+          headline: "Tone, trust, and usability that feels human",
           sections: [
             {
-              title: "Munayki",
+              title: "What it means",
               content:
-                "Holistic wellness practice focused on emotional healing and personal growth. Marta works with clients individually and in group workshops, integrating multiple therapeutic modalities.",
+                "I help shape how systems feel: language, flow, and the human moments that build trust.",
             },
             {
-              title: "The Anchor",
+              title: "Why it matters",
               content:
-                "While Paul and Rocky build technology, Marta keeps everyone grounded. She's the voice that asks 'but does this actually help people?' before launching any project.",
+                "If the experience feels cold or confusing, people disengage. Human-centered design keeps the work usable and respectful.",
             },
             {
-              title: "Connection to CultivoAI",
+              title: "What's included",
               content:
-                "Munayki is where Rocky practices what he learns. The scheduling chatbot, follow-up automations, everything gets tested there first. It's our real-impact laboratory.",
+                "Copy and tone guidance, UX input, and real-world feedback on what will (and will not) work for people.",
+            },
+            {
+              title: "Ideal fit",
+              content:
+                "Wellness, health, and sustainability teams who want a warm, clear, trustworthy experience.",
+            },
+            {
+              title: "Typical outcome",
+              content:
+                "A system that feels clear and human, so people actually stick with it and follow through.",
             },
           ],
           linkedinUrl: "https://www.linkedin.com/in/marta-ronayne/",
@@ -161,19 +193,19 @@ export const en: SiteContent = {
         icon: "RefreshCw",
         title: "Win-Win or No Deal",
         description:
-          "We only take on projects where both sides win. If we can't add real value, we'll tell you. If a project isn't sustainable for both of us, we'd rather not do it. Transparency is more important than any contract.",
+          "We only take projects where expectations are clear and both sides benefit. If we cannot add real value, we will tell you early.",
       },
       {
         icon: "Sprout",
-        title: "Holistic Business",
+        title: "Holistic Systems",
         description:
-          "We don't just build for clients. We share what we learn. We support impact projects with reduced rates. And we measure our success not just in money, but in the real value we create.",
+          "We think end-to-end. Software, workflows, data, decisions, communication, and design need to work together, not as separate pieces.",
       },
       {
         icon: "Users",
-        title: "Rocky Learns in Every Step",
+        title: "Always Human",
         description:
-          "This isn't just a business. It's an educational project. Rocky participates in every project in some way - sometimes leading, sometimes learning. When you work with us, you're contributing to his real-world education.",
+          "AI is a tool we use for good. We build with care for tone, trust, and real people on the other side of the screen.",
         isFullWidth: true,
       },
     ],
@@ -183,24 +215,24 @@ export const en: SiteContent = {
     title: "How We Help",
     subtitle: "Practical AI integration for real businesses",
     intro:
-      "We don't sell hype. We don't promise that AI will solve all your problems. What we do is integrate AI tools practically into your existing operations. We automate what makes sense to automate. We enhance what already works.",
+      "We do not sell hype. We build practical systems that make good work easier to run. The goal is clarity and momentum, not complexity.",
     columns: [
       {
         title: "OPTIMIZE",
         items: [
-          "Automate repetitive tasks",
-          "Connect tools that don't talk to each other",
-          "Centralize scattered data",
-          "Reduce friction in processes",
+          "Reduce repetitive work",
+          "Create one source of truth",
+          "Improve handoffs and follow-through",
+          "Make reporting automatic",
         ],
       },
       {
         title: "EXPAND",
         items: [
-          "24/7 customer service",
-          "Scalable content",
-          "Real-time business intelligence",
-          "New communication channels",
+          "Faster responses without losing warmth",
+          "Consistent content and knowledge sharing",
+          "Better decision-making with real signals",
+          "New ways to support users and customers",
         ],
       },
     ],
@@ -213,112 +245,254 @@ export const en: SiteContent = {
   whyUs: {
     notTitle: "What we're NOT",
     notItems: [
-      "An agency that sells you then hands you to a junior.",
-      "Consultants who bill by the hour while 'researching'.",
-      "Salespeople pushing solutions you don't need.",
-      "Experts who make you feel ignorant.",
+      "A big agency with handoffs and junior delivery.",
+      "Hype-driven consultants selling you a trend.",
+      "A team that makes you feel confused on purpose.",
     ],
     yesTitle: "What we ARE",
     yesItems: [
-      "A dad teaching his son to build real things.",
-      "People who've failed at projects, learned, and keep trying.",
-      "Integrators - we connect tools, we don't reinvent the wheel.",
-      "Colombians working for the world from here.",
+      "A small senior team that works directly with you.",
+      "System builders who ship version one quickly, then improve.",
+      "Human-first builders who care about tone, trust, and outcomes.",
+      "Colombia-based, working worldwide.",
     ],
   },
 
   servicesTitle: "Our Services",
   servicesSubtitle:
-    "Not sure what you need? Schedule a 15-minute call. We'll help you identify where AI can make a difference in your business.",
+    "Not sure where to start? Book a 15-minute call. We will help you find the smallest change that creates real momentum.",
   services: [
     {
       icon: "Zap",
-      title: "Workflow Automation",
-      eng: "Workflow Automation",
-      description: "Eliminate repetitive tasks by connecting your favorite apps.",
+      title: "Workflow Optimization",
+      eng: "Workflow Optimization",
+      description: "Make operations smoother by removing friction and repetitive work.",
       details: [
         "We connect tools like Notion, Slack, Gmail, Airtable, and WhatsApp.",
         "We design flows that work while you sleep.",
         "From automatic invoicing to client onboarding without human intervention.",
       ],
-      imageUrl:
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600",
-      pricing: "From $100 USD",
+      imageUrl: "/landing/photos/services/workflows-automation.png",
+      modal: {
+        whatItMeans:
+          "Turn repetitive, manual steps into a simple workflow your team can trust.",
+        whyItMatters:
+          "Less follow-up chasing, fewer dropped handoffs, and a calmer day-to-day operation.",
+        whatsIncluded: [
+          "A quick workflow map and friction audit",
+          "A simple plan: triggers, responsibilities, fallbacks",
+          "Build + test of the core flow(s)",
+          "Basic documentation so your team can run it",
+          "A short iteration window after launch",
+        ],
+        idealFit: [
+          "Teams with recurring ops: intake, onboarding, follow-ups, reporting",
+          "You want reliable systems, not flashy automations",
+          "You can assign 1-2 owners to review and approve the flow",
+        ],
+        typicalOutcome:
+          "Fewer manual tasks, fewer things falling through the cracks, and more consistency week to week.",
+      },
     },
     {
       icon: "MessageSquare",
-      title: "AI Assistants & Chatbots",
-      eng: "AI Assistants & Chatbots",
-      description: "24/7 customer service with human personality.",
+      title: "AI Assistants",
+      eng: "AI Assistants",
+      description: "Keep your data private. Offline setups available when needed.",
       details: [
-        "LLM-based agents trained specifically with your business information.",
-        "They can schedule appointments, answer technical questions, quote services.",
-        "They escalate complex cases to humans when necessary.",
+        "LLM-based assistants trained on your business information.",
+        "Customer support. Internal help. Scheduling. Quotes.",
+        "Works with WhatsApp, email, calendars.",
       ],
-      imageUrl:
-        "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=600",
-      pricing: "From $100 USD",
+      imageUrl: "/landing/photos/services/ai-assistants.png",
+      modal: {
+        whatItMeans:
+          "LLM-based assistants trained on your business information.",
+        whyItMatters:
+          "Customer support, internal help, scheduling, and quotes happen faster without overloading your team.",
+        whatsIncluded: [
+          "LLM-based assistants trained on your business information",
+          "Customer support, internal help, scheduling, quotes",
+          "Integrations with WhatsApp, email, calendars",
+          "Private data handling with optional offline setup",
+          "Launch and iteration based on real conversations",
+        ],
+        idealFit: [
+          "Teams with repeated questions or recurring intake",
+          "You care about trust, clarity, and brand voice",
+          "You want better qualification before a human steps in",
+        ],
+        typicalOutcome:
+          "Faster response times, fewer repetitive conversations, and a cleaner path to booking or follow-up.",
+      },
+    },
+    {
+      icon: "CalendarCheck",
+      title: "Retreat Ops Systems",
+      eng: "Retreat Ops Systems",
+      description:
+        "Ops without chaos. Human experience.",
+      details: [
+        "Bookings, payments, invoicing.",
+        "Guest messaging before, during, after.",
+        "Itineraries, checklists, feedback, follow-up.",
+        "Dashboards for occupancy, revenue, satisfaction.",
+      ],
+      imageUrl: "/landing/photos/services/health-wellness.jpg",
+      modal: {
+        whatItMeans:
+          "A retreat ops system covering bookings, payments, messaging, itineraries, checklists, feedback, follow-up, dashboards.",
+        whyItMatters:
+          "Less operational chaos. Better guest experience. Fewer dropped details.",
+        whatsIncluded: [
+          "Bookings, payments, invoicing.",
+          "Guest messaging before, during, after.",
+          "Itineraries, checklists, feedback, follow-up.",
+          "Dashboards for occupancy, revenue, satisfaction.",
+          "Ops without chaos. Human experience.",
+        ],
+        idealFit: [
+          "Retreat teams running repeatable programs",
+          "You want clarity across booking, prep, delivery, follow-up",
+          "You want a calmer ops rhythm",
+        ],
+        typicalOutcome:
+          "Smoother operations. Clearer follow-through. Better guest experience.",
+      },
     },
     {
       icon: "BarChart3",
-      title: "Business Intelligence",
-      eng: "Business Intelligence",
-      description: "Dashboards that turn data into decisions.",
+      title: "Decision Dashboards",
+      eng: "Decision Dashboards",
+      description: "Visibility that helps you act early and stay focused.",
       details: [
         "We centralize your scattered data (Excel, SQL, CRMs) into clear visual dashboards.",
         "We implement key metrics (KPIs) for real-time business health.",
         "No waiting for end-of-month reports.",
       ],
-      imageUrl:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600",
-      pricing: "From $200 USD",
+      imageUrl: "/landing/photos/services/decision-dashboards.jpg",
+      modal: {
+        whatItMeans:
+          "One clear view of what is happening, what is changing, and what needs attention.",
+        whyItMatters:
+          "Better decisions happen when you stop reconciling spreadsheets and start seeing patterns early.",
+        whatsIncluded: [
+          "KPI definition (what to track and why)",
+          "Data consolidation (where your data lives today)",
+          "Dashboard build with clear views for different roles",
+          "Alerts or lightweight summaries for key signals",
+          "A short training + handoff so it stays useful",
+        ],
+        idealFit: [
+          "Teams with data spread across tools and files",
+          "You want clarity without a heavy BI program",
+          "You want a simple version one that can grow later",
+        ],
+        typicalOutcome:
+          "A weekly rhythm: check one dashboard, spot issues sooner, and act with confidence.",
+      },
     },
     {
       icon: "Layers",
-      title: "Content Systems",
-      eng: "Content Systems",
-      description: "Creation engines to scale your presence.",
+      title: "Knowledge and Content Systems",
+      eng: "Knowledge and Content Systems",
+      description: "Consistent output without chaos.",
       details: [
-        "AI-assisted content pipelines.",
-        "From trend-based topic ideation to draft generation.",
-        "Blog, social media, and newsletters maintaining your brand voice.",
+        "Market signals plus content system design.",
+        "Topic direction based on real demand.",
+        "Draft workflow. Review workflow. Publishing workflow.",
       ],
-      imageUrl:
-        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=600",
-      pricing: "From $150 USD",
+      imageUrl: "/landing/photos/services/knowledge-content-systems.jpg",
+      modal: {
+        whatItMeans:
+          "Market signals and content system design create a repeatable path from signal to output.",
+        whyItMatters:
+          "You prioritize based on real demand, clarify offers and angles, and publish consistently without chaos.",
+        whatsIncluded: [
+          "Audience pain mapping and keyword signals",
+          "Competitor scan and offer clarity checks",
+          "Messaging angle selection for priority topics",
+          "Draft workflow, review workflow, publishing workflow",
+          "Knowledge capture templates that keep output consistent",
+        ],
+        idealFit: [
+          "Teams who publish regularly or need internal documentation",
+          "You have expertise, but no consistent system",
+          "You want speed without losing quality",
+        ],
+        typicalOutcome:
+          "A repeatable path from market signal to published output, with less chaos and more consistency.",
+      },
     },
     {
       icon: "Monitor",
-      title: "Website Development + AI",
-      eng: "Website Development + AI",
-      description: "Living websites that learn and adapt.",
+      title: "Software, Websites and Digital Experiences",
+      eng: "Software, Websites and Digital Experiences",
+      description: "Beautiful design paired with systems that support conversion and follow-up.",
       details: [
         "Modern, fast websites optimized for conversion.",
         "Semantic search and real-time content personalization.",
         "Native chatbots to maximize user retention.",
       ],
-      imageUrl:
-        "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=600",
-      pricing: "From $300 USD",
+      imageUrl: "/landing/photos/services/websites-digital-experiences.webp",
+      modal: {
+        whatItMeans:
+          "A fast, beautiful web experience that supports trust, conversion, and follow-through.",
+        whyItMatters:
+          "Good design makes your work easier to understand. Good systems make the next step actually happen.",
+        whatsIncluded: [
+          "Messaging + structure (what to say, what to show, what to cut)",
+          "Design and UI direction that feels intentional",
+          "Implementation focused on performance and clarity",
+          "Analytics basics so you can learn what works",
+          "A short iteration window after launch",
+        ],
+        idealFit: [
+          "Teams who need a credible, modern presence",
+          "You want your site connected to your workflows and follow-up",
+          "You care about tone, trust, and speed",
+        ],
+        typicalOutcome:
+          "A site that feels premium and converts better, with fewer manual follow-ups from your team.",
+      },
     },
     {
       icon: "Rocket",
       title: "Startup Advisory",
       eng: "Startup Advisory",
-      description: "From idea to MVP using No-Code + AI tools.",
+      description: "From idea to version one, with practical systems and honest guidance.",
       details: [
         "Technical and market validation guidance.",
         "We help you choose the right tech stack.",
         "Scalable processes from day one.",
       ],
-      imageUrl:
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600",
-      pricing: "From $50 USD/hour",
+      imageUrl: "/landing/photos/services/startup-advisory.png",
+      modal: {
+        whatItMeans:
+          "Straight, practical guidance to ship version one without overbuilding.",
+        whyItMatters:
+          "You avoid costly detours, choose what matters now, and get feedback sooner.",
+        whatsIncluded: [
+          "Scope and roadmap: what to build now vs later",
+          "Product and technical decisions (simple, defensible tradeoffs)",
+          "System design review to reduce risk",
+          "Launch plan and early iteration strategy",
+          "Light async support while you execute",
+        ],
+        idealFit: [
+          "Early-stage teams with limited time and budget",
+          "Founders who want clarity and momentum",
+          "Teams shipping something real (not just slides)",
+        ],
+        typicalOutcome:
+          "A simpler plan, fewer wrong turns, and a version one you can actually ship and learn from.",
+      },
     },
   ],
 
   demosTitle: "AI in Action",
-  demosSubtitle: "See how AI can transform different areas of your business",
+  demosSubtitle:
+    "See examples of assistants, dashboards, and workflow systems in action.",
   useCases: [
     {
       id: "chat",
@@ -331,7 +505,7 @@ export const en: SiteContent = {
         {
           action: "",
           result:
-            "Bot: Hi! Our custom chatbots start from $150 USD. Would you like to see a demo?",
+            "Bot: Great question. Pricing depends on scope. Want to tell me what you are trying to do so I can point you to the best next step?",
         },
         { action: "Customer: Yes, please.", result: "" },
         { action: "", result: "Sending interactive demo..." },
@@ -410,153 +584,194 @@ export const en: SiteContent = {
     title: "Are we the right fit?",
     idealTitle: "We're ideal for you if...",
     idealItems: [
-      "You have a business with purpose beyond just making money",
-      "You value relationships over transactions",
-      "You prefer working with real people, not an impersonal agency",
-      "You understand that good work takes time",
-      "You're building something you're proud of",
-      "You believe AI can help but don't know where to start",
-      "You appreciate honesty, even when uncomfortable",
-      "You're willing to learn alongside us",
+      "You are building in health, sustainability, or mission-led work.",
+      "You want practical systems, not hype.",
+      "You value clarity, design, and human communication.",
+      "You want a direct relationship with the builders.",
     ],
-    notIdealTitle: "We're probably not the fit if...",
+    notIdealTitle: "Probably not a fit if...",
     notIdealItems: [
-      "You're just looking for 'cheap and fast'",
-      "Your business model is purely extractive",
-      "You treat service providers as disposable",
-      "You don't have time for a conversation before starting",
-      "You expect AI to solve everything magically without your input",
-      "You need a large agency with rotating teams",
+      "You want instant over quality.",
+      "You want zero involvement and magical results.",
+      "You need a big agency and a rotating team.",
     ],
-    sectorsTitle: "Sectors we love",
+    sectorsTitle: "Where we do our best work",
     sectors: [
       {
-        name: "Agritech",
-        description: "Hydroponics, aquaponics, regenerative agriculture",
-        icon: "Sprout",
-        badge: "Discounts available",
+        name: "Health and wellness",
+        description: "Teams supporting real human wellbeing.",
+        icon: "Heart",
+        imageUrl: "/landing/photos/sectors/health-wellness.jpg",
         chatButtonLabel: "Let's talk",
         detailsButtonLabel: "Learn more",
+        modal: {
+          whatItMeans:
+            "Systems that help health and wellness teams deliver consistent service: clear intake, clear follow-up, and a human tone.",
+          whyItMatters:
+            "In health work, delays and inconsistency erode trust. A simple system reduces missed steps and frees your team to focus on people, not admin.",
+          whatsIncluded: [
+            "Workflow design for intake, scheduling, and follow-up",
+            "Human-toned assistants for FAQ, triage, and routing",
+            "Dashboards for visibility (retention, pipeline, operations)",
+            "Knowledge systems so the team stays aligned",
+          ],
+          idealFit: [
+            "Clinics, programs, and practitioners delivering recurring services",
+            "Teams with intake, scheduling, and follow-up complexity",
+            "Organizations where tone, trust, and consistency matter",
+          ],
+          typicalOutcome:
+            "Faster response, cleaner handoffs, and a calmer operation that clients can feel.",
+        },
         whoWeHelp: [
-          "Urban farms and vertical agriculture operations",
-          "Regenerative and organic farming collectives",
-          "Agricultural cooperatives and family farms",
-          "AgTech startups developing sustainable solutions",
+          "Clinics, programs, and practitioners delivering recurring services",
+          "Teams with intake, scheduling, and follow-up complexity",
+          "Organizations where tone, trust, and consistency matter",
         ],
         howWeHelp: [
-          "AI-powered crop monitoring and yield prediction",
-          "Automated irrigation and nutrient management systems",
-          "Supply chain optimization and market access tools",
-          "Customer engagement and direct-to-consumer platforms",
+          "Workflow design for intake, scheduling, and follow-up",
+          "Human-toned assistants for FAQ, triage, and routing",
+          "Dashboards for visibility (retention, pipeline, operations)",
+          "Knowledge systems so the team stays aligned",
         ],
         exampleProjects: [
-          "WhatsApp bot for farm-to-table ordering",
-          "IoT dashboard for greenhouse monitoring",
-          "Predictive analytics for harvest planning",
+          "Service delivery workflow + simple dashboard",
+          "Assistant that qualifies and routes requests to the right person",
+          "Website refresh connected to follow-up and next steps",
         ],
       },
       {
-        name: "Holistic wellness",
-        description: "Mental and physical health outside traditional models",
-        icon: "Heart",
-        badge: "Discounts available",
+        name: "Sustainability and regenerative projects",
+        description: "Projects protecting ecosystems and local resilience.",
+        icon: "Sprout",
+        imageUrl: "/landing/photos/sectors/sustainability-regenerative.jpg",
         chatButtonLabel: "Let's talk",
         detailsButtonLabel: "Learn more",
+        modal: {
+          whatItMeans:
+            "Practical systems for coordination, reporting, and follow-through so the work stays real on the ground, not just on paper.",
+          whyItMatters:
+            "Sustainability teams juggle partners, field work, and accountability. Clear systems keep momentum high and confusion low.",
+          whatsIncluded: [
+            "Simple systems for coordination and accountability",
+            "Dashboards for decisions and reporting",
+            "Knowledge capture so learning does not get lost",
+            "Web experiences that communicate credibility and impact",
+          ],
+          idealFit: [
+            "Regenerative projects coordinating partners and field work",
+            "Teams balancing impact goals with operational reality",
+            "Organizations needing clearer reporting and follow-through",
+          ],
+          typicalOutcome:
+            "Less chaos, clearer reporting, and a team that can execute consistently across people and partners.",
+        },
         whoWeHelp: [
-          "Independent therapists and counselors",
-          "Yoga studios and meditation centers",
-          "Functional medicine practitioners",
-          "Wellness retreat centers",
+          "Regenerative projects coordinating partners and field work",
+          "Teams balancing impact goals with operational reality",
+          "Organizations needing clearer reporting and follow-through",
         ],
         howWeHelp: [
-          "Appointment scheduling and client management",
-          "Personalized wellness journey tracking",
-          "AI-assisted intake and assessment tools",
-          "Community building and course platforms",
+          "Simple systems for coordination and accountability",
+          "Dashboards for decisions and reporting",
+          "Knowledge capture so learning does not get lost",
+          "Web experiences that communicate credibility and impact",
         ],
         exampleProjects: [
-          "Meditation reminder and progress chatbot",
-          "Client intake automation with personalized follow-ups",
-          "Wellness community platform with AI coaching",
+          "Operations dashboard + reporting rhythm",
+          "Knowledge base for processes, partners, and learnings",
+          "Project site that makes the work easy to understand and support",
         ],
       },
       {
         name: "Alternative education",
-        description: "Personalized learning, family-led development",
+        description: "Learning models that prioritize people and context.",
         icon: "GraduationCap",
-        badge: "Discounts available",
+        imageUrl: "/landing/photos/sectors/alternative-education.jpg",
         chatButtonLabel: "Let's talk",
         detailsButtonLabel: "Learn more",
+        modal: {
+          whatItMeans:
+            "Systems that support learners and staff: better communication, clearer next steps, and less manual coordination.",
+          whyItMatters:
+            "Education programs win on consistency. When ops are messy, learners feel it. A simple system protects the experience.",
+          whatsIncluded: [
+            "Intake and enrollment flows that reduce manual work",
+            "Assistants for support, FAQs, and routing",
+            "Dashboards to see progress, capacity, and follow-up needs",
+            "Content and knowledge systems for consistent communication",
+          ],
+          idealFit: [
+            "Programs with instructors, cohorts, and ongoing communication",
+            "Teams handling enrollment, scheduling, and learner support",
+            "Organizations that need a consistent, human experience",
+          ],
+          typicalOutcome:
+            "A smoother learner journey, fewer dropped messages, and more time for educators to teach.",
+        },
         whoWeHelp: [
-          "Homeschooling families and co-ops",
-          "Microschools and learning pods",
-          "Educational content creators",
-          "Alternative learning platforms",
+          "Programs with instructors, cohorts, and ongoing communication",
+          "Teams handling enrollment, scheduling, and learner support",
+          "Organizations that need a consistent, human experience",
         ],
         howWeHelp: [
-          "Personalized curriculum generation and tracking",
-          "AI tutoring assistants for self-paced learning",
-          "Progress monitoring dashboards for parents",
-          "Community coordination and resource sharing tools",
+          "Intake and enrollment flows that reduce manual work",
+          "Assistants for support, FAQs, and routing",
+          "Dashboards to see progress, capacity, and follow-up needs",
+          "Content and knowledge systems for consistent communication",
         ],
         exampleProjects: [
-          "AI study buddy for homeschool students",
-          "Curriculum planning automation",
-          "Parent community platform with resource sharing",
+          "Enrollment workflow + support assistant",
+          "Program dashboard for operations and follow-up",
+          "Website and content system for consistent messaging",
         ],
       },
       {
-        name: "Self-sufficiency",
-        description: "Homesteading, sustainable living, local resilience",
-        icon: "Home",
-        badge: "Discounts available",
-        chatButtonLabel: "Let's talk",
-        detailsButtonLabel: "Learn more",
-        whoWeHelp: [
-          "Homesteaders and permaculture practitioners",
-          "Off-grid and sustainable living communities",
-          "Local food networks and buying clubs",
-          "Maker spaces and skill-sharing groups",
-        ],
-        howWeHelp: [
-          "Knowledge management and skill-sharing platforms",
-          "Resource tracking and inventory management",
-          "Community coordination and barter systems",
-          "Seasonal planning and activity reminders",
-        ],
-        exampleProjects: [
-          "Homestead task manager with seasonal reminders",
-          "Local exchange and barter platform",
-          "Skill-sharing community directory",
-        ],
-      },
-      {
-        name: "Mission-driven startups",
-        description: "Any early-stage team doing meaningful work",
+        name: "Mission-led startups",
+        description: "Early teams creating useful products with purpose.",
         icon: "Rocket",
-        badge: "Discounts available",
+        imageUrl: "/landing/photos/sectors/mission-led-startups.webp",
         chatButtonLabel: "Let's talk",
         detailsButtonLabel: "Learn more",
+        modal: {
+          whatItMeans:
+            "A senior, practical build partner to ship version one, keep scope tight, and avoid expensive detours.",
+          whyItMatters:
+            "Startups die in the gap between ideas and execution. Clear scope and fast feedback keep momentum alive.",
+          whatsIncluded: [
+            "Version-one builds with a tight, defensible scope",
+            "Workflows and dashboards that create operational clarity",
+            "Assistants and knowledge systems that scale support",
+            "Product advisory to avoid overbuilding",
+          ],
+          idealFit: [
+            "Early teams who need version one, fast and usable",
+            "Founders who want honest tradeoffs and clear priorities",
+            "Teams building in health, sustainability, or public good",
+          ],
+          typicalOutcome:
+            "A shipped v1 with clear ownership and a plan to iterate based on real usage.",
+        },
         whoWeHelp: [
-          "Social enterprises and B-corps",
-          "Impact-focused tech startups",
-          "Non-profits with innovative programs",
-          "Community organizations scaling their impact",
+          "Early teams who need version one, fast and usable",
+          "Founders who want honest tradeoffs and clear priorities",
+          "Teams building in health, sustainability, or public good",
         ],
         howWeHelp: [
-          "MVP development and rapid prototyping",
-          "Automation to do more with less",
-          "AI-powered customer support and engagement",
-          "Data insights and impact measurement",
+          "Version-one builds with a tight, defensible scope",
+          "Workflows and dashboards that create operational clarity",
+          "Assistants and knowledge systems that scale support",
+          "Product advisory to avoid overbuilding",
         ],
         exampleProjects: [
-          "Donor engagement automation",
-          "Impact reporting dashboard",
-          "Community matching and coordination platform",
+          "MVP + workflow system for intake and follow-up",
+          "Decision dashboard for priorities and metrics",
+          "Knowledge base that grows with the product",
         ],
       },
     ],
-    cta: "Sound like you? We'd love to hear more about what you're building.",
+    cta:
+      "We make room for high-impact teams, even when budgets are tight.",
     ctaButton: "Tell us about your project",
   },
 
@@ -585,7 +800,7 @@ export const en: SiteContent = {
 
   partnershipsTitle: "Flexible Ways to Work Together",
   partnershipsSubtitle:
-    "We understand that not all valuable projects come with corporate budgets. We've designed different ways to work together.",
+    "Not every valuable project comes with a big budget. If the impact is real, we can start lean and grow from there.",
   partnerships: [
     {
       name: "Standard Project",
@@ -594,98 +809,195 @@ export const en: SiteContent = {
         "Clear scope and defined deliverables. Fixed price agreed before starting. Established timeline. Post-delivery support included.",
       idealFor: ["Companies that know what they need", "Resources to invest"],
       icon: "Briefcase",
+      imageUrl: "/landing/photos/partnerships/standard-project.jpg",
+      modal: {
+        whatItMeans:
+          "A clear-scope build with defined deliverables, timeline, and responsibilities.",
+        whyItMatters:
+          "If you need predictability, this model keeps decision-making fast and delivery aligned to a clear target.",
+        whatsIncluded: [
+          "A short discovery to define scope and success criteria",
+          "A delivery plan with milestones and clear ownership",
+          "Build, test, and launch of the agreed deliverables",
+          "Basic documentation and handoff",
+          "A small post-launch support window for fixes and tuning",
+        ],
+        idealFit: [
+          "Teams who know what they need (or can decide quickly)",
+          "Projects where clarity and speed matter",
+          "Organizations ready to invest in quality delivery",
+        ],
+        typicalOutcome:
+          "A shipped system with clear scope, clear handoff, and the foundation to iterate responsibly.",
+      },
     },
     {
-      name: "Reduced Rate",
-      tagline: "Startups & Impact",
+      name: "Impact-friendly rates",
+      tagline: "Mission-aligned teams",
       description:
         "Same quality level. Significantly reduced price. Flexible conditions. In exchange: testimonial, case study, or referrals.",
       idealFor: ["Pre-revenue startups", "Projects with social mission"],
       icon: "HeartHandshake",
+      imageUrl: "/landing/photos/partnerships/impact-friendly.jpg",
+      modal: {
+        whatItMeans:
+          "Reduced rates for mission-led teams when the impact is real and expectations are clear.",
+        whyItMatters:
+          "High-impact work often starts lean. This model makes it possible to build useful systems without stretching the team past their limits.",
+        whatsIncluded: [
+          "The same delivery quality, with a leaner scope",
+          "Clear priorities: version one first, then improve",
+          "Flexible collaboration to match real constraints",
+          "Agreement on a fair exchange (testimonial, case study, referrals)",
+          "A plan to grow the system as momentum builds",
+        ],
+        idealFit: [
+          "Mission-aligned teams with tight budgets",
+          "Projects where outcomes matter more than polish on day one",
+          "Teams willing to collaborate closely and iterate",
+        ],
+        typicalOutcome:
+          "A focused version one that creates momentum, with a clear path to expand when resources allow.",
+      },
     },
     {
-      name: "Deferred Payment",
-      tagline: "Pay when you take off",
+      name: "Partnership options",
+      tagline: "Right fit only",
       description:
-        "Reduced initial price (or zero). Rest of payment tied to milestones or revenue. We share the risk with you. Only for projects we believe in.",
-      idealFor: ["Founders with great ideas", "No current runway"],
-      icon: "Hourglass",
-    },
-    {
-      name: "Revenue Share",
-      tagline: "Partners in growth",
-      description:
-        "Build at reduced or zero cost. Small percentage of future revenue. We align long-term incentives. We become partners, not vendors.",
-      idealFor: ["Recurring products", "Services where we can grow together"],
-      icon: "TrendingUp",
-    },
-    {
-      name: "Equity",
-      tagline: "High potential",
-      description:
-        "Significant work in exchange for ownership. Only high-conviction projects. We get involved long-term. We bring network, experience, and resources.",
-      idealFor: ["Startups with exceptional potential", "Mission aligned with our values"],
+        "For selected projects with strong impact potential and clear alignment, we can define custom partnership terms.",
+      idealFor: ["Impact startups", "Long-term aligned collaborations"],
       icon: "PieChart",
+      imageUrl: "/landing/photos/partnerships/partnership-options.jpg",
+      modal: {
+        whatItMeans:
+          "A custom collaboration model for the rare cases where alignment is strong and incentives should stay connected over time.",
+        whyItMatters:
+          "When a project has real upside and real impact, rigid models can slow progress. Custom terms keep the relationship win-win.",
+        whatsIncluded: [
+          "A candid alignment check (impact, execution, and expectations)",
+          "A phased plan with clear deliverables at each step",
+          "Terms that keep incentives aligned as the project evolves",
+          "Regular review points to adjust scope and priorities",
+          "A focus on long-term usefulness, not short-term optics",
+        ],
+        idealFit: [
+          "Impact startups with strong potential and clear focus",
+          "Teams looking for long-term collaboration, not a one-off",
+          "Situations where flexibility creates better outcomes",
+        ],
+        typicalOutcome:
+          "A partnership that ships in phases, stays honest about tradeoffs, and grows a useful system over time.",
+      },
     },
   ],
 
   projectsTitle: "What We've Built",
-  projectsSubtitle: "Real projects with real lessons",
+  projectsSubtitle: "Selected projects from our current work",
   projects: [
     {
-      title: "Chak Control Center",
-      desc: "Comprehensive business management system for small and medium businesses. Dashboard, inventory, finances, CRM, and reports in one platform.",
+      title: "Chak",
+      desc: "Systems built to support health-focused work with clarity, structure, and momentum.",
       fullDesc:
-        "A complete solution for SMBs that centralizes business operations. Allows owners to visualize cash flow, inventory status, and sales performance by channel in real-time. Includes automation modules for low stock alerts and automatic weekly reports via email.",
-      lessons: "Scope creep is real, the difference between what clients say they want and what they actually use.",
-      status: "In active development",
+        "An evolving system that combines operational workflows, service delivery, and decision visibility so health-focused teams can work with less friction and better follow-through.",
+      lessons: "Build for real usage first, then expand with confidence.",
+      status: "Active",
       image:
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-      tags: ["Dashboard", "SaaS"],
+      images: [
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600",
+        "https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=1600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1600&auto=format&fit=crop",
+      ],
+      tags: ["Health", "Systems"],
+      modal: {
+        whatItMeans:
+          "A practical operating system for a health-focused team: clear workflows, clear handoffs, and clear visibility.",
+        whyItMatters:
+          "When service delivery is inconsistent, outcomes suffer. Systems create consistency without losing the human touch.",
+        whatsIncluded: [
+          "Workflow map for delivery and follow-up",
+          "A version-one dashboard for visibility and decision support",
+          "A lightweight knowledge base so the team stays aligned",
+          "Iteration based on real use (not assumptions)",
+        ],
+        idealFit: [
+          "Health and wellbeing teams delivering services at growing volume",
+          "Projects where follow-through and trust matter",
+          "Teams that want simple version one, then improve",
+        ],
+        typicalOutcome:
+          "More consistent delivery, fewer missed steps, and faster learning through iteration.",
+      },
     },
     {
-      title: "Raiz Capital",
-      desc: "Impact fintech platform to connect investors with regenerative agriculture projects. Investment model with total transparency.",
+      title: "RaizCapitalColombia.co",
+      desc: "Projects and properties in Colombia using data plus creativity to propose realistic business models and opportunities.",
       fullDesc:
-        "An equity crowdfunding platform focused on Colombian agriculture. We use AI to analyze crop risk based on historical climate and market data, offering investors a clearer projection and farmers access to fair capital.",
-      lessons: "Validate market before building, financial structures for impact, market timing is crucial.",
-      status: "Project on pause",
+        "A strategy and information platform that organizes opportunities clearly and helps teams evaluate direction with practical inputs instead of guesswork.",
+      lessons: "Clarity in framing and data quality changes decision quality.",
+      status: "Active",
       image:
         "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=800",
-      tags: ["Fintech", "Impact"],
+      images: [
+        "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=1600",
+        "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1600&auto=format&fit=crop",
+      ],
+      tags: ["Data", "Strategy"],
+      modal: {
+        whatItMeans:
+          "A strategy and information layer that makes opportunities easier to compare and decisions easier to defend.",
+        whyItMatters:
+          "When everything is vague, teams waste time debating opinions. Clear framing + clean data improves decision quality.",
+        whatsIncluded: [
+          "A clear information structure (what matters, what to ignore)",
+          "A way to compare opportunities consistently",
+          "Simple views that support decision conversations",
+          "A system that can evolve as the project grows",
+        ],
+        idealFit: [
+          "Teams evaluating multiple opportunities or directions",
+          "Projects that need clarity more than hype",
+          "Decision-makers who value structured thinking",
+        ],
+        typicalOutcome:
+          "Faster evaluation, clearer tradeoffs, and fewer circular discussions.",
+      },
     },
     {
-      title: "Munayki",
-      desc: "AI integration for holistic wellness practice. Chatbot, scheduling, and client follow-up.",
+      title: "Mushroom health project with OpenClaw",
+      desc: "Specialized AI agents supporting research, content creation, business intelligence, and a living knowledge base.",
       fullDesc:
-        "An empathetic virtual assistant designed for therapists and wellness centers. Munayki not only schedules appointments but performs basic pre-triage to understand the client's mood and prepare the therapist before the session, always respecting data privacy.",
-      lessons: "Rocky leads this project",
+        "A modular multi-agent setup built for health-focused research and operations, with structured knowledge and iterative workflows that can evolve quickly.",
+      lessons: "Knowledge architecture is the backbone of long-term speed.",
       status: "In development",
       image:
         "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800",
-      tags: ["Wellness", "AI Chatbot"],
-    },
-    {
-      title: "Rocky's AI Mentor",
-      desc: "AI-powered personalized mentoring app to guide development and technology learning.",
-      fullDesc:
-        "A personalized programming tutor that adapts its teaching style to the student's age and level. Unlike generic ChatGPT, this mentor maintains context from past lessons, proposes exercises based on the student's interests (e.g., football, video games) and celebrates achievements.",
-      lessons: "Rocky's personal project",
-      status: "Closed beta",
-      image:
-        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800",
-      tags: ["EdTech", "LLMs"],
-    },
-    {
-      title: "cultivoai.co",
-      desc: "This very site. Next.js, integrated AI chatbot, bilingual system, automated lead capture.",
-      fullDesc:
-        "Our digital business card. Built with modern technologies to be extremely fast and accessible. Integrates a lead capture system that automatically qualifies prospects and notifies our team only when there's a real collaboration opportunity.",
-      lessons: "Open source",
-      status: "Live",
-      image:
-        "https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&q=80&w=800",
-      tags: ["Open Source", "Next.js"],
+      images: [
+        "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1600",
+        "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1600&auto=format&fit=crop",
+      ],
+      tags: ["Research", "AI Agents"],
+      modal: {
+        whatItMeans:
+          "A modular system that supports research and operations with reusable knowledge and practical workflows.",
+        whyItMatters:
+          "Research teams move faster when knowledge is structured and decisions are supported by a living system, not scattered files.",
+        whatsIncluded: [
+          "A knowledge base that grows as the project learns",
+          "Repeatable workflows for research, writing, and internal updates",
+          "Decision support views for priorities and next actions",
+          "A modular approach so parts can evolve independently",
+        ],
+        idealFit: [
+          "Health and research teams with complex information flows",
+          "Projects where documentation and consistency are bottlenecks",
+          "Teams who want to build a system they can keep using",
+        ],
+        typicalOutcome:
+          "Less time searching and rewriting, faster iterations, and a clearer shared understanding across the team.",
+      },
     },
   ],
 
@@ -729,7 +1041,7 @@ export const en: SiteContent = {
       author: "Homeschool Parent",
       imageUrl:
         "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop",
-      metric: "3 hours → 45 minutes weekly",
+      metric: "3 hours -> 45 minutes weekly",
     },
     {
       company: "Homestead & Small Farm",
@@ -781,7 +1093,7 @@ export const en: SiteContent = {
       author: "Aquaponics Farmer",
       imageUrl:
         "https://images.unsplash.com/photo-1535591273668-578e31182c4f?q=80&w=800&auto=format&fit=crop",
-      metric: "3 apps → 1 dashboard",
+      metric: "3 apps -> 1 dashboard",
     },
     {
       company: "Alternative Therapy Center",
@@ -859,37 +1171,17 @@ export const en: SiteContent = {
         description:
           "AI is a tool, not a replacement. We prioritize human connection in everything we do.",
       },
-      {
-        icon: "Hammer",
-        title: "LEARN BY DOING",
-        description:
-          "We don't wait to know everything. We build, we learn, we improve. Every project is a lesson.",
-      },
-      {
-        icon: "Scale",
-        title: "INTEGRATE, NOT FRAGMENT",
-        description:
-          "We connect what you already have. We don't reinvent the wheel or create unnecessary dependencies.",
-      },
-      {
-        icon: "Mountain",
-        title: "BUILD FOR THE LONG TERM",
-        description:
-          "We think in 5 years, not 5 months. Today's decisions must make sense tomorrow.",
-      },
     ],
   },
 
   mission: {
     title: "Our Mission",
     statement: [
-      "We're not just building a business.",
-      "We're documenting how a father teaches his son to build from scratch.",
-      "We share what works. We help impact projects integrate AI.",
-      "We create value in every step.",
-      "And we hope to inspire other families and young people to do the same.",
+      "We build AI systems that help good work scale.",
+      "A portion of what we earn is reinvested into impact-aligned projects.",
+      "The more we build, the more we can support.",
     ],
-    tagline: "Win-win. Always.",
+    tagline: "Propose an impact project",
   },
 
   whatHappensNext: {
@@ -898,33 +1190,21 @@ export const en: SiteContent = {
     steps: [
       {
         number: "1",
-        title: "We respond within 24 hours",
+        title: "We reply quickly",
         description:
-          "Usually much faster. We're two people, not a support team with tickets.",
+          "You get a direct response and a clear next step.",
       },
       {
         number: "2",
-        title: "Initial conversation - 15 to 30 minutes",
+        title: "We map your workflow and propose a simple plan",
         description:
-          "Video call or WhatsApp, whatever you prefer. We want to understand your real situation, not sell you something.",
+          "We focus on practical changes that reduce friction fast.",
       },
       {
         number: "3",
-        title: "We honestly tell you if we can help",
+        title: "We build version one and iterate",
         description:
-          "If we're not the right fit, we'll tell you. If we know someone better for your case, we'll refer you.",
-      },
-      {
-        number: "4",
-        title: "Clear proposal",
-        description:
-          "If we move forward, you receive a document with: exactly what we'll do, how much it costs and why, how long it will take, and what we need from you.",
-      },
-      {
-        number: "5",
-        title: "You decide",
-        description:
-          "No pressure. No 'this price only valid today' tactics. Take the time you need.",
+          "Then we improve with your team based on real usage.",
       },
     ],
     cta: "Let's start the conversation",
@@ -932,9 +1212,9 @@ export const en: SiteContent = {
   },
 
   footer: {
-    cta: "Your project could be next. What can we build together?",
+    cta: "Tell us what you are building.",
     ctaButton: "Let's Talk",
-    copyright: "2025 Cultivo AI. Made with love by Paul and Rocky from Colombia.",
+    copyright: "2026 Cultivo AI. Colombia-based, working worldwide.",
     socialLinks: [
       {
         platform: "linkedin",
@@ -970,11 +1250,8 @@ export const en: SiteContent = {
       { label: "Home", href: "#hero" },
       { label: "About", href: "#about" },
       { label: "Services", href: "#services" },
-      { label: "Demos", href: "#demos" },
-      { label: "Semilla", href: "#semilla" },
       { label: "Partners", href: "#partnerships" },
       { label: "Projects", href: "#projects" },
-      { label: "Stories", href: "#stories" },
       { label: "Process", href: "#what-happens-next" },
     ],
     quickLinksTitle: "Navigation",
@@ -987,14 +1264,14 @@ export const en: SiteContent = {
     placeholder: "Type your message...",
     sendButton: "Send",
     welcomeMessage:
-      "Hi! I'm the CultivoAI assistant. I can help you learn about our services, show you projects, or connect you with Paul and Rocky. How can I help you?",
+      "Hi! I'm the CultivoAI assistant. I can help you learn about our services, show you projects, or connect you with the team. How can I help you?",
     contextualGreetings: {
       general:
-        "Hi! I'm the CultivoAI assistant. I can help you learn about our services, show you projects, or connect you with Paul and Rocky. What brings you here today?",
+        "Hi! I'm the CultivoAI assistant. I can help you learn about our services, show you projects, or connect you with the team. What brings you here today?",
       booking:
         "Hi! I see you want to book time with Paul. I'd love to help you with that! First, what's your name? And tell me a bit about what you'd like to discuss.",
       story:
-        "Hi! Let me tell you about our story. We're Paul and Rocky, father and son working together from Colombia. Paul brings years of experience in startups and technology, and Rocky is learning in real-time at 14. What would you like to know? And by the way, what's your name?",
+        "Hi! You can learn more about our team story in the About section. What would you like to know? And by the way, what's your name?",
       semilla:
         "Hey! Rocky here (well, the AI version). I'm glad you're interested in the Semilla Fund! It's my project to help with small things while I learn. What's your name? And tell me what you have in mind!",
       service:
@@ -1004,7 +1281,7 @@ export const en: SiteContent = {
       qualification:
         "Hi! Let's see if we're the right fit to work together. What's your name? And tell me about your business and what you're looking to achieve.",
       impact:
-        "Hi! I clicked 'Purpose over profit' I'm interested in learning about how you can help.",
+        "Hi! I want to learn how you can help with a practical, human-first AI system.",
       formFallback: "Prefer to fill out a form? Click here.",
     },
   },
@@ -1020,13 +1297,12 @@ export const en: SiteContent = {
     whatsappPlaceholder: "+1 555 123 4567",
     projectTypeLabel: "What type of project do you have in mind?",
     projectTypes: [
-      "Workflow automation",
+      "Workflow optimization",
       "Chatbot / AI Assistant",
-      "Business intelligence",
-      "Content and marketing",
-      "Website with AI",
+      "Decision dashboard",
+      "Knowledge and content system",
+      "Software / Website experience",
       "Startup advisory",
-      "Semilla Fund (small projects)",
       "Not sure - need guidance",
       "Other",
     ],
@@ -1040,21 +1316,18 @@ export const en: SiteContent = {
     welcomeLine1: "Last login: ",
     welcomeLine2: "Cultivo AI Automation Suite v2.5.0",
     script: [
-      { text: "cultivo start --mode=growth", type: "command", delay: 800 },
-      { text: "Initializing neural core v2.5.0...", type: "info", delay: 400 },
-      { text: "Authenticating LinkedIn Sales Navigator...", type: "info", delay: 300 },
-      { text: "Connected to LinkedIn Secure Gateway", type: "success", delay: 200 },
-      { text: "Connected to HubSpot CRM", type: "success", delay: 600 },
-      { text: "Growth engine active. Scouting leads...", type: "info", delay: 2000 },
-      { text: "Prospect detected: Sofia R. (CMO @ TechFlow)", type: "event", delay: 600 },
-      { text: "Source: LinkedIn | Location: Bogota", type: "info", delay: 1000, className: "text-slate-400 pl-6" },
-      { text: "Analyzing profile & activity...", type: "info", delay: 1000 },
-      { text: "Insight: High intent. Posted about 'AI Automation'", type: "ai", delay: 800 },
-      { text: "Generating personalized outreach...", type: "command", delay: 1000 },
-      { text: 'Draft: "Hola Sofia, vi tu post sobre IA..."', type: "info", delay: 800, className: "text-slate-400 italic pl-6" },
-      { text: "Action: Connection request sent", type: "success", delay: 800, className: "text-emerald-300" },
-      { text: "Syncing lead to HubSpot...", type: "command", delay: 600 },
-      { text: "Lead successfully created: ID #8842", type: "success", delay: 4000 },
+      { text: "Starting discovery...", type: "command", delay: 800 },
+      { text: "Mapping your workflow...", type: "info", delay: 600 },
+      { text: "Finding busywork...", type: "info", delay: 650 },
+      { text: "Finding friction points...", type: "info", delay: 700 },
+      { text: "Designing a simple version one...", type: "ai", delay: 700 },
+      { text: "Building the dashboard...", type: "command", delay: 700 },
+      { text: "Creating a living knowledge base...", type: "info", delay: 700 },
+      { text: "Shipping and testing...", type: "success", delay: 700 },
+      { text: "Measuring results...", type: "event", delay: 700 },
+      { text: "Iterating with your team...", type: "success", delay: 2500 },
     ],
   },
 };
+
+

@@ -9,9 +9,11 @@ import {
   Cpu,
   Zap,
   ChevronRight,
-  Linkedin,
   Search,
-  UserPlus
+  Layers,
+  BarChart3,
+  TrendingUp,
+  Repeat
 } from 'lucide-react';
 import { useLocale } from '@/hooks/use-locale';
 
@@ -34,12 +36,15 @@ export const CodeTerminal: React.FC = () => {
   // Icon mapping based on line position in script
   const getIconForLine = (index: number) => {
     const iconMap: Record<number, React.ReactNode> = {
-      1: <Cpu size={14} />,
-      3: <Linkedin size={14} />,
-      5: <Search size={14} />,
-      6: <UserPlus size={14} />,
-      8: <Zap size={14} />,
-      14: <Database size={14} />,
+      0: <Search size={14} />,
+      1: <Layers size={14} />,
+      2: <Zap size={14} />,
+      3: <Zap size={14} />,
+      4: <Cpu size={14} />,
+      5: <BarChart3 size={14} />,
+      6: <Database size={14} />,
+      8: <TrendingUp size={14} />,
+      9: <Repeat size={14} />,
     };
     return iconMap[index];
   };
@@ -113,35 +118,35 @@ export const CodeTerminal: React.FC = () => {
   }, [activeStep]);
 
   return (
-    <div className="w-full h-full flex items-center justify-center p-2 sm:p-4 md:p-10">
+    <div className="w-full h-full flex items-center justify-center p-2 sm:p-3 md:p-10">
       <motion.div
-        className="relative w-full max-w-xl aspect-[4/3] md:aspect-video bg-[#0f172a] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden flex flex-col hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300"
+        className="relative w-full max-w-md sm:max-w-lg md:max-w-xl aspect-[5/4] sm:aspect-[4/3] md:aspect-video bg-[#18181B] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden flex flex-col hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300"
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
       >
         {/* Terminal Header */}
-        <div className="bg-[#1e293b] px-4 py-3 flex items-center justify-between border-b-4 border-black flex-shrink-0 z-20 relative">
+        <div className="bg-[#27272A] px-4 py-3 flex items-center justify-between border-b-4 border-black flex-shrink-0 z-20 relative">
           <div className="flex gap-2">
             <div className="w-3 h-3 rounded-full bg-red-500/80" />
             <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
             <div className="w-3 h-3 rounded-full bg-green-500/80" />
           </div>
-          <div className="flex items-center gap-2 text-slate-400 text-[10px] md:text-xs font-mono opacity-80">
+          <div className="flex items-center gap-2 text-zinc-400 text-[10px] md:text-xs font-mono opacity-80">
             <TerminalIcon size={12} />
-            <span>cultivo-terminal — zsh — 80x24</span>
+            <span>cultivo-terminal - zsh - 80x24</span>
           </div>
           <div className="w-10" />
         </div>
 
         {/* Terminal Body */}
-        <div className="relative flex-1 bg-[#0f172a] p-4 font-mono text-xs md:text-sm overflow-hidden flex flex-col">
+        <div className="relative flex-1 bg-[#18181B] p-4 font-mono text-xs md:text-sm overflow-hidden flex flex-col">
 
           {/* CRT / Scanline Effect Overlay */}
           <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.03]"
                style={{
-                 backgroundImage: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))',
-                 backgroundSize: '100% 2px, 3px 100%'
+                 backgroundImage: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%)',
+                 backgroundSize: '100% 2px'
                }}
           />
           <div className="absolute inset-0 pointer-events-none z-0 bg-gradient-to-b from-white/[0.02] to-transparent" />
@@ -149,7 +154,7 @@ export const CodeTerminal: React.FC = () => {
           {/* Content Area */}
           <div ref={terminalRef} className="relative z-10 space-y-1.5 md:space-y-2 overflow-y-auto max-h-full scrollbar-none pb-2">
              {/* Initial welcome message */}
-             <div className="text-slate-500 mb-4 text-[10px] md:text-xs select-none">
+             <div className="text-zinc-500 mb-4 text-[10px] md:text-xs select-none">
                 {content.terminal.welcomeLine1}{new Date().toDateString()} on ttys001<br/>
                 {content.terminal.welcomeLine2}
              </div>
@@ -182,9 +187,9 @@ const LineItem: React.FC<{ line: TerminalLine }> = ({ line }) => {
       case 'command': return "text-emerald-400 font-bold";
       case 'success': return "text-emerald-400";
       case 'error': return "text-red-400";
-      case 'event': return "text-blue-400";
-      case 'ai': return "text-purple-400 font-medium";
-      default: return "text-slate-300";
+      case 'event': return "text-zinc-300";
+      case 'ai': return "text-emerald-300 font-medium";
+      default: return "text-zinc-300";
     }
   };
 
@@ -192,8 +197,8 @@ const LineItem: React.FC<{ line: TerminalLine }> = ({ line }) => {
     switch (type) {
       case 'command': return <span className="mr-2 text-emerald-500 font-bold">~</span>;
       case 'success': return <CheckCircle2 size={14} className="mr-2 inline text-emerald-500 flex-shrink-0" />;
-      case 'event': return <span className="mr-2 text-blue-500 font-bold flex-shrink-0">?</span>;
-      case 'ai': return <span className="mr-2 text-purple-500 font-bold flex-shrink-0">✦</span>;
+      case 'event': return <span className="mr-2 text-zinc-400 font-bold flex-shrink-0">?</span>;
+      case 'ai': return <span className="mr-2 text-emerald-400 font-bold flex-shrink-0">*</span>;
       default: return null;
     }
   };
