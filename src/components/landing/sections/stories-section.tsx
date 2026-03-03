@@ -6,13 +6,13 @@ import { Reveal } from "@/components/landing/ui/reveal";
 import { useLocale } from "@/hooks/use-locale";
 
 const STORY_ICONS: Record<string, { icon: LucideIcon; color: string }> = {
-  "E-commerce": { icon: Zap, color: "bg-blue-500" },
-  Salud: { icon: MessageSquare, color: "bg-purple-500" },
-  Retail: { icon: BarChart3, color: "bg-emerald-500" },
+  "E-commerce": { icon: Zap, color: "bg-zinc-900" },
+  Salud: { icon: MessageSquare, color: "bg-primary" },
+  Retail: { icon: BarChart3, color: "bg-emerald-600" },
 };
 
 function getStoryIcon(industry: string): { icon: LucideIcon; color: string } {
-  return STORY_ICONS[industry] || { icon: Zap, color: "bg-blue-500" };
+  return STORY_ICONS[industry] || { icon: Zap, color: "bg-zinc-900" };
 }
 
 export function StoriesSection() {
@@ -23,7 +23,7 @@ export function StoriesSection() {
   const resultLabel = locale === "es" ? "Resultado" : "Result";
 
   return (
-    <div id="stories" className="bg-[#A855F7] p-6 md:p-12 lg:p-24 border-b-4 border-black">
+    <div id="stories" className="bg-background p-6 md:p-12 lg:p-24 border-b-4 border-black">
       <Reveal>
         <div className="bg-black text-white p-4 inline-block transform -rotate-2 mb-8 md:mb-12 shadow-[6px_6px_0px_0px_white] md:shadow-[8px_8px_0px_0px_white]">
           <h2 className="text-2xl md:text-3xl lg:text-5xl font-black uppercase">
@@ -81,12 +81,12 @@ export function StoriesSection() {
                     </div>
                     {story.metric && (
                       <div className="pt-2">
-                        <div className="font-black text-[10px] md:text-xs uppercase bg-[#FFDE00] text-black inline-block px-2 mb-2 border-2 border-black">
+                        <div className="font-black text-[10px] md:text-xs uppercase bg-secondary text-secondary-foreground inline-block px-2 mb-2 border-2 border-black">
                           {resultLabel}
                         </div>
-                        <div className="flex items-center gap-2 bg-[#10B981]/10 border-2 border-[#10B981] px-3 py-2">
-                          <TrendingUp size={18} className="text-[#10B981]" />
-                          <span className="font-black text-sm text-[#10B981]">
+                        <div className="flex items-center gap-2 bg-primary/10 border-2 border-primary px-3 py-2">
+                          <TrendingUp size={18} className="text-primary" />
+                          <span className="font-black text-sm text-primary">
                             {story.metric}
                           </span>
                         </div>

@@ -30,7 +30,7 @@ export function HowWeWorkSection() {
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-none bg-black text-white px-4 py-2 inline-block rotate-1">
               {howWeWork.title}
             </h2>
-            <p className="text-lg md:text-xl font-bold max-w-xl md:mt-2 border-l-4 border-[#A855F7] pl-4 md:pl-6">
+            <p className="text-lg md:text-xl font-bold max-w-xl md:mt-2 border-l-4 border-primary pl-4 md:pl-6">
               {howWeWork.subtitle}
             </p>
           </div>
@@ -44,8 +44,8 @@ export function HowWeWorkSection() {
               <Reveal key={pillar.title} delay={index * 100}>
                 <div className="h-full bg-white border-4 border-black p-6 md:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:translate-x-1 transition-all group">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 bg-[#FFC805] border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:scale-110 transition-transform">
-                      <Icon size={28} className="text-black" strokeWidth={2.5} />
+                    <div className="p-3 bg-secondary border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:scale-110 transition-transform">
+                      <Icon size={28} className="text-foreground" strokeWidth={2.5} />
                     </div>
                     <h3 className="text-xl md:text-2xl font-black uppercase">
                       {pillar.title}
@@ -63,10 +63,10 @@ export function HowWeWorkSection() {
         {/* Full-width card */}
         {fullWidthPillar && (
           <Reveal delay={200}>
-            <div className="bg-[#C4F9E0] border-4 border-black p-6 md:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:translate-x-1 transition-all group">
+            <div className="bg-muted border-4 border-black p-6 md:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:translate-x-1 transition-all group">
               <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
-                <div className="p-3 bg-[#10B981] border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:scale-110 transition-transform shrink-0 w-fit">
-                  <Users size={28} className="text-white" strokeWidth={2.5} />
+                <div className="p-3 bg-primary border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:scale-110 transition-transform shrink-0 w-fit">
+                  <Users size={28} className="text-primary-foreground" strokeWidth={2.5} />
                 </div>
                 <div>
                   <h3 className="text-xl md:text-2xl font-black uppercase mb-2">

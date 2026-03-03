@@ -49,7 +49,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
             name="name"
             required
             placeholder={content.contactForm.namePlaceholder}
-            className="w-full border-4 border-black p-4 font-bold focus:shadow-[4px_4px_0px_0px_#A855F7] focus:outline-none transition-shadow"
+            className="w-full border-4 border-black p-4 font-bold focus:shadow-[4px_4px_0px_0px_var(--primary)] focus:outline-none transition-shadow"
           />
         </div>
 
@@ -63,7 +63,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
             name="email"
             required
             placeholder={content.contactForm.emailPlaceholder}
-            className="w-full border-4 border-black p-4 font-bold focus:shadow-[4px_4px_0px_0px_#A855F7] focus:outline-none transition-shadow"
+            className="w-full border-4 border-black p-4 font-bold focus:shadow-[4px_4px_0px_0px_var(--primary)] focus:outline-none transition-shadow"
           />
         </div>
 
@@ -76,7 +76,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
             type="tel"
             name="whatsapp"
             placeholder={content.contactForm.whatsappPlaceholder}
-            className="w-full border-4 border-black p-4 font-bold focus:shadow-[4px_4px_0px_0px_#A855F7] focus:outline-none transition-shadow"
+            className="w-full border-4 border-black p-4 font-bold focus:shadow-[4px_4px_0px_0px_var(--primary)] focus:outline-none transition-shadow"
           />
         </div>
 
@@ -88,7 +88,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
           <select
             name="projectType"
             required
-            className="w-full border-4 border-black p-4 font-bold bg-white focus:shadow-[4px_4px_0px_0px_#A855F7] focus:outline-none transition-shadow cursor-pointer"
+            className="w-full border-4 border-black p-4 font-bold bg-white focus:shadow-[4px_4px_0px_0px_var(--primary)] focus:outline-none transition-shadow cursor-pointer"
           >
             <option value="">--</option>
             {content.contactForm.projectTypes.map((type) => (
@@ -108,7 +108,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
             name="description"
             rows={4}
             placeholder={content.contactForm.descriptionPlaceholder}
-            className="w-full border-4 border-black p-4 font-bold focus:shadow-[4px_4px_0px_0px_#A855F7] focus:outline-none transition-shadow resize-none"
+            className="w-full border-4 border-black p-4 font-bold focus:shadow-[4px_4px_0px_0px_var(--primary)] focus:outline-none transition-shadow resize-none"
           />
         </div>
 
@@ -116,7 +116,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-[#FFDE00] text-black border-4 border-black px-8 py-4 font-black uppercase hover:shadow-[8px_8px_0px_0px_black] hover:-translate-y-1 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-primary text-primary-foreground border-4 border-black px-8 py-4 font-black uppercase hover:shadow-[8px_8px_0px_0px_black] hover:-translate-y-1 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? "..." : content.contactForm.submitButton}
         </button>
@@ -128,7 +128,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
           <p className="text-sm font-bold text-neutral-600 mb-4">{content.contactForm.chatPrompt}</p>
           <button
             onClick={onChatClick}
-            className="inline-flex items-center gap-2 bg-[#A855F7] text-white border-4 border-black px-6 py-3 font-black uppercase hover:shadow-[4px_4px_0px_0px_black] hover:-translate-y-1 transition-all"
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground border-4 border-black px-6 py-3 font-black uppercase hover:shadow-[4px_4px_0px_0px_black] hover:-translate-y-1 transition-all"
           >
             <MessageSquare size={20} />
             Chat

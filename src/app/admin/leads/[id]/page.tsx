@@ -26,12 +26,12 @@ import type { LeadDetailsResponse, ConversationWithMessages } from "@/types/admi
 
 // Status colors
 const statusColors: Record<string, string> = {
-  new: "bg-blue-100 text-blue-800",
-  warm: "bg-yellow-100 text-yellow-800",
+  new: "bg-zinc-100 text-zinc-800",
+  warm: "bg-amber-100 text-amber-800",
   hot: "bg-orange-100 text-orange-800",
   priority: "bg-red-100 text-red-800",
-  contacted: "bg-purple-100 text-purple-800",
-  converted: "bg-green-100 text-green-800",
+  contacted: "bg-zinc-100 text-zinc-800",
+  converted: "bg-emerald-600 text-white",
 };
 
 function formatDate(dateString: string | null): string {

@@ -126,10 +126,10 @@ function ConnectingAnimation() {
   return (
     <div className="relative w-48 h-48 flex items-center justify-center">
       {/* Spinning squares */}
-      <div className="absolute w-32 h-32 border-4 border-[#FFDE00] animate-spin-slow" />
-      <div className="absolute w-24 h-24 border-4 border-[#FFC805] animate-spin-slow-reverse" />
+      <div className="absolute w-32 h-32 border-4 border-primary animate-spin-slow" />
+      <div className="absolute w-24 h-24 border-4 border-primary animate-spin-slow-reverse" />
       {/* Center loader */}
-      <div className="absolute w-16 h-16 bg-[#FFDE00] border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
+      <div className="absolute w-16 h-16 bg-secondary border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
         <Loader2 size={28} className="text-black animate-spin" />
       </div>
     </div>
@@ -573,7 +573,7 @@ export function VoiceConversationMode({
     if (showForm) return "#10B981"; // Green for form
 
     if (connectionState === "connecting" || connectionState === "reconnecting") {
-      return "#FFDE00"; // Yellow for connecting
+      return "#F59E0B"; // Amber for connecting
     }
     if (connectionState === "error") {
       return "#EF4444"; // Red for error
@@ -581,11 +581,11 @@ export function VoiceConversationMode({
 
     switch (conversationState) {
       case "listening":
-        return "#FFC805"; // Yellow for listening
+        return "#D97706"; // Deeper amber for listening
       case "processing":
       case "speaking":
       case "interrupted":
-        return "#A855F7"; // Purple for AI
+        return "#059669"; // Emerald for AI
       default:
         return "#10B981"; // Green for idle/ready
     }
@@ -671,7 +671,7 @@ export function VoiceConversationMode({
             {/* Form */}
             <form
               onSubmit={handlePreConnectionFormSubmit}
-              className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_#A855F7] p-6 space-y-4"
+              className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_var(--primary)] p-6 space-y-4"
             >
               <div>
                 <label className="block text-sm font-bold uppercase mb-2 text-black">
@@ -682,7 +682,7 @@ export function VoiceConversationMode({
                   value={formData.name}
                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                   placeholder={locale === "es" ? "Tu nombre" : "Your name"}
-                  className="w-full p-3 border-4 border-black bg-[#F3F4F6] font-bold text-base focus:shadow-[4px_4px_0px_0px_#A855F7] outline-none transition-shadow"
+                  className="w-full p-3 border-4 border-black bg-muted font-bold text-base focus:shadow-[4px_4px_0px_0px_var(--primary)] outline-none transition-shadow"
                   disabled={isSubmittingForm}
                   autoFocus
                 />
@@ -696,7 +696,7 @@ export function VoiceConversationMode({
                   value={formData.email}
                   onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                   placeholder={locale === "es" ? "tu@email.com" : "your@email.com"}
-                  className="w-full p-3 border-4 border-black bg-[#F3F4F6] font-bold text-base focus:shadow-[4px_4px_0px_0px_#A855F7] outline-none transition-shadow"
+                  className="w-full p-3 border-4 border-black bg-muted font-bold text-base focus:shadow-[4px_4px_0px_0px_var(--primary)] outline-none transition-shadow"
                   disabled={isSubmittingForm}
                 />
               </div>
@@ -709,7 +709,7 @@ export function VoiceConversationMode({
                   value={formData.phone}
                   onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
                   placeholder={locale === "es" ? "+57 300 123 4567" : "+1 555 123 4567"}
-                  className="w-full p-3 border-4 border-black bg-[#F3F4F6] font-bold text-base focus:shadow-[4px_4px_0px_0px_#A855F7] outline-none transition-shadow"
+                  className="w-full p-3 border-4 border-black bg-muted font-bold text-base focus:shadow-[4px_4px_0px_0px_var(--primary)] outline-none transition-shadow"
                   disabled={isSubmittingForm}
                 />
               </div>
@@ -719,7 +719,7 @@ export function VoiceConversationMode({
               <button
                 type="submit"
                 disabled={isSubmittingForm}
-                className="w-full p-3 bg-[#FFC805] text-black font-bold uppercase border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#FFDE00] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+                className="w-full p-3 bg-primary text-primary-foreground font-bold uppercase border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-primary/90 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
               >
                 {isSubmittingForm ? (
                   <>
@@ -750,7 +750,7 @@ export function VoiceConversationMode({
             {/* Form */}
             <form
               onSubmit={handleFormSubmit}
-              className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_#A855F7] p-6 space-y-4"
+              className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_var(--primary)] p-6 space-y-4"
             >
               <div>
                 <label className="block text-sm font-bold uppercase mb-2 text-black">
@@ -761,7 +761,7 @@ export function VoiceConversationMode({
                   value={formData.name}
                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                   placeholder={locale === "es" ? "Tu nombre" : "Your name"}
-                  className="w-full p-3 border-4 border-black bg-[#F3F4F6] font-bold text-base focus:shadow-[4px_4px_0px_0px_#A855F7] outline-none"
+                  className="w-full p-3 border-4 border-black bg-muted font-bold text-base focus:shadow-[4px_4px_0px_0px_var(--primary)] outline-none"
                   disabled={isSubmittingForm}
                   autoFocus
                 />
@@ -775,7 +775,7 @@ export function VoiceConversationMode({
                   value={formData.email}
                   onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                   placeholder={locale === "es" ? "tu@email.com" : "your@email.com"}
-                  className="w-full p-3 border-4 border-black bg-[#F3F4F6] font-bold text-base focus:shadow-[4px_4px_0px_0px_#A855F7] outline-none"
+                  className="w-full p-3 border-4 border-black bg-muted font-bold text-base focus:shadow-[4px_4px_0px_0px_var(--primary)] outline-none"
                   disabled={isSubmittingForm}
                 />
               </div>
@@ -788,7 +788,7 @@ export function VoiceConversationMode({
                   value={formData.phone}
                   onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
                   placeholder={locale === "es" ? "+57 300 123 4567" : "+1 555 123 4567"}
-                  className="w-full p-3 border-4 border-black bg-[#F3F4F6] font-bold text-base focus:shadow-[4px_4px_0px_0px_#A855F7] outline-none"
+                  className="w-full p-3 border-4 border-black bg-muted font-bold text-base focus:shadow-[4px_4px_0px_0px_var(--primary)] outline-none"
                   disabled={isSubmittingForm}
                 />
               </div>
@@ -798,7 +798,7 @@ export function VoiceConversationMode({
               <button
                 type="submit"
                 disabled={isSubmittingForm}
-                className="w-full p-3 bg-[#FFC805] text-black font-bold uppercase border-4 border-black hover:bg-[#FFDE00] hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 transition-all flex items-center justify-center gap-2"
+                className="w-full p-3 bg-primary text-primary-foreground font-bold uppercase border-4 border-black hover:bg-primary/90 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 transition-all flex items-center justify-center gap-2"
               >
                 {isSubmittingForm ? (
                   <>
@@ -851,7 +851,7 @@ export function VoiceConversationMode({
               )}
               {/* Glow effect on speaking state */}
               {conversationState === "speaking" && (
-                <div className="absolute -inset-1 bg-[#A855F7] opacity-30 blur-md -z-10 animate-pulse" />
+                <div className="absolute -inset-1 bg-primary opacity-20 blur-md -z-10 animate-pulse" />
               )}
               <span className="relative z-10">{getStateLabel()}</span>
             </div>
@@ -873,7 +873,7 @@ export function VoiceConversationMode({
                 </div>
                 {/* Retry status */}
                 {retryStatus && retryAttempt < maxRetries && (
-                  <div className="px-4 py-2 bg-[#FFDE00] text-black border-2 border-black text-center">
+                  <div className="px-4 py-2 bg-secondary text-secondary-foreground border-2 border-black text-center">
                     <span className="font-bold text-sm">{retryStatus}</span>
                   </div>
                 )}
@@ -905,7 +905,7 @@ export function VoiceConversationMode({
 
               {/* AI response */}
               {aiTranscript && (
-                <div className="bg-[#A855F7] border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-4">
+                <div className="bg-primary border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-4">
                   <div className="text-xs font-bold uppercase text-white/70 mb-1">
                     {labels.ai}
                   </div>
@@ -921,7 +921,7 @@ export function VoiceConversationMode({
             {connectionState === "error" && (retryAttempt >= maxRetries || errorType === "microphone") && (
               <button
                 onClick={handleRetry}
-                className="px-6 py-3 bg-[#FFC805] text-black border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold uppercase hover:bg-[#FFDE00] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all"
+                className="px-6 py-3 bg-primary text-primary-foreground border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold uppercase hover:bg-primary/90 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all"
               >
                 {labels.retry}
               </button>

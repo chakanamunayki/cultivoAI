@@ -46,15 +46,15 @@ export function VoiceMicLevel({ level, locale }: VoiceMicLevelProps) {
   // Determine color based on level
   const getColor = (): string => {
     if (smoothedLevel >= 80) return "#EF4444"; // Red - clipping
-    if (smoothedLevel <= 40) return "#FFDE00"; // Yellow - too quiet
-    return "#10B981"; // Green - good
+    if (smoothedLevel <= 40) return "#F59E0B"; // Amber - too quiet
+    return "#059669"; // Emerald - good
   };
 
   // Determine background color (lighter shade)
   const getBgColor = (): string => {
     if (smoothedLevel >= 80) return "#FEE2E2"; // Light red
     if (smoothedLevel <= 40) return "#FEF3C7"; // Light yellow
-    return "#C4F9E0"; // Light green
+    return "#A7F3D0"; // Light mint
   };
 
   const color = getColor();
@@ -68,7 +68,7 @@ export function VoiceMicLevel({ level, locale }: VoiceMicLevelProps) {
       </div>
 
       {/* Level meter container - vertical bar */}
-      <div className="relative w-12 h-48 bg-[#F3F4F6] border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <div className="relative w-12 h-48 bg-muted border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         {/* Background gradient marks (visual guides) */}
         <div className="absolute inset-0 flex flex-col justify-between p-1 pointer-events-none">
           {/* 80% mark (red zone start) */}

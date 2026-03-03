@@ -105,23 +105,23 @@ export function CRMView({ steps }: CRMViewProps) {
   }, [animationStep, steps.length]);
 
   const getScoreColor = (score: number) => {
-    if (score >= 80) return "bg-green-500 text-white";
-    if (score >= 60) return "bg-yellow-500 text-black";
-    return "bg-gray-400 text-white";
+    if (score >= 80) return "bg-primary text-primary-foreground";
+    if (score >= 60) return "bg-amber-500 text-black";
+    return "bg-zinc-400 text-white";
   };
 
   const getColumnColor = (idx: number) => {
-    if (idx === 0) return "bg-blue-500";
-    if (idx === 1) return "bg-yellow-500";
-    return "bg-green-500";
+    if (idx === 0) return "bg-zinc-900";
+    if (idx === 1) return "bg-zinc-700";
+    return "bg-primary";
   };
 
   return (
-    <div className="h-full bg-slate-50 p-3 md:p-6 flex flex-col">
+    <div className="h-full bg-muted p-3 md:p-6 flex flex-col">
       {/* Header */}
       <div className="flex items-center justify-between mb-3 md:mb-4 pb-2 md:pb-3 border-b-2 border-black">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+          <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primary" />
           <span className="font-black text-xs md:text-sm uppercase tracking-wide">AI Lead Manager</span>
         </div>
         <div className="text-[10px] md:text-xs font-bold text-gray-500">
@@ -161,7 +161,7 @@ export function CRMView({ steps }: CRMViewProps) {
                       relative bg-white border-2 md:border-3 border-black p-2 md:p-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] md:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]
                       transition-all duration-500 ease-out
                       hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-                      ${lead.isNew ? "animate-pulse ring-2 ring-purple-500 ring-offset-1" : ""}
+                      ${lead.isNew ? "animate-pulse ring-2 ring-primary ring-offset-1" : ""}
                       ${lead.isMoving ? "opacity-50 scale-95 translate-x-2" : ""}
                     `}
                   >
@@ -190,7 +190,7 @@ export function CRMView({ steps }: CRMViewProps) {
                     {/* Moving indicator */}
                     {lead.isMoving && (
                       <div className="absolute right-1 top-1/2 -translate-y-1/2">
-                        <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-purple-600 animate-bounce" />
+                        <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-primary animate-bounce" />
                       </div>
                     )}
                   </div>

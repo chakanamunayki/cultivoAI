@@ -41,7 +41,7 @@ export function ChatView({ steps, activeTab }: ChatViewProps) {
                 <div
                   className={`w-10 h-10 flex items-center justify-center shrink-0 shadow-sm border-2 border-black shadow-[4px_4px_0px_0px_black] ${
                     isAI
-                      ? "bg-blue-600 text-white"
+                      ? "bg-primary text-primary-foreground"
                       : isAction
                         ? "bg-green-500 text-white"
                         : "bg-[#1a1a1a] text-white"
@@ -62,10 +62,10 @@ export function ChatView({ steps, activeTab }: ChatViewProps) {
               <div
                 className={`max-w-[85%] p-5 text-sm md:text-base ${
                   isUser
-                    ? "bg-black text-white font-bold shadow-[4px_4px_0px_0px_#A855F7]"
+                    ? "bg-black text-white font-bold shadow-[4px_4px_0px_0px_var(--primary)]"
                     : isAI
                       ? "bg-white border-2 border-black font-mono"
-                      : "bg-[#FFDE00] border-2 border-black font-bold"
+                      : "bg-secondary text-secondary-foreground border-2 border-black font-bold"
                 }`}
               >
                 {isAI && text?.includes("Analizando") && (

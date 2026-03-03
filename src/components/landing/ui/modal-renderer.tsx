@@ -10,36 +10,54 @@ import { TeamMemberModal } from "@/components/landing/ui/team-member-modal";
 import type { Partnership, Project, Service, TeamMember } from "@/content/types";
 
 interface ModalRendererProps {
+  onOpenContact?: () => void;
   onChatClick?: () => void;
 }
 
-export function ModalRenderer({ onChatClick }: ModalRendererProps) {
+export function ModalRenderer({ onOpenContact, onChatClick }: ModalRendererProps) {
   const { modalData, closeModal, isOpen } = useModal();
+  const modalSize = modalData.type === "project" ? "wide" : "default";
 
   const renderContent = () => {
     switch (modalData.type) {
       case "project":
-        return <ProjectModal project={modalData.data as Project} />;
+        return (
+          <ProjectModal
+            key={(modalData.data as Project).title}
+            project={modalData.data as Project}
+            {...(onOpenContact && { onOpenContact })}
+          />
+        );
       case "service":
-        return <ServiceModal service={modalData.data as Service} />;
+        return (
+          <ServiceModal
+            service={modalData.data as Service}
+            {...(onOpenContact && { onOpenContact })}
+          />
+        );
       case "partnership":
         return (
           <PartnershipModal
             partnership={modalData.data as Partnership}
-            {...(onChatClick && { onChatClick })}
+            {...(onOpenContact && { onOpenContact })}
           />
         );
       case "contact":
         return <ContactModal {...(onChatClick && { onChatClick })} />;
       case "teamMember":
-        return <TeamMemberModal member={modalData.data as TeamMember} />;
+        return (
+          <TeamMemberModal
+            member={modalData.data as TeamMember}
+            {...(onOpenContact && { onOpenContact })}
+          />
+        );
       default:
         return null;
     }
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={closeModal}>
+    <Modal isOpen={isOpen} onClose={closeModal} size={modalSize}>
       {renderContent()}
     </Modal>
   );

@@ -104,3 +104,58 @@ Template (append entries)
   - Verification:
   - Notes:
 
+- Date: 2026-03-02
+  - Change: Locked V2 content and UX direction from review of `docs/plans/landing-page-audit/new-cotent-for-landing-page.md`.
+  - Files: this tracker (implementation starts next thread)
+  - Verification: decisions confirmed by user in chat
+  - Notes:
+    - Keep design language standardized (current brutalist system, no redesign pivot).
+    - Remove from homepage now: Semilla section, long Real Examples library, project19 transcript/stack/cost references, age references, father/son positioning in sales sections.
+    - Keep father/son narrative in About only.
+    - Primary CTA destination: open contact modal.
+    - Secondary CTA destination: `#projects` on homepage.
+    - Implement bilingual pass in same delivery (`en.ts` + `es.ts`).
+    - Demos on homepage: gateway only ("See demos"), no featured project19 block.
+    - Partnership simplification: remove deferred payment and revenue share options.
+    - Include accessibility cleanup in same pass (nav/footer semantic click targets and related a11y polish).
+
+## Decision Lock (2026-03-02)
+
+Approved implementation decisions:
+
+1) Section scope
+- Remove homepage Semilla section.
+- Remove long Real Examples section content from homepage (or reduce to non-library format in later phase).
+- Keep AI in Action as a lightweight gateway to `/demos` only.
+
+2) CTA behavior
+- Primary CTA: opens contact modal.
+- Secondary CTA: scroll to `#projects`.
+
+3) Messaging guardrails
+- Remove pricing/stack namedrops and age/family framing from core sales copy.
+- Keep "father and son" storytelling only in About context.
+- Keep positioning around human-first systems, health/sustainability, practical outcomes.
+
+4) Partnerships
+- Keep simplified models; remove deferred payment and revenue-share framing from homepage.
+
+5) Implementation quality bar
+- Do EN and ES together.
+- Include semantic/a11y cleanup while applying content changes.
+- Keep build checks green: `pnpm lint`, `pnpm typecheck`, `pnpm build:ci`.
+
+## Next Thread Start Plan
+
+P0:
+- Update `src/content/en.ts` and `src/content/es.ts` with approved copy and section removals.
+- Update homepage composition in `src/app/page.tsx` to remove non-shipping sections from this phase.
+- Update nav/footer links to match remaining sections.
+- Convert remaining non-semantic click targets in nav/footer to semantic controls/anchors.
+
+P1:
+- Convert Demos block to homepage gateway behavior (button to `/demos`) with minimal copy.
+- Simplify partnership cards/content to approved 3-model framing.
+
+P2:
+- Align chat contextual greetings and contact form labels with updated positioning.

@@ -36,7 +36,7 @@ export function DashboardView({ steps }: DashboardViewProps) {
   const chartBars = [65, 45, 78, 52, 90, 68, 85];
 
   return (
-    <div className="h-full bg-slate-100 p-2 md:p-3 flex flex-col gap-2 md:gap-3 overflow-hidden">
+    <div className="h-full bg-muted p-2 md:p-3 flex flex-col gap-2 md:gap-3 overflow-hidden">
       {/* Top Stats Row */}
       <div className="grid grid-cols-4 gap-1.5 md:gap-2">
         {/* Revenue Card */}
@@ -56,13 +56,13 @@ export function DashboardView({ steps }: DashboardViewProps) {
         {/* Users Card */}
         <div className="bg-white border-2 md:border-3 border-black p-2 md:p-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
           <div className="flex items-center gap-1.5 mb-1">
-            <div className="w-5 h-5 md:w-6 md:h-6 bg-blue-500 border-2 border-black flex items-center justify-center">
+            <div className="w-5 h-5 md:w-6 md:h-6 bg-zinc-900 border-2 border-black flex items-center justify-center">
               <Users size={10} className="text-white" />
             </div>
             <span className="text-[8px] md:text-[10px] text-gray-500 font-bold uppercase hidden md:block">Users</span>
           </div>
           <div className="text-sm md:text-lg font-black text-black">{animatedStats.users.toLocaleString()}</div>
-          <div className="text-[8px] md:text-[10px] text-blue-600 font-bold flex items-center gap-0.5 mt-0.5">
+          <div className="text-[8px] md:text-[10px] text-primary font-bold flex items-center gap-0.5 mt-0.5">
             <TrendingUp size={8} /> +8%
           </div>
         </div>
@@ -70,13 +70,13 @@ export function DashboardView({ steps }: DashboardViewProps) {
         {/* Orders Card */}
         <div className="bg-white border-2 md:border-3 border-black p-2 md:p-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
           <div className="flex items-center gap-1.5 mb-1">
-            <div className="w-5 h-5 md:w-6 md:h-6 bg-purple-500 border-2 border-black flex items-center justify-center">
+            <div className="w-5 h-5 md:w-6 md:h-6 bg-primary border-2 border-black flex items-center justify-center">
               <ShoppingCart size={10} className="text-white" />
             </div>
             <span className="text-[8px] md:text-[10px] text-gray-500 font-bold uppercase hidden md:block">Orders</span>
           </div>
           <div className="text-sm md:text-lg font-black text-black">{animatedStats.orders}</div>
-          <div className="text-[8px] md:text-[10px] text-purple-600 font-bold flex items-center gap-0.5 mt-0.5">
+          <div className="text-[8px] md:text-[10px] text-primary font-bold flex items-center gap-0.5 mt-0.5">
             <Activity size={8} /> Live
           </div>
         </div>
@@ -84,13 +84,13 @@ export function DashboardView({ steps }: DashboardViewProps) {
         {/* Conversion Card */}
         <div className="bg-white border-2 md:border-3 border-black p-2 md:p-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
           <div className="flex items-center gap-1.5 mb-1">
-            <div className="w-5 h-5 md:w-6 md:h-6 bg-yellow-500 border-2 border-black flex items-center justify-center">
+            <div className="w-5 h-5 md:w-6 md:h-6 bg-amber-500 border-2 border-black flex items-center justify-center">
               <ArrowUpRight size={10} className="text-white" />
             </div>
             <span className="text-[8px] md:text-[10px] text-gray-500 font-bold uppercase hidden md:block">Conv.</span>
           </div>
           <div className="text-sm md:text-lg font-black text-black">{animatedStats.conversion.toFixed(1)}%</div>
-          <div className="text-[8px] md:text-[10px] text-yellow-600 font-bold flex items-center gap-0.5 mt-0.5">
+          <div className="text-[8px] md:text-[10px] text-amber-700 font-bold flex items-center gap-0.5 mt-0.5">
             <TrendingUp size={8} /> +0.3%
           </div>
         </div>
@@ -102,7 +102,7 @@ export function DashboardView({ steps }: DashboardViewProps) {
         <div className="col-span-3 bg-white border-3 border-black p-2 md:p-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-1.5">
-              <BarChart3 size={12} className="text-purple-600" />
+              <BarChart3 size={12} className="text-primary" />
               <span className="text-[9px] md:text-xs font-black uppercase">Weekly Performance</span>
             </div>
             <span className="text-[8px] md:text-[10px] text-green-600 font-bold">+24%</span>
@@ -113,7 +113,7 @@ export function DashboardView({ steps }: DashboardViewProps) {
               <div
                 key={i}
                 className={`flex-1 border-2 border-black transition-all duration-300 ${
-                  i === activeBar ? "bg-purple-500" : "bg-purple-200"
+                  i === activeBar ? "bg-primary" : "bg-secondary"
                 }`}
                 style={{ height: `${height}%` }}
               />
@@ -125,7 +125,7 @@ export function DashboardView({ steps }: DashboardViewProps) {
         </div>
 
         {/* AI Insights Quick Panel */}
-        <div className="col-span-2 bg-[#A855F7] border-3 border-black p-2 md:p-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex flex-col">
+        <div className="col-span-2 bg-primary border-3 border-black p-2 md:p-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex flex-col">
           <div className="flex items-center gap-1.5 mb-2">
             <Bot size={12} className="text-white" />
             <span className="text-[9px] md:text-xs font-black uppercase text-white">AI Insights</span>
@@ -146,7 +146,7 @@ export function DashboardView({ steps }: DashboardViewProps) {
 
       {/* Live Updates Area */}
       <div className="flex-1 bg-white border-3 md:border-4 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col overflow-hidden min-h-0">
-        <div className="p-2 md:p-3 border-b-2 md:border-b-3 border-black bg-[#FFDE00] flex justify-between items-center shrink-0">
+        <div className="p-2 md:p-3 border-b-2 md:border-b-3 border-black bg-secondary flex justify-between items-center shrink-0">
           <div className="flex items-center gap-1.5">
             <Clock size={10} className="text-black" />
             <span className="text-[10px] md:text-xs font-black uppercase">Live Activity</span>
@@ -168,10 +168,10 @@ export function DashboardView({ steps }: DashboardViewProps) {
                 <div
                   className={`text-[10px] md:text-xs p-2 border-2 border-black flex items-center gap-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
                     isBot
-                      ? "bg-yellow-100 text-yellow-800"
+                      ? "bg-secondary text-secondary-foreground"
                       : isData
-                        ? "bg-green-100 text-green-800"
-                        : "bg-gray-100 text-gray-700"
+                        ? "bg-emerald-50 text-emerald-800"
+                        : "bg-zinc-100 text-zinc-700"
                   }`}
                 >
                   {isTrigger && <Zap size={10} className="shrink-0" />}

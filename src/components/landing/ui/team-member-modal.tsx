@@ -4,12 +4,17 @@ import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Linkedin, Play } from "lucide-react";
 import type { TeamMember } from "@/content/types";
+import { useLocale } from "@/hooks/use-locale";
 
 interface TeamMemberModalProps {
   member: TeamMember;
+  onOpenContact?: () => void;
 }
 
-export function TeamMemberModal({ member }: TeamMemberModalProps) {
+export function TeamMemberModal({ member, onOpenContact }: TeamMemberModalProps) {
+  const { locale } = useLocale();
+  const ctaText = locale === "es" ? "Hablemos" : "Let's talk";
+
   return (
     <div className="flex flex-col md:flex-row">
       {/* Image */}
@@ -26,7 +31,7 @@ export function TeamMemberModal({ member }: TeamMemberModalProps) {
       <div className="w-full md:w-1/2 p-8 md:p-12 bg-white overflow-y-auto max-h-[70vh] md:max-h-none">
         {/* Badge */}
         {member.badge && (
-          <div className="inline-block mb-4 bg-[#FFDE00] border-2 border-black px-3 py-1 font-bold uppercase text-xs">
+          <div className="inline-block mb-4 bg-secondary text-secondary-foreground border-2 border-black px-3 py-1 font-bold uppercase text-xs">
             {member.badge}
           </div>
         )}
@@ -40,7 +45,7 @@ export function TeamMemberModal({ member }: TeamMemberModalProps) {
 
         {/* Role */}
         <div
-          className={`${member.accentColor} text-white font-bold text-xs md:text-sm inline-block px-3 py-1 mb-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
+          className={`${member.accentColor} text-primary-foreground font-bold text-xs md:text-sm inline-block px-3 py-1 mb-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}
         >
           {member.title}
         </div>
@@ -51,14 +56,14 @@ export function TeamMemberModal({ member }: TeamMemberModalProps) {
         )}
 
         {/* Bio Headline */}
-        <p className="text-lg font-bold mb-6 border-l-4 border-[#A855F7] pl-4">
+        <p className="text-lg font-bold mb-6 border-l-4 border-primary pl-4">
           {member.bio.headline}
         </p>
 
         {/* Bio Sections */}
         <div className="space-y-6">
           {member.bio.sections.map((section, index) => (
-            <div key={index} className="bg-[#F3F4F6] border-l-4 border-black p-4">
+            <div key={index} className="bg-muted border-l-4 border-black p-4">
               <span className="font-bold text-xs uppercase block mb-2 text-neutral-500">
                 {section.title}
               </span>
@@ -74,7 +79,7 @@ export function TeamMemberModal({ member }: TeamMemberModalProps) {
               href={member.bio.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#0077B5] text-white font-bold px-4 py-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
+              className="inline-flex items-center gap-2 bg-[#0A66C2] text-white font-bold px-4 py-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#004182] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
             >
               <Linkedin className="w-4 h-4" />
               LinkedIn
@@ -92,6 +97,17 @@ export function TeamMemberModal({ member }: TeamMemberModalProps) {
             </a>
           )}
         </div>
+
+        {/* CTA */}
+        {onOpenContact && (
+          <button
+            type="button"
+            onClick={onOpenContact}
+            className="mt-8 w-full bg-black text-white border-4 border-black px-6 py-4 font-black uppercase hover:bg-white hover:text-black transition-colors shadow-[8px_8px_0px_0px_var(--primary)] hover:shadow-[4px_4px_0px_0px_var(--primary)]"
+          >
+            {ctaText}
+          </button>
+        )}
       </div>
     </div>
   );

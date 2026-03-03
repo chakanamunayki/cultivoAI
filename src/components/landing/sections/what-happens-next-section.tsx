@@ -15,7 +15,7 @@ export function WhatHappensNextSection(_props: WhatHappensNextSectionProps) {
   return (
     <section
       id="what-happens-next"
-      className="border-b-4 border-black bg-[#F3F4F6] py-16 md:py-24"
+      className="border-b-4 border-black bg-background py-16 md:py-24"
     >
       <div className="max-w-5xl mx-auto px-4 md:px-8">
         {/* Section Title */}
@@ -35,7 +35,7 @@ export function WhatHappensNextSection(_props: WhatHappensNextSectionProps) {
               <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:translate-x-1 transition-all">
                 <div className="flex items-start gap-4 md:gap-6 p-4 md:p-6 lg:p-8">
                   {/* Number */}
-                  <div className="shrink-0 w-12 h-12 md:w-16 md:h-16 bg-[#FFC805] border-4 border-black flex items-center justify-center shadow-[4px_4px_0px_0px_#A855F7]">
+                  <div className="shrink-0 w-12 h-12 md:w-16 md:h-16 bg-secondary border-4 border-black flex items-center justify-center shadow-[4px_4px_0px_0px_var(--primary)]">
                     <span className="text-2xl md:text-3xl font-black">
                       {step.number}
                     </span>

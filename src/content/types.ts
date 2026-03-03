@@ -37,9 +37,16 @@ export interface ImpactSection {
 export interface HeroCopy {
   tagline: string;
   line1: string;
+  subheadline: string;
   services: string[];
   servicesDone: string;
-  audience: string[];
+  audience?: string[]; // Deprecated: legacy word-stagger line (kept for backward compat)
+  outcomes: string[];
+  audienceLabel: string;
+  audienceChips: string[];
+  tertiaryCta: string;
+  microcopy: string;
+  terminalLabel: string;
   line3: string;
   cta: string;
   secondaryCta: string;
@@ -81,6 +88,14 @@ export interface AboutCopy {
   viewMoreLabel: string;
 }
 
+export interface ModalExpansion {
+  whatItMeans: string;
+  whyItMatters: string;
+  whatsIncluded: string[];
+  idealFit: string[];
+  typicalOutcome: string;
+}
+
 export interface Service {
   icon: string;
   title: string;
@@ -88,7 +103,7 @@ export interface Service {
   description: string;
   details: string[];
   imageUrl: string;
-  pricing?: string; // e.g., "Desde $100 USD" / "From $100 USD"
+  modal: ModalExpansion;
 }
 
 export interface Project {
@@ -98,7 +113,9 @@ export interface Project {
   lessons: string;
   status: string;
   image: string;
+  images?: string[];
   tags: string[];
+  modal: ModalExpansion;
 }
 
 export interface Partnership {
@@ -107,6 +124,8 @@ export interface Partnership {
   description: string;
   idealFor: string[];
   icon: string;
+  imageUrl?: string; // Landing visual tile/banner
+  modal: ModalExpansion;
 }
 
 export interface Step {
@@ -161,8 +180,10 @@ export interface Sector {
   name: string;
   description: string;
   icon: string;
+  imageUrl?: string; // Landing visual tile/banner
   badge?: string;
   chatButtonLabel?: string;
+  modal?: ModalExpansion; // Expanded popup content (aligned with other landing modals)
   // Extended details for popup
   whoWeHelp?: string[];
   howWeHelp?: string[];
@@ -267,7 +288,7 @@ export interface ContactFormCopy {
 
 export interface SiteContent {
   nav: NavItem[];
-  marquee: string;
+  marquee: string[];
   hero: HeroCopy;
   about: AboutCopy;
   howWeWork: HowWeWorkContent;

@@ -36,7 +36,7 @@ export function ValuesSection() {
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-none bg-black text-white px-4 py-2 inline-block rotate-1">
               {values.title}
             </h2>
-            <p className="text-lg md:text-xl font-bold max-w-xl md:mt-2 border-l-4 border-[#A855F7] pl-4 md:pl-6">
+            <p className="text-lg md:text-xl font-bold max-w-xl md:mt-2 border-l-4 border-primary pl-4 md:pl-6">
               {values.subtitle}
             </p>
           </div>
@@ -50,7 +50,7 @@ export function ValuesSection() {
               <Reveal key={value.title} delay={index * 75}>
                 <div className="h-full bg-neutral-100 border-4 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:translate-x-0.5 transition-all group">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-[#FFC805] border-3 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] group-hover:scale-105 transition-transform">
+                    <div className="p-2 bg-secondary border-3 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] group-hover:scale-105 transition-transform">
                       <Icon size={24} className="text-black" strokeWidth={2.5} />
                     </div>
                     <h3 className="text-lg md:text-xl font-black uppercase leading-tight">

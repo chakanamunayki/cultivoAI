@@ -26,7 +26,7 @@ export function AboutSection() {
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-none bg-black text-white px-4 py-2 inline-block rotate-1">
               {content.about.title}
             </h2>
-            <p className="text-lg md:text-xl font-bold max-w-xl md:mt-2 border-l-4 border-[#A855F7] pl-4 md:pl-6">
+            <p className="text-lg md:text-xl font-bold max-w-xl md:mt-2 border-l-4 border-primary pl-4 md:pl-6">
               {content.about.subtitle}
             </p>
           </div>
@@ -54,12 +54,12 @@ export function AboutSection() {
                     {member.name}
                   </h3>
                   {member.badge && (
-                    <div className="bg-[#FFDE00] text-black font-bold text-xs inline-block px-2 py-1 mb-2 border-2 border-black w-fit">
+                    <div className="bg-secondary text-secondary-foreground font-bold text-xs inline-block px-2 py-1 mb-2 border-2 border-black w-fit">
                       {member.badge}
                     </div>
                   )}
                   <div
-                    className={`${member.accentColor} ${member.id === "rocky" ? "text-black" : "text-white"} font-bold text-xs md:text-sm inline-block px-3 py-1 mb-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-fit`}
+                    className={`${member.accentColor} text-primary-foreground font-bold text-xs md:text-sm inline-block px-3 py-1 mb-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-fit`}
                   >
                     {member.title}
                   </div>
@@ -78,7 +78,7 @@ export function AboutSection() {
                         href={member.linkedinUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 bg-[#0077B5] text-white font-bold text-xs px-3 py-2 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all"
+                        className="inline-flex items-center gap-1 bg-[#0A66C2] text-white font-bold text-xs px-3 py-2 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:bg-[#004182] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all"
                       >
                         <Linkedin className="w-3 h-3" />
                         LinkedIn
@@ -86,9 +86,9 @@ export function AboutSection() {
                     )}
                     <button
                       onClick={() => handleViewMore(member)}
-                      className="inline-flex items-center gap-1 bg-black text-white font-bold text-xs px-3 py-2 border-2 border-black shadow-[3px_3px_0px_0px_#A855F7] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_#A855F7] transition-all"
+                      className="inline-flex items-center gap-1 bg-black text-white font-bold text-xs px-3 py-2 border-2 border-black shadow-[3px_3px_0px_0px_var(--primary)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_0px_var(--primary)] transition-all"
                     >
-                      {content.about.viewMoreLabel} →
+                      {content.about.viewMoreLabel} {"->"}
                     </button>
                   </div>
                 </div>
@@ -101,9 +101,9 @@ export function AboutSection() {
         <Reveal delay={400}>
           <div className="mt-12 md:mt-16 text-center">
             <div className="relative inline-block">
-              <div className="absolute inset-0 bg-[#A855F7] translate-x-2 translate-y-2"></div>
-              <div className="relative bg-[#FFDE00] border-4 border-black px-6 py-4 md:px-8 md:py-6">
-                <p className="text-base md:text-lg font-black uppercase text-black">
+              <div className="absolute inset-0 bg-primary translate-x-2 translate-y-2"></div>
+              <div className="relative bg-secondary border-4 border-black px-6 py-4 md:px-8 md:py-6">
+                <p className="text-base md:text-lg font-black uppercase text-foreground">
                   {content.about.footerNote.replace(/\*\*/g, '')}
                 </p>
               </div>

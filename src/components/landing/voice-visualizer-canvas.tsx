@@ -51,21 +51,21 @@ const VisualizerCanvas: React.FC<VisualizerCanvasProps> = ({ mode, frequencyData
     const getPalette = (): Palette => {
       if (source === 'ai') {
         return {
-          stops: ['#A855F7', '#9333EA', '#C084FC'], // Purple -> Dark Purple -> Light Purple (BRUTALIST)
-          glow: 'rgba(168, 85, 247, 0.6)',
-          base: '#7C3AED'
+          stops: ['#059669', '#047857', '#34D399'], // Emerald -> Dark Emerald -> Mint
+          glow: 'rgba(5, 150, 105, 0.6)',
+          base: '#047857'
         };
       } else if (source === 'mic') {
         return {
-          stops: ['#FFC805', '#FFDE00', '#FFE55C'], // Yellow -> Light Yellow (BRUTALIST)
-          glow: 'rgba(255, 200, 5, 0.6)',
-          base: '#F59E0B'
+          stops: ['#F59E0B', '#D97706', '#FBBF24'], // Amber shades
+          glow: 'rgba(245, 158, 11, 0.55)',
+          base: '#D97706'
         };
       } else {
         return {
-          stops: ['#10B981', '#059669', '#34D399'], // Green shades (BRUTALIST)
-          glow: 'rgba(16, 185, 129, 0.3)',
-          base: '#047857'
+          stops: ['#18181B', '#52525B', '#A1A1AA'], // Charcoal -> Muted -> Light gray
+          glow: 'rgba(24, 24, 27, 0.18)',
+          base: '#18181B'
         };
       }
     };

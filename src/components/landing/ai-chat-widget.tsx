@@ -656,7 +656,7 @@ export function AIChatWidget({
       <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[60] flex flex-col items-end font-grotesk">
         <button
           onClick={() => onToggle(true)}
-          className="bg-black text-white p-4 border-4 border-transparent hover:border-black hover:bg-white hover:text-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-2 font-bold uppercase"
+          className="bg-primary text-primary-foreground p-4 border-4 border-black hover:bg-primary/90 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-2 font-bold uppercase"
           aria-label="Open chat"
         >
           <MessageSquare size={24} />
@@ -672,7 +672,7 @@ export function AIChatWidget({
     <div className="fixed bottom-0 left-0 right-0 md:bottom-6 md:right-6 md:left-auto z-[60] flex flex-col items-end font-grotesk">
       <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full md:w-[600px] lg:w-[700px] xl:w-[800px] flex flex-col transition-all duration-300 origin-bottom-right h-[85vh] md:h-[600px] md:max-h-[80vh] md:mb-4">
         {/* Header */}
-        <div className="bg-[#FFC805] border-b-4 border-black p-4 flex justify-between items-center">
+        <div className="bg-white border-b-4 border-black p-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <Bot size={24} className="text-black" />
             <span className="font-bold text-black uppercase">
@@ -685,7 +685,7 @@ export function AIChatWidget({
               onClick={() => {
                 setIsVoiceModeOpen(true);
               }}
-              className="px-3 py-1.5 bg-[#A855F7] text-white border-2 border-black hover:bg-[#9333EA] hover:scale-105 transition-all font-bold text-xs uppercase"
+              className="px-3 py-1.5 bg-primary text-primary-foreground border-2 border-black hover:bg-primary/90 hover:scale-105 transition-all font-bold text-xs uppercase"
               aria-label={locale === "es" ? "Modo de voz" : "Voice mode"}
               title={locale === "es" ? "Conversación por voz" : "Voice conversation"}
             >
@@ -722,7 +722,7 @@ export function AIChatWidget({
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#F3F4F6]">
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-muted">
           {messages.map((msg, idx) => {
             const isLastBotMessage = msg.role === "model" && idx === messages.length - 1;
             const showSpeakerIcon = isLastBotMessage && (isPlayingAudio || isLoadingAudio);
@@ -738,7 +738,7 @@ export function AIChatWidget({
                   <div
                     className="max-w-[85%] p-3 text-sm border-2 font-medium"
                     style={{
-                      backgroundColor: msg.role === "user" ? "#000000" : "#7C3AED",
+                      backgroundColor: msg.role === "user" ? "#000000" : "#059669",
                       color: "#FFFFFF",
                       borderColor: msg.role === "user" ? "transparent" : "#000000",
                       boxShadow: msg.role === "user" ? "none" : "4px 4px 0px 0px rgba(0,0,0,1)",
@@ -765,7 +765,7 @@ export function AIChatWidget({
                   <div className="flex justify-start">
                     <form
                       onSubmit={handleContactFormSubmit}
-                      className="bg-white border-4 border-black shadow-[4px_4px_0px_0px_#A855F7] p-4 space-y-3 w-full max-w-[85%]"
+                      className="bg-white border-4 border-black shadow-[4px_4px_0px_0px_var(--primary)] p-4 space-y-3 w-full max-w-[85%]"
                     >
                       <div>
                         <label className="block text-xs font-bold uppercase mb-1 text-black">
@@ -776,7 +776,7 @@ export function AIChatWidget({
                           value={contactFormData.name}
                           onChange={(e) => setContactFormData(prev => ({ ...prev, name: e.target.value }))}
                           placeholder={locale === "es" ? "Tu nombre" : "Your name"}
-                          className="w-full p-2 border-2 border-black bg-[#F3F4F6] font-bold text-sm focus:shadow-[2px_2px_0px_0px_#A855F7] outline-none"
+                          className="w-full p-2 border-2 border-black bg-muted font-bold text-sm focus:shadow-[2px_2px_0px_0px_var(--primary)] outline-none"
                           disabled={isSubmittingContact}
                         />
                       </div>
@@ -789,7 +789,7 @@ export function AIChatWidget({
                           value={contactFormData.email}
                           onChange={(e) => setContactFormData(prev => ({ ...prev, email: e.target.value }))}
                           placeholder={locale === "es" ? "tu@email.com" : "your@email.com"}
-                          className="w-full p-2 border-2 border-black bg-[#F3F4F6] font-bold text-sm focus:shadow-[2px_2px_0px_0px_#A855F7] outline-none"
+                          className="w-full p-2 border-2 border-black bg-muted font-bold text-sm focus:shadow-[2px_2px_0px_0px_var(--primary)] outline-none"
                           disabled={isSubmittingContact}
                         />
                       </div>
@@ -799,7 +799,7 @@ export function AIChatWidget({
                       <button
                         type="submit"
                         disabled={isSubmittingContact}
-                        className="w-full p-2 bg-[#FFC805] text-black font-bold uppercase border-2 border-black hover:bg-[#FFDE00] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 transition-all flex items-center justify-center gap-2"
+                        className="w-full p-2 bg-primary text-primary-foreground font-bold uppercase border-2 border-black hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 transition-all flex items-center justify-center gap-2"
                       >
                         {isSubmittingContact ? (
                           <>
@@ -818,7 +818,7 @@ export function AIChatWidget({
           })}
           {isLoading && (
             <div className="flex justify-start">
-              <div className="bg-[#FFDE00] text-black border-2 border-black p-3 flex items-center gap-2">
+              <div className="bg-secondary text-secondary-foreground border-2 border-black p-3 flex items-center gap-2">
                 <Loader2 size={16} className="animate-spin" />
                 <span className="text-sm font-bold">
                   {locale === "es" ? "Pensando..." : "Thinking..."}
@@ -835,7 +835,7 @@ export function AIChatWidget({
             <button
               key={idx}
               onClick={() => handleQuickQuestion(question)}
-              className="flex-shrink-0 px-3 py-1.5 text-xs font-bold bg-[#F3F4F6] border-2 border-black hover:bg-[#7C3AED] hover:text-white hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all whitespace-nowrap"
+              className="flex-shrink-0 px-3 py-1.5 text-xs font-bold bg-muted border-2 border-black hover:bg-primary hover:text-primary-foreground hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all whitespace-nowrap"
             >
               {question}
             </button>
@@ -848,7 +848,7 @@ export function AIChatWidget({
             {/* Voice Mode Button */}
             <button
               onClick={() => setIsVoiceModeOpen(true)}
-              className="p-3 border-2 border-black transition-all bg-[#A855F7] text-white hover:bg-[#9333EA] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+              className="p-3 border-2 border-black transition-all bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
               aria-label={locale === "es" ? "Modo de voz" : "Voice mode"}
               title={locale === "es" ? "Conversación por voz" : "Voice conversation"}
             >
@@ -860,12 +860,12 @@ export function AIChatWidget({
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder={content.chat.placeholder}
-              className="flex-1 p-3 outline-none bg-[#F3F4F6] border-2 border-black focus:shadow-[2px_2px_0px_0px_#A855F7] font-bold text-base"
+              className="flex-1 p-3 outline-none bg-muted border-2 border-black focus:shadow-[2px_2px_0px_0px_var(--primary)] font-bold text-base"
             />
             <button
               onClick={handleSend}
               disabled={isLoading || !input.trim()}
-              className="p-3 bg-orange-cta text-white border-2 border-black hover:bg-orange-cta-hover hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none transition-all"
+              className="p-3 bg-primary text-primary-foreground border-2 border-black hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none transition-all"
               aria-label={content.chat.sendButton}
             >
               <Send size={22} />

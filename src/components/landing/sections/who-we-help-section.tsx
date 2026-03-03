@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   ArrowRight,
   Check,
@@ -38,6 +39,12 @@ export function WhoWeHelpSection({
   const { content, locale } = useLocale();
   const [selectedSector, setSelectedSector] = useState<Sector | null>(null);
 
+  const whatItMeansLabel = locale === "es" ? "Que significa" : "What it means";
+  const whyItMattersLabel = locale === "es" ? "Por que importa" : "Why it matters";
+  const includedLabel = locale === "es" ? "Que incluye" : "What's included";
+  const idealFitLabel = locale === "es" ? "Ideal para" : "Ideal fit";
+  const outcomeLabel = locale === "es" ? "Resultado tipico" : "Typical outcome";
+
   return (
     <section
       id="who-we-help"
@@ -47,7 +54,7 @@ export function WhoWeHelpSection({
         {/* Section Title - matching Partnerships section style */}
         <Reveal>
           <div className="mb-12 md:mb-16 text-center">
-            <div className="inline-block bg-[#FFDE00] border-4 border-black p-4 shadow-[6px_6px_0px_0px_black] rotate-1 mb-6">
+            <div className="inline-block bg-secondary border-4 border-black p-4 shadow-[6px_6px_0px_0px_black] rotate-1 mb-6">
               <h2 className="text-3xl md:text-5xl font-black uppercase">
                 {content.whoWeHelp.title}
               </h2>
@@ -59,8 +66,8 @@ export function WhoWeHelpSection({
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20">
           {/* Ideal for you if... */}
           <Reveal>
-            <div className="bg-[#C4F9E0] border-4 border-black p-6 md:p-8 lg:p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-              <h3 className="text-2xl md:text-3xl font-black uppercase mb-6 md:mb-8 decoration-4 underline decoration-green-600 underline-offset-4">
+            <div className="bg-muted border-4 border-black p-6 md:p-8 lg:p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="text-2xl md:text-3xl font-black uppercase mb-6 md:mb-8 decoration-4 underline decoration-primary underline-offset-4">
                 {content.whoWeHelp.idealTitle}
               </h3>
               <ul className="space-y-4">
@@ -68,9 +75,9 @@ export function WhoWeHelpSection({
                   <li key={i} className="flex gap-4 items-start group">
                     <Check
                       size={24}
-                      className="shrink-0 text-white border-4 border-black bg-green-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:scale-110 transition-transform"
+                      className="shrink-0 text-primary-foreground border-4 border-black bg-primary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:scale-110 transition-transform"
                     />
-                    <span className="font-bold text-base md:text-lg group-hover:text-green-800 transition-colors">
+                    <span className="font-bold text-base md:text-lg group-hover:text-primary transition-colors">
                       {item}
                     </span>
                   </li>
@@ -104,16 +111,16 @@ export function WhoWeHelpSection({
 
         {/* Sectors We Love */}
         <Reveal delay={300}>
-          <div className="bg-[#FFC805] border-4 border-black p-6 md:p-8 lg:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <div className="bg-secondary border-4 border-black p-6 md:p-8 lg:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             {/* Section Title with decorative style */}
             <div className="text-center mb-8 md:mb-12">
-              <div className="inline-block bg-black text-white px-6 py-3 -rotate-1 shadow-[4px_4px_0px_0px_#A855F7]">
+              <div className="inline-block bg-black text-white px-6 py-3 -rotate-1 shadow-[4px_4px_0px_0px_var(--primary)]">
                 <h3 className="text-2xl md:text-3xl lg:text-4xl font-black uppercase">
                   {content.whoWeHelp.sectorsTitle}
                 </h3>
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {content.whoWeHelp.sectors.map((sector, i) => {
                 const IconComponent = iconMap[sector.icon] || Rocket;
                 return (
@@ -121,17 +128,36 @@ export function WhoWeHelpSection({
                     key={i}
                     className="bg-white border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all duration-300 group overflow-hidden flex flex-col"
                   >
-                    {/* Icon Header - More prominent */}
-                    <div className="h-28 md:h-32 bg-gradient-to-br from-[#A855F7] to-[#9333EA] border-b-4 border-black relative overflow-hidden flex items-center justify-center">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <IconComponent
-                        size={56}
-                        className="text-white group-hover:scale-110 transition-transform duration-300 relative z-10"
-                        strokeWidth={1.5}
-                      />
+                    {/* Visual Header */}
+                    <div className="h-28 md:h-32 border-b-4 border-black relative overflow-hidden flex items-center justify-center bg-neutral-200">
+                      {sector.imageUrl ? (
+                        <>
+                          <Image
+                            src={sector.imageUrl}
+                            alt={sector.name}
+                            fill
+                            className="object-cover group-hover:scale-[1.04] transition-transform duration-700"
+                            sizes="(max-width: 768px) 100vw, 25vw"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/70 to-[#000]/20" />
+                          <div className="absolute bottom-3 right-3 bg-white border-2 border-black p-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                            <IconComponent size={18} className="text-black" />
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary to-emerald-700" />
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                          <IconComponent
+                            size={56}
+                            className="text-white group-hover:scale-110 transition-transform duration-300 relative z-10"
+                            strokeWidth={1.5}
+                          />
+                        </>
+                      )}
                       {/* Badge */}
                       {sector.badge && (
-                        <div className="absolute top-2 left-2 bg-[#10B981] text-white text-[10px] font-black px-2 py-1 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center gap-1 uppercase">
+                        <div className="absolute top-2 left-2 bg-primary text-primary-foreground text-[10px] font-black px-2 py-1 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center gap-1 uppercase">
                           <Check size={10} className="shrink-0" strokeWidth={3} />
                           {sector.badge}
                         </div>
@@ -139,7 +165,7 @@ export function WhoWeHelpSection({
                     </div>
                     {/* Content */}
                     <div className="p-4 md:p-5 flex flex-col flex-grow bg-white">
-                      <h4 className="font-black uppercase text-base md:text-lg mb-2 group-hover:text-[#A855F7] transition-colors leading-tight">
+                      <h4 className="font-black uppercase text-base md:text-lg mb-2 group-hover:text-primary transition-colors leading-tight">
                         {sector.name}
                       </h4>
                       <p className="text-sm text-gray-600 mb-4 flex-grow leading-relaxed">
@@ -149,11 +175,12 @@ export function WhoWeHelpSection({
                       <div className="space-y-2 mt-auto">
                         {sector.detailsButtonLabel && (
                           <button
+                            type="button"
                             onClick={(e) => {
                               e.stopPropagation();
                               setSelectedSector(sector);
                             }}
-                            className="w-full bg-black text-white text-xs font-bold py-2.5 px-3 border-2 border-black shadow-[3px_3px_0px_0px_#A855F7] hover:shadow-[1px_1px_0px_0px_#A855F7] hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center justify-center gap-2 uppercase"
+                            className="w-full bg-black text-white text-xs font-bold py-2.5 px-3 border-2 border-black shadow-[3px_3px_0px_0px_var(--primary)] hover:shadow-[1px_1px_0px_0px_var(--primary)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center justify-center gap-2 uppercase"
                           >
                             {sector.detailsButtonLabel}
                             <ArrowRight size={14} />
@@ -161,11 +188,12 @@ export function WhoWeHelpSection({
                         )}
                         {sector.chatButtonLabel && (
                           <button
+                            type="button"
                             onClick={(e) => {
                               e.stopPropagation();
                               onOpenChatWithSector?.(sector.name);
                             }}
-                            className="w-full bg-[#A855F7] text-white text-xs font-bold py-2.5 px-3 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center justify-center gap-2 uppercase"
+                            className="w-full bg-primary text-primary-foreground text-xs font-bold py-2.5 px-3 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center justify-center gap-2 uppercase"
                           >
                             {sector.chatButtonLabel}
                             <ArrowRight size={14} />
@@ -187,75 +215,120 @@ export function WhoWeHelpSection({
             onClick={() => setSelectedSector(null)}
           >
             <div
-              className="bg-white border-4 border-black shadow-[12px_12px_0px_0px_#A855F7] max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-200"
+              className="bg-white border-4 border-black shadow-[12px_12px_0px_0px_var(--primary)] max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-200"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="bg-[#A855F7] p-4 md:p-6 border-b-4 border-black flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  {(() => {
-                    const IconComponent = iconMap[selectedSector.icon] || Rocket;
-                    return (
-                      <div className="w-12 h-12 bg-white border-4 border-black flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                        <IconComponent size={24} className="text-[#A855F7]" />
-                      </div>
-                    );
-                  })()}
-                  <h3 className="text-xl md:text-2xl font-black uppercase text-white">
-                    {selectedSector.name}
-                  </h3>
+              <div className="relative border-b-4 border-black">
+                {selectedSector.imageUrl ? (
+                  <div className="relative h-36 md:h-44 overflow-hidden bg-neutral-200">
+                    <Image
+                      src={selectedSector.imageUrl}
+                    alt={selectedSector.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 768px"
+                  />
+                    <div className="absolute inset-0 bg-primary/70 mix-blend-multiply" />
+                  </div>
+                ) : (
+                  <div className="h-28 bg-primary" />
+                )}
+
+                <div className="absolute inset-0 p-4 md:p-6 flex items-start justify-between">
+                  <div className="flex items-center gap-4">
+                    {(() => {
+                      const IconComponent = iconMap[selectedSector.icon] || Rocket;
+                      return (
+                        <div className="w-12 h-12 bg-white border-4 border-black flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                          <IconComponent size={24} className="text-primary" />
+                        </div>
+                      );
+                    })()}
+                    <h3 className="text-xl md:text-2xl font-black uppercase text-white drop-shadow-sm">
+                      {selectedSector.name}
+                    </h3>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedSector(null)}
+                    className="w-10 h-10 bg-white border-4 border-black flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5"
+                  >
+                    <X size={20} strokeWidth={3} />
+                  </button>
                 </div>
-                <button
-                  onClick={() => setSelectedSector(null)}
-                  className="w-10 h-10 bg-white border-4 border-black flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5"
-                >
-                  <X size={20} strokeWidth={3} />
-                </button>
               </div>
 
               {/* Modal Content */}
               <div className="p-4 md:p-6 space-y-6">
-                {/* Description */}
-                <p className="text-lg font-medium text-gray-700 border-l-4 border-[#A855F7] pl-4">
-                  {selectedSector.description}
-                </p>
+                {/* What it means (lead) */}
+                <div className="border-l-8 border-black pl-5">
+                  <h4 className="font-black uppercase text-xs tracking-widest text-neutral-600 mb-2">
+                    {whatItMeansLabel}
+                  </h4>
+                  <p className="text-lg md:text-xl font-bold leading-relaxed">
+                    {selectedSector.modal?.whatItMeans ?? selectedSector.description}
+                  </p>
+                </div>
 
-                {/* Who We Help */}
-                {selectedSector.whoWeHelp && selectedSector.whoWeHelp.length > 0 && (
-                  <div className="bg-[#C4F9E0] border-4 border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                {/* Why it matters + Typical outcome */}
+                {(selectedSector.modal?.whyItMatters || selectedSector.modal?.typicalOutcome) && (
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="bg-muted border-4 border-black p-5">
+                      <h4 className="font-black uppercase text-sm mb-2">{whyItMattersLabel}</h4>
+                      <p className="font-medium text-base leading-relaxed opacity-90">
+                        {selectedSector.modal?.whyItMatters}
+                      </p>
+                    </div>
+                    <div className="bg-white border-4 border-black p-5 shadow-[6px_6px_0px_0px_black]">
+                      <h4 className="font-black uppercase text-sm mb-2">{outcomeLabel}</h4>
+                      <p className="font-bold text-base leading-relaxed">
+                        {selectedSector.modal?.typicalOutcome}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* What's included */}
+                {((selectedSector.modal?.whatsIncluded?.length ?? 0) > 0 ||
+                  (selectedSector.howWeHelp?.length ?? 0) > 0) && (
+                  <div className="bg-white border-4 border-black p-5">
                     <div className="flex items-center gap-2 mb-4">
-                      <Users size={20} className="text-green-700" />
-                      <h4 className="font-black uppercase text-green-800">
-                        {locale === "es" ? "A quienes ayudamos" : "Who we help"}
-                      </h4>
+                      <Wrench size={18} className="text-black" />
+                      <h4 className="font-black uppercase text-black">{includedLabel}</h4>
                     </div>
                     <ul className="space-y-2">
-                      {selectedSector.whoWeHelp.map((item, i) => (
-                        <li key={i} className="flex gap-3 items-start">
-                          <Check size={16} className="shrink-0 mt-0.5 text-green-700" strokeWidth={3} />
-                          <span className="text-sm font-medium text-green-900">{item}</span>
-                        </li>
-                      ))}
+                      {(selectedSector.modal?.whatsIncluded ?? selectedSector.howWeHelp ?? []).map(
+                        (item, i) => (
+                          <li key={i} className="flex gap-3 items-start">
+                            <span className="mt-1 w-3 h-3 bg-black shrink-0" />
+                            <span className="text-sm font-medium text-gray-800">
+                              {item}
+                            </span>
+                          </li>
+                        )
+                      )}
                     </ul>
                   </div>
                 )}
 
-                {/* How We Help */}
-                {selectedSector.howWeHelp && selectedSector.howWeHelp.length > 0 && (
-                  <div className="bg-[#FFDE00] border-4 border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                {/* Ideal fit */}
+                {((selectedSector.modal?.idealFit?.length ?? 0) > 0 ||
+                  (selectedSector.whoWeHelp?.length ?? 0) > 0) && (
+                  <div className="bg-secondary border-4 border-black p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                     <div className="flex items-center gap-2 mb-4">
-                      <Wrench size={20} className="text-black" />
-                      <h4 className="font-black uppercase text-black">
-                        {locale === "es" ? "Como ayudamos" : "How we help"}
-                      </h4>
+                      <Users size={18} className="text-black" />
+                      <h4 className="font-black uppercase text-black">{idealFitLabel}</h4>
                     </div>
                     <ul className="space-y-2">
-                      {selectedSector.howWeHelp.map((item, i) => (
-                        <li key={i} className="flex gap-3 items-start">
-                          <Check size={16} className="shrink-0 mt-0.5 text-black" strokeWidth={3} />
-                          <span className="text-sm font-bold text-black">{item}</span>
-                        </li>
-                      ))}
+                      {(selectedSector.modal?.idealFit ?? selectedSector.whoWeHelp ?? []).map(
+                        (item, i) => (
+                          <li key={i} className="flex gap-3 items-start">
+                            <span className="mt-1 w-3 h-3 bg-black shrink-0" />
+                            <span className="text-sm font-bold text-black">{item}</span>
+                          </li>
+                        )
+                      )}
                     </ul>
                   </div>
                 )}
@@ -264,7 +337,7 @@ export function WhoWeHelpSection({
                 {selectedSector.exampleProjects && selectedSector.exampleProjects.length > 0 && (
                   <div className="bg-neutral-100 border-4 border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                     <div className="flex items-center gap-2 mb-4">
-                      <Lightbulb size={20} className="text-purple-600" />
+                      <Lightbulb size={20} className="text-primary" />
                       <h4 className="font-black uppercase text-gray-800">
                         {locale === "es" ? "Ejemplos de proyectos" : "Example projects"}
                       </h4>
@@ -272,7 +345,7 @@ export function WhoWeHelpSection({
                     <ul className="space-y-2">
                       {selectedSector.exampleProjects.map((item, i) => (
                         <li key={i} className="flex gap-3 items-start">
-                          <div className="w-5 h-5 bg-[#A855F7] text-white text-xs font-black flex items-center justify-center border-2 border-black shrink-0">
+                          <div className="w-5 h-5 bg-primary text-primary-foreground text-xs font-black flex items-center justify-center border-2 border-black shrink-0">
                             {i + 1}
                           </div>
                           <span className="text-sm font-medium text-gray-700">{item}</span>
@@ -285,11 +358,12 @@ export function WhoWeHelpSection({
                 {/* CTA Button */}
                 {selectedSector.chatButtonLabel && (
                   <button
+                    type="button"
                     onClick={() => {
                       setSelectedSector(null);
                       onOpenChatWithSector?.(selectedSector.name);
                     }}
-                    className="w-full bg-[#A855F7] text-white font-black uppercase py-4 px-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all flex items-center justify-center gap-2 text-lg"
+                    className="w-full bg-primary text-primary-foreground font-black uppercase py-4 px-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all flex items-center justify-center gap-2 text-lg"
                   >
                     {selectedSector.chatButtonLabel}
                     <ArrowRight size={20} />
@@ -307,8 +381,9 @@ export function WhoWeHelpSection({
               {content.whoWeHelp.cta}
             </p>
             <button
+              type="button"
               onClick={onOpenChatQualification}
-              className="bg-[#A855F7] text-white font-black uppercase px-8 py-4 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:translate-x-1 transition-all text-lg"
+              className="bg-primary text-primary-foreground font-black uppercase px-8 py-4 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:translate-x-1 transition-all text-lg"
             >
               {content.whoWeHelp.ctaButton}
             </button>

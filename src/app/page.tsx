@@ -46,26 +46,10 @@ const ServicesSection = dynamic(
   { ssr: true }
 );
 
-const DemosSection = dynamic(
-  () =>
-    import("@/components/landing/sections/demos-section").then((m) => ({
-      default: m.DemosSection,
-    })),
-  { ssr: true }
-);
-
 const WhoWeHelpSection = dynamic(
   () =>
     import("@/components/landing/sections/who-we-help-section").then((m) => ({
       default: m.WhoWeHelpSection,
-    })),
-  { ssr: true }
-);
-
-const SemillaSection = dynamic(
-  () =>
-    import("@/components/landing/sections/semilla-section").then((m) => ({
-      default: m.SemillaSection,
     })),
   { ssr: true }
 );
@@ -82,14 +66,6 @@ const ProjectsSection = dynamic(
   () =>
     import("@/components/landing/sections/projects-section").then((m) => ({
       default: m.ProjectsSection,
-    })),
-  { ssr: true }
-);
-
-const StoriesSection = dynamic(
-  () =>
-    import("@/components/landing/sections/stories-section").then((m) => ({
-      default: m.StoriesSection,
     })),
   { ssr: true }
 );
@@ -135,7 +111,7 @@ function ChatButtonPlaceholder({ onClick }: { onClick: () => void }) {
     <div className="fixed bottom-6 right-6 z-[60] flex flex-col items-end font-grotesk">
       <button
         onClick={onClick}
-        className="bg-black text-white p-4 border-4 border-transparent hover:border-black hover:bg-white hover:text-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-2 font-bold uppercase"
+        className="bg-primary text-primary-foreground p-4 border-4 border-black hover:bg-primary/90 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-2 font-bold uppercase"
         aria-label="Open chat"
       >
         <MessageSquare size={24} />
@@ -152,6 +128,13 @@ export default function Home() {
   const { content } = useLocale();
   const { openProjectModal, openServiceModal, openContactModal, closeModal } =
     useModal();
+
+  const normalizeForMatch = useCallback((value: string) => {
+    return value
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "")
+      .toLowerCase();
+  }, []);
 
   // Load chat widget after initial page paint (2-3 second delay or on first interaction)
   useEffect(() => {
@@ -172,26 +155,28 @@ export default function Home() {
 
   const handleOpenProjectModal = useCallback(
     (projectTitle: string) => {
+      const target = normalizeForMatch(projectTitle);
       const project = content.projects.find((p) =>
-        p.title.toLowerCase().includes(projectTitle.toLowerCase())
+        normalizeForMatch(p.title).includes(target)
       );
       if (project) {
         openProjectModal(project);
       }
     },
-    [content.projects, openProjectModal]
+    [content.projects, normalizeForMatch, openProjectModal]
   );
 
   const handleOpenServiceModal = useCallback(
     (serviceTitle: string) => {
+      const target = normalizeForMatch(serviceTitle);
       const service = content.services.find((s) =>
-        s.title.toLowerCase().includes(serviceTitle.toLowerCase())
+        normalizeForMatch(s.title).includes(target)
       );
       if (service) {
         openServiceModal(service);
       }
     },
-    [content.services, openServiceModal]
+    [content.services, normalizeForMatch, openServiceModal]
   );
 
   // Open chat with optional context
@@ -206,38 +191,30 @@ export default function Home() {
     [closeModal]
   );
 
-  // Convenience handlers for specific contexts
-  const handleOpenChatBooking = useCallback(() => {
-    handleOpenChat({ type: "booking" });
-  }, [handleOpenChat]);
-
-  const handleOpenChatStory = useCallback(() => {
-    handleOpenChat({ type: "story" });
-  }, [handleOpenChat]);
-
-  const handleOpenChatSemilla = useCallback(() => {
-    handleOpenChat({ type: "semilla" });
-  }, [handleOpenChat]);
-
   const handleOpenChatGeneral = useCallback(() => {
     handleOpenChat({ type: "general" });
   }, [handleOpenChat]);
 
-  const handleOpenChatQualification = useCallback(() => {
-    handleOpenChat({ type: "qualification" });
-  }, [handleOpenChat]);
+  const handleOpenContactModal = useCallback(() => {
+    setIsChatOpen(false);
+    closeModal();
+    openContactModal();
+  }, [closeModal, openContactModal]);
 
-  const handleOpenChatImpact = useCallback(() => {
-    handleOpenChat({ type: "impact" });
-  }, [handleOpenChat]);
+  const handleScrollToProjects = useCallback(() => {
+    scrollTo("#projects");
+  }, [scrollTo]);
+
+  const handleScrollToServices = useCallback(() => {
+    scrollTo("#services");
+  }, [scrollTo]);
 
   // Handler for sector-specific chat
   const handleOpenChatWithSector = useCallback(
     (_sectorName: string) => {
-      // Open qualification chat - the sector context can be used for personalization later
-      handleOpenChat({ type: "qualification" });
+      handleOpenContactModal();
     },
-    [handleOpenChat]
+    [handleOpenContactModal]
   );
 
   // Form fallback handler
@@ -253,9 +230,12 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-full bg-[#F3F4F6] text-black font-grotesk selection:bg-[#FFDE00] selection:text-black">
+    <div className="min-h-full bg-background text-foreground font-grotesk">
       {/* Modal Renderer */}
-      <ModalRenderer onChatClick={handleOpenChatGeneral} />
+      <ModalRenderer
+        onOpenContact={handleOpenContactModal}
+        onChatClick={handleOpenChatGeneral}
+      />
 
       {/* AI Chat Widget - lazy loaded */}
       {isChatWidgetLoaded ? (
@@ -273,14 +253,14 @@ export default function Home() {
       )}
 
       {/* Navigation with integrated ticker */}
-      <Nav onScrollTo={scrollTo} onOpenChat={handleOpenChatGeneral} />
+      <Nav onScrollTo={scrollTo} onOpenChat={handleOpenContactModal} />
 
       {/* Section 1: Hero - Eager loaded (above fold) */}
       <HeroSection
-        onOpenChatBooking={handleOpenChatBooking}
-        onOpenChatStory={handleOpenChatStory}
-        onOpenChatImpact={handleOpenChatImpact}
-        onOpenServiceModal={handleOpenServiceModal}
+        onPrimaryCta={handleOpenContactModal}
+        onSecondaryCta={handleScrollToProjects}
+        onTertiaryCta={handleScrollToServices}
+        onImpactCta={handleOpenContactModal}
       />
 
       {/* Section 2: About - Eager loaded (above fold) */}
@@ -303,40 +283,25 @@ export default function Home() {
 
       {/* Section 6: Services - Lazy loaded */}
       <LazySection className="min-h-[600px]">
-        <ServicesSection onOpenChatBooking={handleOpenChatBooking} />
-      </LazySection>
-
-      {/* Section 5: AI Demos - Lazy loaded */}
-      <LazySection className="min-h-[500px]">
-        <DemosSection />
+        <ServicesSection onOpenChatBooking={handleOpenContactModal} />
       </LazySection>
 
       {/* Section 6: Who We Help - Lazy loaded */}
       <LazySection className="min-h-[400px]">
         <WhoWeHelpSection
-          onOpenChatQualification={handleOpenChatQualification}
+          onOpenChatQualification={handleOpenContactModal}
           onOpenChatWithSector={handleOpenChatWithSector}
         />
       </LazySection>
 
-      {/* Section 7: Semilla - Lazy loaded */}
-      <LazySection className="min-h-[600px]">
-        <SemillaSection onOpenChatSemilla={handleOpenChatSemilla} />
-      </LazySection>
-
       {/* Section 8: Partnerships - Lazy loaded */}
       <LazySection className="min-h-[500px]">
-        <PartnershipsSection onOpenChatGeneral={handleOpenChatGeneral} />
+        <PartnershipsSection onOpenChatGeneral={handleOpenContactModal} />
       </LazySection>
 
       {/* Section 9: Projects - Lazy loaded */}
       <LazySection className="min-h-[600px]">
         <ProjectsSection />
-      </LazySection>
-
-      {/* Section 12: Stories - Lazy loaded */}
-      <LazySection className="min-h-[400px]">
-        <StoriesSection />
       </LazySection>
 
       {/* Section 13: Values - Lazy loaded */}
@@ -351,11 +316,11 @@ export default function Home() {
 
       {/* Section 15: What Happens Next - Lazy loaded */}
       <LazySection className="min-h-[400px]">
-        <WhatHappensNextSection onOpenChat={handleOpenChatGeneral} />
+        <WhatHappensNextSection onOpenChat={handleOpenContactModal} />
       </LazySection>
 
       {/* Footer */}
-      <Footer onContactClick={handleOpenChatGeneral} onScrollTo={scrollTo} />
+      <Footer onContactClick={handleOpenContactModal} onScrollTo={scrollTo} />
     </div>
   );
 }

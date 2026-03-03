@@ -117,7 +117,7 @@ export function Project19View({ steps, activeTab }: Project19ViewProps) {
           <span className="bg-black text-white px-1.5 py-0.5 text-[10px] mr-1">
             n8n
           </span>
-          <span className="bg-[#A855F7] text-white px-1.5 py-0.5 text-[10px] mr-1">
+          <span className="bg-primary text-primary-foreground px-1.5 py-0.5 text-[10px] mr-1">
             Notion
           </span>
           <span className="bg-[#25D366] text-white px-1.5 py-0.5 text-[10px] mr-1">

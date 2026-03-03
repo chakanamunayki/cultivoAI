@@ -75,14 +75,14 @@ export function CodeView({ steps }: CodeViewProps) {
   }, [steps.length]);
 
   return (
-    <div className="h-full flex flex-col bg-[#1a1a2e]">
+    <div className="h-full flex flex-col bg-[#18181B]">
       {/* Tab Bar */}
-      <div className="flex items-center border-b-4 border-black bg-[#16213e]">
+      <div className="flex items-center border-b-4 border-black bg-[#18181B]">
         <button
           className={`flex items-center gap-2 px-4 py-3 font-bold text-sm uppercase transition-all ${
             viewMode === "code" || viewMode === "generating"
-              ? "bg-[#1a1a2e] text-white border-r-4 border-black"
-              : "bg-[#16213e] text-gray-400 hover:text-white border-r-4 border-black"
+              ? "bg-black text-white border-r-4 border-black"
+              : "bg-[#18181B] text-zinc-400 hover:text-white border-r-4 border-black"
           }`}
         >
           <Code2 className="w-4 h-4" />
@@ -92,7 +92,7 @@ export function CodeView({ steps }: CodeViewProps) {
           className={`flex items-center gap-2 px-4 py-3 font-bold text-sm uppercase transition-all ${
             viewMode === "preview"
               ? "bg-white text-black border-r-4 border-black"
-              : "bg-[#16213e] text-gray-400 hover:text-white border-r-4 border-black"
+              : "bg-[#18181B] text-zinc-400 hover:text-white border-r-4 border-black"
           }`}
         >
           <Eye className="w-4 h-4" />
@@ -100,7 +100,7 @@ export function CodeView({ steps }: CodeViewProps) {
         </button>
         <div className="flex-1" />
         {viewMode === "generating" && (
-          <div className="flex items-center gap-2 px-4 text-purple-400 text-sm font-bold">
+          <div className="flex items-center gap-2 px-4 text-emerald-300 text-sm font-bold">
             <Sparkles className="w-4 h-4 animate-spin" />
             AI Building...
           </div>
@@ -144,10 +144,10 @@ export function CodeView({ steps }: CodeViewProps) {
             {/* Generating overlay */}
             {viewMode === "generating" && (
               <div className="absolute inset-0 bg-black/50 flex items-center justify-center backdrop-blur-sm">
-                <div className="bg-[#16213e] border-4 border-purple-500 shadow-[8px_8px_0px_0px_#A855F7] p-6 text-center">
-                  <Loader2 className="w-10 h-10 text-purple-400 animate-spin mx-auto mb-3" />
+                <div className="bg-[#18181B] border-4 border-emerald-500 shadow-[8px_8px_0px_0px_var(--primary)] p-6 text-center">
+                  <Loader2 className="w-10 h-10 text-emerald-300 animate-spin mx-auto mb-3" />
                   <div className="font-black text-white uppercase">Building Component</div>
-                  <div className="text-purple-400 text-sm mt-1">AI generating preview...</div>
+                  <div className="text-emerald-300 text-sm mt-1">AI generating preview...</div>
                 </div>
               </div>
             )}
@@ -155,7 +155,7 @@ export function CodeView({ steps }: CodeViewProps) {
         )}
 
         {viewMode === "preview" && (
-          <div className="h-full bg-gradient-to-br from-[#FFC805] to-[#FFDE00] p-8 flex items-center justify-center animate-in fade-in duration-500">
+          <div className="h-full bg-gradient-to-br from-white to-secondary p-8 flex items-center justify-center animate-in fade-in duration-500">
             {/* Preview of the generated component */}
             <div className="bg-white border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8 max-w-md text-center transform hover:-translate-y-1 transition-transform">
               <h1 className="text-3xl md:text-4xl font-black text-black mb-4 uppercase">
@@ -164,7 +164,7 @@ export function CodeView({ steps }: CodeViewProps) {
               <p className="text-lg text-gray-700 mb-6 font-medium">
                 AI-powered solutions for your business
               </p>
-              <button className="bg-[#A855F7] text-white font-black uppercase px-6 py-3 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
+              <button className="bg-primary text-primary-foreground font-black uppercase px-6 py-3 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
                 Get Started →
               </button>
 
