@@ -166,6 +166,28 @@ Status: Pending
   - `pnpm typecheck` passed
   - `pnpm build:ci` passed
 
+### 2026-03-05 (MVP UX integrity sweep pass)
+
+- Performed a targeted CTA integrity sweep across the active MVP landing surfaces:
+  - `src/app/page.tsx`
+  - `src/components/landing/layout/nav.tsx`
+  - `src/components/landing/layout/footer.tsx`
+  - `src/components/landing/ai-chat-widget.tsx`
+  - `src/components/landing/voice-conversation-mode.tsx`
+  - `src/components/landing/ui/contact-modal.tsx`
+  - `src/components/landing/sections/**` and landing modal components for CTA entry points
+- Verified visible landing/nav/footer/chat/voice CTAs resolve to real outcomes only:
+  - section anchors and smooth-scroll navigation
+  - modal open flows (project/service/partnership/contact/team)
+  - WhatsApp and mailto exits
+  - lead-capture form submissions through `POST /api/leads`
+  - chat/voice actions that route to contact capture or WhatsApp fallback paths
+- No additional safe dead-end CTA removals/corrections were required in this pass.
+- Verification for this pass:
+  - `pnpm lint` passed
+  - `pnpm typecheck` passed
+  - `pnpm build:ci` passed
+
 ## Exit Criteria For This Pass
 
 - The repo explains itself without boilerplate confusion.
