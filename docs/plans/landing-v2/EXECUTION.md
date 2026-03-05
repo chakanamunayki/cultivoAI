@@ -105,7 +105,7 @@ Template (append entries)
   - Notes:
 
 - Date: 2026-03-02
-  - Change: Locked V2 content and UX direction from review of `docs/plans/landing-page-audit/new-cotent-for-landing-page.md`.
+  - Change: Locked V2 content and UX direction from review of `docs/plans/landing-page-audit/new-content-for-landing-page.md`.
   - Files: this tracker (implementation starts next thread)
   - Verification: decisions confirmed by user in chat
   - Notes:

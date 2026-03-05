@@ -156,6 +156,16 @@ Status: Pending
   - `pnpm typecheck` passed
   - `pnpm build:ci` passed
 
+### 2026-03-05 (planning reference typo cleanup pass)
+
+- Fixed a planning-doc filename typo in `docs/plans/landing-page-audit/`:
+  - `new-cotent-for-landing-page.md` -> `new-content-for-landing-page.md`
+- Updated the remaining live reference in `docs/plans/landing-v2/EXECUTION.md` to the corrected filename.
+- Verification for this pass:
+  - `pnpm lint` passed
+  - `pnpm typecheck` passed
+  - `pnpm build:ci` passed
+
 ## Exit Criteria For This Pass
 
 - The repo explains itself without boilerplate confusion.
