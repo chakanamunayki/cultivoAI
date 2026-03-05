@@ -82,7 +82,7 @@ Use the TodoWrite tool to track progress through these phases:
 3. **Work phase by phase** - complete 6A before starting 6B
 4. **Run lint and typecheck** after each file change: `pnpm lint && pnpm typecheck`
 5. **Keep the existing UI design** - only add the form fields and update the backend
-6. **Test on port 3001** if 3000 is in use (check for stale servers)
+6. **Test on port 3005** by default (`pnpm dev`), and use `3006` if `3005` is already in use (check for stale servers)
 
 ## Key Files Reference
 

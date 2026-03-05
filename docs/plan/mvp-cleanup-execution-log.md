@@ -130,6 +130,20 @@ Status: Pending
   - Corrected dev-port guidance from `3001` to `3005` to match current scripts.
   - Replaced encoding-corrupted diagram text with ASCII-safe guidance.
 
+### 2026-03-05 (docs/reference hygiene sync pass)
+
+- Updated `docs/project_info/repo-baseline.md` to remove an outdated statement that `pnpm build` runs DB migrations.
+- Added explicit build behavior notes in `docs/project_info/repo-baseline.md`:
+  - `pnpm build` is pure (`next build`).
+  - `pnpm build:with-migrate` is explicit opt-in for migration + build.
+- Updated `specs/phase-6-voice-conversation-live-api/prompt.md` to align port guidance with current scripts:
+  - default local dev port is `3005` (`pnpm dev`)
+  - fallback port guidance updated to `3006` when `3005` is already in use.
+- Verification for this pass:
+  - `pnpm lint` passed
+  - `pnpm typecheck` passed
+  - `pnpm build:ci` passed
+
 ## Exit Criteria For This Pass
 
 - The repo explains itself without boilerplate confusion.

@@ -6,7 +6,7 @@ Date: 2026-03-02
 
 - `src/`: Next.js app code (components, hooks, routes, lib, content).
 - `public/`: static assets served by Next.js.
-- `drizzle/`: database schema + migrations (used by `pnpm build` via `db:migrate`).
+- `drizzle/`: database schema + migrations.
 - `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`, Tailwind/PostCSS config: build/tooling config.
 
 Primary commands (must stay green):
@@ -16,6 +16,11 @@ pnpm lint
 pnpm typecheck
 pnpm build:ci
 ```
+
+Build behavior:
+
+- `pnpm build` is a pure app build (`next build`).
+- `pnpm build:with-migrate` is explicit opt-in when migration + build is desired.
 
 ## Non-Shipping (Documentation / Planning / Prototypes)
 
@@ -43,4 +48,3 @@ pnpm build:ci
 - If something is not shipped, it must not break CI.
 - If a prototype in `specs/` needs typechecking, it should have its own `tsconfig.json` and its own script (separate from app CI).
 - Planning docs live under `docs/plans/**` and should be committed when they track execution.
-
