@@ -47,4 +47,4 @@ Build behavior:
 
 - If something is not shipped, it must not break CI.
 - If a prototype in `specs/` needs typechecking, it should have its own `tsconfig.json` and its own script (separate from app CI).
-- Planning docs live under `docs/plans/**` and should be committed when they track execution.
+- Planning docs live under `docs/plans/**`, and active execution logs may also live under `docs/plan/**`.

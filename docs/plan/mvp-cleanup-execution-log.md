@@ -144,6 +144,18 @@ Status: Pending
   - `pnpm typecheck` passed
   - `pnpm build:ci` passed
 
+### 2026-03-05 (repo/docs boundary consistency pass)
+
+- Re-checked docs/spec references for stale script/path guidance against current repo scripts and active plan paths.
+- Updated `docs/project_info/repo-baseline.md` working-agreement wording so it matches current structure:
+  - planning docs are under `docs/plans/**`
+  - active execution logs may also be under `docs/plan/**` (used by this MVP cleanup log)
+- Confirmed no additional non-historical references were still pointing to removed root maintenance artifacts.
+- Verification for this pass:
+  - `pnpm lint` passed
+  - `pnpm typecheck` passed
+  - `pnpm build:ci` passed
+
 ## Exit Criteria For This Pass
 
 - The repo explains itself without boilerplate confusion.
