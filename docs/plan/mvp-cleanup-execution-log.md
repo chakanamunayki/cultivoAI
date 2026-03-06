@@ -203,6 +203,24 @@ Status: Pending
   - `pnpm typecheck` passed
   - `pnpm build:ci` passed
 
+### 2026-03-05 (dirty-worktree baseline cleanup checkpoint)
+
+- Committed and pushed the accumulated MVP frontend/repo cleanup worktree to restore a clean baseline for subsequent passes:
+  - commit: `247846d`
+- Scope remained within MVP cleanup surfaces (frontend + docs/repo hygiene); no DB redesign work was introduced.
+
+### 2026-03-05 (content structure split pass 1)
+
+- Started Workstream 5 (`Content structure`) with a low-risk extraction of the `about` section into locale modules while preserving runtime content shape:
+  - added `src/content/locales/en/about.ts`
+  - added `src/content/locales/es/about.ts`
+  - updated `src/content/en.ts` and `src/content/es.ts` to import/use `enAbout` / `esAbout`
+- This reduces the size of root locale files and establishes a repeatable section-module pattern for further splits.
+- Verification for this pass:
+  - `pnpm lint` passed
+  - `pnpm typecheck` passed
+  - `pnpm build:ci` passed
+
 ## Exit Criteria For This Pass
 
 - The repo explains itself without boilerplate confusion.
