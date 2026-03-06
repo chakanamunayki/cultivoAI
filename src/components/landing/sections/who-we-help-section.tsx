@@ -274,7 +274,7 @@ export function WhoWeHelpSection({
             onClick={() => setSelectedSector(null)}
           >
             <div
-              className="animate-in zoom-in-95 max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-[26px] border border-white/80 bg-[#f7f7f7] pr-2 shadow-[0_24px_70px_rgba(15,23,42,0.24),inset_0_0_0_1px_rgba(255,255,255,0.9)] ring-1 ring-black/5 duration-200 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]"
+              className="animate-in zoom-in-95 max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-[26px] border border-white/15 bg-[#212121] pr-2 shadow-[0_24px_70px_rgba(0,0,0,0.46)] ring-1 ring-white/5 duration-200 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
@@ -449,7 +449,7 @@ export function WhoWeHelpSection({
                     }}
                     className={cn(
                       "flex w-full items-center justify-center gap-2 px-6 py-3.5 text-lg font-semibold tracking-[0.06em]",
-                      landingPrimaryDarkButtonClass
+                      landingPrimaryBlueButtonClass
                     )}
                   >
                     {selectedSector.chatButtonLabel}

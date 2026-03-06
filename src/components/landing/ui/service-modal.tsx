@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import {
   landingCardClass,
-  landingPrimaryDarkButtonClass,
+  landingPrimaryBlueButtonClass,
   landingTitleBandClass,
 } from "@/components/landing/ui/landing-card-styles";
 import type { Service } from "@/content/types";
@@ -50,7 +50,7 @@ export function ServiceModal({ service, onOpenContact }: ServiceModalProps) {
   const outcomeLabel = locale === "es" ? "Resultado tipico" : "Typical outcome";
 
   return (
-    <div className="max-h-[92vh] overflow-y-auto bg-[#f7f7f7] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">
+    <div className="max-h-[92vh] overflow-y-auto bg-[#212121] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">
       {/* Header Background with Image */}
       <div
         className={`relative h-48 overflow-hidden border-b border-black/10 md:h-64 ${
@@ -72,7 +72,7 @@ export function ServiceModal({ service, onOpenContact }: ServiceModalProps) {
       </div>
 
       {/* Content */}
-      <div className="bg-[#f7f7f7] p-8 md:p-12">
+      <div className="bg-[#212121] p-8 md:p-12">
         <div className="mb-5 -mx-8 border-y border-black/10 bg-[#e9e9e9] px-8 py-2 md:-mx-12 md:px-12">
           <h3 className="text-xs font-semibold tracking-[0.09em] text-[#4d4d4d] uppercase">
             {service.eng}
@@ -80,7 +80,7 @@ export function ServiceModal({ service, onOpenContact }: ServiceModalProps) {
         </div>
 
         <Dialog.Title asChild>
-          <h2 className="mb-3 text-3xl font-black tracking-tight text-[#1f1f1f] md:text-5xl">
+          <h2 className="mb-3 text-3xl font-black tracking-tight text-white md:text-5xl">
             {service.title}
           </h2>
         </Dialog.Title>
@@ -183,7 +183,7 @@ export function ServiceModal({ service, onOpenContact }: ServiceModalProps) {
             onClick={onOpenContact}
             className={cn(
               "w-full px-8 py-3.5 text-sm font-semibold tracking-[0.08em] md:w-auto",
-              landingPrimaryDarkButtonClass
+              landingPrimaryBlueButtonClass
             )}
           >
             {ctaText}

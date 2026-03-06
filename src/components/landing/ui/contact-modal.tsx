@@ -3,9 +3,11 @@
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Loader2, MessageSquare } from "lucide-react";
+import { landingPrimaryBlueButtonClass } from "@/components/landing/ui/landing-card-styles";
 import { useModal } from "@/components/landing/ui/modal-provider";
 import { useLocale } from "@/hooks/use-locale";
 import { createLead } from "@/lib/leads/client";
+import { cn } from "@/lib/utils";
 
 interface ContactModalProps {
   onChatClick?: () => void;
@@ -101,9 +103,9 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
   };
 
   return (
-    <div className="max-h-[92vh] overflow-y-auto bg-[#f7f7f7] p-8 pr-2 md:p-12 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">
+    <div className="max-h-[92vh] overflow-y-auto bg-[#212121] p-8 pr-2 md:p-12 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#9ca3af] [&::-webkit-scrollbar-thumb]:rounded-full">
       {/* Header */}
-      <div className="mb-8 rounded-[18px] border border-black/10 bg-[#f1f1f1] p-0 shadow-[0_10px_24px_rgba(15,23,42,0.08)]">
+      <div className="mb-8 overflow-hidden rounded-[18px] border border-black/10 bg-[#f1f1f1] p-0 shadow-[0_10px_24px_rgba(15,23,42,0.08)]">
         <div className="border-b border-[#00BCD4]/35 bg-[#00BCD4] px-6 py-2.5">
           <p className="text-xs font-semibold tracking-[0.08em] text-[#FFFFFF] uppercase">
             {contactBandLabel}
@@ -147,7 +149,10 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
           <button
             type="button"
             onClick={closeModal}
-            className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-[#1f1f1f] px-8 py-3.5 text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_28px_rgba(17,24,39,0.26)] transition-all hover:-translate-y-0.5 hover:bg-[#111] hover:shadow-[0_18px_34px_rgba(17,24,39,0.32)]"
+            className={cn(
+              "mt-5 inline-flex w-full items-center justify-center px-8 py-3.5 text-sm font-semibold tracking-[0.08em]",
+              landingPrimaryBlueButtonClass
+            )}
           >
             {locale === "es" ? "Cerrar" : "Close"}
           </button>
@@ -248,7 +253,10 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full rounded-xl bg-[#1f1f1f] px-8 py-3.5 text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_28px_rgba(17,24,39,0.26)] transition-all hover:-translate-y-0.5 hover:bg-[#111] hover:shadow-[0_18px_34px_rgba(17,24,39,0.32)] disabled:cursor-not-allowed disabled:opacity-50"
+          className={cn(
+            "w-full px-8 py-3.5 text-sm font-semibold tracking-[0.08em] disabled:cursor-not-allowed disabled:opacity-50",
+            landingPrimaryBlueButtonClass
+          )}
         >
           {isSubmitting ? (
             <span className="inline-flex items-center justify-center gap-2">

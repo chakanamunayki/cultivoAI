@@ -60,7 +60,7 @@ export function ProjectModal({ project, onOpenContact }: ProjectModalProps) {
   };
 
   return (
-    <div className="max-h-[92vh] overflow-y-auto bg-[#f7f7f7] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">
+    <div className="max-h-[92vh] overflow-y-auto bg-[#212121] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">
       {/* Top Gallery */}
       <div className="overflow-hidden border-b border-black/10 bg-[#18181B]">
         <div className="relative aspect-[16/9] w-full overflow-hidden">
@@ -132,7 +132,7 @@ export function ProjectModal({ project, onOpenContact }: ProjectModalProps) {
       </div>
 
       {/* Content */}
-      <div className="bg-[#f7f7f7] p-6 md:p-8 lg:p-10">
+      <div className="bg-[#212121] p-6 md:p-8 lg:p-10">
         <div className="mb-5 -mx-6 border-y border-black/10 bg-[#e9e9e9] px-6 py-2 md:-mx-8 md:px-8 lg:-mx-10 lg:px-10">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold tracking-[0.08em] text-[#4f4f4f] uppercase md:text-xs">
             <span>{project.status}</span>
@@ -145,13 +145,13 @@ export function ProjectModal({ project, onOpenContact }: ProjectModalProps) {
         </div>
 
         <Dialog.Title asChild>
-          <h2 className="mb-4 text-3xl leading-tight font-black tracking-tight text-[#1f1f1f] md:text-4xl lg:text-5xl">
+          <h2 className="mb-4 text-3xl leading-tight font-black tracking-tight text-white md:text-4xl lg:text-5xl">
             {project.title}
           </h2>
         </Dialog.Title>
 
         <Dialog.Description asChild>
-          <p className="mb-8 text-lg leading-relaxed font-semibold text-[#353535] md:text-xl">
+          <p className="mb-8 text-lg leading-relaxed font-semibold text-white/85 md:text-xl">
             {project.fullDesc}
           </p>
         </Dialog.Description>
@@ -229,7 +229,7 @@ export function ProjectModal({ project, onOpenContact }: ProjectModalProps) {
         <button
           type="button"
           onClick={onOpenContact}
-          className="mt-8 w-full rounded-xl bg-[#1f1f1f] px-6 py-3.5 text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_28px_rgba(17,24,39,0.26)] transition-all hover:-translate-y-0.5 hover:bg-[#111] hover:shadow-[0_18px_34px_rgba(17,24,39,0.32)]"
+          className="mt-8 w-full rounded-xl bg-[#00BCD4] px-6 py-3.5 text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_28px_rgba(15,23,42,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.28)]"
         >
           {ctaText}
         </button>

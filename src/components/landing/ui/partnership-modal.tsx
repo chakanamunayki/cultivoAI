@@ -40,7 +40,7 @@ export function PartnershipModal({ partnership, onOpenContact }: PartnershipModa
   const outcomeLabel = locale === "es" ? "Resultado tipico" : "Typical outcome";
 
   return (
-    <div className="max-h-[92vh] overflow-y-auto bg-[#f7f7f7] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">
+    <div className="max-h-[92vh] overflow-y-auto bg-[#212121] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">
       {/* Header */}
       <div className="relative overflow-hidden border-b border-black/10">
         {partnership.imageUrl ? (
@@ -147,7 +147,7 @@ export function PartnershipModal({ partnership, onOpenContact }: PartnershipModa
       <button
         type="button"
         onClick={onOpenContact}
-        className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-[#1f1f1f] px-8 py-3.5 text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_28px_rgba(17,24,39,0.26)] transition-all hover:-translate-y-0.5 hover:bg-[#111] hover:shadow-[0_18px_34px_rgba(17,24,39,0.32)]"
+        className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-[#00BCD4] px-8 py-3.5 text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_28px_rgba(15,23,42,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.28)]"
       >
         <MessageSquare size={20} />
         {chatCtaText}

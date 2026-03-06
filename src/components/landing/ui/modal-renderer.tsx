@@ -17,7 +17,7 @@ interface ModalRendererProps {
 export function ModalRenderer({ onOpenContact, onChatClick }: ModalRendererProps) {
   const { modalData, closeModal, isOpen } = useModal();
   const modalSize = modalData.type === "project" ? "wide" : "default";
-  const modalVariant = "soft";
+  const modalVariant = modalData.type === "teamMember" ? "soft" : "softDark";
 
   const renderContent = () => {
     switch (modalData.type) {
