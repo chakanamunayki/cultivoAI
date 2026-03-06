@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Briefcase, HeartHandshake, PieChart, type LucideIcon } from "lucide-react";
 import {
   landingCardClass,
+  landingPrimaryBlueButtonClass,
   landingPrimaryDarkButtonClass,
   landingTitleBandClass,
   type LandingCardVariant,
@@ -127,7 +128,9 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
                       onClick={() => handlePartnershipClick(partner)}
                       className={cn(
                         "w-full rounded-lg px-4 py-2.5 text-center text-xs font-semibold tracking-[0.07em]",
-                        landingPrimaryDarkButtonClass
+                        variant === "dark"
+                          ? landingPrimaryBlueButtonClass
+                          : landingPrimaryDarkButtonClass
                       )}
                     >
                       {locale === "es" ? "Ver detalles ->" : "View details ->"}

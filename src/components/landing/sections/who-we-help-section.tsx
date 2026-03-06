@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import {
   landingCardClass,
+  landingPrimaryBlueButtonClass,
   landingPrimaryDarkButtonClass,
   landingTitleBandClass,
   type LandingCardVariant,
@@ -229,7 +230,9 @@ export function WhoWeHelpSection({
                             }}
                             className={cn(
                               "flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2.5 text-xs font-semibold tracking-[0.06em]",
-                              landingPrimaryDarkButtonClass,
+                              variant === "dark"
+                                ? landingPrimaryBlueButtonClass
+                                : landingPrimaryDarkButtonClass,
                               "shadow-[0_8px_16px_rgba(17,24,39,0.24)]"
                             )}
                           >
@@ -246,7 +249,9 @@ export function WhoWeHelpSection({
                             }}
                             className={cn(
                               "flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2.5 text-xs font-semibold tracking-[0.06em]",
-                              landingPrimaryDarkButtonClass
+                              variant === "dark"
+                                ? landingPrimaryBlueButtonClass
+                                : landingPrimaryDarkButtonClass
                             )}
                           >
                             {sector.chatButtonLabel}

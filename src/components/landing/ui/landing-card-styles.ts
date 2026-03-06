@@ -36,3 +36,6 @@ export function landingIconChipClass(variant: LandingCardVariant, className?: st
 
 export const landingPrimaryDarkButtonClass =
   "rounded-xl bg-[#212121] text-white uppercase shadow-[0_14px_28px_rgba(17,24,39,0.26)] transition-all hover:-translate-y-0.5 hover:bg-[#181818] hover:shadow-[0_18px_34px_rgba(17,24,39,0.32)]";
+
+export const landingPrimaryBlueButtonClass =
+  "rounded-xl bg-[#00BCD4] text-white uppercase shadow-[0_14px_28px_rgba(15,23,42,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.28)]";
