@@ -1,9 +1,17 @@
 "use client";
 
 import { ArrowRight, Check, Settings, Rocket, type LucideIcon } from "lucide-react";
+import {
+  landingCardClass,
+  landingIconChipClass,
+  landingPrimaryDarkButtonClass,
+  landingTitleBandClass,
+  type LandingCardVariant,
+} from "@/components/landing/ui/landing-card-styles";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { SectionHeader } from "@/components/landing/ui/section-header";
 import { useLocale } from "@/hooks/use-locale";
+import { cn } from "@/lib/utils";
 
 interface WhatWeDoSectionProps {
   onScrollToServices?: () => void;
@@ -51,50 +59,21 @@ export function WhatWeDoSection({ onScrollToServices }: WhatWeDoSectionProps) {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16">
           {whatWeDo.columns.map((column, columnIndex) => {
             const IconComponent = columnIcons[columnIndex] ?? Settings;
-            const isFeatured = columnIndex === 1;
+            const variant: LandingCardVariant = columnIndex === 1 ? "blue" : "dark";
             return (
               <Reveal key={column.title} delay={columnIndex * 150 + 150}>
-                <div
-                  className={`h-full overflow-hidden rounded-[28px] border p-0 transition-all duration-200 ${
-                    isFeatured
-                      ? "border-[#00BCD4] bg-[#00BCD4] text-[#FFFFFF] shadow-[0_18px_34px_rgba(15,23,42,0.22)] hover:-translate-y-1 hover:bg-[#00BCD4] hover:shadow-[0_22px_40px_rgba(15,23,42,0.28)]"
-                      : "border-black/10 bg-[#f3f3f3] text-[#1f1f1f] shadow-[0_16px_30px_rgba(15,23,42,0.1)] ring-1 ring-white/80 hover:-translate-y-1 hover:bg-[#f6f6f6] hover:shadow-[0_20px_36px_rgba(15,23,42,0.16)]"
-                  }`}
-                >
+                <div className={landingCardClass(variant, "h-full overflow-hidden rounded-[28px] p-0 hover:-translate-y-1")}>
                   {/* Header with icon and title */}
                   <div
-                    className={`flex items-center gap-4 border-b p-6 md:gap-6 md:p-8 ${
-                      isFeatured
-                        ? "border-[#00BCD4]/50 bg-[#00BCD4]"
-                        : "border-black/10 bg-[#e6e6e6]"
-                    }`}
+                    className={landingTitleBandClass(
+                      variant,
+                      "flex items-center gap-4 px-6 py-4 md:gap-6 md:px-8 md:py-5"
+                    )}
                   >
-                    <div
-                      className={`flex h-16 w-16 items-center justify-center rounded-xl border md:h-20 md:w-20 ${
-                        isFeatured
-                          ? "border-white/25 bg-white/10 text-[#FFFFFF]"
-                          : "border-black/10 bg-[#f0f0f0] text-[#1f1f1f]"
-                      }`}
-                    >
-                      <IconComponent
-                        size={36}
-                        className={isFeatured ? "text-[#FFFFFF]" : "text-primary"}
-                        strokeWidth={2.5}
-                      />
+                    <div className={cn("flex h-16 w-16 items-center justify-center rounded-xl border md:h-20 md:w-20", landingIconChipClass(variant, "p-0"))}>
+                      <IconComponent size={36} className="text-[#FFFFFF]" strokeWidth={2.5} />
                     </div>
-                    <h3
-                      className="text-3xl font-black tracking-tight md:text-4xl"
-                    >
-                      <span
-                        className={`inline-block rounded-[4px] px-3 py-1 ${
-                          isFeatured
-                            ? "bg-[#212121] text-[#FFFFFF]"
-                            : "bg-[#00BCD4] text-[#FFFFFF]"
-                        }`}
-                      >
-                        {column.title}
-                      </span>
-                    </h3>
+                    <h3 className="text-3xl font-black tracking-tight md:text-4xl">{column.title}</h3>
                   </div>
 
                   {/* Items list with better spacing and visibility */}
@@ -103,16 +82,18 @@ export function WhatWeDoSection({ onScrollToServices }: WhatWeDoSectionProps) {
                       {column.items.map((item, itemIndex) => (
                         <li
                           key={itemIndex}
-                          className={`group flex items-center gap-4 ${
-                            isFeatured ? "text-[#eef9f5]" : "text-[#1f1f1f]"
-                          }`}
+                          className={cn(
+                            "group flex items-center gap-4",
+                            variant === "blue" ? "text-[#eef9f5]" : "text-white/90"
+                          )}
                         >
                           <div
-                            className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition-transform group-hover:scale-105 ${
-                              isFeatured
+                            className={cn(
+                              "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition-transform group-hover:scale-105",
+                              variant === "blue"
                                 ? "border-white/30 bg-white/10"
-                                : "border-black/15 bg-[#e8e8e8]"
-                            }`}
+                                : "border-white/20 bg-black/20"
+                            )}
                           >
                             <Check
                               size={18}
@@ -138,7 +119,10 @@ export function WhatWeDoSection({ onScrollToServices }: WhatWeDoSectionProps) {
           <div className="text-center">
             <button
               onClick={handleScrollToServices}
-              className="group inline-flex items-center gap-2 rounded-xl bg-[#1f1f1f] px-8 py-3.5 text-lg font-semibold tracking-[0.06em] text-white uppercase shadow-[0_14px_28px_rgba(17,24,39,0.26)] transition-all hover:-translate-y-0.5 hover:bg-[#111] hover:shadow-[0_18px_34px_rgba(17,24,39,0.32)]"
+              className={cn(
+                "group inline-flex items-center gap-2 px-8 py-3.5 text-lg font-semibold tracking-[0.06em]",
+                landingPrimaryDarkButtonClass
+              )}
             >
               {whatWeDo.servicesPreview.linkText}
               <ArrowRight
