@@ -39,10 +39,12 @@ export function MissionSection({ onOpenChatImpact }: MissionSectionProps) {
               <div
                 className={landingTitleBandClass(
                   "dark",
-                  "-mx-6 mb-4 px-6 py-2.5 text-xs font-semibold tracking-[0.08em] uppercase md:-mx-8 md:px-8"
+                  "-mx-6 mb-4 px-6 py-2.5 md:-mx-8 md:px-8"
                 )}
               >
-                {mission.title}
+                <h3 className="text-lg font-black leading-tight text-[#FFFFFF] md:text-xl">
+                  {mission.title}
+                </h3>
               </div>
               <div className="space-y-4">
                 {mission.statement.map((line, index) => (
@@ -64,10 +66,12 @@ export function MissionSection({ onOpenChatImpact }: MissionSectionProps) {
                 <div
                   className={landingTitleBandClass(
                     "blue",
-                    "-mx-8 mb-4 px-8 py-2.5 text-xs font-semibold tracking-[0.08em] uppercase md:-mx-12 md:px-12"
+                    "-mx-8 mb-4 px-8 py-2.5 md:-mx-12 md:px-12"
                   )}
                 >
-                  {mission.title}
+                  <h3 className="text-lg font-black leading-tight text-[#FFFFFF] md:text-xl">
+                    {mission.title}
+                  </h3>
                 </div>
                 <span className="text-2xl font-black tracking-tight text-[#FFFFFF] md:text-3xl lg:text-4xl">
                   {mission.tagline}
