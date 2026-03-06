@@ -2,6 +2,7 @@
 
 import { ArrowRight, Check, Settings, Rocket, type LucideIcon } from "lucide-react";
 import { Reveal } from "@/components/landing/ui/reveal";
+import { SectionHeader } from "@/components/landing/ui/section-header";
 import { useLocale } from "@/hooks/use-locale";
 
 interface WhatWeDoSectionProps {
@@ -29,19 +30,12 @@ export function WhatWeDoSection({ onScrollToServices }: WhatWeDoSectionProps) {
   return (
     <section
       id="what-we-do"
-      className="border-b-4 border-black bg-background py-16 md:py-24"
+      className="border-b border-black/10 bg-background py-16 md:py-24"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header - Standard brand styling */}
+        {/* Header */}
         <Reveal>
-          <div className="flex flex-col md:flex-row gap-6 mb-12 md:mb-16 items-start">
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-none bg-black text-white px-4 py-2 inline-block rotate-1">
-              {whatWeDo.title}
-            </h2>
-            <p className="text-lg md:text-xl font-bold max-w-xl md:mt-2 border-l-4 border-primary pl-4 md:pl-6">
-              {whatWeDo.subtitle}
-            </p>
-          </div>
+          <SectionHeader title={whatWeDo.title} subtitle={whatWeDo.subtitle} />
         </Reveal>
 
         {/* Intro paragraph */}
@@ -57,27 +51,49 @@ export function WhatWeDoSection({ onScrollToServices }: WhatWeDoSectionProps) {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16">
           {whatWeDo.columns.map((column, columnIndex) => {
             const IconComponent = columnIcons[columnIndex] ?? Settings;
-            const isOptimize = columnIndex === 0;
+            const isFeatured = columnIndex === 1;
             return (
               <Reveal key={column.title} delay={columnIndex * 150 + 150}>
                 <div
-                  className="h-full border-4 border-black bg-white shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all duration-300"
+                  className={`h-full overflow-hidden rounded-[28px] border p-0 transition-all duration-200 ${
+                    isFeatured
+                      ? "border-[#00BCD4] bg-[#00BCD4] text-[#FFFFFF] shadow-[0_18px_34px_rgba(15,23,42,0.22)] hover:-translate-y-1 hover:bg-[#00BCD4] hover:shadow-[0_22px_40px_rgba(15,23,42,0.28)]"
+                      : "border-black/10 bg-[#f3f3f3] text-[#1f1f1f] shadow-[0_16px_30px_rgba(15,23,42,0.1)] ring-1 ring-white/80 hover:-translate-y-1 hover:bg-[#f6f6f6] hover:shadow-[0_20px_36px_rgba(15,23,42,0.16)]"
+                  }`}
                 >
                   {/* Header with icon and title */}
-                  <div className="p-6 md:p-8 border-b-4 border-black flex items-center gap-4 md:gap-6">
+                  <div
+                    className={`flex items-center gap-4 border-b p-6 md:gap-6 md:p-8 ${
+                      isFeatured
+                        ? "border-[#00BCD4]/50 bg-[#00BCD4]"
+                        : "border-black/10 bg-[#e6e6e6]"
+                    }`}
+                  >
                     <div
-                      className={`w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${isOptimize ? "bg-secondary" : "bg-primary"}`}
+                      className={`flex h-16 w-16 items-center justify-center rounded-xl border md:h-20 md:w-20 ${
+                        isFeatured
+                          ? "border-white/25 bg-white/10 text-[#FFFFFF]"
+                          : "border-black/10 bg-[#f0f0f0] text-[#1f1f1f]"
+                      }`}
                     >
                       <IconComponent
                         size={36}
-                        className={isOptimize ? "text-primary" : "text-primary-foreground"}
+                        className={isFeatured ? "text-[#FFFFFF]" : "text-primary"}
                         strokeWidth={2.5}
                       />
                     </div>
                     <h3
-                      className="text-3xl md:text-4xl font-black uppercase tracking-tight text-foreground"
+                      className="text-3xl font-black tracking-tight md:text-4xl"
                     >
-                      {column.title}
+                      <span
+                        className={`inline-block rounded-[4px] px-3 py-1 ${
+                          isFeatured
+                            ? "bg-[#212121] text-[#FFFFFF]"
+                            : "bg-[#00BCD4] text-[#FFFFFF]"
+                        }`}
+                      >
+                        {column.title}
+                      </span>
                     </h3>
                   </div>
 
@@ -87,10 +103,16 @@ export function WhatWeDoSection({ onScrollToServices }: WhatWeDoSectionProps) {
                       {column.items.map((item, itemIndex) => (
                         <li
                           key={itemIndex}
-                          className="flex gap-4 items-center group text-foreground"
+                          className={`group flex items-center gap-4 ${
+                            isFeatured ? "text-[#eef9f5]" : "text-[#1f1f1f]"
+                          }`}
                         >
                           <div
-                            className="w-8 h-8 flex items-center justify-center border-2 border-current shrink-0 group-hover:scale-110 transition-transform bg-muted"
+                            className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition-transform group-hover:scale-105 ${
+                              isFeatured
+                                ? "border-white/30 bg-white/10"
+                                : "border-black/15 bg-[#e8e8e8]"
+                            }`}
                           >
                             <Check
                               size={18}
@@ -98,7 +120,7 @@ export function WhatWeDoSection({ onScrollToServices }: WhatWeDoSectionProps) {
                               strokeWidth={3}
                             />
                           </div>
-                          <span className="text-base md:text-lg font-bold leading-snug">
+                          <span className="text-base leading-snug font-semibold md:text-lg">
                             {item}
                           </span>
                         </li>
@@ -116,7 +138,7 @@ export function WhatWeDoSection({ onScrollToServices }: WhatWeDoSectionProps) {
           <div className="text-center">
             <button
               onClick={handleScrollToServices}
-              className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 font-black uppercase text-lg border-4 border-black shadow-[8px_8px_0px_0px_var(--primary)] hover:bg-white hover:text-black hover:shadow-[4px_4px_0px_0px_var(--primary)] hover:-translate-y-1 transition-all group"
+              className="group inline-flex items-center gap-2 rounded-xl bg-[#1f1f1f] px-8 py-3.5 text-lg font-semibold tracking-[0.06em] text-white uppercase shadow-[0_14px_28px_rgba(17,24,39,0.26)] transition-all hover:-translate-y-0.5 hover:bg-[#111] hover:shadow-[0_18px_34px_rgba(17,24,39,0.32)]"
             >
               {whatWeDo.servicesPreview.linkText}
               <ArrowRight

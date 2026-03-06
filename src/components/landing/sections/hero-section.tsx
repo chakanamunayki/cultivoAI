@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useMemo } from "react";
+import { ArrowDownRight, MessageCircle, Telescope } from "lucide-react";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { useLocale } from "@/hooks/use-locale";
 
@@ -11,141 +11,98 @@ interface HeroSectionProps {
   onTertiaryCta: () => void;
 }
 
-export function HeroSection({
-  onPrimaryCta,
-  onSecondaryCta,
-  onTertiaryCta,
-}: HeroSectionProps) {
+const HERO_VIDEO_URL = "https://assets.codepen.io/319606/tactus-waves-hero-sm.mp4";
+
+export function HeroSection({ onPrimaryCta, onSecondaryCta, onTertiaryCta }: HeroSectionProps) {
   const { content } = useLocale();
-  const shouldReduceMotion = useReducedMotion();
-  const rotatingAudience = content.hero.audienceChips;
-  const [activeAudienceIndex, setActiveAudienceIndex] = useState(0);
-  const [isRotationPaused, setIsRotationPaused] = useState(false);
 
-  const subheadLines = content.hero.subheadline
-    .split("\n")
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .slice(0, 3);
-
-  const outcomesLine = content.hero.outcomes.join(" · ");
-
-  const longestAudience = useMemo(() => {
-    return rotatingAudience.reduce(
-      (longest, item) => (item.length > longest.length ? item : longest),
-      rotatingAudience[0] ?? ""
-    );
-  }, [rotatingAudience]);
-
-  const audienceMinWidthCh = Math.min(Math.max(longestAudience.length + 1, 18), 34);
-  const activeIndex = shouldReduceMotion
-    ? 0
-    : activeAudienceIndex % Math.max(rotatingAudience.length, 1);
-
-  useEffect(() => {
-    if (shouldReduceMotion || isRotationPaused || rotatingAudience.length <= 1) {
-      return;
-    }
-
-    const interval = setInterval(() => {
-      setActiveAudienceIndex((current) => (current + 1) % rotatingAudience.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [isRotationPaused, rotatingAudience.length, shouldReduceMotion]);
+  const audienceChips = useMemo(() => {
+    return Array.from(new Set(content.hero.audienceChips.map((item) => item.trim()).filter(Boolean))).slice(0, 6);
+  }, [content.hero.audienceChips]);
 
   return (
-    <section id="hero" className="relative overflow-hidden border-b border-black/10">
-      <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.96)_0%,rgba(16,185,129,0.10)_52%,rgba(255,255,255,0.98)_100%)]" />
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.28) 1px, transparent 0)",
-          backgroundSize: "3px 3px",
-        }}
-      />
+    <section
+      id="hero"
+      data-custom-cursor-region
+      className="relative z-10 isolate min-h-[620px] overflow-visible rounded-br-[15vw] bg-white text-[#efefef] md:min-h-[760px]"
+    >
+      <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-br-[15vw] bg-[#212121]">
+        <div className="absolute inset-0 overflow-hidden rounded-br-[15vw]">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="h-full w-full rotate-180 object-cover object-center [object-position:50%_28%] md:[object-position:50%_20%]"
+          >
+            <source src={HERO_VIDEO_URL} type="video/mp4" />
+          </video>
+        </div>
 
-      <div className="relative max-w-[1140px] mx-auto px-6 md:px-10 lg:px-12 py-12 md:py-14 lg:py-16">
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(33,33,33,0.18)_12%,rgba(33,33,33,0.85)_72%)]" />
+      </div>
+
+      <div className="relative z-10 mx-auto flex min-h-[620px] w-full max-w-[1600px] items-end px-6 pt-32 pb-24 md:min-h-[760px] md:px-10 md:pb-28 lg:px-16">
         <Reveal>
-          <div className="max-w-[760px]">
-            <p className="text-xs md:text-sm font-bold tracking-[0.16em] uppercase text-neutral-700 mb-4">
+          <div className="max-w-[1120px]">
+            <p className="mb-4 inline-flex rounded-full border border-white/20 bg-black/25 px-3 py-1 text-xs font-semibold tracking-[0.12em] uppercase md:mb-6 md:text-sm">
               {content.hero.tagline}
             </p>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-black">
+            <h1 className="text-[clamp(2.35rem,8.4vw,7.1rem)] leading-[0.88] font-black tracking-[-0.04em] text-white mix-blend-difference">
               {content.hero.line1}
             </h1>
 
-            <div className="mt-5 space-y-2 text-base md:text-lg text-neutral-800">
-              {subheadLines.map((line) => (
-                <p key={line}>{line}</p>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/[0.86] md:mt-7 md:text-xl">
+              {content.hero.subheadline}
+            </p>
+
+            <div className="mt-7 flex flex-wrap gap-2.5 md:mt-8">
+              {audienceChips.map((chip) => (
+                <span
+                  key={chip}
+                  className="inline-flex items-center rounded-full border border-white/30 bg-black/30 px-3.5 py-1.5 text-xs font-semibold text-white/90 md:text-sm"
+                >
+                  {chip}
+                </span>
               ))}
             </div>
 
-            <p className="mt-5 text-sm md:text-base font-semibold text-neutral-900">
-              {outcomesLine}
-            </p>
-
-            <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm md:text-base">
-              <span className="font-semibold text-neutral-700">
-                {content.hero.audienceLabel}
-              </span>
-              <span
-                className="relative inline-flex h-7 md:h-8 max-w-full overflow-hidden font-mono font-semibold text-neutral-900 cursor-default"
-                style={{ width: `min(100%, ${audienceMinWidthCh}ch)` }}
-                onMouseEnter={() => setIsRotationPaused(true)}
-                onMouseLeave={() => setIsRotationPaused(false)}
-                onFocusCapture={() => setIsRotationPaused(true)}
-                onBlurCapture={() => setIsRotationPaused(false)}
-                tabIndex={0}
-                aria-live={shouldReduceMotion ? "off" : "polite"}
-              >
-                {rotatingAudience.map((item, index) => (
-                  <span
-                    key={item}
-                    aria-hidden={index !== activeIndex}
-                    className={[
-                      "absolute left-0 top-1/2 -translate-y-1/2 whitespace-nowrap transition-opacity duration-700 ease-out",
-                      index === activeIndex ? "opacity-100" : "opacity-0",
-                    ].join(" ")}
-                  >
-                    {item}
-                  </span>
-                ))}
-              </span>
-            </div>
-
-            <div className="mt-7 flex flex-wrap items-center gap-3 md:gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-3 md:mt-10">
               <button
                 type="button"
                 onClick={onPrimaryCta}
-                className="bg-black text-white px-6 py-3 font-semibold rounded-md hover:bg-neutral-800 transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-[#00BCD4] px-5 py-3 text-sm font-bold tracking-[0.07em] text-[#111111] uppercase transition-colors hover:bg-[#00BCD4] md:text-base"
               >
+                <MessageCircle size={18} />
                 {content.hero.cta}
               </button>
+
               <button
                 type="button"
                 onClick={onSecondaryCta}
-                className="bg-white text-black px-6 py-3 font-semibold rounded-md border border-neutral-300 hover:border-neutral-500 transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-black/25 px-5 py-3 text-sm font-bold tracking-[0.07em] text-white uppercase transition-colors hover:bg-black/40 md:text-base"
               >
+                <Telescope size={18} />
                 {content.hero.secondaryCta}
               </button>
+
               <button
                 type="button"
                 onClick={onTertiaryCta}
-                className="text-sm md:text-base font-semibold underline underline-offset-4 text-neutral-800 hover:text-black transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-transparent px-2 py-2 text-sm font-semibold text-white/90 underline decoration-white/60 underline-offset-4 transition-colors hover:text-white md:text-base"
               >
                 {content.hero.tertiaryCta}
+                <ArrowDownRight size={17} />
               </button>
             </div>
-
-            <p className="mt-4 text-xs md:text-sm text-neutral-700">
-              {content.hero.microcopy}
-            </p>
           </div>
         </Reveal>
       </div>
+
+      <div className="pointer-events-none absolute top-full left-0 z-20 h-[15vw] w-[15vw] bg-[#212121]" />
+      <div className="pointer-events-none absolute top-full left-0 z-30 h-[15vw] w-[15vw] rounded-tl-[15vw] bg-white" />
     </section>
   );
 }

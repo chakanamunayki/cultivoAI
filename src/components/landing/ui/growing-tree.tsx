@@ -210,7 +210,7 @@ export function GrowingTree({ className = "" }: GrowingTreeProps) {
             y="200"
             width="16"
             height="200"
-            fill="#059669"
+            fill="#00BCD4"
             stroke="#000"
             strokeWidth="3"
           />
@@ -224,7 +224,7 @@ export function GrowingTree({ className = "" }: GrowingTreeProps) {
             y="195"
             width="100"
             height="10"
-            fill="#059669"
+            fill="#00BCD4"
             stroke="#000"
             strokeWidth="2"
           />
@@ -254,7 +254,7 @@ export function GrowingTree({ className = "" }: GrowingTreeProps) {
             y="120"
             width="16"
             height="80"
-            fill="#059669"
+            fill="#00BCD4"
             stroke="#000"
             strokeWidth="2"
           />
@@ -284,7 +284,7 @@ export function GrowingTree({ className = "" }: GrowingTreeProps) {
             y="195"
             width="100"
             height="10"
-            fill="#059669"
+            fill="#00BCD4"
             stroke="#000"
             strokeWidth="2"
           />

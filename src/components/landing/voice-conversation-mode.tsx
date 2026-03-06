@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Loader2, Mic, Phone, X, AlertCircle, WifiOff } from "lucide-react";
 import { useGeminiLive } from "@/hooks/use-gemini-live";
 import { buildVoiceSystemPrompt } from "@/lib/chat/system-prompt";
+import { VoiceContactForm } from "./voice-contact-form";
 import { VoiceMicLevel } from "./voice-mic-level";
 import VisualizerCanvas from "./voice-visualizer-canvas";
 import { VisualizerMode } from "./voice-visualizer-types";
@@ -527,6 +528,12 @@ export function VoiceConversationMode({
         } else {
           setFormError(labels.formError);
         }
+      } else {
+        setFormData({ name: "", email: "", phone: "" });
+        setShowForm(false);
+        if (!isConnected) {
+          connect();
+        }
       }
     } catch {
       setFormError(labels.formError);
@@ -590,7 +597,7 @@ export function VoiceConversationMode({
       case "processing":
       case "speaking":
       case "interrupted":
-        return "#059669"; // Emerald for AI
+        return "#00BCD4"; // Emerald for AI
       default:
         return "#10B981"; // Green for idle/ready
     }
@@ -674,78 +681,18 @@ export function VoiceConversationMode({
             </div>
 
             {/* Form */}
-            <form
+            <VoiceContactForm
+              locale={locale}
+              labels={labels}
+              formData={formData}
+              formError={formError}
+              isSubmitting={isSubmittingForm}
               onSubmit={handlePreConnectionFormSubmit}
-              className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_var(--primary)] p-6 space-y-4"
-            >
-              <div>
-                <label className="block text-sm font-bold uppercase mb-2 text-black">
-                  {labels.name}
-                </label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                  placeholder={locale === "es" ? "Tu nombre" : "Your name"}
-                  className="w-full p-3 border-4 border-black bg-muted font-bold text-base focus:shadow-[4px_4px_0px_0px_var(--primary)] outline-none transition-shadow"
-                  disabled={isSubmittingForm}
-                  autoFocus
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-bold uppercase mb-2 text-black">
-                  {labels.email}
-                </label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                  placeholder={locale === "es" ? "tu@email.com" : "your@email.com"}
-                  className="w-full p-3 border-4 border-black bg-muted font-bold text-base focus:shadow-[4px_4px_0px_0px_var(--primary)] outline-none transition-shadow"
-                  disabled={isSubmittingForm}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-bold uppercase mb-2 text-black">
-                  {labels.phone}
-                </label>
-                <input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                  placeholder={locale === "es" ? "+57 300 123 4567" : "+1 555 123 4567"}
-                  className="w-full p-3 border-4 border-black bg-muted font-bold text-base focus:shadow-[4px_4px_0px_0px_var(--primary)] outline-none transition-shadow"
-                  disabled={isSubmittingForm}
-                />
-              </div>
-              {formError && (
-                <p className="text-sm font-bold text-[#EF4444]">{formError}</p>
-              )}
-              <button
-                type="submit"
-                disabled={isSubmittingForm}
-                className="w-full p-3 bg-primary text-primary-foreground font-bold uppercase border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-primary/90 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
-              >
-                {isSubmittingForm ? (
-                  <>
-                    <Loader2 size={20} className="animate-spin" />
-                    {labels.submitting}
-                  </>
-                ) : (
-                  labels.submit
-                )}
-              </button>
-              {!requirePreForm && (
-                <button
-                  type="button"
-                  onClick={handlePreConnectionFormSkip}
-                  disabled={isSubmittingForm}
-                  className="w-full p-2 text-sm font-bold text-black/60 uppercase hover:text-black disabled:opacity-50 transition-colors"
-                >
-                  {labels.skipForm}
-                </button>
-              )}
-            </form>
+              onFormDataChange={setFormData}
+              showSkipButton={!requirePreForm}
+              skipButtonLabel={labels.skipForm}
+              onSkip={handlePreConnectionFormSkip}
+            />
           </div>
         ) : showForm ? (
           <div className="w-full max-w-sm">
@@ -755,75 +702,19 @@ export function VoiceConversationMode({
             </h2>
 
             {/* Form */}
-            <form
+            <VoiceContactForm
+              locale={locale}
+              labels={labels}
+              formData={formData}
+              formError={formError}
+              isSubmitting={isSubmittingForm}
               onSubmit={handleFormSubmit}
-              className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_var(--primary)] p-6 space-y-4"
-            >
-              <div>
-                <label className="block text-sm font-bold uppercase mb-2 text-black">
-                  {labels.name}
-                </label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                  placeholder={locale === "es" ? "Tu nombre" : "Your name"}
-                  className="w-full p-3 border-4 border-black bg-muted font-bold text-base focus:shadow-[4px_4px_0px_0px_var(--primary)] outline-none"
-                  disabled={isSubmittingForm}
-                  autoFocus
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-bold uppercase mb-2 text-black">
-                  {labels.email}
-                </label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                  placeholder={locale === "es" ? "tu@email.com" : "your@email.com"}
-                  className="w-full p-3 border-4 border-black bg-muted font-bold text-base focus:shadow-[4px_4px_0px_0px_var(--primary)] outline-none"
-                  disabled={isSubmittingForm}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-bold uppercase mb-2 text-black">
-                  {labels.phone}
-                </label>
-                <input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                  placeholder={locale === "es" ? "+57 300 123 4567" : "+1 555 123 4567"}
-                  className="w-full p-3 border-4 border-black bg-muted font-bold text-base focus:shadow-[4px_4px_0px_0px_var(--primary)] outline-none"
-                  disabled={isSubmittingForm}
-                />
-              </div>
-              {formError && (
-                <p className="text-sm font-bold text-[#EF4444]">{formError}</p>
-              )}
-              <button
-                type="submit"
-                disabled={isSubmittingForm}
-                className="w-full p-3 bg-primary text-primary-foreground font-bold uppercase border-4 border-black hover:bg-primary/90 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 transition-all flex items-center justify-center gap-2"
-              >
-                {isSubmittingForm ? (
-                  <>
-                    <Loader2 size={20} className="animate-spin" />
-                    {labels.submitting}
-                  </>
-                ) : (
-                  labels.submit
-                )}
-              </button>
-              <button
-                type="button"
-                onClick={handleFormDismiss}
-                className="w-full p-2 text-sm font-bold text-black/60 uppercase hover:text-black transition-colors"
-              >
-                {locale === "es" ? "Saltar por ahora" : "Skip for now"}
-              </button>
-            </form>
+              onFormDataChange={setFormData}
+              showSkipButton
+              skipButtonLabel={labels.skipForm}
+              onSkip={handleFormDismiss}
+              submitButtonClassName="w-full p-3 bg-primary text-primary-foreground font-bold uppercase border-4 border-black hover:bg-primary/90 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 transition-all flex items-center justify-center gap-2"
+            />
           </div>
         ) : (
           <>

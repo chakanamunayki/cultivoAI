@@ -51,9 +51,9 @@ const VisualizerCanvas: React.FC<VisualizerCanvasProps> = ({ mode, frequencyData
     const getPalette = (): Palette => {
       if (source === 'ai') {
         return {
-          stops: ['#059669', '#047857', '#34D399'], // Emerald -> Dark Emerald -> Mint
+          stops: ['#00BCD4', '#00BCD4', '#00BCD4'], // Emerald -> Dark Emerald -> Mint
           glow: 'rgba(5, 150, 105, 0.6)',
-          base: '#047857'
+          base: '#00BCD4'
         };
       } else if (source === 'mic') {
         return {

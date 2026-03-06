@@ -8,7 +8,7 @@ import { useLocale } from "@/hooks/use-locale";
 const STORY_ICONS: Record<string, { icon: LucideIcon; color: string }> = {
   "E-commerce": { icon: Zap, color: "bg-zinc-900" },
   Salud: { icon: MessageSquare, color: "bg-primary" },
-  Retail: { icon: BarChart3, color: "bg-emerald-600" },
+  Retail: { icon: BarChart3, color: "bg-primary" },
 };
 
 function getStoryIcon(industry: string): { icon: LucideIcon; color: string } {
@@ -72,10 +72,10 @@ export function StoriesSection() {
                       </p>
                     </div>
                     <div>
-                      <div className="font-black text-[10px] md:text-xs uppercase bg-green-600 text-white inline-block px-2 mb-2 border-2 border-black">
+                      <div className="font-black text-[10px] md:text-xs uppercase bg-primary text-white inline-block px-2 mb-2 border-2 border-black">
                         {afterLabel}
                       </div>
-                      <p className="font-bold text-sm leading-snug border-l-4 border-green-600 pl-3">
+                      <p className="font-bold text-sm leading-snug border-l-4 border-primary pl-3">
                         {story.after}
                       </p>
                     </div>

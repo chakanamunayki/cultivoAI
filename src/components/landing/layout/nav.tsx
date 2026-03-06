@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { Menu, MessageCircle, Sprout, X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { MessageCircle, Sprout } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
+import { cn } from "@/lib/utils";
 
 interface NavProps {
   onScrollTo?: (id: string) => void;
@@ -31,7 +32,7 @@ const DESKTOP_NAV_KEYS = ["services", "projects", "about"];
 export function Nav({ onScrollTo, onOpenChat }: NavProps) {
   const { locale, toggleLocale, content } = useLocale();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobileChipsExpanded, setIsMobileChipsExpanded] = useState(false);
+  const [isOverHero, setIsOverHero] = useState(true);
 
   const ctaLabel = locale === "es" ? "Hablemos" : "Let's Talk";
 
@@ -43,10 +44,48 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
     return false;
   });
 
-  // Filter nav items for desktop (only key items)
   const desktopNavItems = navItems.filter((item) =>
     DESKTOP_NAV_KEYS.some((key) => item.href.includes(key))
   );
+
+  useEffect(() => {
+    const hero = document.getElementById("hero");
+    if (!hero) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const firstEntry = entries[0];
+        if (!firstEntry) {
+          return;
+        }
+        setIsOverHero(firstEntry.isIntersecting);
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(hero);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      document.body.style.removeProperty("overflow");
+      return;
+    }
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.removeProperty("overflow");
+    };
+  }, [isMobileMenuOpen]);
 
   const scrollTo = (id: string) => {
     if (onScrollTo) {
@@ -65,162 +104,255 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
     onOpenChat?.();
   };
 
-  const chipItems = useMemo(
-    () => Array.from(new Set(content.marquee)).slice(0, 10),
-    [content.marquee]
-  );
+  const headerStyle = useMemo(() => {
+    const blend = !isMobileMenuOpen && isOverHero;
 
-  const showMoreLabel = locale === "es" ? "Ver más" : "Show more";
-  const showLessLabel = locale === "es" ? "Ver menos" : "Show less";
+    if (blend) {
+      return {
+        shell:
+          "mix-blend-difference border-white/20 bg-transparent text-white shadow-none backdrop-blur-none",
+        subtleButton:
+          "border-white/30 bg-white/10 text-white hover:bg-white/20 hover:text-white",
+        ctaButton:
+          "bg-white text-black hover:bg-white/90",
+      };
+    }
+
+    return {
+      shell:
+        "border-black/10 bg-white/[0.92] text-neutral-900 shadow-[0_16px_40px_rgba(15,23,42,0.14)] backdrop-blur-md",
+      subtleButton:
+        "border-black/10 bg-white text-neutral-900 hover:bg-neutral-100",
+      ctaButton:
+        "bg-[#00BCD4] text-neutral-950 hover:bg-[#00BCD4]",
+    };
+  }, [isMobileMenuOpen, isOverHero]);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white">
-      <div className="flex justify-between items-stretch relative bg-white z-50 border-b-4 border-black">
-        {/* Logo Section */}
-        <button
-          type="button"
-          className="p-3 md:p-4 border-r-4 border-black flex items-center gap-3 cursor-pointer group hover:bg-gray-50 transition-colors"
-          onClick={() => scrollTo("hero")}
-          aria-label={locale === "es" ? "Ir al inicio" : "Go to home section"}
-        >
-          <div className="w-10 h-10 bg-primary border-2 border-black rounded-xl flex items-center justify-center text-primary-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transform -rotate-6 group-hover:rotate-0 transition-transform">
-            <Sprout size={24} fill="currentColor" />
-          </div>
-          <span className="font-black text-2xl tracking-tight leading-none">
-            Cultivo<span className="text-primary">AI</span>
-          </span>
-        </button>
-
-        {/* Mobile: CTA + Language + Burger (right side) */}
-        <div className="lg:hidden flex items-stretch ml-auto">
-          {/* Mobile CTA Button */}
-          <button
-            type="button"
-            onClick={handleChatClick}
-            className="px-4 border-l-4 border-black bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-bold uppercase text-sm flex items-center gap-2"
+    <>
+      <nav data-custom-cursor-region className="pointer-events-none fixed inset-x-0 top-0 z-50">
+        <div className="mx-auto max-w-[1600px] px-4 pt-4 md:px-6">
+          <div
+            className={cn(
+              "pointer-events-auto flex items-center justify-between gap-3 rounded-2xl border px-3 py-3 transition-all duration-300 md:px-5",
+              headerStyle.shell
+            )}
           >
-            <MessageCircle size={18} />
-            <span className="hidden sm:inline">{ctaLabel}</span>
-          </button>
-
-          {/* Language Toggle (Mobile) */}
-          <button
-            type="button"
-            onClick={toggleLocale}
-            className="px-4 border-l-4 border-black hover:bg-secondary transition-colors font-bold uppercase text-sm"
-          >
-            {locale === "es" ? "EN" : "ES"}
-          </button>
-
-          {/* Mobile Burger Button (rightmost) */}
-          <button
-            type="button"
-            className="px-6 border-l-4 border-black hover:bg-secondary transition-colors flex items-center justify-center"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-
-        {/* Desktop Links (simplified - only key items) */}
-        <div className="hidden lg:flex flex-1">
-          {desktopNavItems.map((item) => (
             <button
               type="button"
-              key={item.label}
-              onClick={() => scrollTo(item.href)}
-              className="flex-1 px-4 border-r-4 border-black font-bold uppercase hover:bg-secondary transition-colors text-sm"
+              onClick={() => scrollTo("hero")}
+              aria-label={locale === "es" ? "Ir al inicio" : "Go to home section"}
+              className="flex items-center gap-2.5"
             >
-              {item.label}
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-current/30">
+                <Sprout size={18} />
+              </span>
+              <span className="text-lg leading-none font-black tracking-[-0.02em] md:text-2xl">
+                Cultivo<span className="text-[#00BCD4]">AI</span>
+              </span>
             </button>
-          ))}
-          {/* CTA Button (Desktop) */}
-          <button
-            type="button"
-            onClick={handleChatClick}
-            className="px-6 border-l-4 border-black bg-primary text-primary-foreground font-bold uppercase hover:bg-primary/90 hover:-translate-y-0.5 transition-all text-sm flex items-center gap-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-          >
-            <MessageCircle size={18} />
-            {ctaLabel}
-          </button>
-          {/* Language Toggle (Desktop) */}
-          <button
-            type="button"
-            onClick={toggleLocale}
-            className="px-6 border-l-4 border-black font-bold uppercase hover:bg-primary hover:text-primary-foreground transition-colors text-sm"
-          >
-            {locale === "es" ? "EN" : "ES"}
-          </button>
-          {/* Desktop Burger Button */}
-          <button
-            type="button"
-            className="px-5 border-l-4 border-black hover:bg-secondary transition-colors flex items-center justify-center"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
 
-      {/* Dropdown Menu (Mobile & Desktop) */}
-      {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-white border-b-4 border-black animate-in slide-in-from-top-2 duration-200 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.5)] z-40 max-h-[calc(100vh-120px)] overflow-y-auto">
-          {navItems.map((item) => (
-            <button
-              type="button"
-              key={item.label}
-              onClick={() => scrollTo(item.href)}
-              className="w-full text-left p-4 border-b-4 border-black font-black uppercase hover:bg-secondary hover:pl-6 transition-all text-lg"
-            >
-              {item.label}
-            </button>
-          ))}
-
-          {/* CTA Button in Mobile Menu */}
-          <button
-            type="button"
-            onClick={handleChatClick}
-            className="w-full text-left p-4 border-b-4 border-black font-black uppercase bg-primary text-primary-foreground hover:bg-primary/90 hover:pl-6 transition-all text-lg flex items-center gap-3"
-          >
-            <MessageCircle size={22} />
-            {ctaLabel}
-          </button>
-        </div>
-      )}
-
-      {/* Calm chips row under nav */}
-      <div className="bg-[#F6F8F7] border-b-4 border-black">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-3">
-          <div className="flex flex-wrap gap-2">
-            {chipItems.map((chip, index) => {
-              const isCollapsibleMobile = index >= 6 && !isMobileChipsExpanded;
-              return (
-                <span
-                  key={chip}
-                  className={[
-                    "px-2.5 py-1 rounded-full border border-black/15 bg-white text-[11px] md:text-xs font-semibold text-neutral-800",
-                    isCollapsibleMobile ? "hidden md:inline-flex" : "inline-flex",
-                  ].join(" ")}
+            <div className="hidden items-center gap-2 lg:flex">
+              {desktopNavItems.map((item) => (
+                <button
+                  type="button"
+                  key={item.label}
+                  onClick={() => scrollTo(item.href)}
+                  className="rounded-full px-4 py-2 text-sm font-semibold tracking-wide uppercase transition-colors hover:bg-black/10"
                 >
-                  {chip}
-                </span>
-              );
-            })}
-            {chipItems.length > 6 && (
+                  {item.label}
+                </button>
+              ))}
+
               <button
                 type="button"
-                onClick={() => setIsMobileChipsExpanded((prev) => !prev)}
-                className="md:hidden px-2.5 py-1 rounded-full border border-black/20 text-[11px] font-semibold text-neutral-700 bg-white"
+                onClick={toggleLocale}
+                className={cn(
+                  "rounded-full border px-4 py-2 text-xs font-bold tracking-[0.08em] uppercase transition-colors",
+                  headerStyle.subtleButton
+                )}
               >
-                {isMobileChipsExpanded ? showLessLabel : showMoreLabel}
+                {locale === "es" ? "EN" : "ES"}
               </button>
-            )}
+
+              <button
+                type="button"
+                onClick={handleChatClick}
+                className={cn(
+                  "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold tracking-[0.04em] uppercase transition-colors",
+                  headerStyle.ctaButton
+                )}
+              >
+                <MessageCircle size={16} />
+                {ctaLabel}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                aria-expanded={isMobileMenuOpen}
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                className={cn(
+                  "relative h-11 w-11 rounded-full border transition-colors",
+                  headerStyle.subtleButton
+                )}
+              >
+                <span
+                  className={cn(
+                    "absolute left-1/2 h-[2px] w-6 -translate-x-1/2 bg-current transition-all duration-300",
+                    isMobileMenuOpen ? "translate-y-0 rotate-45" : "-translate-y-[8px]"
+                  )}
+                />
+                <span
+                  className={cn(
+                    "absolute left-1/2 h-[2px] w-6 -translate-x-1/2 bg-current transition-opacity duration-200",
+                    isMobileMenuOpen ? "opacity-0" : "opacity-100"
+                  )}
+                />
+                <span
+                  className={cn(
+                    "absolute left-1/2 h-[2px] w-6 -translate-x-1/2 bg-current transition-all duration-300",
+                    isMobileMenuOpen ? "translate-y-0 -rotate-45" : "translate-y-[8px]"
+                  )}
+                />
+              </button>
+            </div>
+
+            <div className="flex items-center gap-2 lg:hidden">
+              <button
+                type="button"
+                onClick={toggleLocale}
+                className={cn(
+                  "rounded-full border px-3 py-2 text-xs font-bold tracking-[0.08em] uppercase transition-colors",
+                  headerStyle.subtleButton
+                )}
+              >
+                {locale === "es" ? "EN" : "ES"}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                aria-expanded={isMobileMenuOpen}
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                className={cn(
+                  "relative h-11 w-11 rounded-full border transition-colors",
+                  headerStyle.subtleButton
+                )}
+              >
+                <span
+                  className={cn(
+                    "absolute left-1/2 h-[2px] w-6 -translate-x-1/2 bg-current transition-all duration-300",
+                    isMobileMenuOpen ? "translate-y-0 rotate-45" : "-translate-y-[8px]"
+                  )}
+                />
+                <span
+                  className={cn(
+                    "absolute left-1/2 h-[2px] w-6 -translate-x-1/2 bg-current transition-opacity duration-200",
+                    isMobileMenuOpen ? "opacity-0" : "opacity-100"
+                  )}
+                />
+                <span
+                  className={cn(
+                    "absolute left-1/2 h-[2px] w-6 -translate-x-1/2 bg-current transition-all duration-300",
+                    isMobileMenuOpen ? "translate-y-0 -rotate-45" : "translate-y-[8px]"
+                  )}
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div
+        data-custom-cursor-region
+        className={cn(
+          "fixed inset-0 z-40 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+          isMobileMenuOpen ? "translate-y-0" : "-translate-y-[110%] pointer-events-none"
+        )}
+      >
+        <div className="grid h-full min-h-screen md:grid-cols-[1.25fr_1fr]">
+          <div className="relative overflow-hidden bg-[#212121] px-6 pt-28 pb-10 text-white md:px-12 md:pt-36">
+            <div
+              className="pointer-events-none absolute inset-0 opacity-20"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.26), transparent 35%), radial-gradient(circle at 80% 10%, rgba(0,188,212,0.35), transparent 35%), linear-gradient(120deg, rgba(255,255,255,0.08) 0%, transparent 60%)",
+              }}
+            />
+
+            <div className="relative z-10 mx-auto flex h-full w-full max-w-[760px] flex-col">
+              <p className="text-xs font-semibold tracking-[0.12em] text-white/[0.70] uppercase">
+                {locale === "es" ? "Contacto directo" : "Direct contact"}
+              </p>
+              <h2 className="mt-4 text-4xl leading-[0.95] font-black tracking-[-0.03em] md:text-6xl">
+                {locale === "es" ? "Construyamos algo util" : "Let us build something useful"}
+              </h2>
+              <p className="mt-4 max-w-xl text-base text-white/[0.75] md:text-lg">
+                {content.hero.microcopy}
+              </p>
+
+              <div className="mt-8 space-y-4 text-base font-semibold md:text-lg">
+                <a
+                  href={`mailto:${content.footer.contactInfo.email}`}
+                  className="block transition-colors hover:text-[#00BCD4]"
+                >
+                  {content.footer.contactInfo.email}
+                </a>
+                <a
+                  href={`https://wa.me/${content.footer.contactInfo.whatsapp.replace(/\+/g, "")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block transition-colors hover:text-[#00BCD4]"
+                >
+                  {content.footer.contactInfo.whatsappDisplay}
+                </a>
+                <p className="text-white/[0.75]">{content.footer.contactInfo.location}</p>
+              </div>
+
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={handleChatClick}
+                  className="inline-flex items-center gap-2 rounded-full bg-[#00BCD4] px-5 py-2.5 text-sm font-bold tracking-[0.08em] text-neutral-950 uppercase transition-colors hover:bg-[#00BCD4]"
+                >
+                  <MessageCircle size={16} />
+                  {ctaLabel}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    toggleLocale();
+                  }}
+                  className="rounded-full border border-white/30 px-4 py-2.5 text-xs font-bold tracking-[0.08em] uppercase transition-colors hover:bg-white/[0.15]"
+                >
+                  {locale === "es" ? "English" : "Espanol"}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-[#00BCD4] px-6 pt-28 pb-10 text-[#111111] md:px-12 md:pt-36">
+            <div className="mx-auto flex h-full w-full max-w-[520px] flex-col">
+              <p className="text-xs font-semibold tracking-[0.12em] text-black/[0.60] uppercase">
+                {locale === "es" ? "Menu" : "Menu"}
+              </p>
+              <div className="mt-6 flex flex-col gap-3 md:gap-4">
+                {navItems.map((item) => (
+                  <button
+                    type="button"
+                    key={item.label}
+                    onClick={() => scrollTo(item.href)}
+                    className="text-left text-4xl leading-[0.92] font-black tracking-[-0.03em] transition-colors hover:text-white md:text-6xl"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 }
-

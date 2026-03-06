@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Professional palette (charcoal + whites + emerald accents) */
-  --brand-background: #FAFAFA;
-  --brand-surface: #FFFFFF;
-  --brand-subtle: #F4F4F5;
-  --brand-border: #E4E4E7;
-  --brand-ink: #18181B;
-  --brand-muted: #52525B;
-  --brand-primary: #059669;
-  --brand-primary-hover: #047857;
-  --brand-ring: #34D399;
-  --brand-warning: #F59E0B;
-  --brand-danger: #DC2626;
+  /* Professional palette (charcoal + whites + pale-blue accents) */
+  --brand-background: #fafafa;
+  --brand-surface: #ffffff;
+  --brand-subtle: #f4f4f5;
+  --brand-border: #e4e4e7;
+  --brand-ink: #18181b;
+  --brand-muted: #52525b;
+  --brand-primary: #00BCD4;
+  --brand-primary-hover: #00BCD4;
+  --brand-ring: #00BCD4;
+  --brand-warning: #f59e0b;
+  --brand-danger: #dc2626;
 
   /* shadcn compatibility (minimal, no dark mode) */
   --color-background: var(--background);
@@ -57,32 +57,40 @@
 :root {
   /* Single theme - no dark mode */
   --radius: 0px;
-  --background: #FAFAFA;
-  --foreground: #18181B;
-  --card: #FFFFFF;
-  --card-foreground: #18181B;
-  --popover: #FFFFFF;
-  --popover-foreground: #18181B;
-  --primary: #059669;
-  --primary-foreground: #FFFFFF;
-  --secondary: #F4F4F5;
-  --secondary-foreground: #18181B;
-  --muted: #F4F4F5;
-  --muted-foreground: #52525B;
-  --accent: #F4F4F5;
-  --accent-foreground: #18181B;
-  --destructive: #DC2626;
-  --border: #E4E4E7;
-  --input: #E4E4E7;
-  --ring: #34D399;
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #18181B;
-  --sidebar-primary: #059669;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F4F4F5;
-  --sidebar-accent-foreground: #18181B;
-  --sidebar-border: #E4E4E7;
-  --sidebar-ring: #34D399;
+  --white: #ffffff;
+  --black: #000000;
+  --transparent: transparent;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --indigo-300: #a5b4fc;
+  --violet-200: #ddd6fe;
+  --background: #fafafa;
+  --foreground: #18181b;
+  --card: #ffffff;
+  --card-foreground: #18181b;
+  --popover: #ffffff;
+  --popover-foreground: #18181b;
+  --primary: #00BCD4;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --muted: #f4f4f5;
+  --muted-foreground: #52525b;
+  --accent: #f4f4f5;
+  --accent-foreground: #18181b;
+  --destructive: #dc2626;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #00BCD4;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #18181b;
+  --sidebar-primary: #00BCD4;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f4f4f5;
+  --sidebar-accent-foreground: #18181b;
+  --sidebar-border: #e4e4e7;
+  --sidebar-ring: #00BCD4;
 }
 
 /* Marquee animation for top banner */
@@ -91,13 +99,14 @@
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
 /* Voice conversation mode animations */
 @keyframes voicePulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
@@ -117,7 +126,8 @@
 }
 
 @keyframes soundwave {
-  0%, 100% {
+  0%,
+  100% {
     height: 8px;
   }
   50% {
@@ -126,7 +136,8 @@
 }
 
 @keyframes soundwaveTall {
-  0%, 100% {
+  0%,
+  100% {
     height: 12px;
   }
   50% {
@@ -135,7 +146,8 @@
 }
 
 @keyframes fadeInOut {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
   }
   50% {
@@ -152,10 +164,68 @@
   }
 }
 
+@keyframes aurora {
+  from {
+    background-position:
+      50% 50%,
+      50% 50%;
+  }
+  to {
+    background-position:
+      -70% 50%,
+      -70% 50%;
+  }
+}
+
 /* Brutalist selection styling */
 ::selection {
-  background-color: #A7F3D0;
-  color: #18181B;
+  background-color: #00BCD4;
+  color: #18181b;
+}
+
+@media (any-hover: hover) and (any-pointer: fine) {
+  [data-custom-cursor-region],
+  [data-custom-cursor-region] * {
+    cursor: none !important;
+  }
+
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 55;
+    height: 24px;
+    width: 24px;
+    border: 2px solid #00BCD4;
+    border-radius: 9999px;
+    background-color: rgba(0, 188, 212, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(-100px, -100px, 0);
+    transform-origin: center;
+    transition:
+      width 180ms ease,
+      height 180ms ease,
+      opacity 180ms ease,
+      background-color 180ms ease;
+    will-change: transform, width, height, opacity, background-color;
+  }
+
+  .custom-cursor.custom-cursor--active {
+    opacity: 1;
+  }
+
+  .custom-cursor.custom-cursor--link {
+    width: 52px;
+    height: 52px;
+    background-color: rgba(0, 188, 212, 0.2);
+  }
+}
+
+@media (any-hover: none), (any-pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
 }
 
 @layer base {
@@ -170,7 +240,11 @@
 /* Utility classes for Brutalist design */
 @layer utilities {
   .animate-marquee {
-    animation: marquee 45s linear infinite;
+    animation: marquee 36s linear infinite;
+  }
+
+  .animate-aurora {
+    animation: aurora 60s linear infinite;
   }
 
   .brutalist-shadow {

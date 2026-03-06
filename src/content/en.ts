@@ -25,21 +25,19 @@ export const en: SiteContent = {
   hero: {
     tagline: "FOR GOOD PROJECTS",
     line1: "AI systems to scale valuable work",
-    subheadline:
-      "We automate repetitive work.\nWe surface what matters in dashboards.\nWe turn your knowledge into a reusable system.",
+    subheadline: "Cut busywork. See what matters.",
     services: [],
     servicesDone: "",
     audience: [],
     outcomes: ["Less manual work", "Clearer decisions", "Better follow-through"],
     audienceLabel: "Built for:",
     audienceChips: [
+      "Impact startups",
       "Wellness retreats",
       "Off-grid communities",
-      "Self-sufficiency projects",
       "Hydroponics",
       "Holistic wellbeing",
       "Regenerative projects",
-      "Impact startups",
     ],
     tertiaryCta: "Explore services",
     microcopy:
@@ -67,7 +65,6 @@ export const en: SiteContent = {
         id: "paul",
         name: "Paul Ronayne",
         title: "AI developer and consultant",
-        subtitle: "Co-founder of nbn23.com and nagi.es in Spain",
         description:
           "I've spent 20+ years in tech, including co-founding two tech/data businesses in Spain: nbn23.com and nagi.es. Today I blend startup discipline with human-first AI to help holistic businesses grow with clarity and care.",
         imageUrl: "/landing/photos/team/paul.jpg",
@@ -113,7 +110,7 @@ export const en: SiteContent = {
         title: "AI systems specialist",
         description:
           "Rocky builds AI workflows, assistants, and dashboards that help teams move faster and stay consistent. Practical, design-aware, and focused on real outcomes.",
-        imageUrl: "/landing/photos/team/rocky.jpg",
+        imageUrl: "/landing/photos/team/rocky.jpeg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
@@ -156,7 +153,6 @@ export const en: SiteContent = {
         imageUrl: "/landing/photos/team/marta.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
-        linkedinUrl: "https://www.linkedin.com/in/marta-ronayne/",
         bio: {
           headline: "Tone, trust, and usability that feels human",
           sections: [
@@ -186,7 +182,6 @@ export const en: SiteContent = {
                 "A system that feels clear and human, so people actually stick with it and follow through.",
             },
           ],
-          linkedinUrl: "https://www.linkedin.com/in/marta-ronayne/",
         },
       },
     ],
@@ -405,6 +400,7 @@ export const en: SiteContent = {
         "Draft workflow. Review workflow. Publishing workflow.",
       ],
       imageUrl: "/landing/photos/services/knowledge-content-systems.jpg",
+      imageFit: "contain",
       modal: {
         whatItMeans:
           "Market signals and content system design create a repeatable path from signal to output.",
@@ -896,7 +892,7 @@ export const en: SiteContent = {
   projectsSubtitle: "Selected projects from our current work",
   projects: [
     {
-      title: "Chak",
+      title: "Chak - Creation of life, with the help of AI",
       desc: "Systems built to support health-focused work with clarity, structure, and momentum.",
       fullDesc:
         "An evolving system that combines operational workflows, service delivery, and decision visibility so health-focused teams can work with less friction and better follow-through.",
@@ -1230,7 +1226,7 @@ export const en: SiteContent = {
       },
       {
         platform: "whatsapp",
-        url: "https://wa.me/573106172706",
+        url: "https://wa.me/573106172607",
         label: "WhatsApp",
       },
       {
@@ -1248,8 +1244,8 @@ export const en: SiteContent = {
     ],
     contactInfo: {
       email: "hola@cultivoai.co",
-      whatsapp: "+573106172706",
-      whatsappDisplay: "+57 310 617 2706",
+      whatsapp: "+573106172607",
+      whatsappDisplay: "+57 310 617 2607",
       location: "Medellin, Colombia",
       locationSecondary: "Worldwide",
     },

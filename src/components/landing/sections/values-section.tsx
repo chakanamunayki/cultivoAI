@@ -9,6 +9,7 @@ import {
   Mountain,
 } from "lucide-react";
 import { Reveal } from "@/components/landing/ui/reveal";
+import { SectionHeader } from "@/components/landing/ui/section-header";
 import { useLocale } from "@/hooks/use-locale";
 
 const ICON_MAP: Record<string, typeof Sprout> = {
@@ -27,37 +28,57 @@ export function ValuesSection() {
   return (
     <section
       id="values"
-      className="border-b-4 border-black bg-white py-16 md:py-24"
+      className="border-b border-black/10 bg-white py-16 md:py-24"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <Reveal>
-          <div className="flex flex-col md:flex-row gap-6 mb-12 md:mb-16 items-start">
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-none bg-black text-white px-4 py-2 inline-block rotate-1">
-              {values.title}
-            </h2>
-            <p className="text-lg md:text-xl font-bold max-w-xl md:mt-2 border-l-4 border-primary pl-4 md:pl-6">
-              {values.subtitle}
-            </p>
-          </div>
+          <SectionHeader title={values.title} subtitle={values.subtitle} />
         </Reveal>
 
         {/* 2x3 grid of values */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {values.values.map((value, index) => {
             const Icon = ICON_MAP[value.icon] || Sprout;
+            const isFeatured = index === 2;
             return (
               <Reveal key={value.title} delay={index * 75}>
-                <div className="h-full bg-neutral-100 border-4 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:translate-x-0.5 transition-all group">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-secondary border-3 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] group-hover:scale-105 transition-transform">
-                      <Icon size={24} className="text-black" strokeWidth={2.5} />
+                <div
+                  className={`group h-full rounded-[22px] border p-6 transition-all duration-200 ${
+                    isFeatured
+                      ? "border-[#00BCD4] bg-[#00BCD4] text-[#FFFFFF] shadow-[0_16px_30px_rgba(15,23,42,0.22)] hover:-translate-y-1 hover:bg-[#00BCD4] hover:shadow-[0_20px_36px_rgba(15,23,42,0.28)]"
+                      : "border-black/10 bg-[#f2f2f2] text-[#1f1f1f] shadow-[0_14px_28px_rgba(15,23,42,0.1)] ring-1 ring-white/80 hover:-translate-y-0.5 hover:bg-[#f6f6f6] hover:shadow-[0_18px_34px_rgba(15,23,42,0.15)]"
+                  }`}
+                >
+                  <div
+                    className={`-mx-6 mb-4 flex items-center gap-3 border-y px-6 py-2.5 ${
+                      isFeatured
+                        ? "border-white/15 bg-[#212121]"
+                        : "border-[#00BCD4]/35 bg-[#00BCD4]"
+                    }`}
+                  >
+                    <div
+                      className={`rounded-lg border p-2 transition-transform group-hover:scale-105 ${
+                        isFeatured
+                          ? "border-white/25 bg-white/10"
+                          : "border-white/25 bg-white/10"
+                      }`}
+                    >
+                      <Icon
+                        size={24}
+                        className="text-[#FFFFFF]"
+                        strokeWidth={2.5}
+                      />
                     </div>
-                    <h3 className="text-lg md:text-xl font-black uppercase leading-tight">
+                    <h3 className="text-lg font-black leading-tight text-[#FFFFFF] md:text-xl">
                       {value.title}
                     </h3>
                   </div>
-                  <p className="text-sm md:text-base text-neutral-700 leading-relaxed">
+                  <p
+                    className={`text-sm leading-relaxed md:text-base ${
+                      isFeatured ? "text-[#eef9f5]" : "text-neutral-700"
+                    }`}
+                  >
                     {value.description}
                   </p>
                 </div>

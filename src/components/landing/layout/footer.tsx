@@ -43,7 +43,7 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
           <button
             type="button"
             onClick={onContactClick}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-black uppercase text-lg border-4 border-black shadow-[8px_8px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:-translate-y-1 transition-all"
+            className="inline-flex items-center gap-3 rounded-xl bg-[#FFFFFF] px-8 py-4 text-lg font-semibold tracking-[0.06em] text-[#00BCD4] uppercase shadow-[0_16px_30px_rgba(15,23,42,0.3)] transition-all hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_20px_36px_rgba(15,23,42,0.36)]"
           >
             <MessageCircle size={24} />
             {content.footer.ctaButton}

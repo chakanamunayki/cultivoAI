@@ -103,6 +103,7 @@ export interface Service {
   description: string;
   details: string[];
   imageUrl: string;
+  imageFit?: "cover" | "contain";
   modal: ModalExpansion;
 }
 

@@ -1,7 +1,9 @@
 "use client";
 
 import { RefreshCw, Sprout, Users } from "lucide-react";
+import { CodeTerminal } from "@/components/landing/ui/code-terminal";
 import { Reveal } from "@/components/landing/ui/reveal";
+import { SectionHeader } from "@/components/landing/ui/section-header";
 import { useLocale } from "@/hooks/use-locale";
 
 const ICON_MAP: Record<string, typeof RefreshCw> = {
@@ -13,73 +15,90 @@ const ICON_MAP: Record<string, typeof RefreshCw> = {
 export function HowWeWorkSection() {
   const { content } = useLocale();
   const { howWeWork } = content;
+  const noDramaLabel = content.hero.noDrama;
+  const noDramaText = content.hero.noDramaText
+    .replace(new RegExp(`^${content.hero.noDrama.replace(".", "\\.")}\\s*`, "i"), "")
+    .trim();
 
   // Separate pillars: first two side-by-side, third full-width
   const sideBySidePillars = howWeWork.pillars.filter((p) => !p.isFullWidth);
   const fullWidthPillar = howWeWork.pillars.find((p) => p.isFullWidth);
-
   return (
-    <section
-      id="how-we-work"
-      className="border-b-4 border-black bg-white py-16 md:py-24"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header - Standard brand styling */}
+    <section id="how-we-work" className="border-b border-white/10 bg-[#212121] py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <div className="flex flex-col md:flex-row gap-6 mb-12 md:mb-16 items-start">
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-none bg-black text-white px-4 py-2 inline-block rotate-1">
-              {howWeWork.title}
-            </h2>
-            <p className="text-lg md:text-xl font-bold max-w-xl md:mt-2 border-l-4 border-primary pl-4 md:pl-6">
-              {howWeWork.subtitle}
-            </p>
-          </div>
+          <SectionHeader
+            title={howWeWork.title}
+            subtitle={howWeWork.subtitle}
+            subtitleClassName="text-white/80"
+          />
         </Reveal>
 
-        {/* Two side-by-side cards */}
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
-          {sideBySidePillars.map((pillar, index) => {
-            const Icon = ICON_MAP[pillar.icon] || RefreshCw;
-            return (
-              <Reveal key={pillar.title} delay={index * 100}>
-                <div className="h-full bg-white border-4 border-black p-6 md:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:translate-x-1 transition-all group">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 bg-secondary border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:scale-110 transition-transform">
-                      <Icon size={28} className="text-foreground" strokeWidth={2.5} />
+        <div className="grid items-start gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+          <div>
+            <div className="mb-6 grid gap-6 md:mb-8 md:grid-cols-2 md:gap-8">
+              {sideBySidePillars.map((pillar, index) => {
+                const Icon = ICON_MAP[pillar.icon] || RefreshCw;
+                return (
+                  <Reveal key={pillar.title} delay={index * 100}>
+                    <div className="group h-full rounded-[24px] border border-white/15 bg-[#212121] p-6 shadow-[0_14px_30px_rgba(0,0,0,0.3)] ring-1 ring-white/5 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#1b1b1b] hover:shadow-[0_18px_34px_rgba(0,0,0,0.4)] md:p-8">
+                      <div className="-mx-6 mb-4 flex items-center gap-4 border-y border-[#00BCD4]/35 bg-[#00BCD4] px-6 py-3 md:-mx-8 md:px-8">
+                        <div className="rounded-xl border border-white/20 bg-black/20 p-3 transition-transform group-hover:scale-105">
+                          <Icon size={28} className="text-[#FFFFFF]" strokeWidth={2.5} />
+                        </div>
+                        <h3 className="text-xl font-black tracking-tight text-[#FFFFFF] md:text-2xl">
+                          {pillar.title}
+                        </h3>
+                      </div>
+                      <p className="text-base leading-relaxed text-white/85 md:text-lg">
+                        {pillar.description}
+                      </p>
                     </div>
-                    <h3 className="text-xl md:text-2xl font-black uppercase">
-                      {pillar.title}
+                  </Reveal>
+                );
+              })}
+            </div>
+
+            {fullWidthPillar && (
+              <Reveal delay={220}>
+                <div className="group rounded-[24px] border border-[#00BCD4] bg-[#00BCD4] p-6 text-[#FFFFFF] shadow-[0_18px_34px_rgba(15,23,42,0.22)] transition-all duration-200 hover:-translate-y-1 hover:bg-[#00BCD4] hover:shadow-[0_22px_40px_rgba(15,23,42,0.28)] md:p-8">
+                  <div className="-mx-6 mb-4 border-y border-white/15 bg-[#212121] px-6 py-3 md:-mx-8 md:px-8">
+                    <h3 className="text-xl font-black tracking-tight text-[#FFFFFF] md:text-2xl">
+                      {fullWidthPillar.title}
                     </h3>
                   </div>
-                  <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
-                    {pillar.description}
-                  </p>
+                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
+                    <div className="w-fit shrink-0 rounded-xl border border-white/25 bg-white/10 p-3 transition-transform group-hover:scale-105">
+                      <Users size={28} className="text-[#FFFFFF]" strokeWidth={2.5} />
+                    </div>
+                    <div>
+                      <p className="text-base leading-relaxed md:text-lg">
+                        {fullWidthPillar.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </Reveal>
-            );
-          })}
-        </div>
+            )}
+          </div>
 
-        {/* Full-width card */}
-        {fullWidthPillar && (
-          <Reveal delay={200}>
-            <div className="bg-muted border-4 border-black p-6 md:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:translate-x-1 transition-all group">
-              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
-                <div className="p-3 bg-primary border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:scale-110 transition-transform shrink-0 w-fit">
-                  <Users size={28} className="text-primary-foreground" strokeWidth={2.5} />
-                </div>
-                <div>
-                  <h3 className="text-xl md:text-2xl font-black uppercase mb-2">
-                    {fullWidthPillar.title}
-                  </h3>
-                  <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
-                    {fullWidthPillar.description}
-                  </p>
-                </div>
+          <div>
+            <Reveal delay={120}>
+              <CodeTerminal fillContainer />
+            </Reveal>
+
+            <Reveal delay={180}>
+              <div className="mt-6 h-[128px] rounded-[20px] border border-white/15 bg-[#212121] p-5 shadow-[0_12px_26px_rgba(0,0,0,0.32)] ring-1 ring-white/5 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#1b1b1b] hover:shadow-[0_16px_30px_rgba(0,0,0,0.42)] md:h-[140px] md:p-6">
+                <span className="-mx-5 mb-3 block border-y border-white/15 bg-[#181818] px-5 py-2 text-[11px] font-semibold tracking-[0.1em] text-[#FFFFFF] uppercase md:-mx-6 md:px-6">
+                  {noDramaLabel}
+                </span>
+                <p className="text-base font-semibold text-white/90 md:text-lg">
+                  {noDramaText}
+                </p>
               </div>
-            </div>
-          </Reveal>
-        )}
+            </Reveal>
+          </div>
+        </div>
       </div>
     </section>
   );

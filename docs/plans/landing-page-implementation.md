@@ -7,7 +7,11 @@
 
 ## Overview
 
-Migrate the Brutalist landing page template from `docs/template/App.tsx` to replace the current boilerplate homepage, while preserving authentication, database integration, and adding a sophisticated AI chatbot that acts as a sales representative.
+Note (2026-03-05): This plan references `docs/template/App.tsx`, but that file is not present in this repository anymore. Treat this document as historical planning context.
+
+Current landing implementation lives in:
+- `src/app/page.tsx`
+- `src/components/landing/**`
 
 ---
 

@@ -2,7 +2,13 @@
 
 ## Overview
 
-Migrate the Brutalist landing page template from `docs/template/App.tsx` to replace the current boilerplate homepage. CultivoAI is a bilingual (Spanish/English) AI and automation consultancy website for Paul & Rocky, a father-son duo based in Colombia.
+Note (2026-03-05): This spec references `docs/template/App.tsx`, but that file is not present in this repository anymore. Treat template line references below as historical.
+
+Current landing implementation lives in:
+- `src/app/page.tsx`
+- `src/components/landing/**`
+
+CultivoAI is a bilingual (Spanish/English) AI and automation consultancy website for Paul & Rocky, a father-son duo based in Colombia.
 
 ## Core Requirements
 
@@ -71,7 +77,7 @@ Migrate the Brutalist landing page template from `docs/template/App.tsx` to repl
 - **Framework**: Next.js 16 with App Router, React 19, TypeScript
 - **Package Manager**: pnpm
 - **No dark mode**: Single Brutalist theme only
-- **Template reference**: `docs/template/App.tsx` is source of truth
+- **Landing reference**: `src/app/page.tsx` + `src/components/landing/**` are source of truth
 - **Content reference**: `docs/project_info/sections.md` for bilingual copy
 
 ## Success Criteria

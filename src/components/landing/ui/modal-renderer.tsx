@@ -17,6 +17,7 @@ interface ModalRendererProps {
 export function ModalRenderer({ onOpenContact, onChatClick }: ModalRendererProps) {
   const { modalData, closeModal, isOpen } = useModal();
   const modalSize = modalData.type === "project" ? "wide" : "default";
+  const modalVariant = "soft";
 
   const renderContent = () => {
     switch (modalData.type) {
@@ -57,7 +58,7 @@ export function ModalRenderer({ onOpenContact, onChatClick }: ModalRendererProps
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={closeModal} size={modalSize}>
+    <Modal isOpen={isOpen} onClose={closeModal} size={modalSize} variant={modalVariant}>
       {renderContent()}
     </Modal>
   );

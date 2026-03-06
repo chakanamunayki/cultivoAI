@@ -42,13 +42,13 @@ export function DashboardView({ steps }: DashboardViewProps) {
         {/* Revenue Card */}
         <div className="bg-white border-2 md:border-3 border-black p-2 md:p-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
           <div className="flex items-center gap-1.5 mb-1">
-            <div className="w-5 h-5 md:w-6 md:h-6 bg-green-500 border-2 border-black flex items-center justify-center">
+            <div className="w-5 h-5 md:w-6 md:h-6 bg-primary/100 border-2 border-black flex items-center justify-center">
               <DollarSign size={10} className="text-white" />
             </div>
             <span className="text-[8px] md:text-[10px] text-gray-500 font-bold uppercase hidden md:block">Revenue</span>
           </div>
           <div className="text-sm md:text-lg font-black text-black">${(animatedStats.revenue / 1000).toFixed(1)}K</div>
-          <div className="text-[8px] md:text-[10px] text-green-600 font-bold flex items-center gap-0.5 mt-0.5">
+          <div className="text-[8px] md:text-[10px] text-primary font-bold flex items-center gap-0.5 mt-0.5">
             <TrendingUp size={8} /> +12%
           </div>
         </div>
@@ -105,7 +105,7 @@ export function DashboardView({ steps }: DashboardViewProps) {
               <BarChart3 size={12} className="text-primary" />
               <span className="text-[9px] md:text-xs font-black uppercase">Weekly Performance</span>
             </div>
-            <span className="text-[8px] md:text-[10px] text-green-600 font-bold">+24%</span>
+            <span className="text-[8px] md:text-[10px] text-primary font-bold">+24%</span>
           </div>
           {/* Chart Bars */}
           <div className="flex items-end justify-between gap-1 h-12 md:h-16">
@@ -151,8 +151,8 @@ export function DashboardView({ steps }: DashboardViewProps) {
             <Clock size={10} className="text-black" />
             <span className="text-[10px] md:text-xs font-black uppercase">Live Activity</span>
           </div>
-          <span className="flex items-center gap-1 text-green-700 text-[10px] md:text-xs font-bold">
-            <div className="w-2 h-2 bg-green-600 border border-black animate-pulse"></div>
+          <span className="flex items-center gap-1 text-primary text-[10px] md:text-xs font-bold">
+            <div className="w-2 h-2 bg-primary border border-black animate-pulse"></div>
             Live
           </span>
         </div>
@@ -170,7 +170,7 @@ export function DashboardView({ steps }: DashboardViewProps) {
                     isBot
                       ? "bg-secondary text-secondary-foreground"
                       : isData
-                        ? "bg-emerald-50 text-emerald-800"
+                        ? "bg-primary/10 text-primary"
                         : "bg-zinc-100 text-zinc-700"
                   }`}
                 >

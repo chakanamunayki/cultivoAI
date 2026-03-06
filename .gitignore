@@ -26,6 +26,11 @@
 # misc
 .DS_Store
 nul
+icacls
+takeown
+test-gemini-ws.html
+clear-all-cache.bat
+CACHE-BUSTING-GUIDE.md
 *.pem
 
 # debug

@@ -18,6 +18,8 @@ import {
   buildWhatsAppMessage,
   getWhatsAppUrl,
 } from "@/lib/chat/system-prompt";
+import { createLead } from "@/lib/leads/client";
+import { ChatInlineContactForm } from "./chat-inline-contact-form";
 import { VoiceConversationMode } from "./voice-conversation-mode";
 
 // WhatsApp icon component
@@ -85,7 +87,7 @@ interface AIChatWidgetProps {
 // Constants
 // ============================================
 
-const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "573106172706";
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "573106172607";
 
 // ============================================
 // Component
@@ -261,26 +263,16 @@ export function AIChatWidget({
   // Handle lead capture API call
   const handleLeadCapture = useCallback(async (info: LeadInfo): Promise<{ success: boolean; leadId?: string }> => {
     try {
-      const response = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: info.name,
-          email: info.email,
-          company: info.company,
-          phone: info.phone,
-          interests: info.interestedServices,
-          projectDescription: info.projectDescription,
-          source: "chatbot",
-          preferredLanguage: locale,
-        }),
+      const data = await createLead({
+        name: info.name,
+        email: info.email,
+        source: "chatbot",
+        preferredLanguage: locale,
+        ...(info.company ? { company: info.company } : {}),
+        ...(info.phone ? { phone: info.phone } : {}),
+        ...(info.interestedServices?.length ? { interests: info.interestedServices } : {}),
+        ...(info.projectDescription ? { projectDescription: info.projectDescription } : {}),
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to capture lead");
-      }
-
-      const data = await response.json();
       setCurrentLeadId(data.leadId);
       // Link lead to conversation
       if (data.leadId) {
@@ -516,11 +508,12 @@ export function AIChatWidget({
         }
 
         case "schedule_call": {
-          // For now, navigate to the booking section or open form
           if (onOpenForm) {
             onOpenForm();
+          } else if (!currentLeadId) {
+            triggerContactForm();
           } else {
-            onNavigate("what-happens-next");
+            openWhatsApp();
           }
           return `Call scheduling suggested`;
         }
@@ -537,6 +530,7 @@ export function AIChatWidget({
       handleQualifyLead,
       currentLeadId,
       triggerContactForm,
+      openWhatsApp,
     ]
   );
 
@@ -663,13 +657,13 @@ export function AIChatWidget({
   const quickQuestions = locale === "es"
     ? [
         "Quiero automatizar tareas repetitivas. Por donde empezamos?",
-        "Necesito un asistente IA para web o WhatsApp. Que recomiendan?",
-        "Como seria el primer proyecto con ustedes?",
+        "Necesito un asistente de IA para mi web. Que recomiendan?",
+        "Quiero crear una solucion de software a medida. Como lo plantearian?",
       ]
     : [
-        "I need to automate repetitive tasks. Where should we start?",
-        "I need an AI assistant for web or WhatsApp. What do you recommend?",
-        "What would a first project with you look like?",
+        "I want to automate repetitive tasks. Where should we start?",
+        "I need an AI assistant for my website. What do you recommend?",
+        "I want to build custom software for my team. How would you approach it?",
       ];
 
   // Handle quick question click - auto-send the question
@@ -683,14 +677,24 @@ export function AIChatWidget({
   if (!isOpen) {
     return (
       <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[60] flex flex-col items-end font-grotesk">
-        <button
-          onClick={() => onToggle(true)}
-          className="bg-primary text-primary-foreground p-4 border-4 border-black hover:bg-primary/90 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-2 font-bold uppercase"
-          aria-label="Open chat"
-        >
-          <MessageSquare size={24} />
-          <span>Chat AI</span>
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => openWhatsApp()}
+            className="inline-flex h-[58px] w-[58px] items-center justify-center rounded-xl bg-[#25D366] text-[#0b2d1f] shadow-[0_10px_20px_rgba(15,23,42,0.26)] transition-all hover:-translate-y-0.5 hover:bg-[#34e073] hover:shadow-[0_14px_26px_rgba(15,23,42,0.32)]"
+            aria-label="Open WhatsApp"
+            title={locale === "es" ? "Contactar por WhatsApp" : "Contact via WhatsApp"}
+          >
+            <WhatsAppIcon size={24} />
+          </button>
+          <button
+            onClick={() => onToggle(true)}
+            className="bg-primary text-primary-foreground p-4 border-4 border-black hover:bg-primary/90 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-2 font-bold uppercase"
+            aria-label="Open chat"
+          >
+            <MessageSquare size={24} />
+            <span>Chat AI</span>
+          </button>
+        </div>
       </div>
     );
   }
@@ -765,7 +769,7 @@ export function AIChatWidget({
                   <div
                     className="max-w-[85%] p-3 text-sm border-2 font-medium"
                     style={{
-                      backgroundColor: msg.role === "user" ? "#000000" : "#059669",
+                      backgroundColor: msg.role === "user" ? "#000000" : "#00BCD4",
                       color: "#FFFFFF",
                       borderColor: msg.role === "user" ? "transparent" : "#000000",
                       boxShadow: msg.role === "user" ? "none" : "4px 4px 0px 0px rgba(0,0,0,1)",
@@ -790,54 +794,14 @@ export function AIChatWidget({
                 {/* Inline Contact Form */}
                 {shouldShowForm && (
                   <div className="flex justify-start">
-                    <form
+                    <ChatInlineContactForm
+                      locale={locale as "es" | "en"}
+                      formData={contactFormData}
+                      formError={contactFormError}
+                      isSubmitting={isSubmittingContact}
                       onSubmit={handleContactFormSubmit}
-                      className="bg-white border-4 border-black shadow-[4px_4px_0px_0px_var(--primary)] p-4 space-y-3 w-full max-w-[85%]"
-                    >
-                      <div>
-                        <label className="block text-xs font-bold uppercase mb-1 text-black">
-                          {locale === "es" ? "Nombre" : "Name"}
-                        </label>
-                        <input
-                          type="text"
-                          value={contactFormData.name}
-                          onChange={(e) => setContactFormData(prev => ({ ...prev, name: e.target.value }))}
-                          placeholder={locale === "es" ? "Tu nombre" : "Your name"}
-                          className="w-full p-2 border-2 border-black bg-muted font-bold text-sm focus:shadow-[2px_2px_0px_0px_var(--primary)] outline-none"
-                          disabled={isSubmittingContact}
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-bold uppercase mb-1 text-black">
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          value={contactFormData.email}
-                          onChange={(e) => setContactFormData(prev => ({ ...prev, email: e.target.value }))}
-                          placeholder={locale === "es" ? "tu@email.com" : "your@email.com"}
-                          className="w-full p-2 border-2 border-black bg-muted font-bold text-sm focus:shadow-[2px_2px_0px_0px_var(--primary)] outline-none"
-                          disabled={isSubmittingContact}
-                        />
-                      </div>
-                      {contactFormError && (
-                        <p className="text-xs font-bold text-[#EF4444]">{contactFormError}</p>
-                      )}
-                      <button
-                        type="submit"
-                        disabled={isSubmittingContact}
-                        className="w-full p-2 bg-primary text-primary-foreground font-bold uppercase border-2 border-black hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 transition-all flex items-center justify-center gap-2"
-                      >
-                        {isSubmittingContact ? (
-                          <>
-                            <Loader2 size={16} className="animate-spin" />
-                            {locale === "es" ? "Enviando..." : "Sending..."}
-                          </>
-                        ) : (
-                          locale === "es" ? "Continuar" : "Continue"
-                        )}
-                      </button>
-                    </form>
+                      onFormDataChange={setContactFormData}
+                    />
                   </div>
                 )}
               </div>
@@ -857,16 +821,18 @@ export function AIChatWidget({
         </div>
 
         {/* Quick Questions */}
-        <div className="px-3 py-2 bg-white border-t-2 border-black/20 flex gap-2 overflow-x-auto">
-          {quickQuestions.map((question, idx) => (
-            <button
-              key={idx}
-              onClick={() => handleQuickQuestion(question)}
-              className="flex-shrink-0 px-3 py-1.5 text-xs font-bold bg-muted border-2 border-black hover:bg-primary hover:text-primary-foreground hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all whitespace-nowrap"
-            >
-              {question}
-            </button>
-          ))}
+        <div className="border-black/20 bg-white px-3 py-3 border-t-2">
+          <div className="flex flex-wrap justify-center gap-2">
+            {quickQuestions.map((question, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleQuickQuestion(question)}
+                className="bg-muted hover:bg-primary hover:text-primary-foreground border-2 border-black px-3 py-1.5 text-center text-xs font-bold transition-all hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+              >
+                {question}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Input */}

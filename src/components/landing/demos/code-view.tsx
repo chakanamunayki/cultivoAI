@@ -100,13 +100,13 @@ export function CodeView({ steps }: CodeViewProps) {
         </button>
         <div className="flex-1" />
         {viewMode === "generating" && (
-          <div className="flex items-center gap-2 px-4 text-emerald-300 text-sm font-bold">
+          <div className="flex items-center gap-2 px-4 text-primary text-sm font-bold">
             <Sparkles className="w-4 h-4 animate-spin" />
             AI Building...
           </div>
         )}
         {viewMode === "preview" && (
-          <div className="flex items-center gap-2 px-4 text-green-400 text-sm font-bold">
+          <div className="flex items-center gap-2 px-4 text-primary text-sm font-bold">
             <Check className="w-4 h-4" />
             Live Preview
           </div>
@@ -119,7 +119,7 @@ export function CodeView({ steps }: CodeViewProps) {
           <div className="h-full p-4 font-mono text-sm overflow-auto">
             {/* File indicator */}
             <div className="flex items-center gap-2 mb-4 text-gray-500 text-xs">
-              <div className="w-2 h-2 rounded-full bg-green-500"></div>
+              <div className="w-2 h-2 rounded-full bg-primary/100"></div>
               components/HeroSection.tsx
             </div>
 
@@ -128,7 +128,7 @@ export function CodeView({ steps }: CodeViewProps) {
               {codeLines.map((line, i) => (
                 <div key={i} className="flex gap-4 animate-in slide-in-from-left duration-300">
                   <span className="text-gray-600 select-none w-6 text-right">{i + 1}</span>
-                  <pre className="text-green-300 flex-1">
+                  <pre className="text-primary flex-1">
                     <code>{line}</code>
                   </pre>
                 </div>
@@ -144,10 +144,10 @@ export function CodeView({ steps }: CodeViewProps) {
             {/* Generating overlay */}
             {viewMode === "generating" && (
               <div className="absolute inset-0 bg-black/50 flex items-center justify-center backdrop-blur-sm">
-                <div className="bg-[#18181B] border-4 border-emerald-500 shadow-[8px_8px_0px_0px_var(--primary)] p-6 text-center">
-                  <Loader2 className="w-10 h-10 text-emerald-300 animate-spin mx-auto mb-3" />
+                <div className="bg-[#18181B] border-4 border-primary shadow-[8px_8px_0px_0px_var(--primary)] p-6 text-center">
+                  <Loader2 className="w-10 h-10 text-primary animate-spin mx-auto mb-3" />
                   <div className="font-black text-white uppercase">Building Component</div>
-                  <div className="text-emerald-300 text-sm mt-1">AI generating preview...</div>
+                  <div className="text-primary text-sm mt-1">AI generating preview...</div>
                 </div>
               </div>
             )}
@@ -169,7 +169,7 @@ export function CodeView({ steps }: CodeViewProps) {
               </button>
 
               {/* Success badge */}
-              <div className="mt-6 flex items-center justify-center gap-2 text-green-600 font-bold text-sm">
+              <div className="mt-6 flex items-center justify-center gap-2 text-primary font-bold text-sm">
                 <Check className="w-5 h-5" />
                 Component Generated Successfully
               </div>

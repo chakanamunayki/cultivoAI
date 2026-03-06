@@ -59,7 +59,9 @@ CultivoAI is a bilingual (Spanish/English) AI and automation consultancy website
 
 **DO NOT CHANGE THE DESIGN. EVER. NOT A SINGLE PIXEL.**
 
-The template in `docs/template/App.tsx` (specifically `BrutalistDesign` component, lines 1372-1946) is the **exact visual specification**. When implementing:
+Historical note: older docs referenced `docs/template/App.tsx` as the visual source of truth, but that file is **not present** in this repo anymore.
+
+The **current landing implementation** in `src/app/page.tsx` and `src/components/landing/**` is the canonical visual/UX reference. When implementing:
 
 1. **Preserve ALL visual elements exactly** - colors, shadows, borders, animations, spacing
 2. **Preserve ALL effects** - hover states, transitions, scroll animations, marquee
@@ -353,7 +355,7 @@ pnpm db:studio    # Open Drizzle Studio
 ### CRITICAL RULES
 
 1. **PRESERVE THE BRUTALIST DESIGN EXACTLY**
-   - Reference `docs/template/App.tsx` for all visual decisions
+   - Reference `src/app/page.tsx` and `src/components/landing/**` for all visual decisions
    - Copy class names exactly - do not "improve" or "clean up" styling
    - Maintain all animations, hover effects, shadows, borders
 
@@ -376,16 +378,17 @@ pnpm db:studio    # Open Drizzle Studio
    - Chat widget: `@google/genai` with function calling
    - Other AI features: `@openrouter/ai-sdk-provider`
 
-### Template Reference
+### Current Landing Reference
 
-The source of truth for all visual specifications is:
-- **File**: `docs/template/App.tsx`
-- **Component**: `BrutalistDesign` (lines 1372-1946)
-- **Chat Widget**: `AIChatWidget` (lines 464-742)
-- **Animations**: `Reveal` component, marquee keyframes
-- **Modals**: `Modal`, `ProjectModalContent`, `ServiceModalContent`, `PartnershipModalContent`
+The source of truth for the current landing experience is:
+- `src/app/page.tsx` (composition + modal wiring)
+- `src/components/landing/layout/*` (nav/footer)
+- `src/components/landing/sections/*` (landing sections)
+- `src/components/landing/ui/*` (shared UI pieces + modals)
+- `src/components/landing/ai-chat-widget.tsx` (chat + lead capture)
+- `src/components/landing/voice-conversation-mode.tsx` (voice UI)
 
-When implementing, always cross-reference these sections to ensure pixel-perfect accuracy.
+When implementing, cross-reference these files to preserve styling/behavior.
 
 ---
 

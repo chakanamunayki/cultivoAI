@@ -64,6 +64,15 @@ const VOICE_CONFIG: Record<Locale, string> = {
   en: "Kore", // English voice
 };
 
+const MAX_RETRIES = 3;
+const RETRY_DELAYS = [0, 2000, 5000] as const; // Instant, 2s, 5s
+
+const debugLog = (...args: unknown[]) => {
+  if (process.env.NODE_ENV !== "production") {
+    console.warn(...args);
+  }
+};
+
 // ============================================
 // Hook Implementation
 // ============================================
@@ -92,10 +101,6 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   const [errorType, setErrorType] = useState<"microphone" | "network" | "server" | null>(null);
   const [retryAttempt, setRetryAttempt] = useState(0);
 
-  // Retry configuration
-  const MAX_RETRIES = 3;
-  const RETRY_DELAYS = [0, 2000, 5000]; // Instant, 2s, 5s
-
   // Refs for session and audio
   const sessionRef = useRef<any>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
@@ -104,6 +109,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
   const mediaStreamRef = useRef<MediaStream | null>(null);
   const workletNodeRef = useRef<AudioWorkletNode | null>(null);
   const isRecordingRef = useRef(false);
+  const connectRef = useRef<(isRetry?: boolean) => Promise<void>>(async () => {});
 
   // AnalyserNode refs for frequency data
   const inputAnalyserRef = useRef<AnalyserNode | null>(null);
@@ -201,7 +207,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
   const fetchEphemeralToken = useCallback(async (): Promise<string | null> => {
     try {
-      console.log("[Gemini Live SDK] Fetching ephemeral token for locale:", locale);
+      debugLog("[Gemini Live SDK] Fetching ephemeral token for locale:", locale);
 
       const response = await fetch("/api/voice/token", {
         method: "POST",
@@ -214,12 +220,15 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       }
 
       const data = await response.json();
-      console.log("[Gemini Live SDK] Token received");
+      debugLog("[Gemini Live SDK] Token received");
 
       // Decode the base64 token to extract the API key
       try {
         const tokenPayload = JSON.parse(atob(data.token));
-        console.log("[Gemini Live SDK] Decoded token, API key starts with:", tokenPayload.apiKey?.substring(0, 10));
+        debugLog(
+          "[Gemini Live SDK] Decoded token, API key starts with:",
+          tokenPayload.apiKey?.substring(0, 10)
+        );
         return tokenPayload.apiKey;
       } catch (decodeErr) {
         console.error("[Gemini Live SDK] Failed to decode token:", decodeErr);
@@ -352,7 +361,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
   const setupAudioInput = useCallback(async (): Promise<boolean> => {
     try {
-      console.log("[Gemini Live SDK] Setting up audio input");
+      debugLog("[Gemini Live SDK] Setting up audio input");
 
       // Request microphone access
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -408,7 +417,10 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
           // Send to Gemini via SDK (with safety check for WebSocket state)
           try {
             // Only send if session exists and has sendRealtimeInput method
-            if (sessionRef.current && typeof sessionRef.current.sendRealtimeInput === 'function') {
+            if (
+              sessionRef.current &&
+              typeof sessionRef.current.sendRealtimeInput === "function"
+            ) {
               sessionRef.current.sendRealtimeInput({
                 audio: {
                   data: base64Audio,
@@ -418,7 +430,11 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
             }
           } catch (err) {
             // Silently ignore errors if WebSocket is closing/closed
-            if (err instanceof Error && !err.message.includes('CLOSING') && !err.message.includes('CLOSED')) {
+            if (
+              err instanceof Error &&
+              !err.message.includes("CLOSING") &&
+              !err.message.includes("CLOSED")
+            ) {
               console.error("[Gemini Live SDK] Error sending audio:", err);
             }
           }
@@ -430,7 +446,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
         }
       };
 
-      console.log("[Gemini Live SDK] Audio input setup complete");
+      debugLog("[Gemini Live SDK] Audio input setup complete");
       return true;
     } catch (err) {
       console.error("[Gemini Live SDK] Audio input setup failed:", err);
@@ -460,7 +476,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     try {
       // Reuse existing context if it's still open
       if (playbackContextRef.current && playbackContextRef.current.state !== "closed") {
-        console.log("[Gemini Live SDK] Reusing existing audio output context");
+        debugLog("[Gemini Live SDK] Reusing existing audio output context");
         return true;
       }
 
@@ -483,7 +499,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       outputAnalyser.connect(ctx.destination);
       gainNodeRef.current = gainNode;
 
-      console.log("[Gemini Live SDK] Audio output setup complete (with GainNode)");
+      debugLog("[Gemini Live SDK] Audio output setup complete (with GainNode)");
       return true;
     } catch (err) {
       console.error("[Gemini Live SDK] Audio output setup failed:", err);
@@ -497,7 +513,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
   const initializeSession = useCallback(async (): Promise<boolean> => {
     try {
-      console.log("[Gemini Live SDK] Initializing session");
+      debugLog("[Gemini Live SDK] Initializing session");
 
       // Step 1: Get ephemeral token
       const token = await fetchEphemeralToken();
@@ -534,7 +550,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
         },
       };
 
-      console.log("[Gemini Live SDK] Connecting to Gemini Live API");
+      debugLog("[Gemini Live SDK] Connecting to Gemini Live API");
 
       // Step 4: Connect with callbacks
       // Use a Promise to wait for connection to open
@@ -548,7 +564,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
         config: config,
         callbacks: {
           onopen: () => {
-            console.log("[Gemini Live SDK] Connection opened");
+            debugLog("[Gemini Live SDK] Connection opened");
             updateConnectionState("connected");
             updateConversationState("listening"); // Start in listening state to show mic level
             // Start recording immediately after connection
@@ -558,17 +574,21 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
             resolveConnection(true);
           },
           onmessage: (message: any) => {
-            console.log("[Gemini Live SDK] Message received:", message);
+            debugLog("[Gemini Live SDK] Message received:", message);
 
             // Handle audio responses
             if (message.serverContent?.modelTurn?.parts) {
-              console.log("[Gemini Live SDK] Processing modelTurn with", message.serverContent.modelTurn.parts.length, "parts");
+              debugLog(
+                "[Gemini Live SDK] Processing modelTurn with",
+                message.serverContent.modelTurn.parts.length,
+                "parts"
+              );
               for (const part of message.serverContent.modelTurn.parts) {
                 // Audio data
                 if (part.inlineData?.data) {
-                  console.log("[Gemini Live SDK] Received audio data:", {
+                  debugLog("[Gemini Live SDK] Received audio data:", {
                     length: part.inlineData.data.length,
-                    mimeType: part.inlineData.mimeType
+                    mimeType: part.inlineData.mimeType,
                   });
                   updateConversationState("speaking");
 
@@ -584,7 +604,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
                 // Text transcription
                 if (part.text) {
-                  console.log("[Gemini Live SDK] Received text:", part.text);
+                  debugLog("[Gemini Live SDK] Received text:", part.text);
                   setAiTranscript((prev) => prev + part.text);
                   onTranscript?.(part.text, false, false);
                 }
@@ -600,7 +620,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
             // Handle turn complete
             if (message.serverContent?.turnComplete) {
-              console.log("[Gemini Live SDK] Turn complete");
+              debugLog("[Gemini Live SDK] Turn complete");
               if (audioQueueRef.current.length === 0) {
                 updateConversationState("listening"); // Return to listening after turn complete
               }
@@ -608,7 +628,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
 
             // Handle interruption
             if (message.serverContent?.interrupted) {
-              console.log("[Gemini Live SDK] Interrupted");
+              debugLog("[Gemini Live SDK] Interrupted");
               clearAudioQueue();
               updateConversationState("listening"); // Return to listening after interruption
             }
@@ -626,7 +646,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
             resolveConnection(false);
           },
           onclose: (event?: CloseEvent) => {
-            console.log("[Gemini Live SDK] Connection closed", {
+            debugLog("[Gemini Live SDK] Connection closed", {
               code: event?.code,
               reason: event?.reason,
               wasClean: event?.wasClean,
@@ -640,7 +660,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       });
 
       sessionRef.current = session;
-      console.log("[Gemini Live SDK] Waiting for connection to open...");
+      debugLog("[Gemini Live SDK] Waiting for connection to open...");
 
       // Wait for connection to actually open before proceeding
       const connected = await connectionPromise;
@@ -649,7 +669,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
         return false;
       }
 
-      console.log("[Gemini Live SDK] Session initialized successfully");
+      debugLog("[Gemini Live SDK] Session initialized successfully");
       return true;
     } catch (err) {
       console.error("[Gemini Live SDK] Session initialization failed:", err);
@@ -673,7 +693,32 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     updateConversationState,
     onTranscript,
     onError,
+    onConnected,
   ]);
+
+  // Auto-retry with exponential backoff
+  const attemptRetry = useCallback(async () => {
+    const currentAttempt = retryAttempt;
+
+    if (currentAttempt >= MAX_RETRIES) {
+      debugLog("[Gemini Live SDK] Max retries reached");
+      return;
+    }
+
+    const delay = RETRY_DELAYS[currentAttempt] ?? 5000;
+    debugLog(
+      `[Gemini Live SDK] Retrying in ${delay}ms (attempt ${currentAttempt + 1}/${MAX_RETRIES})`
+    );
+
+    setRetryAttempt(currentAttempt + 1);
+    onRetrying?.(currentAttempt + 1, delay);
+
+    if (delay > 0) {
+      await new Promise((resolve) => setTimeout(resolve, delay));
+    }
+
+    await connectRef.current(true); // Retry connection
+  }, [retryAttempt, onRetrying]);
 
   // ============================================
   // Public Connect Method
@@ -684,7 +729,10 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       return;
     }
 
-    console.log("[Gemini Live SDK] Starting connection sequence", isRetry ? `(retry ${retryAttempt + 1})` : "");
+    debugLog(
+      "[Gemini Live SDK] Starting connection sequence",
+      isRetry ? `(retry ${retryAttempt + 1})` : ""
+    );
     setError(null);
     setErrorType(null);
     setUserTranscript("");
@@ -739,36 +787,17 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
     initializeSession,
     updateConnectionState,
     startFrequencyAnalysis,
+    attemptRetry,
   ]);
 
-  // Auto-retry with exponential backoff
-  const attemptRetry = useCallback(async () => {
-    const currentAttempt = retryAttempt;
-
-    if (currentAttempt >= MAX_RETRIES) {
-      console.log("[Gemini Live SDK] Max retries reached");
-      return;
-    }
-
-    const delay = RETRY_DELAYS[currentAttempt] || 5000;
-    console.log(`[Gemini Live SDK] Retrying in ${delay}ms (attempt ${currentAttempt + 1}/${MAX_RETRIES})`);
-
-    setRetryAttempt(currentAttempt + 1);
-    onRetrying?.(currentAttempt + 1, delay);
-
-    if (delay > 0) {
-      await new Promise(resolve => setTimeout(resolve, delay));
-    }
-
-    connect(true); // Retry connection
-  }, [retryAttempt, connect, onRetrying, MAX_RETRIES, RETRY_DELAYS]);
+  connectRef.current = connect;
 
   // ============================================
   // Public Disconnect Method
   // ============================================
 
   const disconnect = useCallback(() => {
-    console.log("[Gemini Live SDK] Disconnecting");
+    debugLog("[Gemini Live SDK] Disconnecting");
 
     // Stop recording
     isRecordingRef.current = false;
@@ -834,7 +863,7 @@ export function useGeminiLive(options: UseGeminiLiveOptions): UseGeminiLiveRetur
       sessionRef.current.sendRealtimeInput({
         text: text,
       });
-      console.log("[Gemini Live SDK] Sent text prompt:", text);
+      debugLog("[Gemini Live SDK] Sent text prompt:", text);
     } catch (err) {
       console.error("[Gemini Live SDK] Error sending text prompt:", err);
     }

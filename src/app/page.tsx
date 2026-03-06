@@ -7,7 +7,7 @@ import { Footer } from "@/components/landing/layout/footer";
 import { Nav } from "@/components/landing/layout/nav";
 import { AboutSection } from "@/components/landing/sections/about-section";
 import { HeroSection } from "@/components/landing/sections/hero-section";
-import { ProcessTerminalSection } from "@/components/landing/sections/process-terminal-section";
+import { CustomCursor } from "@/components/landing/ui/custom-cursor";
 import { LazySection } from "@/components/landing/ui/lazy-section";
 import { useModal } from "@/components/landing/ui/modal-provider";
 import { ModalRenderer } from "@/components/landing/ui/modal-renderer";
@@ -89,11 +89,9 @@ const MissionSection = dynamic(
 
 const WhatHappensNextSection = dynamic(
   () =>
-    import("@/components/landing/sections/what-happens-next-section").then(
-      (m) => ({
-        default: m.WhatHappensNextSection,
-      })
-    ),
+    import("@/components/landing/sections/what-happens-next-section").then((m) => ({
+      default: m.WhatHappensNextSection,
+    })),
   { ssr: true }
 );
 
@@ -107,17 +105,43 @@ const AIChatWidget = dynamic(
 );
 
 // Chat button placeholder shown before widget loads
-function ChatButtonPlaceholder({ onClick }: { onClick: () => void }) {
+function WhatsAppIcon({ size = 22 }: { size?: number }) {
   return (
-    <div className="fixed bottom-6 right-6 z-[60] flex flex-col items-end font-grotesk">
-      <button
-        onClick={onClick}
-        className="bg-primary text-primary-foreground p-4 border-4 border-black hover:bg-primary/90 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-2 font-bold uppercase"
-        aria-label="Open chat"
-      >
-        <MessageSquare size={24} />
-        <span>Chat AI</span>
-      </button>
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  );
+}
+
+function ChatButtonPlaceholder({ onClick, whatsappUrl }: { onClick: () => void; whatsappUrl: string }) {
+  return (
+    <div className="font-grotesk fixed right-6 bottom-6 z-[60] flex flex-col items-end">
+      <div className="flex items-center gap-2">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex h-[58px] w-[58px] items-center justify-center rounded-xl bg-[#25D366] text-[#0b2d1f] shadow-[0_10px_20px_rgba(15,23,42,0.26)] transition-all hover:-translate-y-0.5 hover:bg-[#34e073] hover:shadow-[0_14px_26px_rgba(15,23,42,0.32)]"
+          aria-label="Open WhatsApp"
+        >
+          <WhatsAppIcon />
+        </a>
+        <button
+          onClick={onClick}
+          className="bg-primary text-primary-foreground hover:bg-primary/90 flex items-center gap-2 border-4 border-black p-4 font-bold uppercase transition-all hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          aria-label="Open chat"
+        >
+          <MessageSquare size={24} />
+          <span>Chat AI</span>
+        </button>
+      </div>
     </div>
   );
 }
@@ -127,8 +151,7 @@ export default function Home() {
   const [chatContext, setChatContext] = useState<ChatContext | null>(null);
   const [isChatWidgetLoaded, setIsChatWidgetLoaded] = useState(false);
   const { content } = useLocale();
-  const { openProjectModal, openServiceModal, openContactModal, closeModal } =
-    useModal();
+  const { openProjectModal, openServiceModal, openContactModal, closeModal } = useModal();
 
   const normalizeForMatch = useCallback((value: string) => {
     return value
@@ -157,9 +180,7 @@ export default function Home() {
   const handleOpenProjectModal = useCallback(
     (projectTitle: string) => {
       const target = normalizeForMatch(projectTitle);
-      const project = content.projects.find((p) =>
-        normalizeForMatch(p.title).includes(target)
-      );
+      const project = content.projects.find((p) => normalizeForMatch(p.title).includes(target));
       if (project) {
         openProjectModal(project);
       }
@@ -170,9 +191,7 @@ export default function Home() {
   const handleOpenServiceModal = useCallback(
     (serviceTitle: string) => {
       const target = normalizeForMatch(serviceTitle);
-      const service = content.services.find((s) =>
-        normalizeForMatch(s.title).includes(target)
-      );
+      const service = content.services.find((s) => normalizeForMatch(s.title).includes(target));
       if (service) {
         openServiceModal(service);
       }
@@ -229,14 +248,14 @@ export default function Home() {
     setIsChatWidgetLoaded(true);
     setIsChatOpen(true);
   }, []);
+  const whatsappUrl = `https://wa.me/${content.footer.contactInfo.whatsapp.replace(/\+/g, "")}`;
 
   return (
-    <div className="min-h-full bg-background text-foreground font-grotesk">
+    <div className="bg-white text-foreground font-grotesk min-h-full">
+      <CustomCursor />
+
       {/* Modal Renderer */}
-      <ModalRenderer
-        onOpenContact={handleOpenContactModal}
-        onChatClick={handleOpenChatGeneral}
-      />
+      <ModalRenderer onOpenContact={handleOpenContactModal} onChatClick={handleOpenChatGeneral} />
 
       {/* AI Chat Widget - lazy loaded */}
       {isChatWidgetLoaded ? (
@@ -250,7 +269,7 @@ export default function Home() {
           onOpenForm={handleOpenFormFromChat}
         />
       ) : (
-        <ChatButtonPlaceholder onClick={handlePlaceholderClick} />
+        <ChatButtonPlaceholder onClick={handlePlaceholderClick} whatsappUrl={whatsappUrl} />
       )}
 
       {/* Navigation with integrated ticker */}
@@ -266,10 +285,7 @@ export default function Home() {
       {/* Section 2: About - Eager loaded (above fold) */}
       <AboutSection />
 
-      {/* Section 3: Process Terminal - placed immediately after Team */}
-      <ProcessTerminalSection />
-
-      {/* Section 4: How We Work - Lazy loaded */}
+      {/* Section 3: How We Work - Lazy loaded */}
       <LazySection className="min-h-[400px]">
         <HowWeWorkSection />
       </LazySection>
@@ -314,7 +330,7 @@ export default function Home() {
 
       {/* Section 14: Mission - Lazy loaded */}
       <LazySection className="min-h-[300px]">
-        <MissionSection />
+        <MissionSection onOpenChatImpact={handleOpenContactModal} />
       </LazySection>
 
       {/* Section 15: What Happens Next - Lazy loaded */}

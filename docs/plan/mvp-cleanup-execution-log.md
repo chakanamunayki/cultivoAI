@@ -188,6 +188,21 @@ Status: Pending
   - `pnpm typecheck` passed
   - `pnpm build:ci` passed
 
+### 2026-03-05 (dirty-worktree baseline cleanup commit prep)
+
+- Re-evaluated MVP cleanup sequencing with emphasis on producing a clean working baseline from the existing frontend/repo cleanup changes.
+- Confirmed untracked landing team photos are now real runtime assets referenced by locale content:
+  - `public/landing/photos/team/paul.jpg`
+  - `public/landing/photos/team/rocky.jpeg`
+  - `public/landing/photos/team/marta.jpg`
+- Removed unused untracked UI experiment files to avoid carrying dead artifacts into the baseline cleanup commit:
+  - `src/components/ui/animated-hero.tsx`
+  - `src/components/ui/aurora-background.tsx`
+- Verification for this pass:
+  - `pnpm lint` passed
+  - `pnpm typecheck` passed
+  - `pnpm build:ci` passed
+
 ## Exit Criteria For This Pass
 
 - The repo explains itself without boilerplate confusion.

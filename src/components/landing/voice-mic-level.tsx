@@ -47,7 +47,7 @@ export function VoiceMicLevel({ level, locale }: VoiceMicLevelProps) {
   const getColor = (): string => {
     if (smoothedLevel >= 80) return "#EF4444"; // Red - clipping
     if (smoothedLevel <= 40) return "#F59E0B"; // Amber - too quiet
-    return "#059669"; // Emerald - good
+    return "#00BCD4"; // Emerald - good
   };
 
   // Determine background color (lighter shade)

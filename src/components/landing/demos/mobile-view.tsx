@@ -16,8 +16,8 @@ export function MobileView({ steps }: MobileViewProps) {
         <div className="bg-black p-2 flex justify-between items-center text-[10px] text-white font-bold px-3">
           <span>9:41</span>
           <div className="flex items-center gap-1">
-            <Sparkles size={10} className="text-emerald-400" />
-            <span className="text-emerald-400">AI</span>
+            <Sparkles size={10} className="text-primary" />
+            <span className="text-primary">AI</span>
           </div>
         </div>
 
@@ -54,7 +54,7 @@ export function MobileView({ steps }: MobileViewProps) {
                   <div className="bg-white p-2.5 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                     <div className="flex items-center gap-2 mb-2 pb-2 border-b-2 border-black">
                       {text?.includes("Instagram") && (
-                        <div className="w-5 h-5 bg-gradient-to-br from-primary to-emerald-400 border-2 border-black flex items-center justify-center">
+                        <div className="w-5 h-5 bg-gradient-to-br from-primary to-primary border-2 border-black flex items-center justify-center">
                           <Instagram size={10} className="text-white" />
                         </div>
                       )}
@@ -83,7 +83,7 @@ export function MobileView({ steps }: MobileViewProps) {
                         <MessageCircle size={12} className="text-gray-400" />
                         <Share2 size={12} className="text-gray-400" />
                       </div>
-                      <span className="text-[9px] font-bold text-green-600">+23 likes</span>
+                      <span className="text-[9px] font-bold text-primary">+23 likes</span>
                     </div>
                   </div>
                 )}

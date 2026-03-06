@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Terminal as TerminalIcon,
   CheckCircle2,
@@ -13,12 +13,13 @@ import {
   Layers,
   BarChart3,
   TrendingUp,
-  Repeat
-} from 'lucide-react';
-import { useLocale } from '@/hooks/use-locale';
+  Repeat,
+} from "lucide-react";
+import { useLocale } from "@/hooks/use-locale";
+import { cn } from "@/lib/utils";
 
 // Types for our terminal lines
-type LineType = 'command' | 'success' | 'info' | 'error' | 'event' | 'ai';
+type LineType = "command" | "success" | "info" | "error" | "event" | "ai";
 
 interface TerminalLine {
   id: string;
@@ -28,7 +29,11 @@ interface TerminalLine {
   className?: string;
 }
 
-export const CodeTerminal: React.FC = () => {
+interface CodeTerminalProps {
+  fillContainer?: boolean;
+}
+
+export const CodeTerminal: React.FC<CodeTerminalProps> = ({ fillContainer = false }) => {
   const { content } = useLocale();
   const [lines, setLines] = useState<TerminalLine[]>([]);
   const [activeStep, setActiveStep] = useState(0);
@@ -91,7 +96,7 @@ export const CodeTerminal: React.FC = () => {
       if (step.icon) newLine.icon = step.icon;
       if (step.className) newLine.className = step.className;
 
-      setLines(prev => [...prev, newLine]);
+      setLines((prev) => [...prev, newLine]);
 
       setActiveStep(stepIndex + 1);
     };
@@ -100,16 +105,16 @@ export const CodeTerminal: React.FC = () => {
       // Logic to get delay from PREVIOUS step to determine when THIS step runs
       // But here we use a simple forward delay mechanism:
       // The delay property in the script array controls how long to wait BEFORE running the NEXT step.
-      const currentDelay = activeStep > 0 ? (script[activeStep - 1]?.delay || 500) : 0;
+      const currentDelay = activeStep > 0 ? script[activeStep - 1]?.delay || 500 : 0;
 
       timeout = setTimeout(() => {
-         // This executes the current step logic
-         if (activeStep < script.length) {
-            runStep(activeStep);
-         } else {
-             // Restart logic
-             runStep(activeStep);
-         }
+        // This executes the current step logic
+        if (activeStep < script.length) {
+          runStep(activeStep);
+        } else {
+          // Restart logic
+          runStep(activeStep);
+        }
       }, currentDelay);
     }
 
@@ -118,21 +123,31 @@ export const CodeTerminal: React.FC = () => {
   }, [activeStep]);
 
   return (
-    <div className="w-full h-full flex items-center justify-center p-2 sm:p-3 md:p-10">
+    <div
+      className={cn(
+        "flex h-full w-full items-center justify-center",
+        fillContainer ? "p-0" : "p-2 sm:p-3 md:p-10"
+      )}
+    >
       <motion.div
-        className="relative w-full max-w-md sm:max-w-lg md:max-w-xl aspect-[5/4] sm:aspect-[4/3] md:aspect-video bg-[#18181B] border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden flex flex-col hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300"
+        className={cn(
+          "relative flex w-full flex-col overflow-hidden rounded-[24px] border border-white/10 bg-[#18181B] shadow-[0_18px_34px_rgba(15,23,42,0.26)] ring-1 ring-black/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_40px_rgba(15,23,42,0.32)]",
+          fillContainer
+            ? "aspect-[16/10] max-w-none md:aspect-[4/3]"
+            : "aspect-[5/4] max-w-md sm:aspect-[4/3] sm:max-w-lg md:aspect-video md:max-w-xl"
+        )}
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
       >
         {/* Terminal Header */}
-        <div className="bg-[#27272A] px-4 py-3 flex items-center justify-between border-b-4 border-black flex-shrink-0 z-20 relative">
+        <div className="relative z-20 flex flex-shrink-0 items-center justify-between border-b border-white/10 bg-[#27272A] px-4 py-3">
           <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500/80" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-            <div className="w-3 h-3 rounded-full bg-green-500/80" />
+            <div className="h-3 w-3 rounded-full bg-red-500/80" />
+            <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
+            <div className="h-3 w-3 rounded-full bg-primary/100/80" />
           </div>
-          <div className="flex items-center gap-2 text-zinc-400 text-[10px] md:text-xs font-mono opacity-80">
+          <div className="flex items-center gap-2 font-mono text-[10px] text-zinc-400 opacity-80 md:text-xs">
             <TerminalIcon size={12} />
             <span>cultivo-terminal - zsh - 80x24</span>
           </div>
@@ -140,39 +155,44 @@ export const CodeTerminal: React.FC = () => {
         </div>
 
         {/* Terminal Body */}
-        <div className="relative flex-1 bg-[#18181B] p-4 font-mono text-xs md:text-sm overflow-hidden flex flex-col">
-
+        <div className="relative flex flex-1 flex-col overflow-hidden bg-[#18181B] p-4 font-mono text-xs md:text-sm">
           {/* CRT / Scanline Effect Overlay */}
-          <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.03]"
-               style={{
-                 backgroundImage: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%)',
-                 backgroundSize: '100% 2px'
-               }}
+          <div
+            className="pointer-events-none absolute inset-0 z-0 opacity-[0.03]"
+            style={{
+              backgroundImage: "linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%)",
+              backgroundSize: "100% 2px",
+            }}
           />
-          <div className="absolute inset-0 pointer-events-none z-0 bg-gradient-to-b from-white/[0.02] to-transparent" />
+          <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-white/[0.02] to-transparent" />
 
           {/* Content Area */}
-          <div ref={terminalRef} className="relative z-10 space-y-1.5 md:space-y-2 overflow-y-auto max-h-full scrollbar-none pb-2">
-             {/* Initial welcome message */}
-             <div className="text-zinc-500 mb-4 text-[10px] md:text-xs select-none">
-                {content.terminal.welcomeLine1}{new Date().toDateString()} on ttys001<br/>
-                {content.terminal.welcomeLine2}
-             </div>
+          <div
+            ref={terminalRef}
+            className="scrollbar-none relative z-10 max-h-full space-y-1.5 overflow-y-auto pb-2 md:space-y-2"
+          >
+            {/* Initial welcome message */}
+            <div className="mb-4 text-[10px] text-zinc-500 select-none md:text-xs">
+              {content.terminal.welcomeLine1}
+              {new Date().toDateString()} on ttys001
+              <br />
+              {content.terminal.welcomeLine2}
+            </div>
 
-            <AnimatePresence mode='popLayout'>
+            <AnimatePresence mode="popLayout">
               {lines.map((line) => (
                 <LineItem key={line.id} line={line} />
               ))}
             </AnimatePresence>
 
             {/* Active Cursor Line */}
-            <div ref={bottomRef} className="flex items-center gap-2 text-emerald-500 h-5">
-                 <ChevronRight size={14} />
-                 <motion.span
-                   className="w-2 h-4 bg-emerald-500 block"
-                   animate={{ opacity: [1, 0] }}
-                   transition={{ repeat: Infinity, duration: 0.8 }}
-                 />
+            <div ref={bottomRef} className="flex h-5 items-center gap-2 text-primary">
+              <ChevronRight size={14} />
+              <motion.span
+                className="block h-4 w-2 bg-primary/100"
+                animate={{ opacity: [1, 0] }}
+                transition={{ repeat: Infinity, duration: 0.8 }}
+              />
             </div>
           </div>
         </div>
@@ -184,36 +204,51 @@ export const CodeTerminal: React.FC = () => {
 const LineItem: React.FC<{ line: TerminalLine }> = ({ line }) => {
   const getStyle = (type: LineType) => {
     switch (type) {
-      case 'command': return "text-emerald-400 font-bold";
-      case 'success': return "text-emerald-400";
-      case 'error': return "text-red-400";
-      case 'event': return "text-zinc-300";
-      case 'ai': return "text-emerald-300 font-medium";
-      default: return "text-zinc-300";
+      case "command":
+        return "text-primary font-bold";
+      case "success":
+        return "text-primary";
+      case "error":
+        return "text-red-400";
+      case "event":
+        return "text-zinc-300";
+      case "ai":
+        return "text-primary font-medium";
+      default:
+        return "text-zinc-300";
     }
   };
 
   const getPrefix = (type: LineType) => {
     switch (type) {
-      case 'command': return <span className="mr-2 text-emerald-500 font-bold">~</span>;
-      case 'success': return <CheckCircle2 size={14} className="mr-2 inline text-emerald-500 flex-shrink-0" />;
-      case 'event': return <span className="mr-2 text-zinc-400 font-bold flex-shrink-0">?</span>;
-      case 'ai': return <span className="mr-2 text-emerald-400 font-bold flex-shrink-0">*</span>;
-      default: return null;
+      case "command":
+        return <span className="mr-2 font-bold text-primary">~</span>;
+      case "success":
+        return <CheckCircle2 size={14} className="mr-2 inline flex-shrink-0 text-primary" />;
+      case "event":
+        return <span className="mr-2 flex-shrink-0 font-bold text-zinc-400">?</span>;
+      case "ai":
+        return <span className="mr-2 flex-shrink-0 font-bold text-primary">*</span>;
+      default:
+        return null;
     }
   };
 
   return (
     <motion.div
-      className={`flex items-start leading-relaxed break-all md:break-words ${getStyle(line.type)} ${line.className || ''}`}
+      className={`flex items-start leading-relaxed break-all md:break-words ${getStyle(line.type)} ${line.className || ""}`}
       initial={{ opacity: 0, x: -5 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
     >
-        <span className="flex-shrink-0 flex items-center mt-[3px] md:mt-1 select-none">
-            {line.icon ? <span className="mr-2 inline-block opacity-80">{line.icon}</span> : getPrefix(line.type)}
-        </span>
-        <span>{line.text}</span>
+      <span className="mt-[3px] flex flex-shrink-0 items-center select-none md:mt-1">
+        {line.icon ? (
+          <span className="mr-2 inline-block opacity-80">{line.icon}</span>
+        ) : (
+          getPrefix(line.type)
+        )}
+      </span>
+      <span>{line.text}</span>
     </motion.div>
   );
 };

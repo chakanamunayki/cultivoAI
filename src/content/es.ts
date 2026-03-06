@@ -25,21 +25,19 @@ export const es: SiteContent = {
   hero: {
     tagline: "PARA BUENOS PROYECTOS",
     line1: "Sistemas de IA para escalar trabajo valioso",
-    subheadline:
-      "Automatizamos lo repetitivo.\nMostramos lo que importa en dashboards.\nConvertimos tu conocimiento en un sistema reutilizable.",
+    subheadline: "Reduce tareas repetitivas. Ve lo que importa.",
     services: [],
     servicesDone: "",
     audience: [],
     outcomes: ["Menos trabajo manual", "Decisiones más claras", "Mejor seguimiento"],
     audienceLabel: "Hecho para:",
     audienceChips: [
+      "Startups de impacto",
       "Retiros wellness",
       "Comunidades off-grid",
-      "Proyectos de autosuficiencia",
-      "Hidroponía",
-      "Bienestar holístico",
+      "Hidroponia",
+      "Bienestar holistico",
       "Proyectos regenerativos",
-      "Startups de impacto",
     ],
     tertiaryCta: "Ver servicios",
     microcopy:
@@ -67,7 +65,6 @@ export const es: SiteContent = {
         id: "paul",
         name: "Paul Ronayne",
         title: "Desarrollador y consultor de IA",
-        subtitle: "Cofundador de nbn23.com y nagi.es en Espana",
         description:
           "Llevo mas de 20 anos en tecnologia, incluyendo la cofundacion de dos negocios tech/data en Espana: nbn23.com y nagi.es. Hoy uno disciplina startup con IA human-first para ayudar a negocios holisticos a crecer con claridad y cuidado.",
         imageUrl: "/landing/photos/team/paul.jpg",
@@ -113,7 +110,7 @@ export const es: SiteContent = {
         title: "Especialista en sistemas IA",
         description:
           "Rocky construye flujos, asistentes y dashboards de IA que ayudan a los equipos a avanzar más rapido y con consistencia. Practico, con criterio de diseno y enfoque en resultados.",
-        imageUrl: "/landing/photos/team/rocky.jpg",
+        imageUrl: "/landing/photos/team/rocky.jpeg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
@@ -156,7 +153,6 @@ export const es: SiteContent = {
         imageUrl: "/landing/photos/team/marta.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
-        linkedinUrl: "https://www.linkedin.com/in/marta-ronayne/",
         bio: {
           headline: "Tono, confianza y usabilidad que se sienten humanos",
           sections: [
@@ -186,7 +182,6 @@ export const es: SiteContent = {
                 "Un sistema que se siente claro y humano, para que la gente se quede y haga seguimiento.",
             },
           ],
-          linkedinUrl: "https://www.linkedin.com/in/marta-ronayne/",
         },
       },
     ],
@@ -411,6 +406,7 @@ export const es: SiteContent = {
         "Blog, redes sociales y newsletters manteniendo tu voz de marca.",
       ],
       imageUrl: "/landing/photos/services/knowledge-content-systems.jpg",
+      imageFit: "contain",
       modal: {
         whatItMeans:
           "Un sistema que captura conocimiento y lo convierte en salida consistente y util.",
@@ -906,7 +902,7 @@ export const es: SiteContent = {
   projectsSubtitle: "Proyectos seleccionados de nuestro trabajo actual",
   projects: [
     {
-      title: "Chak",
+      title: "Chak - Creacion de vida, con ayuda de IA",
       desc: "Sistemas para impulsar trabajo enfocado en salud con claridad, estructura y momentum.",
       fullDesc:
         "Un sistema en evolucion que integra flujos operativos, ejecucion de servicios y visibilidad para decisiones, reduciendo fricción en equipos enfocados en salud.",
@@ -1242,7 +1238,7 @@ export const es: SiteContent = {
       },
       {
         platform: "whatsapp",
-        url: "https://wa.me/573106172706",
+        url: "https://wa.me/573106172607",
         label: "WhatsApp",
       },
       {
@@ -1260,8 +1256,8 @@ export const es: SiteContent = {
     ],
     contactInfo: {
       email: "hola@cultivoai.co",
-      whatsapp: "+573106172706",
-      whatsappDisplay: "+57 310 617 2706",
+      whatsapp: "+573106172607",
+      whatsappDisplay: "+57 310 617 2607",
       location: "Medellin, Colombia",
       locationSecondary: "Worldwide",
     },

@@ -43,7 +43,7 @@ export function ChatView({ steps, activeTab }: ChatViewProps) {
                     isAI
                       ? "bg-primary text-primary-foreground"
                       : isAction
-                        ? "bg-green-500 text-white"
+                        ? "bg-primary/100 text-white"
                         : "bg-[#1a1a1a] text-white"
                   }`}
                 >
