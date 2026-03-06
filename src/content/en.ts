@@ -1,7 +1,10 @@
 import { enAbout } from "./locales/en/about";
+import { enPartnershipsContent } from "./locales/en/partnerships";
 import { enProjectsContent } from "./locales/en/projects";
+import { enSemillaContent } from "./locales/en/semilla";
 import { enServicesContent } from "./locales/en/services";
 import { enStoriesContent } from "./locales/en/stories";
+import { enUseCasesContent } from "./locales/en/use-cases";
 import { enWhoWeHelpContent } from "./locales/en/who-we-help";
 import type { SiteContent } from "./types";
 
@@ -136,215 +139,13 @@ export const en: SiteContent = {
 
   ...enServicesContent,
 
-  demosTitle: "AI in Action",
-  demosSubtitle: "See examples of assistants, dashboards, and workflow systems in action.",
-  useCases: [
-    {
-      id: "chat",
-      title: "Smart Chatbot",
-      description: "Automatic 24/7 customer service. Responds, qualifies, and schedules.",
-      scenario: "A customer asks about chatbot pricing",
-      steps: [
-        { action: "Customer: Hi, what do your chatbots cost?", result: "" },
-        { action: "AI: Analyzing context...", result: "" },
-        {
-          action: "",
-          result:
-            "Bot: Great question. Pricing depends on scope. Want to tell me what you are trying to do so I can point you to the best next step?",
-        },
-        { action: "Customer: Yes, please.", result: "" },
-        { action: "", result: "Sending interactive demo..." },
-      ],
-    },
-    {
-      id: "lead",
-      title: "Lead Filtering",
-      description: "Automatically qualify prospects before you talk to them.",
-      scenario: "New lead arrives from LinkedIn",
-      steps: [
-        { action: "New Lead: Juan Perez (LinkedIn)", result: "" },
-        { action: "AI: Enriching profile...", result: "" },
-        { action: "", result: "{ Role: CEO, Size: 50-100, Loc: Bog }" },
-        { action: "", result: "Score: 92/100. High probability." },
-        { action: "", result: "Moved to 'High Priority' column" },
-      ],
-    },
-    {
-      id: "web",
-      title: "Web Builder",
-      description: "Generate web structures and optimized copy in seconds.",
-      scenario: "Generating landing page for coffee shop",
-      steps: [
-        { action: "User: Landing for modern coffee shop", result: "" },
-        { action: "AI: Generating React components...", result: "" },
-        { action: "", result: '<Hero title="Origin Coffee" />' },
-        { action: "", result: '<Features list={["Medium Roast", "Organic"]} />' },
-        { action: "", result: "Site deployed to Vercel" },
-      ],
-    },
-    {
-      id: "dash",
-      title: "Business Dashboard",
-      description: "Turn raw data into real-time decision charts.",
-      scenario: "Syncing Stripe and Shopify",
-      steps: [
-        { action: "Sync Stripe & Shopify", result: "" },
-        { action: "AI: Detecting anomalies...", result: "" },
-        { action: "", result: "Sales Today: $2,450 (+15%)" },
-        { action: "", result: "Updating revenue widget" },
-        { action: "", result: "Insight: Product B is trending." },
-      ],
-    },
-    {
-      id: "social",
-      title: "Social Media Flow",
-      description: "Multiply your content. From one idea to all networks.",
-      scenario: "Creating content about AI in SMBs",
-      steps: [
-        { action: "User: Post about 'AI in SMBs'", result: "" },
-        { action: "AI: Adapting to formats...", result: "" },
-        { action: "", result: "Instagram: 5-slide carousel" },
-        { action: "", result: "Twitter: 3-tweet thread" },
-        { action: "", result: "LinkedIn: Professional article" },
-      ],
-    },
-    {
-      id: "project19",
-      title: "Project19 Coach",
-      description: "Personal AI coach via WhatsApp. Morning briefing and evening check-in.",
-      scenario: "A day with Rocky's coach",
-      steps: [
-        { action: "7:00 AM - Good morning Rocky!", result: "" },
-        {
-          action: "",
-          result: "What do you have planned for today? School, soccer, anything else?",
-        },
-        { action: "Rocky: School until 3, then soccer practice", result: "" },
-        { action: "", result: "Saved to Notion. I'll text you at 8pm!" },
-        { action: "8:00 PM - How was your day?", result: "" },
-        { action: "Rocky: [Voice note 30s]", result: "" },
-        { action: "", result: "Transcribed and saved. Good day! Get some rest." },
-      ],
-    },
-  ],
+  ...enUseCasesContent,
 
   ...enWhoWeHelpContent,
 
-  semilla: {
-    title: "Semilla Fund",
-    subtitle: "Rocky's Journey",
-    about:
-      "I'm 14 years old. I turn 15 in January. I still don't know exactly what I want to do with my life, and I think that's okay. But I do know some things: I like to build. My dad is teaching me to make things with AI - chatbots, automations, stuff like that. Sometimes he teaches me. Sometimes I teach him.",
-    tiers: [
-      { name: "Seed ($10-50)", description: "Progress updates, name on supporters page" },
-      { name: "Sprout ($50-200)", description: "Early access to tools, input on features" },
-      { name: "Grow ($200-500)", description: "Free lifetime access to what Rocky builds" },
-      { name: "Partner ($500+)", description: "Custom adaptation, direct involvement" },
-    ],
-    services: [
-      "Basic chatbots for WhatsApp or web",
-      "Simple automations (connect apps, send notifications)",
-      "Help with Notion and organization",
-      "Chatbot development workshops",
-    ],
-    goal: "By the time I'm 19, I want to have options. Maybe play semi-professional soccer. Maybe have my own business. Maybe both. The point is being able to choose.",
-    ctaTitle: "Propose a Project",
-    ctaDescription: "Have something small you need? Tell me about it.",
-    ctaButton: "Propose Project",
-  },
+  ...enSemillaContent,
 
-  partnershipsTitle: "Flexible Ways to Work Together",
-  partnershipsSubtitle:
-    "Not every valuable project comes with a big budget. If the impact is real, we can start lean and grow from there.",
-  partnerships: [
-    {
-      name: "Standard Project",
-      tagline: "Businesses with budget",
-      description:
-        "Clear scope and defined deliverables. Fixed price agreed before starting. Established timeline. Post-delivery support included.",
-      idealFor: ["Companies that know what they need", "Resources to invest"],
-      icon: "Briefcase",
-      imageUrl: "/landing/photos/partnerships/standard-project.jpg",
-      modal: {
-        whatItMeans:
-          "A clear-scope build with defined deliverables, timeline, and responsibilities.",
-        whyItMatters:
-          "If you need predictability, this model keeps decision-making fast and delivery aligned to a clear target.",
-        whatsIncluded: [
-          "A short discovery to define scope and success criteria",
-          "A delivery plan with milestones and clear ownership",
-          "Build, test, and launch of the agreed deliverables",
-          "Basic documentation and handoff",
-          "A small post-launch support window for fixes and tuning",
-        ],
-        idealFit: [
-          "Teams who know what they need (or can decide quickly)",
-          "Projects where clarity and speed matter",
-          "Organizations ready to invest in quality delivery",
-        ],
-        typicalOutcome:
-          "A shipped system with clear scope, clear handoff, and the foundation to iterate responsibly.",
-      },
-    },
-    {
-      name: "Impact-friendly rates",
-      tagline: "Mission-aligned teams",
-      description:
-        "Same quality level. Significantly reduced price. Flexible conditions. In exchange: testimonial, case study, or referrals.",
-      idealFor: ["Pre-revenue startups", "Projects with social mission"],
-      icon: "HeartHandshake",
-      imageUrl: "/landing/photos/partnerships/impact-friendly.jpg",
-      modal: {
-        whatItMeans:
-          "Reduced rates for mission-led teams when the impact is real and expectations are clear.",
-        whyItMatters:
-          "High-impact work often starts lean. This model makes it possible to build useful systems without stretching the team past their limits.",
-        whatsIncluded: [
-          "The same delivery quality, with a leaner scope",
-          "Clear priorities: version one first, then improve",
-          "Flexible collaboration to match real constraints",
-          "Agreement on a fair exchange (testimonial, case study, referrals)",
-          "A plan to grow the system as momentum builds",
-        ],
-        idealFit: [
-          "Mission-aligned teams with tight budgets",
-          "Projects where outcomes matter more than polish on day one",
-          "Teams willing to collaborate closely and iterate",
-        ],
-        typicalOutcome:
-          "A focused version one that creates momentum, with a clear path to expand when resources allow.",
-      },
-    },
-    {
-      name: "Partnership options",
-      tagline: "Right fit only",
-      description:
-        "For selected projects with strong impact potential and clear alignment, we can define custom partnership terms.",
-      idealFor: ["Impact startups", "Long-term aligned collaborations"],
-      icon: "PieChart",
-      imageUrl: "/landing/photos/partnerships/partnership-options.jpg",
-      modal: {
-        whatItMeans:
-          "A custom collaboration model for the rare cases where alignment is strong and incentives should stay connected over time.",
-        whyItMatters:
-          "When a project has real upside and real impact, rigid models can slow progress. Custom terms keep the relationship win-win.",
-        whatsIncluded: [
-          "A candid alignment check (impact, execution, and expectations)",
-          "A phased plan with clear deliverables at each step",
-          "Terms that keep incentives aligned as the project evolves",
-          "Regular review points to adjust scope and priorities",
-          "A focus on long-term usefulness, not short-term optics",
-        ],
-        idealFit: [
-          "Impact startups with strong potential and clear focus",
-          "Teams looking for long-term collaboration, not a one-off",
-          "Situations where flexibility creates better outcomes",
-        ],
-        typicalOutcome:
-          "A partnership that ships in phases, stays honest about tradeoffs, and grows a useful system over time.",
-      },
-    },
-  ],
+  ...enPartnershipsContent,
 
   ...enProjectsContent,
 

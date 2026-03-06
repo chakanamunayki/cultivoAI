@@ -1,7 +1,10 @@
 import { esAbout } from "./locales/es/about";
+import { esPartnershipsContent } from "./locales/es/partnerships";
 import { esProjectsContent } from "./locales/es/projects";
+import { esSemillaContent } from "./locales/es/semilla";
 import { esServicesContent } from "./locales/es/services";
 import { esStoriesContent } from "./locales/es/stories";
+import { esUseCasesContent } from "./locales/es/use-cases";
 import { esWhoWeHelpContent } from "./locales/es/who-we-help";
 import type { SiteContent } from "./types";
 
@@ -136,218 +139,13 @@ export const es: SiteContent = {
 
   ...esServicesContent,
 
-  demosTitle: "IA en Accion",
-  demosSubtitle: "Mira ejemplos de asistentes, dashboards y sistemas de trabajo en accion.",
-  useCases: [
-    {
-      id: "chat",
-      title: "Chatbot Inteligente",
-      description: "Atencion al cliente automatica 24/7. Responde, califica y agenda.",
-      scenario: "Un cliente pregunta sobre precios de chatbots",
-      steps: [
-        { action: "Cliente: Hola, que precio tienen los chatbots?", result: "" },
-        { action: "IA: Analizando contexto...", result: "" },
-        {
-          action: "",
-          result:
-            "Bot: Buena pregunta. El precio depende del alcance. Cuentame que necesitas y te indico el mejor siguiente paso.",
-        },
-        { action: "Cliente: Si, por favor.", result: "" },
-        { action: "", result: "Enviando demo interactiva..." },
-      ],
-    },
-    {
-      id: "lead",
-      title: "Filtrado de Leads",
-      description: "Califica prospectos automaticamente antes de que hables con ellos.",
-      scenario: "Nuevo lead llega desde LinkedIn",
-      steps: [
-        { action: "Nuevo Lead: Juan Perez (LinkedIn)", result: "" },
-        { action: "IA: Enriqueciendo perfil...", result: "" },
-        { action: "", result: "{ Role: CEO, Size: 50-100, Loc: Bog }" },
-        { action: "", result: "Score: 92/100. Alta probabilidad." },
-        { action: "", result: "Movido a columna 'Prioridad Alta'" },
-      ],
-    },
-    {
-      id: "web",
-      title: "Constructor Web",
-      description: "Genera estructuras web y copy optimizado en segundos.",
-      scenario: "Generando landing page para cafeteria",
-      steps: [
-        { action: "Usuario: Landing para cafeteria moderna", result: "" },
-        { action: "IA: Generando componentes React...", result: "" },
-        { action: "", result: '<Hero title="Cafe de Origen" />' },
-        { action: "", result: '<Features list={["Tostion Media", "Organico"]} />' },
-        { action: "", result: "Sitio desplegado en Vercel" },
-      ],
-    },
-    {
-      id: "dash",
-      title: "Business Dashboard",
-      description: "Convierte datos crudos en graficos de decision en tiempo real.",
-      scenario: "Sincronizando Stripe y Shopify",
-      steps: [
-        { action: "Sync Stripe & Shopify", result: "" },
-        { action: "IA: Detectando anomalias...", result: "" },
-        { action: "", result: "Ventas Hoy: $2,450 (+15%)" },
-        { action: "", result: "Actualizando widget de ingresos" },
-        { action: "", result: "Insight: El producto B esta trending." },
-      ],
-    },
-    {
-      id: "social",
-      title: "Social Media Flow",
-      description: "Multiplica tu contenido. De una idea a todas las redes.",
-      scenario: "Creando contenido sobre IA en Pymes",
-      steps: [
-        { action: "Usuario: Post sobre 'IA en Pymes'", result: "" },
-        { action: "IA: Adaptando a formatos...", result: "" },
-        { action: "", result: "Instagram: Carrusel 5 slides" },
-        { action: "", result: "Twitter: Hilo de 3 tweets" },
-        { action: "", result: "LinkedIn: Articulo profesional" },
-      ],
-    },
-    {
-      id: "project19",
-      title: "Project19 Coach",
-      description: "Coach personal de IA via WhatsApp. Briefing matutino y check-in nocturno.",
-      scenario: "Un dia con el coach de Rocky",
-      steps: [
-        { action: "7:00 AM - Buenos dias Rocky!", result: "" },
-        { action: "", result: "Que tienes planeado para hoy? Escuela, futbol, algo más?" },
-        { action: "Rocky: Escuela hasta las 3, despues entrenamiento de futbol", result: "" },
-        { action: "", result: "Guardado en Notion. Te escribo a las 8pm!" },
-        { action: "8:00 PM - Como te fue hoy?", result: "" },
-        { action: "Rocky: [Nota de voz 30s]", result: "" },
-        { action: "", result: "Transcrito y guardado. Buen dia! Descansa." },
-      ],
-    },
-  ],
+  ...esUseCasesContent,
 
   ...esWhoWeHelpContent,
 
-  semilla: {
-    title: "Fondo Semilla",
-    subtitle: "El Viaje de Rocky",
-    about:
-      "Tengo 14 años. Cumplo 15 en enero. Todavia no se exactamente que quiero hacer con mi vida, y creo que esta bien no saberlo todavia. Pero si se algunas cosas: Me gusta construir. Mi papa me esta ensenando a hacer cosas con IA - chatbots, automatizaciones, cosas asi. A veces el me ensena. A veces yo le enseno a el.",
-    tiers: [
-      {
-        name: "Semilla ($10-50)",
-        description: "Actualizaciones de progreso, nombre en supporters",
-      },
-      { name: "Brote ($50-200)", description: "Acceso temprano a herramientas, input en features" },
-      {
-        name: "Crecer ($200-500)",
-        description: "Acceso gratuito de por vida a lo que Rocky construya",
-      },
-      { name: "Socio ($500+)", description: "Adaptacion personalizada, involucracion directa" },
-    ],
-    services: [
-      "Chatbots basicos para WhatsApp o web",
-      "Automatizaciones simples (conectar apps, enviar notificaciones)",
-      "Ayuda con Notion y organizacion",
-      "Talleres de desarrollo de chatbots",
-    ],
-    goal: "Para cuando tenga 19 años quiero tener opciones. Quizas jugar futbol semi-profesional. Quizas tener mi propio negocio. Quizas ambos. El punto es poder elegir.",
-    ctaTitle: "Propon un Proyecto",
-    ctaDescription: "Tienes algo pequeno que necesitas? Cuentame.",
-    ctaButton: "Proponer Proyecto",
-  },
+  ...esSemillaContent,
 
-  partnershipsTitle: "Formas Flexibles de Trabajar",
-  partnershipsSubtitle:
-    "No todos los proyectos valiosos vienen con gran presupuesto. Si el impacto es real, podemos empezar lean y crecer desde ahi.",
-  partnerships: [
-    {
-      name: "Proyecto Estandar",
-      tagline: "Negocios con presupuesto",
-      description:
-        "Alcance claro y entregables definidos. Precio fijo acordado antes de empezar. Cronograma establecido. Soporte incluido post-entrega.",
-      idealFor: ["Empresas que saben lo que necesitan", "Recursos para invertir"],
-      icon: "Briefcase",
-      imageUrl: "/landing/photos/partnerships/standard-project.jpg",
-      modal: {
-        whatItMeans:
-          "Una construccion con alcance claro, entregables definidos y responsabilidades claras.",
-        whyItMatters:
-          "Si necesitas previsibilidad, este modelo mantiene decisiones rapidas y entrega alineada a un objetivo claro.",
-        whatsIncluded: [
-          "descubrimiento corto para definir alcance y criterios de exito",
-          "Plan de entrega con hitos y ownership claro",
-          "Construccion, pruebas y lanzamiento de lo acordado",
-          "Documentacion basica y handoff",
-          "Ventana pequena post-lanzamiento para ajustes y fixes",
-        ],
-        idealFit: [
-          "Equipos que ya saben lo que necesitan (o pueden decidir rapido)",
-          "Proyectos donde claridad y velocidad importan",
-          "Organizaciones listas para invertir en buena entrega",
-        ],
-        typicalOutcome:
-          "Un sistema lanzado con alcance claro, handoff claro y base para iterar con responsabilidad.",
-      },
-    },
-    {
-      name: "Tarifas de impacto",
-      tagline: "Equipos con mision",
-      description:
-        "Mismo nivel de calidad. Precio reducido significativamente. Condiciones flexibles. A cambio: testimonial, caso de estudio, o referidos.",
-      idealFor: ["Startups pre-revenue", "Proyectos con mision social"],
-      icon: "HeartHandshake",
-      imageUrl: "/landing/photos/partnerships/impact-friendly.jpg",
-      modal: {
-        whatItMeans:
-          "Tarifas reducidas para equipos con mision cuando el impacto es real y las expectativas estan claras.",
-        whyItMatters:
-          "Mucho trabajo de alto impacto empieza lean. Este modelo permite construir sistemas utiles sin estirar al equipo más de lo saludable.",
-        whatsIncluded: [
-          "Mismo nivel de calidad, con alcance más lean",
-          "Prioridades claras: versión uno primero, luego mejorar",
-          "Colaboracion flexible para restricciones reales",
-          "Acuerdo de intercambio justo (testimonial, caso de estudio, referidos)",
-          "Plan para crecer el sistema a medida que haya momentum",
-        ],
-        idealFit: [
-          "Equipos alineados a mision con presupuesto ajustado",
-          "Proyectos donde resultados importan más que polish el dia uno",
-          "Equipos dispuestos a colaborar de cerca e iterar",
-        ],
-        typicalOutcome:
-          "Una versión uno enfocada que crea momentum, con un camino claro para expandir cuando haya recursos.",
-      },
-    },
-    {
-      name: "Opciones de alianza",
-      tagline: "Solo si hay fit real",
-      description:
-        "Para proyectos seleccionados con alto potencial de impacto y alineacion clara, podemos definir terminos de alianza personalizados.",
-      idealFor: ["Startups de impacto", "Colaboraciones alineadas de largo plazo"],
-      icon: "PieChart",
-      imageUrl: "/landing/photos/partnerships/partnership-options.jpg",
-      modal: {
-        whatItMeans:
-          "Un modelo de colaboracion personalizado para casos donde la alineacion es fuerte y los incentivos deben permanecer conectados en el tiempo.",
-        whyItMatters:
-          "Cuando un proyecto tiene impacto real y potencial real, los modelos rigidos pueden frenar. Terminos flexibles mantienen la relacion win-win.",
-        whatsIncluded: [
-          "Chequeo honesto de alineacion (impacto, ejecucion, expectativas)",
-          "Plan por fases con entregables claros en cada etapa",
-          "Terminos que mantienen incentivos alineados mientras evoluciona",
-          "Puntos de revision regulares para ajustar alcance y prioridades",
-          "Enfoque en utilidad a largo plazo, no en optics a corto plazo",
-        ],
-        idealFit: [
-          "Startups de impacto con potencial fuerte y foco claro",
-          "Equipos buscando colaboracion de largo plazo, no solo un proyecto",
-          "Situaciones donde la flexibilidad crea mejores resultados",
-        ],
-        typicalOutcome:
-          "Una alianza que lanza por fases, mantiene honestidad sobre tradeoffs, y construye un sistema util con el tiempo.",
-      },
-    },
-  ],
+  ...esPartnershipsContent,
 
   ...esProjectsContent,
 

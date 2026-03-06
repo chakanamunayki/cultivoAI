@@ -19,6 +19,7 @@ import {
   getWhatsAppUrl,
 } from "@/lib/chat/system-prompt";
 import { createLead } from "@/lib/leads/client";
+import { AIChatQuickQuestions } from "./ai-chat-quick-questions";
 import { ChatInlineContactForm } from "./chat-inline-contact-form";
 import { VoiceConversationMode } from "./voice-conversation-mode";
 
@@ -653,19 +654,6 @@ export function AIChatWidget({
     [handleSend]
   );
 
-  // Quick question suggestions based on locale
-  const quickQuestions = locale === "es"
-    ? [
-        "Quiero automatizar tareas repetitivas. Por donde empezamos?",
-        "Necesito un asistente de IA para mi web. Que recomiendan?",
-        "Quiero crear una solucion de software a medida. Como lo plantearian?",
-      ]
-    : [
-        "I want to automate repetitive tasks. Where should we start?",
-        "I need an AI assistant for my website. What do you recommend?",
-        "I want to build custom software for my team. How would you approach it?",
-      ];
-
   // Handle quick question click - auto-send the question
   const handleQuickQuestion = useCallback((question: string) => {
     if (isLoading) return;
@@ -821,19 +809,10 @@ export function AIChatWidget({
         </div>
 
         {/* Quick Questions */}
-        <div className="border-black/20 bg-white px-3 py-3 border-t-2">
-          <div className="flex flex-wrap justify-center gap-2">
-            {quickQuestions.map((question, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleQuickQuestion(question)}
-                className="bg-muted hover:bg-primary hover:text-primary-foreground border-2 border-black px-3 py-1.5 text-center text-xs font-bold transition-all hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-              >
-                {question}
-              </button>
-            ))}
-          </div>
-        </div>
+        <AIChatQuickQuestions
+          locale={locale as "es" | "en"}
+          onQuestionClick={handleQuickQuestion}
+        />
 
         {/* Input */}
         <div className="p-3 bg-white border-t-4 border-black">

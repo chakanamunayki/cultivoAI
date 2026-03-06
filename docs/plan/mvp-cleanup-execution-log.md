@@ -221,6 +221,29 @@ Status: Pending
   - `pnpm typecheck` passed
   - `pnpm build:ci` passed
 
+### 2026-03-06 (content structure split pass 3 + chat extraction)
+
+- Continued Workstream 5 (`Content structure`) with low-risk locale splits while preserving the exact `SiteContent` export shape in `src/content/en.ts` and `src/content/es.ts`:
+  - added `src/content/locales/en/use-cases.ts`
+  - added `src/content/locales/en/semilla.ts`
+  - added `src/content/locales/en/partnerships.ts`
+  - added `src/content/locales/es/use-cases.ts`
+  - added `src/content/locales/es/semilla.ts`
+  - added `src/content/locales/es/partnerships.ts`
+  - updated root locale files to consume the new section modules:
+    - `src/content/en.ts`
+    - `src/content/es.ts`
+- Completed one small safe Workstream 4 extraction from the oversized chat surface:
+  - added `src/components/landing/ai-chat-quick-questions.tsx`
+  - updated `src/components/landing/ai-chat-widget.tsx` to reuse the extracted quick-question UI/data block without behavior changes.
+- Re-checked CTA integrity for touched areas:
+  - chat quick-question buttons still route to the real `/api/chat/gemini` flow via existing send handlers.
+  - split content CTA fields (Semilla CTA labels and partnerships links/anchors) remain data-only copy and continue to resolve through existing real UI actions.
+- Verification for this pass:
+  - `pnpm lint` passed
+  - `pnpm typecheck` passed
+  - `pnpm build:ci` passed
+
 ## Exit Criteria For This Pass
 
 - The repo explains itself without boilerplate confusion.
