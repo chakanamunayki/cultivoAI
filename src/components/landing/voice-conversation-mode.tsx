@@ -1,9 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Loader2, Mic, Phone, X, AlertCircle, WifiOff } from "lucide-react";
+import { Phone, X, AlertCircle } from "lucide-react";
 import { useGeminiLive } from "@/hooks/use-gemini-live";
 import { buildVoiceSystemPrompt } from "@/lib/chat/system-prompt";
+import {
+  ConnectingAnimation,
+  ErrorAnimation,
+  IdleAnimation,
+} from "./voice-connection-animations";
 import { VoiceContactForm } from "./voice-contact-form";
 import { VOICE_LABELS } from "./voice-conversation-copy";
 import { VoiceMicLevel } from "./voice-mic-level";
@@ -24,53 +29,6 @@ interface VoiceConversationModeProps {
   onContactFormSubmit?: (name: string, email: string, phone?: string) => Promise<boolean>;
   onContactFormDismiss?: () => void;
   capturedUserInfo?: { name: string; email: string; phone?: string } | null; // User info from parent (persists across modal close/reopen)
-}
-
-// ============================================
-// Animation Components
-// ============================================
-
-function ConnectingAnimation() {
-  return (
-    <div className="relative w-48 h-48 flex items-center justify-center">
-      {/* Spinning squares */}
-      <div className="absolute w-32 h-32 border-4 border-primary animate-spin-slow" />
-      <div className="absolute w-24 h-24 border-4 border-primary animate-spin-slow-reverse" />
-      {/* Center loader */}
-      <div className="absolute w-16 h-16 bg-secondary border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
-        <Loader2 size={28} className="text-black animate-spin" />
-      </div>
-    </div>
-  );
-}
-
-function IdleAnimation() {
-  return (
-    <div className="relative w-48 h-48 flex items-center justify-center">
-      {/* Static outer ring */}
-      <div className="absolute w-40 h-40 border-4 border-white/20" />
-      {/* Center mic icon - no longer clickable, just visual indicator */}
-      <div className="w-24 h-24 bg-[#10B981] border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
-        <Mic size={32} className="text-white" />
-      </div>
-    </div>
-  );
-}
-
-function ErrorAnimation({ onClick }: { onClick?: () => void }) {
-  return (
-    <div
-      className="relative w-48 h-48 flex items-center justify-center cursor-pointer"
-      onClick={onClick}
-    >
-      {/* Static outer ring */}
-      <div className="absolute w-40 h-40 border-4 border-[#EF4444]/30" />
-      {/* Center error icon */}
-      <div className="w-24 h-24 bg-[#EF4444] border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center hover:bg-[#DC2626] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
-        <WifiOff size={32} className="text-white" />
-      </div>
-    </div>
-  );
 }
 
 // ============================================

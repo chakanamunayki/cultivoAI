@@ -244,6 +244,33 @@ Status: Pending
   - `pnpm typecheck` passed
   - `pnpm build:ci` passed
 
+### 2026-03-06 (content structure split pass 4 + voice animation extraction)
+
+- Continued Workstream 5 (`Content structure`) with low-risk section extraction from root locale files while preserving the exact `SiteContent` export shape:
+  - added `src/content/locales/en/closing-sections.ts`
+  - added `src/content/locales/es/closing-sections.ts`
+  - moved these inline sections into locale modules (data unchanged):
+    - `values`
+    - `mission`
+    - `whatHappensNext`
+    - `footer`
+    - `chat`
+    - `contactForm`
+    - `terminal`
+  - updated root locale files to consume the extracted section modules:
+    - `src/content/en.ts`
+    - `src/content/es.ts`
+- Completed one small safe Workstream 4 extraction from the oversized voice surface:
+  - added `src/components/landing/voice-connection-animations.tsx`
+  - updated `src/components/landing/voice-conversation-mode.tsx` to import/use extracted `ConnectingAnimation`, `IdleAnimation`, and `ErrorAnimation` components without changing state/handler logic.
+- Re-checked CTA integrity for touched areas:
+  - split locale CTA fields in `footer`, `chat`, and `contactForm` remain copy/data only and continue resolving through existing wired UI handlers.
+  - voice retry/end-call actions in `voice-conversation-mode.tsx` continue to call the same existing `handleRetry` / `handleClose` flows.
+- Verification for this pass:
+  - `pnpm lint` passed
+  - `pnpm typecheck` passed
+  - `pnpm build:ci` passed
+
 ## Exit Criteria For This Pass
 
 - The repo explains itself without boilerplate confusion.
