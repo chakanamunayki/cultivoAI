@@ -12,6 +12,7 @@ import { RetreatOpsAnimation } from "./service-animations/RetreatOpsAnimation";
 import { DashboardAnimation } from "./service-animations/DashboardAnimation";
 import { KnowledgeAnimation } from "./service-animations/KnowledgeAnimation";
 import { StartupAdvisoryAnimation } from "./service-animations/StartupAdvisoryAnimation";
+import { SoftwareWebAnimation } from "./service-animations/SoftwareWebAnimation";
 
 type AnimationComponent = React.ComponentType<{ locale?: Locale }>;
 
@@ -22,6 +23,7 @@ const SERVICE_ANIMATIONS: Record<string, AnimationComponent> = {
   "dashboards": DashboardAnimation,
   "knowledge": KnowledgeAnimation,
   "startup": StartupAdvisoryAnimation,
+  "software-web": SoftwareWebAnimation,
 };
 
 interface StackedServiceCardProps {

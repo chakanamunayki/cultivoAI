@@ -185,7 +185,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         "Chatbots nativos para maximizar retencion de usuarios.",
       ],
       imageUrl: "/landing/photos/services/websites-digital-experiences.webp",
-      videoUrl: "/landing/service-vid-clips/software-web.mp4",
+      animationKey: "software-web",
       modal: {
         whatItMeans:
           "Una experiencia web rapida y bien disenada que apoya confianza, conversion y seguimiento.",
