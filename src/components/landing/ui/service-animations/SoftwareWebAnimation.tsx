@@ -57,7 +57,7 @@ export function SoftwareWebAnimation({ locale = "en" }: { locale?: Locale }) {
             />
 
             <motion.div
-                className="w-full h-full max-w-[600px] lg:max-w-[700px] flex flex-col items-center justify-center p-3 sm:p-5 lg:p-6 transform scale-[0.8] sm:scale-100 origin-center z-10"
+                className="w-full h-full max-w-[650px] lg:max-w-[800px] flex flex-col items-center justify-center p-3 sm:p-5 lg:p-6 transform scale-[0.8] sm:scale-100 origin-center z-10"
                 style={{ x: fgX, y: fgY }}
             >
                 {/* Top Status Bar */}
@@ -83,7 +83,7 @@ export function SoftwareWebAnimation({ locale = "en" }: { locale?: Locale }) {
 
                 {/* Main Content Area - Crossfades between IDE and Website */}
                 <div
-                    className="relative w-full flex-1 min-h-[260px] max-h-[320px] lg:max-h-[400px] rounded-xl overflow-hidden shadow-2xl transition-shadow duration-500"
+                    className="relative w-full flex-1 min-h-[260px] max-h-[380px] lg:max-h-[480px] rounded-xl overflow-hidden shadow-2xl transition-shadow duration-500"
                     style={{ boxShadow: step === "coding" ? "0 20px 40px rgba(0,0,0,0.5)" : "0 20px 40px rgba(0,188,212,0.15)" }}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
@@ -106,7 +106,7 @@ export function SoftwareWebAnimation({ locale = "en" }: { locale?: Locale }) {
                                     <span className="ml-2 text-[8px] sm:text-[9px] text-white/40 font-mono tracking-wider">page.tsx — CultivoAI</span>
                                 </div>
                                 {/* IDE Code Content */}
-                                <div className="p-3 sm:p-4 font-mono text-[9px] sm:text-[11px] leading-relaxed relative overflow-hidden flex-1">
+                                <div className="p-3 sm:p-4 font-mono text-[9px] sm:text-[12px] lg:text-[13px] leading-relaxed relative overflow-hidden flex-1">
                                     <motion.div
                                         initial={{ y: 0 }}
                                         animate={{ y: -80 }}
