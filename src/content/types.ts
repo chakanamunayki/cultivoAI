@@ -104,6 +104,8 @@ export interface Service {
   details: string[];
   imageUrl: string;
   imageFit?: "cover" | "contain";
+  videoUrl?: string; // Optional looping video clip (replaces image when set)
+  animationKey?: string; // Maps to a bespoke illustration animation component
   modal: ModalExpansion;
 }
 

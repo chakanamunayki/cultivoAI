@@ -6,6 +6,23 @@ import { motion, useScroll, useTransform, type MotionValue } from "framer-motion
 import { ArrowUpRight } from "lucide-react";
 import type { Locale, Service } from "@/content/types";
 import { cn } from "@/lib/utils";
+import { WorkflowAnimation } from "./service-animations/WorkflowAnimation";
+import { AiAssistantsAnimation } from "./service-animations/AiAssistantsAnimation";
+import { RetreatOpsAnimation } from "./service-animations/RetreatOpsAnimation";
+import { DashboardAnimation } from "./service-animations/DashboardAnimation";
+import { KnowledgeAnimation } from "./service-animations/KnowledgeAnimation";
+import { StartupAdvisoryAnimation } from "./service-animations/StartupAdvisoryAnimation";
+
+type AnimationComponent = React.ComponentType<{ locale?: Locale }>;
+
+const SERVICE_ANIMATIONS: Record<string, AnimationComponent> = {
+  "workflow": WorkflowAnimation,
+  "ai-assistants": AiAssistantsAnimation,
+  "retreat-ops": RetreatOpsAnimation,
+  "dashboards": DashboardAnimation,
+  "knowledge": KnowledgeAnimation,
+  "startup": StartupAdvisoryAnimation,
+};
 
 interface StackedServiceCardProps {
   index: number;
@@ -59,14 +76,14 @@ function StackedServiceCard({
       >
         <div
           className={cn(
-            "-mx-5 -mt-5 mb-5 flex items-center justify-between border-b px-5 py-2.5 text-xs font-semibold tracking-[0.08em] uppercase md:-mx-7 md:-mt-7 md:px-7 lg:-mx-8 lg:-mt-8 lg:px-8",
+            "-mx-5 -mt-5 mb-5 flex items-center justify-center gap-4 border-b px-5 py-3 text-sm font-bold tracking-[0.08em] uppercase md:-mx-7 md:-mt-7 md:px-7 md:py-3.5 md:text-base lg:-mx-8 lg:-mt-8 lg:px-8",
             isDark
               ? "border-white/15 bg-[#212121] text-[#FFFFFF]"
               : "border-[#00BCD4]/35 bg-[#00BCD4] text-[#FFFFFF]"
           )}
         >
-          <span>0{index + 1}</span>
-          <span>{service.eng}</span>
+          <span className="opacity-60">0{index + 1}</span>
+          <span>{service.title}</span>
         </div>
 
         <div className="grid h-full gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-stretch">
@@ -121,22 +138,38 @@ function StackedServiceCard({
           <div className="order-1 lg:order-2">
             <div
               className={cn(
-                "relative h-[230px] overflow-hidden rounded-[20px] border md:h-[290px] lg:h-full lg:min-h-[420px]",
+                "relative h-[300px] overflow-hidden rounded-[20px] border md:h-[340px] lg:h-full lg:min-h-[420px]",
                 isDark ? "border-white/20" : "border-black/10",
-                usesContainImage ? "bg-white/95" : ""
+                !service.animationKey && !service.videoUrl && usesContainImage ? "bg-white/95" : ""
               )}
             >
-              <motion.div style={{ scale: imageScale }} className="absolute inset-0">
-                <Image
-                  src={service.imageUrl}
-                  alt={service.title}
-                  fill
-                  className={cn(
-                    usesContainImage ? "object-contain object-center p-2 md:p-4" : "object-cover object-center"
-                  )}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1100px"
+              {service.animationKey && SERVICE_ANIMATIONS[service.animationKey] ? (
+                (() => {
+                  const Animation = SERVICE_ANIMATIONS[service.animationKey] as AnimationComponent;
+                  return <Animation locale={locale} />;
+                })()
+              ) : service.videoUrl ? (
+                <video
+                  src={service.videoUrl}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
-              </motion.div>
+              ) : (
+                <motion.div style={{ scale: imageScale }} className="absolute inset-0">
+                  <Image
+                    src={service.imageUrl}
+                    alt={service.title}
+                    fill
+                    className={cn(
+                      usesContainImage ? "object-contain object-center p-2 md:p-4" : "object-cover object-center"
+                    )}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1100px"
+                  />
+                </motion.div>
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
           </div>

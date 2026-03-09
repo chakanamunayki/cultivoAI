@@ -39,10 +39,10 @@ export function MissionSection({ onOpenChatImpact }: MissionSectionProps) {
               <div
                 className={landingTitleBandClass(
                   "dark",
-                  "-mx-6 mb-4 px-6 py-2.5 md:-mx-8 md:px-8"
+                  "-mx-6 mb-4 px-6 py-2.5 text-left md:-mx-8 md:px-8"
                 )}
               >
-                <h3 className="text-lg font-black leading-tight text-[#FFFFFF] md:text-xl">
+                <h3 className="text-left text-lg font-black leading-tight tracking-tight text-[#FFFFFF] uppercase md:text-xl">
                   {mission.title}
                 </h3>
               </div>
@@ -66,10 +66,10 @@ export function MissionSection({ onOpenChatImpact }: MissionSectionProps) {
                 <div
                   className={landingTitleBandClass(
                     "blue",
-                    "-mx-8 mb-4 px-8 py-2.5 md:-mx-12 md:px-12"
+                    "-mx-8 mb-4 px-8 py-2.5 text-left md:-mx-12 md:px-12"
                   )}
                 >
-                  <h3 className="text-lg font-black leading-tight text-[#FFFFFF] md:text-xl">
+                  <h3 className="text-left text-lg font-black leading-tight tracking-tight text-[#FFFFFF] uppercase md:text-xl">
                     {mission.title}
                   </h3>
                 </div>

@@ -44,7 +44,7 @@ export function TeamMemberModal({ member, onOpenContact }: TeamMemberModalProps)
         </Dialog.Title>
 
         {/* Role */}
-        <div className="mb-3 -mx-7 border-y border-[#00BCD4]/35 bg-[#00BCD4] px-7 py-2 text-center text-xs font-semibold uppercase tracking-[0.07em] text-[#FFFFFF] md:-mx-10 md:px-10 md:text-sm">
+        <div className="mb-3 -mx-7 border-y border-white/10 bg-[#1f1f1f] px-7 py-2 text-center text-xs font-semibold uppercase tracking-[0.07em] text-[#FFFFFF] md:-mx-10 md:px-10 md:text-sm">
           {member.title}
         </div>
         <div className="mb-4 -mx-7 grid w-auto grid-cols-2 border-y border-black/10 bg-[#ebebeb] md:-mx-10">

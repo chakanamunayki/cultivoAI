@@ -51,7 +51,7 @@ export function AboutSection() {
                     </div>
                   )}
                   <div
-                    className="mb-3 -mx-5 border-y border-[#00BCD4]/35 bg-[#00BCD4] px-5 py-2 text-center text-xs font-semibold uppercase tracking-[0.07em] text-[#FFFFFF] md:-mx-6 md:px-6 md:text-sm"
+                    className="mb-3 -mx-5 border-y border-white/10 bg-[#1f1f1f] px-5 py-2 text-center text-xs font-semibold uppercase tracking-[0.07em] text-[#FFFFFF] md:-mx-6 md:px-6 md:text-sm"
                   >
                     {member.title}
                   </div>
@@ -120,7 +120,7 @@ export function AboutSection() {
         <Reveal delay={400}>
           <div className="mt-12 md:mt-16 text-center">
             <div className="inline-block overflow-hidden rounded-[18px] border border-[#00BCD4] bg-[#00BCD4] px-0 py-0 shadow-[0_16px_30px_rgba(15,23,42,0.22)]">
-              <div className="border-b border-black/10 bg-[#e6e6e6] px-6 py-2 text-xs font-semibold tracking-[0.08em] text-[#2f2f2f] uppercase md:px-8">
+              <div className="border-b border-white/10 bg-[#1f1f1f] px-6 py-2 text-xs font-semibold tracking-[0.08em] text-[#FFFFFF] uppercase md:px-8">
                 {noteLabel}
               </div>
               <p className="px-6 py-4 text-base font-semibold text-[#FFFFFF] md:px-8 md:py-6 md:text-lg">

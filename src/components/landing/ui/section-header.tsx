@@ -6,6 +6,7 @@ interface SectionHeaderProps {
   headingId?: string;
   className?: string;
   subtitleClassName?: string;
+  tone?: "default" | "onDark";
 }
 
 export function SectionHeader({
@@ -14,13 +15,21 @@ export function SectionHeader({
   headingId,
   className,
   subtitleClassName,
+  tone = "default",
 }: SectionHeaderProps) {
+  const isOnDark = tone === "onDark";
+
   return (
     <div className={cn("mb-12 md:mb-16", className)}>
       <div className="flex flex-col items-start gap-4 md:flex-row md:items-start md:justify-between md:gap-6">
         <h2
           id={headingId}
-          className="inline-block rounded-[14px] border border-[#00BCD4] bg-[#00BCD4] px-4 py-2 text-4xl leading-none font-black tracking-tight text-[#FFFFFF] uppercase shadow-[0_14px_30px_rgba(15,23,42,0.2)] md:text-5xl lg:text-6xl"
+          className={cn(
+            "inline-block rounded-[14px] border px-4 py-2 text-4xl leading-none font-black tracking-tight uppercase shadow-[0_14px_30px_rgba(15,23,42,0.2)] md:text-5xl lg:text-6xl",
+            isOnDark
+              ? "border-[#00BCD4] bg-[#00BCD4] text-[#1f1f1f]"
+              : "border-black/80 bg-[#1f1f1f] text-[#00BCD4]"
+          )}
         >
           {title}
         </h2>

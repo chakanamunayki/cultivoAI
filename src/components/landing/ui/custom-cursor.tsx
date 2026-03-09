@@ -19,9 +19,8 @@ export function CustomCursor() {
       return;
     }
 
-    let rafId = 0;
-    let lastX = -100;
-    let lastY = -100;
+    let lastInRegion = false;
+    let lastLinkState = false;
 
     const setPosition = (x: number, y: number) => {
       cursor.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
@@ -43,29 +42,28 @@ export function CustomCursor() {
     const updateCursorState = (target: Element | null) => {
       const inRegion = Boolean(target?.closest(REGION_SELECTOR));
       const overInteractive = Boolean(target?.closest(INTERACTIVE_SELECTOR));
+      const linkState = inRegion && overInteractive;
 
-      cursor.classList.toggle("custom-cursor--active", inRegion);
-      cursor.classList.toggle("custom-cursor--link", inRegion && overInteractive);
-    };
-
-    const render = () => {
-      setPosition(lastX, lastY);
-      rafId = 0;
+      if (inRegion !== lastInRegion) {
+        cursor.classList.toggle("custom-cursor--active", inRegion);
+        lastInRegion = inRegion;
+      }
+      if (linkState !== lastLinkState) {
+        cursor.classList.toggle("custom-cursor--link", linkState);
+        lastLinkState = linkState;
+      }
     };
 
     const handlePointerMove = (event: PointerEvent) => {
-      lastX = event.clientX;
-      lastY = event.clientY;
-      if (!rafId) {
-        rafId = window.requestAnimationFrame(render);
-      }
-
+      setPosition(event.clientX, event.clientY);
       const target = resolveTargetElement(event.target);
       updateCursorState(target);
     };
 
     const handlePointerLeave = () => {
       cursor.classList.remove("custom-cursor--active", "custom-cursor--link");
+      lastInRegion = false;
+      lastLinkState = false;
     };
 
     const handleWindowMouseOut = (event: MouseEvent) => {
@@ -80,9 +78,6 @@ export function CustomCursor() {
     document.addEventListener("visibilitychange", handlePointerLeave);
 
     return () => {
-      if (rafId) {
-        window.cancelAnimationFrame(rafId);
-      }
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("mouseout", handleWindowMouseOut);
       window.removeEventListener("blur", handlePointerLeave);

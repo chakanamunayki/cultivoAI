@@ -31,6 +31,7 @@ export function HowWeWorkSection() {
             title={howWeWork.title}
             subtitle={howWeWork.subtitle}
             subtitleClassName="text-white/80"
+            tone="onDark"
           />
         </Reveal>
 

@@ -25,7 +25,12 @@ export function ServicesSection({ onOpenChatBooking }: ServicesSectionProps) {
     <div id="services" className="border-b border-white/10 bg-[#212121]">
       <div className="mx-auto max-w-[1600px] p-6 md:p-12 lg:p-24">
         <Reveal>
-          <SectionHeader title={content.servicesTitle} subtitle={ribbonText} subtitleClassName="text-white/80" />
+          <SectionHeader
+            title={content.servicesTitle}
+            subtitle={ribbonText}
+            subtitleClassName="text-white/80"
+            tone="onDark"
+          />
         </Reveal>
 
         <StackingServiceCards
