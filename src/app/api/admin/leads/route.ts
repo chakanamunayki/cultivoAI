@@ -5,7 +5,7 @@
 
 import { NextResponse } from "next/server";
 import { desc, eq, sql, and, or, ilike, gte, lte, count, asc } from "drizzle-orm";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { leads, chatConversations } from "@/lib/schema";
 
 // ============================================
@@ -48,6 +48,7 @@ interface LeadWithConversations {
 export async function GET(request: Request) {
   try {
     const url = new URL(request.url);
+    const db = getDb();
 
     // Pagination
     const page = Math.max(1, parseInt(url.searchParams.get("page") ?? "1"));
@@ -207,6 +208,7 @@ export async function GET(request: Request) {
 
 export async function PATCH(request: Request) {
   try {
+    const db = getDb();
     const body = await request.json();
     const { leadId, status, notes, assignedTo } = body;
 

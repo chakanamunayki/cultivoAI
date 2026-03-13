@@ -5,7 +5,7 @@
 
 import { NextResponse } from "next/server";
 import { desc, eq, sql, and, gte, lte, count, avg } from "drizzle-orm";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { chatConversations, leads } from "@/lib/schema";
 
 // ============================================
@@ -15,6 +15,7 @@ import { chatConversations, leads } from "@/lib/schema";
 export async function GET(request: Request) {
   try {
     const url = new URL(request.url);
+    const db = getDb();
 
     // Pagination
     const page = Math.max(1, parseInt(url.searchParams.get("page") ?? "1"));

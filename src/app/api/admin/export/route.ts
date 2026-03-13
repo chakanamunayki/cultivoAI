@@ -5,7 +5,7 @@
 
 import { NextResponse } from "next/server";
 import { desc, eq, sql, and, gte, lte } from "drizzle-orm";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { leads, chatConversations } from "@/lib/schema";
 
 // ============================================
@@ -68,6 +68,7 @@ function toCSV(headers: string[], rows: Record<string, unknown>[]): string {
 export async function GET(request: Request) {
   try {
     const url = new URL(request.url);
+    const db = getDb();
 
     // Optional filters
     const status = url.searchParams.get("status");
