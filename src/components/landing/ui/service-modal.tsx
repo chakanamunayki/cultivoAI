@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
 import {
   BarChart3,
@@ -40,10 +39,8 @@ interface ServiceModalProps {
 export function ServiceModal({ service, onOpenContact }: ServiceModalProps) {
   const { locale } = useLocale();
   const Icon = iconMap[service.icon] ?? Zap;
-  const usesContainImage = service.imageFit === "contain";
 
   const ctaText = locale === "es" ? "Estoy interesado" : "I'm interested";
-  const whatItMeansLabel = locale === "es" ? "Que significa" : "What it means";
   const whyItMattersLabel = locale === "es" ? "Por que importa" : "Why it matters";
   const includedLabel = locale === "es" ? "Que incluye" : "What's included";
   const idealFitLabel = locale === "es" ? "Ideal para" : "Ideal fit";
@@ -51,55 +48,49 @@ export function ServiceModal({ service, onOpenContact }: ServiceModalProps) {
 
   return (
     <div className="max-h-[92vh] overflow-y-auto bg-[#212121] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">
-      {/* Header Background with Image */}
-      <div
-        className={`relative h-48 overflow-hidden border-b border-black/10 md:h-64 ${
-          usesContainImage ? "bg-[#e9e9e9]" : ""
-        }`}
-      >
-        <div className={`absolute inset-0 z-10 ${usesContainImage ? "bg-black/15" : "bg-black/35"}`} />
-        <Image
-          src={service.imageUrl}
-          alt={service.title}
-          fill
-          className={usesContainImage ? "object-contain object-center p-4 md:p-6" : "object-cover object-center"}
+      {/* Header with Title and abstract design */}
+      <div className="relative overflow-hidden border-b border-white/5 bg-[#111111] px-8 pb-10 pt-10 md:px-12 md:pb-12 md:pt-14">
+        {/* Soft Glowing Orbs */}
+        <div className="absolute -left-[10%] -top-[20%] h-[120%] w-[60%] rounded-full bg-[#00BCD4]/15 blur-[80px]" />
+        <div className="absolute -right-[10%] -bottom-[20%] h-[120%] w-[60%] rounded-full bg-[#00BCD4]/10 blur-[80px]" />
+
+        {/* Subtle Grid Overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: "linear-gradient(rgba(255, 255, 255, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 1) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
         />
-        <div className="absolute bottom-6 left-6 z-20 flex items-end gap-4">
-          <div className="rounded-xl border border-white/40 bg-white/90 p-4 text-[#00BCD4] shadow-[0_12px_24px_rgba(15,23,42,0.25)] backdrop-blur-sm">
-            <Icon size={32} />
+
+        {/* Gradient Fade to Content */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#212121]/80 via-transparent to-transparent md:from-[#212121]/60" />
+
+        {/* Header Content */}
+        <div className="relative z-20 flex flex-col gap-5 md:gap-6">
+          <div className="flex items-center gap-4 md:gap-5">
+            <div className="shrink-0 rounded-2xl border border-[#00BCD4]/30 bg-[#212121]/80 p-3 text-[#00BCD4] shadow-[0_8px_32px_rgba(0,0,0,0.5)] ring-1 ring-white/10 backdrop-blur-xl md:p-3.5">
+              <Icon size={28} className="hidden md:block" />
+              <Icon size={24} className="md:hidden" />
+            </div>
+            <Dialog.Title asChild>
+              <h2 className="text-2xl font-black tracking-tight text-white md:text-3xl lg:text-4xl">
+                {service.title}
+              </h2>
+            </Dialog.Title>
+          </div>
+
+          <div className="max-w-4xl">
+            <p className="text-base font-medium leading-relaxed text-white/80 md:text-lg lg:text-xl">
+              {service.modal.whatItMeans}
+            </p>
           </div>
         </div>
       </div>
 
       {/* Content */}
       <div className="bg-[#212121] p-8 md:p-12">
-        <div className="mb-5 -mx-8 border-y border-black/10 bg-[#e9e9e9] px-8 py-2 md:-mx-12 md:px-12">
-          <h3 className="text-xs font-semibold tracking-[0.09em] text-[#4d4d4d] uppercase">
-            {service.eng}
-          </h3>
-        </div>
-
-        <Dialog.Title asChild>
-          <h2 className="mb-3 text-3xl font-black tracking-tight text-white md:text-5xl">
-            {service.title}
-          </h2>
-        </Dialog.Title>
-
         <div className="space-y-5">
-          {/* What it means (lead) */}
-          <div className={landingCardClass("dark", "overflow-hidden rounded-[20px] p-0")}>
-            <h4
-              className={landingTitleBandClass(
-                "dark",
-                "px-5 py-2.5 text-xs font-semibold tracking-[0.07em] uppercase md:px-6"
-              )}
-            >
-              {whatItMeansLabel}
-            </h4>
-            <p className="px-5 pb-6 pt-4 text-base leading-relaxed font-semibold text-white/90 md:px-6 md:pb-7 md:pt-5 md:text-lg">
-              {service.modal.whatItMeans}
-            </p>
-          </div>
 
           {/* Why it matters + Typical outcome */}
           <div className="grid gap-6 md:grid-cols-2">

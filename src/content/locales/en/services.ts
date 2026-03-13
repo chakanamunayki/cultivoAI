@@ -179,7 +179,7 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         "Native chatbots to maximize user retention.",
       ],
       imageUrl: "/landing/photos/services/websites-digital-experiences.webp",
-      videoUrl: "/landing/service-vid-clips/software-web.mp4",
+      animationKey: "software-web",
       modal: {
         whatItMeans:
           "A fast, beautiful web experience that supports trust, conversion, and follow-through.",
