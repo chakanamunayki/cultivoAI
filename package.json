@@ -71,6 +71,12 @@
     "ws": "^8.18.3"
   },
   "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "msw",
+      "sharp",
+      "unrs-resolver"
+    ],
     "overrides": {
       "baseline-browser-mapping": "2.10.0",
       "browserslist>baseline-browser-mapping": "2.10.0",
