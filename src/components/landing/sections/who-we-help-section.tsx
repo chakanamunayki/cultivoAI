@@ -159,7 +159,7 @@ export function WhoWeHelpSection({
                     <h4
                       className={landingTitleBandClass(
                         variant,
-                        "px-5 py-2.5 text-base leading-tight font-black tracking-tight md:px-6 md:text-lg"
+                        "px-5 py-2.5 text-center text-base uppercase leading-tight font-black tracking-tight md:px-6 md:text-lg"
                       )}
                     >
                       {sector.name}
@@ -180,7 +180,7 @@ export function WhoWeHelpSection({
                             className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
                           />
-                          <div className="from-primary/70 absolute inset-0 bg-gradient-to-br to-[#000]/20" />
+                          <div className="from-black/30 absolute inset-0 bg-gradient-to-br to-transparent" />
                           <div className="absolute right-3 bottom-3 rounded-lg border border-white/50 bg-white/90 p-2 shadow-[0_8px_16px_rgba(15,23,42,0.2)]">
                             <IconComponent size={18} className="text-[#00BCD4]" />
                           </div>
@@ -199,11 +199,10 @@ export function WhoWeHelpSection({
                       {/* Badge */}
                       {sector.badge && (
                         <div
-                          className={`absolute right-0 bottom-0 left-0 flex items-center justify-center gap-1 border-t px-2 py-1.5 text-[10px] font-semibold tracking-[0.08em] uppercase ${
-                            variant === "blue"
+                          className={`absolute right-0 bottom-0 left-0 flex items-center justify-center gap-1 border-t px-2 py-1.5 text-[10px] font-semibold tracking-[0.08em] uppercase ${variant === "blue"
                               ? "border-white/15 bg-[#212121] text-[#FFFFFF]"
                               : "border-[#00BCD4]/35 bg-[#00BCD4] text-[#FFFFFF]"
-                          }`}
+                            }`}
                         >
                           <Check size={10} className="shrink-0" strokeWidth={3} />
                           {sector.badge}
@@ -213,9 +212,8 @@ export function WhoWeHelpSection({
                     {/* Content */}
                     <div className="flex flex-grow flex-col p-5 md:p-6">
                       <p
-                        className={`mb-4 flex-grow text-sm leading-relaxed ${
-                          variant === "blue" ? "text-[#eef9f5]" : "text-white/85"
-                        }`}
+                        className={`mb-4 flex-grow text-sm leading-relaxed ${variant === "blue" ? "text-[#eef9f5]" : "text-white/85"
+                          }`}
                       >
                         {sector.description}
                       </p>
@@ -370,52 +368,52 @@ export function WhoWeHelpSection({
                 {/* What's included */}
                 {((selectedSector.modal?.whatsIncluded?.length ?? 0) > 0 ||
                   (selectedSector.howWeHelp?.length ?? 0) > 0) && (
-                  <div className={landingCardClass("dark", "overflow-hidden rounded-[16px] p-0")}>
-                    <h4
-                      className={landingTitleBandClass(
-                        "dark",
-                        "px-5 py-2.5 text-xs font-semibold tracking-[0.07em] uppercase"
-                      )}
-                    >
-                      {includedLabel}
-                    </h4>
-                    <ul className="space-y-2 px-5 pb-5 pt-4">
-                      {(selectedSector.modal?.whatsIncluded ?? selectedSector.howWeHelp ?? []).map(
-                        (item, i) => (
-                          <li key={i} className="flex items-start gap-3">
-                            <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-white" />
-                            <span className="text-sm font-medium text-white/90">{item}</span>
-                          </li>
-                        )
-                      )}
-                    </ul>
-                  </div>
-                )}
+                    <div className={landingCardClass("dark", "overflow-hidden rounded-[16px] p-0")}>
+                      <h4
+                        className={landingTitleBandClass(
+                          "dark",
+                          "px-5 py-2.5 text-xs font-semibold tracking-[0.07em] uppercase"
+                        )}
+                      >
+                        {includedLabel}
+                      </h4>
+                      <ul className="space-y-2 px-5 pb-5 pt-4">
+                        {(selectedSector.modal?.whatsIncluded ?? selectedSector.howWeHelp ?? []).map(
+                          (item, i) => (
+                            <li key={i} className="flex items-start gap-3">
+                              <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-white" />
+                              <span className="text-sm font-medium text-white/90">{item}</span>
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    </div>
+                  )}
 
                 {/* Ideal fit */}
                 {((selectedSector.modal?.idealFit?.length ?? 0) > 0 ||
                   (selectedSector.whoWeHelp?.length ?? 0) > 0) && (
-                  <div className={landingCardClass("blue", "overflow-hidden rounded-[16px] p-0")}>
-                    <h4
-                      className={landingTitleBandClass(
-                        "blue",
-                        "px-5 py-2.5 text-xs font-semibold tracking-[0.07em] uppercase"
-                      )}
-                    >
-                      {idealFitLabel}
-                    </h4>
-                    <ul className="space-y-2 px-5 pb-5 pt-4">
-                      {(selectedSector.modal?.idealFit ?? selectedSector.whoWeHelp ?? []).map(
-                        (item, i) => (
-                          <li key={i} className="flex items-start gap-3">
-                            <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-white/95" />
-                            <span className="text-sm font-semibold text-white/95">{item}</span>
-                          </li>
-                        )
-                      )}
-                    </ul>
-                  </div>
-                )}
+                    <div className={landingCardClass("blue", "overflow-hidden rounded-[16px] p-0")}>
+                      <h4
+                        className={landingTitleBandClass(
+                          "blue",
+                          "px-5 py-2.5 text-xs font-semibold tracking-[0.07em] uppercase"
+                        )}
+                      >
+                        {idealFitLabel}
+                      </h4>
+                      <ul className="space-y-2 px-5 pb-5 pt-4">
+                        {(selectedSector.modal?.idealFit ?? selectedSector.whoWeHelp ?? []).map(
+                          (item, i) => (
+                            <li key={i} className="flex items-start gap-3">
+                              <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-white/95" />
+                              <span className="text-sm font-semibold text-white/95">{item}</span>
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    </div>
+                  )}
 
                 {/* Example Projects */}
                 {selectedSector.exampleProjects && selectedSector.exampleProjects.length > 0 && (

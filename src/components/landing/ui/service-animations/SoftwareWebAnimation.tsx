@@ -4,7 +4,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import { useEffect, useState, useRef } from "react";
 import type { Locale } from "@/content/types";
 
-export function SoftwareWebAnimation({ locale = "en" }: { locale?: Locale }) {
+export function SoftwareWebAnimation({ locale: _locale = "en" }: { locale?: Locale }) {
     const [step, setStep] = useState<"coding" | "website">("coding");
     const [isHovered, setIsHovered] = useState(false);
 
