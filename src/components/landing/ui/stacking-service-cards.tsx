@@ -58,8 +58,8 @@ function StackedServiceCard({
   const seeMoreLabel = locale === "es" ? "Ver mas" : "See more";
 
   return (
+    <div ref={containerRef} className="relative">
     <div
-      ref={containerRef}
       className="sticky top-0 flex h-screen w-full items-center justify-center py-4 md:py-8"
     >
       <motion.article
@@ -177,6 +177,7 @@ function StackedServiceCard({
           </div>
         </div>
       </motion.article>
+    </div>
     </div>
   );
 }
