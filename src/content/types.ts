@@ -109,6 +109,11 @@ export interface Service {
   modal: ModalExpansion;
 }
 
+export interface ProjectStat {
+  label: string;
+  value: string;
+}
+
 export interface Project {
   title: string;
   desc: string;
@@ -118,6 +123,8 @@ export interface Project {
   image: string;
   images?: string[];
   tags: string[];
+  url?: string;
+  stats?: ProjectStat[];
   modal: ModalExpansion;
 }
 

@@ -79,12 +79,38 @@ export function ProjectsSection() {
                   </h3>
                   <p
                     className={cn(
-                      "mb-6 max-w-2xl text-lg font-semibold md:mb-8 md:text-xl",
+                      "max-w-2xl text-lg font-semibold md:text-xl",
+                      project.stats ? "mb-0" : "mb-6 md:mb-8",
                       variant === "blue" ? "text-[#eef9f5]" : "text-white/90"
                     )}
                   >
                     {project.desc}
                   </p>
+
+                  {project.stats && project.stats.length > 0 && (
+                    <div
+                      className="-mx-6 my-6 grid border-y border-white/10 bg-black/25 md:-mx-8 md:my-8 lg:-mx-12"
+                      style={{ gridTemplateColumns: `repeat(${project.stats.length}, 1fr)` }}
+                    >
+                      {project.stats.map((stat, idx) => (
+                        <div
+                          key={stat.label}
+                          className={cn(
+                            "py-5 text-center",
+                            idx > 0 && "border-l border-white/10"
+                          )}
+                        >
+                          <div className="text-4xl font-black leading-none tracking-tight text-primary md:text-5xl">
+                            {stat.value}
+                          </div>
+                          <div className="mt-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/50 md:text-[11px]">
+                            {stat.label}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
                   <div className={landingCardClass(lessonVariant, "overflow-hidden rounded-[16px] p-0 hover:translate-y-0")}>
                     <span
                       className={landingTitleBandClass(
@@ -103,6 +129,19 @@ export function ProjectsSection() {
                       &quot;{project.lessons}&quot;
                     </p>
                   </div>
+
+                  {project.url && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(project.url, "_blank", "noopener,noreferrer");
+                      }}
+                      className="mt-5 text-sm font-bold uppercase tracking-[0.1em] text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:decoration-primary"
+                    >
+                      {locale === "es" ? "Ver sitio" : "Visit site"}
+                    </button>
+                  )}
                 </Reveal>
               </div>
               <div

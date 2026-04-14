@@ -53,6 +53,7 @@ projects: [
       "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1600&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1600&auto=format&fit=crop",
     ],
+    url: "https://www.raizcapital.co/",
     tags: ["Data", "Strategy"],
     modal: {
       whatItMeans:
@@ -74,41 +75,6 @@ projects: [
     },
   },
   {
-    title: "Mushroom health project with OpenClaw",
-    desc: "Specialized AI agents supporting research, content creation, business intelligence, and a living knowledge base.",
-    fullDesc:
-      "A modular multi-agent setup built for health-focused research and operations, with structured knowledge and iterative workflows that can evolve quickly.",
-    lessons: "Knowledge architecture is the backbone of long-term speed.",
-    status: "In development",
-    image:
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800",
-    images: [
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1600",
-      "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1600&auto=format&fit=crop",
-    ],
-    tags: ["Research", "AI Agents"],
-    modal: {
-      whatItMeans:
-        "A modular system that supports research and operations with reusable knowledge and practical workflows.",
-      whyItMatters:
-        "Research teams move faster when knowledge is structured and decisions are supported by a living system, not scattered files.",
-      whatsIncluded: [
-        "A knowledge base that grows as the project learns",
-        "Repeatable workflows for research, writing, and internal updates",
-        "Decision support views for priorities and next actions",
-        "A modular approach so parts can evolve independently",
-      ],
-      idealFit: [
-        "Health and research teams with complex information flows",
-        "Projects where documentation and consistency are bottlenecks",
-        "Teams who want to build a system they can keep using",
-      ],
-      typicalOutcome:
-        "Less time searching and rewriting, faster iterations, and a clearer shared understanding across the team.",
-    },
-  },
-  {
     title: "SetaSouls. Holistic Brand Website",
     desc: "98 performance. 100 SEO. 100 best practices. Design, speed, and search visibility built together from the start.",
     fullDesc:
@@ -123,6 +89,12 @@ projects: [
       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=1600",
     ],
     tags: ["Web", "Vercel"],
+    stats: [
+      { label: "Performance", value: "98" },
+      { label: "SEO", value: "100" },
+      { label: "Best Practices", value: "100" },
+      { label: "Accessibility", value: "96" },
+    ],
     modal: {
       whatItMeans:
         "A fast, modern, well-positioned site that represents the brand with clarity and confidence.",

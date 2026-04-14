@@ -53,6 +53,7 @@ projects: [
       "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1600&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1600&auto=format&fit=crop",
     ],
+    url: "https://www.raizcapital.co/",
     tags: ["Datos", "Estrategia"],
     modal: {
       whatItMeans:
@@ -75,41 +76,6 @@ projects: [
     },
   },
   {
-    title: "Proyecto de salud con hongos junto a OpenClaw",
-    desc: "Agentes IA especializados para investigacion, contenido, inteligencia de negocio y base de conocimiento viva.",
-    fullDesc:
-      "Un sistema modular de agentes para investigacion y operacion en salud, con conocimiento estructurado y flujos iterativos de mejora continua.",
-    lessons: "La arquitectura de conocimiento acelera todo a largo plazo.",
-    status: "En desarrollo",
-    image:
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800",
-    images: [
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1600",
-      "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1600&auto=format&fit=crop",
-    ],
-    tags: ["Investigacion", "Agentes IA"],
-    modal: {
-      whatItMeans:
-        "Un sistema modular que apoya investigacion y operacion con conocimiento reutilizable y flujos practicos.",
-      whyItMatters:
-        "Los equipos de investigacion avanzan más rapido cuando el conocimiento esta estructurado y las decisiones se apoyan en un sistema vivo, no en archivos dispersos.",
-      whatsIncluded: [
-        "Base de conocimiento que crece con el aprendizaje del proyecto",
-        "Flujos repetibles para investigacion, escritura y actualizaciones internas",
-        "Vistas de soporte a decisiones para prioridades y siguientes acciones",
-        "Enfoque modular para que cada parte evolucione por separado",
-      ],
-      idealFit: [
-        "Equipos de salud e investigacion con flujos de informacion complejos",
-        "Proyectos donde la documentacion y consistencia son cuello de botella",
-        "Equipos que quieren construir un sistema que puedan seguir usando",
-      ],
-      typicalOutcome:
-        "Menos tiempo buscando y reescribiendo, iteraciones más rapidas y entendimiento compartido más claro en el equipo.",
-    },
-  },
-  {
     title: "SetaSouls. Sitio web de marca holistica",
     desc: "98 en rendimiento. 100 en SEO. 100 en buenas practicas. Diseno, velocidad y posicionamiento construidos juntos desde el inicio.",
     fullDesc:
@@ -124,6 +90,12 @@ projects: [
       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=1600",
     ],
     tags: ["Web", "Vercel"],
+    stats: [
+      { label: "Rendimiento", value: "98" },
+      { label: "SEO", value: "100" },
+      { label: "Buenas Practicas", value: "100" },
+      { label: "Accesibilidad", value: "96" },
+    ],
     modal: {
       whatItMeans:
         "Un sitio moderno, rapido y posicionado que representa la marca con claridad y confianza.",
