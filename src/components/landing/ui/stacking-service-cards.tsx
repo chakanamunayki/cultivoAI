@@ -45,7 +45,7 @@ function StackedServiceCard({
   targetScale,
   onSeeMore,
 }: StackedServiceCardProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "start start"],
@@ -58,11 +58,9 @@ function StackedServiceCard({
   const seeMoreLabel = locale === "es" ? "Ver mas" : "See more";
 
   return (
-    <div ref={containerRef} className="relative">
-    <div
-      className="sticky top-0 flex h-screen w-full items-center justify-center py-4 md:py-8"
-    >
+    <div className="sticky top-0 flex h-screen w-full items-center justify-center py-4 md:py-8">
       <motion.article
+        ref={containerRef}
         onClick={() => onSeeMore(service)}
         style={{
           scale: cardScale,
@@ -177,7 +175,6 @@ function StackedServiceCard({
           </div>
         </div>
       </motion.article>
-    </div>
     </div>
   );
 }
