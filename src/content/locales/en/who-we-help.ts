@@ -20,7 +20,7 @@ export const enWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
     sectors: [
       {
         name: "Health and wellness",
-        description: "We empower health professionals with reliable, seamless systems so they can focus entirely on real human wellbeing. Deliver consistent care without the administrative friction.",
+        description: "Health and wellness teams carry a lot. We build systems that handle the admin, communication, and follow-up so your team can focus on the work that actually matters.",
         icon: "Heart",
         imageUrl: "/landing/photos/sectors/health-wellness.jpg",
         chatButtonLabel: "Let's talk",
@@ -63,7 +63,7 @@ export const enWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
       },
       {
         name: "Sustainability and regenerative projects",
-        description: "Transforming ambitious ecosystem and local resilience goals into grounded realities. We build the operational clarity you need to successfully execute projects that change the world.",
+        description: "Sustainability work is coordination-heavy. We build the systems that keep your team aligned, your partners informed, and your reporting clear.",
         icon: "Sprout",
         imageUrl: "/landing/photos/sectors/sustainability-regenerative.jpg",
         chatButtonLabel: "Let's talk",
@@ -106,7 +106,7 @@ export const enWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
       },
       {
         name: "Alternative education",
-        description: "Supporting modern learning models that prioritize people over process. We streamline your student interactions so you can run flawless, distraction-free educational programs.",
+        description: "Education programs live or die by consistency. We build the ops and communication systems that keep learners supported and instructors focused on teaching.",
         icon: "GraduationCap",
         imageUrl: "/landing/photos/sectors/alternative-education.jpg",
         chatButtonLabel: "Let's talk",
@@ -149,7 +149,7 @@ export const enWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
       },
       {
         name: "Mission-led startups",
-        description: "Partnering with visionary founders to turn purposeful ideas into shipped products. Get to market faster with a scalable, tight version one that avoids expensive detours.",
+        description: "Early-stage teams move fastest with a clear scope and honest tradeoffs. We help you build version one right: tight, usable, and ready to learn from.",
         icon: "Rocket",
         imageUrl: "/landing/photos/sectors/mission-led-startups.webp",
         chatButtonLabel: "Let's talk",

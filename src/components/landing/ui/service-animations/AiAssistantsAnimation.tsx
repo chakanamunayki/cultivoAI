@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import type { Locale } from "@/content/types";
 
 const CONVERSATIONS: Record<Locale, { user: string; ai: string; category: string }[]> = {

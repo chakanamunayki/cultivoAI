@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import type { Locale } from "@/content/types";
 
 export function SoftwareWebAnimation({ locale: _locale = "en" }: { locale?: Locale }) {
@@ -96,7 +96,7 @@ export function SoftwareWebAnimation({ locale: _locale = "en" }: { locale?: Loca
                                         <br />
                                         <div className="text-[#4ec9b0]">export default function <span className="text-[#dcdcaa]">RetreatHero</span>() &#123;</div>
                                         <div className="ml-4 text-[#c586c0]">return <span className="text-white/80">(</span></div>
-                                        <div className="ml-8 text-[#808080]">// AI: Added breathing animation to hero image and transparent navbar</div>
+                                        <div className="ml-8 text-[#808080]">{"// AI: Added breathing animation to hero image and transparent navbar"}</div>
                                         <div className="ml-8 text-[#569cd6]">&lt;<span className="text-[#4ec9b0]">motion.div</span> <span className="text-[#9cdcfe]">className</span>=<span className="text-[#ce9178]">"relative w-full h-screen bg-[#1a2b29]"</span></div>
                                         <div className="ml-12 text-[#9cdcfe]">animate=<span className="text-[#ffd700]">&#123;&#123; scale: [1, 1.05, 1] &#125;&#125;</span></div>
                                         <div className="ml-12 text-[#9cdcfe]">transition=<span className="text-[#ffd700]">&#123;&#123; duration: 8, repeat: Infinity &#125;&#125;</span></div>

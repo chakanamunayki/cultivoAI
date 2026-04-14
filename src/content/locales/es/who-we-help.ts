@@ -20,7 +20,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
     sectors: [
       {
         name: "Salud y bienestar",
-        description: "Potenciamos a profesionales con sistemas confiables para que se enfoquen en el bienestar humano. Entrega atención consistente sin la fricción administrativa.",
+        description: "Los equipos de salud y bienestar cargan mucho. Construimos sistemas que manejan la administracion, comunicacion y seguimiento para que el equipo se enfoque en lo que realmente importa.",
         icon: "Heart",
         imageUrl: "/landing/photos/sectors/health-wellness.jpg",
         chatButtonLabel: "Hablemos",
@@ -63,7 +63,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
       },
       {
         name: "Sostenibilidad y proyectos regenerativos",
-        description: "Transformamos ambiciosas metas de ecosistemas en realidades terrenales. Construimos la claridad operativa que necesitas para ejecutar proyectos que cambian el mundo.",
+        description: "El trabajo de sostenibilidad requiere mucha coordinacion. Construimos los sistemas que mantienen al equipo alineado, los aliados informados y los reportes claros.",
         icon: "Sprout",
         imageUrl: "/landing/photos/sectors/sustainability-regenerative.jpg",
         chatButtonLabel: "Hablemos",
@@ -106,7 +106,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
       },
       {
         name: "Educacion alternativa",
-        description: "Apoyando modelos modernos de aprendizaje que priorizan a las personas. Simplificamos las interacciones con tus estudiantes para ejecutar programas educativos sin distracciones.",
+        description: "Los programas educativos ganan o pierden por consistencia. Construimos los sistemas de operacion y comunicacion que mantienen a los estudiantes apoyados y a los instructores enfocados en ensenar.",
         icon: "GraduationCap",
         imageUrl: "/landing/photos/sectors/alternative-education.jpg",
         chatButtonLabel: "Hablemos",
@@ -149,7 +149,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
       },
       {
         name: "Startups con mision",
-        description: "Acompanando a fundadores visionarios para convertir ideas con propósito en productos reales. Llega al mercado más rápido con una primera versión escalable que evita desvíos costosos.",
+        description: "Los equipos tempranos avanzan mas rapido con alcance claro y decisiones honestas. Te ayudamos a construir la version uno correcta: ajustada, usable y lista para aprender.",
         icon: "Rocket",
         imageUrl: "/landing/photos/sectors/mission-led-startups.webp",
         chatButtonLabel: "Hablemos",

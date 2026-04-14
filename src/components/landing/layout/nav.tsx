@@ -144,8 +144,8 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
               aria-label={locale === "es" ? "Ir al inicio" : "Go to home section"}
               className="flex items-center gap-2.5"
             >
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-current/30">
-                <Sprout size={18} />
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border-2 border-white/80 bg-primary text-primary-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,0.25)] -rotate-6 shrink-0">
+                <Sprout size={17} fill="currentColor" />
               </span>
               <span className="text-lg leading-none font-black tracking-[-0.02em] md:text-2xl">
                 Cultivo<span className="text-[#00BCD4]">AI</span>

@@ -6,13 +6,13 @@ import { motion, useScroll, useTransform, type MotionValue } from "framer-motion
 import { ArrowUpRight } from "lucide-react";
 import type { Locale, Service } from "@/content/types";
 import { cn } from "@/lib/utils";
-import { WorkflowAnimation } from "./service-animations/WorkflowAnimation";
 import { AiAssistantsAnimation } from "./service-animations/AiAssistantsAnimation";
-import { RetreatOpsAnimation } from "./service-animations/RetreatOpsAnimation";
 import { DashboardAnimation } from "./service-animations/DashboardAnimation";
 import { KnowledgeAnimation } from "./service-animations/KnowledgeAnimation";
-import { StartupAdvisoryAnimation } from "./service-animations/StartupAdvisoryAnimation";
+import { RetreatOpsAnimation } from "./service-animations/RetreatOpsAnimation";
 import { SoftwareWebAnimation } from "./service-animations/SoftwareWebAnimation";
+import { StartupAdvisoryAnimation } from "./service-animations/StartupAdvisoryAnimation";
+import { WorkflowAnimation } from "./service-animations/WorkflowAnimation";
 
 type AnimationComponent = React.ComponentType<{ locale?: Locale }>;
 
@@ -60,7 +60,7 @@ function StackedServiceCard({
   return (
     <div
       ref={containerRef}
-      className="sticky top-0 flex h-screen items-center justify-center py-4 md:py-8"
+      className="sticky top-0 flex h-screen w-full items-center justify-center py-4 md:py-8"
     >
       <motion.article
         onClick={() => onSeeMore(service)}

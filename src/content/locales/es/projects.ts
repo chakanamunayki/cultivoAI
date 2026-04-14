@@ -5,11 +5,11 @@ projectsTitle: "Lo que Hemos Construido",
 projectsSubtitle: "Proyectos seleccionados de nuestro trabajo actual",
 projects: [
   {
-    title: "Chak - Creacion de vida, con ayuda de IA",
-    desc: "Sistemas para impulsar trabajo enfocado en salud con claridad, estructura y momentum.",
+    title: "Chak: De SaaS a Cerebro",
+    desc: "V1: plataforma SaaS completa con constructor de protocolos, gestion de proyectos e IOT. V2: Chak Brain, un sistema conversacional con RAG que cubre todo el equipo.",
     fullDesc:
-      "Un sistema en evolucion que integra flujos operativos, ejecucion de servicios y visibilidad para decisiones, reduciendo fricción en equipos enfocados en salud.",
-    lessons: "Primero se construye para uso real, luego se expande con confianza.",
+      "Chak trabaja con vida. Protocolos de laboratorio, cultivos, proyectos con impacto real en salud y naturaleza. Chak v1 fue una plataforma operativa completa: constructor de protocolos, gestion de proyectos e integracion IOT construida junto a la Universidad de Envigado. Chak v2 es Chak Brain: un sistema conversacional con RAG que cubre todo el equipo, desde operaciones y protocolos hasta comercial y prospectos. La evolucion de SaaS complejo a cerebro conversacional es el aprendizaje real.",
+    lessons: "Agregar funciones resuelve el problema equivocado. La pregunta correcta: puede el equipo acceder a lo que sabe la empresa en una sola conversacion?",
     status: "Activo",
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
@@ -18,25 +18,25 @@ projects: [
       "https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=1600&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1600&auto=format&fit=crop",
     ],
-    tags: ["Salud", "Sistemas"],
+    tags: ["IA", "RAG", "SaaS"],
     modal: {
       whatItMeans:
-        "Un sistema operativo practico para un equipo enfocado en salud: flujos claros, handoffs claros y visibilidad clara.",
+        "Dos capitulos, un aprendizaje clave: cuando dejamos de agregar funciones y empezamos a construir un cerebro, todo se simplifico.",
       whyItMatters:
-        "Cuando la entrega es inconsistente, los resultados sufren. Los sistemas crean consistencia sin perder el toque humano.",
+        "Chak v1 demostro que los sistemas complejos tienen un techo. Chak Brain demostro que un equipo puede acceder a todo lo que sabe su empresa con una sola conversacion. Ese es el salto real.",
       whatsIncluded: [
-        "Mapa de flujo para entrega y seguimiento",
-        "Dashboard versión uno para visibilidad y decisiones",
-        "Base de conocimiento liviana para mantener alineacion",
-        "Iteracion basada en uso real (no supuestos)",
+        "V1: constructor de protocolos, gestion de proyectos e IOT con Universidad de Envigado",
+        "V2: sistema conversacional con RAG para operaciones, protocolos, comercial y prospectos",
+        "Agentes de fondo que optimizan el conocimiento y aprenden con el uso",
+        "Acceso conversacional a toda la base de conocimiento del equipo",
       ],
       idealFit: [
-        "Equipos de salud y bienestar entregando servicios en crecimiento",
-        "Proyectos donde el seguimiento y la confianza importan",
-        "Equipos que quieren versión uno simple y luego mejorar",
+        "Equipos con procesos documentados que nadie puede consultar rapido",
+        "Negocios cansados de buscar en archivos dispersos",
+        "Organizaciones que quieren IA que aprende con ellos, no una herramienta estatica",
       ],
       typicalOutcome:
-        "Entrega más consistente, menos pasos perdidos y aprendizaje más rapido via iteracion.",
+        "El equipo deja de buscar, deja de preguntar y empieza a actuar con lo que ya sabe la empresa.",
     },
   },
   {
@@ -107,6 +107,42 @@ projects: [
       ],
       typicalOutcome:
         "Menos tiempo buscando y reescribiendo, iteraciones más rapidas y entendimiento compartido más claro en el equipo.",
+    },
+  },
+  {
+    title: "SetaSouls. Sitio web de marca holistica",
+    desc: "98 en rendimiento. 100 en SEO. 100 en buenas practicas. Diseno, velocidad y posicionamiento construidos juntos desde el inicio.",
+    fullDesc:
+      "Un sitio de marca wellness construido y optimizado sobre Vercel. Cada decision de arquitectura, rendimiento e imagen fue parte del diseno desde el primer dia, no un parche al final. El resultado: 98 en rendimiento, 96 en accesibilidad, 100 en buenas practicas y 100 en SEO tecnico.",
+    lessons: "Lighthouse no es el objetivo. Es la prueba de que las decisiones correctas se tomaron desde el principio.",
+    status: "En desarrollo",
+    image:
+      "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&q=80&w=800",
+    images: [
+      "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&q=80&w=1600",
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1600",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=1600",
+    ],
+    tags: ["Web", "Vercel"],
+    modal: {
+      whatItMeans:
+        "Un sitio moderno, rapido y posicionado que representa la marca con claridad y confianza.",
+      whyItMatters:
+        "98 en rendimiento, 100 en SEO, 100 en buenas practicas. No es suerte. Es el resultado de construir con criterio desde el inicio.",
+      whatsIncluded: [
+        "Arquitectura de rendimiento: 98/100 en Lighthouse",
+        "SEO tecnico completo: 100/100, con estructura, metadatos y schema",
+        "Accesibilidad: 96/100",
+        "Diseno de marca y experiencia de usuario",
+        "Desplegado y optimizado sobre Vercel",
+      ],
+      idealFit: [
+        "Marcas que necesitan presencia digital de nivel premium",
+        "Proyectos donde performance y diseno son igual de importantes",
+        "Equipos que quieren resultados reales, no solo promesas",
+      ],
+      typicalOutcome:
+        "Un sitio que carga en fracciones de segundo, aparece en busquedas y se siente bien construido.",
     },
   },
 ],

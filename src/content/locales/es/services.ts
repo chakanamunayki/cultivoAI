@@ -39,12 +39,46 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       },
     },
     {
+      icon: "Brain",
+      title: "Cerebro de Empresa",
+      eng: "Company Brain",
+      description: "Todo lo que sabe tu empresa, disponible al instante. Sin app nueva. Sin capacitacion. Tu equipo solo habla.",
+      details: [
+        "Una capa de conocimiento sobre tus documentos, protocolos y proyectos, accesible por conversacion. Escala desde pocos archivos hasta decenas de miles.",
+        "Agentes de fondo que optimizan el cerebro y aprenden con el tiempo.",
+        "Agentes especializados por rol: operaciones, comercial, laboratorio, proyectos.",
+        "Entregado donde tu equipo ya trabaja: Telegram, web o API.",
+      ],
+      imageUrl: "/landing/photos/services/ai-assistants.png",
+      animationKey: "ai-assistants",
+      modal: {
+        whatItMeans:
+          "Un cerebro de IA construido sobre el conocimiento real de tu empresa. Tu equipo hace preguntas, el cerebro responde con lo que tu negocio ya sabe.",
+        whyItMatters:
+          "El conocimiento de tu empresa existe. Esta en documentos, protocolos, decisiones y proyectos. El problema es que no es accesible. Cerebro de Empresa lo hace conversacional.",
+        whatsIncluded: [
+          "Una capa de conocimiento sobre tus documentos, protocolos y proyectos",
+          "Agentes de fondo que aprenden y optimizan con el uso",
+          "Agentes por rol: cada miembro del equipo tiene su acceso especializado",
+          "Canal de entrega a tu medida: Telegram, web, API o lo que necesites",
+          "Diseno a la medida de tu negocio, no una plantilla",
+        ],
+        idealFit: [
+          "Equipos con conocimiento disperso que no se puede consultar rapido",
+          "Negocios donde cada area necesita contexto diferente",
+          "Organizaciones que quieren aprendizaje continuo, no una herramienta estatica",
+        ],
+        typicalOutcome:
+          "El equipo deja de buscar en archivos. Las respuestas llegan en segundos, con el contexto correcto, desde el conocimiento real de la empresa.",
+      },
+    },
+    {
       icon: "MessageSquare",
       title: "Asistentes IA",
       eng: "AI Assistants",
       description: "Asistentes utiles y con tono humano para clientes o equipos internos.",
       details: [
-        "Agentes basados en LLMs entrenados con la informacion de tu negocio.",
+        "Un asistente de IA construido con el conocimiento real de tu negocio: servicios, procesos y tono.",
         "Pueden agendar citas, responder dudas tecnicas, cotizar servicios.",
         "Escalan casos complejos a humanos cuando sea necesario.",
       ],
@@ -76,7 +110,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       title: "Sistemas para Retiros",
       eng: "Retreat Ops Systems",
       description:
-        "Reservas, pagos, mensajes, itinerarios, checklists, feedback, seguimiento, dashboards. Operación sin caos. Experiencia humana.",
+        "Un sistema operativo completo para retiros: desde la primera reserva hasta el seguimiento final, con flujos claros para el equipo y una experiencia fluida para los huespedes.",
       details: [
         "Reservas, pagos, facturación",
         "Mensajería pre, durante, post retiro",
@@ -113,7 +147,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       eng: "Decision Dashboards",
       description: "Visibilidad para actuar antes y mantener foco.",
       details: [
-        "Centralizamos tus datos dispersos (Excel, SQL, CRMs) en tableros visuales claros.",
+        "Reunimos tus datos dispersos (hojas de calculo, bases de datos, CRMs) en un tablero visual claro.",
         "Implementamos metricas clave (KPIs) para la salud de tu negocio en tiempo real.",
         "Sin esperar al reporte de fin de mes.",
       ],
@@ -144,10 +178,10 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       icon: "Layers",
       title: "Sistemas de Conocimiento y Contenido",
       eng: "Knowledge and Content Systems",
-      description: "Organiza conocimiento y crea salida consistente sin caos.",
+      description: "Un sistema que convierte tu conocimiento en contenido consistente y publicable, sin el caos habitual.",
       details: [
-        "Pipelines de contenido asistidos por IA.",
-        "Desde ideacion de temas basados en tendencias hasta generacion de borradores.",
+        "Mapeamos lo que tu audiencia busca y construimos un sistema de contenido alrededor de eso.",
+        "Los temas se eligen por demanda real, no por intuicion.",
         "Blog, redes sociales y newsletters manteniendo tu voz de marca.",
       ],
       imageUrl: "/landing/photos/services/knowledge-content-systems.jpg",
@@ -181,8 +215,8 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       description: "Diseno bonito con sistemas que apoyan conversion y seguimiento.",
       details: [
         "Sitios web modernos, rapidos y optimizados para conversion.",
-        "Busqueda semantica y personalizacion de contenido en tiempo real.",
-        "Chatbots nativos para maximizar retencion de usuarios.",
+        "Busqueda inteligente y contenido que se adapta a cada visitante.",
+        "Asistentes integrados que ayudan a los visitantes a dar el siguiente paso.",
       ],
       imageUrl: "/landing/photos/services/websites-digital-experiences.webp",
       animationKey: "software-web",

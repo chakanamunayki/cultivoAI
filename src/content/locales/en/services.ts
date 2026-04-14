@@ -38,23 +38,57 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       },
     },
     {
+      icon: "Brain",
+      title: "Company Brain",
+      eng: "Company Brain",
+      description: "Everything your business knows, instantly accessible. No new app. No training. Your team just talks.",
+      details: [
+        "A searchable knowledge layer built over your documents, protocols, and projects. Scales from a handful of files to tens of thousands.",
+        "Background agents that continuously optimise the brain and learn as you go.",
+        "Role-specific agents: each team member gets a brain designed for their context.",
+        "Delivered where your team already works: Telegram, web, API, or whatever fits.",
+      ],
+      imageUrl: "/landing/photos/services/ai-assistants.png",
+      animationKey: "ai-assistants",
+      modal: {
+        whatItMeans:
+          "An AI brain built on your business's real knowledge. Your team asks questions. The brain answers from what your business actually knows.",
+        whyItMatters:
+          "Your business knowledge already exists, sitting in documents, protocols, decisions, and projects. The problem is that it is not accessible. Company Brain makes it conversational.",
+        whatsIncluded: [
+          "A searchable knowledge layer built over your existing documents, protocols, and projects",
+          "Background agents that learn and optimise with use",
+          "Role-specific agents: each team member gets specialised access",
+          "Delivery channel designed for you: Telegram, web, API, or what you need",
+          "Designed around your business, not a generic template",
+        ],
+        idealFit: [
+          "Teams with scattered knowledge that no one can query fast",
+          "Businesses where different areas need different context",
+          "Organisations that want continuous learning, not a static tool",
+        ],
+        typicalOutcome:
+          "The team stops searching through files. Answers arrive in seconds, with the right context, from the business's real knowledge.",
+      },
+    },
+    {
       icon: "MessageSquare",
       title: "AI Assistants",
       eng: "AI Assistants",
-      description: "Keep your data private. Offline setups available when needed.",
+      description: "An AI assistant that knows your business and handles real conversations with clients or your internal team.",
       details: [
-        "LLM-based assistants trained on your business information.",
+        "An AI assistant built around your services, tone, and processes.",
         "Customer support. Internal help. Scheduling. Quotes.",
         "Works with WhatsApp, email, calendars.",
       ],
       imageUrl: "/landing/photos/services/ai-assistants.png",
       animationKey: "ai-assistants",
       modal: {
-        whatItMeans: "LLM-based assistants trained on your business information.",
+        whatItMeans: "An AI assistant built on your business knowledge: your services, processes, and tone.",
         whyItMatters:
           "Customer support, internal help, scheduling, and quotes happen faster without overloading your team.",
         whatsIncluded: [
-          "LLM-based assistants trained on your business information",
+          "An AI assistant built on your services, tone, and processes",
           "Customer support, internal help, scheduling, quotes",
           "Integrations with WhatsApp, email, calendars",
           "Private data handling with optional offline setup",
@@ -73,7 +107,7 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       icon: "CalendarCheck",
       title: "Retreat Ops Systems",
       eng: "Retreat Ops Systems",
-      description: "Ops without chaos. Human experience.",
+      description: "A complete operations system for retreats: from first booking to final follow-up, with clear workflows for your team and a smooth experience for guests.",
       details: [
         "Bookings, payments, invoicing.",
         "Guest messaging before, during, after.",
@@ -87,11 +121,11 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
           "A retreat ops system covering bookings, payments, messaging, itineraries, checklists, feedback, follow-up, dashboards.",
         whyItMatters: "Less operational chaos. Better guest experience. Fewer dropped details.",
         whatsIncluded: [
-          "Bookings, payments, invoicing.",
-          "Guest messaging before, during, after.",
-          "Itineraries, checklists, feedback, follow-up.",
-          "Dashboards for occupancy, revenue, satisfaction.",
-          "Ops without chaos. Human experience.",
+          "Intake flow design and booking system setup",
+          "Pre-arrival and post-retreat messaging workflows",
+          "Itinerary and checklist templates your team can run independently",
+          "Feedback and satisfaction capture with follow-up routing",
+          "Simple dashboard for occupancy, revenue, and guest satisfaction",
         ],
         idealFit: [
           "Retreat teams running repeatable programs",
@@ -107,7 +141,7 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       eng: "Decision Dashboards",
       description: "Visibility that helps you act early and stay focused.",
       details: [
-        "We centralize your scattered data (Excel, SQL, CRMs) into clear visual dashboards.",
+        "We bring together your scattered data (spreadsheets, databases, CRMs) into one clear visual dashboard.",
         "We implement key metrics (KPIs) for real-time business health.",
         "No waiting for end-of-month reports.",
       ],
@@ -138,11 +172,11 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       icon: "Layers",
       title: "Knowledge and Content Systems",
       eng: "Knowledge and Content Systems",
-      description: "Consistent output without chaos.",
+      description: "A system that turns your expertise into consistent, publishable content, without the scramble.",
       details: [
-        "Market signals plus content system design.",
-        "Topic direction based on real demand.",
-        "Draft workflow. Review workflow. Publishing workflow.",
+        "We map what your audience is actually looking for and build a content system around it.",
+        "Topics are chosen based on real demand, not guesses.",
+        "A clear path from idea to published: drafting, reviewing, and publishing without the chaos.",
       ],
       imageUrl: "/landing/photos/services/knowledge-content-systems.jpg",
       imageFit: "contain",
@@ -175,7 +209,7 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       description: "Beautiful design paired with systems that support conversion and follow-up.",
       details: [
         "Modern, fast websites optimized for conversion.",
-        "Semantic search and real-time content personalization.",
+        "Smart search and content that adapts to each visitor.",
         "Native chatbots to maximize user retention.",
       ],
       imageUrl: "/landing/photos/services/websites-digital-experiences.webp",

@@ -5,11 +5,11 @@ projectsTitle: "What We've Built",
 projectsSubtitle: "Selected projects from our current work",
 projects: [
   {
-    title: "Chak - Creation of life, with the help of AI",
-    desc: "Systems built to support health-focused work with clarity, structure, and momentum.",
+    title: "Chak: From SaaS to Brain",
+    desc: "V1: full SaaS platform with protocol builder, project management, and IoT. V2: Chak Brain, a RAG-backed conversational system covering the entire team.",
     fullDesc:
-      "An evolving system that combines operational workflows, service delivery, and decision visibility so health-focused teams can work with less friction and better follow-through.",
-    lessons: "Build for real usage first, then expand with confidence.",
+      "Chak works with life. Lab protocols, cultivations, projects with real impact on health and nature. Chak v1 was a full operational platform: protocol builder, project management, and IoT integration built alongside Universidad de Envigado. Chak v2 is Chak Brain, a RAG-backed system covering the entire team across operations, lab protocols, commercial, prospects, and projects. The evolution from complex SaaS to conversational brain is the real insight.",
+    lessons: "Adding features solves the wrong problem. The right question: can the team access what the business knows in a single conversation?",
     status: "Active",
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
@@ -18,25 +18,25 @@ projects: [
       "https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=1600&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1600&auto=format&fit=crop",
     ],
-    tags: ["Health", "Systems"],
+    tags: ["AI", "RAG", "SaaS"],
     modal: {
       whatItMeans:
-        "A practical operating system for a health-focused team: clear workflows, clear handoffs, and clear visibility.",
+        "Two chapters, one key insight: when we stopped adding features and started building a brain, everything simplified.",
       whyItMatters:
-        "When service delivery is inconsistent, outcomes suffer. Systems create consistency without losing the human touch.",
+        "Chak v1 proved that complex systems hit a ceiling. Chak Brain proved a team can access everything the business knows in a single conversation. That is the real leap.",
       whatsIncluded: [
-        "Workflow map for delivery and follow-up",
-        "A version-one dashboard for visibility and decision support",
-        "A lightweight knowledge base so the team stays aligned",
-        "Iteration based on real use (not assumptions)",
+        "V1: protocol builder, project management, and IoT with Universidad de Envigado",
+        "V2: RAG-backed conversational system for operations, protocols, commercial, and prospects",
+        "Background agents that optimize the knowledge base and learn with use",
+        "Conversational access to the team's full knowledge layer",
       ],
       idealFit: [
-        "Health and wellbeing teams delivering services at growing volume",
-        "Projects where follow-through and trust matter",
-        "Teams that want simple version one, then improve",
+        "Teams with documented processes that no one can query quickly",
+        "Businesses tired of searching across scattered files and folders",
+        "Organizations that want AI that grows with them, not a static tool",
       ],
       typicalOutcome:
-        "More consistent delivery, fewer missed steps, and faster learning through iteration.",
+        "The team stops searching, stops asking around, and starts acting on what the business already knows.",
     },
   },
   {
@@ -106,6 +106,42 @@ projects: [
       ],
       typicalOutcome:
         "Less time searching and rewriting, faster iterations, and a clearer shared understanding across the team.",
+    },
+  },
+  {
+    title: "SetaSouls. Holistic Brand Website",
+    desc: "98 performance. 100 SEO. 100 best practices. Design, speed, and search visibility built together from the start.",
+    fullDesc:
+      "A wellness brand website built and optimised on Vercel. Every architecture, performance, and design decision was intentional from day one, not patched in at the end. The result: 98 performance, 96 accessibility, 100 best practices, and 100 technical SEO on Lighthouse.",
+    lessons: "Lighthouse is not the goal. It is proof that the right decisions were made throughout.",
+    status: "In development",
+    image:
+      "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&q=80&w=800",
+    images: [
+      "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&q=80&w=1600",
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1600",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=1600",
+    ],
+    tags: ["Web", "Vercel"],
+    modal: {
+      whatItMeans:
+        "A fast, modern, well-positioned site that represents the brand with clarity and confidence.",
+      whyItMatters:
+        "98 performance, 100 SEO, 100 best practices. Not an accident. The result of building with intention from the start.",
+      whatsIncluded: [
+        "Performance architecture: 98/100 on Lighthouse",
+        "Full technical SEO: 100/100, covering structure, metadata, and schema",
+        "Accessibility: 96/100",
+        "Brand design and user experience",
+        "Deployed and optimised on Vercel",
+      ],
+      idealFit: [
+        "Brands that need a premium digital presence",
+        "Projects where performance and design are equally important",
+        "Teams that want real results, not just promises",
+      ],
+      typicalOutcome:
+        "A site that loads in milliseconds, ranks in search, and feels properly built.",
     },
   },
 ],
