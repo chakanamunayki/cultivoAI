@@ -131,16 +131,15 @@ export function ProjectsSection() {
                   </div>
 
                   {project.url && (
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.open(project.url, "_blank", "noopener,noreferrer");
-                      }}
-                      className="mt-5 text-sm font-bold uppercase tracking-[0.1em] text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:decoration-primary"
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="mt-5 inline-block text-sm font-bold uppercase tracking-[0.1em] text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:decoration-primary"
                     >
                       {locale === "es" ? "Ver sitio" : "Visit site"}
-                    </button>
+                    </a>
                   )}
                 </Reveal>
               </div>
