@@ -23,6 +23,8 @@ import { AIChatQuickQuestions } from "./ai-chat-quick-questions";
 import { ChatInlineContactForm } from "./chat-inline-contact-form";
 import { VoiceConversationMode } from "./voice-conversation-mode";
 
+const VOICE_ENABLED = process.env.NEXT_PUBLIC_VOICE_ENABLED === "true";
+
 // WhatsApp icon component
 function WhatsAppIcon({ size = 20 }: { size?: number }) {
   return (
@@ -701,16 +703,18 @@ export function AIChatWidget({
             </span>
           </div>
           <div className="flex items-center gap-2">
-            {/* Voice Mode button - BIG AND OBVIOUS FOR TESTING */}
-            <button
-              onClick={openVoiceMode}
-              className="px-3 py-1.5 bg-primary text-primary-foreground border-2 border-black hover:bg-primary/90 hover:scale-105 transition-all font-bold text-xs uppercase"
-              aria-label={locale === "es" ? "Modo de voz" : "Voice mode"}
-              title={locale === "es" ? "Conversación por voz" : "Voice conversation"}
-            >
-              <Phone size={16} className="inline mr-1" />
-              VOZ
-            </button>
+            {/* Voice Mode button */}
+            {VOICE_ENABLED && (
+              <button
+                onClick={openVoiceMode}
+                className="px-3 py-1.5 bg-primary text-primary-foreground border-2 border-black hover:bg-primary/90 hover:scale-105 transition-all font-bold text-xs uppercase"
+                aria-label={locale === "es" ? "Modo de voz" : "Voice mode"}
+                title={locale === "es" ? "Conversación por voz" : "Voice conversation"}
+              >
+                <Phone size={16} className="inline mr-1" />
+                VOZ
+              </button>
+            )}
             {/* WhatsApp button */}
             <button
               onClick={() => openWhatsApp()}
@@ -818,14 +822,16 @@ export function AIChatWidget({
         <div className="p-3 bg-white border-t-4 border-black">
           <div className="flex gap-2 items-center">
             {/* Voice Mode Button */}
-            <button
-              onClick={openVoiceMode}
-              className="p-3 border-2 border-black transition-all bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-              aria-label={locale === "es" ? "Modo de voz" : "Voice mode"}
-              title={locale === "es" ? "Conversación por voz" : "Voice conversation"}
-            >
-              <Mic size={20} />
-            </button>
+            {VOICE_ENABLED && (
+              <button
+                onClick={openVoiceMode}
+                className="p-3 border-2 border-black transition-all bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                aria-label={locale === "es" ? "Modo de voz" : "Voice mode"}
+                title={locale === "es" ? "Conversación por voz" : "Voice conversation"}
+              >
+                <Mic size={20} />
+              </button>
+            )}
             <input
               type="text"
               value={input}
@@ -847,8 +853,8 @@ export function AIChatWidget({
       </div>
     </div>
 
-    {/* Voice Conversation Mode Overlay - Always render, let component handle visibility */}
-    {isVoiceModeOpen && (
+    {/* Voice Conversation Mode Overlay */}
+    {VOICE_ENABLED && isVoiceModeOpen && (
       <VoiceConversationMode
         isOpen={true}
         onClose={() => {

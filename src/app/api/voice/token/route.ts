@@ -48,6 +48,14 @@ function checkRateLimit(key: string): boolean {
 }
 
 export async function POST(request: Request) {
+  // Voice mode is disabled by default. Set VOICE_ENABLED=true to enable.
+  if (process.env.VOICE_ENABLED !== "true") {
+    return NextResponse.json(
+      { error: "Voice mode is not available." },
+      { status: 503 }
+    );
+  }
+
   try {
     // Rate limiting
     const rateLimitKey = getRateLimitKey(request);
@@ -123,6 +131,10 @@ export async function POST(request: Request) {
 
 // GET method to check token endpoint status
 export async function GET() {
+  if (process.env.VOICE_ENABLED !== "true") {
+    return NextResponse.json({ status: "disabled", message: "Voice mode is not enabled." });
+  }
+
   const hasApiKey = !!process.env.GEMINI_API_KEY;
 
   return NextResponse.json({
