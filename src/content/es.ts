@@ -44,8 +44,8 @@ export const es: SiteContent = {
       "Startups de impacto",
       "Retiros wellness",
       "Comunidades off-grid",
-      "Hidroponia",
-      "Bienestar holistico",
+      "Hidroponía",
+      "Bienestar holístico",
       "Proyectos regenerativos",
     ],
     tertiaryCta: "Ver servicios",
@@ -66,8 +66,8 @@ export const es: SiteContent = {
   about: esAbout,
 
   howWeWork: {
-    title: "Como Trabajamos",
-    subtitle: "Principios que guian cada proyecto",
+    title: "Cómo Trabajamos",
+    subtitle: "Principios que guían cada proyecto",
     pillars: [
       {
         icon: "RefreshCw",
@@ -77,9 +77,9 @@ export const es: SiteContent = {
       },
       {
         icon: "Sprout",
-        title: "Sistemas Holisticos",
+        title: "Sistemas Holísticos",
         description:
-          "Pensamos de punta a punta. Software, flujos, datos, decisiones, comunicación y diseno deben funcionar juntos, no como piezas sueltas.",
+          "Pensamos de punta a punta. Software, flujos, datos, decisiones, comunicación y diseño deben funcionar juntos, no como piezas sueltas.",
       },
       {
         icon: "Users",
@@ -92,10 +92,10 @@ export const es: SiteContent = {
   },
 
   whatWeDo: {
-    title: "Como Ayudamos",
-    subtitle: "Integracion de IA practica para negocios reales",
+    title: "Cómo Ayudamos",
+    subtitle: "Integración de IA práctica para negocios reales",
     intro:
-      "No vendemos humo. Construimos sistemas practicos que hacen más facil ejecutar buen trabajo. El objetivo es claridad y momentum, no complejidad.",
+      "No vendemos humo. Construimos sistemas prácticos que hacen más fácil ejecutar buen trabajo. El objetivo es claridad y momentum, no complejidad.",
     columns: [
       {
         title: "OPTIMIZAR",
@@ -109,9 +109,9 @@ export const es: SiteContent = {
       {
         title: "EXPANDIR",
         items: [
-          "Respuestas más rapidas sin perder cercania",
+          "Respuestas más rápidas sin perder cercanía",
           "Contenido y conocimiento consistentes",
-          "Mejores decisiones con senales reales",
+          "Mejores decisiones con señales reales",
           "Nuevas formas de apoyar usuarios y clientes",
         ],
       },
@@ -129,10 +129,10 @@ export const es: SiteContent = {
       "Consultores guiados por hype vendiendo una tendencia.",
       "Un equipo que te hace sentir confundido a propósito.",
     ],
-    yesTitle: "Lo que SI somos",
+    yesTitle: "Lo que SÍ somos",
     yesItems: [
-      "Un equipo senior pequeno que trabaja directo contigo.",
-      "Constructores de sistemas que lanzan versión uno rapido y luego mejoran.",
+      "Un equipo senior pequeño que trabaja directo contigo.",
+      "Constructores de sistemas que lanzan versión uno rápido y luego mejoran.",
       "Builders human-first que cuidan tono, confianza y resultados.",
       "Desde Colombia, trabajando para el mundo.",
     ],

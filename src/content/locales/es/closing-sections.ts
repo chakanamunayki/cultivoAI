@@ -12,7 +12,7 @@ export const esClosingSectionsContent: Pick<
         icon: "Sprout",
         title: "CULTIVAR, NO EXTRAER",
         description:
-          "Construimos para el largo plazo. Preferimos relaciones que crecen sobre transacciones rapidas.",
+          "Construimos para el largo plazo. Preferimos relaciones que crecen sobre transacciones rápidas.",
       },
       {
         icon: "Handshake",
@@ -24,34 +24,34 @@ export const esClosingSectionsContent: Pick<
         icon: "User",
         title: "SIEMPRE HUMANOS",
         description:
-          "La IA es una herramienta, no un reemplazo. Priorizamos la conexion humana en todo lo que hacemos.",
+          "La IA es una herramienta, no un reemplazo. Priorizamos la conexión humana en todo lo que hacemos.",
       },
     ],
   },
 
   mission: {
-    title: "Nuestra Mision",
+    title: "Nuestra Misión",
     statement: [
       "Construimos sistemas de IA que ayudan a escalar trabajo valioso.",
       "Una parte de lo que ganamos se reinvierte en proyectos alineados a impacto.",
       "Mientras más construimos, más podemos apoyar.",
     ],
-    tagline: "Propon un proyecto de impacto",
+    tagline: "Propón un proyecto de impacto",
   },
 
   whatHappensNext: {
-    title: "Que pasa despues de contactarnos?",
-    subtitle: "Asi de simple. Sin sorpresas.",
+    title: "¿Qué pasa después de contactarnos?",
+    subtitle: "Así de simple. Sin sorpresas.",
     steps: [
       {
         number: "1",
-        title: "Respondemos rapido",
+        title: "Respondemos rápido",
         description: "Recibes respuesta directa y un siguiente paso claro.",
       },
       {
         number: "2",
         title: "Mapeamos tu flujo y proponemos un plan simple",
-        description: "Nos enfocamos en cambios practicos que reducen fricción rapido.",
+        description: "Nos enfocamos en cambios prácticos que reducen fricción rápido.",
       },
       {
         number: "3",
@@ -59,12 +59,12 @@ export const esClosingSectionsContent: Pick<
         description: "Luego mejoramos contigo en base a uso real.",
       },
     ],
-    cta: "Empecemos la conversacion",
+    cta: "Empecemos la conversación",
     ctaButton: "Hablemos",
   },
 
   footer: {
-    cta: "Cuentanos que estas construyendo.",
+    cta: "Cuéntanos qué estás construyendo.",
     ctaButton: "Hablemos",
     copyright: "2026 Cultivo AI. Desde Colombia, trabajando para el mundo.",
     socialLinks: [
@@ -95,7 +95,7 @@ export const esClosingSectionsContent: Pick<
       email: "hola@cultivoai.co",
       whatsapp: "+573106172607",
       whatsappDisplay: "+57 310 617 2607",
-      location: "Medellin, Colombia",
+      location: "Medellín, Colombia",
       locationSecondary: "Worldwide",
     },
     quickLinks: [
@@ -106,9 +106,9 @@ export const esClosingSectionsContent: Pick<
       { label: "Proyectos", href: "#projects" },
       { label: "Proceso", href: "#what-happens-next" },
     ],
-    quickLinksTitle: "Navegacion",
+    quickLinksTitle: "Navegación",
     contactTitle: "Contacto",
-    socialTitle: "Siguenos",
+    socialTitle: "Síguenos",
   },
 
   chat: {
@@ -116,52 +116,52 @@ export const esClosingSectionsContent: Pick<
     placeholder: "Escribe tu mensaje...",
     sendButton: "Enviar",
     welcomeMessage:
-      "Hola! Soy el asistente de CultivoAI. Puedo ayudarte a conocer servicios, mostrar proyectos o conectarte con el equipo. En que te ayudo?",
+      "¡Hola! Soy el asistente de CultivoAI. Puedo ayudarte a conocer servicios, mostrar proyectos o conectarte con el equipo. ¿En qué te ayudo?",
     contextualGreetings: {
       general:
-        "Hola! Soy el asistente de CultivoAI. Puedo ayudarte a conocer servicios, mostrar proyectos o conectarte con el equipo. Que te trae por aqui hoy?",
+        "¡Hola! Soy el asistente de CultivoAI. Puedo ayudarte a conocer servicios, mostrar proyectos o conectarte con el equipo. ¿Qué te trae por aquí hoy?",
       booking:
-        "Hola! Veo que quieres agendar tiempo con Paul. Me encantaria ayudarte! Primero, como te llamas? Y cuentame un poco sobre lo que te gustaria discutir.",
+        "¡Hola! Veo que quieres agendar tiempo con Paul. ¡Me encantaría ayudarte! Primero, ¿cómo te llamas? Y cuéntame un poco sobre lo que te gustaría discutir.",
       story:
-        "Hola! Puedes conocer mejor nuestra historia en la seccion Nosotros. Que te gustaria saber? Y por cierto, como te llamas?",
+        "¡Hola! Puedes conocer mejor nuestra historia en la sección Nosotros. ¿Qué te gustaría saber? Y por cierto, ¿cómo te llamas?",
       semilla:
-        "Hey! Aqui Rocky (bueno, la versión IA). Me alegra que te interese el Fondo Semilla! Es mi proyecto para ayudar con cosas pequenas mientras aprendo. Como te llamas? Y cuentame que tienes en mente!",
+        "¡Hey! Aquí Rocky (bueno, la versión IA). ¡Me alegra que te interese el Fondo Semilla! Es mi proyecto para ayudar con cosas pequeñas mientras aprendo. ¿Cómo te llamas? ¡Y cuéntame qué tienes en mente!",
       service:
-        "Hola! Veo que te interesa {service}. Excelente eleccion! Como te llamas? Y cuentame sobre tu situacion actual - que problema quieres resolver?",
+        "¡Hola! Veo que te interesa {service}. ¡Excelente elección! ¿Cómo te llamas? Y cuéntame sobre tu situación actual: ¿qué problema quieres resolver?",
       partnership:
-        "Hola! Te interesa saber más sobre nuestro modelo de {partnership}. Cada proyecto es diferente! Como te llamas? Y cuentame sobre tu proyecto para explorar las mejores opciones.",
+        "¡Hola! Te interesa saber más sobre nuestro modelo de {partnership}. ¡Cada proyecto es diferente! ¿Cómo te llamas? Y cuéntame sobre tu proyecto para explorar las mejores opciones.",
       qualification:
-        "Hola! Veamos si somos el fit correcto para trabajar juntos. Como te llamas? Y cuentame sobre tu negocio y que estas buscando lograr.",
+        "¡Hola! Veamos si somos el fit correcto para trabajar juntos. ¿Cómo te llamas? Y cuéntame sobre tu negocio y qué estás buscando lograr.",
       impact:
-        "Hola! Quiero conocer como podrian ayudarme con un sistema de IA practico y human-first.",
-      formFallback: "Prefieres llenar un formulario? Haz clic aqui.",
+        "¡Hola! Quiero conocer cómo podrían ayudarme con un sistema de IA práctico y human-first.",
+      formFallback: "¿Prefieres llenar un formulario? Haz clic aquí.",
     },
   },
 
   contactForm: {
     title: "Hablemos",
-    subtitle: "No formularios corporativos. Solo una conversacion.",
+    subtitle: "No formularios corporativos. Solo una conversación.",
     nameLabel: "Nombre",
     namePlaceholder: "Tu nombre",
     emailLabel: "Email",
     emailPlaceholder: "tu@email.com",
     whatsappLabel: "WhatsApp (opcional)",
     whatsappPlaceholder: "+57 300 123 4567",
-    projectTypeLabel: "Que tipo de proyecto tienes en mente?",
+    projectTypeLabel: "¿Qué tipo de proyecto tienes en mente?",
     projectTypes: [
-      "Optimizacion de flujos",
+      "Optimización de flujos",
       "Chatbot / Asistente IA",
-      "Dashboard de decision",
+      "Dashboard de decisión",
       "Sistema de conocimiento y contenido",
       "Software / Sitio web",
-      "Asesoria startup",
-      "No estoy seguro - necesito orientacion",
+      "Asesoría startup",
+      "No estoy seguro, necesito orientación",
       "Otro",
     ],
-    descriptionLabel: "Cuentanos brevemente sobre tu proyecto",
-    descriptionPlaceholder: "Que problema quieres resolver? Que resultado esperas?",
+    descriptionLabel: "Cuéntanos brevemente sobre tu proyecto",
+    descriptionPlaceholder: "¿Qué problema quieres resolver? ¿Qué resultado esperas?",
     submitButton: "Enviar mensaje",
-    chatPrompt: "Prefieres chatear? Nuestro asistente IA puede ayudarte!",
+    chatPrompt: "¿Prefieres chatear? ¡Nuestro asistente IA puede ayudarte!",
   },
 
   terminal: {

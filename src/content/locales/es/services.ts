@@ -3,17 +3,17 @@ import type { SiteContent } from "../../types";
 export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSubtitle" | "services"> = {
   servicesTitle: "Nuestros Servicios",
   servicesSubtitle:
-    "No sabes por donde empezar? Agenda una llamada de 15 minutos. Te ayudamos a encontrar el cambio más pequeno que genere momentum real.",
+    "¿No sabes por dónde empezar? Agenda una llamada de 15 minutos. Te ayudamos a encontrar el cambio más pequeño que genere momentum real.",
   services: [
     {
       icon: "Zap",
-      title: "Optimizacion de Flujos",
+      title: "Optimización de Flujos",
       eng: "Workflow Optimization",
-      description: "Haz la operacion más fluida quitando fricción y trabajo repetitivo.",
+      description: "Haz la operación más fluida quitando fricción y trabajo repetitivo.",
       details: [
         "Conectamos herramientas como Notion, Slack, Gmail, Airtable y WhatsApp.",
         "Diseñamos flujos que trabajan mientras duermes.",
-        "Facturacion automatica hasta on-boarding de clientes sin intervencion humana.",
+        "Facturación automática hasta on-boarding de clientes sin intervención humana.",
       ],
       imageUrl: "/landing/photos/services/workflows-automation.png",
       animationKey: "workflow",
@@ -21,13 +21,13 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         whatItMeans:
           "Convertimos pasos repetitivos y manuales en un flujo simple en el que tu equipo puede confiar.",
         whyItMatters:
-          "Menos seguimiento, menos handoffs perdidos y una operacion diaria más tranquila.",
+          "Menos seguimiento, menos handoffs perdidos y una operación diaria más tranquila.",
         whatsIncluded: [
-          "Mapa rapido del flujo y auditoria de fricción",
+          "Mapa rápido del flujo y auditoría de fricción",
           "Plan simple: disparadores, responsables y fallbacks",
-          "Construccion + pruebas del flujo principal",
-          "Documentacion basica para que el equipo lo pueda operar",
-          "Ventana corta de iteracion despues del lanzamiento",
+          "Construcción + pruebas del flujo principal",
+          "Documentación básica para que el equipo lo pueda operar",
+          "Ventana corta de iteración después del lanzamiento",
         ],
         idealFit: [
           "Equipos con operaciones recurrentes: intake, onboarding, seguimiento, reportes",
@@ -42,9 +42,9 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       icon: "Brain",
       title: "Cerebro de Empresa",
       eng: "Company Brain",
-      description: "Todo lo que sabe tu empresa, disponible al instante. Sin app nueva. Sin capacitacion. Tu equipo solo habla.",
+      description: "Todo lo que sabe tu empresa, disponible al instante. Sin app nueva. Sin capacitación. Tu equipo solo habla.",
       details: [
-        "Una capa de conocimiento sobre tus documentos, protocolos y proyectos, accesible por conversacion. Escala desde pocos archivos hasta decenas de miles.",
+        "Una capa de conocimiento sobre tus documentos, protocolos y proyectos, accesible por conversación. Escala desde pocos archivos hasta decenas de miles.",
         "Agentes de fondo que optimizan el cerebro y aprenden con el tiempo.",
         "Agentes especializados por rol: operaciones, comercial, laboratorio, proyectos.",
         "Entregado donde tu equipo ya trabaja: Telegram, web o API.",
@@ -55,18 +55,18 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         whatItMeans:
           "Un cerebro de IA construido sobre el conocimiento real de tu empresa. Tu equipo hace preguntas, el cerebro responde con lo que tu negocio ya sabe.",
         whyItMatters:
-          "El conocimiento de tu empresa existe. Esta en documentos, protocolos, decisiones y proyectos. El problema es que no es accesible. Cerebro de Empresa lo hace conversacional.",
+          "El conocimiento de tu empresa existe. Está en documentos, protocolos, decisiones y proyectos. El problema es que no es accesible. Cerebro de Empresa lo hace conversacional.",
         whatsIncluded: [
           "Una capa de conocimiento sobre tus documentos, protocolos y proyectos",
           "Agentes de fondo que aprenden y optimizan con el uso",
           "Agentes por rol: cada miembro del equipo tiene su acceso especializado",
           "Canal de entrega a tu medida: Telegram, web, API o lo que necesites",
-          "Diseno a la medida de tu negocio, no una plantilla",
+          "Diseño a la medida de tu negocio, no una plantilla",
         ],
         idealFit: [
-          "Equipos con conocimiento disperso que no se puede consultar rapido",
-          "Negocios donde cada area necesita contexto diferente",
-          "Organizaciones que quieren aprendizaje continuo, no una herramienta estatica",
+          "Equipos con conocimiento disperso que no se puede consultar rápido",
+          "Negocios donde cada área necesita contexto diferente",
+          "Organizaciones que quieren aprendizaje continuo, no una herramienta estática",
         ],
         typicalOutcome:
           "El equipo deja de buscar en archivos. Las respuestas llegan en segundos, con el contexto correcto, desde el conocimiento real de la empresa.",
@@ -76,10 +76,10 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       icon: "MessageSquare",
       title: "Asistentes IA",
       eng: "AI Assistants",
-      description: "Asistentes utiles y con tono humano para clientes o equipos internos.",
+      description: "Asistentes útiles y con tono humano para clientes o equipos internos.",
       details: [
         "Un asistente de IA construido con el conocimiento real de tu negocio: servicios, procesos y tono.",
-        "Pueden agendar citas, responder dudas tecnicas, cotizar servicios.",
+        "Pueden agendar citas, responder dudas técnicas, cotizar servicios.",
         "Escalan casos complejos a humanos cuando sea necesario.",
       ],
       imageUrl: "/landing/photos/services/ai-assistants.png",
@@ -88,21 +88,21 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         whatItMeans:
           "Un asistente que responde, enruta y apoya al equipo con un tono humano y claro.",
         whyItMatters:
-          "Respondes más rapido sin quemar a tu equipo, y las personas reciben proximos pasos claros en vez de callejones sin salida.",
+          "Respondes más rápido sin quemar a tu equipo, y las personas reciben próximos pasos claros en vez de callejones sin salida.",
         whatsIncluded: [
-          "Definicion de alcance y tono (que si y que no hace)",
+          "Definición de alcance y tono (qué sí y qué no hace)",
           "Setup de fuentes de conocimiento (docs, FAQs, notas internas)",
-          "Flujos de conversacion: ayuda, calificacion y handoff a humano",
+          "Flujos de conversación: ayuda, calificación y handoff a humano",
           "Reglas de seguridad y rutas de escalamiento",
           "Lanzamiento + mejoras basadas en conversaciones reales",
         ],
         idealFit: [
           "Equipos con preguntas repetidas o intake recurrente",
           "Te importa la confianza, claridad y voz de marca",
-          "Quieres mejor calificacion antes de que entre un humano",
+          "Quieres mejor calificación antes de que entre un humano",
         ],
         typicalOutcome:
-          "Respuestas más rapidas, menos conversaciones repetitivas y un camino más claro hacia agenda o seguimiento.",
+          "Respuestas más rápidas, menos conversaciones repetitivas y un camino más claro hacia agenda o seguimiento.",
       },
     },
     {
@@ -110,7 +110,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       title: "Sistemas para Retiros",
       eng: "Retreat Ops Systems",
       description:
-        "Un sistema operativo completo para retiros: desde la primera reserva hasta el seguimiento final, con flujos claros para el equipo y una experiencia fluida para los huespedes.",
+        "Un sistema operativo completo para retiros: desde la primera reserva hasta el seguimiento final, con flujos claros para el equipo y una experiencia fluida para los huéspedes.",
       details: [
         "Reservas, pagos, facturación",
         "Mensajería pre, durante, post retiro",
@@ -143,35 +143,35 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
     },
     {
       icon: "BarChart3",
-      title: "Dashboards de Decision",
+      title: "Dashboards de Decisión",
       eng: "Decision Dashboards",
       description: "Visibilidad para actuar antes y mantener foco.",
       details: [
-        "Reunimos tus datos dispersos (hojas de calculo, bases de datos, CRMs) en un tablero visual claro.",
-        "Implementamos metricas clave (KPIs) para la salud de tu negocio en tiempo real.",
+        "Reunimos tus datos dispersos (hojas de cálculo, bases de datos, CRMs) en un tablero visual claro.",
+        "Implementamos métricas clave (KPIs) para la salud de tu negocio en tiempo real.",
         "Sin esperar al reporte de fin de mes.",
       ],
       imageUrl: "/landing/photos/services/decision-dashboards.jpg",
       animationKey: "dashboards",
       modal: {
         whatItMeans:
-          "Una sola vista clara de lo que esta pasando, lo que esta cambiando y lo que requiere atencion.",
+          "Una sola vista clara de lo que está pasando, lo que está cambiando y lo que requiere atención.",
         whyItMatters:
-          "Las mejores decisiones llegan cuando dejas de reconciliar hojas de calculo y empiezas a ver senales temprano.",
+          "Las mejores decisiones llegan cuando dejas de reconciliar hojas de cálculo y empiezas a ver señales temprano.",
         whatsIncluded: [
-          "Definicion de KPIs (que medir y por que)",
-          "Consolidacion de datos (donde viven hoy)",
-          "Construccion del dashboard con vistas por rol",
-          "Alertas o resumenes livianos para senales clave",
-          "Entrenamiento corto + handoff para que siga siendo util",
+          "Definición de KPIs (qué medir y por qué)",
+          "Consolidación de datos (dónde viven hoy)",
+          "Construcción del dashboard con vistas por rol",
+          "Alertas o resúmenes livianos para señales clave",
+          "Entrenamiento corto + handoff para que siga siendo útil",
         ],
         idealFit: [
           "Equipos con datos repartidos entre herramientas y archivos",
           "Quieres claridad sin un programa pesado de BI",
-          "Quieres una versión uno simple que pueda crecer despues",
+          "Quieres una versión uno simple que pueda crecer después",
         ],
         typicalOutcome:
-          "Un ritmo semanal: revisas un dashboard, detectas problemas antes y actuas con más confianza.",
+          "Un ritmo semanal: revisas un dashboard, detectas problemas antes y actúas con más confianza.",
       },
     },
     {
@@ -181,7 +181,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       description: "Un sistema que convierte tu conocimiento en contenido consistente y publicable, sin el caos habitual.",
       details: [
         "Mapeamos lo que tu audiencia busca y construimos un sistema de contenido alrededor de eso.",
-        "Los temas se eligen por demanda real, no por intuicion.",
+        "Los temas se eligen por demanda real, no por intuición.",
         "Blog, redes sociales y newsletters manteniendo tu voz de marca.",
       ],
       imageUrl: "/landing/photos/services/knowledge-content-systems.jpg",
@@ -189,18 +189,18 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       animationKey: "knowledge",
       modal: {
         whatItMeans:
-          "Un sistema que captura conocimiento y lo convierte en salida consistente y util.",
+          "Un sistema que captura conocimiento y lo convierte en salida consistente y útil.",
         whyItMatters:
-          "Dejas de reinventar la rueda, el onboarding se vuelve más facil, y el contenido se mantiene on-brand mientras creces.",
+          "Dejas de reinventar la rueda, el onboarding se vuelve más fácil, y el contenido se mantiene on-brand mientras creces.",
         whatsIncluded: [
           "Estructura simple de base de conocimiento que el equipo puede mantener",
           "Plantillas para capturar y reutilizar aprendizajes clave",
-          "Flujo de contenido: idea, borrador, revision, publicacion",
-          "Automatizacion liviana para reducir copiar/pegar y cambios de contexto",
+          "Flujo de contenido: idea, borrador, revisión, publicación",
+          "Automatización liviana para reducir copiar/pegar y cambios de contexto",
           "Lineamientos para mantener tono consistente",
         ],
         idealFit: [
-          "Equipos que publican regularmente o necesitan documentacion interna",
+          "Equipos que publican regularmente o necesitan documentación interna",
           "Tienes expertise, pero no un sistema consistente",
           "Quieres velocidad sin perder calidad",
         ],
@@ -212,28 +212,28 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       icon: "Monitor",
       title: "Software, Sitios Web y Experiencias Digitales",
       eng: "Software, Websites and Digital Experiences",
-      description: "Diseno bonito con sistemas que apoyan conversion y seguimiento.",
+      description: "Diseño bonito con sistemas que apoyan conversión y seguimiento.",
       details: [
-        "Sitios web modernos, rapidos y optimizados para conversion.",
-        "Busqueda inteligente y contenido que se adapta a cada visitante.",
+        "Sitios web modernos, rápidos y optimizados para conversión.",
+        "Búsqueda inteligente y contenido que se adapta a cada visitante.",
         "Asistentes integrados que ayudan a los visitantes a dar el siguiente paso.",
       ],
       imageUrl: "/landing/photos/services/websites-digital-experiences.webp",
       animationKey: "software-web",
       modal: {
         whatItMeans:
-          "Una experiencia web rapida y bien disenada que apoya confianza, conversion y seguimiento.",
+          "Una experiencia web rápida y bien diseñada que apoya confianza, conversión y seguimiento.",
         whyItMatters:
-          "El buen diseno hace tu trabajo más facil de entender. Los sistemas hacen que el siguiente paso realmente ocurra.",
+          "El buen diseño hace tu trabajo más fácil de entender. Los sistemas hacen que el siguiente paso realmente ocurra.",
         whatsIncluded: [
-          "Mensajes + estructura (que decir, que mostrar, que quitar)",
-          "Direccion de diseno y UI con criterio",
-          "Implementacion enfocada en performance y claridad",
-          "Analitica basica para aprender que funciona",
-          "Ventana corta de iteracion despues del lanzamiento",
+          "Mensajes + estructura (qué decir, qué mostrar, qué quitar)",
+          "Dirección de diseño y UI con criterio",
+          "Implementación enfocada en performance y claridad",
+          "Analítica básica para aprender qué funciona",
+          "Ventana corta de iteración después del lanzamiento",
         ],
         idealFit: [
-          "Equipos que necesitan una presencia moderna y creible",
+          "Equipos que necesitan una presencia moderna y creíble",
           "Quieres tu sitio conectado a flujos y seguimiento",
           "Te importan tono, confianza y velocidad",
         ],
@@ -243,27 +243,27 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
     },
     {
       icon: "Rocket",
-      title: "Asesoria para Startups",
+      title: "Asesoría para Startups",
       eng: "Startup Advisory",
-      description: "De la idea a versión uno con sistemas practicos y guia honesta.",
+      description: "De la idea a versión uno con sistemas prácticos y guía honesta.",
       details: [
-        "Acompanamiento en validacion tecnica y de mercado.",
-        "Te ayudamos a elegir el stack tecnologico correcto.",
-        "Procesos escalables desde el dia uno.",
+        "Acompañamiento en validación técnica y de mercado.",
+        "Te ayudamos a elegir el stack tecnológico correcto.",
+        "Procesos escalables desde el día uno.",
       ],
       imageUrl: "/landing/photos/services/startup-advisory.png",
       imageFit: "contain",
       animationKey: "startup",
       modal: {
-        whatItMeans: "Guia directa y practica para lanzar versión uno sin sobreconstruir.",
+        whatItMeans: "Guía directa y práctica para lanzar versión uno sin sobreconstruir.",
         whyItMatters:
-          "Evitas desvíos costosos, eliges lo que importa ahora y obtienes feedback más rapido.",
+          "Evitas desvíos costosos, eliges lo que importa ahora y obtienes feedback más rápido.",
         whatsIncluded: [
-          "Alcance y roadmap: que construir ahora vs despues",
-          "Decisiones de producto y tecnica (tradeoffs simples y defendibles)",
-          "Revision de arquitectura para reducir riesgo",
-          "Plan de lanzamiento e iteracion temprana",
-          "Soporte asincrono liviano mientras ejecutas",
+          "Alcance y roadmap: qué construir ahora vs después",
+          "Decisiones de producto y técnica (tradeoffs simples y defendibles)",
+          "Revisión de arquitectura para reducir riesgo",
+          "Plan de lanzamiento e iteración temprana",
+          "Soporte asíncrono liviano mientras ejecutas",
         ],
         idealFit: [
           "Equipos tempranos con tiempo y presupuesto limitados",
@@ -271,7 +271,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
           "Equipos construyendo algo real (no solo slides)",
         ],
         typicalOutcome:
-          "Un plan más simple, menos vueltas incorrectas y una versión uno que si puedes lanzar y aprender.",
+          "Un plan más simple, menos vueltas incorrectas y una versión uno que sí puedes lanzar y aprender.",
       },
     },
   ],

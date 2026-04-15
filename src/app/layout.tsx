@@ -52,17 +52,17 @@ async function detectServerLocale(): Promise<Locale> {
 
 export const metadata: Metadata = {
   title: {
-    default: "CultivoAI - Consultoria en IA y Automatizacion",
+    default: "CultivoAI - Consultoría en IA y Automatización",
     template: "%s | CultivoAI",
   },
   description:
-    "Paul & Rocky - Padre e hijo construyendo soluciones de IA y automatizacion desde Colombia para el mundo. Acceso directo, sin intermediarios.",
+    "Paul & Rocky - Padre e hijo construyendo soluciones de IA y automatización desde Colombia para el mundo. Acceso directo, sin intermediarios.",
   keywords: [
     "IA",
     "AI",
-    "Automatizacion",
+    "Automatización",
     "Colombia",
-    "Consultoria",
+    "Consultoría",
     "Chatbots",
     "CRM",
     "Integraciones",
@@ -77,13 +77,13 @@ export const metadata: Metadata = {
     locale: "es_CO",
     alternateLocale: "en_US",
     siteName: "CultivoAI",
-    title: "CultivoAI - IA y Automatizacion",
+    title: "CultivoAI - IA y Automatización",
     description:
       "Padre e hijo construyendo soluciones de IA desde Colombia para el mundo.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CultivoAI - IA y Automatizacion",
+    title: "CultivoAI - IA y Automatización",
     description:
       "Padre e hijo construyendo soluciones de IA desde Colombia para el mundo.",
   },
@@ -99,7 +99,7 @@ const jsonLd = {
   "@type": "Organization",
   name: "CultivoAI",
   description:
-    "Consultoria en IA y automatizacion - Padre e hijo desde Colombia",
+    "Consultoría en IA y automatización - Padre e hijo desde Colombia",
   url: process.env.NEXT_PUBLIC_APP_URL || "https://cultivo.ai",
   founders: [
     {

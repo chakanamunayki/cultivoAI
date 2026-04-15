@@ -1,7 +1,7 @@
 import type { AboutCopy } from "../../types";
 
 export const esAbout: AboutCopy = {
-    title: "Quienes Somos",
+    title: "Quiénes Somos",
     subtitle: "Una familia construyendo algo significativo desde Colombia",
     viewMoreLabel: "Ver más",
     footerNote:
@@ -12,39 +12,39 @@ export const esAbout: AboutCopy = {
         name: "Paul Ronayne",
         title: "Desarrollador y consultor de IA",
         description:
-          "Llevo mas de 20 anos en tecnologia, incluyendo la cofundacion de dos negocios tech/data en Espana: nbn23.com y nagi.es. Hoy uno disciplina startup con IA human-first para ayudar a negocios holisticos a crecer con claridad y cuidado.",
+          "Llevo más de 20 años en tecnología, incluyendo la cofundación de dos negocios tech/data en España: nbn23.com y nagi.es. Hoy uno disciplina startup con IA human-first para ayudar a negocios holísticos a crecer con claridad y cuidado.",
         imageUrl: "/landing/photos/team/paul.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
         bio: {
           headline:
-            "Integro experiencia startup y de datos con IA aterrizada y human-first para negocios holisticos",
+            "Integro experiencia startup y de datos con IA aterrizada y human-first para negocios holísticos",
           sections: [
             {
-              title: "Que significa",
+              title: "Qué significa",
               content:
-                "Empiezo escuchando a fondo como trabaja tu equipo y como se siente tu cliente, y desde ahi diseno sistemas de IA que cuidan operacion y conexion humana.",
+                "Empiezo escuchando a fondo cómo trabaja tu equipo y cómo se siente tu cliente, y desde ahí diseño sistemas de IA que cuidan operación y conexión humana.",
             },
             {
-              title: "Por que importa",
+              title: "Por qué importa",
               content:
-                "Muchos equipos wellness y holisticos cargan demasiado. La IA correcta trae calma, consistencia y capacidad para servir mejor sin agotarse.",
+                "Muchos equipos wellness y holísticos cargan demasiado. La IA correcta trae calma, consistencia y capacidad para servir mejor sin agotarse.",
             },
             {
-              title: "Que incluye",
+              title: "Qué incluye",
               content:
-                "Estrategia aplicada, roadmap de IA, diseno de flujos y asistentes, y acompanamiento real de delivery. Definimos alcance juntos, lanzamos por fases y medimos impacto de negocio.",
+                "Estrategia aplicada, roadmap de IA, diseño de flujos y asistentes, y acompañamiento real de delivery. Definimos alcance juntos, lanzamos por fases y medimos impacto de negocio.",
             },
             {
               title: "Ideal para",
               content:
-                "Fundadores y equipos pequenos en bienestar, holistico e impacto que quieren alma y estructura: cuidado humano con ejecucion tipo startup.",
+                "Fundadores y equipos pequeños en bienestar, holístico e impacto que quieren alma y estructura: cuidado humano con ejecución tipo startup.",
             },
             {
-              title: "Resultado tipico",
+              title: "Resultado típico",
               content:
-                "Operacion mas tranquila, decisiones mas claras, crecimiento mas sano y mas tiempo para el trabajo humano de mayor valor con clientes y comunidad.",
+                "Operación más tranquila, decisiones más claras, crecimiento más sano y más tiempo para el trabajo humano de mayor valor con clientes y comunidad.",
             },
           ],
           linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
@@ -55,35 +55,35 @@ export const esAbout: AboutCopy = {
         name: "Rocky Ronayne",
         title: "Especialista en sistemas IA",
         description:
-          "Rocky construye flujos, asistentes y dashboards de IA que ayudan a los equipos a avanzar más rapido y con consistencia. Practico, con criterio de diseno y enfoque en resultados.",
+          "Rocky construye flujos, asistentes y dashboards de IA que ayudan a los equipos a avanzar más rápido y con consistencia. Práctico, con criterio de diseño y enfoque en resultados.",
         imageUrl: "/landing/photos/team/rocky.jpeg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
-          headline: "Sistemas de IA practicos enfocados en resultados reales",
+          headline: "Sistemas de IA prácticos enfocados en resultados reales",
           sections: [
             {
-              title: "Que significa",
+              title: "Qué significa",
               content:
                 "Construyo flujos, asistentes y dashboards de IA que ayudan a equipos a mantener consistencia y reducir trabajo repetitivo.",
             },
             {
-              title: "Por que importa",
+              title: "Por qué importa",
               content:
                 "Un sistema solo sirve si la gente lo usa. Me enfoco en claridad, confiabilidad y en que el siguiente paso sea obvio.",
             },
             {
-              title: "Que incluye",
+              title: "Qué incluye",
               content:
-                "versión uno simple, construida y probada de punta a punta. Notas de handoff claras e iteracion segun lo que aprendamos del uso real.",
+                "Versión uno simple, construida y probada de punta a punta. Notas de handoff claras e iteración según lo que aprendamos del uso real.",
             },
             {
               title: "Ideal para",
               content:
-                "Equipos que quieren ayuda practica con IA sin complejidad, y que cuidan experiencia de usuario y tono.",
+                "Equipos que quieren ayuda práctica con IA sin complejidad, y que cuidan experiencia de usuario y tono.",
             },
             {
-              title: "Resultado tipico",
+              title: "Resultado típico",
               content:
                 "Un flujo o asistente que reduce trabajo manual y mejora seguimiento de forma consistente semana a semana.",
             },
@@ -93,7 +93,7 @@ export const esAbout: AboutCopy = {
       {
         id: "marta",
         name: "Marta Ronayne",
-        title: "Diseno centrado en personas y contexto wellness",
+        title: "Diseño centrado en personas y contexto wellness",
         description:
           "Marta aporta una mirada humana y aterrizada para construir tono, confianza y experiencia de usuario, especialmente en proyectos de bienestar.",
         imageUrl: "/landing/photos/team/marta.jpg",
@@ -103,27 +103,27 @@ export const esAbout: AboutCopy = {
           headline: "Tono, confianza y usabilidad que se sienten humanos",
           sections: [
             {
-              title: "Que significa",
+              title: "Qué significa",
               content:
-                "Ayudo a definir como se siente el sistema: lenguaje, flujo y esos detalles humanos que construyen confianza.",
+                "Ayudo a definir cómo se siente el sistema: lenguaje, flujo y esos detalles humanos que construyen confianza.",
             },
             {
-              title: "Por que importa",
+              title: "Por qué importa",
               content:
-                "Si la experiencia se siente fria o confusa, la gente se desconecta. El diseno centrado en personas mantiene el trabajo usable y respetuoso.",
+                "Si la experiencia se siente fría o confusa, la gente se desconecta. El diseño centrado en personas mantiene el trabajo usable y respetuoso.",
             },
             {
-              title: "Que incluye",
+              title: "Qué incluye",
               content:
-                "Guia de copy y tono, input de UX, y feedback real sobre lo que si (y no) funcionara para las personas.",
+                "Guía de copy y tono, input de UX, y feedback real sobre lo que sí (y no) funcionará para las personas.",
             },
             {
               title: "Ideal para",
               content:
-                "Equipos de bienestar, salud y sostenibilidad que quieren una experiencia calida, clara y confiable.",
+                "Equipos de bienestar, salud y sostenibilidad que quieren una experiencia cálida, clara y confiable.",
             },
             {
-              title: "Resultado tipico",
+              title: "Resultado típico",
               content:
                 "Un sistema que se siente claro y humano, para que la gente se quede y haga seguimiento.",
             },
