@@ -49,7 +49,7 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         "Delivered where your team already works: Telegram, web, API, or whatever fits.",
       ],
       imageUrl: "/landing/photos/services/ai-assistants.png",
-      animationKey: "ai-assistants",
+      animationKey: "company-brain",
       modal: {
         whatItMeans:
           "An AI brain built on your business's real knowledge. Your team asks questions. The brain answers from what your business actually knows.",

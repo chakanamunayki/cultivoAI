@@ -50,7 +50,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         "Entregado donde tu equipo ya trabaja: Telegram, web o API.",
       ],
       imageUrl: "/landing/photos/services/ai-assistants.png",
-      animationKey: "ai-assistants",
+      animationKey: "company-brain",
       modal: {
         whatItMeans:
           "Un cerebro de IA construido sobre el conocimiento real de tu empresa. Tu equipo hace preguntas, el cerebro responde con lo que tu negocio ya sabe.",
