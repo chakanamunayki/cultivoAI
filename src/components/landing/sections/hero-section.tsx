@@ -11,7 +11,7 @@ interface HeroSectionProps {
   onTertiaryCta: () => void;
 }
 
-const HERO_VIDEO_URL = "https://assets.codepen.io/319606/tactus-waves-hero-sm.mp4";
+const HERO_VIDEO_URL = "/landing/hero-bg.mp4";
 
 export function HeroSection({ onPrimaryCta, onSecondaryCta, onTertiaryCta }: HeroSectionProps) {
   const { content } = useLocale();
