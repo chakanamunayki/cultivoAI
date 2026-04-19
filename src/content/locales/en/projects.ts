@@ -11,13 +11,11 @@ projects: [
       "Chak works with life. Lab protocols, cultivations, projects with real impact on health and nature. Chak v1 was a full operational platform: protocol builder, project management, and IoT integration built alongside Universidad de Envigado. Chak v2 is Chak Brain, a RAG-backed system covering the entire team across operations, lab protocols, commercial, prospects, and projects. The evolution from complex SaaS to conversational brain is the real insight.",
     lessons: "Adding features solves the wrong problem. The right question: can the team access what the business knows in a single conversation?",
     status: "Active",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+    image: "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
     images: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600",
-      "https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1600&auto=format&fit=crop",
+      "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
     ],
+    url: "https://chak-foodtech.com",
     tags: ["AI", "RAG", "SaaS"],
     modal: {
       whatItMeans:
@@ -46,12 +44,9 @@ projects: [
       "A strategy and information platform that organizes opportunities clearly and helps teams evaluate direction with practical inputs instead of guesswork.",
     lessons: "Clarity in framing and data quality changes decision quality.",
     status: "Active",
-    image:
-      "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=800",
+    image: "/landing/photos/project-screenshots/Screenshot_www.raizcapital.co.jpeg",
     images: [
-      "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=1600",
-      "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1600&auto=format&fit=crop",
+      "/landing/photos/project-screenshots/Screenshot_www.raizcapital.co.jpeg",
     ],
     url: "https://www.raizcapital.co/",
     tags: ["Data", "Strategy"],
@@ -81,13 +76,11 @@ projects: [
       "A wellness brand website built and optimised on Vercel. Every architecture, performance, and design decision was intentional from day one, not patched in at the end. The result: 98 performance, 96 accessibility, 100 best practices, and 100 technical SEO on Lighthouse.",
     lessons: "Lighthouse is not the goal. It is proof that the right decisions were made throughout.",
     status: "In development",
-    image:
-      "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&q=80&w=800",
+    image: "/landing/photos/project-screenshots/Screenshot_SetaSouls.app.jpeg",
     images: [
-      "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&q=80&w=1600",
-      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1600",
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=1600",
+      "/landing/photos/project-screenshots/Screenshot_SetaSouls.app.jpeg",
     ],
+    url: "https://setasouls.app",
     tags: ["Web", "Vercel"],
     stats: [
       { label: "Performance", value: "98" },

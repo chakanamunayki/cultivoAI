@@ -111,6 +111,19 @@ export function ProjectsSection() {
                     </div>
                   )}
 
+                  {project.url && (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="mb-6 inline-flex items-center gap-2 border-2 border-primary bg-primary/10 px-5 py-2.5 text-sm font-black uppercase tracking-[0.1em] text-primary transition-all hover:-translate-y-0.5 hover:bg-primary hover:text-black md:mb-8"
+                    >
+                      {locale === "es" ? "Ver sitio" : "Visit site"}
+                      <ArrowRight size={14} />
+                    </a>
+                  )}
+
                   <div className={landingCardClass(lessonVariant, "overflow-hidden rounded-[16px] p-0 hover:translate-y-0")}>
                     <span
                       className={landingTitleBandClass(
@@ -129,18 +142,6 @@ export function ProjectsSection() {
                       &quot;{project.lessons}&quot;
                     </p>
                   </div>
-
-                  {project.url && (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="mt-5 inline-block text-sm font-bold uppercase tracking-[0.1em] text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:decoration-primary"
-                    >
-                      {locale === "es" ? "Ver sitio" : "Visit site"}
-                    </a>
-                  )}
                 </Reveal>
               </div>
               <div
@@ -154,7 +155,7 @@ export function ProjectsSection() {
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover object-center contrast-125 grayscale filter transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover object-top contrast-125 grayscale filter transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   loading="lazy"
                 />
