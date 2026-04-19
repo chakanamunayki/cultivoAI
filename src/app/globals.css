@@ -93,6 +93,12 @@
   --sidebar-ring: #00BCD4;
 }
 
+/* Project screenshot scroll preview */
+@keyframes scroll-preview {
+  from { object-position: center 0%; }
+  to   { object-position: center 100%; }
+}
+
 /* Marquee animation for top banner */
 @keyframes marquee {
   0% {
@@ -239,6 +245,10 @@
 
 /* Utility classes for Brutalist design */
 @layer utilities {
+  .animate-scroll-preview {
+    animation: scroll-preview 15s ease-in-out infinite alternate;
+  }
+
   .animate-marquee {
     animation: marquee 36s linear infinite;
   }

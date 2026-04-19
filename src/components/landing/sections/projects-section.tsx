@@ -155,7 +155,7 @@ export function ProjectsSection() {
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover object-top contrast-125 grayscale filter transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover animate-scroll-preview contrast-125 grayscale filter transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   loading="lazy"
                 />
