@@ -2,7 +2,7 @@ import type { SiteContent } from "../../types";
 
 export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
   whoWeHelp: {
-    title: "¿Somos el fit correcto?",
+    title: "¿Somos un buen encaje?",
     idealTitle: "Somos ideales para ti si...",
     idealItems: [
       "Estás construyendo en salud, sostenibilidad o trabajo con misión.",
@@ -10,7 +10,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
       "Valoras claridad, diseño y comunicación humana.",
       "Quieres una relación directa con quienes construyen.",
     ],
-    notIdealTitle: "Probablemente no somos fit si...",
+    notIdealTitle: "Probablemente no somos un buen encaje si...",
     notIdealItems: [
       "Quieres barato e inmediato por encima de calidad.",
       "Quieres cero involucramiento y resultados mágicos.",
@@ -20,37 +20,37 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
     sectors: [
       {
         name: "Salud y bienestar",
-        description: "Los equipos de salud y bienestar cargan mucho. Construimos sistemas que manejan la administración, comunicación y seguimiento para que el equipo se enfoque en lo que realmente importa.",
+        description: "Tu equipo sostiene a personas en momentos vulnerables. Nosotros sostenemos la operación. Construimos sistemas que manejan administración, comunicación y seguimiento, para que el equipo se enfoque en lo que vino a hacer.",
         icon: "Heart",
         imageUrl: "/landing/photos/sectors/health-wellness.jpg",
         chatButtonLabel: "Hablemos",
         detailsButtonLabel: "Saber más",
         modal: {
           whatItMeans:
-            "Sistemas que ayudan a equipos de salud y bienestar a entregar un servicio consistente: intake claro, seguimiento claro y tono humano.",
+            "Sistemas que ayudan a equipos de salud y bienestar a entregar un servicio consistente: acogida clara, seguimiento claro y tono humano.",
           whyItMatters:
-            "En trabajo de salud, retrasos e inconsistencia bajan la confianza. Un sistema simple reduce pasos perdidos y libera al equipo para enfocarse en personas.",
+            "En trabajo de salud, los retrasos y la inconsistencia bajan la confianza. Un sistema simple reduce pasos perdidos y libera al equipo para enfocarse en personas.",
           whatsIncluded: [
-            "Flujos para intake, agenda y seguimiento",
+            "Flujos de acogida, agenda y seguimiento",
             "Asistentes con tono humano para FAQs, triage y enrutamiento",
             "Dashboards para visibilidad (retención, pipeline, operación)",
             "Sistemas de conocimiento para mantener alineación",
           ],
           idealFit: [
             "Clínicas, programas y profesionales con servicios recurrentes",
-            "Equipos con complejidad de intake, agenda y seguimiento",
+            "Equipos con complejidad en acogida, agenda y seguimiento",
             "Organizaciones donde tono, confianza y consistencia importan",
           ],
           typicalOutcome:
-            "Respuesta más rápida, handoffs más claros y una operación más calmada que se siente para el cliente.",
+            "Respuesta más rápida, transiciones más claras y una operación más calmada que se siente para el cliente.",
         },
         whoWeHelp: [
           "Clínicas, programas y profesionales con servicios recurrentes",
-          "Equipos con complejidad de intake, agenda y seguimiento",
+          "Equipos con complejidad en acogida, agenda y seguimiento",
           "Organizaciones donde tono, confianza y consistencia importan",
         ],
         howWeHelp: [
-          "Flujos para intake, agenda y seguimiento",
+          "Flujos de acogida, agenda y seguimiento",
           "Asistentes con tono humano para FAQs, triage y enrutamiento",
           "Dashboards para visibilidad (retención, pipeline, operación)",
           "Sistemas de conocimiento para mantener alineación",
@@ -63,7 +63,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
       },
       {
         name: "Sostenibilidad y proyectos regenerativos",
-        description: "El trabajo de sostenibilidad requiere mucha coordinación. Construimos los sistemas que mantienen al equipo alineado, los aliados informados y los reportes claros.",
+        description: "Regenerar suelo, ecosistemas o comunidades toma años, coordinación y paciencia. Construimos los sistemas que mantienen al equipo alineado, a los aliados informados y los reportes al día, para que el trabajo en campo no se pierda en documentos.",
         icon: "Sprout",
         imageUrl: "/landing/photos/sectors/sustainability-regenerative.jpg",
         chatButtonLabel: "Hablemos",
@@ -72,9 +72,9 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
           whatItMeans:
             "Sistemas prácticos para coordinación, reportes y seguimiento para que el trabajo se mantenga real en el terreno, no solo en documentos.",
           whyItMatters:
-            "Equipos de sostenibilidad coordinan aliados, trabajo en campo y rendición de cuentas. Un sistema claro mantiene el momentum alto y la confusión baja.",
+            "Equipos de sostenibilidad coordinan aliados, trabajo en campo y rendición de cuentas. Un sistema claro mantiene el impulso alto y la confusión baja.",
           whatsIncluded: [
-            "Sistemas simples para coordinación y accountability",
+            "Sistemas simples para coordinación y rendición de cuentas",
             "Dashboards para decisiones y reportes",
             "Captura de conocimiento para que el aprendizaje no se pierda",
             "Experiencias web que comuniquen credibilidad e impacto",
@@ -93,7 +93,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
           "Organizaciones que necesitan mejor reporte y seguimiento",
         ],
         howWeHelp: [
-          "Sistemas simples para coordinación y accountability",
+          "Sistemas simples para coordinación y rendición de cuentas",
           "Dashboards para decisiones y reportes",
           "Captura de conocimiento para que el aprendizaje no se pierda",
           "Experiencias web que comuniquen credibilidad e impacto",
@@ -106,7 +106,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
       },
       {
         name: "Educación alternativa",
-        description: "Los programas educativos ganan o pierden por consistencia. Construimos los sistemas de operación y comunicación que mantienen a los estudiantes apoyados y a los instructores enfocados en enseñar.",
+        description: "Un estudiante recuerda cómo lo hicieron sentir, no la plataforma que usaron. Construimos los sistemas que mantienen a los estudiantes apoyados y a los instructores enfocados en enseñar.",
         icon: "GraduationCap",
         imageUrl: "/landing/photos/sectors/alternative-education.jpg",
         chatButtonLabel: "Hablemos",
@@ -117,7 +117,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
           whyItMatters:
             "Los programas educativos ganan por consistencia. Cuando la operación es confusa, el estudiante lo siente. Un sistema simple protege la experiencia.",
           whatsIncluded: [
-            "Flujos de intake e inscripción que reduzcan trabajo manual",
+            "Flujos de acogida e inscripción que reduzcan trabajo manual",
             "Asistentes para soporte, FAQs y enrutamiento",
             "Dashboards para ver progreso, capacidad y necesidades de seguimiento",
             "Sistemas de contenido y conocimiento para comunicación consistente",
@@ -128,7 +128,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
             "Organizaciones que necesitan una experiencia humana y consistente",
           ],
           typicalOutcome:
-            "Un journey de estudiante más fluido, menos mensajes perdidos y más tiempo para que el equipo enseñe.",
+            "Un recorrido del estudiante más fluido, menos mensajes perdidos y más tiempo para que el equipo enseñe.",
         },
         whoWeHelp: [
           "Programas con instructores, cohorts y comunicación constante",
@@ -136,7 +136,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
           "Organizaciones que necesitan una experiencia humana y consistente",
         ],
         howWeHelp: [
-          "Flujos de intake e inscripción que reduzcan trabajo manual",
+          "Flujos de acogida e inscripción que reduzcan trabajo manual",
           "Asistentes para soporte, FAQs y enrutamiento",
           "Dashboards para ver progreso, capacidad y necesidades de seguimiento",
           "Sistemas de contenido y conocimiento para comunicación consistente",
@@ -149,43 +149,43 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
       },
       {
         name: "Startups con misión",
-        description: "Los equipos tempranos avanzan más rápido con alcance claro y decisiones honestas. Te ayudamos a construir la versión uno correcta: ajustada, usable y lista para aprender.",
+        description: "Tu idea puede cambiar algo real, pero primero tiene que existir y funcionar. Te ayudamos a construir la primera versión correcta: enfocada y lista para aprender.",
         icon: "Rocket",
         imageUrl: "/landing/photos/sectors/mission-led-startups.webp",
         chatButtonLabel: "Hablemos",
         detailsButtonLabel: "Saber más",
         modal: {
           whatItMeans:
-            "Un partner senior y práctico para enviar versión uno, mantener el alcance tight y evitar detours costosos.",
+            "Un partner senior y práctico para lanzar la primera versión, mantener el alcance enfocado y evitar desvíos costosos.",
           whyItMatters:
-            "Las startups mueren en el gap entre idea y ejecución. Alcance claro y feedback rápido mantienen el momentum vivo.",
+            "Las startups mueren en la brecha entre idea y ejecución. Alcance claro y feedback rápido mantienen el impulso vivo.",
           whatsIncluded: [
-            "Versión uno con alcance tight y defendible",
+            "Primera versión con alcance enfocado y defendible",
             "Flujos y dashboards para claridad operativa",
             "Asistentes y sistemas de conocimiento para escalar soporte",
             "Asesoría de producto para evitar sobreconstruir",
           ],
           idealFit: [
-            "Equipos tempranos que necesitan versión uno, rápido y usable",
-            "Fundadores que quieren tradeoffs honestos y prioridades claras",
+            "Equipos tempranos que necesitan una primera versión, rápida y usable",
+            "Fundadores que quieren decisiones honestas y prioridades claras",
             "Equipos construyendo en salud, sostenibilidad o bien público",
           ],
           typicalOutcome:
-            "Un v1 enviado con ownership claro y un plan para iterar basado en uso real.",
+            "Una primera versión lanzada con responsabilidad clara y un plan para iterar basado en uso real.",
         },
         whoWeHelp: [
-          "Equipos tempranos que necesitan versión uno, rápido y usable",
-          "Fundadores que quieren tradeoffs honestos y prioridades claras",
+          "Equipos tempranos que necesitan una primera versión, rápida y usable",
+          "Fundadores que quieren decisiones honestas y prioridades claras",
           "Equipos construyendo en salud, sostenibilidad o bien público",
         ],
         howWeHelp: [
-          "Versión uno con alcance tight y defendible",
+          "Primera versión con alcance enfocado y defendible",
           "Flujos y dashboards para claridad operativa",
           "Asistentes y sistemas de conocimiento para escalar soporte",
           "Asesoría de producto para evitar sobreconstruir",
         ],
         exampleProjects: [
-          "MVP + flujo para intake y seguimiento",
+          "MVP + flujo para acogida y seguimiento",
           "Dashboard de decisión para prioridades y métricas",
           "Base de conocimiento que crece con el producto",
         ],

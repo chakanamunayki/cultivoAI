@@ -25,7 +25,7 @@ export const esPartnershipsContent: Pick<
           "Descubrimiento corto para definir alcance y criterios de éxito",
           "Plan de entrega con hitos y ownership claro",
           "Construcción, pruebas y lanzamiento de lo acordado",
-          "Documentación básica y handoff",
+          "Documentación básica y entrega",
           "Ventana pequeña post-lanzamiento para ajustes y fixes",
         ],
         idealFit: [
@@ -34,7 +34,7 @@ export const esPartnershipsContent: Pick<
           "Organizaciones listas para invertir en buena entrega",
         ],
         typicalOutcome:
-          "Un sistema lanzado con alcance claro, handoff claro y base para iterar con responsabilidad.",
+          "Un sistema lanzado, con alcance y entrega claros desde el día uno.",
       },
     },
     {
@@ -52,23 +52,23 @@ export const esPartnershipsContent: Pick<
           "Mucho trabajo de alto impacto empieza lean. Este modelo permite construir sistemas útiles sin estirar al equipo más de lo saludable.",
         whatsIncluded: [
           "Mismo nivel de calidad, con alcance más lean",
-          "Prioridades claras: versión uno primero, luego mejorar",
+          "Prioridades claras: primera versión primero, luego mejorar",
           "Colaboración flexible para restricciones reales",
           "Acuerdo de intercambio justo (testimonial, caso de estudio, referidos)",
-          "Plan para crecer el sistema a medida que haya momentum",
+          "Plan para crecer el sistema a medida que haya impulso",
         ],
         idealFit: [
           "Equipos alineados a misión con presupuesto ajustado",
-          "Proyectos donde resultados importan más que polish el día uno",
+          "Proyectos donde los resultados importan más que el pulido del día uno",
           "Equipos dispuestos a colaborar de cerca e iterar",
         ],
         typicalOutcome:
-          "Una versión uno enfocada que crea momentum, con un camino claro para expandir cuando haya recursos.",
+          "Una primera versión que arranca con impulso y tiene camino para crecer.",
       },
     },
     {
       name: "Opciones de alianza",
-      tagline: "Solo si hay fit real",
+      tagline: "Solo si hay encaje real",
       description:
         "Para proyectos seleccionados con alto potencial de impacto y alineación clara, podemos definir términos de alianza personalizados.",
       idealFor: ["Startups de impacto", "Colaboraciones alineadas de largo plazo"],
@@ -84,7 +84,7 @@ export const esPartnershipsContent: Pick<
           "Plan por fases con entregables claros en cada etapa",
           "Términos que mantienen incentivos alineados mientras evoluciona",
           "Puntos de revisión regulares para ajustar alcance y prioridades",
-          "Enfoque en utilidad a largo plazo, no en optics a corto plazo",
+          "Enfoque en utilidad a largo plazo, no en apariencias a corto plazo",
         ],
         idealFit: [
           "Startups de impacto con potencial fuerte y foco claro",
@@ -92,7 +92,7 @@ export const esPartnershipsContent: Pick<
           "Situaciones donde la flexibilidad crea mejores resultados",
         ],
         typicalOutcome:
-          "Una alianza que lanza por fases, mantiene honestidad sobre tradeoffs, y construye un sistema útil con el tiempo.",
+          "Una colaboración que crece por fases, mantiene honestidad sobre las decisiones y construye algo útil con el tiempo.",
       },
     },
   ],

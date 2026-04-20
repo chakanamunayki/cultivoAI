@@ -33,8 +33,8 @@ export const es: SiteContent = {
 
   hero: {
     tagline: "PARA BUENOS PROYECTOS",
-    line1: "Sistemas de IA para escalar trabajo valioso",
-    subheadline: "Reduce tareas repetitivas. Ve lo que importa.",
+    line1: "Sistemas de IA para hacer crecer el trabajo que importa",
+    subheadline: "IA práctica para proyectos que cuidan, regeneran y sanan.",
     services: [],
     servicesDone: "",
     audience: [],
@@ -56,7 +56,7 @@ export const es: SiteContent = {
     cta: "Hablemos",
     secondaryCta: "Ver proyectos",
     noDrama: "Sin caos.",
-    noDramaText: "Alcance claro. Versión uno rápida. Iteración directa.",
+    noDramaText: "Alcance claro. Primera versión rápida. Iteración directa.",
     impactSection: {
       text: "Desde Colombia, trabajando para todo el mundo. Colaboración directa. Alcance claro.",
       cta: "Hablemos",
