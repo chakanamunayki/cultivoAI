@@ -3,7 +3,7 @@ import type { SiteContent } from "../../types";
 export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSubtitle" | "services"> = {
   servicesTitle: "Nuestros Servicios",
   servicesSubtitle:
-    "¿No sabes por dónde empezar? Agenda una llamada de 15 minutos. Te ayudamos a encontrar el cambio más pequeño que genere momentum real.",
+    "No vendemos humo. Construimos sistemas prácticos que hacen más fácil ejecutar buen trabajo. ¿No sabes por dónde empezar? Una llamada de 15 minutos es suficiente.",
   services: [
     {
       icon: "Zap",
@@ -21,7 +21,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         whatItMeans:
           "Convertimos pasos repetitivos y manuales en un flujo simple en el que tu equipo puede confiar.",
         whyItMatters:
-          "Menos seguimiento, menos handoffs perdidos y una operación diaria más tranquila.",
+          "Menos seguimiento, menos transiciones perdidas y una operación diaria más tranquila.",
         whatsIncluded: [
           "Mapa rápido del flujo y auditoría de fricción",
           "Plan simple: disparadores, responsables y fallbacks",
@@ -30,7 +30,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
           "Ventana corta de iteración después del lanzamiento",
         ],
         idealFit: [
-          "Equipos con operaciones recurrentes: intake, onboarding, seguimiento, reportes",
+          "Equipos con operaciones recurrentes: acogida, onboarding, seguimiento, reportes",
           "Quieres sistemas confiables, no automatizaciones solo para impresionar",
           "Puedes asignar 1-2 responsables para revisar y aprobar el flujo",
         ],
@@ -42,34 +42,35 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       icon: "Brain",
       title: "Cerebro de Empresa",
       eng: "Company Brain",
-      description: "Todo lo que sabe tu empresa, disponible al instante. Sin app nueva. Sin capacitación. Tu equipo solo habla.",
+      description: "Todo lo que sabe tu empresa, disponible en segundos. Tu equipo habla con el cerebro como habla en WhatsApp: sin capacitación, sin login, sin formularios. Y cuando alguien sale del equipo, el conocimiento se queda.",
       details: [
-        "Una capa de conocimiento sobre tus documentos, protocolos y proyectos, accesible por conversación. Escala desde pocos archivos hasta decenas de miles.",
-        "Agentes de fondo que optimizan el cerebro y aprenden con el tiempo.",
-        "Agentes especializados por rol: operaciones, comercial, laboratorio, proyectos.",
-        "Entregado donde tu equipo ya trabaja: Telegram, web o API.",
+        "Un cerebro construido sobre tus documentos reales: protocolos, procesos, comercial, proyectos. Desde 400 documentos hasta decenas de miles.",
+        "Acceso por rol: el técnico ve protocolos, el comercial ve clientes y propuestas, el director ve todo. Sin que nadie vea lo que no le corresponde.",
+        "Funciona donde el equipo ya trabaja: Telegram, web o API. Sin app nueva, sin cambiar cómo trabajan.",
+        "Privacidad por diseño: el cerebro puede correr localmente. Ningún documento tuyo sale de tu sistema al indexar.",
+        "Crece con el uso. Cada conversación, cada documento ingresado hace el cerebro más útil. Es un activo de la empresa, no una herramienta que se configura una vez.",
       ],
       imageUrl: "/landing/photos/services/ai-assistants.png",
       animationKey: "company-brain",
       modal: {
         whatItMeans:
-          "Un cerebro de IA construido sobre el conocimiento real de tu empresa. Tu equipo hace preguntas, el cerebro responde con lo que tu negocio ya sabe.",
+          "Un cerebro construido sobre el conocimiento real de tu empresa: protocolos, procesos, historial de proyectos, datos comerciales. Tu equipo hace preguntas en lenguaje natural y el cerebro responde con lo que tu negocio ya sabe, no con lo que sabe ChatGPT.",
         whyItMatters:
-          "El conocimiento de tu empresa existe. Está en documentos, protocolos, decisiones y proyectos. El problema es que no es accesible. Cerebro de Empresa lo hace conversacional.",
+          "El conocimiento de tu empresa existe. Está atrapado en PDFs, en la cabeza de personas clave, en conversaciones de WhatsApp. Cuando alguien no está disponible, esa información se pierde. Cuando llega alguien nuevo, empieza desde cero. Chak Brain, el sistema que construimos para Chak Foodtech, resolvió exactamente esto y sigue aprendiendo cada día que el equipo lo usa.",
         whatsIncluded: [
-          "Una capa de conocimiento sobre tus documentos, protocolos y proyectos",
-          "Agentes de fondo que aprenden y optimizan con el uso",
-          "Agentes por rol: cada miembro del equipo tiene su acceso especializado",
-          "Canal de entrega a tu medida: Telegram, web, API o lo que necesites",
-          "Diseño a la medida de tu negocio, no una plantilla",
+          "Ingesta de tus documentos reales: protocolos, procesos, comercial, proyectos (PDF, Word, Excel)",
+          "Acceso por rol: cada miembro accede a su dominio, nada más ni nada menos",
+          "Canal de entrega: Telegram, web o API, donde el equipo ya trabaja",
+          "Privacidad por diseño: puede correr localmente, sin dependencia de servicios en la nube para indexar",
+          "Crece con el uso: agentes de fondo organizan y optimizan el conocimiento",
         ],
         idealFit: [
-          "Equipos con conocimiento disperso que no se puede consultar rápido",
-          "Negocios donde cada área necesita contexto diferente",
-          "Organizaciones que quieren aprendizaje continuo, no una herramienta estática",
+          "Equipos donde el conocimiento crítico vive en personas, no en sistemas",
+          "Negocios donde cada rol necesita ver contexto diferente sin acceder a lo que no le corresponde",
+          "Organizaciones que quieren que el conocimiento se quede en la empresa cuando las personas se van",
         ],
         typicalOutcome:
-          "El equipo deja de buscar en archivos. Las respuestas llegan en segundos, con el contexto correcto, desde el conocimiento real de la empresa.",
+          "El equipo deja de buscar en archivos y de esperar a que la persona correcta esté disponible. Las respuestas llegan en segundos desde el conocimiento real del negocio. Y cuando alguien sale del equipo, lo que aprendió se queda.",
       },
     },
     {
@@ -92,12 +93,12 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         whatsIncluded: [
           "Definición de alcance y tono (qué sí y qué no hace)",
           "Setup de fuentes de conocimiento (docs, FAQs, notas internas)",
-          "Flujos de conversación: ayuda, calificación y handoff a humano",
+          "Flujos de conversación: ayuda, calificación y paso a humano",
           "Reglas de seguridad y rutas de escalamiento",
           "Lanzamiento + mejoras basadas en conversaciones reales",
         ],
         idealFit: [
-          "Equipos con preguntas repetidas o intake recurrente",
+          "Equipos con preguntas repetidas o acogida recurrente",
           "Te importa la confianza, claridad y voz de marca",
           "Quieres mejor calificación antes de que entre un humano",
         ],
@@ -163,7 +164,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
           "Consolidación de datos (dónde viven hoy)",
           "Construcción del dashboard con vistas por rol",
           "Alertas o resúmenes livianos para señales clave",
-          "Entrenamiento corto + handoff para que siga siendo útil",
+          "Entrenamiento corto + entrega para que siga siendo útil",
         ],
         idealFit: [
           "Equipos con datos repartidos entre herramientas y archivos",
@@ -191,7 +192,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         whatItMeans:
           "Un sistema que captura conocimiento y lo convierte en salida consistente y útil.",
         whyItMatters:
-          "Dejas de reinventar la rueda, el onboarding se vuelve más fácil, y el contenido se mantiene on-brand mientras creces.",
+          "Dejas de reinventar la rueda, el onboarding se vuelve más fácil, y el contenido se mantiene fiel a tu voz mientras creces.",
         whatsIncluded: [
           "Estructura simple de base de conocimiento que el equipo puede mantener",
           "Plantillas para capturar y reutilizar aprendizajes clave",
@@ -245,7 +246,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       icon: "Rocket",
       title: "Asesoría para Startups",
       eng: "Startup Advisory",
-      description: "De la idea a versión uno con sistemas prácticos y guía honesta.",
+      description: "De la idea a la primera versión con sistemas prácticos y guía honesta.",
       details: [
         "Acompañamiento en validación técnica y de mercado.",
         "Te ayudamos a elegir el stack tecnológico correcto.",
@@ -255,23 +256,23 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       imageFit: "contain",
       animationKey: "startup",
       modal: {
-        whatItMeans: "Guía directa y práctica para lanzar versión uno sin sobreconstruir.",
+        whatItMeans: "Guía directa y práctica para lanzar la primera versión sin sobreconstruir.",
         whyItMatters:
           "Evitas desvíos costosos, eliges lo que importa ahora y obtienes feedback más rápido.",
         whatsIncluded: [
-          "Alcance y roadmap: qué construir ahora vs después",
-          "Decisiones de producto y técnica (tradeoffs simples y defendibles)",
+          "Alcance y ruta: qué construir ahora y qué dejar para después",
+          "Decisiones de producto y técnica (simples y defendibles)",
           "Revisión de arquitectura para reducir riesgo",
           "Plan de lanzamiento e iteración temprana",
           "Soporte asíncrono liviano mientras ejecutas",
         ],
         idealFit: [
           "Equipos tempranos con tiempo y presupuesto limitados",
-          "Fundadores buscando claridad y momentum",
+          "Fundadores buscando claridad e impulso",
           "Equipos construyendo algo real (no solo slides)",
         ],
         typicalOutcome:
-          "Un plan más simple, menos vueltas incorrectas y una versión uno que sí puedes lanzar y aprender.",
+          "Un plan más simple, menos vueltas incorrectas y una primera versión que sí puedes lanzar y aprender.",
       },
     },
   ],

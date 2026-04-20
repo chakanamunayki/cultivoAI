@@ -6,37 +6,37 @@ export const enClosingSectionsContent: Pick<
 > = {
   values: {
     title: "Our Values",
-    subtitle: "What defines us",
+    subtitle: "What doesn't change regardless of the project",
     values: [
       {
         icon: "Sprout",
         title: "CULTIVATE, NOT EXTRACT",
         description:
-          "We build for the long term. We prefer relationships that grow over quick transactions.",
+          "We build for the long term. We prefer relationships that grow over quick transactions. If there's nothing left to improve a year from now, something went wrong.",
       },
       {
-        icon: "Handshake",
-        title: "WIN-WIN OR NO DEAL",
+        icon: "Scale",
+        title: "HONESTY BEFORE SALES",
         description:
-          "We only take on projects where both sides win. If we can't add real value, we say so.",
+          "If we're not the right fit, we say so. If there's a simpler, cheaper solution, we propose it. We don't build what you don't need.",
       },
       {
-        icon: "User",
-        title: "ALWAYS HUMAN",
+        icon: "Hammer",
+        title: "THE PROCESS IS THE PRODUCT",
         description:
-          "AI is a tool, not a replacement. We prioritize human connection in everything we do.",
+          "A useful system requires real discovery, early versions that fail, and honest decisions. The two-week magic solution doesn't exist. But you can build a solid version one and improve from there.",
       },
     ],
   },
 
   mission: {
-    title: "Our Mission",
+    title: "Why We Exist",
     statement: [
-      "We build AI systems that help good work scale.",
-      "A portion of what we earn is reinvested into impact-aligned projects.",
-      "The more we build, the more we can support.",
+      "The most useful AI rarely reaches the people who need it most.",
+      "We build to change that: accessible pricing, mission-driven projects, and a portion of what we earn reinvested into teams that can't pay us yet.",
+      "The better we build, the further we can reach.",
     ],
-    tagline: "Propose an impact project",
+    tagline: "We are not neutral about what we build",
   },
 
   whatHappensNext: {

@@ -23,14 +23,6 @@ const HowWeWorkSection = dynamic(
   { ssr: true }
 );
 
-const WhatWeDoSection = dynamic(
-  () =>
-    import("@/components/landing/sections/what-we-do-section").then((m) => ({
-      default: m.WhatWeDoSection,
-    })),
-  { ssr: true }
-);
-
 const WhyUsSection = dynamic(
   () =>
     import("@/components/landing/sections/why-us-section").then((m) => ({
@@ -290,12 +282,7 @@ export default function Home() {
         <HowWeWorkSection />
       </LazySection>
 
-      {/* Section 4: What We Do - Lazy loaded */}
-      <LazySection className="min-h-[400px]">
-        <WhatWeDoSection />
-      </LazySection>
-
-      {/* Section 5: Why Us - Lazy loaded */}
+      {/* Section 4: Why Us - Lazy loaded */}
       <LazySection className="min-h-[400px]">
         <WhyUsSection />
       </LazySection>

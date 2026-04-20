@@ -6,37 +6,37 @@ export const esClosingSectionsContent: Pick<
 > = {
   values: {
     title: "Nuestros Valores",
-    subtitle: "Lo que nos define",
+    subtitle: "Lo que no cambia sin importar el proyecto",
     values: [
       {
         icon: "Sprout",
         title: "CULTIVAR, NO EXTRAER",
         description:
-          "Construimos para el largo plazo. Preferimos relaciones que crecen sobre transacciones rápidas.",
+          "Construimos para el largo plazo. Preferimos relaciones que crecen sobre transacciones rápidas. Si el próximo año no hay nada que mejorar, algo salió mal.",
       },
       {
-        icon: "Handshake",
-        title: "WIN-WIN O NO HAY TRATO",
+        icon: "Scale",
+        title: "HONESTIDAD ANTES QUE VENTAS",
         description:
-          "Solo tomamos proyectos donde ambas partes ganan. Si no podemos agregar valor real, lo decimos.",
+          "Si no somos el fit correcto, lo decimos. Si hay una solución más simple y barata, la proponemos. No construimos lo que no necesitas.",
       },
       {
-        icon: "User",
-        title: "SIEMPRE HUMANOS",
+        icon: "Hammer",
+        title: "EL PROCESO ES EL PRODUCTO",
         description:
-          "La IA es una herramienta, no un reemplazo. Priorizamos la conexión humana en todo lo que hacemos.",
+          "Un sistema útil requiere descubrimiento real, primeras versiones que fallan y decisiones honestas. No existe la solución mágica de dos semanas. Pero sí existe una primera versión sólida que se puede mejorar.",
       },
     ],
   },
 
   mission: {
-    title: "Nuestra Misión",
+    title: "Por Qué Existimos",
     statement: [
-      "Construimos sistemas de IA que ayudan a escalar trabajo valioso.",
-      "Una parte de lo que ganamos se reinvierte en proyectos alineados a impacto.",
-      "Mientras más construimos, más podemos apoyar.",
+      "La IA más útil raramente llega a quienes más la necesitan.",
+      "Construimos para cambiar eso: precios accesibles, proyectos con misión, y una parte de lo que ganamos reinvertida en equipos que aún no pueden pagarnos.",
+      "Mientras más construimos bien, más lejos llegamos.",
     ],
-    tagline: "Propón un proyecto de impacto",
+    tagline: "No somos neutrales en lo que construimos",
   },
 
   whatHappensNext: {

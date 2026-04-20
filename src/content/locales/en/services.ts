@@ -3,7 +3,7 @@ import type { SiteContent } from "../../types";
 export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSubtitle" | "services"> = {
   servicesTitle: "Our Services",
   servicesSubtitle:
-    "Not sure where to start? Book a 15-minute call. We will help you find the smallest change that creates real momentum.",
+    "We don't sell hype. We build practical systems that make it easier to execute well. Not sure where to start? Fifteen minutes is enough.",
   services: [
     {
       icon: "Zap",
@@ -41,34 +41,35 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
       icon: "Brain",
       title: "Company Brain",
       eng: "Company Brain",
-      description: "Everything your business knows, instantly accessible. No new app. No training. Your team just talks.",
+      description: "Everything your company knows, available in seconds. Your team talks to the brain the way they talk in WhatsApp: no training, no login, no forms. And when someone leaves the team, the knowledge stays.",
       details: [
-        "A searchable knowledge layer built over your documents, protocols, and projects. Scales from a handful of files to tens of thousands.",
-        "Background agents that continuously optimise the brain and learn as you go.",
-        "Role-specific agents: each team member gets a brain designed for their context.",
-        "Delivered where your team already works: Telegram, web, API, or whatever fits.",
+        "A brain built on your real documents: protocols, processes, commercial, projects. Built to scale from 400 documents to tens of thousands.",
+        "Role-gated access: the lab technician sees protocols, the sales manager sees clients and proposals, the director sees everything. Nobody sees what isn't theirs.",
+        "Works where your team already works: Telegram, web, or API. No new app, no change to how they operate.",
+        "Privacy by design: the brain can run locally. Your documents don't leave your system during indexing.",
+        "It grows with use. Every conversation, every document added makes the brain more useful. It is a company asset, not a tool you configure once.",
       ],
       imageUrl: "/landing/photos/services/ai-assistants.png",
       animationKey: "company-brain",
       modal: {
         whatItMeans:
-          "An AI brain built on your business's real knowledge. Your team asks questions. The brain answers from what your business actually knows.",
+          "A brain built on your company's real knowledge: protocols, processes, project history, commercial data. Your team asks questions in plain language and the brain answers from what your business actually knows, not what ChatGPT knows.",
         whyItMatters:
-          "Your business knowledge already exists, sitting in documents, protocols, decisions, and projects. The problem is that it is not accessible. Company Brain makes it conversational.",
+          "Your company's knowledge already exists. It is trapped in PDFs, in key people's heads, in WhatsApp conversations. When someone is unavailable, that information disappears. When someone new joins, they start from zero. Chak Brain, the system we built for Chak Foodtech, solved exactly this and keeps learning every day the team uses it.",
         whatsIncluded: [
-          "A searchable knowledge layer built over your existing documents, protocols, and projects",
-          "Background agents that learn and optimise with use",
-          "Role-specific agents: each team member gets specialised access",
-          "Delivery channel designed for you: Telegram, web, API, or what you need",
-          "Designed around your business, not a generic template",
+          "Ingestion of your real documents: protocols, processes, commercial, projects (PDF, Word, Excel)",
+          "Role-gated access: each team member accesses their domain, nothing more",
+          "Delivery channel: Telegram, web, or API, wherever your team already works",
+          "Privacy by design: can run locally, with no cloud dependency during indexing",
+          "Grows with use: background agents continuously organise and optimise the knowledge",
         ],
         idealFit: [
-          "Teams with scattered knowledge that no one can query fast",
-          "Businesses where different areas need different context",
-          "Organisations that want continuous learning, not a static tool",
+          "Teams where critical knowledge lives in people, not systems",
+          "Businesses where each role needs to see different context without accessing what isn't theirs",
+          "Organisations that want knowledge to stay in the company when people leave",
         ],
         typicalOutcome:
-          "The team stops searching through files. Answers arrive in seconds, with the right context, from the business's real knowledge.",
+          "The team stops searching through files and waiting for the right person to be available. Answers arrive in seconds from the business's real knowledge. And when someone leaves the team, what they learned stays.",
       },
     },
     {

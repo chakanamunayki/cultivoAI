@@ -14,7 +14,7 @@ export function WhyUsSection() {
   const { content, locale } = useLocale();
   const sectionTitle = locale === "es" ? "Por que nosotros" : "Why Us";
   const sectionSubtitle =
-    locale === "es" ? "Lo que no somos y lo que si somos" : "What we are not, and what we are";
+    locale === "es" ? "En IA hay mucho ruido. Aquí está la diferencia." : "There's a lot of noise in AI. Here's the difference.";
 
   return (
     <section id="why-us" className="border-b border-black/10 bg-white py-16 md:py-24">
