@@ -117,7 +117,12 @@ export function ProjectsSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="mb-6 inline-flex items-center gap-2 border-2 border-primary bg-primary/10 px-5 py-2.5 text-sm font-black uppercase tracking-[0.1em] text-primary transition-all hover:-translate-y-0.5 hover:bg-primary hover:text-black md:mb-8"
+                      className={cn(
+                        "mb-6 inline-flex items-center gap-2 border-2 px-5 py-2.5 text-sm font-black uppercase tracking-[0.1em] transition-all hover:-translate-y-0.5 md:mb-8",
+                        variant === "blue"
+                          ? "border-white bg-white/10 text-white hover:bg-white hover:text-black"
+                          : "border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black"
+                      )}
                     >
                       {locale === "es" ? "Ver sitio" : "Visit site"}
                       <ArrowRight size={14} />
