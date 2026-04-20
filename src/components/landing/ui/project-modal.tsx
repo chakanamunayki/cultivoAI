@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { Project } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 
@@ -14,15 +12,6 @@ interface ProjectModalProps {
 
 export function ProjectModal({ project, onOpenContact }: ProjectModalProps) {
   const { locale } = useLocale();
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
-
-  const imageGallery = useMemo(() => {
-    const images = project.images && project.images.length > 0 ? project.images : [project.image];
-    const merged = images.includes(project.image) ? images : [project.image, ...images];
-    return Array.from(new Set(merged));
-  }, [project.image, project.images]);
-
-  const hasMultipleImages = imageGallery.length > 1;
 
   const whatItMeansLabel = locale === "es" ? "Que significa" : "What it means";
   const whyItMattersLabel = locale === "es" ? "Por que importa" : "Why it matters";
@@ -30,107 +19,10 @@ export function ProjectModal({ project, onOpenContact }: ProjectModalProps) {
   const idealFitLabel = locale === "es" ? "Ideal para" : "Ideal fit";
   const outcomeLabel = locale === "es" ? "Resultado tipico" : "Typical outcome";
   const lessonLabel = locale === "es" ? "Leccion aprendida" : "Lesson learned";
-  const galleryLabel = locale === "es" ? "Galeria del proyecto" : "Project gallery";
   const ctaText = locale === "es" ? "Quiero algo similar" : "I'm interested in something similar";
-
-  useEffect(() => {
-    if (!hasMultipleImages) return;
-
-    const handleKeyNavigation = (event: KeyboardEvent) => {
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        setActiveImageIndex((prev) => (prev === 0 ? imageGallery.length - 1 : prev - 1));
-      }
-      if (event.key === "ArrowRight") {
-        event.preventDefault();
-        setActiveImageIndex((prev) => (prev === imageGallery.length - 1 ? 0 : prev + 1));
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyNavigation);
-    return () => window.removeEventListener("keydown", handleKeyNavigation);
-  }, [hasMultipleImages, imageGallery.length]);
-
-  const showPreviousImage = () => {
-    setActiveImageIndex((prev) => (prev === 0 ? imageGallery.length - 1 : prev - 1));
-  };
-
-  const showNextImage = () => {
-    setActiveImageIndex((prev) => (prev === imageGallery.length - 1 ? 0 : prev + 1));
-  };
 
   return (
     <div className="max-h-[92vh] overflow-y-auto bg-[#212121] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">
-      {/* Top Gallery */}
-      <div className="overflow-hidden border-b border-black/10 bg-[#18181B]">
-        <div className="relative aspect-[16/9] w-full overflow-hidden">
-          <Image
-            src={imageGallery[activeImageIndex] ?? project.image}
-            alt={`${project.title} - ${galleryLabel} ${activeImageIndex + 1}`}
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 768px) 100vw, 960px"
-            priority
-          />
-
-          {hasMultipleImages && (
-            <>
-              <button
-                type="button"
-                onClick={showPreviousImage}
-                aria-label={locale === "es" ? "Imagen anterior" : "Previous image"}
-                className="absolute top-1/2 left-3 -translate-y-1/2 rounded-xl border border-black/10 bg-white/95 p-2 text-neutral-700 shadow-[0_10px_20px_rgba(15,23,42,0.2)] transition-all hover:-translate-y-[52%] hover:bg-white hover:text-neutral-900 md:left-5 md:p-3"
-              >
-                <ChevronLeft size={22} />
-              </button>
-              <button
-                type="button"
-                onClick={showNextImage}
-                aria-label={locale === "es" ? "Siguiente imagen" : "Next image"}
-                className="absolute top-1/2 right-3 -translate-y-1/2 rounded-xl border border-black/10 bg-white/95 p-2 text-neutral-700 shadow-[0_10px_20px_rgba(15,23,42,0.2)] transition-all hover:-translate-y-[52%] hover:bg-white hover:text-neutral-900 md:right-5 md:p-3"
-              >
-                <ChevronRight size={22} />
-              </button>
-            </>
-          )}
-
-          {hasMultipleImages && (
-            <div className="absolute right-3 bottom-3 rounded-md border border-white/40 bg-black/70 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm">
-              {activeImageIndex + 1} / {imageGallery.length}
-            </div>
-          )}
-        </div>
-
-        {hasMultipleImages && (
-          <div className="overflow-x-auto border-t border-black/10 bg-[#ececec] px-4 py-3 md:px-6">
-            <div className="flex gap-3 min-w-max">
-              {imageGallery.map((src, index) => (
-                <button
-                  type="button"
-                  key={`${src}-${index}`}
-                  onClick={() => setActiveImageIndex(index)}
-                  aria-label={`${galleryLabel} ${index + 1}`}
-                  className={[
-                    "relative h-14 w-24 shrink-0 overflow-hidden rounded-lg border md:h-16 md:w-28",
-                    index === activeImageIndex
-                      ? "border-[#00BCD4] shadow-[0_0_0_2px_rgba(15,77,63,0.18)]"
-                      : "border-black/10",
-                  ].join(" ")}
-                >
-                  <Image
-                    src={src}
-                    alt={`${project.title} thumbnail ${index + 1}`}
-                    fill
-                    className="object-cover object-center"
-                    sizes="112px"
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-
       {/* Content */}
       <div className="bg-[#212121] p-6 md:p-8 lg:p-10">
         <div className="mb-5 -mx-6 border-y border-black/10 bg-[#e9e9e9] px-6 py-2 md:-mx-8 md:px-8 lg:-mx-10 lg:px-10">

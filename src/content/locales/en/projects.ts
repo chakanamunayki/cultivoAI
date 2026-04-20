@@ -80,7 +80,7 @@ projects: [
     images: [
       "/landing/photos/project-screenshots/Screenshot_SetaSouls.app.jpeg",
     ],
-    url: "https://setasouls.app",
+    url: "https://holisticsoul.vercel.app/",
     tags: ["Web", "Vercel"],
     stats: [
       { label: "Performance", value: "98" },
