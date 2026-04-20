@@ -95,7 +95,7 @@ export const es: SiteContent = {
     title: "Cómo Ayudamos",
     subtitle: "Integración de IA práctica para negocios reales",
     intro:
-      "Construimos el cerebro operativo de un negocio: el sistema central que conecta lo que ya existe. Desde ahí, el equipo trabaja mejor y las decisiones tienen datos detrás. Conectamos ese sistema a los servicios que ya usan: LinkedIn, Google, Instagram, TikTok, el sitio web, la documentación interna. El SEO va integrado para que los clientes correctos lleguen solos.",
+      "Trabajamos con equipos que están construyendo algo con propósito: negocios y proyectos que generan impacto positivo en las personas y en su entorno. Entendemos cómo funciona cada equipo, conectamos lo que ya existe y damos a cada persona acceso solo a lo que le corresponde. Lo que construimos depende del proyecto: automatización, IA, SEO, integraciones.",
     columns: [
       {
         title: "OPTIMIZAR",

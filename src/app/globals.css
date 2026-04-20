@@ -246,7 +246,7 @@
 /* Utility classes for Brutalist design */
 @layer utilities {
   .animate-scroll-preview {
-    animation: scroll-preview 15s ease-in-out infinite alternate;
+    animation: scroll-preview 45s ease-in-out infinite alternate;
   }
 
   .animate-marquee {

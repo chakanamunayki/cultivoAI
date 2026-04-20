@@ -20,7 +20,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden border-b border-black/10 bg-white px-6 pt-[calc(15vw+1rem)] pb-6 md:px-12 md:pt-[calc(15vw+1.25rem)] md:pb-12 lg:px-24 lg:pt-[calc(15vw+1.5rem)] lg:pb-24"
+      className="relative overflow-hidden border-b border-black/10 bg-white px-6 pt-12 pb-6 md:px-12 md:pt-16 md:pb-12 lg:px-24 lg:pt-20 lg:pb-24"
     >
       <div className="max-w-[1600px] mx-auto">
         <Reveal>

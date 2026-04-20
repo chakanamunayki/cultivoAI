@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Project } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 
@@ -226,13 +226,26 @@ export function ProjectModal({ project, onOpenContact }: ProjectModalProps) {
           </p>
         </div>
 
-        <button
-          type="button"
-          onClick={onOpenContact}
-          className="mt-8 w-full rounded-xl bg-[#00BCD4] px-6 py-3.5 text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_28px_rgba(15,23,42,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.28)]"
-        >
-          {ctaText}
-        </button>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          {project.url && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#00BCD4] px-6 py-3.5 text-sm font-semibold tracking-[0.08em] text-[#00BCD4] uppercase transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:text-white sm:w-auto"
+            >
+              {locale === "es" ? "Ver sitio" : "Visit site"}
+              <ArrowRight size={15} />
+            </a>
+          )}
+          <button
+            type="button"
+            onClick={onOpenContact}
+            className="flex-1 rounded-xl bg-[#00BCD4] px-6 py-3.5 text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_28px_rgba(15,23,42,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.28)]"
+          >
+            {ctaText}
+          </button>
+        </div>
       </div>
     </div>
   );

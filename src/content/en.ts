@@ -95,7 +95,7 @@ export const en: SiteContent = {
     title: "How We Help",
     subtitle: "Practical AI integration for real businesses",
     intro:
-      "We build the operational brain of a business: the central system that connects what is already there. From there, the team works better and decisions have real data behind them. We connect that system to the tools already in use: LinkedIn, Google, Instagram, TikTok, the website, internal documentation. The SEO is built in so the right clients find you.",
+      "We work with teams building something with purpose: businesses and projects that create a positive impact on people and their communities. We understand how each team works, connect what already exists, and give each person access to only what they need. What we build depends on the project: automation, AI, SEO, integrations.",
     columns: [
       {
         title: "OPTIMIZE",
