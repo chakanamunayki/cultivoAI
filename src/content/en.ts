@@ -95,7 +95,7 @@ export const en: SiteContent = {
     title: "How We Help",
     subtitle: "Practical AI integration for real businesses",
     intro:
-      "We do not sell hype. We build practical systems that make good work easier to run. The goal is clarity and momentum, not complexity.",
+      "We build the operational brain of a business: the central system that connects what is already there. From there, the team works better and decisions have real data behind them. We connect that system to the tools already in use: LinkedIn, Google, Instagram, TikTok, the website, internal documentation. The SEO is built in so the right clients find you.",
     columns: [
       {
         title: "OPTIMIZE",

@@ -95,14 +95,14 @@ export const es: SiteContent = {
     title: "Cómo Ayudamos",
     subtitle: "Integración de IA práctica para negocios reales",
     intro:
-      "No vendemos humo. Construimos sistemas prácticos que hacen más fácil ejecutar buen trabajo. El objetivo es claridad y momentum, no complejidad.",
+      "Construimos el cerebro operativo de un negocio: el sistema central que conecta lo que ya existe. Desde ahí, el equipo trabaja mejor y las decisiones tienen datos detrás. Conectamos ese sistema a los servicios que ya usan: LinkedIn, Google, Instagram, TikTok, el sitio web, la documentación interna. El SEO va integrado para que los clientes correctos lleguen solos.",
     columns: [
       {
         title: "OPTIMIZAR",
         items: [
           "Reducir trabajo repetitivo",
           "Crear una sola fuente de verdad",
-          "Mejorar handoffs y seguimiento",
+          "Mejorar la coordinación y el seguimiento",
           "Automatizar reportes",
         ],
       },

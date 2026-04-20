@@ -15,6 +15,14 @@ import type { ChatContext } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 
 // Lazy-loaded below-fold sections
+const WhatWeDoSection = dynamic(
+  () =>
+    import("@/components/landing/sections/what-we-do-section").then((m) => ({
+      default: m.WhatWeDoSection,
+    })),
+  { ssr: true }
+);
+
 const HowWeWorkSection = dynamic(
   () =>
     import("@/components/landing/sections/how-we-work-section").then((m) => ({
@@ -274,7 +282,12 @@ export default function Home() {
         onTertiaryCta={handleScrollToServices}
       />
 
-      {/* Section 2: About - Eager loaded (above fold) */}
+      {/* Section 2: What We Do - Lazy loaded */}
+      <LazySection className="min-h-[400px]">
+        <WhatWeDoSection />
+      </LazySection>
+
+      {/* Section 3: About - Eager loaded (above fold) */}
       <AboutSection />
 
       {/* Section 3: How We Work - Lazy loaded */}
