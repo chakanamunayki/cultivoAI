@@ -24,7 +24,7 @@ export function HeroSection({ onPrimaryCta, onSecondaryCta, onTertiaryCta }: Her
     <section
       id="hero"
       data-custom-cursor-region
-      className="relative z-10 isolate min-h-[620px] overflow-visible rounded-br-[15vw] bg-white text-[#efefef] md:min-h-[760px]"
+      className="relative z-10 isolate min-h-[620px] overflow-visible rounded-br-[15vw] bg-background text-[#efefef] md:min-h-[760px]"
     >
       <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-br-[15vw] bg-[#212121]">
         <div className="absolute inset-0 overflow-hidden rounded-br-[15vw]">
@@ -101,7 +101,7 @@ export function HeroSection({ onPrimaryCta, onSecondaryCta, onTertiaryCta }: Her
       </div>
 
       <div className="pointer-events-none absolute top-full left-0 z-20 h-[clamp(5rem,7vw,8rem)] w-[clamp(5rem,7vw,8rem)] bg-[#212121]" />
-      <div className="pointer-events-none absolute top-full left-0 z-30 h-[clamp(5rem,7vw,8rem)] w-[clamp(5rem,7vw,8rem)] rounded-tl-[clamp(5rem,7vw,8rem)] bg-white" />
+      <div className="pointer-events-none absolute top-full left-0 z-30 h-[clamp(5rem,7vw,8rem)] w-[clamp(5rem,7vw,8rem)] rounded-tl-[clamp(5rem,7vw,8rem)] bg-background" />
     </section>
   );
 }
