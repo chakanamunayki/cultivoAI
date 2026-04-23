@@ -38,7 +38,7 @@ export function WhatWeDoSection({ onScrollToServices }: WhatWeDoSectionProps) {
   return (
     <section
       id="what-we-do"
-      className="relative border-b border-black/10 bg-background pt-[calc(15vw+1rem)] pb-10 md:pt-[calc(15vw+1.25rem)] md:pb-14 lg:pt-[calc(15vw+1.5rem)] lg:pb-16"
+      className="relative border-b border-black/10 bg-background pt-[calc(clamp(5rem,7vw,8rem)+0.75rem)] pb-10 md:pt-[calc(clamp(5rem,7vw,8rem)+1rem)] md:pb-14 lg:pt-[calc(clamp(5rem,7vw,8rem)+1.25rem)] lg:pb-16"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}

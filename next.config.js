@@ -6,6 +6,9 @@ const nextConfig = {
     root: process.cwd(),
   },
 
+  // Allow local preview from both localhost and 127.0.0.1 in development.
+  allowedDevOrigins: ["127.0.0.1"],
+
   // Image optimization configuration
   images: {
     remotePatterns: [

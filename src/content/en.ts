@@ -34,7 +34,7 @@ export const en: SiteContent = {
   hero: {
     tagline: "FOR GOOD PROJECTS",
     line1: "AI systems to scale valuable work",
-    subheadline: "Cut busywork. See what matters.",
+    subheadline: "Practical AI for projects that care, regenerate, and heal.",
     services: [],
     servicesDone: "",
     audience: [],
