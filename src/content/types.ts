@@ -12,7 +12,6 @@ export type ChatContextType =
   | "general"
   | "booking"
   | "story"
-  | "semilla"
   | "service"
   | "partnership"
   | "qualification"
@@ -162,23 +161,6 @@ export interface RealStory {
   metric?: string; // e.g., "21 horas/semana recuperadas"
 }
 
-export interface SemillaTier {
-  name: string;
-  description: string;
-}
-
-export interface SemillaContent {
-  title: string;
-  subtitle: string;
-  about: string;
-  tiers: SemillaTier[];
-  services: string[];
-  goal: string;
-  ctaTitle: string;
-  ctaDescription: string;
-  ctaButton: string;
-}
-
 export interface WhyUs {
   notTitle: string;
   notItems: string[];
@@ -263,7 +245,6 @@ export interface ChatContextualGreetings {
   general: string;
   booking: string;
   story: string;
-  semilla: string;
   service: string; // Use {service} as placeholder for service title
   partnership: string; // Use {partnership} as placeholder for partnership name
   qualification: string;
@@ -311,7 +292,6 @@ export interface SiteContent {
   demosSubtitle: string;
   useCases: UseCase[];
   whoWeHelp: WhoWeHelpContent;
-  semilla: SemillaContent;
   partnershipsTitle: string;
   partnershipsSubtitle: string;
   partnerships: Partnership[];

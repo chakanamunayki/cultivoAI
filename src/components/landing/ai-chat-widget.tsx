@@ -19,7 +19,10 @@ import {
   getWhatsAppUrl,
 } from "@/lib/chat/system-prompt";
 import { createLead } from "@/lib/leads/client";
-import { AIChatQuickQuestions } from "./ai-chat-quick-questions";
+import {
+  AIChatQuickQuestions,
+  type QuickQuestion,
+} from "./ai-chat-quick-questions";
 import { ChatInlineContactForm } from "./chat-inline-contact-form";
 import { VoiceConversationMode } from "./voice-conversation-mode";
 
@@ -106,6 +109,12 @@ export function AIChatWidget({
   onOpenForm,
 }: AIChatWidgetProps) {
   const { content, locale } = useLocale();
+  const chatToggleLabel = locale === "es" ? "Hablemos" : "Let's Talk";
+  const fifteenMinLabel = "15 MIN";
+  const fifteenMinTitle =
+    locale === "es"
+      ? "Agendar charla de 15 minutos"
+      : "Book a 15-minute project chat";
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -144,8 +153,6 @@ export function AIChatWidget({
           return greetings.booking;
         case "story":
           return greetings.story;
-        case "semilla":
-          return greetings.semilla;
         case "service":
           return greetings.service.replace("{service}", ctx.serviceTitle || "");
         case "partnership":
@@ -323,8 +330,8 @@ export function AIChatWidget({
         setContactFormData({ name: "", email: "" });
 
         const successMessage = locale === "es"
-          ? `¡Perfecto ${name}! Ya tengo tu información. ¿En qué te puedo ayudar?`
-          : `Perfect ${name}! I've got your info. How can I help you?`;
+          ? `¡Perfecto ${name}! Ya tengo tu información. Si quieres, seguimos con una charla de 15 minutos sobre tu proyecto.`
+          : `Perfect ${name}! I've got your info. If you want, we can move to a 15-minute project chat.`;
 
         setMessages(prev => [...prev, { role: "model", text: successMessage }]);
       } else {
@@ -568,7 +575,6 @@ export function AIChatWidget({
               desc: p.desc,
               fullDesc: p.fullDesc,
             })),
-            semilla: content.semilla,
             stories: content.stories,
             whyUs: content.whyUs,
             partnerships: content.partnerships.map((p) => ({
@@ -656,12 +662,53 @@ export function AIChatWidget({
     [handleSend]
   );
 
-  // Handle quick question click - auto-send the question
-  const handleQuickQuestion = useCallback((question: string) => {
+  // Handle quick question click with explicit actions
+  const handleQuickQuestion = useCallback((question: QuickQuestion) => {
     if (isLoading) return;
-    setMessages((prev) => [...prev, { role: "user", text: question }]);
-    sendMessageToAPI(question);
-  }, [isLoading, sendMessageToAPI]);
+
+    if (question.action === "send") {
+      setMessages((prev) => [...prev, { role: "user", text: question.text }]);
+      void sendMessageToAPI(question.text);
+      return;
+    }
+
+    setMessages((prev) => [...prev, { role: "user", text: question.text }]);
+    void logMessage("user", question.text);
+
+    if (question.action === "capture_contact") {
+      if (currentLeadId) {
+        const alreadyCapturedMessage =
+          locale === "es"
+            ? "Ya tengo tus datos. Si quieres, seguimos con la charla de 15 minutos."
+            : "I already have your details. If you want, we can move to a 15-minute project chat.";
+        setMessages((prev) => [
+          ...prev,
+          { role: "model", text: alreadyCapturedMessage },
+        ]);
+        void logMessage("model", alreadyCapturedMessage);
+        return;
+      }
+
+      triggerContactForm();
+      return;
+    }
+
+    if (question.action === "open_whatsapp") {
+      const contextMessage =
+        locale === "es"
+          ? "Quiero continuar por WhatsApp."
+          : "I want to continue on WhatsApp.";
+      openWhatsApp(contextMessage);
+    }
+  }, [
+    isLoading,
+    sendMessageToAPI,
+    logMessage,
+    currentLeadId,
+    locale,
+    triggerContactForm,
+    openWhatsApp,
+  ]);
 
   // Collapsed state - show toggle button
   if (!isOpen) {
@@ -682,7 +729,7 @@ export function AIChatWidget({
             aria-label="Open chat"
           >
             <MessageSquare size={24} />
-            <span>Chat AI</span>
+            <span>{chatToggleLabel}</span>
           </button>
         </div>
       </div>
@@ -727,11 +774,12 @@ export function AIChatWidget({
             {onOpenForm && (
               <button
                 onClick={onOpenForm}
-                className="text-black hover:scale-110 transition-transform"
-                aria-label={content.chat.contextualGreetings.formFallback}
-                title={content.chat.contextualGreetings.formFallback}
+                className="px-2 py-1.5 bg-white text-black border-2 border-black hover:bg-muted transition-all font-bold text-[11px] uppercase inline-flex items-center gap-1"
+                aria-label={fifteenMinTitle}
+                title={fifteenMinTitle}
               >
-                <FileText size={20} />
+                <FileText size={14} />
+                {fifteenMinLabel}
               </button>
             )}
             <button
@@ -815,7 +863,9 @@ export function AIChatWidget({
         {/* Quick Questions */}
         <AIChatQuickQuestions
           locale={locale as "es" | "en"}
+          contextType={context?.type ?? "general"}
           onQuestionClick={handleQuickQuestion}
+          isLoading={isLoading}
         />
 
         {/* Input */}

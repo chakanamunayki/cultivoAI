@@ -50,8 +50,8 @@ export const esClosingSectionsContent: Pick<
       },
       {
         number: "2",
-        title: "Mapeamos tu flujo y proponemos un plan simple",
-        description: "Nos enfocamos en cambios prácticos que reducen fricción rápido.",
+        title: "Si hay fit, hacemos una charla de 15 minutos",
+        description: "Mapeamos el cuello de botella real y proponemos el siguiente paso más útil.",
       },
       {
         number: "3",
@@ -64,7 +64,7 @@ export const esClosingSectionsContent: Pick<
   },
 
   footer: {
-    cta: "Cuéntanos qué estás construyendo.",
+    cta: "Cuéntanos qué estás intentando construir de verdad.",
     ctaButton: "Hablemos",
     copyright: "2026 Cultivo AI. Desde Colombia, trabajando para el mundo.",
     socialLinks: [
@@ -116,31 +116,29 @@ export const esClosingSectionsContent: Pick<
     placeholder: "Escribe tu mensaje...",
     sendButton: "Enviar",
     welcomeMessage:
-      "¡Hola! Soy el asistente de CultivoAI. Puedo ayudarte a conocer servicios, mostrar proyectos o conectarte con el equipo. ¿En qué te ayudo?",
+      "Hola. Soy el asistente de CultivoAI. Cuéntame qué estás intentando construir y dónde estás atascado. Si hay fit, agendamos una charla de 15 minutos con Paul.",
     contextualGreetings: {
       general:
-        "¡Hola! Soy el asistente de CultivoAI. Puedo ayudarte a conocer servicios, mostrar proyectos o conectarte con el equipo. ¿Qué te trae por aquí hoy?",
+        "Hola. Cuéntame qué estás intentando construir y cuál es el cuello de botella ahora mismo. Te ayudo a mapear el siguiente paso.",
       booking:
-        "¡Hola! Veo que quieres agendar tiempo con Paul. ¡Me encantaría ayudarte! Primero, ¿cómo te llamas? Y cuéntame un poco sobre lo que te gustaría discutir.",
+        "Perfecto. Podemos agendar una charla de 15 minutos con Paul. Antes de eso, ¿qué estás construyendo y cuál es el bloqueo principal?",
       story:
-        "¡Hola! Puedes conocer mejor nuestra historia en la sección Nosotros. ¿Qué te gustaría saber? Y por cierto, ¿cómo te llamas?",
-      semilla:
-        "¡Hey! Aquí Rocky (bueno, la versión IA). ¡Me alegra que te interese el Fondo Semilla! Es mi proyecto para ayudar con cosas pequeñas mientras aprendo. ¿Cómo te llamas? ¡Y cuéntame qué tienes en mente!",
+        "Somos un equipo familiar en Colombia. Trabajo directo, sin handoffs, sistemas prácticos. ¿Qué quieres entender mejor: proceso, proyectos o fit?",
       service:
-        "¡Hola! Veo que te interesa {service}. ¡Excelente elección! ¿Cómo te llamas? Y cuéntame sobre tu situación actual: ¿qué problema quieres resolver?",
+        "Veo que te interesa {service}. Buen punto de partida. ¿Cuál es el cuello de botella real y qué resultado necesitas en las próximas semanas?",
       partnership:
-        "¡Hola! Te interesa saber más sobre nuestro modelo de {partnership}. ¡Cada proyecto es diferente! ¿Cómo te llamas? Y cuéntame sobre tu proyecto para explorar las mejores opciones.",
+        "Los modelos de partnership dependen de alcance y tiempos. ¿Qué estás construyendo y qué está frenando el avance ahora?",
       qualification:
-        "¡Hola! Veamos si somos el fit correcto para trabajar juntos. ¿Cómo te llamas? Y cuéntame sobre tu negocio y qué estás buscando lograr.",
+        "Hagamos una prueba rápida de fit. ¿Qué construyes, qué timeline tienes y quién decide?",
       impact:
-        "¡Hola! Quiero conocer cómo podrían ayudarme con un sistema de IA práctico y human-first.",
-      formFallback: "¿Prefieres llenar un formulario? Haz clic aquí.",
+        "Veo que te interesa trabajo con propósito. Si estás construyendo algo real y necesitas ejecución práctica, vamos bien. ¿Qué estás construyendo?",
+      formFallback: "¿Prefieres una charla de 15 minutos? Deja tus datos.",
     },
   },
 
   contactForm: {
-    title: "Hablemos",
-    subtitle: "No formularios corporativos. Solo una conversación.",
+    title: "Agenda una charla de 15 minutos",
+    subtitle: "Comparte lo básico y llegamos preparados.",
     nameLabel: "Nombre",
     namePlaceholder: "Tu nombre",
     emailLabel: "Email",
@@ -160,8 +158,8 @@ export const esClosingSectionsContent: Pick<
     ],
     descriptionLabel: "Cuéntanos brevemente sobre tu proyecto",
     descriptionPlaceholder: "¿Qué problema quieres resolver? ¿Qué resultado esperas?",
-    submitButton: "Enviar mensaje",
-    chatPrompt: "¿Prefieres chatear? ¡Nuestro asistente IA puede ayudarte!",
+    submitButton: "Solicitar charla de 15 minutos",
+    chatPrompt: "¿Prefieres empezar por chat? Usa el asistente.",
   },
 
   terminal: {

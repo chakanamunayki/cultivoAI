@@ -22,7 +22,7 @@ export const chatFunctionDeclarations: Tool = {
           section_id: {
             type: Type.STRING,
             description:
-              "The ID of the section to scroll to. Valid IDs: 'hero', 'about', 'services', 'semilla', 'partnerships', 'projects', 'stories', 'who-we-help', 'what-happens-next'",
+              "The ID of the section to scroll to. Valid IDs: 'hero', 'about', 'services', 'partnerships', 'projects', 'stories', 'who-we-help', 'what-happens-next'",
           },
         },
         required: ["section_id"],

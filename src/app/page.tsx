@@ -120,7 +120,15 @@ function WhatsAppIcon({ size = 22 }: { size?: number }) {
   );
 }
 
-function ChatButtonPlaceholder({ onClick, whatsappUrl }: { onClick: () => void; whatsappUrl: string }) {
+function ChatButtonPlaceholder({
+  onClick,
+  whatsappUrl,
+  chatLabel,
+}: {
+  onClick: () => void;
+  whatsappUrl: string;
+  chatLabel: string;
+}) {
   return (
     <div className="font-grotesk fixed right-6 bottom-6 z-[60] flex flex-col items-end">
       <div className="flex items-center gap-2">
@@ -139,7 +147,7 @@ function ChatButtonPlaceholder({ onClick, whatsappUrl }: { onClick: () => void; 
           aria-label="Open chat"
         >
           <MessageSquare size={24} />
-          <span>Chat AI</span>
+          <span>{chatLabel}</span>
         </button>
       </div>
     </div>
@@ -215,6 +223,22 @@ export default function Home() {
     handleOpenChat({ type: "general" });
   }, [handleOpenChat]);
 
+  const handleOpenChatBooking = useCallback(() => {
+    handleOpenChat({ type: "booking" });
+  }, [handleOpenChat]);
+
+  const handleOpenChatQualification = useCallback(() => {
+    handleOpenChat({ type: "qualification" });
+  }, [handleOpenChat]);
+
+  const handleOpenChatPartnership = useCallback(() => {
+    handleOpenChat({ type: "partnership" });
+  }, [handleOpenChat]);
+
+  const handleOpenChatImpact = useCallback(() => {
+    handleOpenChat({ type: "impact" });
+  }, [handleOpenChat]);
+
   const handleOpenContactModal = useCallback(() => {
     setIsChatOpen(false);
     closeModal();
@@ -232,9 +256,9 @@ export default function Home() {
   // Handler for sector-specific chat
   const handleOpenChatWithSector = useCallback(
     (_sectorName: string) => {
-      handleOpenContactModal();
+      handleOpenChatQualification();
     },
-    [handleOpenContactModal]
+    [handleOpenChatQualification]
   );
 
   // Form fallback handler
@@ -269,15 +293,19 @@ export default function Home() {
           onOpenForm={handleOpenFormFromChat}
         />
       ) : (
-        <ChatButtonPlaceholder onClick={handlePlaceholderClick} whatsappUrl={whatsappUrl} />
+        <ChatButtonPlaceholder
+          onClick={handlePlaceholderClick}
+          whatsappUrl={whatsappUrl}
+          chatLabel={content.footer.ctaButton}
+        />
       )}
 
       {/* Navigation with integrated ticker */}
-      <Nav onScrollTo={scrollTo} onOpenChat={handleOpenContactModal} />
+      <Nav onScrollTo={scrollTo} onOpenChat={handleOpenChatGeneral} />
 
       {/* Section 1: Hero - Eager loaded (above fold) */}
       <HeroSection
-        onPrimaryCta={handleOpenContactModal}
+        onPrimaryCta={handleOpenChatGeneral}
         onSecondaryCta={handleScrollToProjects}
         onTertiaryCta={handleScrollToServices}
       />
@@ -302,20 +330,20 @@ export default function Home() {
 
       {/* Section 6: Services - Lazy loaded */}
       <LazySection className="min-h-[600px]">
-        <ServicesSection onOpenChatBooking={handleOpenContactModal} />
+        <ServicesSection onOpenChatBooking={handleOpenChatBooking} />
       </LazySection>
 
       {/* Section 6: Who We Help - Lazy loaded */}
       <LazySection className="min-h-[400px]">
         <WhoWeHelpSection
-          onOpenChatQualification={handleOpenContactModal}
+          onOpenChatQualification={handleOpenChatQualification}
           onOpenChatWithSector={handleOpenChatWithSector}
         />
       </LazySection>
 
       {/* Section 8: Partnerships - Lazy loaded */}
       <LazySection className="min-h-[500px]">
-        <PartnershipsSection onOpenChatGeneral={handleOpenContactModal} />
+        <PartnershipsSection onOpenChatGeneral={handleOpenChatPartnership} />
       </LazySection>
 
       {/* Section 9: Projects - Lazy loaded */}
@@ -330,16 +358,16 @@ export default function Home() {
 
       {/* Section 14: Mission - Lazy loaded */}
       <LazySection className="min-h-[300px]">
-        <MissionSection onOpenChatImpact={handleOpenContactModal} />
+        <MissionSection onOpenChatImpact={handleOpenChatImpact} />
       </LazySection>
 
       {/* Section 15: What Happens Next - Lazy loaded */}
       <LazySection className="min-h-[400px]">
-        <WhatHappensNextSection onOpenChat={handleOpenContactModal} />
+        <WhatHappensNextSection onOpenChat={handleOpenChatGeneral} />
       </LazySection>
 
       {/* Footer */}
-      <Footer onContactClick={handleOpenContactModal} onScrollTo={scrollTo} />
+      <Footer onContactClick={handleOpenChatGeneral} onScrollTo={scrollTo} />
     </div>
   );
 }

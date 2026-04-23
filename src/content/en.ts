@@ -2,7 +2,6 @@ import { enAbout } from "./locales/en/about";
 import { enClosingSectionsContent } from "./locales/en/closing-sections";
 import { enPartnershipsContent } from "./locales/en/partnerships";
 import { enProjectsContent } from "./locales/en/projects";
-import { enSemillaContent } from "./locales/en/semilla";
 import { enServicesContent } from "./locales/en/services";
 import { enStoriesContent } from "./locales/en/stories";
 import { enUseCasesContent } from "./locales/en/use-cases";
@@ -143,8 +142,6 @@ export const en: SiteContent = {
   ...enUseCasesContent,
 
   ...enWhoWeHelpContent,
-
-  ...enSemillaContent,
 
   ...enPartnershipsContent,
 

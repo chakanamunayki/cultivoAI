@@ -2,7 +2,6 @@ import { esAbout } from "./locales/es/about";
 import { esClosingSectionsContent } from "./locales/es/closing-sections";
 import { esPartnershipsContent } from "./locales/es/partnerships";
 import { esProjectsContent } from "./locales/es/projects";
-import { esSemillaContent } from "./locales/es/semilla";
 import { esServicesContent } from "./locales/es/services";
 import { esStoriesContent } from "./locales/es/stories";
 import { esUseCasesContent } from "./locales/es/use-cases";
@@ -143,8 +142,6 @@ export const es: SiteContent = {
   ...esUseCasesContent,
 
   ...esWhoWeHelpContent,
-
-  ...esSemillaContent,
 
   ...esPartnershipsContent,
 

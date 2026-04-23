@@ -20,13 +20,6 @@ export interface SystemPromptContext {
 export interface SiteContentForPrompt {
   services: Array<{ title: string; description: string; details?: string[] }>;
   projects: Array<{ title: string; desc: string; fullDesc: string }>;
-  semilla: {
-    title: string;
-    about: string;
-    tiers: Array<{ name: string; description: string }>;
-    services: string[];
-    goal: string;
-  };
   stories: Array<{
     company: string;
     industry: string;
@@ -382,10 +375,6 @@ export function buildSystemPrompt(
         es: "El usuario esta interesado en nuestra historia. Comparte sobre el equipo familiar y como trabajamos.",
         en: "The user is interested in our story. Share about the family team and how we work.",
       },
-      semilla: {
-        es: "El usuario esta interesado en el Fondo Semilla de Rocky. Actua mas como Rocky - joven y entusiasta.",
-        en: "The user is interested in Rocky's Semilla Fund. Act more like Rocky - young and enthusiastic.",
-      },
       service: {
         es: "El usuario esta interesado en un servicio especifico. Profundiza en sus necesidades.",
         en: "The user is interested in a specific service. Dive deeper into their needs.",
@@ -419,9 +408,6 @@ ${JSON.stringify(siteContent.services, null, 2)}
 **Proyectos:**
 ${JSON.stringify(siteContent.projects, null, 2)}
 
-**Detalles de Semilla:**
-${JSON.stringify(siteContent.semilla, null, 2)}
-
 **Historias de Exito:**
 ${JSON.stringify(siteContent.stories, null, 2)}
 
@@ -440,9 +426,6 @@ ${JSON.stringify(siteContent.services, null, 2)}
 
 **Projects:**
 ${JSON.stringify(siteContent.projects, null, 2)}
-
-**Semilla Details:**
-${JSON.stringify(siteContent.semilla, null, 2)}
 
 **Success Stories:**
 ${JSON.stringify(siteContent.stories, null, 2)}

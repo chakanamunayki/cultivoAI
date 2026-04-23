@@ -37,10 +37,10 @@ export function ServicesSection({ onOpenChatBooking }: ServicesSectionProps) {
           services={content.services}
           locale={locale}
           onSeeMore={handleServiceSeeMore}
-          className="mt-2 md:mt-6"
+          className="mt-2 mb-10 md:mt-6 md:mb-16 lg:mb-24"
         />
 
-        <Reveal delay={300} className="relative z-10 mt-16 md:mt-24">
+        <Reveal delay={300} className="relative mt-28 md:mt-36 lg:mt-44">
           <div className="relative flex flex-col items-center gap-8 overflow-hidden rounded-[26px] border border-white/15 bg-[#212121] p-6 text-[#FFFFFF] shadow-[0_16px_34px_rgba(0,0,0,0.34)] ring-1 ring-white/5 md:gap-12 md:p-8 lg:flex-row lg:p-12">
             <div className="absolute -top-16 -left-16 h-36 w-36 rounded-full bg-[#00BCD4]/25 opacity-70 blur-2xl" />
 
