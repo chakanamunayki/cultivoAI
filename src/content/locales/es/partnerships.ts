@@ -10,18 +10,19 @@ export const esPartnershipsContent: Pick<
   partnerships: [
     {
       name: "Sprint de Descubrimiento Técnico",
-      tagline: "Empieza aquí",
+      tagline: "Empieza con una llamada gratis",
       description:
-        "Un sprint de tarifa fija que convierte una ambición vaga de IA o datos en un desarrollo que puedes costear y aprobar. Un entregable claro al final.",
+        "Cada proyecto es diferente, desde una automatización pequeña hasta una plataforma completa. Por eso empezamos con una llamada gratis para entender tu objetivo. Si un Sprint de Descubrimiento encaja, se define y se cotiza según el trabajo, y te vas con un plan claro y costeado.",
       idealFor: ["Equipos con IP real y una decisión que tomar", "Cualquiera que no sepa qué construir primero"],
       icon: "Hourglass",
       imageUrl: "/landing/photos/services/startup-advisory.png",
       modal: {
         whatItMeans:
-          "Un trabajo corto y senior para mapear tu arquitectura, proteger tu IP y definir el alcance del desarrollo, antes de que nadie escriba código de producción.",
+          "Empezamos con una llamada gratis para entender tu objetivo. Si un sprint encaja, es un trabajo corto y senior para mapear tu arquitectura, proteger tu IP y definir el alcance del desarrollo, antes de que nadie escriba código de producción.",
         whyItMatters:
-          "La mayoría de los proyectos de IA fallan por un inicio difuso. Un sprint de tarifa fija te da un plan costeado y defendible y un primer desarrollo claro, sin compromiso abierto.",
+          "La mayoría de los proyectos de IA fallan por un inicio difuso. La llamada no te cuesta nada y nos dice a ambos si hay encaje. El sprint luego te da un plan costeado y defendible y un primer desarrollo claro, sin compromiso abierto.",
         whatsIncluded: [
+          "Una llamada inicial gratis para entender tu objetivo y dimensionar el sprint",
           "Mapa de brechas de arquitectura: qué tienes, qué falta, qué construir",
           "Diseño de aislamiento de IP: cómo proteger protocolos y limitar el acceso por rol",
           "Alcance del MVP: el primer desarrollo útil más pequeño",

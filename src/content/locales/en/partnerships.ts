@@ -10,18 +10,19 @@ export const enPartnershipsContent: Pick<
   partnerships: [
     {
       name: "Technical Discovery Sprint",
-      tagline: "Start here",
+      tagline: "Start with a free call",
       description:
-        "A fixed-fee sprint that turns a vague AI or data ambition into a build you can cost and green-light. One clear deliverable at the end.",
+        "Every project is different, from a small automation to a full platform. So we start with a free call to understand your objective. If a Discovery Sprint fits, it's scoped and priced to the work, and you leave with one clear, costed plan.",
       idealFor: ["Teams with real IP and a decision to make", "Anyone unsure what to build first"],
       icon: "Hourglass",
       imageUrl: "/landing/photos/services/startup-advisory.png",
       modal: {
         whatItMeans:
-          "A short, senior engagement to map your architecture, protect your IP, and scope the build, before anyone writes production code.",
+          "We start with a free call to understand your objective. If a sprint fits, it is a short, senior engagement to map your architecture, protect your IP, and scope the build, before anyone writes production code.",
         whyItMatters:
-          "Most AI projects fail on a fuzzy start. A fixed-fee sprint gives you a costed, defensible plan and a clear first build, with no open-ended commitment.",
+          "Most AI projects fail on a fuzzy start. The call costs you nothing and tells us both whether there is a fit. The sprint then gives you a costed, defensible plan and a clear first build, with no open-ended commitment.",
         whatsIncluded: [
+          "A free intro call to understand your objective and size the sprint",
           "Architecture gap map: what you have, what's missing, what to build",
           "IP-isolation design: how to protect protocols and scope access by role",
           "MVP scope: the smallest useful first build",
