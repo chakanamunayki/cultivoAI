@@ -2,7 +2,7 @@ import type { AboutCopy } from "../../types";
 
 export const esAbout: AboutCopy = {
     title: "Quiénes Somos",
-    subtitle: "Una familia construyendo algo significativo desde Colombia",
+    subtitle: "Un fundador técnico con más de 20 años lanzando productos reales, y un equipo pequeño desde Colombia. Tomamos proyectos que generan impacto social y ambiental real.",
     viewMoreLabel: "Ver más",
     footerNote:
       "**Para proyectos de mayor impacto, contamos con expertos técnicos que nos apoyan cuando es necesario.**",
@@ -10,41 +10,41 @@ export const esAbout: AboutCopy = {
       {
         id: "paul",
         name: "Paul Ronayne",
-        title: "Desarrollador y consultor de IA",
+        title: "Fundador técnico. Sistemas de IA y datos.",
         description:
-          "Llevo más de 20 años en tecnología, incluyendo la cofundación de dos negocios tech/data en España: nbn23.com y nagi.es. Hoy uno disciplina startup con IA human-first para ayudar a negocios holísticos a crecer con claridad y cuidado.",
+          "Más de 20 años construyendo empresas. Cofundé NBN23, una plataforma de datos deportivos que se asoció con FIBA y llegó a más de 70 países, y Nagi, tecnología de seguridad y rendimiento acuático desplegada en colegios y piscinas. Construí CHAK Brain y la plataforma SaaS de CHAK de punta a punta, solo. Construyo la capa de datos e IA para equipos de agritech y biotech.",
         imageUrl: "/landing/photos/team/paul.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
         bio: {
           headline:
-            "Integro experiencia startup y de datos con IA aterrizada y human-first para negocios holísticos",
+            "Fundador técnico. He lanzado plataformas de datos a más de 70 países, y construyo la capa de IA y datos para agritech y biotech.",
           sections: [
             {
               title: "Qué significa",
               content:
-                "Empiezo escuchando a fondo cómo trabaja tu equipo y cómo se siente tu cliente, y desde ahí diseño sistemas de IA que cuidan operación y conexión humana.",
+                "Soy quien diseña y construye el sistema, no una capa de gestores de cuenta. Veinte años cofundando y lanzando productos: NBN23 (datos deportivos, socio de FIBA, más de 70 países) y Nagi (tecnología de seguridad y rendimiento acuático, televisión nacional española, desplegada en colegios y piscinas).",
             },
             {
               title: "Por qué importa",
               content:
-                "Muchos equipos wellness y holísticos cargan demasiado. La IA correcta trae calma, consistencia y capacidad para servir mejor sin agotarse.",
+                "Para equipos basados en ciencia, lo difícil es proteger la IP y convertir los datos de laboratorio y campo en decisiones. Construí exactamente eso: CHAK Brain y la plataforma SaaS de CHAK, solo, desde la creación del protocolo hasta la ejecución con acceso por rol.",
             },
             {
               title: "Qué incluye",
               content:
-                "Estrategia aplicada, roadmap de IA, diseño de flujos y asistentes, y acompañamiento real de delivery. Definimos alcance juntos, lanzamos por fases y medimos impacto de negocio.",
+                "Arquitectura práctica, diseño de aislamiento de IP, alcance del MVP y un plan de construcción con costos. Definimos el alcance juntos, lanzamos por fases y me mantengo técnico de principio a fin.",
             },
             {
               title: "Ideal para",
               content:
-                "Fundadores y equipos pequeños en bienestar, holístico e impacto que quieren alma y estructura: cuidado humano con ejecución tipo startup.",
+                "Fundadores de agritech y biotech que generan impacto social y ambiental real, que quieren un socio técnico senior con quien hablar directamente, no un equipo de agencia rotativo.",
             },
             {
               title: "Resultado típico",
               content:
-                "Operación más tranquila, decisiones más claras, crecimiento más sano y más tiempo para el trabajo humano de mayor valor con clientes y comunidad.",
+                "Un sistema que funciona, que protege tus protocolos, estructura tu evidencia y convierte tus datos en decisiones, construido por la persona con la que realmente hablas.",
             },
           ],
           linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",

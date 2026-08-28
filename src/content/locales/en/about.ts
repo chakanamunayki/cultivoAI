@@ -2,7 +2,7 @@ import type { AboutCopy } from "../../types";
 
 export const enAbout: AboutCopy = {
     title: "Who We Are",
-    subtitle: "A family building something meaningful from Colombia",
+    subtitle: "A technical founder with 20+ years shipping real products, and a small team from Colombia. We take on work that makes real social and environmental impact.",
     viewMoreLabel: "View more",
     footerNote:
       "**For larger impact projects, we have technical experts who support us when needed.**",
@@ -10,41 +10,41 @@ export const enAbout: AboutCopy = {
       {
         id: "paul",
         name: "Paul Ronayne",
-        title: "AI developer and consultant",
+        title: "Technical founder. AI and data systems.",
         description:
-          "I've spent 20+ years in tech, including co-founding two tech/data businesses in Spain: nbn23.com and nagi.es. Today I blend startup discipline with human-first AI to help holistic businesses grow with clarity and care.",
+          "20+ years building companies. Co-founded NBN23, a sports-data platform that partnered with FIBA and reached 70+ countries, and Nagi, aquatic-safety and performance tech deployed in schools and pools. I built CHAK Brain and the CHAK SaaS platform end to end, solo. I build the data and AI layer for agritech and biotech teams.",
         imageUrl: "/landing/photos/team/paul.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
         bio: {
           headline:
-            "I combine startup and data experience with grounded, human-first AI for holistic businesses",
+            "Technical founder. I've shipped data platforms to 70+ countries, and I build the AI and data layer for agritech and biotech.",
           sections: [
             {
               title: "What it means",
               content:
-                "I start by listening deeply to how your team works and how your clients feel, then design AI systems that support both operations and human connection.",
+                "I'm the person who designs and builds the system, not a layer of account managers. Twenty years co-founding and shipping products: NBN23 (sports data, FIBA partner, 70+ countries) and Nagi (aquatic-safety and performance tech, national Spanish TV, deployed in schools and pools).",
             },
             {
               title: "Why it matters",
               content:
-                "Many wellness and holistic teams carry too much. The right AI creates calm, consistency, and capacity so you can serve better without burning out.",
+                "For science-driven teams, the hard part is protecting the IP and turning lab and field data into decisions. I've built exactly that: CHAK Brain and the CHAK SaaS platform, solo, from protocol authoring to role-gated execution.",
             },
             {
               title: "What's included",
               content:
-                "Hands-on strategy, AI roadmap, workflow and assistant design, and practical delivery support. We define scope together, ship in phases, and track real business outcomes.",
+                "Hands-on architecture, IP-isolation design, MVP scope, and a costed build plan. We define scope together, ship in phases, and I stay technical throughout.",
             },
             {
               title: "Ideal fit",
               content:
-                "Founders and small teams in wellness, holistic, and purpose-led spaces who want both soul and structure: human care plus startup-level execution.",
+                "Agritech and biotech founders building real social and environmental impact, who want a senior technical partner they talk to directly, not a rotating agency team.",
             },
             {
               title: "Typical outcome",
               content:
-                "Calmer operations, clearer decisions, healthier growth, and more time for high-value human work with your clients and community.",
+                "A working system that protects your protocols, structures your evidence, and turns your data into decisions, built by the person you actually talk to.",
             },
           ],
           linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
