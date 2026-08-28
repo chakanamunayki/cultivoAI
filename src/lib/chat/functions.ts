@@ -31,7 +31,7 @@ export const chatFunctionDeclarations: Tool = {
     {
       name: "show_project_details",
       description:
-        "Opens a modal with full details about a specific project. Use when users ask about specific projects like 'Chak', 'Munayki', 'Raiz Capital', etc.",
+        "Opens a modal with full details about a specific project. Use when users ask about specific projects like 'CHAK FoodTech', 'Munayki', 'Raiz Capital', etc.",
       parameters: {
         type: Type.OBJECT,
         properties: {
@@ -127,7 +127,7 @@ export const chatFunctionDeclarations: Tool = {
           sector_fit: {
             type: Type.BOOLEAN,
             description:
-              "True if the user's sector aligns with our values (agritech, wellness, education, startups with mission, etc.)",
+              "True if the user's sector aligns with what we do (agritech, biotech, research labs, sustainability and regenerative projects, alternative education, mission-led startups; wellness and health when the fit is clear)",
           },
           conversation_summary: {
             type: Type.STRING,
@@ -154,7 +154,7 @@ export const chatFunctionDeclarations: Tool = {
           service_name: {
             type: Type.STRING,
             description:
-              "The name of the service to recommend (e.g., 'Workflow Automation', 'AI Assistants & Chatbots', 'Business Intelligence', 'Content Systems', 'Website Development + AI', 'Startup Advisory')",
+              "The name of the service to recommend, matching the site's current services in order: 'Company Brain: Protected Knowledge Layer', 'Workflow Optimization', 'AI Assistants', 'Decision Dashboards', 'Knowledge and Content Systems', 'Software, Websites and Digital Experiences', 'Startup Advisory', 'Retreat Ops Systems'. Company Brain is the flagship offer for agritech and biotech teams protecting protocol IP.",
           },
           reason: {
             type: Type.STRING,

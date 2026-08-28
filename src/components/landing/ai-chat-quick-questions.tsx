@@ -41,17 +41,17 @@ const QUICK_QUESTIONS: Record<
     general: [
       {
         id: "general-1",
-        text: "No se por donde empezar. Que arreglamos primero?",
+        text: "Como protegemos la IP de nuestros protocolos?",
         action: "send",
       },
       {
         id: "general-2",
-        text: "Nuestro cuello de botella es [X]. Primer paso?",
+        text: "Que es el Company Brain?",
         action: "send",
       },
       {
         id: "general-3",
-        text: "Que podemos automatizar en 2-4 semanas?",
+        text: "Como funciona el Sprint de Descubrimiento?",
         action: "send",
       },
       {
@@ -95,17 +95,17 @@ const QUICK_QUESTIONS: Record<
     services: [
       {
         id: "services-1",
-        text: "Que servicio encaja con nuestro cuello de botella?",
+        text: "Que servicio protege mejor nuestro conocimiento?",
         action: "send",
       },
       {
         id: "services-2",
-        text: "Primero automatizacion, chatbot o dashboard?",
+        text: "Como aislamos la IP de la ejecucion?",
         action: "send",
       },
       {
         id: "services-3",
-        text: "Version uno minima y util?",
+        text: "Cual es la primera version util?",
         action: "send",
       },
       {
@@ -122,17 +122,17 @@ const QUICK_QUESTIONS: Record<
     partnership: [
       {
         id: "partnership-1",
-        text: "Que modelo de alianza encaja con nuestra etapa?",
+        text: "Como empieza el Sprint de Descubrimiento?",
         action: "send",
       },
       {
         id: "partnership-2",
-        text: "Sirve tarifa reducida o pago diferido?",
+        text: "Que incluye la llamada gratis de scoping?",
         action: "send",
       },
       {
         id: "partnership-3",
-        text: "Que alcance es viable para ambos lados?",
+        text: "Que entregable me llevo del sprint?",
         action: "send",
       },
       {
@@ -186,7 +186,7 @@ const QUICK_QUESTIONS: Record<
       },
       {
         id: "impact-3",
-        text: "Pueden trabajar con presupuesto ajustado y proposito claro?",
+        text: "Trabajan con equipos con mision real?",
         action: "send",
       },
       {
@@ -205,17 +205,17 @@ const QUICK_QUESTIONS: Record<
     general: [
       {
         id: "general-1",
-        text: "Not sure where to start. What do we fix first?",
+        text: "How do we protect our protocol IP?",
         action: "send",
       },
       {
         id: "general-2",
-        text: "Our bottleneck is [X]. First move?",
+        text: "What is the Company Brain?",
         action: "send",
       },
       {
         id: "general-3",
-        text: "What can we automate in 2-4 weeks?",
+        text: "How does the Discovery Sprint work?",
         action: "send",
       },
       {
@@ -259,12 +259,12 @@ const QUICK_QUESTIONS: Record<
     services: [
       {
         id: "services-1",
-        text: "Which service fits our bottleneck?",
+        text: "Which service best protects our know-how?",
         action: "send",
       },
       {
         id: "services-2",
-        text: "Automation, chatbot, or dashboard first?",
+        text: "How do we isolate IP from execution?",
         action: "send",
       },
       {
@@ -286,17 +286,17 @@ const QUICK_QUESTIONS: Record<
     partnership: [
       {
         id: "partnership-1",
-        text: "Which partnership model fits our stage?",
+        text: "How does the Discovery Sprint start?",
         action: "send",
       },
       {
         id: "partnership-2",
-        text: "Could reduced rate or deferred terms work?",
+        text: "What does the free scoping call include?",
         action: "send",
       },
       {
         id: "partnership-3",
-        text: "What scope is viable for both sides?",
+        text: "What deliverable do I leave with?",
         action: "send",
       },
       {
@@ -350,7 +350,7 @@ const QUICK_QUESTIONS: Record<
       },
       {
         id: "impact-3",
-        text: "Can you work with tight budget and clear purpose?",
+        text: "Do you work with genuinely mission-led teams?",
         action: "send",
       },
       {
