@@ -21,6 +21,10 @@ import {
 } from "@/lib/chat/system-prompt";
 
 const DEFAULT_OPENROUTER_CHAT_MODEL = "qwen/qwen3.8-flash";
+// Automatic fallback if the primary model's provider errors or rate-limits.
+// OpenRouter routes the same request to the next model in the list. Runs on
+// Google infra via OpenRouter, so it does not touch any Google API quota.
+const FALLBACK_CHAT_MODEL = "google/gemini-2.5-flash-lite";
 
 interface Message {
   role: "user" | "model";
@@ -43,26 +47,29 @@ interface FunctionCallResult {
   args: Record<string, unknown>;
 }
 
-// Tools mirror src/lib/chat/functions.ts. Execution is a stub: the widget runs
-// the real actions on the client. We only forward the calls and the final text.
+// Tools mirror src/lib/chat/functions.ts. execute is a stub the widget never
+// relies on: the real actions (navigation, modals, lead form) run client-side.
+// The route is a single model call (stopWhen stepCountIs(1) below), so the stub
+// result is never fed back for a second call. We only forward the tool CALLS.
+const stub = async () => ({ status: "ok" });
 const chatTools = {
   navigate_to_section: tool({
     description:
       "Scrolls the website to a specific section. Use when users want to see a section or ask about content on the page. Valid IDs: 'hero', 'about', 'services', 'partnerships', 'projects', 'stories', 'who-we-help', 'what-happens-next'.",
     inputSchema: z.object({ section_id: z.string() }),
-    execute: async () => ({ status: "ok" }),
+    execute: stub,
   }),
   show_project_details: tool({
     description:
       "Opens a modal with full details about a specific project (e.g. 'CHAK FoodTech', 'Munayki', 'Raiz Capital').",
     inputSchema: z.object({ project_title: z.string() }),
-    execute: async () => ({ status: "ok" }),
+    execute: stub,
   }),
   show_service_details: tool({
     description:
       "Opens a modal with full details about a specific service (e.g. 'Company Brain', 'Workflow Optimization', 'Decision Dashboards').",
     inputSchema: z.object({ service_title: z.string() }),
-    execute: async () => ({ status: "ok" }),
+    execute: stub,
   }),
   collect_lead_info: tool({
     description:
@@ -75,7 +82,7 @@ const chatTools = {
       interested_services: z.array(z.string()).optional(),
       project_description: z.string().optional(),
     }),
-    execute: async () => ({ status: "ok" }),
+    execute: stub,
   }),
   qualify_lead: tool({
     description:
@@ -88,7 +95,7 @@ const chatTools = {
       sector_fit: z.boolean(),
       conversation_summary: z.string().optional(),
     }),
-    execute: async () => ({ status: "ok" }),
+    execute: stub,
   }),
   suggest_service: tool({
     description:
@@ -97,13 +104,13 @@ const chatTools = {
       service_name: z.string(),
       reason: z.string(),
     }),
-    execute: async () => ({ status: "ok" }),
+    execute: stub,
   }),
   offer_whatsapp: tool({
     description:
       "Offers to continue on WhatsApp. Use after qualifying a lead, when the user asks for direct contact, or if they prefer messaging.",
     inputSchema: z.object({ context_message: z.string() }),
-    execute: async () => ({ status: "ok" }),
+    execute: stub,
   }),
   schedule_call: tool({
     description:
@@ -112,7 +119,7 @@ const chatTools = {
       reason: z.string(),
       urgency: z.string().optional(),
     }),
-    execute: async () => ({ status: "ok" }),
+    execute: stub,
   }),
 };
 
@@ -199,35 +206,55 @@ export async function POST(request: Request) {
 
     const openrouter = createOpenRouter({ apiKey });
 
-    // Disable reasoning: current flash models are reasoning-capable, which makes
-    // them slow and verbose. A landing widget wants fast, concise, plain replies.
-    // stepCountIs(2): step 1 the model may call tools (stub-executed), step 2 it
-    // produces the final natural-language reply.
+    // reasoning off must be sent in the request body via extraBody. Passing it as
+    // a model-settings field is silently ignored by this provider version, which
+    // leaves Qwen reasoning (10s+ per call instead of ~2s).
+    const fallbackModels =
+      chatModel === FALLBACK_CHAT_MODEL
+        ? [chatModel]
+        : [chatModel, FALLBACK_CHAT_MODEL];
+
     const result = await generateText({
       model: openrouter(chatModel, {
-        reasoning: { enabled: false, effort: "low" },
+        extraBody: {
+          reasoning: { enabled: false },
+          // OpenRouter provider-level fallback: try these in order.
+          models: fallbackModels,
+        },
       }),
       system: systemInstruction,
       messages,
       tools: chatTools,
-      stopWhen: stepCountIs(2),
+      // Single model call: return the tool call immediately, do not loop for a
+      // second call. Keeps tool-triggering messages as fast as plain ones.
+      stopWhen: stepCountIs(1),
+      // Fail fast instead of hanging: OpenRouter already handles model fallback
+      // in one request, so we do not need the SDK's long retry-with-backoff.
+      maxRetries: 1,
     });
 
-    // Collect every tool call across steps and forward as { name, args } so the
-    // widget's executeFunctionCall runs the real client-side action.
-    const functionCalls: FunctionCallResult[] = result.steps.flatMap((step) =>
-      step.toolCalls.map((call) => ({
-        name: call.toolName,
-        args: (call.input as Record<string, unknown>) ?? {},
-      }))
-    );
+    // Forward tool calls as { name, args } so the widget's executeFunctionCall
+    // runs the real client-side action (navigation, modal, lead form).
+    const functionCalls: FunctionCallResult[] = result.toolCalls.map((call) => ({
+      name: call.toolName,
+      args: (call.input as Record<string, unknown>) ?? {},
+    }));
 
-    const fallbackText = safeLocale === "es" ? "Entendido." : "Got it.";
+    // Models often return a tool call with no prose. Keep the model's text when
+    // present; otherwise a short confirmation, since the UI action itself is the
+    // reply. Bare acknowledgement only when nothing happened at all.
+    const modelText = result.text?.trim() || "";
+    const text =
+      modelText ||
+      (functionCalls.length > 0
+        ? safeLocale === "es"
+          ? "Listo."
+          : "Done."
+        : safeLocale === "es"
+        ? "Entendido."
+        : "Got it.");
 
-    return NextResponse.json({
-      text: result.text?.trim() || fallbackText,
-      functionCalls,
-    });
+    return NextResponse.json({ text, functionCalls });
   } catch (error) {
     const status = getErrorStatus(error);
     const isQuota = status === 429;
