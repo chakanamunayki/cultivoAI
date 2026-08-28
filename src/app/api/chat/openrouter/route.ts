@@ -20,11 +20,13 @@ import {
   type SystemPromptContext,
 } from "@/lib/chat/system-prompt";
 
-const DEFAULT_OPENROUTER_CHAT_MODEL = "qwen/qwen3.8-flash";
+// Primary. Runs on Google infra via OpenRouter, so it does NOT touch any Google
+// API quota. ~1.9s, reliable, tools fire, reasoning disables cleanly.
+const DEFAULT_OPENROUTER_CHAT_MODEL = "google/gemini-2.5-flash-lite";
 // Automatic fallback if the primary model's provider errors or rate-limits.
-// OpenRouter routes the same request to the next model in the list. Runs on
-// Google infra via OpenRouter, so it does not touch any Google API quota.
-const FALLBACK_CHAT_MODEL = "google/gemini-2.5-flash-lite";
+// OpenRouter routes the same request to the next model in the list. Qwen's free
+// shared pool is 429-prone under load, so it sits behind the reliable primary.
+const FALLBACK_CHAT_MODEL = "qwen/qwen3.8-flash";
 
 interface Message {
   role: "user" | "model";
