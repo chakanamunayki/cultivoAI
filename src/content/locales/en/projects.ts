@@ -5,36 +5,36 @@ projectsTitle: "What We've Built",
 projectsSubtitle: "Selected projects from our current work",
 projects: [
   {
-    title: "Chak: From SaaS to Brain",
-    desc: "V1: full SaaS platform with protocol builder, project management, and IoT. V2: Chak Brain, a RAG-backed conversational system covering the entire team.",
+    title: "CHAK FoodTech: Protocol IP, Protected Through Execution",
+    desc: "We built the digital layer for an agri-biotech production platform. Scientists author the protocol; CHAK Brain guides the person running it step by step, without ever exposing the full protocol. The IP stays in the system.",
     fullDesc:
-      "Chak works with life. Lab protocols, cultivations, projects with real impact on health and nature. Chak v1 was a full operational platform: protocol builder, project management, and IoT integration built alongside Universidad de Envigado. Chak v2 is Chak Brain, a RAG-backed system covering the entire team across operations, lab protocols, commercial, prospects, and projects. The evolution from complex SaaS to conversational brain is the real insight.",
-    lessons: "Adding features solves the wrong problem. The right question: can the team access what the business knows in a single conversation?",
+      "CHAK FoodTech turns a biological objective into a controlled, measurable, reproducible plant-production process. We built the digital layer, and it works as one loop. Scientists and lab leads author the protocol in the builder: every step, parameter, and sequence. That full protocol is the IP. When it is time to run it, CHAK Brain guides the person doing the work one step at a time: what to do now, the parameters, the frequency, the asepsis, and it captures their observations back against that step. The operator executes the protocol without ever holding the whole thing. Access is role-gated: the lab technician is guided through the steps, the commercial team sees clients, the director sees everything. The full protocol and the accumulated data stay in the system, not in the executor's hands, not in WhatsApp, not walking out the door.",
+    lessons: "The people running a protocol don't need the whole protocol. They need the current step. Authoring and execution are one loop, and the full recipe, the real IP, never has to leave the system.",
     status: "Active",
     image: "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
     images: [
       "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
     ],
     url: "https://chak-foodtech.com",
-    tags: ["AI", "RAG", "SaaS"],
+    tags: ["Agri-biotech", "Protocol IP", "RAG"],
     modal: {
       whatItMeans:
-        "Two chapters, one key insight: when we stopped adding features and started building a brain, everything simplified.",
+        "One loop over a real agri-biotech operation. Scientists author protocols in the builder; the people executing are guided one step at a time and their observations flow back. Everything is scoped to each role, and the full protocol never leaves the system.",
       whyItMatters:
-        "Chak v1 proved that complex systems hit a ceiling. Chak Brain proved a team can access everything the business knows in a single conversation. That is the real leap.",
+        "In science-driven production, the protocol is the IP. Hand the whole recipe to everyone who runs it and it leaks across roles and walks out the door. CHAK Brain guides execution step by step, so the operator gets exactly what they need to do the work and never the full protocol. The IP stays structured, role-gated, and owned by the company.",
       whatsIncluded: [
-        "V1: protocol builder, project management, and IoT with Universidad de Envigado",
-        "V2: RAG-backed conversational system for operations, protocols, commercial, and prospects",
-        "Background agents that optimize the knowledge base and learn with use",
-        "Conversational access to the team's full knowledge layer",
+        "Protocol builder where scientists and lab leads author the full protocol: steps, parameters, sequence",
+        "Step-by-step execution guidance: the operator sees the current step, its parameters and frequency, nothing more",
+        "Observations captured back against each step as the work happens",
+        "Role-gated access, so the full protocol and the data stay protected in the system",
       ],
       idealFit: [
-        "Teams with documented processes that no one can query quickly",
-        "Businesses tired of searching across scattered files and folders",
-        "Organizations that want AI that grows with them, not a static tool",
+        "Labs and agri-biotech teams whose protocol IP is the core asset",
+        "Operations that need field or lab staff to execute protocols precisely without handing over the whole recipe",
+        "Teams that need the know-how and data to stay in the company when people change",
       ],
       typicalOutcome:
-        "The team stops searching, stops asking around, and starts acting on what the business already knows.",
+        "Protocols run consistently on the ground, observations come back structured, and the full recipe, the real IP, stays inside the company instead of in someone's phone.",
     },
   },
   {

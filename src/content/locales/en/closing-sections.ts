@@ -32,9 +32,9 @@ export const enClosingSectionsContent: Pick<
   mission: {
     title: "Why We Exist",
     statement: [
-      "The most useful AI rarely reaches the people who need it most.",
-      "We build to change that: accessible pricing, mission-driven projects, and a portion of what we earn reinvested into teams that can't pay us yet.",
-      "The better we build, the further we can reach.",
+      "We build for teams doing real social and environmental work: agritech, biotech, restoration, the science that actually moves the needle.",
+      "The hard part is protecting the IP and turning lab and field data into decisions. That is what we build, properly, for people building something that matters.",
+      "The better we build, the further the impact reaches.",
     ],
     tagline: "We are not neutral about what we build",
   },
@@ -123,7 +123,7 @@ export const enClosingSectionsContent: Pick<
       booking:
         "Perfect. We can set up a 15-minute project chat with Paul. Before that, what are you trying to build and what is the main blocker?",
       story:
-        "We are a small family team in Colombia. Direct work, no handoffs, practical systems. What part do you want to understand better: our process, projects, or fit?",
+        "Paul is a technical founder who has shipped products to 70+ countries and built CHAK Brain solo. Small senior team, direct work, no handoffs. What do you want to understand: the process, the projects, or fit?",
       service:
         "You are looking at {service}. Good place to start. What is the real bottleneck, and what outcome do you need in the next few weeks?",
       partnership:
@@ -147,6 +147,8 @@ export const enClosingSectionsContent: Pick<
     whatsappPlaceholder: "+1 555 123 4567",
     projectTypeLabel: "What type of project do you have in mind?",
     projectTypes: [
+      "Company Brain / protected knowledge layer",
+      "Agritech data platform",
       "Workflow optimization",
       "Chatbot / AI Assistant",
       "Decision dashboard",
@@ -169,11 +171,11 @@ export const enClosingSectionsContent: Pick<
     welcomeLine2: "Cultivo AI Automation Suite v2.5.0",
     script: [
       { text: "Starting discovery...", type: "command", delay: 800 },
-      { text: "Mapping your workflow...", type: "info", delay: 600 },
-      { text: "Finding friction points...", type: "info", delay: 700 },
-      { text: "Designing a simple version one...", type: "ai", delay: 700 },
-      { text: "Building the dashboard...", type: "command", delay: 700 },
-      { text: "Creating a living knowledge base...", type: "info", delay: 700 },
+      { text: "Mapping your protocols...", type: "info", delay: 600 },
+      { text: "Isolating the IP layer...", type: "info", delay: 700 },
+      { text: "Designing role-gated access...", type: "ai", delay: 700 },
+      { text: "Structuring lab and field data...", type: "command", delay: 700 },
+      { text: "Building the knowledge layer...", type: "info", delay: 700 },
       { text: "Shipping and testing...", type: "success", delay: 700 },
       { text: "Measuring results...", type: "event", delay: 700 },
       { text: "Iterating with your team...", type: "success", delay: 2500 },

@@ -553,7 +553,7 @@ export function AIChatWidget({
     try {
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-      const response = await fetch("/api/chat/gemini", {
+      const response = await fetch("/api/chat/openrouter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -620,7 +620,7 @@ export function AIChatWidget({
       // Log assistant response with latency
       const latencyMs = Date.now() - startTime;
       logMessage("model", responseText, {
-        modelUsed: "gemini-2.5-flash",
+        modelUsed: process.env.NEXT_PUBLIC_CHAT_MODEL || "openrouter",
         latencyMs,
       });
     } catch (error) {

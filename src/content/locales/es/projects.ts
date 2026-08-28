@@ -5,36 +5,36 @@ projectsTitle: "Lo que Hemos Construido",
 projectsSubtitle: "Proyectos seleccionados de nuestro trabajo actual",
 projects: [
   {
-    title: "Chak: De SaaS a Cerebro",
-    desc: "V1: plataforma SaaS completa con constructor de protocolos, gestión de proyectos e IOT. V2: Chak Brain, un sistema conversacional con RAG que cubre todo el equipo.",
+    title: "CHAK FoodTech: La IP de los Protocolos, Protegida en la Ejecución",
+    desc: "Construimos la capa digital de una plataforma de producción agri-biotech. Los científicos crean el protocolo; CHAK Brain guía paso a paso a quien lo ejecuta, sin exponer nunca el protocolo completo. La IP se queda en el sistema.",
     fullDesc:
-      "Chak trabaja con vida. Protocolos de laboratorio, cultivos, proyectos con impacto real en salud y naturaleza. Chak v1 fue una plataforma operativa completa: constructor de protocolos, gestión de proyectos e integración IOT construida junto a la Universidad de Envigado. Chak v2 es Chak Brain: un sistema conversacional con RAG que cubre todo el equipo, desde operaciones y protocolos hasta comercial y prospectos. La evolución de SaaS complejo a cerebro conversacional es el aprendizaje real.",
-    lessons: "Agregar funciones resuelve el problema equivocado. La pregunta correcta: ¿puede el equipo acceder a lo que sabe la empresa en una sola conversación?",
+      "CHAK FoodTech convierte un objetivo biológico en un proceso de producción vegetal controlado, medible y reproducible. Nosotros construimos la capa digital, y funciona como un solo loop. Los científicos y líderes de laboratorio crean el protocolo en el constructor: cada paso, parámetro y secuencia. Ese protocolo completo es la IP. Cuando llega el momento de ejecutarlo, CHAK Brain guía a quien hace el trabajo paso a paso: qué hacer ahora, los parámetros, la frecuencia, la asepsia, y captura sus observaciones contra ese paso. El operador ejecuta el protocolo sin tener nunca el documento completo. El acceso es por rol: el técnico de laboratorio es guiado por los pasos, el equipo comercial ve clientes, el director ve todo. El protocolo completo y los datos acumulados se quedan en el sistema, no en las manos del operador, no en WhatsApp, no saliendo por la puerta.",
+    lessons: "Quien ejecuta un protocolo no necesita el protocolo completo. Necesita el paso actual. Creación y ejecución son un solo loop, y la receta completa, la IP real, nunca tiene que salir del sistema.",
     status: "Activo",
     image: "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
     images: [
       "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
     ],
     url: "https://chak-foodtech.com",
-    tags: ["IA", "RAG", "SaaS"],
+    tags: ["Agri-biotech", "IP de Protocolos", "RAG"],
     modal: {
       whatItMeans:
-        "Dos capítulos, un aprendizaje clave: cuando dejamos de agregar funciones y empezamos a construir un cerebro, todo se simplificó.",
+        "Un solo loop sobre una operación agri-biotech real. Los científicos crean los protocolos en el constructor; quienes ejecutan son guiados paso a paso y sus observaciones regresan al sistema. Todo limitado a cada rol, y el protocolo completo nunca sale del sistema.",
       whyItMatters:
-        "Chak v1 demostró que los sistemas complejos tienen un techo. Chak Brain demostró que un equipo puede acceder a todo lo que sabe su empresa con una sola conversación. Ese es el salto real.",
+        "En la producción basada en ciencia, el protocolo es la IP. Si entregas la receta completa a todos los que la ejecutan, se filtra entre roles y se va por la puerta. CHAK Brain guía la ejecución paso a paso, así el operador recibe exactamente lo que necesita para hacer el trabajo y nunca el protocolo completo. La IP se queda estructurada, con acceso por rol y en manos de la empresa.",
       whatsIncluded: [
-        "V1: constructor de protocolos, gestión de proyectos e IOT con Universidad de Envigado",
-        "V2: sistema conversacional con RAG para operaciones, protocolos, comercial y prospectos",
-        "Agentes de fondo que optimizan el conocimiento y aprenden con el uso",
-        "Acceso conversacional a toda la base de conocimiento del equipo",
+        "Constructor donde los científicos y líderes de laboratorio crean el protocolo completo: pasos, parámetros, secuencia",
+        "Guía de ejecución paso a paso: el operador ve el paso actual, sus parámetros y frecuencia, nada más",
+        "Observaciones capturadas contra cada paso a medida que se hace el trabajo",
+        "Acceso por rol, para que el protocolo completo y los datos se queden protegidos en el sistema",
       ],
       idealFit: [
-        "Equipos con procesos documentados que nadie puede consultar rápido",
-        "Negocios cansados de buscar en archivos dispersos",
-        "Organizaciones que quieren IA que aprende con ellos, no una herramienta estática",
+        "Laboratorios y equipos agri-biotech cuya IP de protocolos es el activo central",
+        "Operaciones que necesitan que el personal de campo o laboratorio ejecute protocolos con precisión sin entregar la receta completa",
+        "Equipos que necesitan que el know-how y los datos se queden en la empresa cuando cambian las personas",
       ],
       typicalOutcome:
-        "El equipo deja de buscar, deja de preguntar y empieza a actuar con lo que ya sabe la empresa.",
+        "Los protocolos se ejecutan con consistencia en el terreno, las observaciones regresan estructuradas, y la receta completa, la IP real, se queda dentro de la empresa en lugar del teléfono de alguien.",
     },
   },
   {
