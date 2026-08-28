@@ -33,21 +33,29 @@ async function detectServerLocale(): Promise<Locale> {
   const headersList = await headers();
   const acceptLanguage = headersList.get("accept-language") || "";
 
-  // Parse Accept-Language header (e.g., "es-CO,es;q=0.9,en;q=0.8")
-  const languages = acceptLanguage
+  // Accept-Language is a RANKED list (e.g., "en-GB,en;q=0.9,es;q=0.8").
+  // We must honor the q-weights and pick the highest-priority language.
+  // The old code returned "es" if ANY entry started with "es", so an English
+  // browser that merely listed Spanish lower down was wrongly served Spanish.
+  const ranked = acceptLanguage
     .split(",")
-    .map((lang: string) => lang.split(";")[0]?.trim().toLowerCase())
-    .filter((lang): lang is string => Boolean(lang));
+    .map((part) => {
+      const [tag, ...params] = part.trim().split(";");
+      const qParam = params.find((p) => p.trim().startsWith("q="));
+      const parsedQ = qParam ? Number.parseFloat(qParam.trim().slice(2)) : 1;
+      return {
+        tag: tag?.trim().toLowerCase() ?? "",
+        q: Number.isNaN(parsedQ) ? 0 : parsedQ,
+      };
+    })
+    .filter((entry) => entry.tag.length > 0)
+    .sort((a, b) => b.q - a.q);
 
-  // Check for Spanish locales
-  for (const lang of languages) {
-    if (lang.startsWith("es")) {
-      return "es";
-    }
-  }
+  const topLanguage = ranked[0]?.tag ?? "";
 
-  // Default to English
-  return "en";
+  // Spanish only if the user's highest-priority language is Spanish.
+  // Default to English (also covers a missing/empty header).
+  return topLanguage.startsWith("es") ? "es" : "en";
 }
 
 export const metadata: Metadata = {

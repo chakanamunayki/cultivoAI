@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useMemo, useState } from "react";
+import { createContext, useCallback, useEffect, useMemo, useState } from "react";
 import { en } from "@/content/en";
 import { es } from "@/content/es";
 import type { Locale, SiteContent } from "@/content/types";
@@ -25,6 +25,16 @@ function storeLocale(locale: Locale): void {
   }
 }
 
+function getStoredLocale(): Locale | null {
+  try {
+    const value = localStorage.getItem(STORAGE_KEY);
+    return value === "es" || value === "en" ? value : null;
+  } catch {
+    // localStorage might be unavailable
+    return null;
+  }
+}
+
 const contentMap: Record<Locale, SiteContent> = {
   es,
   en,
@@ -36,10 +46,27 @@ interface LanguageProviderProps {
 }
 
 export function LanguageProvider({ children, defaultLocale }: LanguageProviderProps) {
-  // CRITICAL: Initialize with server-detected locale (passed via defaultLocale prop)
-  // Server detects from Accept-Language header, preventing hydration mismatch
-  // DO NOT check localStorage on mount - causes hydration errors and prevents hot reload
+  // CRITICAL: Initialize with server-detected locale (passed via defaultLocale prop).
+  // The server detects from the Accept-Language header, so SSR and the first client
+  // render agree. NEVER read localStorage in this initializer: it runs during SSR-
+  // hydration and would cause a mismatch. Reading it in a post-hydration effect
+  // (below) is safe and is how a saved user choice is restored.
   const [locale, setLocaleState] = useState<Locale>(defaultLocale ?? SSR_DEFAULT_LOCALE);
+
+  // After hydration, an explicit stored choice wins over browser detection.
+  // If the user never toggled, there is nothing stored and browser detection stands.
+  useEffect(() => {
+    const stored = getStoredLocale();
+    if (stored && stored !== locale) {
+      setLocaleState(stored);
+      if (typeof document !== "undefined") {
+        document.documentElement.lang = stored;
+      }
+    }
+    // Run once on mount. `locale` is intentionally excluded: this restores a saved
+    // choice at startup only, it must not re-fire on later toggles.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const setLocale = useCallback((newLocale: Locale) => {
     setLocaleState(newLocale);
