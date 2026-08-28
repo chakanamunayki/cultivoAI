@@ -6,7 +6,7 @@ export const esPartnershipsContent: Pick<
 > = {
   partnershipsTitle: "Formas Flexibles de Trabajar",
   partnershipsSubtitle:
-    "No todos los proyectos valiosos vienen con gran presupuesto. Si el impacto es real, podemos empezar lean y crecer desde ahí.",
+    "Alcance claro, entrega senior, con un precio justo. Un cupo a tarifa de impacto para equipos con propósito cuando encaja.",
   partnerships: [
     {
       name: "Proyecto Estándar",

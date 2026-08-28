@@ -6,6 +6,41 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
     "We don't sell hype. We build practical systems that make it easier to execute well. Not sure where to start? Fifteen minutes is enough.",
   services: [
     {
+      icon: "Brain",
+      title: "Company Brain: Protected Knowledge Layer",
+      eng: "Company Brain: Protected Knowledge Layer",
+      description: "The knowledge layer for your scientific and operational IP. Protocols, processes, and field data become one structured, queryable brain, with the knowledge layer isolated from the execution layer so your IP stays protected and role-gated. Ready for IoT, satellite, lab and field data, MRV and carbon.",
+      details: [
+        "Protect your protocol IP. Your know-how becomes a structured, versioned knowledge layer, not scattered PDFs and people's heads.",
+        "The knowledge layer is isolated from the execution layer. What the system knows is scoped per tenant, project, and role, so nothing leaks across.",
+        "Role-gated access: the lab technician sees protocols, the commercial team sees clients and proposals, the director sees everything. Nobody sees what isn't theirs.",
+        "Structured scientific evidence, built to scale from 400 documents to tens of thousands, and ready to ingest IoT, satellite, lab and field data for MRV and carbon.",
+        "Privacy by design: runs locally when it needs to. Your documents don't leave your system during indexing.",
+      ],
+      imageUrl: "/landing/photos/services/ai-assistants.png",
+      animationKey: "company-brain",
+      modal: {
+        whatItMeans:
+          "A protected knowledge layer built on your real scientific and operational IP: protocols, processes, project history, commercial data. Your team asks in plain language and the brain answers from what your business actually knows, scoped to their role.",
+        whyItMatters:
+          "Your protocol IP is your moat, and today it is trapped in PDFs, in key people's heads, in WhatsApp. When someone is unavailable it disappears, when someone new joins they start from zero, and without isolation it leaks across roles and clients. Chak Brain, the system we built for Chak Foodtech, solved exactly this and keeps learning every day the team uses it.",
+        whatsIncluded: [
+          "Ingestion of your real IP: protocols, processes, commercial, projects (PDF, Word, Excel)",
+          "Knowledge layer isolated from the execution layer, scoped per tenant, project, and role",
+          "Role-gated access: each person reaches their domain, nothing more",
+          "Ready for IoT, satellite, lab and field data, MRV and carbon",
+          "Privacy by design: runs locally, with no cloud dependency during indexing",
+        ],
+        idealFit: [
+          "Labs and agritech teams whose protocol IP is the core asset",
+          "Organizations where each role needs different scientific and commercial context without crossing lines",
+          "Teams that need their know-how to stay in the company when people leave",
+        ],
+        typicalOutcome:
+          "Your protocol IP is protected, structured, and queryable. The team stops digging through files and waiting on the one person who knows. Answers arrive in seconds, scoped to each role, and the know-how stays when people leave.",
+      },
+    },
+    {
       icon: "Zap",
       title: "Workflow Optimization",
       eng: "Workflow Optimization",
@@ -35,41 +70,6 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         ],
         typicalOutcome:
           "Fewer manual tasks, fewer things falling through the cracks, and more consistency week to week.",
-      },
-    },
-    {
-      icon: "Brain",
-      title: "Company Brain",
-      eng: "Company Brain",
-      description: "Everything your company knows, available in seconds. Your team talks to the brain the way they talk in WhatsApp: no training, no login, no forms. And when someone leaves the team, the knowledge stays.",
-      details: [
-        "A brain built on your real documents: protocols, processes, commercial, projects. Built to scale from 400 documents to tens of thousands.",
-        "Role-gated access: the lab technician sees protocols, the sales manager sees clients and proposals, the director sees everything. Nobody sees what isn't theirs.",
-        "Works where your team already works: Telegram, web, or API. No new app, no change to how they operate.",
-        "Privacy by design: the brain can run locally. Your documents don't leave your system during indexing.",
-        "It grows with use. Every conversation, every document added makes the brain more useful. It is a company asset, not a tool you configure once.",
-      ],
-      imageUrl: "/landing/photos/services/ai-assistants.png",
-      animationKey: "company-brain",
-      modal: {
-        whatItMeans:
-          "A brain built on your company's real knowledge: protocols, processes, project history, commercial data. Your team asks questions in plain language and the brain answers from what your business actually knows, not what ChatGPT knows.",
-        whyItMatters:
-          "Your company's knowledge already exists. It is trapped in PDFs, in key people's heads, in WhatsApp conversations. When someone is unavailable, that information disappears. When someone new joins, they start from zero. Chak Brain, the system we built for Chak Foodtech, solved exactly this and keeps learning every day the team uses it.",
-        whatsIncluded: [
-          "Ingestion of your real documents: protocols, processes, commercial, projects (PDF, Word, Excel)",
-          "Role-gated access: each team member accesses their domain, nothing more",
-          "Delivery channel: Telegram, web, or API, wherever your team already works",
-          "Privacy by design: can run locally, with no cloud dependency during indexing",
-          "Grows with use: background agents continuously organise and optimise the knowledge",
-        ],
-        idealFit: [
-          "Teams where critical knowledge lives in people, not systems",
-          "Businesses where each role needs to see different context without accessing what isn't theirs",
-          "Organisations that want knowledge to stay in the company when people leave",
-        ],
-        typicalOutcome:
-          "The team stops searching through files and waiting for the right person to be available. Answers arrive in seconds from the business's real knowledge. And when someone leaves the team, what they learned stays.",
       },
     },
     {

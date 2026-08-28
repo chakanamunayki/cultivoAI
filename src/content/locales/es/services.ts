@@ -6,6 +6,41 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
     "No vendemos humo. Construimos sistemas prácticos que hacen más fácil ejecutar buen trabajo. ¿No sabes por dónde empezar? Una llamada de 15 minutos es suficiente.",
   services: [
     {
+      icon: "Brain",
+      title: "Cerebro de Empresa: Capa de Conocimiento Protegida",
+      eng: "Company Brain: Protected Knowledge Layer",
+      description: "La capa de conocimiento para tu IP científica y operativa. Protocolos, procesos y datos de campo se convierten en un solo cerebro estructurado y consultable, con la capa de conocimiento aislada de la capa de ejecución para que tu IP quede protegida y con acceso por rol. Listo para IoT, satélite, datos de laboratorio y campo, MRV y carbono.",
+      details: [
+        "Protege la IP de tus protocolos. Tu know-how se vuelve una capa de conocimiento estructurada y versionada, no PDFs sueltos ni la cabeza de las personas.",
+        "La capa de conocimiento está aislada de la capa de ejecución. Lo que el sistema sabe se limita por tenant, proyecto y rol, para que nada se filtre entre ellos.",
+        "Acceso por rol: el técnico de laboratorio ve protocolos, el equipo comercial ve clientes y propuestas, el director ve todo. Nadie ve lo que no le corresponde.",
+        "Evidencia científica estructurada, construida para escalar de 400 documentos a decenas de miles, y lista para ingerir datos de IoT, satélite, laboratorio y campo para MRV y carbono.",
+        "Privacidad por diseño: corre localmente cuando hace falta. Ningún documento tuyo sale de tu sistema al indexar.",
+      ],
+      imageUrl: "/landing/photos/services/ai-assistants.png",
+      animationKey: "company-brain",
+      modal: {
+        whatItMeans:
+          "Una capa de conocimiento protegida construida sobre tu IP científica y operativa real: protocolos, procesos, historial de proyectos, datos comerciales. Tu equipo pregunta en lenguaje natural y el cerebro responde con lo que tu negocio ya sabe, limitado a su rol.",
+        whyItMatters:
+          "La IP de tus protocolos es tu ventaja, y hoy está atrapada en PDFs, en la cabeza de personas clave, en WhatsApp. Cuando alguien no está disponible se pierde, cuando llega alguien nuevo empieza desde cero, y sin aislamiento se filtra entre roles y clientes. Chak Brain, el sistema que construimos para Chak Foodtech, resolvió exactamente esto y sigue aprendiendo cada día que el equipo lo usa.",
+        whatsIncluded: [
+          "Ingesta de tu IP real: protocolos, procesos, comercial, proyectos (PDF, Word, Excel)",
+          "Capa de conocimiento aislada de la capa de ejecución, limitada por tenant, proyecto y rol",
+          "Acceso por rol: cada persona llega a su dominio, nada más",
+          "Listo para IoT, satélite, datos de laboratorio y campo, MRV y carbono",
+          "Privacidad por diseño: corre localmente, sin dependencia de la nube para indexar",
+        ],
+        idealFit: [
+          "Laboratorios y equipos agritech cuya IP de protocolos es el activo central",
+          "Organizaciones donde cada rol necesita contexto científico y comercial distinto sin cruzar líneas",
+          "Equipos que necesitan que su know-how se quede en la empresa cuando las personas se van",
+        ],
+        typicalOutcome:
+          "Tu IP de protocolos queda protegida, estructurada y consultable. El equipo deja de buscar en archivos y de esperar a la única persona que sabe. Las respuestas llegan en segundos, limitadas a cada rol, y el know-how se queda cuando las personas se van.",
+      },
+    },
+    {
       icon: "Zap",
       title: "Optimización de Flujos",
       eng: "Workflow Optimization",
@@ -36,41 +71,6 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         ],
         typicalOutcome:
           "Menos trabajo manual, menos cosas que se caen y más consistencia semana a semana.",
-      },
-    },
-    {
-      icon: "Brain",
-      title: "Cerebro de Empresa",
-      eng: "Company Brain",
-      description: "Todo lo que sabe tu empresa, disponible en segundos. Tu equipo habla con el cerebro como habla en WhatsApp: sin capacitación, sin login, sin formularios. Y cuando alguien sale del equipo, el conocimiento se queda.",
-      details: [
-        "Un cerebro construido sobre tus documentos reales: protocolos, procesos, comercial, proyectos. Desde 400 documentos hasta decenas de miles.",
-        "Acceso por rol: el técnico ve protocolos, el comercial ve clientes y propuestas, el director ve todo. Sin que nadie vea lo que no le corresponde.",
-        "Funciona donde el equipo ya trabaja: Telegram, web o API. Sin app nueva, sin cambiar cómo trabajan.",
-        "Privacidad por diseño: el cerebro puede correr localmente. Ningún documento tuyo sale de tu sistema al indexar.",
-        "Crece con el uso. Cada conversación, cada documento ingresado hace el cerebro más útil. Es un activo de la empresa, no una herramienta que se configura una vez.",
-      ],
-      imageUrl: "/landing/photos/services/ai-assistants.png",
-      animationKey: "company-brain",
-      modal: {
-        whatItMeans:
-          "Un cerebro construido sobre el conocimiento real de tu empresa: protocolos, procesos, historial de proyectos, datos comerciales. Tu equipo hace preguntas en lenguaje natural y el cerebro responde con lo que tu negocio ya sabe, no con lo que sabe ChatGPT.",
-        whyItMatters:
-          "El conocimiento de tu empresa existe. Está atrapado en PDFs, en la cabeza de personas clave, en conversaciones de WhatsApp. Cuando alguien no está disponible, esa información se pierde. Cuando llega alguien nuevo, empieza desde cero. Chak Brain, el sistema que construimos para Chak Foodtech, resolvió exactamente esto y sigue aprendiendo cada día que el equipo lo usa.",
-        whatsIncluded: [
-          "Ingesta de tus documentos reales: protocolos, procesos, comercial, proyectos (PDF, Word, Excel)",
-          "Acceso por rol: cada miembro accede a su dominio, nada más ni nada menos",
-          "Canal de entrega: Telegram, web o API, donde el equipo ya trabaja",
-          "Privacidad por diseño: puede correr localmente, sin dependencia de servicios en la nube para indexar",
-          "Crece con el uso: agentes de fondo organizan y optimizan el conocimiento",
-        ],
-        idealFit: [
-          "Equipos donde el conocimiento crítico vive en personas, no en sistemas",
-          "Negocios donde cada rol necesita ver contexto diferente sin acceder a lo que no le corresponde",
-          "Organizaciones que quieren que el conocimiento se quede en la empresa cuando las personas se van",
-        ],
-        typicalOutcome:
-          "El equipo deja de buscar en archivos y de esperar a que la persona correcta esté disponible. Las respuestas llegan en segundos desde el conocimiento real del negocio. Y cuando alguien sale del equipo, lo que aprendió se queda.",
       },
     },
     {

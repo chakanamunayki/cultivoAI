@@ -6,7 +6,7 @@ export const enPartnershipsContent: Pick<
 > = {
   partnershipsTitle: "Flexible Ways to Work Together",
   partnershipsSubtitle:
-    "Not every valuable project comes with a big budget. If the impact is real, we can start lean and grow from there.",
+    "Clear scope, senior delivery, priced properly. One impact-rate slot for mission-led teams when it's the right fit.",
   partnerships: [
     {
       name: "Standard Project",

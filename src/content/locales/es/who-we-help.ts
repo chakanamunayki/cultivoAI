@@ -191,7 +191,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
         ],
       },
     ],
-    cta: "Hacemos espacio para equipos de alto impacto, incluso con presupuestos ajustados.",
+    cta: "Tomamos un número limitado de proyectos y vamos a fondo. Cuéntanos qué estás construyendo.",
     ctaButton: "Cuéntanos sobre tu proyecto",
   },
 };
