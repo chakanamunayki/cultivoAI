@@ -5,36 +5,36 @@ projectsTitle: "What We've Built",
 projectsSubtitle: "Selected projects from our current work",
 projects: [
   {
-    title: "Chak: From SaaS to Brain",
-    desc: "V1: full SaaS platform with protocol builder, project management, and IoT. V2: Chak Brain, a RAG-backed conversational system covering the entire team.",
+    title: "CHAK FoodTech: From SaaS to Protected Brain",
+    desc: "We built CHAK Brain, the knowledge layer for an agri-biotech production platform. Role-gated access to scientific protocols and experiment data, isolated from the execution layer so the IP stays with the company.",
     fullDesc:
-      "Chak works with life. Lab protocols, cultivations, projects with real impact on health and nature. Chak v1 was a full operational platform: protocol builder, project management, and IoT integration built alongside Universidad de Envigado. Chak v2 is Chak Brain, a RAG-backed system covering the entire team across operations, lab protocols, commercial, prospects, and projects. The evolution from complex SaaS to conversational brain is the real insight.",
-    lessons: "Adding features solves the wrong problem. The right question: can the team access what the business knows in a single conversation?",
+      "CHAK FoodTech turns a biological objective into a controlled, measurable, reproducible plant-production process. We built the digital layer. V1 was the execution platform: a protocol builder, project management, and IoT, built alongside Universidad de Envigado. V2 is CHAK Brain, the knowledge layer over the operation's real documents: protocols, lab observations, experiments, commercial. Access is role-gated, the lab technician sees protocols, the commercial team sees clients, the director sees everything. The knowledge layer is isolated from the execution layer, so the infrastructure, the supplier, even the crop can change, but the protocols, data, and accumulated know-how stay protected inside the company.",
+    lessons: "Infrastructure executes. The protocols, the experiment data, and the accumulated know-how are the real asset, and they belong to the company, not to whoever runs the hardware.",
     status: "Active",
     image: "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
     images: [
       "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
     ],
     url: "https://chak-foodtech.com",
-    tags: ["AI", "RAG", "SaaS"],
+    tags: ["Agri-biotech", "RAG", "Protocol IP"],
     modal: {
       whatItMeans:
-        "Two chapters, one key insight: when we stopped adding features and started building a brain, everything simplified.",
+        "A protected knowledge layer over a real agri-biotech operation: protocols, observations, experiments, and commercial data, queryable in plain language and scoped to each role.",
       whyItMatters:
-        "Chak v1 proved that complex systems hit a ceiling. Chak Brain proved a team can access everything the business knows in a single conversation. That is the real leap.",
+        "In science-driven production, the protocol IP is the moat. Left in PDFs, WhatsApp, and people's heads, it leaks across roles and walks out the door. CHAK Brain keeps it structured, role-gated, and owned by the company.",
       whatsIncluded: [
-        "V1: protocol builder, project management, and IoT with Universidad de Envigado",
-        "V2: RAG-backed conversational system for operations, protocols, commercial, and prospects",
-        "Background agents that optimize the knowledge base and learn with use",
-        "Conversational access to the team's full knowledge layer",
+        "V1 execution platform: protocol builder, project management, and IoT, with Universidad de Envigado",
+        "V2 CHAK Brain: knowledge layer over protocols, observations, experiments, and commercial",
+        "Role-gated access: each role reaches its domain, nothing more",
+        "Knowledge layer isolated from the execution layer, so the IP stays with the company",
       ],
       idealFit: [
-        "Teams with documented processes that no one can query quickly",
-        "Businesses tired of searching across scattered files and folders",
-        "Organizations that want AI that grows with them, not a static tool",
+        "Labs and agri-biotech teams whose protocol IP is the core asset",
+        "Operations where each role needs different scientific and commercial context",
+        "Teams that need their know-how to stay when people or suppliers change",
       ],
       typicalOutcome:
-        "The team stops searching, stops asking around, and starts acting on what the business already knows.",
+        "The protocol IP is protected, structured, and queryable. The team acts on what the operation already knows, and the know-how stays when people leave.",
     },
   },
   {

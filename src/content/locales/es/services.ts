@@ -23,7 +23,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         whatItMeans:
           "Una capa de conocimiento protegida construida sobre tu IP científica y operativa real: protocolos, procesos, historial de proyectos, datos comerciales. Tu equipo pregunta en lenguaje natural y el cerebro responde con lo que tu negocio ya sabe, limitado a su rol.",
         whyItMatters:
-          "La IP de tus protocolos es tu ventaja, y hoy está atrapada en PDFs, en la cabeza de personas clave, en WhatsApp. Cuando alguien no está disponible se pierde, cuando llega alguien nuevo empieza desde cero, y sin aislamiento se filtra entre roles y clientes. Chak Brain, el sistema que construimos para Chak Foodtech, resolvió exactamente esto y sigue aprendiendo cada día que el equipo lo usa.",
+          "La IP de tus protocolos es tu ventaja, y hoy está atrapada en PDFs, en la cabeza de personas clave, en WhatsApp. Cuando alguien no está disponible se pierde, cuando llega alguien nuevo empieza desde cero, y sin aislamiento se filtra entre roles y clientes. CHAK Brain, el sistema que construimos para CHAK FoodTech, resolvió exactamente esto y sigue aprendiendo cada día que el equipo lo usa.",
         whatsIncluded: [
           "Ingesta de tu IP real: protocolos, procesos, comercial, proyectos (PDF, Word, Excel)",
           "Capa de conocimiento aislada de la capa de ejecución, limitada por tenant, proyecto y rol",
@@ -104,42 +104,6 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         ],
         typicalOutcome:
           "Respuestas más rápidas, menos conversaciones repetitivas y un camino más claro hacia agenda o seguimiento.",
-      },
-    },
-    {
-      icon: "CalendarCheck",
-      title: "Sistemas para Retiros",
-      eng: "Retreat Ops Systems",
-      description:
-        "Un sistema operativo completo para retiros: desde la primera reserva hasta el seguimiento final, con flujos claros para el equipo y una experiencia fluida para los huéspedes.",
-      details: [
-        "Reservas, pagos, facturación",
-        "Mensajería pre, durante, post retiro",
-        "Itinerarios, checklists, roles",
-        "Feedback, NPS, seguimiento",
-        "Dashboard de ocupación, ingresos, satisfacción",
-      ],
-      imageUrl: "/landing/photos/services/health-wellness.jpg",
-      animationKey: "retreat-ops",
-      modal: {
-        whatItMeans:
-          "Un sistema de operación para retiros. Reservas, pagos, mensajería, itinerarios, checklists, feedback, seguimiento, dashboards.",
-        whyItMatters:
-          "Menos caos operativo. Mejor experiencia para huéspedes. El equipo recupera foco.",
-        whatsIncluded: [
-          "Reservas, pagos, facturación",
-          "Mensajería pre, durante, post retiro",
-          "Itinerarios, checklists, roles",
-          "Feedback, NPS, seguimiento",
-          "Dashboard de ocupación, ingresos, satisfacción",
-        ],
-        idealFit: [
-          "Retiros con operación repetible",
-          "Quieres menos mensajes sueltos, más claridad",
-          "Necesitas seguimiento sin fricción para huéspedes",
-        ],
-        typicalOutcome:
-          "Una operación más clara. Menos caos. Seguimiento consistente. Mejor experiencia.",
       },
     },
     {
@@ -273,6 +237,42 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         ],
         typicalOutcome:
           "Un plan más simple, menos vueltas incorrectas y una primera versión que sí puedes lanzar y aprender.",
+      },
+    },
+    {
+      icon: "CalendarCheck",
+      title: "Sistemas para Retiros",
+      eng: "Retreat Ops Systems",
+      description:
+        "Un sistema operativo completo para retiros: desde la primera reserva hasta el seguimiento final, con flujos claros para el equipo y una experiencia fluida para los huéspedes.",
+      details: [
+        "Reservas, pagos, facturación",
+        "Mensajería pre, durante, post retiro",
+        "Itinerarios, checklists, roles",
+        "Feedback, NPS, seguimiento",
+        "Dashboard de ocupación, ingresos, satisfacción",
+      ],
+      imageUrl: "/landing/photos/services/health-wellness.jpg",
+      animationKey: "retreat-ops",
+      modal: {
+        whatItMeans:
+          "Un sistema de operación para retiros. Reservas, pagos, mensajería, itinerarios, checklists, feedback, seguimiento, dashboards.",
+        whyItMatters:
+          "Menos caos operativo. Mejor experiencia para huéspedes. El equipo recupera foco.",
+        whatsIncluded: [
+          "Reservas, pagos, facturación",
+          "Mensajería pre, durante, post retiro",
+          "Itinerarios, checklists, roles",
+          "Feedback, NPS, seguimiento",
+          "Dashboard de ocupación, ingresos, satisfacción",
+        ],
+        idealFit: [
+          "Retiros con operación repetible",
+          "Quieres menos mensajes sueltos, más claridad",
+          "Necesitas seguimiento sin fricción para huéspedes",
+        ],
+        typicalOutcome:
+          "Una operación más clara. Menos caos. Seguimiento consistente. Mejor experiencia.",
       },
     },
   ],

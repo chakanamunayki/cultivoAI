@@ -23,7 +23,7 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         whatItMeans:
           "A protected knowledge layer built on your real scientific and operational IP: protocols, processes, project history, commercial data. Your team asks in plain language and the brain answers from what your business actually knows, scoped to their role.",
         whyItMatters:
-          "Your protocol IP is your moat, and today it is trapped in PDFs, in key people's heads, in WhatsApp. When someone is unavailable it disappears, when someone new joins they start from zero, and without isolation it leaks across roles and clients. Chak Brain, the system we built for Chak Foodtech, solved exactly this and keeps learning every day the team uses it.",
+          "Your protocol IP is your moat, and today it is trapped in PDFs, in key people's heads, in WhatsApp. When someone is unavailable it disappears, when someone new joins they start from zero, and without isolation it leaks across roles and clients. CHAK Brain, the system we built for CHAK FoodTech, solved exactly this and keeps learning every day the team uses it.",
         whatsIncluded: [
           "Ingestion of your real IP: protocols, processes, commercial, projects (PDF, Word, Excel)",
           "Knowledge layer isolated from the execution layer, scoped per tenant, project, and role",
@@ -102,38 +102,6 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         ],
         typicalOutcome:
           "Faster response times, fewer repetitive conversations, and a cleaner path to booking or follow-up.",
-      },
-    },
-    {
-      icon: "CalendarCheck",
-      title: "Retreat Ops Systems",
-      eng: "Retreat Ops Systems",
-      description: "A complete operations system for retreats: from first booking to final follow-up, with clear workflows for your team and a smooth experience for guests.",
-      details: [
-        "Bookings, payments, invoicing.",
-        "Guest messaging before, during, after.",
-        "Itineraries, checklists, feedback, follow-up.",
-        "Dashboards for occupancy, revenue, satisfaction.",
-      ],
-      imageUrl: "/landing/photos/services/health-wellness.jpg",
-      animationKey: "retreat-ops",
-      modal: {
-        whatItMeans:
-          "A retreat ops system covering bookings, payments, messaging, itineraries, checklists, feedback, follow-up, dashboards.",
-        whyItMatters: "Less operational chaos. Better guest experience. Fewer dropped details.",
-        whatsIncluded: [
-          "Intake flow design and booking system setup",
-          "Pre-arrival and post-retreat messaging workflows",
-          "Itinerary and checklist templates your team can run independently",
-          "Feedback and satisfaction capture with follow-up routing",
-          "Simple dashboard for occupancy, revenue, and guest satisfaction",
-        ],
-        idealFit: [
-          "Retreat teams running repeatable programs",
-          "You want clarity across booking, prep, delivery, follow-up",
-          "You want a calmer ops rhythm",
-        ],
-        typicalOutcome: "Smoother operations. Clearer follow-through. Better guest experience.",
       },
     },
     {
@@ -266,6 +234,38 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         ],
         typicalOutcome:
           "A simpler plan, fewer wrong turns, and a version one you can actually ship and learn from.",
+      },
+    },
+    {
+      icon: "CalendarCheck",
+      title: "Retreat Ops Systems",
+      eng: "Retreat Ops Systems",
+      description: "A complete operations system for retreats: from first booking to final follow-up, with clear workflows for your team and a smooth experience for guests.",
+      details: [
+        "Bookings, payments, invoicing.",
+        "Guest messaging before, during, after.",
+        "Itineraries, checklists, feedback, follow-up.",
+        "Dashboards for occupancy, revenue, satisfaction.",
+      ],
+      imageUrl: "/landing/photos/services/health-wellness.jpg",
+      animationKey: "retreat-ops",
+      modal: {
+        whatItMeans:
+          "A retreat ops system covering bookings, payments, messaging, itineraries, checklists, feedback, follow-up, dashboards.",
+        whyItMatters: "Less operational chaos. Better guest experience. Fewer dropped details.",
+        whatsIncluded: [
+          "Intake flow design and booking system setup",
+          "Pre-arrival and post-retreat messaging workflows",
+          "Itinerary and checklist templates your team can run independently",
+          "Feedback and satisfaction capture with follow-up routing",
+          "Simple dashboard for occupancy, revenue, and guest satisfaction",
+        ],
+        idealFit: [
+          "Retreat teams running repeatable programs",
+          "You want clarity across booking, prep, delivery, follow-up",
+          "You want a calmer ops rhythm",
+        ],
+        typicalOutcome: "Smoother operations. Clearer follow-through. Better guest experience.",
       },
     },
   ],

@@ -5,36 +5,36 @@ projectsTitle: "Lo que Hemos Construido",
 projectsSubtitle: "Proyectos seleccionados de nuestro trabajo actual",
 projects: [
   {
-    title: "Chak: De SaaS a Cerebro",
-    desc: "V1: plataforma SaaS completa con constructor de protocolos, gestión de proyectos e IOT. V2: Chak Brain, un sistema conversacional con RAG que cubre todo el equipo.",
+    title: "CHAK FoodTech: De SaaS a Cerebro Protegido",
+    desc: "Construimos CHAK Brain, la capa de conocimiento de una plataforma de producción agri-biotech. Acceso por rol a protocolos científicos y datos de experimentos, aislado de la capa de ejecución para que la IP se quede en la empresa.",
     fullDesc:
-      "Chak trabaja con vida. Protocolos de laboratorio, cultivos, proyectos con impacto real en salud y naturaleza. Chak v1 fue una plataforma operativa completa: constructor de protocolos, gestión de proyectos e integración IOT construida junto a la Universidad de Envigado. Chak v2 es Chak Brain: un sistema conversacional con RAG que cubre todo el equipo, desde operaciones y protocolos hasta comercial y prospectos. La evolución de SaaS complejo a cerebro conversacional es el aprendizaje real.",
-    lessons: "Agregar funciones resuelve el problema equivocado. La pregunta correcta: ¿puede el equipo acceder a lo que sabe la empresa en una sola conversación?",
+      "CHAK FoodTech convierte un objetivo biológico en un proceso de producción vegetal controlado, medible y reproducible. Nosotros construimos la capa digital. V1 fue la plataforma de ejecución: constructor de protocolos, gestión de proyectos e IoT, construida junto a la Universidad de Envigado. V2 es CHAK Brain, la capa de conocimiento sobre los documentos reales de la operación: protocolos, observaciones de laboratorio, experimentos, comercial. El acceso es por rol, el técnico de laboratorio ve protocolos, el equipo comercial ve clientes, el director ve todo. La capa de conocimiento está aislada de la capa de ejecución, así la infraestructura, el proveedor, incluso el cultivo pueden cambiar, pero los protocolos, los datos y el know-how acumulado se quedan protegidos dentro de la empresa.",
+    lessons: "La infraestructura ejecuta. Los protocolos, los datos de experimentos y el know-how acumulado son el activo real, y le pertenecen a la empresa, no a quien opera el hardware.",
     status: "Activo",
     image: "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
     images: [
       "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
     ],
     url: "https://chak-foodtech.com",
-    tags: ["IA", "RAG", "SaaS"],
+    tags: ["Agri-biotech", "RAG", "IP de Protocolos"],
     modal: {
       whatItMeans:
-        "Dos capítulos, un aprendizaje clave: cuando dejamos de agregar funciones y empezamos a construir un cerebro, todo se simplificó.",
+        "Una capa de conocimiento protegida sobre una operación agri-biotech real: protocolos, observaciones, experimentos y datos comerciales, consultables en lenguaje natural y limitados a cada rol.",
       whyItMatters:
-        "Chak v1 demostró que los sistemas complejos tienen un techo. Chak Brain demostró que un equipo puede acceder a todo lo que sabe su empresa con una sola conversación. Ese es el salto real.",
+        "En la producción basada en ciencia, la IP de los protocolos es la ventaja. Atrapada en PDFs, WhatsApp y la cabeza de las personas, se filtra entre roles y se va por la puerta. CHAK Brain la mantiene estructurada, con acceso por rol y en manos de la empresa.",
       whatsIncluded: [
-        "V1: constructor de protocolos, gestión de proyectos e IOT con Universidad de Envigado",
-        "V2: sistema conversacional con RAG para operaciones, protocolos, comercial y prospectos",
-        "Agentes de fondo que optimizan el conocimiento y aprenden con el uso",
-        "Acceso conversacional a toda la base de conocimiento del equipo",
+        "V1 plataforma de ejecución: constructor de protocolos, gestión de proyectos e IoT, con Universidad de Envigado",
+        "V2 CHAK Brain: capa de conocimiento sobre protocolos, observaciones, experimentos y comercial",
+        "Acceso por rol: cada rol llega a su dominio, nada más",
+        "Capa de conocimiento aislada de la capa de ejecución, para que la IP se quede en la empresa",
       ],
       idealFit: [
-        "Equipos con procesos documentados que nadie puede consultar rápido",
-        "Negocios cansados de buscar en archivos dispersos",
-        "Organizaciones que quieren IA que aprende con ellos, no una herramienta estática",
+        "Laboratorios y equipos agri-biotech cuya IP de protocolos es el activo central",
+        "Operaciones donde cada rol necesita contexto científico y comercial distinto",
+        "Equipos que necesitan que su know-how se quede cuando cambian personas o proveedores",
       ],
       typicalOutcome:
-        "El equipo deja de buscar, deja de preguntar y empieza a actuar con lo que ya sabe la empresa.",
+        "La IP de los protocolos queda protegida, estructurada y consultable. El equipo actúa con lo que la operación ya sabe, y el know-how se queda cuando las personas se van.",
     },
   },
   {
