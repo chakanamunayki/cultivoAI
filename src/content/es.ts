@@ -18,16 +18,16 @@ export const es: SiteContent = {
   ],
 
   marquee: [
-    "IA human-first",
-    "Dashboards",
-    "Asistentes útiles",
-    "Operación de retiros",
-    "Sistemas de conocimiento vivos",
-    "Automatización",
-    "Datos privados",
-    "Offline",
+    "Agritech",
+    "Biotech",
+    "IP de protocolos protegida",
+    "Datos de laboratorio y campo",
+    "MRV y carbono",
+    "Acceso por rol",
+    "Corre en tu infraestructura",
+    "Socio técnico senior",
     "Colaboración directa",
-    "Respuesta en 24h",
+    "Colombia, para el mundo",
   ],
 
   hero: {
@@ -76,7 +76,7 @@ export const es: SiteContent = {
       },
       {
         icon: "Sprout",
-        title: "Sistemas Holísticos",
+        title: "Sistemas de Punta a Punta",
         description:
           "Pensamos de punta a punta. Software, flujos, datos, decisiones, comunicación y diseño deben funcionar juntos, no como piezas sueltas.",
       },
@@ -94,7 +94,7 @@ export const es: SiteContent = {
     title: "Cómo Ayudamos",
     subtitle: "Integración de IA práctica para negocios reales",
     intro:
-      "Trabajamos con equipos que están construyendo algo con propósito: negocios y proyectos que generan impacto positivo en las personas y en su entorno. Entendemos cómo funciona cada equipo, conectamos lo que ya existe y damos a cada persona acceso solo a lo que le corresponde. Lo que construimos depende del proyecto: automatización, IA, SEO, integraciones.",
+      "Trabajamos con equipos de agritech y biotech que generan impacto social y ambiental real. Entendemos cómo funciona la operación, conectamos lo que ya existe, protegemos la IP y damos a cada persona acceso solo a lo que le corresponde. Lo que construimos depende del proyecto: la capa de conocimiento, plataformas de datos, automatización, IA, integraciones.",
     columns: [
       {
         title: "OPTIMIZAR",

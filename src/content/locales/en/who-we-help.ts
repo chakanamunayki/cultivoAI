@@ -5,7 +5,7 @@ export const enWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
     title: "Are we the right fit?",
     idealTitle: "We're ideal for you if...",
     idealItems: [
-      "You are building in health, sustainability, or mission-led work.",
+      "You are building in agritech, biotech, or science-driven work with real impact.",
       "You want practical systems, not hype.",
       "You value clarity, design, and human communication.",
       "You want a direct relationship with the builders.",
@@ -19,46 +19,46 @@ export const enWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
     sectorsTitle: "Where we do our best work",
     sectors: [
       {
-        name: "Health and wellness",
-        description: "Health and wellness teams carry a lot. We build systems that handle the admin, communication, and follow-up so your team can focus on the work that actually matters.",
-        icon: "Heart",
-        imageUrl: "/landing/photos/sectors/health-wellness.jpg",
+        name: "Agritech and biotech",
+        description: "Science-driven production runs on protocols and data. We build the layer that protects your protocol IP, guides execution by role, and turns lab and field data into decisions.",
+        icon: "Sprout",
+        imageUrl: "/landing/photos/sectors/sustainability-regenerative.webp",
         chatButtonLabel: "Let's talk",
         detailsButtonLabel: "Learn more",
         modal: {
           whatItMeans:
-            "Systems that help health and wellness teams deliver consistent service: clear intake, clear follow-up, and a human tone.",
+            "The digital layer for a science-driven operation: authored protocols, role-gated execution, and lab and field data structured into one protected system.",
           whyItMatters:
-            "In health work, delays and inconsistency erode trust. A simple system reduces missed steps and frees your team to focus on people, not admin.",
+            "In agritech and biotech, the protocol IP is the asset. We keep it structured and role-gated, guide execution step by step without exposing the full recipe, and turn your data into decisions.",
           whatsIncluded: [
-            "Workflow design for intake, scheduling, and follow-up",
-            "Human-toned assistants for FAQ, triage, and routing",
-            "Dashboards for visibility (retention, pipeline, operations)",
-            "Knowledge systems so the team stays aligned",
+            "A protected knowledge layer over protocols, observations, and experiments",
+            "Step-by-step execution guidance without exposing the full protocol",
+            "Data pipelines ready for IoT, satellite, lab and field, MRV and carbon",
+            "Role-gated access so nobody sees what isn't theirs",
           ],
           idealFit: [
-            "Clinics, programs, and practitioners delivering recurring services",
-            "Teams with intake, scheduling, and follow-up complexity",
-            "Organizations where tone, trust, and consistency matter",
+            "Labs and agritech teams whose protocol IP is the core asset",
+            "Controlled-environment, micropropagation, and restoration operations",
+            "Teams turning lab and field data into decisions",
           ],
           typicalOutcome:
-            "Faster response, cleaner handoffs, and a calmer operation that clients can feel.",
+            "Protocols run consistently, the IP stays protected, and your data becomes decisions instead of scattered files.",
         },
         whoWeHelp: [
-          "Clinics, programs, and practitioners delivering recurring services",
-          "Teams with intake, scheduling, and follow-up complexity",
-          "Organizations where tone, trust, and consistency matter",
+          "Labs and agritech teams whose protocol IP is the core asset",
+          "Controlled-environment, micropropagation, and restoration operations",
+          "Teams turning lab and field data into decisions",
         ],
         howWeHelp: [
-          "Workflow design for intake, scheduling, and follow-up",
-          "Human-toned assistants for FAQ, triage, and routing",
-          "Dashboards for visibility (retention, pipeline, operations)",
-          "Knowledge systems so the team stays aligned",
+          "A protected knowledge layer over protocols, observations, and experiments",
+          "Step-by-step execution guidance without exposing the full protocol",
+          "Data pipelines ready for IoT, satellite, lab and field, MRV and carbon",
+          "Role-gated access so nobody sees what isn't theirs",
         ],
         exampleProjects: [
-          "Service delivery workflow + simple dashboard",
-          "Assistant that qualifies and routes requests to the right person",
-          "Website refresh connected to follow-up and next steps",
+          "Protected knowledge layer + role-gated protocol execution",
+          "Lab and field data pipeline feeding one decision dashboard",
+          "Experiment capture that turns trials into structured IP",
         ],
       },
       {
@@ -188,6 +188,49 @@ export const enWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
           "MVP + workflow system for intake and follow-up",
           "Decision dashboard for priorities and metrics",
           "Knowledge base that grows with the product",
+        ],
+      },
+      {
+        name: "Health and wellness",
+        description: "Health and wellness teams carry a lot. We build systems that handle the admin, communication, and follow-up so your team can focus on the work that actually matters.",
+        icon: "Heart",
+        imageUrl: "/landing/photos/sectors/health-wellness.jpg",
+        chatButtonLabel: "Let's talk",
+        detailsButtonLabel: "Learn more",
+        modal: {
+          whatItMeans:
+            "Systems that help health and wellness teams deliver consistent service: clear intake, clear follow-up, and a human tone.",
+          whyItMatters:
+            "In health work, delays and inconsistency erode trust. A simple system reduces missed steps and frees your team to focus on people, not admin.",
+          whatsIncluded: [
+            "Workflow design for intake, scheduling, and follow-up",
+            "Human-toned assistants for FAQ, triage, and routing",
+            "Dashboards for visibility (retention, pipeline, operations)",
+            "Knowledge systems so the team stays aligned",
+          ],
+          idealFit: [
+            "Clinics, programs, and practitioners delivering recurring services",
+            "Teams with intake, scheduling, and follow-up complexity",
+            "Organizations where tone, trust, and consistency matter",
+          ],
+          typicalOutcome:
+            "Faster response, cleaner handoffs, and a calmer operation that clients can feel.",
+        },
+        whoWeHelp: [
+          "Clinics, programs, and practitioners delivering recurring services",
+          "Teams with intake, scheduling, and follow-up complexity",
+          "Organizations where tone, trust, and consistency matter",
+        ],
+        howWeHelp: [
+          "Workflow design for intake, scheduling, and follow-up",
+          "Human-toned assistants for FAQ, triage, and routing",
+          "Dashboards for visibility (retention, pipeline, operations)",
+          "Knowledge systems so the team stays aligned",
+        ],
+        exampleProjects: [
+          "Service delivery workflow + simple dashboard",
+          "Assistant that qualifies and routes requests to the right person",
+          "Website refresh connected to follow-up and next steps",
         ],
       },
     ],

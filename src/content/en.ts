@@ -18,16 +18,16 @@ export const en: SiteContent = {
   ],
 
   marquee: [
-    "Human-first AI",
-    "Dashboards",
-    "Useful assistants",
-    "Retreat operations",
-    "Living knowledge",
-    "Automation",
-    "Private data",
-    "Offline",
+    "Agritech",
+    "Biotech",
+    "Protocol IP protected",
+    "Lab and field data",
+    "MRV and carbon",
+    "Role-gated access",
+    "Runs on your infrastructure",
+    "Senior technical partner",
     "Direct collaboration",
-    "24h response",
+    "Colombia, worldwide",
   ],
 
   hero: {
@@ -76,7 +76,7 @@ export const en: SiteContent = {
       },
       {
         icon: "Sprout",
-        title: "Holistic Systems",
+        title: "End-to-End Systems",
         description:
           "We think end-to-end. Software, workflows, data, decisions, communication, and design need to work together, not as separate pieces.",
       },
@@ -94,7 +94,7 @@ export const en: SiteContent = {
     title: "How We Help",
     subtitle: "Practical AI integration for real businesses",
     intro:
-      "We work with teams building something with purpose: businesses and projects that create a positive impact on people and their communities. We understand how each team works, connect what already exists, and give each person access to only what they need. What we build depends on the project: automation, AI, SEO, integrations.",
+      "We work with agritech and biotech teams building real social and environmental impact. We understand how the operation works, connect what already exists, protect the IP, and give each person access to only what they need. What we build depends on the project: the knowledge layer, data platforms, automation, AI, integrations.",
     columns: [
       {
         title: "OPTIMIZE",

@@ -32,9 +32,9 @@ export const esClosingSectionsContent: Pick<
   mission: {
     title: "Por Qué Existimos",
     statement: [
-      "La IA más útil raramente llega a quienes más la necesitan.",
-      "Construimos para cambiar eso: precios accesibles, proyectos con misión, y una parte de lo que ganamos reinvertida en equipos que aún no pueden pagarnos.",
-      "Mientras más construimos bien, más lejos llegamos.",
+      "Construimos para equipos que hacen trabajo social y ambiental real: agritech, biotech, restauración, la ciencia que de verdad mueve la aguja.",
+      "Lo difícil es proteger la IP y convertir los datos de laboratorio y campo en decisiones. Eso es lo que construimos, bien hecho, para quienes construyen algo que importa.",
+      "Mientras mejor construimos, más lejos llega el impacto.",
     ],
     tagline: "No somos neutrales en lo que construimos",
   },
@@ -123,7 +123,7 @@ export const esClosingSectionsContent: Pick<
       booking:
         "Perfecto. Podemos agendar una charla de 15 minutos con Paul. Antes de eso, ¿qué estás construyendo y cuál es el bloqueo principal?",
       story:
-        "Somos un equipo familiar en Colombia. Trabajo directo, sin handoffs, sistemas prácticos. ¿Qué quieres entender mejor: proceso, proyectos o fit?",
+        "Paul es un fundador técnico que ha lanzado productos a más de 70 países y construyó CHAK Brain solo. Equipo pequeño y senior, trabajo directo, sin handoffs. ¿Qué quieres entender: el proceso, los proyectos o el fit?",
       service:
         "Veo que te interesa {service}. Buen punto de partida. ¿Cuál es el cuello de botella real y qué resultado necesitas en las próximas semanas?",
       partnership:
@@ -147,6 +147,8 @@ export const esClosingSectionsContent: Pick<
     whatsappPlaceholder: "+57 300 123 4567",
     projectTypeLabel: "¿Qué tipo de proyecto tienes en mente?",
     projectTypes: [
+      "Company Brain / capa de conocimiento protegida",
+      "Plataforma de datos agritech",
       "Optimización de flujos",
       "Chatbot / Asistente IA",
       "Dashboard de decisión",
@@ -169,11 +171,11 @@ export const esClosingSectionsContent: Pick<
     welcomeLine2: "Suite de Automatización Cultivo AI v2.5.0",
     script: [
       { text: "Iniciando descubrimiento...", type: "command", delay: 800 },
-      { text: "Mapeando tu flujo de trabajo...", type: "info", delay: 600 },
-      { text: "Detectando puntos de fricción...", type: "info", delay: 700 },
-      { text: "Diseñando una versión uno simple...", type: "ai", delay: 700 },
-      { text: "Construyendo el dashboard...", type: "command", delay: 700 },
-      { text: "Creando una base de conocimiento viva...", type: "info", delay: 700 },
+      { text: "Mapeando tus protocolos...", type: "info", delay: 600 },
+      { text: "Aislando la capa de IP...", type: "info", delay: 700 },
+      { text: "Diseñando acceso por rol...", type: "ai", delay: 700 },
+      { text: "Estructurando datos de laboratorio y campo...", type: "command", delay: 700 },
+      { text: "Construyendo la capa de conocimiento...", type: "info", delay: 700 },
       { text: "Lanzando y probando...", type: "success", delay: 700 },
       { text: "Midiendo resultados...", type: "event", delay: 700 },
       { text: "Iterando con tu equipo...", type: "success", delay: 2500 },

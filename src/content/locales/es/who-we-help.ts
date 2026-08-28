@@ -5,7 +5,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
     title: "¿Somos un buen encaje?",
     idealTitle: "Somos ideales para ti si...",
     idealItems: [
-      "Estás construyendo en salud, sostenibilidad o trabajo con misión.",
+      "Estás construyendo en agritech, biotech o trabajo científico con impacto real.",
       "Quieres sistemas prácticos, no hype.",
       "Valoras claridad, diseño y comunicación humana.",
       "Quieres una relación directa con quienes construyen.",
@@ -19,46 +19,46 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
     sectorsTitle: "Dónde hacemos nuestro mejor trabajo",
     sectors: [
       {
-        name: "Salud y bienestar",
-        description: "Tu equipo sostiene a personas en momentos vulnerables. Nosotros sostenemos la operación. Construimos sistemas que manejan administración, comunicación y seguimiento, para que el equipo se enfoque en lo que vino a hacer.",
-        icon: "Heart",
-        imageUrl: "/landing/photos/sectors/health-wellness.jpg",
+        name: "Agritech y biotech",
+        description: "La producción basada en ciencia funciona con protocolos y datos. Construimos la capa que protege la IP de tus protocolos, guía la ejecución por rol y convierte los datos de laboratorio y campo en decisiones.",
+        icon: "Sprout",
+        imageUrl: "/landing/photos/sectors/sustainability-regenerative.webp",
         chatButtonLabel: "Hablemos",
         detailsButtonLabel: "Saber más",
         modal: {
           whatItMeans:
-            "Sistemas que ayudan a equipos de salud y bienestar a entregar un servicio consistente: acogida clara, seguimiento claro y tono humano.",
+            "La capa digital de una operación basada en ciencia: protocolos creados, ejecución con acceso por rol y datos de laboratorio y campo estructurados en un solo sistema protegido.",
           whyItMatters:
-            "En trabajo de salud, los retrasos y la inconsistencia bajan la confianza. Un sistema simple reduce pasos perdidos y libera al equipo para enfocarse en personas.",
+            "En agritech y biotech, la IP de los protocolos es el activo. La mantenemos estructurada y con acceso por rol, guiamos la ejecución paso a paso sin exponer la receta completa, y convertimos tus datos en decisiones.",
           whatsIncluded: [
-            "Flujos de acogida, agenda y seguimiento",
-            "Asistentes con tono humano para FAQs, triage y enrutamiento",
-            "Dashboards para visibilidad (retención, pipeline, operación)",
-            "Sistemas de conocimiento para mantener alineación",
+            "Una capa de conocimiento protegida sobre protocolos, observaciones y experimentos",
+            "Guía de ejecución paso a paso sin exponer el protocolo completo",
+            "Pipelines de datos listos para IoT, satélite, laboratorio y campo, MRV y carbono",
+            "Acceso por rol para que nadie vea lo que no le corresponde",
           ],
           idealFit: [
-            "Clínicas, programas y profesionales con servicios recurrentes",
-            "Equipos con complejidad en acogida, agenda y seguimiento",
-            "Organizaciones donde tono, confianza y consistencia importan",
+            "Laboratorios y equipos agritech cuya IP de protocolos es el activo central",
+            "Operaciones de ambiente controlado, micropropagación y restauración",
+            "Equipos que convierten datos de laboratorio y campo en decisiones",
           ],
           typicalOutcome:
-            "Respuesta más rápida, transiciones más claras y una operación más calmada que se siente para el cliente.",
+            "Los protocolos se ejecutan con consistencia, la IP queda protegida y tus datos se vuelven decisiones en lugar de archivos dispersos.",
         },
         whoWeHelp: [
-          "Clínicas, programas y profesionales con servicios recurrentes",
-          "Equipos con complejidad en acogida, agenda y seguimiento",
-          "Organizaciones donde tono, confianza y consistencia importan",
+          "Laboratorios y equipos agritech cuya IP de protocolos es el activo central",
+          "Operaciones de ambiente controlado, micropropagación y restauración",
+          "Equipos que convierten datos de laboratorio y campo en decisiones",
         ],
         howWeHelp: [
-          "Flujos de acogida, agenda y seguimiento",
-          "Asistentes con tono humano para FAQs, triage y enrutamiento",
-          "Dashboards para visibilidad (retención, pipeline, operación)",
-          "Sistemas de conocimiento para mantener alineación",
+          "Una capa de conocimiento protegida sobre protocolos, observaciones y experimentos",
+          "Guía de ejecución paso a paso sin exponer el protocolo completo",
+          "Pipelines de datos listos para IoT, satélite, laboratorio y campo, MRV y carbono",
+          "Acceso por rol para que nadie vea lo que no le corresponde",
         ],
         exampleProjects: [
-          "Flujo de entrega de servicio + dashboard simple",
-          "Asistente que califica y enruta solicitudes a la persona correcta",
-          "Refresh web conectado a seguimiento y siguientes pasos",
+          "Capa de conocimiento protegida + ejecución de protocolos por rol",
+          "Pipeline de datos de laboratorio y campo alimentando un dashboard de decisión",
+          "Captura de experimentos que convierte ensayos en IP estructurada",
         ],
       },
       {
@@ -188,6 +188,49 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
           "MVP + flujo para acogida y seguimiento",
           "Dashboard de decisión para prioridades y métricas",
           "Base de conocimiento que crece con el producto",
+        ],
+      },
+      {
+        name: "Salud y bienestar",
+        description: "Tu equipo sostiene a personas en momentos vulnerables. Nosotros sostenemos la operación. Construimos sistemas que manejan administración, comunicación y seguimiento, para que el equipo se enfoque en lo que vino a hacer.",
+        icon: "Heart",
+        imageUrl: "/landing/photos/sectors/health-wellness.jpg",
+        chatButtonLabel: "Hablemos",
+        detailsButtonLabel: "Saber más",
+        modal: {
+          whatItMeans:
+            "Sistemas que ayudan a equipos de salud y bienestar a entregar un servicio consistente: acogida clara, seguimiento claro y tono humano.",
+          whyItMatters:
+            "En trabajo de salud, los retrasos y la inconsistencia bajan la confianza. Un sistema simple reduce pasos perdidos y libera al equipo para enfocarse en personas.",
+          whatsIncluded: [
+            "Flujos de acogida, agenda y seguimiento",
+            "Asistentes con tono humano para FAQs, triage y enrutamiento",
+            "Dashboards para visibilidad (retención, pipeline, operación)",
+            "Sistemas de conocimiento para mantener alineación",
+          ],
+          idealFit: [
+            "Clínicas, programas y profesionales con servicios recurrentes",
+            "Equipos con complejidad en acogida, agenda y seguimiento",
+            "Organizaciones donde tono, confianza y consistencia importan",
+          ],
+          typicalOutcome:
+            "Respuesta más rápida, transiciones más claras y una operación más calmada que se siente para el cliente.",
+        },
+        whoWeHelp: [
+          "Clínicas, programas y profesionales con servicios recurrentes",
+          "Equipos con complejidad en acogida, agenda y seguimiento",
+          "Organizaciones donde tono, confianza y consistencia importan",
+        ],
+        howWeHelp: [
+          "Flujos de acogida, agenda y seguimiento",
+          "Asistentes con tono humano para FAQs, triage y enrutamiento",
+          "Dashboards para visibilidad (retención, pipeline, operación)",
+          "Sistemas de conocimiento para mantener alineación",
+        ],
+        exampleProjects: [
+          "Flujo de entrega de servicio + dashboard simple",
+          "Asistente que califica y enruta solicitudes a la persona correcta",
+          "Refresh web conectado a seguimiento y siguientes pasos",
         ],
       },
     ],
