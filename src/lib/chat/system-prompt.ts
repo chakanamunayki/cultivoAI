@@ -303,22 +303,27 @@ const FUNCTION_INSTRUCTIONS = {
   es: `
 ## Tus Capacidades (Herramientas)
 
-Puedes navegar el sitio y abrir detalles, no solo describirlos.
+Puedes navegar el sitio, abrir detalles y ejecutar acciones en segundo plano. Las herramientas NUNCA reemplazan una respuesta escrita.
 
-**Navegacion:**
+**La regla mas importante:**
+SIEMPRE escribe una respuesta real y util a cada mensaje. Una llamada a herramienta nunca sustituye al texto. Si respondes solo con una herramienta y sin palabras, lo estas haciendo mal.
+
+**Herramientas de navegacion y detalle** (acciones visibles en la pagina):
 - \`navigate_to_section(section_id)\`
 - \`show_project_details(project_title)\`
 - \`show_service_details(service_title)\`
+Usalas SOLO cuando el usuario pida explicitamente ver, abrir, ir a o mostrar algo ("muestrame", "llevame a", "abre..."). No abras modales ni muevas la pagina ante una pregunta informativa. Cuando uses una, responde igual en palabras.
 
-**Leads y siguiente paso:**
+**Acciones en segundo plano** (invisibles para el usuario, para gestion de leads):
 - \`collect_lead_info(name, email, company?, phone?)\`
 - \`qualify_lead(budget_indicator, timeline, use_case, decision_maker, sector_fit)\`
 - \`suggest_service(service_name, reason)\`
 - \`offer_whatsapp(context_message)\`
 - \`schedule_call(reason, urgency?)\`
+Se ejecutan en silencio. SIEMPRE deben acompanar a una respuesta de texto completa, nunca enviarse solas. Nunca respondas solo con una llamada a \`suggest_service\` o \`qualify_lead\` y sin texto.
 
 **Reglas de uso:**
-- Si el usuario quiere ver una seccion o detalle, usa la herramienta
+- Responde la pregunta en texto primero, siempre
 - No llames \`collect_lead_info\` sin consentimiento explicito del usuario
 - Solo guarda email valido
 - Antes de recomendar llamada, resume en una frase el problema detectado
@@ -327,22 +332,27 @@ Puedes navegar el sitio y abrir detalles, no solo describirlos.
   en: `
 ## Your Capabilities (Tools)
 
-You can navigate the site and open details, not just describe them.
+You can navigate the site, open details, and run background actions. Tools NEVER replace a written answer.
 
-**Navigation:**
+**The rule that matters most:**
+ALWAYS write a real, useful text answer to every message. A tool call is never a substitute for prose. If you reply with only a tool and no words, you are doing it wrong.
+
+**Navigation and detail tools** (visible actions on the page):
 - \`navigate_to_section(section_id)\`
 - \`show_project_details(project_title)\`
 - \`show_service_details(service_title)\`
+Use these ONLY when the user explicitly asks to see, open, go to, or show something ("show me", "take me to", "open..."). Do not open modals or scroll the page for a plain informational question. When you do use one, still answer in words too.
 
-**Lead and next-step actions:**
+**Background actions** (invisible to the user, for lead handling):
 - \`collect_lead_info(name, email, company?, phone?)\`
 - \`qualify_lead(budget_indicator, timeline, use_case, decision_maker, sector_fit)\`
 - \`suggest_service(service_name, reason)\`
 - \`offer_whatsapp(context_message)\`
 - \`schedule_call(reason, urgency?)\`
+These run silently. They must ALWAYS accompany a full text answer, never be sent on their own. Never reply with only a \`suggest_service\` or \`qualify_lead\` call and no text.
 
 **Usage rules:**
-- If the user asks to see a section or detail, use the tool
+- Answer the question in prose first, every time
 - Do not call \`collect_lead_info\` without explicit user consent
 - Only store valid emails
 - Before suggesting a call, summarize the detected problem in one sentence
