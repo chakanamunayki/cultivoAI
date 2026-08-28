@@ -9,6 +9,34 @@ export const esPartnershipsContent: Pick<
     "Alcance claro, entrega senior, con un precio justo. Un cupo a tarifa de impacto para equipos con propósito cuando encaja.",
   partnerships: [
     {
+      name: "Sprint de Descubrimiento Técnico",
+      tagline: "Empieza aquí",
+      description:
+        "Un sprint de tarifa fija que convierte una ambición vaga de IA o datos en un desarrollo que puedes costear y aprobar. Un entregable claro al final.",
+      idealFor: ["Equipos con IP real y una decisión que tomar", "Cualquiera que no sepa qué construir primero"],
+      icon: "Hourglass",
+      imageUrl: "/landing/photos/services/startup-advisory.png",
+      modal: {
+        whatItMeans:
+          "Un trabajo corto y senior para mapear tu arquitectura, proteger tu IP y definir el alcance del desarrollo, antes de que nadie escriba código de producción.",
+        whyItMatters:
+          "La mayoría de los proyectos de IA fallan por un inicio difuso. Un sprint de tarifa fija te da un plan costeado y defendible y un primer desarrollo claro, sin compromiso abierto.",
+        whatsIncluded: [
+          "Mapa de brechas de arquitectura: qué tienes, qué falta, qué construir",
+          "Diseño de aislamiento de IP: cómo proteger protocolos y limitar el acceso por rol",
+          "Alcance del MVP: el primer desarrollo útil más pequeño",
+          "Plan de construcción costeado: fases, tiempos y precio",
+        ],
+        idealFit: [
+          "Equipos de agritech y biotech que protegen la IP de sus protocolos",
+          "Fundadores que quieren un plan antes de un gran compromiso de desarrollo",
+          "Equipos que necesitan números reales para aprobar el presupuesto",
+        ],
+        typicalOutcome:
+          "Te vas con un documento: un plan claro y costeado sobre el que puedes actuar, con nosotros o con quien quieras.",
+      },
+    },
+    {
       name: "Proyecto Estándar",
       tagline: "Negocios con presupuesto",
       description:

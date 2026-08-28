@@ -9,6 +9,34 @@ export const enPartnershipsContent: Pick<
     "Clear scope, senior delivery, priced properly. One impact-rate slot for mission-led teams when it's the right fit.",
   partnerships: [
     {
+      name: "Technical Discovery Sprint",
+      tagline: "Start here",
+      description:
+        "A fixed-fee sprint that turns a vague AI or data ambition into a build you can cost and green-light. One clear deliverable at the end.",
+      idealFor: ["Teams with real IP and a decision to make", "Anyone unsure what to build first"],
+      icon: "Hourglass",
+      imageUrl: "/landing/photos/services/startup-advisory.png",
+      modal: {
+        whatItMeans:
+          "A short, senior engagement to map your architecture, protect your IP, and scope the build, before anyone writes production code.",
+        whyItMatters:
+          "Most AI projects fail on a fuzzy start. A fixed-fee sprint gives you a costed, defensible plan and a clear first build, with no open-ended commitment.",
+        whatsIncluded: [
+          "Architecture gap map: what you have, what's missing, what to build",
+          "IP-isolation design: how to protect protocols and scope access by role",
+          "MVP scope: the smallest useful first build",
+          "Costed build plan: phases, timeline, and price",
+        ],
+        idealFit: [
+          "Agritech and biotech teams protecting protocol IP",
+          "Founders who want a plan before a big build commitment",
+          "Teams that need real numbers to green-light budget",
+        ],
+        typicalOutcome:
+          "You leave with one document: a clear, costed plan you can act on, build with us or take to anyone.",
+      },
+    },
+    {
       name: "Standard Project",
       tagline: "Businesses with budget",
       description:
