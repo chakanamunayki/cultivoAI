@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import type { Locale } from "@/content/types";
 
-const MODULES = {
+const MODULES: Record<Locale, { label: string; desc: string; icon: string }[]> = {
     en: [
         { label: "Bookings & Payments", desc: "152 pax • $45k confirmed", icon: "💳" },
         { label: "Guest Messaging", desc: "3 unread • WhatsApp via AI", icon: "💬" },
@@ -16,6 +16,12 @@ const MODULES = {
         { label: "Mensajería", desc: "3 sin leer • WhatsApp IA", icon: "💬" },
         { label: "Itinerario y Tareas", desc: "Yoga 8am • Chef listo", icon: "📋" },
         { label: "Panel de Control", desc: "98% Ocupación • 4.9⭐", icon: "📊" },
+    ],
+    pt: [
+        { label: "Reservas e Pagamentos", desc: "152 pax • $45k confirmado", icon: "💳" },
+        { label: "Mensagens", desc: "3 não lidas • WhatsApp por IA", icon: "💬" },
+        { label: "Itinerário e Tarefas", desc: "Yoga 8h • Chef pronto", icon: "📋" },
+        { label: "Dashboards", desc: "98% de Ocupação • 4.9⭐", icon: "📊" },
     ]
 };
 

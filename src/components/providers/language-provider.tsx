@@ -3,6 +3,7 @@
 import { createContext, useCallback, useEffect, useMemo, useState } from "react";
 import { en } from "@/content/en";
 import { es } from "@/content/es";
+import { pt } from "@/content/pt";
 import type { Locale, SiteContent } from "@/content/types";
 
 const STORAGE_KEY = "cultivoai-locale";
@@ -28,7 +29,7 @@ function storeLocale(locale: Locale): void {
 function getStoredLocale(): Locale | null {
   try {
     const value = localStorage.getItem(STORAGE_KEY);
-    return value === "es" || value === "en" ? value : null;
+    return value === "es" || value === "en" || value === "pt" ? value : null;
   } catch {
     // localStorage might be unavailable
     return null;
@@ -38,6 +39,7 @@ function getStoredLocale(): Locale | null {
 const contentMap: Record<Locale, SiteContent> = {
   es,
   en,
+  pt,
 };
 
 interface LanguageProviderProps {

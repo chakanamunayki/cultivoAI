@@ -1,4 +1,4 @@
-import type { ChatContextType } from "@/content/types";
+import type { ChatContextType, Locale } from "@/content/types";
 
 export type QuickQuestionAction = "send" | "capture_contact" | "open_whatsapp";
 
@@ -17,7 +17,7 @@ type QuickQuestionSet =
   | "impact";
 
 interface AIChatQuickQuestionsProps {
-  locale: "es" | "en";
+  locale: Locale;
   contextType?: ChatContextType;
   onQuestionClick: (question: QuickQuestion) => void;
   isLoading?: boolean;
@@ -361,6 +361,170 @@ const QUICK_QUESTIONS: Record<
       {
         id: "impact-5",
         text: "Move to WhatsApp",
+        action: "open_whatsapp",
+      },
+    ],
+  },
+  pt: {
+    general: [
+      {
+        id: "general-1",
+        text: "Como protegemos a IP dos nossos protocolos?",
+        action: "send",
+      },
+      {
+        id: "general-2",
+        text: "O que é o Company Brain?",
+        action: "send",
+      },
+      {
+        id: "general-3",
+        text: "Como funciona o Sprint de Descoberta?",
+        action: "send",
+      },
+      {
+        id: "general-4",
+        text: "Deixar nome + e-mail",
+        action: "capture_contact",
+      },
+      {
+        id: "general-5",
+        text: "Passar para o WhatsApp",
+        action: "open_whatsapp",
+      },
+    ],
+    booking: [
+      {
+        id: "booking-1",
+        text: "Agendamos 15 min? Bloqueio principal: [X].",
+        action: "send",
+      },
+      {
+        id: "booking-2",
+        text: "Dá pra uma conversa de projeto esta semana?",
+        action: "send",
+      },
+      {
+        id: "booking-3",
+        text: "O que enviamos antes da ligação?",
+        action: "send",
+      },
+      {
+        id: "booking-4",
+        text: "Deixar nome + e-mail",
+        action: "capture_contact",
+      },
+      {
+        id: "booking-5",
+        text: "Passar para o WhatsApp",
+        action: "open_whatsapp",
+      },
+    ],
+    services: [
+      {
+        id: "services-1",
+        text: "Qual serviço protege melhor o nosso conhecimento?",
+        action: "send",
+      },
+      {
+        id: "services-2",
+        text: "Como isolamos a IP da execução?",
+        action: "send",
+      },
+      {
+        id: "services-3",
+        text: "Qual é a primeira versão útil?",
+        action: "send",
+      },
+      {
+        id: "services-4",
+        text: "Deixar nome + e-mail",
+        action: "capture_contact",
+      },
+      {
+        id: "services-5",
+        text: "Passar para o WhatsApp",
+        action: "open_whatsapp",
+      },
+    ],
+    partnership: [
+      {
+        id: "partnership-1",
+        text: "Como começa o Sprint de Descoberta?",
+        action: "send",
+      },
+      {
+        id: "partnership-2",
+        text: "O que inclui a ligação gratuita de scoping?",
+        action: "send",
+      },
+      {
+        id: "partnership-3",
+        text: "Que entregável eu levo do sprint?",
+        action: "send",
+      },
+      {
+        id: "partnership-4",
+        text: "Deixar nome + e-mail",
+        action: "capture_contact",
+      },
+      {
+        id: "partnership-5",
+        text: "Passar para o WhatsApp",
+        action: "open_whatsapp",
+      },
+    ],
+    qualification: [
+      {
+        id: "qualification-1",
+        text: "Seja direto: somos um encaixe?",
+        action: "send",
+      },
+      {
+        id: "qualification-2",
+        text: "O que torna um lead prioridade?",
+        action: "send",
+      },
+      {
+        id: "qualification-3",
+        text: "O que costuma indicar que não é encaixe?",
+        action: "send",
+      },
+      {
+        id: "qualification-4",
+        text: "Deixar nome + e-mail",
+        action: "capture_contact",
+      },
+      {
+        id: "qualification-5",
+        text: "Passar para o WhatsApp",
+        action: "open_whatsapp",
+      },
+    ],
+    impact: [
+      {
+        id: "impact-1",
+        text: "Projeto com propósito. Dá pra andar rápido?",
+        action: "send",
+      },
+      {
+        id: "impact-2",
+        text: "Como equilibram impacto e realidade de negócio?",
+        action: "send",
+      },
+      {
+        id: "impact-3",
+        text: "Trabalham com times de missão real?",
+        action: "send",
+      },
+      {
+        id: "impact-4",
+        text: "Deixar nome + e-mail",
+        action: "capture_contact",
+      },
+      {
+        id: "impact-5",
+        text: "Passar para o WhatsApp",
         action: "open_whatsapp",
       },
     ],

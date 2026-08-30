@@ -15,6 +15,11 @@ const CONVERSATIONS: Record<Locale, { user: string; ai: string; category: string
         { user: "¿Me puede ayudar con estrés reciente y agotamiento?", ai: "Sí, nuestras meditaciones y respiración están diseñadas para ayudar a sobrellevar el estrés.", category: "Beneficios" },
         { user: "¿Las comidas son totalmente orgánicas?", ai: "¡Absolutamente! Toda la comida es local, 100% orgánica y adaptada a cualquier dieta.", category: "Detalles" },
     ],
+    pt: [
+        { user: "O que está incluído no retiro de bem-estar?", ai: "Inclui meditação diária, cerimônia de Temazcal e refeições orgânicas da fazenda à mesa. Vou te enviar o folheto!", category: "Vendas" },
+        { user: "Isso me ajuda com estresse e esgotamento recentes?", ai: "Sim, as nossas meditações guiadas e a respiração são feitas para ajudar a lidar com estresse e perdas.", category: "Benefícios" },
+        { user: "As refeições são totalmente orgânicas?", ai: "Com certeza! Toda a comida é de produtores locais, 100% orgânica e adaptada a qualquer necessidade alimentar.", category: "Detalhes" },
+    ],
 };
 
 const CHANNELS = ["WhatsApp", "Website", "Instagram"];

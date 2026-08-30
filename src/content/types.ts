@@ -1,9 +1,9 @@
 /**
  * CultivoAI Content Type Definitions
- * Bilingual content support for Spanish (es) and English (en)
+ * Trilingual content support for Spanish (es), English (en), and Brazilian Portuguese (pt)
  */
 
-export type Locale = "es" | "en";
+export type Locale = "es" | "en" | "pt";
 
 /**
  * Chat context types for contextual greetings

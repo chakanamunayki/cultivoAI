@@ -7,6 +7,7 @@ import type { Locale } from "@/content/types";
 const MILESTONES: Record<Locale, string[]> = {
     en: ["Research", "Build", "Optimize", "Scale"],
     es: ["Investigar", "Construir", "Optimizar", "Escalar"],
+    pt: ["Pesquisar", "Construir", "Otimizar", "Escalar"],
 };
 
 const POPUPS: Record<Locale, string[]> = {
@@ -21,6 +22,12 @@ const POPUPS: Record<Locale, string[]> = {
         "Desplegar herramientas IA y Web App core",
         "Integrar sistemas y flujos de trabajo",
         "Escalar infraestructura e IA al equipo"
+    ],
+    pt: [
+        "Automatizar a captura de dados de mercado",
+        "Publicar ferramentas de IA e o Web App central",
+        "Integrar sistemas e fluxos de trabalho",
+        "Escalar a infraestrutura e o handoff para o time"
     ]
 };
 

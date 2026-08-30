@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import type { Locale } from "@/content/types";
 
-const KPIS = {
+const KPIS: Record<Locale, { label: string; value: string; trend: string }[]> = {
     en: [
         { label: "Bookings", value: "342", trend: "+12%" },
         { label: "Revenue", value: "$85k", trend: "+24%" },
@@ -14,6 +14,11 @@ const KPIS = {
         { label: "Reservas", value: "342", trend: "+12%" },
         { label: "Ingresos", value: "$85k", trend: "+24%" },
         { label: "Costos", value: "$32k", trend: "−8%" },
+    ],
+    pt: [
+        { label: "Reservas", value: "342", trend: "+12%" },
+        { label: "Receita", value: "$85k", trend: "+24%" },
+        { label: "Custos", value: "$32k", trend: "−8%" },
     ]
 };
 

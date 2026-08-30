@@ -109,12 +109,20 @@ export function AIChatWidget({
   onOpenForm,
 }: AIChatWidgetProps) {
   const { content, locale } = useLocale();
-  const chatToggleLabel = locale === "es" ? "Hablemos" : "Let's Talk";
+  // Pick a string for the active locale. Portuguese falls back to English only if
+  // a pt value is not supplied.
+  const tt = useCallback(
+    (es: string, en: string, pt: string) =>
+      locale === "es" ? es : locale === "pt" ? pt : en,
+    [locale]
+  );
+  const chatToggleLabel = tt("Hablemos", "Let's Talk", "Vamos conversar");
   const fifteenMinLabel = "15 MIN";
-  const fifteenMinTitle =
-    locale === "es"
-      ? "Agendar charla de 15 minutos"
-      : "Book a 15-minute project chat";
+  const fifteenMinTitle = tt(
+    "Agendar charla de 15 minutos",
+    "Book a 15-minute project chat",
+    "Agendar conversa de 15 minutos"
+  );
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -304,7 +312,13 @@ export function AIChatWidget({
 
     // Validate
     if (!name.trim()) {
-      setContactFormError(locale === "es" ? "Por favor ingresa tu nombre" : "Please enter your name");
+      setContactFormError(
+        locale === "es"
+          ? "Por favor ingresa tu nombre"
+          : locale === "pt"
+          ? "Por favor, digite o seu nome"
+          : "Please enter your name"
+      );
       return;
     }
 
@@ -314,6 +328,8 @@ export function AIChatWidget({
       setContactFormError(
         locale === "es"
           ? "Por favor ingresa un email válido (ej: nombre@gmail.com)"
+          : locale === "pt"
+          ? "Por favor, digite um e-mail válido (ex: nome@gmail.com)"
           : "Please enter a valid email (e.g., name@gmail.com)"
       );
       return;
@@ -331,6 +347,8 @@ export function AIChatWidget({
 
         const successMessage = locale === "es"
           ? `¡Perfecto ${name}! Ya tengo tu información. Si quieres, seguimos con una charla de 15 minutos sobre tu proyecto.`
+          : locale === "pt"
+          ? `Perfeito, ${name}! Já tenho as suas informações. Se você quiser, seguimos com uma conversa de 15 minutos sobre o seu projeto.`
           : `Perfect ${name}! I've got your info. If you want, we can move to a 15-minute project chat.`;
 
         setMessages(prev => [...prev, { role: "model", text: successMessage }]);
@@ -338,6 +356,8 @@ export function AIChatWidget({
         setContactFormError(
           locale === "es"
             ? "Hubo un error. Por favor intenta de nuevo."
+            : locale === "pt"
+            ? "Houve um erro. Por favor, tente de novo."
             : "There was an error. Please try again."
         );
       }
@@ -345,6 +365,8 @@ export function AIChatWidget({
       setContactFormError(
         locale === "es"
           ? "Hubo un error. Por favor intenta de nuevo."
+          : locale === "pt"
+          ? "Houve um erro. Por favor, tente de novo."
           : "There was an error. Please try again."
       );
     } finally {
@@ -362,6 +384,8 @@ export function AIChatWidget({
 
     const askMessage = locale === "es"
       ? "Para poder ayudarte mejor, déjame tus datos:"
+      : locale === "pt"
+      ? "Para poder te ajudar melhor, me deixa os seus dados:"
       : "To help you better, please share your details:";
 
     setMessages(prev => [...prev, { role: "model", text: askMessage, showContactForm: true }]);
@@ -382,6 +406,8 @@ export function AIChatWidget({
         // Add success message to chat
         const successMessage = locale === "es"
           ? `¡Perfecto ${name}! Ya tengo tu información.`
+          : locale === "pt"
+          ? `Perfeito, ${name}! Já tenho as suas informações.`
           : `Perfect ${name}! I've got your info.`;
         setMessages(prev => [...prev, { role: "model", text: successMessage }]);
         return true;
@@ -601,6 +627,8 @@ export function AIChatWidget({
           data.error ||
           (locale === "es"
             ? "Lo siento, hubo un error. Por favor intenta de nuevo."
+            : locale === "pt"
+            ? "Desculpe, houve um erro. Por favor, tente de novo."
             : "Sorry, there was an error. Please try again.");
         throw new Error(apiError);
       }
@@ -614,7 +642,8 @@ export function AIChatWidget({
 
       // Add response text
       const responseText =
-        data.text || (locale === "es" ? "Entendido." : "Got it.");
+        data.text ||
+        (locale === "es" ? "Entendido." : locale === "pt" ? "Entendi." : "Got it.");
       setMessages((prev) => [...prev, { role: "model", text: responseText }]);
 
       // Log assistant response with latency
@@ -628,6 +657,8 @@ export function AIChatWidget({
       const fallbackMessage =
         locale === "es"
           ? "Lo siento, hubo un error. Por favor intenta de nuevo."
+          : locale === "pt"
+          ? "Desculpe, houve um erro. Por favor, tente de novo."
           : "Sorry, there was an error. Please try again.";
       const hasTechnicalError =
         error instanceof Error &&
@@ -680,6 +711,8 @@ export function AIChatWidget({
         const alreadyCapturedMessage =
           locale === "es"
             ? "Ya tengo tus datos. Si quieres, seguimos con la charla de 15 minutos."
+            : locale === "pt"
+            ? "Já tenho os seus dados. Se você quiser, seguimos com a conversa de 15 minutos."
             : "I already have your details. If you want, we can move to a 15-minute project chat.";
         setMessages((prev) => [
           ...prev,
@@ -697,6 +730,8 @@ export function AIChatWidget({
       const contextMessage =
         locale === "es"
           ? "Quiero continuar por WhatsApp."
+          : locale === "pt"
+          ? "Quero continuar pelo WhatsApp."
           : "I want to continue on WhatsApp.";
       openWhatsApp(contextMessage);
     }
@@ -719,7 +754,7 @@ export function AIChatWidget({
             onClick={() => openWhatsApp()}
             className="inline-flex h-[58px] w-[58px] items-center justify-center rounded-xl bg-[#25D366] text-[#0b2d1f] shadow-[0_10px_20px_rgba(15,23,42,0.26)] transition-all hover:-translate-y-0.5 hover:bg-[#34e073] hover:shadow-[0_14px_26px_rgba(15,23,42,0.32)]"
             aria-label="Open WhatsApp"
-            title={locale === "es" ? "Contactar por WhatsApp" : "Contact via WhatsApp"}
+            title={tt("Contactar por WhatsApp", "Contact via WhatsApp", "Falar pelo WhatsApp")}
           >
             <WhatsAppIcon size={24} />
           </button>
@@ -755,8 +790,8 @@ export function AIChatWidget({
               <button
                 onClick={openVoiceMode}
                 className="px-3 py-1.5 bg-primary text-primary-foreground border-2 border-black hover:bg-primary/90 hover:scale-105 transition-all font-bold text-xs uppercase"
-                aria-label={locale === "es" ? "Modo de voz" : "Voice mode"}
-                title={locale === "es" ? "Conversación por voz" : "Voice conversation"}
+                aria-label={tt("Modo de voz", "Voice mode", "Modo de voz")}
+                title={tt("Conversación por voz", "Voice conversation", "Conversa por voz")}
               >
                 <Phone size={16} className="inline mr-1" />
                 VOZ
@@ -767,7 +802,7 @@ export function AIChatWidget({
               onClick={() => openWhatsApp()}
               className="text-[#25D366] hover:scale-110 transition-transform"
               aria-label="WhatsApp"
-              title={locale === "es" ? "Contactar por WhatsApp" : "Contact via WhatsApp"}
+              title={tt("Contactar por WhatsApp", "Contact via WhatsApp", "Falar pelo WhatsApp")}
             >
               <WhatsAppIcon size={20} />
             </button>
@@ -835,7 +870,7 @@ export function AIChatWidget({
                 {shouldShowForm && (
                   <div className="flex justify-start">
                     <ChatInlineContactForm
-                      locale={locale as "es" | "en"}
+                      locale={locale}
                       formData={contactFormData}
                       formError={contactFormError}
                       isSubmitting={isSubmittingContact}
@@ -852,7 +887,7 @@ export function AIChatWidget({
               <div className="bg-secondary text-secondary-foreground border-2 border-black p-3 flex items-center gap-2">
                 <Loader2 size={16} className="animate-spin" />
                 <span className="text-sm font-bold">
-                  {locale === "es" ? "Pensando..." : "Thinking..."}
+                  {tt("Pensando...", "Thinking...", "Pensando...")}
                 </span>
               </div>
             </div>
@@ -862,7 +897,7 @@ export function AIChatWidget({
 
         {/* Quick Questions */}
         <AIChatQuickQuestions
-          locale={locale as "es" | "en"}
+          locale={locale}
           contextType={context?.type ?? "general"}
           onQuestionClick={handleQuickQuestion}
           isLoading={isLoading}
@@ -876,8 +911,8 @@ export function AIChatWidget({
               <button
                 onClick={openVoiceMode}
                 className="p-3 border-2 border-black transition-all bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-                aria-label={locale === "es" ? "Modo de voz" : "Voice mode"}
-                title={locale === "es" ? "Conversación por voz" : "Voice conversation"}
+                aria-label={tt("Modo de voz", "Voice mode", "Modo de voz")}
+                title={tt("Conversación por voz", "Voice conversation", "Conversa por voz")}
               >
                 <Mic size={20} />
               </button>

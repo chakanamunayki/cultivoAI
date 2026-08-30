@@ -2,12 +2,90 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { MessageCircle, Sprout } from "lucide-react";
+import type { Locale } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils";
 
 interface NavProps {
   onScrollTo?: (id: string) => void;
   onOpenChat?: () => void;
+}
+
+// Three-way language selector, in display order.
+const LOCALES: { code: Locale; label: string }[] = [
+  { code: "es", label: "ES" },
+  { code: "en", label: "EN" },
+  { code: "pt", label: "PT" },
+];
+
+const CTA_LABELS: Record<Locale, string> = {
+  es: "Hablemos",
+  en: "Let's Talk",
+  pt: "Vamos conversar",
+};
+
+const HOME_ARIA_LABELS: Record<Locale, string> = {
+  es: "Ir al inicio",
+  en: "Go to home section",
+  pt: "Ir para o início",
+};
+
+const PANEL_CONTACT_LABELS: Record<Locale, string> = {
+  es: "Contacto directo",
+  en: "Direct contact",
+  pt: "Contato direto",
+};
+
+const PANEL_HEADLINES: Record<Locale, string> = {
+  es: "Construyamos algo util",
+  en: "Let us build something useful",
+  pt: "Vamos construir algo útil",
+};
+
+// Segmented ES / EN / PT control. Container styling is passed in so it can match
+// either the blended-over-hero header or the solid header, and the dark menu panel.
+function LocaleSwitcher({
+  locale,
+  onSelect,
+  containerClass,
+  compact = false,
+}: {
+  locale: Locale;
+  onSelect: (next: Locale) => void;
+  containerClass: string;
+  compact?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        "inline-flex items-center gap-0.5 rounded-full border p-0.5",
+        containerClass
+      )}
+      role="group"
+      aria-label="Language"
+    >
+      {LOCALES.map(({ code, label }) => {
+        const active = code === locale;
+        return (
+          <button
+            key={code}
+            type="button"
+            onClick={() => onSelect(code)}
+            aria-pressed={active}
+            className={cn(
+              "rounded-full text-xs font-bold tracking-[0.08em] uppercase transition-colors",
+              compact ? "px-2 py-1" : "px-2.5 py-1.5",
+              active
+                ? "bg-[#00BCD4] text-neutral-950"
+                : "bg-transparent opacity-70 hover:opacity-100"
+            )}
+          >
+            {label}
+          </button>
+        );
+      })}
+    </div>
+  );
 }
 
 // Keep nav resilient even if content drifts: only allow links to real homepage section IDs.
@@ -30,11 +108,16 @@ const VALID_SECTION_IDS = new Set([
 const DESKTOP_NAV_KEYS = ["services", "projects", "about"];
 
 export function Nav({ onScrollTo, onOpenChat }: NavProps) {
-  const { locale, toggleLocale, content } = useLocale();
+  const { locale, setLocale, content } = useLocale();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isOverHero, setIsOverHero] = useState(true);
 
-  const ctaLabel = locale === "es" ? "Hablemos" : "Let's Talk";
+  const ctaLabel = CTA_LABELS[locale];
+
+  const selectLocale = (next: Locale) => {
+    setLocale(next);
+    setIsMobileMenuOpen(false);
+  };
 
   const navItems = content.nav.filter((item) => {
     const href = item.href?.trim() ?? "";
@@ -141,7 +224,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
             <button
               type="button"
               onClick={() => scrollTo("hero")}
-              aria-label={locale === "es" ? "Ir al inicio" : "Go to home section"}
+              aria-label={HOME_ARIA_LABELS[locale]}
               className="flex items-center gap-2.5"
             >
               <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border-2 border-white/80 bg-primary text-primary-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,0.25)] -rotate-6 shrink-0">
@@ -164,16 +247,11 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
                 </button>
               ))}
 
-              <button
-                type="button"
-                onClick={toggleLocale}
-                className={cn(
-                  "rounded-full border px-4 py-2 text-xs font-bold tracking-[0.08em] uppercase transition-colors",
-                  headerStyle.subtleButton
-                )}
-              >
-                {locale === "es" ? "EN" : "ES"}
-              </button>
+              <LocaleSwitcher
+                locale={locale}
+                onSelect={selectLocale}
+                containerClass={headerStyle.subtleButton}
+              />
 
               <button
                 type="button"
@@ -219,16 +297,12 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
             </div>
 
             <div className="flex items-center gap-2 lg:hidden">
-              <button
-                type="button"
-                onClick={toggleLocale}
-                className={cn(
-                  "rounded-full border px-3 py-2 text-xs font-bold tracking-[0.08em] uppercase transition-colors",
-                  headerStyle.subtleButton
-                )}
-              >
-                {locale === "es" ? "EN" : "ES"}
-              </button>
+              <LocaleSwitcher
+                locale={locale}
+                onSelect={selectLocale}
+                containerClass={headerStyle.subtleButton}
+                compact
+              />
 
               <button
                 type="button"
@@ -283,10 +357,10 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
 
             <div className="relative z-10 mx-auto flex h-full w-full max-w-[760px] flex-col">
               <p className="text-xs font-semibold tracking-[0.12em] text-white/[0.70] uppercase">
-                {locale === "es" ? "Contacto directo" : "Direct contact"}
+                {PANEL_CONTACT_LABELS[locale]}
               </p>
               <h2 className="mt-4 text-4xl leading-[0.95] font-black tracking-[-0.03em] md:text-6xl">
-                {locale === "es" ? "Construyamos algo util" : "Let us build something useful"}
+                {PANEL_HEADLINES[locale]}
               </h2>
               <p className="mt-4 max-w-xl text-base text-white/[0.75] md:text-lg">
                 {content.hero.microcopy}
@@ -319,15 +393,11 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
                   <MessageCircle size={16} />
                   {ctaLabel}
                 </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    toggleLocale();
-                  }}
-                  className="rounded-full border border-white/30 px-4 py-2.5 text-xs font-bold tracking-[0.08em] uppercase transition-colors hover:bg-white/[0.15]"
-                >
-                  {locale === "es" ? "English" : "Espanol"}
-                </button>
+                <LocaleSwitcher
+                  locale={locale}
+                  onSelect={selectLocale}
+                  containerClass="border-white/30 text-white"
+                />
               </div>
             </div>
           </div>
