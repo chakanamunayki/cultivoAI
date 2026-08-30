@@ -26,7 +26,10 @@ import {
 import { ChatInlineContactForm } from "./chat-inline-contact-form";
 import { VoiceConversationMode } from "./voice-conversation-mode";
 
-const VOICE_ENABLED = process.env.NEXT_PUBLIC_VOICE_ENABLED === "true";
+// Voice mode is hard-disabled for now. The voice code (components, hooks, API
+// routes) stays in the repo, dormant. To re-enable, restore the env-driven check:
+//   const VOICE_ENABLED = process.env.NEXT_PUBLIC_VOICE_ENABLED === "true";
+const VOICE_ENABLED = false;
 
 // WhatsApp icon component
 function WhatsAppIcon({ size = 20 }: { size?: number }) {
