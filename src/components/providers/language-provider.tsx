@@ -80,8 +80,13 @@ export function LanguageProvider({ children, defaultLocale }: LanguageProviderPr
     }
   }, []);
 
+  // Legacy binary toggle kept for back-compat. The nav now drives locale with a
+  // 3-way selector via setLocale, so this cycles es -> en -> pt -> es to stay
+  // coherent if any older caller still uses it.
   const toggleLocale = useCallback(() => {
-    setLocale(locale === "es" ? "en" : "es");
+    const order: Locale[] = ["es", "en", "pt"];
+    const next = order[(order.indexOf(locale) + 1) % order.length]!;
+    setLocale(next);
   }, [locale, setLocale]);
 
   const content = contentMap[locale];

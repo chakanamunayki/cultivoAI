@@ -178,8 +178,8 @@ export function KnowledgeAnimation({ locale = "en" }: { locale?: Locale }) {
                             transition={{ duration: isHovered ? 0.5 : 2, repeat: Infinity }}
                         >⚡</motion.span>
                         <div className="flex flex-col">
-                            <span className="text-[8.5px] sm:text-[9px] font-bold text-white uppercase tracking-wider drop-shadow-sm">{locale === 'es' ? 'Motor de Contenido' : 'Content Engine'}</span>
-                            <span className="text-[7.5px] sm:text-[8px] text-[#00BCD4] font-black uppercase tracking-tight leading-tight pt-[1px] drop-shadow-[0_0_2px_rgba(0,188,212,0.8)]">{locale === 'es' ? 'Creación Automática' : 'Always Generating'}</span>
+                            <span className="text-[8.5px] sm:text-[9px] font-bold text-white uppercase tracking-wider drop-shadow-sm">{locale === 'es' ? 'Motor de Contenido' : locale === 'pt' ? 'Motor de Conteúdo' : 'Content Engine'}</span>
+                            <span className="text-[7.5px] sm:text-[8px] text-[#00BCD4] font-black uppercase tracking-tight leading-tight pt-[1px] drop-shadow-[0_0_2px_rgba(0,188,212,0.8)]">{locale === 'es' ? 'Creación Automática' : locale === 'pt' ? 'Criação Automática' : 'Always Generating'}</span>
                         </div>
                     </div>
                 </div>

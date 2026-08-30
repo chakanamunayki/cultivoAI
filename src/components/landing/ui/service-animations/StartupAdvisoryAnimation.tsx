@@ -99,8 +99,8 @@ export function StartupAdvisoryAnimation({ locale = "en" }: { locale?: Locale })
                 style={{ x: fgX, y: fgY }}
             >
                 <div className="flex flex-col">
-                    <span className="text-[9px] font-black text-white uppercase tracking-wider drop-shadow-sm">{locale === 'es' ? 'Foco Estratégico' : 'Strategic Focus'}</span>
-                    <span className="text-[7px] text-[#00BCD4] uppercase font-bold drop-shadow-[0_0_2px_rgba(0,188,212,0.8)] pt-[2px]">{locale === 'es' ? 'Apoyo IA en cada fase' : 'AI-Assisted Scaling'}</span>
+                    <span className="text-[9px] font-black text-white uppercase tracking-wider drop-shadow-sm">{locale === 'es' ? 'Foco Estratégico' : locale === 'pt' ? 'Foco Estratégico' : 'Strategic Focus'}</span>
+                    <span className="text-[7px] text-[#00BCD4] uppercase font-bold drop-shadow-[0_0_2px_rgba(0,188,212,0.8)] pt-[2px]">{locale === 'es' ? 'Apoyo IA en cada fase' : locale === 'pt' ? 'Apoio de IA em cada fase' : 'AI-Assisted Scaling'}</span>
                 </div>
                 <motion.span
                     className="text-xl drop-shadow-[0_0_10px_rgba(255,255,100,0.8)]"

@@ -57,19 +57,19 @@ export function GrowingTree({ className = "" }: GrowingTreeProps) {
 
   // Content based on locale
   const content = {
-    seed: locale === "es" ? "Tu negocio" : "Your business",
+    seed: locale === "es" ? "Tu negocio" : locale === "pt" ? "Seu negócio" : "Your business",
     branches: {
-      chatbots: locale === "es" ? "Chatbots" : "Chatbots",
-      automation: locale === "es" ? "Automatizacion" : "Automation",
-      dashboards: locale === "es" ? "Dashboards" : "Dashboards",
+      chatbots: locale === "es" ? "Chatbots" : locale === "pt" ? "Chatbots" : "Chatbots",
+      automation: locale === "es" ? "Automatizacion" : locale === "pt" ? "Automação" : "Automation",
+      dashboards: locale === "es" ? "Dashboards" : locale === "pt" ? "Dashboards" : "Dashboards",
     },
     results: {
       support24: "24/7",
-      happyClients: locale === "es" ? "Clientes felices" : "Happy clients",
-      timeSaved: locale === "es" ? "Tiempo ahorrado" : "Time saved",
-      insights: locale === "es" ? "Insights claros" : "Clear insights",
-      lessWork: locale === "es" ? "Menos trabajo" : "Less work",
-      moreGrowth: locale === "es" ? "Mas crecimiento" : "More growth",
+      happyClients: locale === "es" ? "Clientes felices" : locale === "pt" ? "Clientes felizes" : "Happy clients",
+      timeSaved: locale === "es" ? "Tiempo ahorrado" : locale === "pt" ? "Tempo economizado" : "Time saved",
+      insights: locale === "es" ? "Insights claros" : locale === "pt" ? "Insights claros" : "Clear insights",
+      lessWork: locale === "es" ? "Menos trabajo" : locale === "pt" ? "Menos trabalho" : "Less work",
+      moreGrowth: locale === "es" ? "Mas crecimiento" : locale === "pt" ? "Mais crescimento" : "More growth",
     },
   };
 
@@ -153,7 +153,7 @@ export function GrowingTree({ className = "" }: GrowingTreeProps) {
         viewBox="0 0 400 450"
         className="w-full h-full max-w-[400px] max-h-[450px]"
         aria-label={
-          locale === "es" ? "Arbol de ecosistema creciendo" : "Growing ecosystem tree"
+          locale === "es" ? "Arbol de ecosistema creciendo" : locale === "pt" ? "Árvore de ecossistema crescendo" : "Growing ecosystem tree"
         }
         role="img"
       >

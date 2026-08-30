@@ -15,7 +15,7 @@ interface ServicesSectionProps {
 export function ServicesSection({ onOpenChatBooking }: ServicesSectionProps) {
   const { content, locale } = useLocale();
   const { openServiceModal } = useModal();
-  const ribbonText = locale === "es" ? "Flujos + Dashboards + Web" : "Workflows + Dashboards + Web";
+  const ribbonText = locale === "es" ? "Flujos + Dashboards + Web" : locale === "pt" ? "Fluxos + Dashboards + Web" : "Workflows + Dashboards + Web";
 
   const handleServiceSeeMore = (service: Service) => {
     openServiceModal(service);
@@ -61,7 +61,7 @@ export function ServicesSection({ onOpenChatBooking }: ServicesSectionProps) {
               onClick={onOpenChatBooking}
               className="relative z-10 w-full rounded-xl bg-[#00BCD4] px-6 py-3.5 text-lg font-semibold tracking-[0.06em] text-[#FFFFFF] uppercase shadow-[0_14px_28px_rgba(15,23,42,0.24)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.3)] md:w-auto md:px-10 md:py-5 md:text-xl"
             >
-              {locale === "es" ? "Agenda 15 minutos" : "Book a 15-minute call"}
+              {locale === "es" ? "Agenda 15 minutos" : locale === "pt" ? "Agende 15 minutos" : "Book a 15-minute call"}
             </button>
           </div>
         </Reveal>

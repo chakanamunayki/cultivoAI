@@ -11,7 +11,7 @@ import { useLocale } from "@/hooks/use-locale";
 export function AboutSection() {
   const { content, locale } = useLocale();
   const { openTeamMemberModal } = useModal();
-  const noteLabel = locale === "es" ? "Nota" : "Note";
+  const noteLabel = locale === "es" ? "Nota" : locale === "pt" ? "Nota" : "Note";
 
   const handleViewMore = (member: TeamMember) => {
     openTeamMemberModal(member);

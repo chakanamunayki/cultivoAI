@@ -17,7 +17,7 @@ interface MissionSectionProps {
 export function MissionSection({ onOpenChatImpact }: MissionSectionProps) {
   const { content, locale } = useLocale();
   const { mission } = content;
-  const impactCtaText = locale === "es" ? "Proponer proyecto" : "Propose project";
+  const impactCtaText = locale === "es" ? "Proponer proyecto" : locale === "pt" ? "Propor projeto" : "Propose project";
 
   return (
     <section id="mission" className="border-b border-black/10 bg-[#161f1c] py-16 md:py-24">

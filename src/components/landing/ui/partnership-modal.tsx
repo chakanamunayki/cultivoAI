@@ -32,12 +32,12 @@ export function PartnershipModal({ partnership, onOpenContact }: PartnershipModa
   const { locale } = useLocale();
   const Icon = iconMap[partnership.icon] ?? Briefcase;
 
-  const chatCtaText = locale === "es" ? "Hablemos de esto" : "Let's talk about this";
-  const whatItMeansLabel = locale === "es" ? "Que significa" : "What it means";
-  const whyItMattersLabel = locale === "es" ? "Por que importa" : "Why it matters";
-  const includedLabel = locale === "es" ? "Que incluye" : "What's included";
-  const idealFitLabel = locale === "es" ? "Ideal para" : "Ideal fit";
-  const outcomeLabel = locale === "es" ? "Resultado tipico" : "Typical outcome";
+  const chatCtaText = locale === "es" ? "Hablemos de esto" : locale === "pt" ? "Vamos falar sobre isso" : "Let's talk about this";
+  const whatItMeansLabel = locale === "es" ? "Que significa" : locale === "pt" ? "O que significa" : "What it means";
+  const whyItMattersLabel = locale === "es" ? "Por que importa" : locale === "pt" ? "Por que importa" : "Why it matters";
+  const includedLabel = locale === "es" ? "Que incluye" : locale === "pt" ? "O que inclui" : "What's included";
+  const idealFitLabel = locale === "es" ? "Ideal para" : locale === "pt" ? "Ideal para" : "Ideal fit";
+  const outcomeLabel = locale === "es" ? "Resultado tipico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
 
   return (
     <div className="max-h-[92vh] overflow-y-auto bg-[#212121] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">

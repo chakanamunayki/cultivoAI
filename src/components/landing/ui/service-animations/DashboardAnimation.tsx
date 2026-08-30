@@ -49,6 +49,11 @@ export function DashboardAnimation({ locale = "en" }: { locale?: Locale }) {
         "Anomalía en costos de proveedores ⚠️",
         "Inventario: 3 camas en Retreat Sur",
         "IA: Optimización de turnos lista."
+    ] : locale === "pt" ? [
+        "Nova reserva (Pacote Premium) ✅",
+        "Anomalia nos custos de fornecedores ⚠️",
+        "Estoque: 3 camas no Retiro Sul",
+        "IA: Otimização de turnos pronta."
     ] : [
         "New booking (Premium Package) ✅",
         "Cost anomaly detected in sourcing ⚠️",
@@ -118,7 +123,7 @@ export function DashboardAnimation({ locale = "en" }: { locale?: Locale }) {
                     {/* Left: Interactive Line/Bar Chart */}
                     <div className="flex-[3] bg-[#151515] border border-white/10 rounded-xl p-3 sm:p-4 lg:p-5 flex flex-col shadow-2xl overflow-hidden relative group backdrop-blur-md">
                         <div className="flex justify-between items-center mb-2 sm:mb-4 text-[9px] lg:text-xs font-bold text-white/40 uppercase tracking-widest z-10">
-                            <span>{locale === 'es' ? 'Flujo de Caja' : 'Cash Flow'}</span>
+                            <span>{locale === 'es' ? 'Flujo de Caja' : locale === 'pt' ? 'Fluxo de Caixa' : 'Cash Flow'}</span>
                             <motion.span
                                 animate={{ opacity: [1, 0.4, 1] }}
                                 transition={{ repeat: Infinity, duration: 1.5 }}
@@ -190,7 +195,7 @@ export function DashboardAnimation({ locale = "en" }: { locale?: Locale }) {
                             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                         >⚙️</motion.div>
                         <span className="text-[9px] sm:text-[11px] lg:text-xs font-black uppercase tracking-widest text-[#00BCD4]">
-                            {locale === 'es' ? 'Motor de Operaciones' : 'Logistics Engine'}
+                            {locale === 'es' ? 'Motor de Operaciones' : locale === 'pt' ? 'Motor de Operações' : 'Logistics Engine'}
                         </span>
                     </div>
                     <div className="flex -space-x-1 sm:-space-x-2 shadow-md">

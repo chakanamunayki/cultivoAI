@@ -56,7 +56,7 @@ function StackedServiceCard({
   const usesContainImage = service.imageFit === "contain";
   const imageScale = useTransform(scrollYProgress, [0, 1], usesContainImage ? [1, 1] : [1.08, 1]);
   const cardScale = useTransform(progress, range, [1, targetScale]);
-  const seeMoreLabel = locale === "es" ? "Ver mas" : "See more";
+  const seeMoreLabel = locale === "es" ? "Ver mas" : locale === "pt" ? "Ver mais" : "See more";
 
   return (
     <div className="sticky top-0 flex min-h-screen w-full items-center justify-center py-2 md:py-8">

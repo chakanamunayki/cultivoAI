@@ -34,9 +34,9 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
-  const contactBandLabel = locale === "es" ? "Contacto directo" : "Direct contact";
+  const contactBandLabel = locale === "es" ? "Contacto directo" : locale === "pt" ? "Contato direto" : "Direct contact";
   const whatsappCtaLabel =
-    locale === "es" ? "Escribenos por WhatsApp" : "Message us on WhatsApp";
+    locale === "es" ? "Escribenos por WhatsApp" : locale === "pt" ? "Fale com a gente pelo WhatsApp" : "Message us on WhatsApp";
   const whatsappHref = `https://wa.me/${content.footer.contactInfo.whatsapp.replace(/\+/g, "")}`;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -54,7 +54,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
       const description = String(formData.get("description") ?? "").trim();
 
       if (!name) {
-        setSubmitError(locale === "es" ? "Por favor ingresa tu nombre." : "Please enter your name.");
+        setSubmitError(locale === "es" ? "Por favor ingresa tu nombre." : locale === "pt" ? "Por favor, digite o seu nome." : "Please enter your name.");
         return;
       }
 
@@ -136,14 +136,16 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
       {isSuccess ? (
         <div className="rounded-[18px] border border-black/10 bg-[#f1f1f1] p-6 shadow-[0_10px_24px_rgba(15,23,42,0.08)]">
           <p className="text-sm font-semibold tracking-[0.06em] text-[#00A3B7] uppercase">
-            {locale === "es" ? "Enviado" : "Sent"}
+            {locale === "es" ? "Enviado" : locale === "pt" ? "Enviado" : "Sent"}
           </p>
           <p className="mt-2 text-xl font-black tracking-tight text-black">
-            {locale === "es" ? "Gracias. Te escribimos pronto." : "Thanks. We’ll reach out soon."}
+            {locale === "es" ? "Gracias. Te escribimos pronto." : locale === "pt" ? "Obrigado. A gente entra em contato em breve." : "Thanks. We’ll reach out soon."}
           </p>
           <p className="mt-2 text-sm font-medium text-neutral-600">
             {locale === "es"
               ? "Si prefieres, tambien puedes escribirnos por WhatsApp usando el boton de arriba."
+              : locale === "pt"
+              ? "Se preferir, você também pode falar com a gente pelo WhatsApp usando o botão acima."
               : "If you prefer, you can also message us on WhatsApp using the button above."}
           </p>
           <button
@@ -154,7 +156,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
               landingPrimaryBlueButtonClass
             )}
           >
-            {locale === "es" ? "Cerrar" : "Close"}
+            {locale === "es" ? "Cerrar" : locale === "pt" ? "Fechar" : "Close"}
           </button>
         </div>
       ) : (
@@ -261,7 +263,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
           {isSubmitting ? (
             <span className="inline-flex items-center justify-center gap-2">
               <Loader2 size={16} className="animate-spin" />
-              {locale === "es" ? "Enviando..." : "Sending..."}
+              {locale === "es" ? "Enviando..." : locale === "pt" ? "Enviando..." : "Sending..."}
             </span>
           ) : (
             content.contactForm.submitButton

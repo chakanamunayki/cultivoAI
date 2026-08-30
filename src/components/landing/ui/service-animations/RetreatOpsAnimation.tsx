@@ -99,8 +99,8 @@ export function RetreatOpsAnimation({ locale = "en" }: { locale?: Locale }) {
                             <span className="text-lg sm:text-xl relative z-10 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">🧠</span>
                         </motion.div>
                         <div className="flex flex-col">
-                            <span className="text-[9px] sm:text-[10px] font-black uppercase text-white tracking-widest leading-none drop-shadow-sm">{locale === 'es' ? 'Cerebro Operativo' : 'Operational Brain'}</span>
-                            <span className="text-[7.5px] sm:text-[8px] text-[#00BCD4] font-bold tracking-wider pt-[2px]">{locale === 'es' ? 'Gestión Centralizada' : 'Centralized Management'}</span>
+                            <span className="text-[9px] sm:text-[10px] font-black uppercase text-white tracking-widest leading-none drop-shadow-sm">{locale === 'es' ? 'Cerebro Operativo' : locale === 'pt' ? 'Cérebro Operacional' : 'Operational Brain'}</span>
+                            <span className="text-[7.5px] sm:text-[8px] text-[#00BCD4] font-bold tracking-wider pt-[2px]">{locale === 'es' ? 'Gestión Centralizada' : locale === 'pt' ? 'Gestão Centralizada' : 'Centralized Management'}</span>
                         </div>
                     </div>
                     <div className="flex gap-1 sm:gap-1.5 items-center bg-white/5 px-2 sm:px-2.5 py-1 rounded-full border border-white/10 shrink-0 backdrop-blur-sm">
@@ -179,7 +179,7 @@ export function RetreatOpsAnimation({ locale = "en" }: { locale?: Locale }) {
                         </motion.span>
                         <div className="flex flex-col min-w-0">
                             <span className="text-[8px] sm:text-[9px] font-black uppercase text-white/50 tracking-wider truncate">
-                                {locale === 'es' ? 'Agentes IA Activos' : 'AI Agents Active'}
+                                {locale === 'es' ? 'Agentes IA Activos' : locale === 'pt' ? 'Agentes de IA Ativos' : 'AI Agents Active'}
                             </span>
                             <AnimatePresence mode="wait">
                                 <motion.span
@@ -189,10 +189,10 @@ export function RetreatOpsAnimation({ locale = "en" }: { locale?: Locale }) {
                                     exit={{ opacity: 0, y: -5 }}
                                     className="text-[9px] sm:text-[10px] text-[#00BCD4] font-bold whitespace-nowrap truncate drop-shadow-sm"
                                 >
-                                    {activeIdx === 0 && (locale === 'es' ? 'Procesando pago Stripe...' : 'Processing Stripe invoice...')}
-                                    {activeIdx === 1 && (locale === 'es' ? 'Respondiendo a María...' : 'Replying to Maria on WA...')}
-                                    {activeIdx === 2 && (locale === 'es' ? 'Avisando dieta vegana...' : 'Notifying chef of vegan diet...')}
-                                    {activeIdx === 3 && (locale === 'es' ? 'Generando reporte semanal...' : 'Generating weekly report...')}
+                                    {activeIdx === 0 && (locale === 'es' ? 'Procesando pago Stripe...' : locale === 'pt' ? 'Processando pagamento Stripe...' : 'Processing Stripe invoice...')}
+                                    {activeIdx === 1 && (locale === 'es' ? 'Respondiendo a María...' : locale === 'pt' ? 'Respondendo à Maria...' : 'Replying to Maria on WA...')}
+                                    {activeIdx === 2 && (locale === 'es' ? 'Avisando dieta vegana...' : locale === 'pt' ? 'Avisando dieta vegana...' : 'Notifying chef of vegan diet...')}
+                                    {activeIdx === 3 && (locale === 'es' ? 'Generando reporte semanal...' : locale === 'pt' ? 'Gerando relatório semanal...' : 'Generating weekly report...')}
                                 </motion.span>
                             </AnimatePresence>
                         </div>
