@@ -5,23 +5,19 @@ projectsTitle: "What We've Built",
 projectsSubtitle: "Selected projects from our current work",
 projects: [
   {
-    title: "CHAK FoodTech: Protocol IP, Protected Through Execution",
-    desc: "We built the digital layer for an agri-biotech production platform. Scientists author the protocol; CHAK Brain guides the person running it step by step, without ever exposing the full protocol. The IP stays in the system.",
+    title: "Company Brain: Protocol IP, Protected Through Execution",
+    desc: "We built a Company Brain for an agri-biotech production platform in Colombia. Scientists author the protocol; the Brain guides the person running it step by step, without ever exposing the full recipe. The IP stays in the system, not in someone's phone.",
     fullDesc:
-      "CHAK FoodTech turns a biological objective into a controlled, measurable, reproducible plant-production process. We built the digital layer, and it works as one loop. Scientists and lab leads author the protocol in the builder: every step, parameter, and sequence. That full protocol is the IP. When it is time to run it, CHAK Brain guides the person doing the work one step at a time: what to do now, the parameters, the frequency, the asepsis, and it captures their observations back against that step. The operator executes the protocol without ever holding the whole thing. Access is role-gated: the lab technician is guided through the steps, the commercial team sees clients, the director sees everything. The full protocol and the accumulated data stay in the system, not in the executor's hands, not in WhatsApp, not walking out the door.",
+      "The platform turns a biological objective into a controlled, measurable, reproducible plant-production process. We built the digital layer, the Company Brain, and it works as one loop. Scientists and lab leads author the protocol in the builder: every step, parameter, and sequence. That full protocol is the IP. When it is time to run it, the Brain guides the person doing the work one step at a time: what to do now, the parameters, the frequency, the asepsis, and it captures their observations back against that step. The operator executes the protocol without ever holding the whole thing. Access is role-gated: the lab technician is guided through the steps, the commercial team sees clients, the director sees everything. The full protocol and the accumulated data stay in the system, not in the executor's hands, not in WhatsApp, not walking out the door.",
     lessons: "The people running a protocol don't need the whole protocol. They need the current step. Authoring and execution are one loop, and the full recipe, the real IP, never has to leave the system.",
     status: "Active",
-    image: "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
-    images: [
-      "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
-    ],
-    url: "https://chak-foodtech.com",
-    tags: ["Agri-biotech", "Protocol IP", "RAG"],
+    image: "",
+    tags: ["Company Brain", "Agri-biotech", "RAG"],
     modal: {
       whatItMeans:
         "One loop over a real agri-biotech operation. Scientists author protocols in the builder; the people executing are guided one step at a time and their observations flow back. Everything is scoped to each role, and the full protocol never leaves the system.",
       whyItMatters:
-        "In science-driven production, the protocol is the IP. Hand the whole recipe to everyone who runs it and it leaks across roles and walks out the door. CHAK Brain guides execution step by step, so the operator gets exactly what they need to do the work and never the full protocol. The IP stays structured, role-gated, and owned by the company.",
+        "In science-driven production, the protocol is the IP. Hand the whole recipe to everyone who runs it and it leaks across roles and walks out the door. The Company Brain guides execution step by step, so the operator gets exactly what they need to do the work and never the full protocol. The IP stays structured, role-gated, and owned by the company.",
       whatsIncluded: [
         "Protocol builder where scientists and lab leads author the full protocol: steps, parameters, sequence",
         "Step-by-step execution guidance: the operator sees the current step, its parameters and frequency, nothing more",

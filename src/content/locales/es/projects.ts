@@ -5,23 +5,19 @@ projectsTitle: "Lo que Hemos Construido",
 projectsSubtitle: "Proyectos seleccionados de nuestro trabajo actual",
 projects: [
   {
-    title: "CHAK FoodTech: La IP de los Protocolos, Protegida en la Ejecución",
-    desc: "Construimos la capa digital de una plataforma de producción agri-biotech. Los científicos crean el protocolo; CHAK Brain guía paso a paso a quien lo ejecuta, sin exponer nunca el protocolo completo. La IP se queda en el sistema.",
+    title: "Company Brain: La IP de los Protocolos, Protegida en la Ejecución",
+    desc: "Construimos un Company Brain para una plataforma de producción agri-biotech en Colombia. Los científicos crean el protocolo; el Brain guía paso a paso a quien lo ejecuta, sin exponer nunca la receta completa. La IP se queda en el sistema, no en el teléfono de alguien.",
     fullDesc:
-      "CHAK FoodTech convierte un objetivo biológico en un proceso de producción vegetal controlado, medible y reproducible. Nosotros construimos la capa digital, y funciona como un solo loop. Los científicos y líderes de laboratorio crean el protocolo en el constructor: cada paso, parámetro y secuencia. Ese protocolo completo es la IP. Cuando llega el momento de ejecutarlo, CHAK Brain guía a quien hace el trabajo paso a paso: qué hacer ahora, los parámetros, la frecuencia, la asepsia, y captura sus observaciones contra ese paso. El operador ejecuta el protocolo sin tener nunca el documento completo. El acceso es por rol: el técnico de laboratorio es guiado por los pasos, el equipo comercial ve clientes, el director ve todo. El protocolo completo y los datos acumulados se quedan en el sistema, no en las manos del operador, no en WhatsApp, no saliendo por la puerta.",
+      "La plataforma convierte un objetivo biológico en un proceso de producción vegetal controlado, medible y reproducible. Nosotros construimos la capa digital, el Company Brain, y funciona como un solo loop. Los científicos y líderes de laboratorio crean el protocolo en el constructor: cada paso, parámetro y secuencia. Ese protocolo completo es la IP. Cuando llega el momento de ejecutarlo, el Brain guía a quien hace el trabajo paso a paso: qué hacer ahora, los parámetros, la frecuencia, la asepsia, y captura sus observaciones contra ese paso. El operador ejecuta el protocolo sin tener nunca el documento completo. El acceso es por rol: el técnico de laboratorio es guiado por los pasos, el equipo comercial ve clientes, el director ve todo. El protocolo completo y los datos acumulados se quedan en el sistema, no en las manos del operador, no en WhatsApp, no saliendo por la puerta.",
     lessons: "Quien ejecuta un protocolo no necesita el protocolo completo. Necesita el paso actual. Creación y ejecución son un solo loop, y la receta completa, la IP real, nunca tiene que salir del sistema.",
     status: "Activo",
-    image: "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
-    images: [
-      "/landing/photos/project-screenshots/Screenshot_chak-foodtech.com.jpeg",
-    ],
-    url: "https://chak-foodtech.com",
-    tags: ["Agri-biotech", "IP de Protocolos", "RAG"],
+    image: "",
+    tags: ["Company Brain", "Agri-biotech", "RAG"],
     modal: {
       whatItMeans:
         "Un solo loop sobre una operación agri-biotech real. Los científicos crean los protocolos en el constructor; quienes ejecutan son guiados paso a paso y sus observaciones regresan al sistema. Todo limitado a cada rol, y el protocolo completo nunca sale del sistema.",
       whyItMatters:
-        "En la producción basada en ciencia, el protocolo es la IP. Si entregas la receta completa a todos los que la ejecutan, se filtra entre roles y se va por la puerta. CHAK Brain guía la ejecución paso a paso, así el operador recibe exactamente lo que necesita para hacer el trabajo y nunca el protocolo completo. La IP se queda estructurada, con acceso por rol y en manos de la empresa.",
+        "En la producción basada en ciencia, el protocolo es la IP. Si entregas la receta completa a todos los que la ejecutan, se filtra entre roles y se va por la puerta. El Company Brain guía la ejecución paso a paso, así el operador recibe exactamente lo que necesita para hacer el trabajo y nunca el protocolo completo. La IP se queda estructurada, con acceso por rol y en manos de la empresa.",
       whatsIncluded: [
         "Constructor donde los científicos y líderes de laboratorio crean el protocolo completo: pasos, parámetros, secuencia",
         "Guía de ejecución paso a paso: el operador ve el paso actual, sus parámetros y frecuencia, nada más",
