@@ -1,19 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Zap, MessageSquare, BarChart3, TrendingUp, type LucideIcon } from "lucide-react";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { useLocale } from "@/hooks/use-locale";
-
-const STORY_ICONS: Record<string, { icon: LucideIcon; color: string }> = {
-  "E-commerce": { icon: Zap, color: "bg-zinc-900" },
-  Salud: { icon: MessageSquare, color: "bg-primary" },
-  Retail: { icon: BarChart3, color: "bg-primary" },
-};
-
-function getStoryIcon(industry: string): { icon: LucideIcon; color: string } {
-  return STORY_ICONS[industry] || { icon: Zap, color: "bg-zinc-900" };
-}
 
 export function StoriesSection() {
   const { content, locale } = useLocale();
@@ -34,8 +23,6 @@ export function StoriesSection() {
 
       <div className="grid lg:grid-cols-3 gap-6 md:gap-8">
         {content.stories.map((story, i) => {
-          const { icon: IconComponent, color } = getStoryIcon(story.industry);
-
           return (
             <Reveal key={i} delay={i * 150}>
               <div className="bg-white border-4 border-black h-full shadow-[8px_8px_0px_0px_black] md:shadow-[12px_12px_0px_0px_black] hover:translate-x-1 hover:translate-y-1 md:hover:translate-x-2 md:hover:translate-y-2 hover:shadow-[4px_4px_0px_0px_black] transition-all duration-200 flex flex-col group overflow-hidden">
@@ -50,11 +37,6 @@ export function StoriesSection() {
                     sizes="(max-width: 1024px) 100vw, 33vw"
                     loading="lazy"
                   />
-                  <div
-                    className={`absolute top-4 left-4 z-20 w-10 h-10 md:w-12 md:h-12 ${color} border-4 border-black flex items-center justify-center text-white`}
-                  >
-                    <IconComponent size={20} className="md:w-6 md:h-6" />
-                  </div>
                 </div>
 
                 <div className="p-6 md:p-8 flex flex-col flex-1">
@@ -84,8 +66,7 @@ export function StoriesSection() {
                         <div className="font-black text-[10px] md:text-xs uppercase bg-secondary text-secondary-foreground inline-block px-2 mb-2 border-2 border-black">
                           {resultLabel}
                         </div>
-                        <div className="flex items-center gap-2 bg-primary/10 border-2 border-primary px-3 py-2">
-                          <TrendingUp size={18} className="text-primary" />
+                        <div className="bg-primary/10 border-2 border-primary px-3 py-2">
                           <span className="font-black text-sm text-primary">
                             {story.metric}
                           </span>

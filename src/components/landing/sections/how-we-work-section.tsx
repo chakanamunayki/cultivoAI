@@ -1,16 +1,9 @@
 "use client";
 
-import { RefreshCw, Sprout, Users } from "lucide-react";
 import { CodeTerminal } from "@/components/landing/ui/code-terminal";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { SectionHeader } from "@/components/landing/ui/section-header";
 import { useLocale } from "@/hooks/use-locale";
-
-const ICON_MAP: Record<string, typeof RefreshCw> = {
-  RefreshCw,
-  Sprout,
-  Users,
-};
 
 export function HowWeWorkSection() {
   const { content } = useLocale();
@@ -39,14 +32,10 @@ export function HowWeWorkSection() {
           <div>
             <div className="mb-6 grid gap-6 md:mb-8 md:grid-cols-2 md:gap-8">
               {sideBySidePillars.map((pillar, index) => {
-                const Icon = ICON_MAP[pillar.icon] || RefreshCw;
                 return (
                   <Reveal key={pillar.title} delay={index * 100}>
                     <div className="group h-full rounded-[24px] border border-white/15 bg-[#212121] p-6 shadow-[0_14px_30px_rgba(0,0,0,0.3)] ring-1 ring-white/5 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#1b1b1b] hover:shadow-[0_18px_34px_rgba(0,0,0,0.4)] md:p-8">
-                      <div className="-mx-6 mb-4 flex items-center gap-4 border-y border-[#00BCD4]/35 bg-[#00BCD4] px-6 py-3 md:-mx-8 md:px-8">
-                        <div className="rounded-xl border border-white/20 bg-black/20 p-3 transition-transform group-hover:scale-105">
-                          <Icon size={28} className="text-[#FFFFFF]" strokeWidth={2.5} />
-                        </div>
+                      <div className="-mx-6 mb-4 border-y border-[#00BCD4]/35 bg-[#00BCD4] px-6 py-3 md:-mx-8 md:px-8">
                         <h3 className="text-xl font-black tracking-tight text-[#FFFFFF] md:text-2xl">
                           {pillar.title}
                         </h3>
@@ -68,16 +57,9 @@ export function HowWeWorkSection() {
                       {fullWidthPillar.title}
                     </h3>
                   </div>
-                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
-                    <div className="w-fit shrink-0 rounded-xl border border-white/25 bg-white/10 p-3 transition-transform group-hover:scale-105">
-                      <Users size={28} className="text-[#FFFFFF]" strokeWidth={2.5} />
-                    </div>
-                    <div>
-                      <p className="text-base leading-relaxed md:text-lg">
-                        {fullWidthPillar.description}
-                      </p>
-                    </div>
-                  </div>
+                  <p className="text-base leading-relaxed md:text-lg">
+                    {fullWidthPillar.description}
+                  </p>
                 </div>
               </Reveal>
             )}

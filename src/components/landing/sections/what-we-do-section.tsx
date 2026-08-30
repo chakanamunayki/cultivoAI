@@ -1,9 +1,8 @@
 "use client";
 
-import { ArrowRight, Check, Settings, Rocket, type LucideIcon } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import {
   landingCardClass,
-  landingIconChipClass,
   landingPrimaryDarkButtonClass,
   landingTitleBandClass,
   type LandingCardVariant,
@@ -32,9 +31,6 @@ export function WhatWeDoSection({ onScrollToServices }: WhatWeDoSectionProps) {
     }
   };
 
-  // Icons for the columns
-  const columnIcons: LucideIcon[] = [Settings, Rocket];
-
   return (
     <section
       id="what-we-do"
@@ -58,21 +54,17 @@ export function WhatWeDoSection({ onScrollToServices }: WhatWeDoSectionProps) {
         {/* Two columns: Optimize & Expand - Card format with prominent styling */}
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16">
           {whatWeDo.columns.map((column, columnIndex) => {
-            const IconComponent = columnIcons[columnIndex] ?? Settings;
             const variant: LandingCardVariant = columnIndex === 1 ? "blue" : "dark";
             return (
               <Reveal key={column.title} delay={columnIndex * 150 + 150}>
                 <div className={landingCardClass(variant, "h-full overflow-hidden rounded-[28px] p-0 hover:-translate-y-1")}>
-                  {/* Header with icon and title */}
+                  {/* Header and title */}
                   <div
                     className={landingTitleBandClass(
                       variant,
-                      "flex items-center gap-4 px-6 py-4 md:gap-6 md:px-8 md:py-5"
+                      "px-6 py-4 md:px-8 md:py-5"
                     )}
                   >
-                    <div className={cn("flex h-16 w-16 items-center justify-center rounded-xl border md:h-20 md:w-20", landingIconChipClass(variant, "p-0"))}>
-                      <IconComponent size={36} className="text-[#FFFFFF]" strokeWidth={2.5} />
-                    </div>
                     <h3 className="text-3xl font-black tracking-tight md:text-4xl">{column.title}</h3>
                   </div>
 
