@@ -154,6 +154,32 @@ function ChatButtonPlaceholder({
   );
 }
 
+// Services were consolidated from 8 cards to 4. The chat model can still emit an
+// absorbed service name; map each normalized old name to the surviving card's
+// stable animationKey so the modal still opens instead of silently no-op'ing.
+const ABSORBED_SERVICE_ALIASES: Record<string, string> = {
+  // -> Decision and Automation Systems (animationKey "dashboards")
+  "workflow optimization": "dashboards",
+  "optimizacion de flujos": "dashboards",
+  workflow: "dashboards",
+  automation: "dashboards",
+  "ai assistants": "dashboards",
+  "asistentes ia": "dashboards",
+  asistentes: "dashboards",
+  "decision dashboards": "dashboards",
+  "dashboards de decision": "dashboards",
+  dashboard: "dashboards",
+  // -> Custom AI and Software Builds (animationKey "software-web")
+  "software, websites and digital experiences": "software-web",
+  "software, sitios web y experiencias digitales": "software-web",
+  "startup advisory": "software-web",
+  "asesoria para startups": "software-web",
+  websites: "software-web",
+  // -> Company Brain (animationKey "company-brain")
+  "knowledge and content systems": "company-brain",
+  "sistemas de conocimiento y contenido": "company-brain",
+};
+
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatContext, setChatContext] = useState<ChatContext | null>(null);
@@ -199,7 +225,17 @@ export default function Home() {
   const handleOpenServiceModal = useCallback(
     (serviceTitle: string) => {
       const target = normalizeForMatch(serviceTitle);
-      const service = content.services.find((s) => normalizeForMatch(s.title).includes(target));
+      let service = content.services.find((s) => normalizeForMatch(s.title).includes(target));
+      if (!service) {
+        // Fall back to absorbed-name aliases from the 8->4 consolidation.
+        const aliasKey = Object.keys(ABSORBED_SERVICE_ALIASES).find((key) =>
+          target.includes(key)
+        );
+        if (aliasKey) {
+          const animationKey = ABSORBED_SERVICE_ALIASES[aliasKey];
+          service = content.services.find((s) => s.animationKey === animationKey);
+        }
+      }
       if (service) {
         openServiceModal(service);
       }

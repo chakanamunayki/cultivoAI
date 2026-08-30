@@ -69,7 +69,7 @@ const chatTools = {
   }),
   show_service_details: tool({
     description:
-      "Opens a modal with full details about a specific service (e.g. 'Company Brain', 'Workflow Optimization', 'Decision Dashboards').",
+      "Opens a modal with full details about a specific service. Use the site's current service names: 'Company Brain', 'Decision and Automation Systems', 'Custom AI and Software Builds', 'Retreat Ops Systems'.",
     inputSchema: z.object({ service_title: z.string() }),
     execute: stub,
   }),
