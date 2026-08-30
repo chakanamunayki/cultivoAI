@@ -62,6 +62,7 @@ export interface UseGeminiLiveReturn {
 const VOICE_CONFIG: Record<Locale, string> = {
   es: "Kore", // Spanish voice
   en: "Kore", // English voice
+  pt: "Kore", // Portuguese voice
 };
 
 const MAX_RETRIES = 3;

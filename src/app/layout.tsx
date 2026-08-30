@@ -53,8 +53,9 @@ async function detectServerLocale(): Promise<Locale> {
 
   const topLanguage = ranked[0]?.tag ?? "";
 
-  // Spanish only if the user's highest-priority language is Spanish.
+  // Honor the user's highest-priority language: Portuguese, then Spanish.
   // Default to English (also covers a missing/empty header).
+  if (topLanguage.startsWith("pt")) return "pt";
   return topLanguage.startsWith("es") ? "es" : "en";
 }
 
@@ -83,7 +84,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_CO",
-    alternateLocale: "en_US",
+    alternateLocale: ["en_US", "pt_BR"],
     siteName: "CultivoAI",
     title: "CultivoAI - IA y Automatización",
     description:
@@ -120,7 +121,7 @@ const jsonLd = {
     },
   ],
   areaServed: "Worldwide",
-  knowsLanguage: ["es", "en"],
+  knowsLanguage: ["es", "en", "pt"],
 };
 
 export default async function RootLayout({

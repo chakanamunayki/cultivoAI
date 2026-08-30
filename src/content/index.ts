@@ -7,6 +7,7 @@
 
 import { en } from "./en";
 import { es } from "./es";
+import { pt } from "./pt";
 import type { Locale, SiteContent } from "./types";
 
 // Re-export types
@@ -17,15 +18,17 @@ export type { WhyUs, FooterCopy, ChatCopy, ContactFormCopy, AboutCopy } from "./
 // Re-export content
 export { es } from "./es";
 export { en } from "./en";
+export { pt } from "./pt";
 
 const contentMap: Record<Locale, SiteContent> = {
   es,
   en,
+  pt,
 };
 
 /**
  * Get content for a specific locale
- * @param locale - 'es' or 'en'
+ * @param locale - 'es', 'en' or 'pt'
  * @returns SiteContent for the specified locale
  */
 export function getContent(locale: Locale): SiteContent {
@@ -34,7 +37,7 @@ export function getContent(locale: Locale): SiteContent {
 
 /**
  * Get a specific content key for a locale
- * @param locale - 'es' or 'en'
+ * @param locale - 'es', 'en' or 'pt'
  * @param key - Key path in SiteContent
  * @returns The content value
  */

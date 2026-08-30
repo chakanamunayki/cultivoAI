@@ -15,11 +15,17 @@ const DOCS: Record<Locale, { title: string; lines: string[]; category: string; i
         { title: "Generación de Campaña", category: "Creación", icon: "✍️", lines: ["Borrador: 'Sanar desde adentro'", "Foco: Proceso de Temazcal", "Aplicando voz de marca..."] },
         { title: "Activo de Contenido Publicado", category: "Salida", icon: "✨", lines: ["Target: Profesionales de salud", "Tono: Empático, calmado", "Estado: En Blog e IG"] }
     ],
+    pt: [
+        { title: "Pesquisa: Tendências de Bem-estar", category: "Pesquisa", icon: "📊", lines: ["Tendência: Recuperação de burnout", "Lacuna: Terapia somática", "Demanda: Dietas da fazenda à mesa"] },
+        { title: "Geração de Conteúdo: Campanha", category: "Criação", icon: "✍️", lines: ["Rascunho: 'Curar por dentro'", "Foco: Processo de Temazcal", "Aplicando a voz da marca..."] },
+        { title: "Ativo de Conteúdo Publicado", category: "Saída", icon: "✨", lines: ["Público: Profissionais de saúde", "Tom: Empático, calmo", "Status: No Blog e no IG"] }
+    ],
 };
 
 const LIFECYCLE: Record<Locale, string[]> = {
     en: ["Research", "Create", "Publish"],
     es: ["Investigar", "Crear", "Publicar"],
+    pt: ["Pesquisar", "Criar", "Publicar"],
 };
 
 export function KnowledgeAnimation({ locale = "en" }: { locale?: Locale }) {
@@ -172,8 +178,8 @@ export function KnowledgeAnimation({ locale = "en" }: { locale?: Locale }) {
                             transition={{ duration: isHovered ? 0.5 : 2, repeat: Infinity }}
                         >⚡</motion.span>
                         <div className="flex flex-col">
-                            <span className="text-[8.5px] sm:text-[9px] font-bold text-white uppercase tracking-wider drop-shadow-sm">{locale === 'es' ? 'Motor de Contenido' : 'Content Engine'}</span>
-                            <span className="text-[7.5px] sm:text-[8px] text-[#00BCD4] font-black uppercase tracking-tight leading-tight pt-[1px] drop-shadow-[0_0_2px_rgba(0,188,212,0.8)]">{locale === 'es' ? 'Creación Automática' : 'Always Generating'}</span>
+                            <span className="text-[8.5px] sm:text-[9px] font-bold text-white uppercase tracking-wider drop-shadow-sm">{locale === 'es' ? 'Motor de Contenido' : locale === 'pt' ? 'Motor de Conteúdo' : 'Content Engine'}</span>
+                            <span className="text-[7.5px] sm:text-[8px] text-[#00BCD4] font-black uppercase tracking-tight leading-tight pt-[1px] drop-shadow-[0_0_2px_rgba(0,188,212,0.8)]">{locale === 'es' ? 'Creación Automática' : locale === 'pt' ? 'Criação Automática' : 'Always Generating'}</span>
                         </div>
                     </div>
                 </div>

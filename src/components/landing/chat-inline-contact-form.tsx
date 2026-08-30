@@ -2,6 +2,7 @@
 
 import type { FormEventHandler } from "react";
 import { Loader2 } from "lucide-react";
+import type { Locale } from "@/content/types";
 
 interface ContactFormData {
   name: string;
@@ -9,13 +10,43 @@ interface ContactFormData {
 }
 
 interface ChatInlineContactFormProps {
-  locale: "es" | "en";
+  locale: Locale;
   formData: ContactFormData;
   formError: string | null;
   isSubmitting: boolean;
   onSubmit: FormEventHandler<HTMLFormElement>;
   onFormDataChange: (next: ContactFormData) => void;
 }
+
+const FORM_COPY: Record<Locale, {
+  nameLabel: string;
+  namePlaceholder: string;
+  emailPlaceholder: string;
+  sending: string;
+  continue: string;
+}> = {
+  es: {
+    nameLabel: "Nombre",
+    namePlaceholder: "Tu nombre",
+    emailPlaceholder: "tu@email.com",
+    sending: "Enviando...",
+    continue: "Continuar",
+  },
+  en: {
+    nameLabel: "Name",
+    namePlaceholder: "Your name",
+    emailPlaceholder: "your@email.com",
+    sending: "Sending...",
+    continue: "Continue",
+  },
+  pt: {
+    nameLabel: "Nome",
+    namePlaceholder: "Seu nome",
+    emailPlaceholder: "voce@email.com",
+    sending: "Enviando...",
+    continue: "Continuar",
+  },
+};
 
 export function ChatInlineContactForm({
   locale,
@@ -25,6 +56,7 @@ export function ChatInlineContactForm({
   onSubmit,
   onFormDataChange,
 }: ChatInlineContactFormProps) {
+  const copy = FORM_COPY[locale];
   return (
     <form
       onSubmit={onSubmit}
@@ -32,13 +64,13 @@ export function ChatInlineContactForm({
     >
       <div>
         <label className="block text-xs font-bold uppercase mb-1 text-black">
-          {locale === "es" ? "Nombre" : "Name"}
+          {copy.nameLabel}
         </label>
         <input
           type="text"
           value={formData.name}
           onChange={(e) => onFormDataChange({ ...formData, name: e.target.value })}
-          placeholder={locale === "es" ? "Tu nombre" : "Your name"}
+          placeholder={copy.namePlaceholder}
           className="w-full p-2 border-2 border-black bg-muted font-bold text-sm focus:shadow-[2px_2px_0px_0px_var(--primary)] outline-none"
           disabled={isSubmitting}
         />
@@ -49,7 +81,7 @@ export function ChatInlineContactForm({
           type="email"
           value={formData.email}
           onChange={(e) => onFormDataChange({ ...formData, email: e.target.value })}
-          placeholder={locale === "es" ? "tu@email.com" : "your@email.com"}
+          placeholder={copy.emailPlaceholder}
           className="w-full p-2 border-2 border-black bg-muted font-bold text-sm focus:shadow-[2px_2px_0px_0px_var(--primary)] outline-none"
           disabled={isSubmitting}
         />
@@ -63,10 +95,10 @@ export function ChatInlineContactForm({
         {isSubmitting ? (
           <>
             <Loader2 size={16} className="animate-spin" />
-            {locale === "es" ? "Enviando..." : "Sending..."}
+            {copy.sending}
           </>
         ) : (
-          (locale === "es" ? "Continuar" : "Continue")
+          copy.continue
         )}
       </button>
     </form>

@@ -124,7 +124,7 @@ export function ProjectsSection() {
                           : "border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black"
                       )}
                     >
-                      {locale === "es" ? "Ver sitio" : "Visit site"}
+                      {locale === "es" ? "Ver sitio" : locale === "pt" ? "Ver site" : "Visit site"}
                       <ArrowRight size={14} />
                     </a>
                   )}
@@ -136,7 +136,7 @@ export function ProjectsSection() {
                         "block px-4 py-2 text-xs font-semibold tracking-[0.07em] uppercase md:px-6"
                       )}
                     >
-                      {locale === "es" ? "Leccion aprendida:" : "Lesson Learned:"}
+                      {locale === "es" ? "Leccion aprendida:" : locale === "pt" ? "Lição aprendida:" : "Lesson Learned:"}
                     </span>
                     <p
                       className={cn(

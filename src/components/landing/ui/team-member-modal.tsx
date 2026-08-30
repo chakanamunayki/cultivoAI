@@ -13,7 +13,7 @@ interface TeamMemberModalProps {
 
 export function TeamMemberModal({ member, onOpenContact }: TeamMemberModalProps) {
   const { locale } = useLocale();
-  const ctaText = locale === "es" ? "Hablemos" : "Let's talk";
+  const ctaText = locale === "es" ? "Hablemos" : locale === "pt" ? "Vamos conversar" : "Let's talk";
 
   return (
     <div className="flex flex-col md:flex-row rounded-[26px] overflow-hidden">

@@ -7,9 +7,9 @@ import { useLocale } from "@/hooks/use-locale";
 export function StoriesSection() {
   const { content, locale } = useLocale();
 
-  const beforeLabel = locale === "es" ? "Antes" : "Before";
-  const afterLabel = locale === "es" ? "Despues" : "After";
-  const resultLabel = locale === "es" ? "Resultado" : "Result";
+  const beforeLabel = locale === "es" ? "Antes" : locale === "pt" ? "Antes" : "Before";
+  const afterLabel = locale === "es" ? "Despues" : locale === "pt" ? "Depois" : "After";
+  const resultLabel = locale === "es" ? "Resultado" : locale === "pt" ? "Resultado" : "Result";
 
   return (
     <div id="stories" className="bg-background p-6 md:p-12 lg:p-24 border-b-4 border-black">

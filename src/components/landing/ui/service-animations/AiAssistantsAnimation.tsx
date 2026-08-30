@@ -15,6 +15,11 @@ const CONVERSATIONS: Record<Locale, { user: string; ai: string; category: string
         { user: "¿Me puede ayudar con estrés reciente y agotamiento?", ai: "Sí, nuestras meditaciones y respiración están diseñadas para ayudar a sobrellevar el estrés.", category: "Beneficios" },
         { user: "¿Las comidas son totalmente orgánicas?", ai: "¡Absolutamente! Toda la comida es local, 100% orgánica y adaptada a cualquier dieta.", category: "Detalles" },
     ],
+    pt: [
+        { user: "O que está incluído no retiro de bem-estar?", ai: "Inclui meditação diária, cerimônia de Temazcal e refeições orgânicas da fazenda à mesa. Vou te enviar o folheto!", category: "Vendas" },
+        { user: "Isso me ajuda com estresse e esgotamento recentes?", ai: "Sim, as nossas meditações guiadas e a respiração são feitas para ajudar a lidar com estresse e perdas.", category: "Benefícios" },
+        { user: "As refeições são totalmente orgânicas?", ai: "Com certeza! Toda a comida é de produtores locais, 100% orgânica e adaptada a qualquer necessidade alimentar.", category: "Detalhes" },
+    ],
 };
 
 const CHANNELS = ["WhatsApp", "Website", "Instagram"];
@@ -178,8 +183,8 @@ export function AiAssistantsAnimation({ locale = "en" }: Props) {
                             transition={{ duration: 0.5, repeat: isHovered ? Infinity : 0, repeatDelay: 1 }}
                         >👩‍💻</motion.span>
                         <div className="flex flex-col">
-                            <span className="text-[8.5px] sm:text-[9px] font-bold text-white uppercase leading-tight pt-[1px]">{locale === 'es' ? 'Asistente de Ventas' : 'Sales Assistant 24/7'}</span>
-                            <span className="text-[7.5px] sm:text-[8px] text-[#00BCD4] font-bold leading-tight drop-shadow-sm">{locale === 'es' ? 'Convirtiendo leads' : 'Converting inquiries'}</span>
+                            <span className="text-[8.5px] sm:text-[9px] font-bold text-white uppercase leading-tight pt-[1px]">{locale === 'es' ? 'Asistente de Ventas' : locale === 'pt' ? 'Assistente de Vendas' : 'Sales Assistant 24/7'}</span>
+                            <span className="text-[7.5px] sm:text-[8px] text-[#00BCD4] font-bold leading-tight drop-shadow-sm">{locale === 'es' ? 'Convirtiendo leads' : locale === 'pt' ? 'Convertendo leads' : 'Converting inquiries'}</span>
                         </div>
                     </div>
                     <div className="flex gap-1.5 items-center shrink-0">

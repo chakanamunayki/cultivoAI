@@ -24,21 +24,22 @@ interface BrainNode {
     y: number;
     en: string;
     es: string;
+    pt: string;
 }
 
 const NODES: BrainNode[] = [
-    { id: "decisions", x: 215, y: 158, en: "Decisions", es: "Decisiones" },
-    { id: "protocols", x: 50, y: 78, en: "Protocols", es: "Protocolos" },
-    { id: "clients", x: 160, y: 42, en: "Clients", es: "Clientes" },
-    { id: "retreats", x: 290, y: 56, en: "Retreats", es: "Retiros" },
-    { id: "sops", x: 370, y: 112, en: "SOPs", es: "SOPs" },
-    { id: "playbooks", x: 380, y: 204, en: "Playbooks", es: "Manuales" },
-    { id: "projects", x: 320, y: 262, en: "Projects", es: "Proyectos" },
-    { id: "research", x: 200, y: 286, en: "Research", es: "Investigacion" },
-    { id: "team", x: 80, y: 274, en: "Team", es: "Equipo" },
-    { id: "meetings", x: 24, y: 186, en: "Meetings", es: "Reuniones" },
-    { id: "vendors", x: 112, y: 126, en: "Vendors", es: "Proveedores" },
-    { id: "finance", x: 305, y: 182, en: "Finance", es: "Finanzas" },
+    { id: "decisions", x: 215, y: 158, en: "Decisions", es: "Decisiones", pt: "Decisões" },
+    { id: "protocols", x: 50, y: 78, en: "Protocols", es: "Protocolos", pt: "Protocolos" },
+    { id: "clients", x: 160, y: 42, en: "Clients", es: "Clientes", pt: "Clientes" },
+    { id: "retreats", x: 290, y: 56, en: "Retreats", es: "Retiros", pt: "Retiros" },
+    { id: "sops", x: 370, y: 112, en: "SOPs", es: "SOPs", pt: "SOPs" },
+    { id: "playbooks", x: 380, y: 204, en: "Playbooks", es: "Manuales", pt: "Playbooks" },
+    { id: "projects", x: 320, y: 262, en: "Projects", es: "Proyectos", pt: "Projetos" },
+    { id: "research", x: 200, y: 286, en: "Research", es: "Investigacion", pt: "Pesquisa" },
+    { id: "team", x: 80, y: 274, en: "Team", es: "Equipo", pt: "Time" },
+    { id: "meetings", x: 24, y: 186, en: "Meetings", es: "Reuniones", pt: "Reuniões" },
+    { id: "vendors", x: 112, y: 126, en: "Vendors", es: "Proveedores", pt: "Fornecedores" },
+    { id: "finance", x: 305, y: 182, en: "Finance", es: "Finanzas", pt: "Finanças" },
 ];
 
 const EDGES: Array<[NodeId, NodeId]> = [
@@ -180,7 +181,7 @@ export function CompanyBrainAnimation({ locale = "en" }: Props) {
                             🧠
                         </motion.span>
                         <span className="text-[8.5px] sm:text-[9px] font-black text-white uppercase tracking-wider drop-shadow-sm">
-                            {locale === "es" ? "Cerebro de Empresa" : "Company Brain"}
+                            {locale === "es" ? "Cerebro de Empresa" : locale === "pt" ? "Cérebro da Empresa" : "Company Brain"}
                         </span>
                     </div>
                     <div className="flex items-center gap-1.5">
@@ -190,7 +191,7 @@ export function CompanyBrainAnimation({ locale = "en" }: Props) {
                             transition={{ duration: 1.5, repeat: Infinity }}
                         />
                         <span className="text-[7.5px] sm:text-[8px] text-white/60 uppercase font-black tracking-wider">
-                            {locale === "es" ? "Indexando" : "Indexing"}
+                            {locale === "es" ? "Indexando" : locale === "pt" ? "Indexando" : "Indexing"}
                         </span>
                     </div>
                 </div>
@@ -253,7 +254,7 @@ export function CompanyBrainAnimation({ locale = "en" }: Props) {
                         {NODES.map((node, i) => {
                             const isActive = node.id === activeId;
                             const isNeighbor = neighborIds.has(node.id);
-                            const label = (locale === "es" ? node.es : node.en).toUpperCase();
+                            const label = (locale === "es" ? node.es : locale === "pt" ? node.pt : node.en).toUpperCase();
                             return (
                                 <motion.g
                                     key={node.id}
@@ -328,7 +329,7 @@ export function CompanyBrainAnimation({ locale = "en" }: Props) {
                         <span className="text-[14px] sm:text-[15px] drop-shadow-lg">🔗</span>
                         <div className="flex flex-col">
                             <span className="text-[8.5px] sm:text-[9px] font-bold text-white uppercase tracking-wider drop-shadow-sm">
-                                {locale === "es" ? "Consulta Activa" : "Active Query"}
+                                {locale === "es" ? "Consulta Activa" : locale === "pt" ? "Consulta Ativa" : "Active Query"}
                             </span>
                             <motion.span
                                 key={activeId}
@@ -337,16 +338,16 @@ export function CompanyBrainAnimation({ locale = "en" }: Props) {
                                 transition={{ duration: 0.35 }}
                                 className="text-[7.5px] sm:text-[8px] text-[#00BCD4] font-black uppercase tracking-tight leading-tight pt-[1px] drop-shadow-[0_0_2px_rgba(0,188,212,0.8)]"
                             >
-                                {locale === "es" ? active.es : active.en}
+                                {locale === "es" ? active.es : locale === "pt" ? active.pt : active.en}
                             </motion.span>
                         </div>
                     </div>
                     <div className="flex flex-col items-end text-right">
                         <span className="text-[7.5px] sm:text-[8px] text-white/60 uppercase font-black tracking-wider">
-                            {NODES.length} {locale === "es" ? "Notas" : "Notes"}
+                            {NODES.length} {locale === "es" ? "Notas" : locale === "pt" ? "Notas" : "Notes"}
                         </span>
                         <span className="text-[7px] sm:text-[7.5px] text-white/40 uppercase font-bold tracking-wider">
-                            {EDGES.length} {locale === "es" ? "Enlaces" : "Links"}
+                            {EDGES.length} {locale === "es" ? "Enlaces" : locale === "pt" ? "Conexões" : "Links"}
                         </span>
                     </div>
                 </div>

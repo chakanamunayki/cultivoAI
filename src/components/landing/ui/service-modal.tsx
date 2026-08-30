@@ -40,11 +40,11 @@ export function ServiceModal({ service, onOpenContact }: ServiceModalProps) {
   const { locale } = useLocale();
   const Icon = iconMap[service.icon] ?? Zap;
 
-  const ctaText = locale === "es" ? "Estoy interesado" : "I'm interested";
-  const whyItMattersLabel = locale === "es" ? "Por que importa" : "Why it matters";
-  const includedLabel = locale === "es" ? "Que incluye" : "What's included";
-  const idealFitLabel = locale === "es" ? "Ideal para" : "Ideal fit";
-  const outcomeLabel = locale === "es" ? "Resultado tipico" : "Typical outcome";
+  const ctaText = locale === "es" ? "Estoy interesado" : locale === "pt" ? "Tenho interesse" : "I'm interested";
+  const whyItMattersLabel = locale === "es" ? "Por que importa" : locale === "pt" ? "Por que importa" : "Why it matters";
+  const includedLabel = locale === "es" ? "Que incluye" : locale === "pt" ? "O que inclui" : "What's included";
+  const idealFitLabel = locale === "es" ? "Ideal para" : locale === "pt" ? "Ideal para" : "Ideal fit";
+  const outcomeLabel = locale === "es" ? "Resultado tipico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
 
   return (
     <div className="max-h-[92vh] overflow-y-auto bg-[#212121] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">

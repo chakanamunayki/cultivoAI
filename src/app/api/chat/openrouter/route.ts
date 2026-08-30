@@ -13,7 +13,7 @@ import { NextResponse } from "next/server";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { generateText, stepCountIs, tool, type ModelMessage } from "ai";
 import { z } from "zod";
-import type { ChatContextType } from "@/content/types";
+import type { ChatContextType, Locale } from "@/content/types";
 import {
   buildSystemPrompt,
   type SiteContentForPrompt,
@@ -36,7 +36,7 @@ interface Message {
 interface ChatRequest {
   message: string;
   history: Message[];
-  locale: "es" | "en";
+  locale: Locale;
   siteContent: SiteContentForPrompt;
   entryContext?: ChatContextType;
   sessionId?: string;
@@ -141,7 +141,7 @@ function getErrorStatus(error: unknown): number {
 }
 
 export async function POST(request: Request) {
-  let requestLocale: "es" | "en" = "es";
+  let requestLocale: Locale = "es";
 
   try {
     const apiKey = process.env.OPENROUTER_API_KEY;
@@ -177,7 +177,8 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-    const safeLocale = locale === "en" ? "en" : "es";
+    const safeLocale: Locale =
+      locale === "en" ? "en" : locale === "pt" ? "pt" : "es";
     requestLocale = safeLocale;
     const safeHistory = Array.isArray(history) ? history : [];
 
@@ -246,28 +247,26 @@ export async function POST(request: Request) {
     // present; otherwise a short confirmation, since the UI action itself is the
     // reply. Bare acknowledgement only when nothing happened at all.
     const modelText = result.text?.trim() || "";
+    const ackDone = { es: "Listo.", en: "Done.", pt: "Pronto." }[safeLocale];
+    const ackGot = { es: "Entendido.", en: "Got it.", pt: "Entendi." }[safeLocale];
     const text =
-      modelText ||
-      (functionCalls.length > 0
-        ? safeLocale === "es"
-          ? "Listo."
-          : "Done."
-        : safeLocale === "es"
-        ? "Entendido."
-        : "Got it.");
+      modelText || (functionCalls.length > 0 ? ackDone : ackGot);
 
     return NextResponse.json({ text, functionCalls });
   } catch (error) {
     const status = getErrorStatus(error);
     const isQuota = status === 429;
-    const isSpanish = requestLocale === "es";
-    const userText = isQuota
-      ? isSpanish
-        ? "Estamos con alta demanda del servicio de IA. Intenta de nuevo en unos segundos o usa WhatsApp."
-        : "We're at high AI capacity right now. Please try again in a few seconds or use WhatsApp."
-      : isSpanish
-      ? "Lo siento, hubo un error procesando tu mensaje. Por favor intenta de nuevo."
-      : "Sorry, there was an error processing your message. Please try again.";
+    const quotaText = {
+      es: "Estamos con alta demanda del servicio de IA. Intenta de nuevo en unos segundos o usa WhatsApp.",
+      en: "We're at high AI capacity right now. Please try again in a few seconds or use WhatsApp.",
+      pt: "Estamos com alta demanda do serviço de IA. Tente de novo em alguns segundos ou use o WhatsApp.",
+    }[requestLocale];
+    const genericText = {
+      es: "Lo siento, hubo un error procesando tu mensaje. Por favor intenta de nuevo.",
+      en: "Sorry, there was an error processing your message. Please try again.",
+      pt: "Desculpe, houve um erro ao processar a sua mensagem. Por favor, tente de novo.",
+    }[requestLocale];
+    const userText = isQuota ? quotaText : genericText;
 
     console.error("OpenRouter API error:", { status, error });
 

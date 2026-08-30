@@ -233,7 +233,7 @@ export function WorkflowAnimation({ locale = "en" }: { locale?: Locale }) {
                             transition={{ duration: 2, repeat: Infinity }}
                         />
                         <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#e2e8e0]">
-                            {locale === 'es' ? 'Hub Central de Automatización' : 'Central Automation Hub'}
+                            {locale === 'es' ? 'Hub Central de Automatización' : locale === 'pt' ? 'Hub Central de Automação' : 'Central Automation Hub'}
                         </span>
                     </motion.div>
                 </div>

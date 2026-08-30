@@ -33,11 +33,11 @@ export function WhoWeHelpSection({
   const { content, locale } = useLocale();
   const [selectedSector, setSelectedSector] = useState<Sector | null>(null);
 
-  const whatItMeansLabel = locale === "es" ? "Que significa" : "What it means";
-  const whyItMattersLabel = locale === "es" ? "Por que importa" : "Why it matters";
-  const includedLabel = locale === "es" ? "Que incluye" : "What's included";
-  const idealFitLabel = locale === "es" ? "Ideal para" : "Ideal fit";
-  const outcomeLabel = locale === "es" ? "Resultado tipico" : "Typical outcome";
+  const whatItMeansLabel = locale === "es" ? "Que significa" : locale === "pt" ? "O que significa" : "What it means";
+  const whyItMattersLabel = locale === "es" ? "Por que importa" : locale === "pt" ? "Por que importa" : "Why it matters";
+  const includedLabel = locale === "es" ? "Que incluye" : locale === "pt" ? "O que inclui" : "What's included";
+  const idealFitLabel = locale === "es" ? "Ideal para" : locale === "pt" ? "Ideal para" : "Ideal fit";
+  const outcomeLabel = locale === "es" ? "Resultado tipico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
   const sectionSubtitle =
     locale === "es"
       ? "Sectores y equipos con los que generamos mayor impacto"
@@ -391,7 +391,7 @@ export function WhoWeHelpSection({
                     <div className={landingTitleBandClass("dark", "flex items-center gap-2 px-5 py-2.5")}>
                       <Lightbulb size={18} className="text-white" />
                       <h4 className="text-xs font-semibold tracking-[0.07em] text-white uppercase">
-                        {locale === "es" ? "Ejemplos de proyectos" : "Example projects"}
+                        {locale === "es" ? "Ejemplos de proyectos" : locale === "pt" ? "Exemplos de projetos" : "Example projects"}
                       </h4>
                     </div>
                     <ul className="space-y-2 px-5 pb-5 pt-4">

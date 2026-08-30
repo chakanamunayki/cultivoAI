@@ -13,8 +13,8 @@ interface Project19ViewProps {
 export function Project19View({ steps, activeTab }: Project19ViewProps) {
   const { locale } = useLocale();
 
-  const stackLabel = locale === "es" ? "Stack:" : "Stack:";
-  const costLabel = locale === "es" ? "Costo:" : "Cost:";
+  const stackLabel = locale === "es" ? "Stack:" : locale === "pt" ? "Stack:" : "Stack:";
+  const costLabel = locale === "es" ? "Costo:" : locale === "pt" ? "Custo:" : "Cost:";
 
   return (
     <div className="flex flex-col h-full">
