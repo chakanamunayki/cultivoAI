@@ -23,7 +23,7 @@ export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         whatItMeans:
           "Una capa de conocimiento protegida construida sobre tu IP científica y operativa real: protocolos, procesos, historial de proyectos, datos comerciales. Tu equipo pregunta en lenguaje natural y el cerebro responde con lo que tu negocio ya sabe, limitado a su rol.",
         whyItMatters:
-          "La IP de tus protocolos es tu ventaja, y hoy está atrapada en PDFs, en la cabeza de personas clave, en WhatsApp. Cuando alguien no está disponible se pierde, cuando llega alguien nuevo empieza desde cero, y sin aislamiento se filtra entre roles y clientes. CHAK Brain, el sistema que construimos para CHAK FoodTech, resolvió exactamente esto y sigue aprendiendo cada día que el equipo lo usa.",
+          "La IP de tus protocolos es tu ventaja, y hoy está atrapada en PDFs, en la cabeza de personas clave, en WhatsApp. Cuando alguien no está disponible se pierde, cuando llega alguien nuevo empieza desde cero, y sin aislamiento se filtra entre roles y clientes. El Company Brain que construimos para una plataforma de producción agri-biotech en Colombia resolvió exactamente esto y sigue aprendiendo cada día que el equipo lo usa.",
         whatsIncluded: [
           "Ingesta de tu IP real: protocolos, procesos, comercial, proyectos (PDF, Word, Excel)",
           "Capa de conocimiento aislada de la capa de ejecución, limitada por tenant, proyecto y rol",

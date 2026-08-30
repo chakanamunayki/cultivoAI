@@ -54,7 +54,8 @@ export function ProjectsSection() {
             >
               <div
                 className={cn(
-                  "order-2 flex flex-col justify-center border-t p-6 md:p-8 lg:order-1 lg:col-span-7 lg:border-t-0 lg:border-r lg:p-12",
+                  "order-2 flex flex-col justify-center border-t p-6 md:p-8 lg:order-1 lg:border-t-0 lg:p-12",
+                  project.image ? "lg:col-span-7 lg:border-r" : "lg:col-span-12",
                   variant === "blue" ? "border-white/15" : "border-white/10"
                 )}
               >
@@ -149,25 +150,27 @@ export function ProjectsSection() {
                   </div>
                 </Reveal>
               </div>
-              <div
-                className={cn(
-                  "relative order-1 h-[300px] overflow-hidden border-b md:h-[400px] lg:order-2 lg:col-span-5 lg:h-auto lg:border-b-0",
-                  variant === "blue" ? "border-white/15" : "border-white/10"
-                )}
-              >
-                <div className="bg-primary pointer-events-none absolute inset-0 z-10 opacity-0 mix-blend-multiply transition-opacity duration-300 group-hover:opacity-60"></div>
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover animate-scroll-preview contrast-125 grayscale filter transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  loading="lazy"
-                />
-                <div className="absolute right-4 bottom-4 z-20 opacity-0 transition-opacity group-hover:opacity-100">
-                  <ArrowRight size={48} className="text-white drop-shadow-md" />
+              {project.image && (
+                <div
+                  className={cn(
+                    "relative order-1 h-[300px] overflow-hidden border-b md:h-[400px] lg:order-2 lg:col-span-5 lg:h-auto lg:border-b-0",
+                    variant === "blue" ? "border-white/15" : "border-white/10"
+                  )}
+                >
+                  <div className="bg-primary pointer-events-none absolute inset-0 z-10 opacity-0 mix-blend-multiply transition-opacity duration-300 group-hover:opacity-60"></div>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover animate-scroll-preview contrast-125 grayscale filter transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    loading="lazy"
+                  />
+                  <div className="absolute right-4 bottom-4 z-20 opacity-0 transition-opacity group-hover:opacity-100">
+                    <ArrowRight size={48} className="text-white drop-shadow-md" />
+                  </div>
                 </div>
-              </div>
+              )}
             </button>
           );
         })}

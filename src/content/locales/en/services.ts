@@ -23,7 +23,7 @@ export const enServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSub
         whatItMeans:
           "A protected knowledge layer built on your real scientific and operational IP: protocols, processes, project history, commercial data. Your team asks in plain language and the brain answers from what your business actually knows, scoped to their role.",
         whyItMatters:
-          "Your protocol IP is your moat, and today it is trapped in PDFs, in key people's heads, in WhatsApp. When someone is unavailable it disappears, when someone new joins they start from zero, and without isolation it leaks across roles and clients. CHAK Brain, the system we built for CHAK FoodTech, solved exactly this and keeps learning every day the team uses it.",
+          "Your protocol IP is your moat, and today it is trapped in PDFs, in key people's heads, in WhatsApp. When someone is unavailable it disappears, when someone new joins they start from zero, and without isolation it leaks across roles and clients. The Company Brain we built for an agri-biotech production platform in Colombia solved exactly this and keeps learning every day the team uses it.",
         whatsIncluded: [
           "Ingestion of your real IP: protocols, processes, commercial, projects (PDF, Word, Excel)",
           "Knowledge layer isolated from the execution layer, scoped per tenant, project, and role",
