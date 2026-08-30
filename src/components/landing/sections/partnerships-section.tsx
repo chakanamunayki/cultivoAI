@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Briefcase, HeartHandshake, PieChart, type LucideIcon } from "lucide-react";
 import {
   landingCardClass,
   landingPrimaryBlueButtonClass,
@@ -15,16 +14,6 @@ import { SectionHeader } from "@/components/landing/ui/section-header";
 import type { Partnership } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils";
-
-const PARTNERSHIP_ICON_MAP: Record<string, LucideIcon> = {
-  Briefcase,
-  HeartHandshake,
-  PieChart,
-};
-
-function getPartnershipIcon(iconName: string): LucideIcon {
-  return PARTNERSHIP_ICON_MAP[iconName] || Briefcase;
-}
 
 interface PartnershipsSectionProps {
   onOpenChatGeneral: () => void;
@@ -54,7 +43,6 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {content.partnerships.map((partner, i) => {
-            const IconComponent = getPartnershipIcon(partner.icon);
             const variant: LandingCardVariant = i === 1 ? "blue" : "dark";
 
             return (
@@ -83,21 +71,8 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
                           className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                           sizes="(max-width: 768px) 100vw, 33vw"
                         />
-                        <div className="absolute bottom-3 left-3 rounded-lg border border-white/50 bg-white/90 p-2 shadow-[0_8px_16px_rgba(15,23,42,0.2)]">
-                          <IconComponent size={18} className="text-[#00BCD4]" />
-                        </div>
                       </div>
-                    ) : (
-                      <div
-                        className={`mb-4 inline-flex rounded-lg border p-3 ${
-                          variant === "blue"
-                            ? "border-white/25 bg-white/10 text-[#FFFFFF]"
-                            : "border-white/20 bg-white/10 text-[#FFFFFF]"
-                        }`}
-                      >
-                        <IconComponent size={24} />
-                      </div>
-                    )}
+                    ) : null}
                     <p
                       className={`mb-4 text-sm font-medium ${
                         variant === "blue" ? "text-[#eef9f5]" : "text-white/80"

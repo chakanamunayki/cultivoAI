@@ -5,11 +5,6 @@ import Image from "next/image";
 import {
   ArrowRight,
   Check,
-  GraduationCap,
-  Heart,
-  Home,
-  Rocket,
-  Sprout,
   X,
   Lightbulb,
 } from "lucide-react";
@@ -25,14 +20,6 @@ import { SectionHeader } from "@/components/landing/ui/section-header";
 import type { Sector } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils";
-
-const iconMap: Record<string, React.ElementType> = {
-  Sprout,
-  Heart,
-  GraduationCap,
-  Home,
-  Rocket,
-};
 
 interface WhoWeHelpSectionProps {
   onOpenChatQualification: () => void;
@@ -146,7 +133,6 @@ export function WhoWeHelpSection({
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-2">
               {content.whoWeHelp.sectors.map((sector, i) => {
-                const IconComponent = iconMap[sector.icon] || Rocket;
                 const variant: LandingCardVariant = i === 0 ? "blue" : "dark";
                 return (
                   <div
@@ -181,19 +167,11 @@ export function WhoWeHelpSection({
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
                           />
                           <div className="from-black/30 absolute inset-0 bg-gradient-to-br to-transparent" />
-                          <div className="absolute right-3 bottom-3 rounded-lg border border-white/50 bg-white/90 p-2 shadow-[0_8px_16px_rgba(15,23,42,0.2)]">
-                            <IconComponent size={18} className="text-[#00BCD4]" />
-                          </div>
                         </>
                       ) : (
                         <>
                           <div className="from-primary absolute inset-0 bg-gradient-to-br to-primary" />
                           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                          <IconComponent
-                            size={56}
-                            className="relative z-10 text-white transition-transform duration-300 group-hover:scale-110"
-                            strokeWidth={1.5}
-                          />
                         </>
                       )}
                       {/* Badge */}
@@ -293,15 +271,7 @@ export function WhoWeHelpSection({
                 )}
 
                 <div className="absolute inset-0 flex items-start justify-between p-4 md:p-6">
-                  <div className="flex items-center gap-4">
-                    {(() => {
-                      const IconComponent = iconMap[selectedSector.icon] || Rocket;
-                      return (
-                        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/40 bg-white/90 shadow-[0_10px_20px_rgba(15,23,42,0.24)]">
-                          <IconComponent size={24} className="text-[#00BCD4]" />
-                        </div>
-                      );
-                    })()}
+                  <div className="flex items-center">
                     <h3 className="text-xl font-black tracking-tight text-white drop-shadow-sm md:text-2xl">
                       {selectedSector.name}
                     </h3>

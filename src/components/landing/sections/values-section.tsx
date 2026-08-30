@@ -1,16 +1,7 @@
 "use client";
 
 import {
-  Sprout,
-  Handshake,
-  User,
-  Hammer,
-  Scale,
-  Mountain,
-} from "lucide-react";
-import {
   landingCardClass,
-  landingIconChipClass,
   landingTitleBandClass,
   type LandingCardVariant,
 } from "@/components/landing/ui/landing-card-styles";
@@ -18,15 +9,6 @@ import { Reveal } from "@/components/landing/ui/reveal";
 import { SectionHeader } from "@/components/landing/ui/section-header";
 import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils";
-
-const ICON_MAP: Record<string, typeof Sprout> = {
-  Sprout,
-  Handshake,
-  User,
-  Hammer,
-  Scale,
-  Mountain,
-};
 
 export function ValuesSection() {
   const { content } = useLocale();
@@ -46,7 +28,6 @@ export function ValuesSection() {
         {/* 2x3 grid of values */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {values.values.map((value, index) => {
-            const Icon = ICON_MAP[value.icon] || Sprout;
             const variant: LandingCardVariant = index === 2 ? "blue" : "dark";
             return (
               <Reveal key={value.title} delay={index * 75}>
@@ -54,16 +35,9 @@ export function ValuesSection() {
                   <div
                     className={landingTitleBandClass(
                       variant,
-                      "-mx-6 mb-4 flex items-center gap-3 px-6 py-2.5"
+                      "-mx-6 mb-4 px-6 py-2.5"
                     )}
                   >
-                    <div className={landingIconChipClass(variant)}>
-                      <Icon
-                        size={24}
-                        className="text-[#FFFFFF]"
-                        strokeWidth={2.5}
-                      />
-                    </div>
                     <h3 className="text-lg font-black leading-tight text-[#FFFFFF] md:text-xl">
                       {value.title}
                     </h3>
