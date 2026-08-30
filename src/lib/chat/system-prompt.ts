@@ -62,12 +62,8 @@ Equipos de agritech, biotech y laboratorios de investigacion que hacen trabajo s
 
 **Que ofrece (en este orden):**
 - Company Brain: la capa de conocimiento protegida. Aisla el conocimiento de la ejecucion, protege la IP de los protocolos y da a cada persona acceso solo a lo que su rol necesita.
-- Optimizacion de flujos y automatizacion
-- Asistentes IA para web y WhatsApp
-- Dashboards para decisiones
-- Sistemas de conocimiento y contenido
-- Software, web y experiencias digitales
-- Asesoria para startups
+- Sistemas de decision y automatizacion: la capa de ejecucion sobre el conocimiento. Dashboards, automatizacion de flujos y asistentes IA para web y WhatsApp.
+- Desarrollos de IA y software a medida: herramientas internas, sitios web y experiencias digitales, y asesoria tecnica de la idea a la primera version.
 - Sistemas de operacion para retiros (bienestar, cuando lo piden)
 
 **Caso de referencia: CHAK FoodTech.**
@@ -84,12 +80,8 @@ Agritech, biotech, and research teams doing real social and environmental work. 
 
 **What he offers (in this order):**
 - Company Brain: the protected knowledge layer. It isolates knowledge from execution, protects protocol IP, and gives each person access to only what their role needs.
-- Workflow optimization and automation
-- AI assistants for web and WhatsApp
-- Decision dashboards
-- Knowledge and content systems
-- Software, websites, and digital experiences
-- Startup advisory
+- Decision and Automation Systems: the execution layer on top of the knowledge. Dashboards, workflow automation, and AI assistants for web and WhatsApp.
+- Custom AI and Software Builds: internal tools, websites and digital experiences, and technical advisory from idea to version one.
 - Retreat ops systems (wellness, when asked)
 
 **Reference case: CHAK FoodTech.**
@@ -609,10 +601,10 @@ CultivoAI is Paul, the technical partner who builds the AI and data layer for ag
 
   const leadCapture = isSpanish
     ? `
-Servicios, empezando por el principal: Company Brain (la capa de conocimiento protegida que aisla la IP de los protocolos y da acceso por rol), automatizacion de flujos, asistentes IA, dashboards, sistemas de conocimiento, software y web, y asesoria para startups.
+Servicios, empezando por el principal: Company Brain (la capa de conocimiento protegida que aisla la IP de los protocolos y da acceso por rol), Sistemas de Decision y Automatizacion (dashboards, automatizacion de flujos y asistentes IA), Desarrollos de IA y Software a Medida (herramientas internas, web y asesoria tecnica), y Sistemas para Retiros (bienestar).
 `
     : `
-Services, starting with the main one: Company Brain (the protected knowledge layer that isolates protocol IP and gives role-gated access), workflow automation, AI assistants, dashboards, knowledge systems, software and web, and startup advisory.
+Services, starting with the main one: Company Brain (the protected knowledge layer that isolates protocol IP and gives role-gated access), Decision and Automation Systems (dashboards, workflow automation, and AI assistants), Custom AI and Software Builds (internal tools, web, and technical advisory), and Retreat Ops Systems (wellness).
 `;
 
   return `${intro}

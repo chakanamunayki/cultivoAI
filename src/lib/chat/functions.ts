@@ -46,7 +46,7 @@ export const chatFunctionDeclarations: Tool = {
     {
       name: "show_service_details",
       description:
-        "Opens a modal with full details about a specific service. Use when users ask about services like 'Chatbots', 'Automation', 'Dashboards', etc.",
+        "Opens a modal with full details about a specific service. Use the site's current service names: 'Company Brain', 'Decision and Automation Systems', 'Custom AI and Software Builds', 'Retreat Ops Systems'.",
       parameters: {
         type: Type.OBJECT,
         properties: {
@@ -154,7 +154,7 @@ export const chatFunctionDeclarations: Tool = {
           service_name: {
             type: Type.STRING,
             description:
-              "The name of the service to recommend, matching the site's current services in order: 'Company Brain: Protected Knowledge Layer', 'Workflow Optimization', 'AI Assistants', 'Decision Dashboards', 'Knowledge and Content Systems', 'Software, Websites and Digital Experiences', 'Startup Advisory', 'Retreat Ops Systems'. Company Brain is the flagship offer for agritech and biotech teams protecting protocol IP.",
+              "The name of the service to recommend, matching the site's current services in order: 'Company Brain: Protected Knowledge Layer', 'Decision and Automation Systems', 'Custom AI and Software Builds', 'Retreat Ops Systems (Wellness)'. Company Brain is the flagship offer for agritech and biotech teams protecting protocol IP.",
           },
           reason: {
             type: Type.STRING,
