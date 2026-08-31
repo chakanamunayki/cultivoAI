@@ -6,20 +6,20 @@ projectsSubtitle: "Projetos selecionados do nosso trabalho atual",
 projects: [
   {
     title: "Company Brain: A IP dos Protocolos, Protegida na Execução",
-    desc: "Construímos um Company Brain para uma plataforma de produção agri-biotech na Colômbia. Os cientistas criam o protocolo; o Brain guia passo a passo quem o executa, sem nunca expor a receita completa. A IP fica no sistema, não no telefone de alguém.",
+    desc: "Construímos o software de uma plataforma de produção agri-biotech na Colômbia: um construtor de protocolos onde os cientistas criam e gerenciam cada receita, e um Company Brain que guia passo a passo quem o executa, sem nunca expor o protocolo completo. A IP fica no sistema, não no telefone de alguém.",
     fullDesc:
-      "A plataforma transforma um objetivo biológico em um processo de produção vegetal controlado, mensurável e reprodutível. Nós construímos a camada digital, o Company Brain, e ela funciona como um único loop. Os cientistas e líderes de laboratório criam o protocolo no construtor: cada passo, parâmetro e sequência. Esse protocolo completo é a IP. Quando chega a hora de executá-lo, o Brain guia quem faz o trabalho passo a passo: o que fazer agora, os parâmetros, a frequência, a assepsia, e captura as observações dessa pessoa contra aquele passo. O operador executa o protocolo sem nunca ter o documento completo. O acesso é por função: o técnico de laboratório é guiado pelos passos, o time comercial vê clientes, o diretor vê tudo. O protocolo completo e os dados acumulados ficam no sistema, não nas mãos do operador, não no WhatsApp, não saindo pela porta.",
+      "A plataforma transforma um objetivo biológico em um processo de produção vegetal controlado, mensurável e reprodutível, e construímos o software que a faz funcionar de ponta a ponta. Primeiro, o construtor de protocolos: os cientistas e líderes de laboratório criam, versionam e gerenciam o protocolo completo em um só lugar, cada passo, parâmetro e sequência. Essa biblioteca de protocolos é a IP. Segundo, o Company Brain: quando chega a hora de executar um protocolo, o Brain guia quem faz o trabalho passo a passo, o que fazer agora, os parâmetros, a frequência, a assepsia, e captura as observações dessa pessoa contra aquele passo. O operador executa sem nunca ter a receita completa. O acesso é por função: o técnico de laboratório é guiado pelos passos, o time comercial vê clientes, o diretor vê tudo. Criação e execução são um único loop, e o protocolo completo e os dados acumulados ficam no sistema, não nas mãos do operador.",
     lessons: "Quem executa um protocolo não precisa do protocolo completo. Precisa do passo atual. Criação e execução são um único loop, e a receita completa, a IP de verdade, nunca precisa sair do sistema.",
     status: "Ativo",
     image: "",
-    tags: ["Company Brain", "Agri-biotech", "RAG"],
+    tags: ["Company Brain", "Construtor de protocolos", "Agri-biotech"],
     modal: {
       whatItMeans:
-        "Um único loop sobre uma operação agri-biotech real. Os cientistas criam os protocolos no construtor; quem executa é guiado passo a passo e suas observações voltam ao sistema. Tudo limitado a cada função, e o protocolo completo nunca sai do sistema.",
+        "Uma plataforma de duas partes sobre uma operação agri-biotech real. Um construtor de protocolos onde os cientistas criam, versionam e gerenciam a biblioteca completa de receitas, e um Company Brain que guia passo a passo quem executa e traz de volta suas observações. Tudo limitado a cada função, e o protocolo completo nunca sai do sistema.",
       whyItMatters:
         "Na produção baseada em ciência, o protocolo é a IP. Se você entrega a receita completa a todos que a executam, ela vaza entre funções e vai embora pela porta. O Company Brain guia a execução passo a passo, então o operador recebe exatamente o que precisa para fazer o trabalho e nunca o protocolo completo. A IP fica estruturada, com acesso por função e nas mãos da empresa.",
       whatsIncluded: [
-        "Construtor onde os cientistas e líderes de laboratório criam o protocolo completo: passos, parâmetros, sequência",
+        "Construtor e gerenciador de protocolos onde os cientistas e líderes de laboratório criam, versionam e atualizam a biblioteca completa de protocolos: passos, parâmetros, sequência",
         "Guia de execução passo a passo: o operador vê o passo atual, seus parâmetros e frequência, nada além disso",
         "Observações capturadas contra cada passo conforme o trabalho é feito",
         "Acesso por função, para que o protocolo completo e os dados fiquem protegidos no sistema",
