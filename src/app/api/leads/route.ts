@@ -1,28 +1,28 @@
 /**
  * Leads API Route
- * Phase 3B - Lead Capture & Qualification
+ * Forwards captured leads to an email-forwarding service (Formspree /
+ * Web3Forms) instead of a database. Set LEADS_FORWARD_URL to the endpoint.
  */
 
 import { NextResponse } from "next/server";
+import { randomUUID } from "node:crypto";
 import {
   calculateQualificationScore,
   getQualificationLevel,
   type QualificationFactors,
 } from "@/lib/chat/system-prompt";
-import { db } from "@/lib/db";
-import { leads } from "@/lib/schema";
 
 // ============================================
 // Types
 // ============================================
 
 interface CreateLeadRequest {
-  name: string;
+  name?: string;
   email: string;
   company?: string;
   phone?: string;
   whatsapp?: string;
-  preferredLanguage?: "es" | "en";
+  preferredLanguage?: "es" | "en" | "pt";
   projectType?: string;
   projectDescription?: string;
   budgetRange?: string;
@@ -31,13 +31,6 @@ interface CreateLeadRequest {
   source?: string;
   interests?: string[];
   conversationSummary?: string;
-  // Qualification factors
-  hasBudget?: boolean;
-  hasTimeline?: boolean;
-  hasClearUseCase?: boolean;
-  isDecisionMaker?: boolean;
-  isSectorFit?: boolean;
-  // UTM tracking
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
@@ -62,20 +55,20 @@ function isValidEmail(email: string): boolean {
   return emailRegex.test(email);
 }
 
-function sanitizeString(str: string | undefined): string | undefined {
+function clean(str: string | undefined): string | undefined {
   if (!str) return undefined;
-  return str.trim().slice(0, 500); // Limit length
+  return str.trim().slice(0, 500);
 }
 
 // ============================================
-// POST - Create new lead
+// POST - Capture a new lead (forwarded via email)
 // ============================================
 
 export async function POST(request: Request) {
   try {
     const body: CreateLeadRequest = await request.json();
 
-    // Validate required fields
+    // Validate required field
     if (!body.email || !isValidEmail(body.email)) {
       return NextResponse.json(
         { error: "Valid email is required" },
@@ -83,84 +76,84 @@ export async function POST(request: Request) {
       );
     }
 
-    // Calculate qualification score if factors provided
-    let qualificationScore = 0;
-    let qualificationLevel: "cold" | "warm" | "hot" | "priority" = "cold";
-
-    if (
-      body.hasBudget !== undefined ||
-      body.hasTimeline !== undefined ||
-      body.hasClearUseCase !== undefined ||
-      body.isDecisionMaker !== undefined ||
-      body.isSectorFit !== undefined
-    ) {
-      const factors: QualificationFactors = {
-        budgetIndicator: body.hasBudget ?? false,
-        timeline: body.hasTimeline ?? false,
-        useCase: body.hasClearUseCase ?? false,
-        decisionMaker: body.isDecisionMaker ?? false,
-        sectorFit: body.isSectorFit ?? false,
-      };
-      qualificationScore = calculateQualificationScore(factors);
-      qualificationLevel = getQualificationLevel(qualificationScore);
-    }
-
-    // Create the lead
-    const result = await db
-      .insert(leads)
-      .values({
-        name: sanitizeString(body.name),
-        email: body.email.trim().toLowerCase(),
-        phone: sanitizeString(body.phone),
-        whatsapp: sanitizeString(body.whatsapp),
-        preferredLanguage: body.preferredLanguage || "es",
-        projectType: sanitizeString(body.projectType),
-        projectDescription: sanitizeString(body.projectDescription),
-        budgetRange: sanitizeString(body.budgetRange),
-        timeline: sanitizeString(body.timeline),
-        howHeard: sanitizeString(body.howHeard),
-        source: body.source || "chatbot",
-        utmSource: sanitizeString(body.utmSource),
-        utmMedium: sanitizeString(body.utmMedium),
-        utmCampaign: sanitizeString(body.utmCampaign),
-        interests: body.interests ? JSON.stringify(body.interests) : null,
-        conversationSummary: sanitizeString(body.conversationSummary),
-        qualificationScore,
-        qualificationLevel,
-        hasBudget: body.hasBudget ?? false,
-        hasTimeline: body.hasTimeline ?? false,
-        hasClearUseCase: body.hasClearUseCase ?? false,
-        isDecisionMaker: body.isDecisionMaker ?? false,
-        isSectorFit: body.isSectorFit ?? false,
-        status: qualificationScore >= 4 ? "priority" : "new",
-      })
-      .returning({ id: leads.id });
-
-    const newLead = result[0];
-    if (!newLead) {
+    const forwardUrl = process.env.LEADS_FORWARD_URL;
+    if (!forwardUrl) {
+      console.error("LEADS_FORWARD_URL is not set; cannot forward lead.");
       return NextResponse.json(
-        { error: "Failed to create lead" },
+        { error: "Lead forwarding is not configured" },
         { status: 500 }
       );
     }
 
+    const name = clean(body.name);
+    const email = body.email.trim().toLowerCase();
+    const interests = body.interests?.length
+      ? body.interests.join(", ")
+      : undefined;
+
+    // Payload accepted by both Formspree and Web3Forms. Web3Forms also needs
+    // an access_key; supply it via LEADS_FORWARD_ACCESS_KEY when using them.
+    const payload: Record<string, unknown> = {
+      subject: `New CultivoAI lead: ${name || email}`,
+      name: name || "(no name)",
+      email,
+      source: clean(body.source) || "chatbot",
+      language: body.preferredLanguage || "es",
+      ...(clean(body.company) ? { company: clean(body.company) } : {}),
+      ...(clean(body.phone) ? { phone: clean(body.phone) } : {}),
+      ...(clean(body.whatsapp) ? { whatsapp: clean(body.whatsapp) } : {}),
+      ...(clean(body.projectType) ? { projectType: clean(body.projectType) } : {}),
+      ...(clean(body.projectDescription)
+        ? { projectDescription: clean(body.projectDescription) }
+        : {}),
+      ...(interests ? { interests } : {}),
+      ...(clean(body.conversationSummary)
+        ? { conversationSummary: clean(body.conversationSummary) }
+        : {}),
+      ...(clean(body.utmSource) ? { utmSource: clean(body.utmSource) } : {}),
+      ...(clean(body.utmMedium) ? { utmMedium: clean(body.utmMedium) } : {}),
+      ...(clean(body.utmCampaign) ? { utmCampaign: clean(body.utmCampaign) } : {}),
+      ...(process.env.LEADS_FORWARD_ACCESS_KEY
+        ? { access_key: process.env.LEADS_FORWARD_ACCESS_KEY }
+        : {}),
+    };
+
+    const forwardRes = await fetch(forwardUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!forwardRes.ok) {
+      const detail = await forwardRes.text().catch(() => "");
+      console.error(
+        `Lead forwarding failed (${forwardRes.status}): ${detail.slice(0, 300)}`
+      );
+      return NextResponse.json(
+        { error: "Failed to submit lead" },
+        { status: 502 }
+      );
+    }
+
+    // No database, so synthesise an id the client can carry for the session.
     return NextResponse.json({
       success: true,
-      leadId: newLead.id,
-      qualificationScore,
-      qualificationLevel,
+      leadId: randomUUID(),
     });
   } catch (error) {
-    console.error("Error creating lead:", error);
+    console.error("Error capturing lead:", error);
     return NextResponse.json(
-      { error: "Failed to create lead" },
+      { error: "Failed to submit lead" },
       { status: 500 }
     );
   }
 }
 
 // ============================================
-// PATCH - Update lead qualification
+// PATCH - Qualification scoring (computed, not persisted)
 // ============================================
 
 export async function PATCH(request: Request) {
@@ -168,13 +161,9 @@ export async function PATCH(request: Request) {
     const body: UpdateQualificationRequest = await request.json();
 
     if (!body.leadId) {
-      return NextResponse.json(
-        { error: "Lead ID is required" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Lead ID is required" }, { status: 400 });
     }
 
-    // Calculate qualification score
     const factors: QualificationFactors = {
       budgetIndicator: body.budgetIndicator,
       timeline: body.timeline,
@@ -185,33 +174,15 @@ export async function PATCH(request: Request) {
     const qualificationScore = calculateQualificationScore(factors);
     const qualificationLevel = getQualificationLevel(qualificationScore);
 
-    // Update the lead
-    const { eq } = await import("drizzle-orm");
-    await db
-      .update(leads)
-      .set({
-        qualificationScore,
-        qualificationLevel,
-        hasBudget: body.budgetIndicator,
-        hasTimeline: body.timeline,
-        hasClearUseCase: body.useCase,
-        isDecisionMaker: body.decisionMaker,
-        isSectorFit: body.sectorFit,
-        conversationSummary: body.conversationSummary,
-        status: qualificationScore >= 4 ? "priority" : undefined,
-        updatedAt: new Date(),
-      })
-      .where(eq(leads.id, body.leadId));
-
     return NextResponse.json({
       success: true,
       qualificationScore,
       qualificationLevel,
     });
   } catch (error) {
-    console.error("Error updating lead qualification:", error);
+    console.error("Error scoring lead qualification:", error);
     return NextResponse.json(
-      { error: "Failed to update lead qualification" },
+      { error: "Failed to score lead qualification" },
       { status: 500 }
     );
   }

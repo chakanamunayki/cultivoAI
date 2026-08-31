@@ -16,7 +16,18 @@ export function getDb(): DbInstance {
     throw new Error("POSTGRES_URL environment variable is not set");
   }
 
-  dbInstance = drizzle(postgres(connectionString), { schema });
+  // On Vercel serverless, connections go through a transaction-mode pooler
+  // (Neon/Supabase). Those poolers do not support prepared statements, so
+  // disable them. Keep a small pool and short idle timeout for serverless.
+  const isLocal = /@(localhost|127\.0\.0\.1)[:/]/.test(connectionString);
+  const client = postgres(connectionString, {
+    prepare: false,
+    max: 1,
+    idle_timeout: 20,
+    ...(isLocal ? {} : { ssl: "require" }),
+  });
+
+  dbInstance = drizzle(client, { schema });
   return dbInstance;
 }
 
