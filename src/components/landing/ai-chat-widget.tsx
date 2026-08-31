@@ -54,6 +54,7 @@ interface Message {
   role: "user" | "model";
   text: string;
   showContactForm?: boolean; // Show inline contact form after this message
+  showWhatsAppCta?: boolean; // Show inline "Continue on WhatsApp" button after this message
 }
 
 interface FunctionCall {
@@ -354,7 +355,7 @@ export function AIChatWidget({
           ? `Perfeito, ${name}! Já tenho as suas informações. Se você quiser, seguimos com uma conversa de 15 minutos sobre o seu projeto.`
           : `Perfect ${name}! I've got your info. If you want, we can move to a 15-minute project chat.`;
 
-        setMessages(prev => [...prev, { role: "model", text: successMessage }]);
+        setMessages(prev => [...prev, { role: "model", text: successMessage, showWhatsAppCta: true }]);
       } else {
         setContactFormError(
           locale === "es"
@@ -412,7 +413,7 @@ export function AIChatWidget({
           : locale === "pt"
           ? `Perfeito, ${name}! Já tenho as suas informações.`
           : `Perfect ${name}! I've got your info.`;
-        setMessages(prev => [...prev, { role: "model", text: successMessage }]);
+        setMessages(prev => [...prev, { role: "model", text: successMessage, showWhatsAppCta: true }]);
         return true;
       }
       return false;
@@ -880,6 +881,23 @@ export function AIChatWidget({
                       onSubmit={handleContactFormSubmit}
                       onFormDataChange={setContactFormData}
                     />
+                  </div>
+                )}
+
+                {/* Inline "Continue on WhatsApp" CTA after lead capture */}
+                {msg.showWhatsAppCta && (
+                  <div className="flex justify-start">
+                    <button
+                      onClick={() => openWhatsApp()}
+                      className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold uppercase text-sm px-4 py-2.5 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all"
+                    >
+                      <WhatsAppIcon size={18} />
+                      {tt(
+                        "Seguir en WhatsApp",
+                        "Continue on WhatsApp",
+                        "Continuar no WhatsApp"
+                      )}
+                    </button>
                   </div>
                 )}
               </div>
