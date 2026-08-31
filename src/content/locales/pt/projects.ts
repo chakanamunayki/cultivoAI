@@ -34,39 +34,6 @@ projects: [
     },
   },
   {
-    title: "RaizCapitalColombia.co",
-    desc: "Projetos e imóveis na Colômbia combinando dados e criatividade para propor modelos de negócio realistas.",
-    fullDesc:
-      "Uma plataforma de estratégia e informação que organiza oportunidades com clareza e ajuda a avaliar decisões com fundamentos práticos.",
-    lessons: "A clareza do enquadramento e a qualidade dos dados melhoram as decisões.",
-    status: "Ativo",
-    image: "/landing/photos/project-screenshots/Screenshot_www.raizcapital.co.jpeg",
-    images: [
-      "/landing/photos/project-screenshots/Screenshot_www.raizcapital.co.jpeg",
-    ],
-    url: "https://www.raizcapital.co/",
-    tags: ["Dados", "Estratégia"],
-    modal: {
-      whatItMeans:
-        "Uma camada de estratégia e informação que facilita comparar oportunidades e defender decisões.",
-      whyItMatters:
-        "Quando tudo é difuso, o time fica preso em opiniões. Enquadramento claro + dados limpos melhora a qualidade da decisão.",
-      whatsIncluded: [
-        "Estrutura de informação clara (o que importa e o que não)",
-        "Forma consistente de comparar oportunidades",
-        "Visões simples para conversas de decisão",
-        "Um sistema que pode evoluir conforme o projeto cresce",
-      ],
-      idealFit: [
-        "Times avaliando múltiplas oportunidades ou direções",
-        "Projetos que precisam de clareza mais do que de hype",
-        "Tomadores de decisão que valorizam pensamento estruturado",
-      ],
-      typicalOutcome:
-        "Avaliação mais rápida, trade-offs mais claros e menos discussões circulares.",
-    },
-  },
-  {
     title: "SetaSouls. Site de marca holística",
     desc: "98 em performance. 100 em SEO. 100 em boas práticas. Design, velocidade e posicionamento construídos juntos desde o início.",
     fullDesc:
