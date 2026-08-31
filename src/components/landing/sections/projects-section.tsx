@@ -1,5 +1,6 @@
 "use client";
 
+import type { ComponentType } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import {
@@ -10,9 +11,15 @@ import {
 import { useModal } from "@/components/landing/ui/modal-provider";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { SectionHeader } from "@/components/landing/ui/section-header";
-import type { Project } from "@/content/types";
+import { ProtocolBrainAnimation } from "@/components/landing/ui/service-animations/ProtocolBrainAnimation";
+import type { Locale, Project } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils";
+
+// Bespoke animations a project card can render in place of a static image.
+const PROJECT_ANIMATIONS: Record<string, ComponentType<{ locale?: Locale }>> = {
+  "company-brain": ProtocolBrainAnimation,
+};
 
 export function ProjectsSection() {
   const { content, locale } = useLocale();
@@ -41,6 +48,10 @@ export function ProjectsSection() {
         {content.projects.map((project, i) => {
           const variant: LandingCardVariant = i === 0 ? "blue" : "dark";
           const lessonVariant: LandingCardVariant = variant === "blue" ? "dark" : "blue";
+          const ProjectAnimation = project.animationKey
+            ? PROJECT_ANIMATIONS[project.animationKey]
+            : undefined;
+          const hasVisual = Boolean(project.image) || Boolean(ProjectAnimation);
 
           return (
             <button
@@ -55,7 +66,7 @@ export function ProjectsSection() {
               <div
                 className={cn(
                   "order-2 flex flex-col justify-center border-t p-6 md:p-8 lg:order-1 lg:border-t-0 lg:p-12",
-                  project.image ? "lg:col-span-7 lg:border-r" : "lg:col-span-12",
+                  hasVisual ? "lg:col-span-7 lg:border-r" : "lg:col-span-12",
                   variant === "blue" ? "border-white/15" : "border-white/10"
                 )}
               >
@@ -150,25 +161,31 @@ export function ProjectsSection() {
                   </div>
                 </Reveal>
               </div>
-              {project.image && (
+              {hasVisual && (
                 <div
                   className={cn(
-                    "relative order-1 h-[300px] overflow-hidden border-b md:h-[400px] lg:order-2 lg:col-span-5 lg:h-auto lg:border-b-0",
+                    "relative order-1 h-[300px] overflow-hidden border-b md:h-[400px] lg:order-2 lg:col-span-5 lg:h-auto lg:min-h-[420px] lg:border-b-0",
                     variant === "blue" ? "border-white/15" : "border-white/10"
                   )}
                 >
-                  <div className="bg-primary pointer-events-none absolute inset-0 z-10 opacity-0 mix-blend-multiply transition-opacity duration-300 group-hover:opacity-60"></div>
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover animate-scroll-preview contrast-125 grayscale filter transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    loading="lazy"
-                  />
-                  <div className="absolute right-4 bottom-4 z-20 opacity-0 transition-opacity group-hover:opacity-100">
-                    <ArrowRight size={48} className="text-white drop-shadow-md" />
-                  </div>
+                  {ProjectAnimation ? (
+                    <ProjectAnimation locale={locale} />
+                  ) : (
+                    <>
+                      <div className="bg-primary pointer-events-none absolute inset-0 z-10 opacity-0 mix-blend-multiply transition-opacity duration-300 group-hover:opacity-60"></div>
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover animate-scroll-preview contrast-125 grayscale filter transition-transform duration-700 group-hover:scale-110"
+                        sizes="(max-width: 1024px) 100vw, 40vw"
+                        loading="lazy"
+                      />
+                      <div className="absolute right-4 bottom-4 z-20 opacity-0 transition-opacity group-hover:opacity-100">
+                        <ArrowRight size={48} className="text-white drop-shadow-md" />
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
             </button>

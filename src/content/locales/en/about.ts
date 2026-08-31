@@ -93,39 +93,39 @@ export const enAbout: AboutCopy = {
       {
         id: "marta",
         name: "Marta Ronayne",
-        title: "Human-centered design and wellness context",
+        title: "Wellness lead. Holistic practitioner and brand founder.",
         description:
-          "Marta brings a grounded human perspective, helping shape tone, trust, and user experience, especially for wellness and wellbeing projects.",
+          "Marta leads our wellness-vertical work. She founded her own holistic wellness brand and practices as a Reiki and meditation facilitator, so wellness and wellbeing clients are guided by someone who lives that world, not someone reading about it.",
         imageUrl: "/landing/photos/team/marta.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
-          headline: "Tone, trust, and usability that feels human",
+          headline: "A working holistic practitioner leading the wellness-vertical work.",
           sections: [
             {
               title: "What it means",
               content:
-                "I help shape how systems feel: language, flow, and the human moments that build trust.",
+                "I lead our work with wellness and holistic teams. I run my own holistic wellness brand and facilitate Reiki and meditation, so I understand this world from the inside, not from a slide deck.",
             },
             {
               title: "Why it matters",
               content:
-                "If the experience feels cold or confusing, people disengage. Human-centered design keeps the work usable and respectful.",
+                "Wellness audiences can tell in seconds whether you actually understand their world. When a real practitioner leads the work, the language, the trust, and the experience land right instead of feeling borrowed.",
             },
             {
               title: "What's included",
               content:
-                "Copy and tone guidance, UX input, and real-world feedback on what will (and will not) work for people.",
+                "Domain guidance for wellness and wellbeing projects, brand and language that fit how these audiences really think, and honest feedback on what will and will not resonate with real people.",
             },
             {
               title: "Ideal fit",
               content:
-                "Wellness, health, and sustainability teams who want a warm, clear, trustworthy experience.",
+                "Wellness, holistic, and wellbeing brands who want a partner that lives their world, not just one that builds software for it.",
             },
             {
               title: "Typical outcome",
               content:
-                "A system that feels clear and human, so people actually stick with it and follow through.",
+                "A product and a voice that wellness audiences trust, because a member of that community shaped them.",
             },
           ],
         },

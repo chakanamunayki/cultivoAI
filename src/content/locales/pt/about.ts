@@ -93,39 +93,39 @@ export const ptAbout: AboutCopy = {
       {
         id: "marta",
         name: "Marta Ronayne",
-        title: "Design centrado nas pessoas e contexto de bem-estar",
+        title: "Líder de bem-estar. Praticante holística e fundadora de marca.",
         description:
-          "Marta traz um olhar humano e pé no chão para construir tom, confiança e experiência do usuário, especialmente em projetos de bem-estar.",
+          "Marta lidera nosso trabalho na vertical de bem-estar. Fundou a própria marca de bem-estar holístico e atua como facilitadora de Reiki e meditação, então os clientes de bem-estar são guiados por alguém que vive esse mundo, não que apenas lê sobre ele.",
         imageUrl: "/landing/photos/team/marta.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
-          headline: "Tom, confiança e usabilidade que soam humanos",
+          headline: "Uma praticante holística de verdade liderando o trabalho da vertical de bem-estar.",
           sections: [
             {
               title: "O que significa",
               content:
-                "Ajudo a definir como o sistema se sente: linguagem, fluxo e aqueles detalhes humanos que constroem confiança.",
+                "Lidero nosso trabalho com times de bem-estar e holísticos. Tenho a minha própria marca de bem-estar holístico e facilito Reiki e meditação, então entendo esse mundo por dentro, não por um slide.",
             },
             {
               title: "Por que importa",
               content:
-                "Se a experiência parece fria ou confusa, as pessoas se desconectam. O design centrado nas pessoas mantém o trabalho utilizável e respeitoso.",
+                "O público de bem-estar percebe em segundos se você realmente entende o mundo dele. Quando uma praticante de verdade lidera o trabalho, a linguagem, a confiança e a experiência acertam em vez de soarem emprestadas.",
             },
             {
               title: "O que inclui",
               content:
-                "Guia de copy e tom, contribuição de UX, e feedback real sobre o que vai (e não vai) funcionar para as pessoas.",
+                "Orientação de domínio para projetos de bem-estar, marca e linguagem que combinam com o jeito que esse público realmente pensa, e feedback honesto sobre o que vai e o que não vai ressoar com as pessoas.",
             },
             {
               title: "Ideal para",
               content:
-                "Times de bem-estar, saúde e sustentabilidade que querem uma experiência calorosa, clara e confiável.",
+                "Marcas de bem-estar, holísticas e de wellbeing que querem um parceiro que viva o mundo delas, não só que construa software para ele.",
             },
             {
               title: "Resultado típico",
               content:
-                "Um sistema que se sente claro e humano, para que as pessoas fiquem e façam o acompanhamento.",
+                "Um produto e uma voz em que o público de bem-estar confia, porque quem os moldou é parte dessa comunidade.",
             },
           ],
         },
