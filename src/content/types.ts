@@ -121,6 +121,7 @@ export interface Project {
   status: string;
   image: string;
   images?: string[];
+  animationKey?: string; // Maps to a bespoke animation component (used when image is empty)
   tags: string[];
   url?: string;
   stats?: ProjectStat[];

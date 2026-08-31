@@ -12,6 +12,7 @@ projects: [
     lessons: "Quem executa um protocolo não precisa do protocolo completo. Precisa do passo atual. Criação e execução são um único loop, e a receita completa, a IP de verdade, nunca precisa sair do sistema.",
     status: "Ativo",
     image: "",
+    animationKey: "company-brain",
     tags: ["Company Brain", "Construtor de protocolos", "Agri-biotech"],
     modal: {
       whatItMeans:

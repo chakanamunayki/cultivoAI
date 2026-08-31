@@ -93,39 +93,39 @@ export const esAbout: AboutCopy = {
       {
         id: "marta",
         name: "Marta Ronayne",
-        title: "Diseño centrado en personas y contexto wellness",
+        title: "Líder de wellness. Practicante holística y fundadora de marca.",
         description:
-          "Marta aporta una mirada humana y aterrizada para construir tono, confianza y experiencia de usuario, especialmente en proyectos de bienestar.",
+          "Marta lidera nuestro trabajo en la vertical de bienestar. Fundó su propia marca de bienestar holístico y practica como facilitadora de Reiki y meditación, así los clientes de bienestar son guiados por alguien que vive ese mundo, no que solo lee sobre él.",
         imageUrl: "/landing/photos/team/marta.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
-          headline: "Tono, confianza y usabilidad que se sienten humanos",
+          headline: "Una practicante holística real liderando el trabajo de la vertical de bienestar.",
           sections: [
             {
               title: "Qué significa",
               content:
-                "Ayudo a definir cómo se siente el sistema: lenguaje, flujo y esos detalles humanos que construyen confianza.",
+                "Lidero nuestro trabajo con equipos de bienestar y holísticos. Tengo mi propia marca de bienestar holístico y facilito Reiki y meditación, así que entiendo este mundo desde adentro, no desde una diapositiva.",
             },
             {
               title: "Por qué importa",
               content:
-                "Si la experiencia se siente fría o confusa, la gente se desconecta. El diseño centrado en personas mantiene el trabajo usable y respetuoso.",
+                "El público de bienestar nota en segundos si de verdad entiendes su mundo. Cuando una practicante real lidera el trabajo, el lenguaje, la confianza y la experiencia caen bien en vez de sentirse prestados.",
             },
             {
               title: "Qué incluye",
               content:
-                "Guía de copy y tono, input de UX, y feedback real sobre lo que sí (y no) funcionará para las personas.",
+                "Guía de dominio para proyectos de bienestar, marca y lenguaje que encajan con cómo piensa de verdad este público, y feedback honesto sobre lo que sí y no va a resonar con las personas.",
             },
             {
               title: "Ideal para",
               content:
-                "Equipos de bienestar, salud y sostenibilidad que quieren una experiencia cálida, clara y confiable.",
+                "Marcas de bienestar, holísticas y de wellbeing que quieren un socio que viva su mundo, no solo que construya software para él.",
             },
             {
               title: "Resultado típico",
               content:
-                "Un sistema que se siente claro y humano, para que la gente se quede y haga seguimiento.",
+                "Un producto y una voz en los que el público de bienestar confía, porque los moldeó alguien de esa comunidad.",
             },
           ],
         },

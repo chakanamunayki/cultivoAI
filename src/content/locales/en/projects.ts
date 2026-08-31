@@ -12,6 +12,7 @@ projects: [
     lessons: "The people running a protocol don't need the whole protocol. They need the current step. Authoring and execution are one loop, and the full recipe, the real IP, never has to leave the system.",
     status: "Active",
     image: "",
+    animationKey: "company-brain",
     tags: ["Company Brain", "Protocol builder", "Agri-biotech"],
     modal: {
       whatItMeans:
