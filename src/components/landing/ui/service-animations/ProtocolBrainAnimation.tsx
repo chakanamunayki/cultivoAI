@@ -1,8 +1,20 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import type { Locale } from "@/content/types";
+
+// Matches the SSR-safe pattern used by reveal.tsx and growing-tree.tsx.
+function usePrefersReducedMotion(): boolean {
+    const subscribe = (callback: () => void) => {
+        const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+        mediaQuery.addEventListener("change", callback);
+        return () => mediaQuery.removeEventListener("change", callback);
+    };
+    const getSnapshot = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const getServerSnapshot = () => false;
+    return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+}
 
 type NodeId =
     | "protocol"
@@ -97,6 +109,7 @@ interface Props {
 export function ProtocolBrainAnimation({ locale = "en" }: Props) {
     const [tick, setTick] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
+    const reduced = usePrefersReducedMotion();
 
     const activeId = QUERY_CYCLE[tick % QUERY_CYCLE.length]!;
     const active = useMemo(() => NODES.find((n) => n.id === activeId)!, [activeId]);
@@ -123,10 +136,10 @@ export function ProtocolBrainAnimation({ locale = "en" }: Props) {
     }, [activeId, active]);
 
     useEffect(() => {
-        if (isHovered) return;
+        if (isHovered || reduced) return;
         const timer = setInterval(() => setTick((t) => t + 1), 3800);
         return () => clearInterval(timer);
-    }, [isHovered]);
+    }, [isHovered, reduced]);
 
     const containerRef = useRef<HTMLDivElement>(null);
     const mouseX = useMotionValue(0);
@@ -177,8 +190,8 @@ export function ProtocolBrainAnimation({ locale = "en" }: Props) {
                     <div className="flex items-center gap-2">
                         <motion.span
                             className="text-[14px] sm:text-[15px] drop-shadow-[0_0_8px_rgba(0,188,212,0.5)]"
-                            animate={{ scale: [1, 1.12, 1] }}
-                            transition={{ duration: 2.4, repeat: Infinity }}
+                            animate={reduced ? false : { scale: [1, 1.12, 1] }}
+                            transition={reduced ? { duration: 0 } : { duration: 2.4, repeat: Infinity }}
                         >
                             🧠
                         </motion.span>
@@ -189,8 +202,8 @@ export function ProtocolBrainAnimation({ locale = "en" }: Props) {
                     <div className="flex items-center gap-1.5">
                         <motion.div
                             className="h-1.5 w-1.5 rounded-full bg-[#00BCD4] shadow-[0_0_8px_#00BCD4]"
-                            animate={{ opacity: [1, 0.4, 1] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
+                            animate={reduced ? false : { opacity: [1, 0.4, 1] }}
+                            transition={reduced ? { duration: 0 } : { duration: 1.5, repeat: Infinity }}
                         />
                         <span className="text-[7.5px] sm:text-[8px] text-white/60 uppercase font-black tracking-wider">
                             {locale === "es" ? "Guiando" : locale === "pt" ? "Guiando" : "Guiding"}
@@ -231,7 +244,7 @@ export function ProtocolBrainAnimation({ locale = "en" }: Props) {
                         })}
 
                         {/* Knowledge pulses from active node */}
-                        {outgoingEdges.map((edge, i) => (
+                        {!reduced && outgoingEdges.map((edge, i) => (
                             <motion.circle
                                 key={`pulse-${tick}-${i}`}
                                 r={2.8}
@@ -260,8 +273,8 @@ export function ProtocolBrainAnimation({ locale = "en" }: Props) {
                             return (
                                 <motion.g
                                     key={node.id}
-                                    animate={{ y: [0, -2.4, 0, 2.4, 0] }}
-                                    transition={{
+                                    animate={reduced ? false : { y: [0, -2.4, 0, 2.4, 0] }}
+                                    transition={reduced ? { duration: 0 } : {
                                         duration: 6 + (i % 4),
                                         repeat: Infinity,
                                         ease: "easeInOut",
@@ -274,12 +287,12 @@ export function ProtocolBrainAnimation({ locale = "en" }: Props) {
                                             cy={node.y}
                                             r={16}
                                             fill="url(#protocol-node-halo)"
-                                            initial={{ opacity: 0, scale: 0.6 }}
-                                            animate={{
+                                            initial={reduced ? { opacity: 0.55, scale: 1 } : { opacity: 0, scale: 0.6 }}
+                                            animate={reduced ? { opacity: 0.55, scale: 1 } : {
                                                 opacity: [0.35, 0.85, 0.35],
                                                 scale: [0.9, 1.25, 0.9],
                                             }}
-                                            transition={{ duration: 2.2, repeat: Infinity }}
+                                            transition={reduced ? { duration: 0 } : { duration: 2.2, repeat: Infinity }}
                                         />
                                     )}
                                     <motion.circle
