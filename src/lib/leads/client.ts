@@ -12,6 +12,7 @@ export interface CreateLeadInput {
   source?: string;
   interests?: string[];
   conversationSummary?: string;
+  transcript?: string;
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;

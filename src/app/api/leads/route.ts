@@ -31,6 +31,7 @@ interface CreateLeadRequest {
   source?: string;
   interests?: string[];
   conversationSummary?: string;
+  transcript?: string;
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
@@ -90,6 +91,10 @@ export async function POST(request: Request) {
     const interests = body.interests?.length
       ? body.interests.join(", ")
       : undefined;
+    // Transcript can be long; keep it but cap to a sane size for the email.
+    const transcript = body.transcript
+      ? body.transcript.trim().slice(0, 8000)
+      : undefined;
 
     // Payload accepted by both Formspree and Web3Forms. Web3Forms also needs
     // an access_key; supply it via LEADS_FORWARD_ACCESS_KEY when using them.
@@ -110,6 +115,7 @@ export async function POST(request: Request) {
       ...(clean(body.conversationSummary)
         ? { conversationSummary: clean(body.conversationSummary) }
         : {}),
+      ...(transcript ? { transcript } : {}),
       ...(clean(body.utmSource) ? { utmSource: clean(body.utmSource) } : {}),
       ...(clean(body.utmMedium) ? { utmMedium: clean(body.utmMedium) } : {}),
       ...(clean(body.utmCampaign) ? { utmCampaign: clean(body.utmCampaign) } : {}),

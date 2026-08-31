@@ -143,6 +143,7 @@ export function AIChatWidget({
   const [showVoiceContactForm, setShowVoiceContactForm] = useState(false);
   const [voiceUserInfo, setVoiceUserInfo] = useState<VoiceUserInfo | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesRef = useRef<Message[]>([]);
   const lastContextRef = useRef<ChatContext | null | undefined>(undefined);
   const conversationInitialized = useRef(false);
 
@@ -202,6 +203,7 @@ export function AIChatWidget({
   }, []);
 
   useEffect(() => {
+    messagesRef.current = messages;
     scrollToBottom();
   }, [messages, isOpen, scrollToBottom]);
 
@@ -286,11 +288,16 @@ export function AIChatWidget({
   // Handle lead capture API call
   const handleLeadCapture = useCallback(async (info: LeadInfo): Promise<{ success: boolean; leadId?: string }> => {
     try {
+      const transcript = messagesRef.current
+        .filter((m) => m.text && m.text.trim())
+        .map((m) => `${m.role === "user" ? "Visitor" : "Assistant"}: ${m.text.trim()}`)
+        .join("\n");
       const data = await createLead({
         name: info.name,
         email: info.email,
         source: "chatbot",
         preferredLanguage: locale,
+        ...(transcript ? { transcript } : {}),
         ...(info.company ? { company: info.company } : {}),
         ...(info.phone ? { phone: info.phone } : {}),
         ...(info.interestedServices?.length ? { interests: info.interestedServices } : {}),
