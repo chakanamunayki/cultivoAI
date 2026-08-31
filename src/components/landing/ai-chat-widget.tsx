@@ -133,6 +133,7 @@ export function AIChatWidget({
   const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substring(7)}`);
   const [conversationId, setConversationId] = useState<string | null>(null);
   const [currentLeadId, setCurrentLeadId] = useState<string | null>(null);
+  const [capturedName, setCapturedName] = useState<string>("");
   const [whatsAppContext, setWhatsAppContext] = useState<string>("");
   const [showContactForm, setShowContactForm] = useState(false);
   const [contactFormData, setContactFormData] = useState({ name: "", email: "" });
@@ -296,6 +297,9 @@ export function AIChatWidget({
         ...(info.projectDescription ? { projectDescription: info.projectDescription } : {}),
       });
       setCurrentLeadId(data.leadId);
+      if (info.name) {
+        setCapturedName(info.name);
+      }
       // Link lead to conversation
       if (data.leadId) {
         linkLeadToConversation(data.leadId);
@@ -350,10 +354,10 @@ export function AIChatWidget({
         setContactFormData({ name: "", email: "" });
 
         const successMessage = locale === "es"
-          ? `¡Perfecto ${name}! Ya tengo tu información. Si quieres, seguimos con una charla de 15 minutos sobre tu proyecto.`
+          ? `¡Perfecto ${name}! Ya tengo tus datos. Si quieres, puedes coordinar una llamada directamente con Paul.`
           : locale === "pt"
-          ? `Perfeito, ${name}! Já tenho as suas informações. Se você quiser, seguimos com uma conversa de 15 minutos sobre o seu projeto.`
-          : `Perfect ${name}! I've got your info. If you want, we can move to a 15-minute project chat.`;
+          ? `Perfeito, ${name}! Já tenho os seus dados. Se quiser, você pode marcar uma conversa diretamente com o Paul.`
+          : `Perfect ${name}! I've got your details. If you'd like, you can arrange a call directly with Paul.`;
 
         setMessages(prev => [...prev, { role: "model", text: successMessage, showWhatsAppCta: true }]);
       } else {
@@ -409,10 +413,10 @@ export function AIChatWidget({
         });
         // Add success message to chat
         const successMessage = locale === "es"
-          ? `¡Perfecto ${name}! Ya tengo tu información.`
+          ? `¡Perfecto ${name}! Ya tengo tus datos. Si quieres, puedes coordinar una llamada directamente con Paul.`
           : locale === "pt"
-          ? `Perfeito, ${name}! Já tenho as suas informações.`
-          : `Perfect ${name}! I've got your info.`;
+          ? `Perfeito, ${name}! Já tenho os seus dados. Se quiser, você pode marcar uma conversa diretamente com o Paul.`
+          : `Perfect ${name}! I've got your details. If you'd like, you can arrange a call directly with Paul.`;
         setMessages(prev => [...prev, { role: "model", text: successMessage, showWhatsAppCta: true }]);
         return true;
       }
@@ -482,11 +486,12 @@ export function AIChatWidget({
   // Open WhatsApp with context
   const openWhatsApp = useCallback((contextMessage?: string) => {
     const message = buildWhatsAppMessage(locale, {
+      ...(capturedName ? { userName: capturedName } : {}),
       conversationSummary: contextMessage || whatsAppContext,
     });
     const url = getWhatsAppUrl(WHATSAPP_NUMBER, message);
     window.open(url, "_blank");
-  }, [locale, whatsAppContext]);
+  }, [locale, whatsAppContext, capturedName]);
 
   // Execute function calls from AI
   const executeFunctionCall = useCallback(
@@ -714,13 +719,13 @@ export function AIChatWidget({
       if (currentLeadId) {
         const alreadyCapturedMessage =
           locale === "es"
-            ? "Ya tengo tus datos. Si quieres, seguimos con la charla de 15 minutos."
+            ? "Ya tengo tus datos. Si quieres, puedes coordinar una llamada directamente con Paul."
             : locale === "pt"
-            ? "Já tenho os seus dados. Se você quiser, seguimos com a conversa de 15 minutos."
-            : "I already have your details. If you want, we can move to a 15-minute project chat.";
+            ? "Já tenho os seus dados. Se quiser, você pode marcar uma conversa diretamente com o Paul."
+            : "I already have your details. If you'd like, you can arrange a call directly with Paul.";
         setMessages((prev) => [
           ...prev,
-          { role: "model", text: alreadyCapturedMessage },
+          { role: "model", text: alreadyCapturedMessage, showWhatsAppCta: true },
         ]);
         void logMessage("model", alreadyCapturedMessage);
         return;
@@ -893,9 +898,9 @@ export function AIChatWidget({
                     >
                       <WhatsAppIcon size={18} />
                       {tt(
-                        "Seguir en WhatsApp",
-                        "Continue on WhatsApp",
-                        "Continuar no WhatsApp"
+                        "Coordinar llamada",
+                        "Arrange a call",
+                        "Marcar conversa"
                       )}
                     </button>
                   </div>
