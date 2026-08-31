@@ -34,38 +34,6 @@ projects: [
     },
   },
   {
-    title: "RaizCapitalColombia.co",
-    desc: "Projects and properties in Colombia using data plus creativity to propose realistic business models and opportunities.",
-    fullDesc:
-      "A strategy and information platform that organizes opportunities clearly and helps teams evaluate direction with practical inputs instead of guesswork.",
-    lessons: "Clarity in framing and data quality changes decision quality.",
-    status: "Active",
-    image: "/landing/photos/project-screenshots/Screenshot_www.raizcapital.co.jpeg",
-    images: [
-      "/landing/photos/project-screenshots/Screenshot_www.raizcapital.co.jpeg",
-    ],
-    url: "https://www.raizcapital.co/",
-    tags: ["Data", "Strategy"],
-    modal: {
-      whatItMeans:
-        "A strategy and information layer that makes opportunities easier to compare and decisions easier to defend.",
-      whyItMatters:
-        "When everything is vague, teams waste time debating opinions. Clear framing + clean data improves decision quality.",
-      whatsIncluded: [
-        "A clear information structure (what matters, what to ignore)",
-        "A way to compare opportunities consistently",
-        "Simple views that support decision conversations",
-        "A system that can evolve as the project grows",
-      ],
-      idealFit: [
-        "Teams evaluating multiple opportunities or directions",
-        "Projects that need clarity more than hype",
-        "Decision-makers who value structured thinking",
-      ],
-      typicalOutcome: "Faster evaluation, clearer tradeoffs, and fewer circular discussions.",
-    },
-  },
-  {
     title: "SetaSouls. Holistic Brand Website",
     desc: "98 performance. 100 SEO. 100 best practices. Design, speed, and search visibility built together from the start.",
     fullDesc:
