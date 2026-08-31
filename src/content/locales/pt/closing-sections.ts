@@ -116,23 +116,23 @@ export const ptClosingSectionsContent: Pick<
     placeholder: "Digite a sua mensagem...",
     sendButton: "Enviar",
     welcomeMessage:
-      "Olá. Sou o assistente da CultivoAI. Me conta o que você está tentando construir e onde está travado. Se houver encaixe, agendamos uma conversa de 15 minutos com o Paul.",
+      "Olá! Sou o assistente da CultivoAI. Como posso ajudar?",
     contextualGreetings: {
       general:
-        "Olá. Me conta o que você está tentando construir e qual é o gargalo agora. Eu ajudo a mapear o próximo passo.",
+        "Olá! Sou o assistente da CultivoAI. Como posso ajudar?",
       booking:
-        "Perfeito. Podemos agendar uma conversa de 15 minutos com o Paul. Antes disso, o que você está construindo e qual é o bloqueio principal?",
+        "Ótimo. Podemos marcar uma conversa de 15 minutos com o Paul. Me conta um pouco no que você está trabalhando e já deixo tudo pronto.",
       story:
-        "O Paul é um fundador técnico que já lançou produtos em mais de 70 países e construiu o CHAK Brain sozinho. Time pequeno e sênior, trabalho direto, sem handoffs. O que você quer entender: o processo, os projetos ou o encaixe?",
+        "O Paul é um fundador técnico que já lançou produtos em mais de 70 países e construiu o CHAK Brain sozinho. Time pequeno e sênior, trabalho direto, sem handoffs. O que você gostaria de saber?",
       service:
-        "Vi que você tem interesse em {service}. Bom ponto de partida. Qual é o gargalo real e que resultado você precisa nas próximas semanas?",
+        "Legal, você tem interesse em {service}. Com prazer te explico. O que você gostaria de saber?",
       partnership:
-        "Os modelos de parceria dependem de escopo e prazos. O que você está construindo e o que está freando o avanço agora?",
+        "Que bom que você tem interesse em uma parceria com a CultivoAI. Me conta um pouco o que você tem em mente e seguimos a partir daí.",
       qualification:
-        "Vamos fazer um teste rápido de encaixe. O que você constrói, que prazo você tem e quem decide?",
+        "Com prazer vejo se faz sentido. Me conta um pouco o que você está construindo.",
       impact:
-        "Vi que você tem interesse em trabalho com propósito. Se você está construindo algo real e precisa de execução prática, estamos no caminho. O que você está construindo?",
-      formFallback: "Prefere uma conversa de 15 minutos? Deixa os seus dados.",
+        "Adoro que você se interesse por trabalho com propósito. Me conta o que você está construindo e ajudo no que puder.",
+      formFallback: "Prefere uma conversa rápida com o Paul? Deixa os seus dados.",
     },
   },
 

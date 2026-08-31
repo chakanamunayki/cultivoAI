@@ -116,23 +116,23 @@ export const enClosingSectionsContent: Pick<
     placeholder: "Type your message...",
     sendButton: "Send",
     welcomeMessage:
-      "Hi. I am the CultivoAI assistant. Tell me what you are trying to build and where you are stuck. If there is a fit, we can set up a 15-minute project chat with Paul.",
+      "Hi! I'm the CultivoAI assistant. How can I help you today?",
     contextualGreetings: {
       general:
-        "Hi. Tell me what you are trying to build and where the bottleneck is right now. We can map the next step together.",
+        "Hi! I'm the CultivoAI assistant. How can I help you today?",
       booking:
-        "Perfect. We can set up a 15-minute project chat with Paul. Before that, what are you trying to build and what is the main blocker?",
+        "Great. We can set up a 15-minute call with Paul. Tell me a bit about what you're working on and I'll get it ready.",
       story:
-        "Paul is a technical founder who has shipped products to 70+ countries and built CHAK Brain solo. Small senior team, direct work, no handoffs. What do you want to understand: the process, the projects, or fit?",
+        "Paul is a technical founder who has shipped products to 70+ countries and built CHAK Brain solo. Small senior team, direct work, no handoffs. What would you like to know?",
       service:
-        "You are looking at {service}. Good place to start. What is the real bottleneck, and what outcome do you need in the next few weeks?",
+        "Nice, you're looking at {service}. Happy to walk you through it. What would you like to know?",
       partnership:
-        "Partnership models depend on scope and timing. What are you building, and what is stopping progress right now?",
+        "Glad you're curious about partnering with CultivoAI. Tell me a bit about what you have in mind and I'll take it from there.",
       qualification:
-        "Let's test fit quickly. What are you building, what timeline matters, and who is involved in the decision?",
+        "Happy to see if there's a fit. Tell me a little about what you're building.",
       impact:
-        "You clicked on purpose-first work. Good fit if you are building something real and need practical execution. What are you trying to build?",
-      formFallback: "Prefer a 15-minute project chat? Share your details.",
+        "Love that you're drawn to purpose-first work. Tell me what you're building and I'll help however I can.",
+      formFallback: "Prefer a quick call with Paul? Share your details.",
     },
   },
 

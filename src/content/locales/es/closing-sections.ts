@@ -116,23 +116,23 @@ export const esClosingSectionsContent: Pick<
     placeholder: "Escribe tu mensaje...",
     sendButton: "Enviar",
     welcomeMessage:
-      "Hola. Soy el asistente de CultivoAI. Cuéntame qué estás intentando construir y dónde estás atascado. Si hay fit, agendamos una charla de 15 minutos con Paul.",
+      "¡Hola! Soy el asistente de CultivoAI. ¿En qué te puedo ayudar?",
     contextualGreetings: {
       general:
-        "Hola. Cuéntame qué estás intentando construir y cuál es el cuello de botella ahora mismo. Te ayudo a mapear el siguiente paso.",
+        "¡Hola! Soy el asistente de CultivoAI. ¿En qué te puedo ayudar?",
       booking:
-        "Perfecto. Podemos agendar una charla de 15 minutos con Paul. Antes de eso, ¿qué estás construyendo y cuál es el bloqueo principal?",
+        "Genial. Podemos agendar una llamada de 15 minutos con Paul. Cuéntame un poco en qué estás trabajando y lo dejo listo.",
       story:
-        "Paul es un fundador técnico que ha lanzado productos a más de 70 países y construyó CHAK Brain solo. Equipo pequeño y senior, trabajo directo, sin handoffs. ¿Qué quieres entender: el proceso, los proyectos o el fit?",
+        "Paul es un fundador técnico que ha lanzado productos a más de 70 países y construyó CHAK Brain solo. Equipo pequeño y senior, trabajo directo, sin handoffs. ¿Qué te gustaría saber?",
       service:
-        "Veo que te interesa {service}. Buen punto de partida. ¿Cuál es el cuello de botella real y qué resultado necesitas en las próximas semanas?",
+        "Genial, te interesa {service}. Con gusto te lo explico. ¿Qué te gustaría saber?",
       partnership:
-        "Los modelos de partnership dependen de alcance y tiempos. ¿Qué estás construyendo y qué está frenando el avance ahora?",
+        "Me alegra que te interese una alianza con CultivoAI. Cuéntame un poco qué tienes en mente y seguimos desde ahí.",
       qualification:
-        "Hagamos una prueba rápida de fit. ¿Qué construyes, qué timeline tienes y quién decide?",
+        "Con gusto vemos si hay fit. Cuéntame un poco qué estás construyendo.",
       impact:
-        "Veo que te interesa trabajo con propósito. Si estás construyendo algo real y necesitas ejecución práctica, vamos bien. ¿Qué estás construyendo?",
-      formFallback: "¿Prefieres una charla de 15 minutos? Deja tus datos.",
+        "Me encanta que te interese el trabajo con propósito. Cuéntame qué estás construyendo y te ayudo en lo que pueda.",
+      formFallback: "¿Prefieres una llamada rápida con Paul? Deja tus datos.",
     },
   },
 
