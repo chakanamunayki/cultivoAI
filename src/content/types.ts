@@ -76,7 +76,7 @@ export interface TeamMember {
   accentColor: string; // Tailwind color class for card accent
   shadowColor: string; // Shadow color hex or class
   linkedinUrl?: string;
-  bio: TeamMemberBio;
+  bio?: TeamMemberBio; // omit to hide the "View more" pop-up
 }
 
 export interface AboutCopy {

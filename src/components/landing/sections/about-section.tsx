@@ -20,7 +20,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden border-b border-black/10 bg-white px-6 pt-12 pb-6 md:px-12 md:pt-16 md:pb-12 lg:px-24 lg:pt-20 lg:pb-24"
+      className="relative overflow-hidden border-b border-black/10 bg-white px-6 pt-[calc(clamp(5rem,7vw,8rem)+0.75rem)] pb-6 md:px-12 md:pt-[calc(clamp(5rem,7vw,8rem)+1rem)] md:pb-12 lg:px-24 lg:pt-[calc(clamp(5rem,7vw,8rem)+1.25rem)] lg:pb-24"
     >
       <div className="max-w-[1600px] mx-auto">
         <Reveal>
@@ -103,12 +103,14 @@ export function AboutSection() {
                         LinkedIn
                       </a>
                     )}
+                    {member.bio && (
                     <button
                       onClick={() => handleViewMore(member)}
                       className="inline-flex items-center gap-1 rounded-lg bg-[#1f1f1f] px-4 py-2.5 text-xs font-semibold tracking-[0.06em] text-white uppercase shadow-[0_8px_18px_rgba(17,24,39,0.24)] transition-all hover:-translate-y-0.5 hover:bg-[#111]"
                     >
                       {content.about.viewMoreLabel} {"->"}
                     </button>
+                    )}
                   </div>
                 </div>
               </div>

@@ -33,7 +33,7 @@ export const es: SiteContent = {
   hero: {
     tagline: "TECNOLOGÍA PARA BUENOS PROYECTOS",
     line1:
-      "Tu socio tecnológico, con las manos en la tierra, para proyectos que cuidan la tierra, las personas y las comunidades.",
+      "Tu socio tecnológico para proyectos que cuidan la tierra, las personas y las comunidades.",
     subheadline:
       "He cofundado y construido startups. Ahora ayudo a buenos proyectos de regeneración, vida autosuficiente, salud holística y naturaleza a construir su tecnología, encontrar las innovaciones adecuadas y prepararse para la inversión.",
     services: [],

@@ -69,7 +69,7 @@ function StackedServiceCard({
           zIndex: index + 1,
         }}
         className={cn(
-          "relative -top-[12%] min-h-[860px] w-[94%] max-w-6xl origin-top cursor-pointer overflow-hidden rounded-[30px] border p-5 transition-all duration-200 md:h-[82vh] md:min-h-[640px] md:p-7 lg:p-8",
+          "relative -top-[12%] flex flex-col min-h-[860px] w-[94%] max-w-6xl origin-top cursor-pointer overflow-hidden rounded-[30px] border p-5 transition-all duration-200 md:h-[82vh] md:min-h-[640px] md:p-7 lg:p-8",
           "border-white/15 bg-[#212121] text-[#FFFFFF] shadow-[0_20px_40px_rgba(0,0,0,0.34)] ring-1 ring-white/5 hover:-translate-y-1 hover:bg-[#1b1b1b] hover:shadow-[0_24px_44px_rgba(0,0,0,0.42)]"
         )}
       >
@@ -78,7 +78,7 @@ function StackedServiceCard({
           <span>{service.title}</span>
         </div>
 
-        <div className="grid h-full gap-5 md:gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-stretch">
+        <div className="grid min-h-0 flex-1 gap-5 md:gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-stretch">
           <div className="order-2 flex min-h-0 flex-col lg:order-1">
             <div className="min-h-0 pr-1 lg:max-h-[360px] lg:overflow-y-auto lg:pr-2 lg:[scrollbar-width:thin] lg:[scrollbar-color:#9ca3af_transparent] lg:[&::-webkit-scrollbar]:w-1.5 lg:[&::-webkit-scrollbar-track]:bg-transparent lg:[&::-webkit-scrollbar-thumb]:rounded-full lg:[&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">
               <h3 className="text-2xl leading-tight font-black tracking-tight md:text-3xl">

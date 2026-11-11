@@ -11,7 +11,7 @@ export const esAbout: AboutCopy = {
         name: "Paul Ronayne",
         title: "Fundador. Constructor de startups. Con las manos en la tierra.",
         description:
-          "Más de 20 años construyendo empresas. Cofundé NBN23, una plataforma de datos deportivos que se asoció con FIBA y llegó a más de 70 países, y Nagi, tecnología de seguridad acuática usada en colegios y piscinas. Después volví a mis raíces. Hoy vivo en Colombia y construyo tecnología para proyectos que cuidan la tierra, las personas y las comunidades, incluida la plataforma completa de un proyecto de biotecnología y agricultura vertical, construida de punta a punta, solo.",
+          "Más de 20 años construyendo empresas. Cofundé NBN23, una plataforma de datos deportivos con FIBA en más de 70 países, y Nagi, tecnología de seguridad acuática usada en colegios y piscinas. Hoy vivo en Colombia y construyo tecnología para proyectos que cuidan la tierra, las personas y las comunidades.",
         imageUrl: "/landing/photos/team/paul.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
@@ -52,33 +52,20 @@ export const esAbout: AboutCopy = {
       {
         id: "rocky",
         name: "Rocky Ronayne",
-        title: "La nueva generación. Semilla.",
+        title: "Joven constructor. Herramientas de IA. Semilla.",
         description:
-          "La nueva generación. Construye con herramientas de IA junto a Paul y lleva Semilla, su propio fondo para buenos proyectos.",
+          "La nueva generación. Rocky construye con herramientas de IA junto a Paul: apps de demostración, sitios web y video. Está aprendiendo cómo una idea se convierte en un negocio real, proyecto a proyecto. Además lleva Semilla, su propio fondo para buenos proyectos.",
         imageUrl: "/landing/photos/team/rocky.jpeg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
-        bio: {
-          headline: "La nueva generación, construyendo con IA y apoyando buenos proyectos.",
-          sections: [
-            {
-              title: "Qué hago",
-              content:
-                "Construyo con herramientas de IA junto a mi papá, Paul, en los proyectos que tomamos juntos.",
-            },
-            {
-              title: "Semilla",
-              content: "Llevo Semilla, mi propio fondo para buenos proyectos.",
-            },
-          ],
-        },
+        // Sin ventana emergente: la tarjeta ya lo dice todo.
       },
       {
         id: "marta",
         name: "Marta Ronayne",
         title: "Terapeuta holística. Fundadora de Munayki.",
         description:
-          "Terapeuta holística y fundadora de Munayki. Lidera nuestro trabajo en productos naturales y medicina holística y ancestral para el bienestar.",
+          "Terapeuta holística y fundadora de Munayki, de munay, la palabra quechua para el amor. Marta trabaja con Reiki, meditación y productos naturales hechos a mano, uniendo la sabiduría ancestral con una ciencia sencilla. Lidera el trabajo en medicina holística y ancestral para el bienestar.",
         imageUrl: "/landing/photos/team/marta.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
@@ -88,12 +75,12 @@ export const esAbout: AboutCopy = {
             {
               title: "Munayki",
               content:
-                "Munayki viene de munay, la palabra quechua para el amor. Es el hogar de la innovación alrededor de productos naturales y medicina holística y ancestral para el bienestar.",
+                "Munayki viene de munay, la palabra quechua para el amor. Es donde comparto Reiki, meditación y los productos naturales que hago a mano.",
             },
             {
               title: "Qué lidero",
               content:
-                "Lidero nuestro trabajo en productos naturales y medicina holística y ancestral para el bienestar, para que los proyectos de este mundo los guíe alguien que lo vive.",
+                "Lidero el trabajo en productos naturales y medicina holística y ancestral para el bienestar, para que los proyectos de este mundo los guíe alguien que lo vive.",
             },
           ],
         },

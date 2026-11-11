@@ -11,7 +11,7 @@ export const enAbout: AboutCopy = {
         name: "Paul Ronayne",
         title: "Founder. Startup builder. Hands in the soil.",
         description:
-          "20+ years building companies. I co-founded NBN23, a sports-data platform that partnered with FIBA and reached 70+ countries, and Nagi, aquatic-safety tech used in schools and pools. Then I came back to my roots. Today I live in Colombia and build tech for projects that care for land, people and communities, including the full platform for a biotech and vertical farming project, built end to end, solo.",
+          "20+ years building companies. I co-founded NBN23, a sports-data platform with FIBA in 70+ countries, and Nagi, aquatic-safety tech used in schools and pools. Today I live in Colombia and build tech for projects that care for land, people and communities.",
         imageUrl: "/landing/photos/team/paul.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
@@ -52,34 +52,20 @@ export const enAbout: AboutCopy = {
       {
         id: "rocky",
         name: "Rocky Ronayne",
-        title: "The next generation. Semilla.",
+        title: "Young builder. AI tools. Semilla.",
         description:
-          "The next generation. Builds with AI tools alongside Paul, and runs Semilla, his own fund for good projects.",
+          "The next generation. Rocky builds with AI tools alongside Paul: demo apps, websites and video. He's learning how an idea becomes a real business, one real project at a time. He also runs Semilla, his own fund for good projects.",
         imageUrl: "/landing/photos/team/rocky.jpeg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
-        bio: {
-          headline: "The next generation, building with AI and backing good projects.",
-          sections: [
-            {
-              title: "What I do",
-              content:
-                "I build with AI tools alongside my dad, Paul, on the projects we take on together.",
-            },
-            {
-              title: "Semilla",
-              content:
-                "I run Semilla, my own fund for good projects.",
-            },
-          ],
-        },
+        // No pop-up: the card already says everything there is to say.
       },
       {
         id: "marta",
         name: "Marta Ronayne",
         title: "Holistic practitioner. Founder of Munayki.",
         description:
-          "Holistic practitioner and founder of Munayki. Leads our work in natural products, holistic and ancestral medicine for wellness.",
+          "Holistic practitioner and founder of Munayki, from munay, the Quechua word for love. Marta works with Reiki, meditation and natural products she makes by hand, bringing ancestral wisdom and simple science together. She leads the work in holistic and ancestral medicine for wellness.",
         imageUrl: "/landing/photos/team/marta.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
@@ -89,12 +75,12 @@ export const enAbout: AboutCopy = {
             {
               title: "Munayki",
               content:
-                "Munayki comes from munay, the Quechua word for love. It is the home for innovation around natural products and holistic and ancestral medicine for wellness.",
+                "Munayki comes from munay, the Quechua word for love. It's where I share Reiki, meditation and the natural products I make by hand.",
             },
             {
               title: "What I lead",
               content:
-                "I lead our work in natural products and holistic and ancestral medicine for wellness, so projects in this world are guided by someone who lives it.",
+                "I lead the work in natural products and holistic and ancestral medicine for wellness, so projects in this world are guided by someone who lives it.",
             },
           ],
         },

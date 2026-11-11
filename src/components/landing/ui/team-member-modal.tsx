@@ -12,8 +12,12 @@ interface TeamMemberModalProps {
 }
 
 export function TeamMemberModal({ member, onOpenContact }: TeamMemberModalProps) {
+  const { bio } = member;
   const { locale } = useLocale();
   const ctaText = locale === "es" ? "Hablemos" : locale === "pt" ? "Vamos conversar" : "Let's talk";
+
+  // Members without a bio have no "View more" button, so this is only a safety net.
+  if (!bio) return null;
 
   return (
     <div className="flex flex-col md:flex-row rounded-[26px] overflow-hidden">
@@ -82,12 +86,12 @@ export function TeamMemberModal({ member, onOpenContact }: TeamMemberModalProps)
 
         {/* Bio Headline */}
         <p className="mb-6 -mx-7 border-y border-black/10 bg-[#e7e7e7] px-7 py-3 text-base font-semibold leading-relaxed text-[#303030] md:-mx-10 md:px-10 md:text-lg">
-          {member.bio.headline}
+          {bio.headline}
         </p>
 
         {/* Bio Sections */}
         <div className="space-y-4">
-          {member.bio.sections.map((section, index) => (
+          {bio.sections.map((section, index) => (
             <div
               key={index}
               className="rounded-[14px] border border-[#00BCD4] bg-[#00BCD4] p-4 shadow-[0_10px_20px_rgba(15,23,42,0.18)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_14px_28px_rgba(15,23,42,0.25)]"
@@ -104,9 +108,9 @@ export function TeamMemberModal({ member, onOpenContact }: TeamMemberModalProps)
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-3 mt-8">
-          {member.bio.linkedinUrl && (
+          {bio.linkedinUrl && (
             <a
-              href={member.bio.linkedinUrl}
+              href={bio.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg bg-[#0A66C2] px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_18px_rgba(8,56,104,0.32)] transition-all hover:-translate-y-0.5 hover:bg-[#004182] hover:shadow-[0_10px_22px_rgba(8,56,104,0.38)]"
@@ -115,15 +119,15 @@ export function TeamMemberModal({ member, onOpenContact }: TeamMemberModalProps)
               LinkedIn
             </a>
           )}
-          {member.bio.videoUrl && (
+          {bio.videoUrl && (
             <a
-              href={member.bio.videoUrl}
+              href={bio.videoUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg bg-[#FF0000] px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_18px_rgba(127,29,29,0.28)] transition-all hover:-translate-y-0.5 hover:bg-[#dc0000] hover:shadow-[0_10px_22px_rgba(127,29,29,0.34)]"
             >
               <Play className="w-4 h-4" />
-              {member.bio.videoLabel || "Watch Video"}
+              {bio.videoLabel || "Watch Video"}
             </a>
           )}
         </div>

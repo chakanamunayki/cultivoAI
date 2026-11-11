@@ -354,7 +354,13 @@ export default function Home() {
         onTertiaryCta={handleScrollToServices}
       />
 
-      {/* Section 2: What I build */}
+      {/* Section 2: Who I am. Sits right under the hero: its white background is
+          what the hero's curved corner transition is drawn to blend into. */}
+      <LazySection className="min-h-[400px]">
+        <AboutSection />
+      </LazySection>
+
+      {/* Section 3: What I build */}
       <LazySection className="min-h-[600px]">
         <ServicesSection onOpenChatBooking={handleOpenChatBooking} />
       </LazySection>
@@ -378,11 +384,6 @@ export default function Home() {
       {/* Section 5: Projects */}
       <LazySection className="min-h-[600px]">
         <ProjectsSection />
-      </LazySection>
-
-      {/* Section 6: About */}
-      <LazySection className="min-h-[400px]">
-        <AboutSection />
       </LazySection>
 
       {/* Section 7: How I work (merges How We Work, Why Us, Values, Mission) */}
