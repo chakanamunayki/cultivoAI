@@ -102,7 +102,7 @@ export const esClosingSectionsContent: Pick<
       { label: "Con quién trabajo", href: "#who-we-help" },
       { label: "Semillero", href: "#semillero" },
       { label: "Proyectos", href: "#projects" },
-      { label: "Quién soy", href: "#about" },
+      { label: "Quiénes somos", href: "#about" },
       { label: "Formas de trabajar juntos", href: "#partnerships" },
     ],
     quickLinksTitle: "Navegación",

@@ -10,11 +10,11 @@ import type { SiteContent } from "./types";
 
 export const es: SiteContent = {
   nav: [
+    { label: "Quiénes somos", href: "#about" },
     { label: "Qué construyo", href: "#services" },
     { label: "Con quién trabajo", href: "#who-we-help" },
     { label: "Semillero", href: "#semillero" },
     { label: "Proyectos", href: "#projects" },
-    { label: "Quién soy", href: "#about" },
   ],
 
   marquee: [

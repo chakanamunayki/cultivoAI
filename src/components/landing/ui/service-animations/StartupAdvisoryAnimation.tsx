@@ -5,33 +5,33 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import type { Locale } from "@/content/types";
 
 const MILESTONES: Record<Locale, string[]> = {
-    en: ["Research", "Build", "Optimize", "Scale"],
-    es: ["Investigar", "Construir", "Optimizar", "Escalar"],
-    pt: ["Pesquisar", "Construir", "Otimizar", "Escalar"],
+    en: ["Model", "Numbers", "Story", "Raise"],
+    es: ["Modelo", "Números", "Historia", "Inversión"],
+    pt: ["Modelo", "Números", "História", "Rodada"],
 };
 
 const POPUPS: Record<Locale, string[]> = {
     en: [
-        "Automate competitor & market data collection",
-        "Deploy custom AI tools & core Web App",
-        "Integrate systems & automate workflows",
-        "Scale infrastructure & team handoff"
+        "A business model that holds up to hard questions",
+        "Numbers investors and funders can follow",
+        "A clear story, a deck and the tech plan behind it",
+        "Ready for the conversation that ends in a yes"
     ],
     es: [
-        "Automatizar captura de datos de mercado",
-        "Desplegar herramientas IA y Web App core",
-        "Integrar sistemas y flujos de trabajo",
-        "Escalar infraestructura e IA al equipo"
+        "Un modelo de negocio que aguanta preguntas difíciles",
+        "Números que inversores y financiadores pueden seguir",
+        "Una historia clara, la presentación y el plan técnico",
+        "Listo para la conversación que termina en un sí"
     ],
     pt: [
-        "Automatizar a captura de dados de mercado",
-        "Publicar ferramentas de IA e o Web App central",
-        "Integrar sistemas e fluxos de trabalho",
-        "Escalar a infraestrutura e o handoff para o time"
+        "Um modelo de negócio que aguenta perguntas difíceis",
+        "Números que investidores e financiadores conseguem seguir",
+        "Uma história clara, a apresentação e o plano técnico",
+        "Pronto para a conversa que termina em um sim"
     ]
 };
 
-const STACK_ICONS = ["🔍", "⚙️", "📈", "🚀"];
+const STACK_ICONS = ["🧩", "📊", "🗣️", "🤝"];
 const POINTS = [
     { x: 30, y: 110 },
     { x: 95, y: 95 },
@@ -99,8 +99,8 @@ export function StartupAdvisoryAnimation({ locale = "en" }: { locale?: Locale })
                 style={{ x: fgX, y: fgY }}
             >
                 <div className="flex flex-col">
-                    <span className="text-[9px] font-black text-white uppercase tracking-wider drop-shadow-sm">{locale === 'es' ? 'Foco Estratégico' : locale === 'pt' ? 'Foco Estratégico' : 'Strategic Focus'}</span>
-                    <span className="text-[7px] text-[#00BCD4] uppercase font-bold drop-shadow-[0_0_2px_rgba(0,188,212,0.8)] pt-[2px]">{locale === 'es' ? 'Apoyo IA en cada fase' : locale === 'pt' ? 'Apoio de IA em cada fase' : 'AI-Assisted Scaling'}</span>
+                    <span className="text-[9px] font-black text-white uppercase tracking-wider drop-shadow-sm">{locale === 'es' ? 'Preparación para inversión' : locale === 'pt' ? 'Preparação para investimento' : 'Investment readiness'}</span>
+                    <span className="text-[7px] text-[#00BCD4] uppercase font-bold drop-shadow-[0_0_2px_rgba(0,188,212,0.8)] pt-[2px]">{locale === 'es' ? 'De la idea a la ronda' : locale === 'pt' ? 'Da ideia à rodada' : 'From idea to raise'}</span>
                 </div>
                 <motion.span
                     className="text-xl drop-shadow-[0_0_10px_rgba(255,255,100,0.8)]"
@@ -245,7 +245,7 @@ export function StartupAdvisoryAnimation({ locale = "en" }: { locale?: Locale })
                             className="text-xl"
                             animate={isHovered ? { scale: [1, 1.1, 1] } : {}}
                             transition={{ duration: 1, repeat: Infinity }}
-                        >🤖</motion.span>
+                        >📈</motion.span>
                     </motion.div>
                 </AnimatePresence>
             </motion.div>

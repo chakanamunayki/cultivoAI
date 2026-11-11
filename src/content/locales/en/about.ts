@@ -1,8 +1,8 @@
 import type { AboutCopy } from "../../types";
 
 export const enAbout: AboutCopy = {
-    title: "Who I am",
-    subtitle: "A founder who went back to the land.",
+    title: "Who we are",
+    subtitle: "A family that went back to the land.",
     viewMoreLabel: "View more",
     footerNote: "**For bigger projects I bring in trusted specialists from my network.**",
     teamMembers: [
@@ -65,7 +65,7 @@ export const enAbout: AboutCopy = {
         name: "Marta Ronayne",
         title: "Holistic practitioner. Founder of Munayki.",
         description:
-          "Holistic practitioner and founder of Munayki, from munay, the Quechua word for love. Marta works with Reiki, meditation and natural products she makes by hand, bringing ancestral wisdom and simple science together. She leads the work in holistic and ancestral medicine for wellness.",
+          "Holistic practitioner and founder of Munayki, the power of love. Marta works with Reiki, meditation and natural products she makes by hand, bringing ancestral wisdom and simple science together. She leads the work in holistic and ancestral medicine for wellness.",
         imageUrl: "/landing/photos/team/marta.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
@@ -75,7 +75,7 @@ export const enAbout: AboutCopy = {
             {
               title: "Munayki",
               content:
-                "Munayki comes from munay, the Quechua word for love. It's where I share Reiki, meditation and the natural products I make by hand.",
+                "Munayki joins munay, Quechua for love, with ki, Japanese for power: the power of love. It's where I share Reiki, meditation and the natural products I make by hand.",
             },
             {
               title: "What I lead",

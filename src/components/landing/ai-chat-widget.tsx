@@ -617,7 +617,6 @@ export function AIChatWidget({
               desc: p.desc,
               fullDesc: p.fullDesc,
             })),
-            stories: content.stories,
             whyUs: content.whyUs,
             partnerships: content.partnerships.map((p) => ({
               name: p.name,
@@ -764,7 +763,7 @@ export function AIChatWidget({
   // Collapsed state - show toggle button
   if (!isOpen) {
     return (
-      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[60] flex flex-col items-end font-grotesk">
+      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[60] flex flex-col items-end font-grotesk [[data-menu-open]_&]:hidden">
         <div className="flex items-center gap-2">
           <button
             onClick={() => openWhatsApp()}
@@ -780,7 +779,7 @@ export function AIChatWidget({
             aria-label="Open chat"
           >
             <MessageSquare size={24} />
-            <span>{chatToggleLabel}</span>
+            <span className="hidden md:inline">{chatToggleLabel}</span>
           </button>
         </div>
       </div>

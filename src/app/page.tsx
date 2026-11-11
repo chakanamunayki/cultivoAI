@@ -113,7 +113,7 @@ function ChatButtonPlaceholder({
   chatLabel: string;
 }) {
   return (
-    <div className="font-grotesk fixed right-6 bottom-6 z-[60] flex flex-col items-end">
+    <div className="font-grotesk fixed right-6 bottom-6 z-[60] flex flex-col items-end [[data-menu-open]_&]:hidden">
       <div className="flex items-center gap-2">
         <a
           href={whatsappUrl}
@@ -130,7 +130,7 @@ function ChatButtonPlaceholder({
           aria-label="Open chat"
         >
           <MessageSquare size={24} />
-          <span>{chatLabel}</span>
+          <span className="hidden md:inline">{chatLabel}</span>
         </button>
       </div>
     </div>
@@ -354,7 +354,7 @@ export default function Home() {
         onTertiaryCta={handleScrollToServices}
       />
 
-      {/* Section 2: Who I am. Sits right under the hero: its white background is
+      {/* Section 2: Who we are. Sits right under the hero: its white background is
           what the hero's curved corner transition is drawn to blend into. */}
       <LazySection className="min-h-[400px]">
         <AboutSection />

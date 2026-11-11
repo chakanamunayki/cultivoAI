@@ -6,19 +6,19 @@ import type { Locale } from "@/content/types";
 
 const KPIS: Record<Locale, { label: string; value: string; trend: string }[]> = {
     en: [
-        { label: "Bookings", value: "342", trend: "+12%" },
-        { label: "Revenue", value: "$85k", trend: "+24%" },
-        { label: "Costs", value: "$32k", trend: "−8%" },
+        { label: "PLOTS", value: "36", trend: "+4" },
+        { label: "SURVIVAL", value: "87%", trend: "+3%" },
+        { label: "tCO₂e", value: "1,240", trend: "+18%" },
     ],
     es: [
-        { label: "Reservas", value: "342", trend: "+12%" },
-        { label: "Ingresos", value: "$85k", trend: "+24%" },
-        { label: "Costos", value: "$32k", trend: "−8%" },
+        { label: "PARCELAS", value: "36", trend: "+4" },
+        { label: "SUPERVIVENCIA", value: "87%", trend: "+3%" },
+        { label: "tCO₂e", value: "1.240", trend: "+18%" },
     ],
     pt: [
-        { label: "Reservas", value: "342", trend: "+12%" },
-        { label: "Receita", value: "$85k", trend: "+24%" },
-        { label: "Custos", value: "$32k", trend: "−8%" },
+        { label: "PARCELAS", value: "36", trend: "+4" },
+        { label: "SOBREVIVÊNCIA", value: "87%", trend: "+3%" },
+        { label: "tCO₂e", value: "1.240", trend: "+18%" },
     ]
 };
 
@@ -45,20 +45,20 @@ export function DashboardAnimation({ locale = "en" }: { locale?: Locale }) {
     const fgY = useTransform(ySpring, [-0.5, 0.5], ["12px", "-12px"]);
 
     const msgs = locale === "es" ? [
-        "Nueva reserva (Paquete Premium) ✅",
-        "Anomalía en costos de proveedores ⚠️",
-        "Inventario: 3 camas en Retreat Sur",
-        "IA: Optimización de turnos lista."
+        "Revisión de campo, parcela 12 ✅",
+        "Parcela 7: baja supervivencia, resiembra ⚠️",
+        "Muestra de suelo cargada: 18 fotos",
+        "Informe MRV listo para financiadores."
     ] : locale === "pt" ? [
-        "Nova reserva (Pacote Premium) ✅",
-        "Anomalia nos custos de fornecedores ⚠️",
-        "Estoque: 3 camas no Retiro Sul",
-        "IA: Otimização de turnos pronta."
+        "Revisão de campo, parcela 12 ✅",
+        "Parcela 7: baixa sobrevivência, replantio ⚠️",
+        "Amostra de solo enviada: 18 fotos",
+        "Relatório MRV pronto para financiadores."
     ] : [
-        "New booking (Premium Package) ✅",
-        "Cost anomaly detected in sourcing ⚠️",
-        "Inventory: 3 beds left in South",
-        "AI: Staff schedule optimized."
+        "Field check logged, plot 12 ✅",
+        "Plot 7: survival dip, replant flagged ⚠️",
+        "Soil sample uploaded: 18 photos",
+        "MRV report ready for funders."
     ];
 
     useEffect(() => {
@@ -109,7 +109,7 @@ export function DashboardAnimation({ locale = "en" }: { locale?: Locale }) {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.15 }}
                         >
-                            <span className="text-[9px] sm:text-[10px] lg:text-xs font-black uppercase text-white/50 tracking-wider mb-1 sm:mb-2">{kpi.label}</span>
+                            <span className="text-[9px] sm:text-[10px] lg:text-xs font-black text-white/50 tracking-wider mb-1 sm:mb-2">{kpi.label}</span>
                             <div className="flex items-end justify-between">
                                 <span className="text-sm sm:text-lg lg:text-xl font-black text-white group-hover:text-[#00BCD4] transition-colors">{kpi.value}</span>
                                 <span className={`text-[9px] lg:text-xs font-bold ${kpi.trend.startsWith('+') ? 'text-green-400' : 'text-red-400'}`}>{kpi.trend}</span>
@@ -123,7 +123,7 @@ export function DashboardAnimation({ locale = "en" }: { locale?: Locale }) {
                     {/* Left: Interactive Line/Bar Chart */}
                     <div className="flex-[3] bg-[#151515] border border-white/10 rounded-xl p-3 sm:p-4 lg:p-5 flex flex-col shadow-2xl overflow-hidden relative group backdrop-blur-md">
                         <div className="flex justify-between items-center mb-2 sm:mb-4 text-[9px] lg:text-xs font-bold text-white/40 uppercase tracking-widest z-10">
-                            <span>{locale === 'es' ? 'Flujo de Caja' : locale === 'pt' ? 'Fluxo de Caixa' : 'Cash Flow'}</span>
+                            <span>{locale === 'es' ? 'Supervivencia por parcela' : locale === 'pt' ? 'Sobrevivência por parcela' : 'Survival by plot'}</span>
                             <motion.span
                                 animate={{ opacity: [1, 0.4, 1] }}
                                 transition={{ repeat: Infinity, duration: 1.5 }}
@@ -161,7 +161,7 @@ export function DashboardAnimation({ locale = "en" }: { locale?: Locale }) {
                         onMouseLeave={() => setIsHovered(false)}
                     >
                         <span className="text-[9px] lg:text-xs font-black uppercase text-[#00BCD4] tracking-wider mb-0 sm:mb-1 flex items-center gap-1 sm:gap-2">
-                            <span className="text-sm sm:text-base drop-shadow-[0_0_5px_rgba(0,188,212,0.5)]">🧠</span> Copilot
+                            <span className="text-sm sm:text-base drop-shadow-[0_0_5px_rgba(0,188,212,0.5)]">📋</span> {locale === 'es' ? 'Registro' : locale === 'pt' ? 'Registro' : 'Record'}
                         </span>
                         <div className="flex-1 bg-black/60 rounded-lg p-2 sm:p-3 flex flex-col gap-2 relative border border-white/5 overflow-hidden">
                             <motion.div
@@ -195,11 +195,11 @@ export function DashboardAnimation({ locale = "en" }: { locale?: Locale }) {
                             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                         >⚙️</motion.div>
                         <span className="text-[9px] sm:text-[11px] lg:text-xs font-black uppercase tracking-widest text-[#00BCD4]">
-                            {locale === 'es' ? 'Motor de Operaciones' : locale === 'pt' ? 'Motor de Operações' : 'Logistics Engine'}
+                            {locale === 'es' ? 'Historial verificado' : locale === 'pt' ? 'Histórico verificado' : 'Verified record trail'}
                         </span>
                     </div>
                     <div className="flex -space-x-1 sm:-space-x-2 shadow-md">
-                        {["👩‍🔧", "👨‍🍳", "🧘‍♀️", "🚌"].map((emoji, i) => (
+                        {["🌱", "🛰️", "🧪", "📋"].map((emoji, i) => (
                             <motion.div
                                 key={i}
                                 className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 rounded-full bg-[#2a2a2a] border-2 border-[#1a1a1a] flex items-center justify-center text-[10px] sm:text-xs lg:text-sm z-10 shrink-0 hover:z-20 hover:scale-110 transition-transform shadow-sm"

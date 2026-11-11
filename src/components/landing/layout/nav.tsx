@@ -38,7 +38,7 @@ const PANEL_CONTACT_LABELS: Record<Locale, string> = {
 };
 
 const PANEL_HEADLINES: Record<Locale, string> = {
-  es: "Construyamos algo util",
+  es: "Construyamos algo útil",
   en: "Let us build something useful",
   pt: "Vamos construir algo útil",
 };
@@ -162,9 +162,12 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
     }
 
     document.body.style.overflow = "hidden";
+    // The floating WhatsApp + chat buttons hide themselves while this is set.
+    document.body.dataset.menuOpen = "true";
 
     return () => {
       document.body.style.removeProperty("overflow");
+      delete document.body.dataset.menuOpen;
     };
   }, [isMobileMenuOpen]);
 
@@ -229,7 +232,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
                 <Sprout size={17} fill="currentColor" />
               </span>
               <span className="text-lg leading-none font-black tracking-[-0.02em] md:text-2xl">
-                Cultivo<span className="text-[#00BCD4]">AI</span>
+                Cultivo{" "}<span className="text-[#00BCD4]">Labs</span>
               </span>
             </button>
 

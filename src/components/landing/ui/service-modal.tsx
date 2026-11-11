@@ -44,7 +44,7 @@ export function ServiceModal({ service, onOpenContact }: ServiceModalProps) {
   const whyItMattersLabel = locale === "es" ? "Por que importa" : locale === "pt" ? "Por que importa" : "Why it matters";
   const includedLabel = locale === "es" ? "Que incluye" : locale === "pt" ? "O que inclui" : "What's included";
   const idealFitLabel = locale === "es" ? "Ideal para" : locale === "pt" ? "Ideal para" : "Ideal fit";
-  const outcomeLabel = locale === "es" ? "Resultado tipico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
+  const outcomeLabel = locale === "es" ? "Resultado típico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
 
   return (
     <div className="max-h-[92vh] overflow-y-auto bg-[#212121] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">

@@ -41,17 +41,17 @@ const QUICK_QUESTIONS: Record<
     general: [
       {
         id: "general-1",
-        text: "Como protegemos la IP de nuestros protocolos?",
+        text: "¿Cómo protegemos la IP de nuestros protocolos?",
         action: "send",
       },
       {
         id: "general-2",
-        text: "Que es el Company Brain?",
+        text: "¿Qué es el Company Brain?",
         action: "send",
       },
       {
         id: "general-3",
-        text: "Como funciona el Sprint de Descubrimiento?",
+        text: "¿Cómo funciona el Sprint de Descubrimiento?",
         action: "send",
       },
       {
@@ -68,17 +68,17 @@ const QUICK_QUESTIONS: Record<
     booking: [
       {
         id: "booking-1",
-        text: "Agendamos 15 min? Bloqueo principal: [X].",
+        text: "¿Agendamos 15 min? Bloqueo principal: [X].",
         action: "send",
       },
       {
         id: "booking-2",
-        text: "Hay fit para charla de proyecto esta semana?",
+        text: "¿Hay fit para charla de proyecto esta semana?",
         action: "send",
       },
       {
         id: "booking-3",
-        text: "Que enviamos antes de la llamada?",
+        text: "¿Qué enviamos antes de la llamada?",
         action: "send",
       },
       {
@@ -95,17 +95,17 @@ const QUICK_QUESTIONS: Record<
     services: [
       {
         id: "services-1",
-        text: "Que servicio protege mejor nuestro conocimiento?",
+        text: "¿Qué servicio protege mejor nuestro conocimiento?",
         action: "send",
       },
       {
         id: "services-2",
-        text: "Como aislamos la IP de la ejecucion?",
+        text: "¿Cómo aislamos la IP de la ejecución?",
         action: "send",
       },
       {
         id: "services-3",
-        text: "Cual es la primera version util?",
+        text: "¿Cuál es la primera versión útil?",
         action: "send",
       },
       {
@@ -122,17 +122,17 @@ const QUICK_QUESTIONS: Record<
     partnership: [
       {
         id: "partnership-1",
-        text: "Como empieza el Sprint de Descubrimiento?",
+        text: "¿Cómo empieza el Sprint de Descubrimiento?",
         action: "send",
       },
       {
         id: "partnership-2",
-        text: "Que incluye la llamada gratis de scoping?",
+        text: "¿Qué incluye la llamada gratis de scoping?",
         action: "send",
       },
       {
         id: "partnership-3",
-        text: "Que entregable me llevo del sprint?",
+        text: "¿Qué entregable me llevo del sprint?",
         action: "send",
       },
       {
@@ -149,17 +149,17 @@ const QUICK_QUESTIONS: Record<
     qualification: [
       {
         id: "qualification-1",
-        text: "Se directo: somos fit?",
+        text: "Sé directo: ¿somos fit?",
         action: "send",
       },
       {
         id: "qualification-2",
-        text: "Que vuelve a un lead prioridad?",
+        text: "¿Qué vuelve a un lead prioridad?",
         action: "send",
       },
       {
         id: "qualification-3",
-        text: "Que suele indicar no fit?",
+        text: "¿Qué suele indicar no fit?",
         action: "send",
       },
       {
@@ -176,17 +176,17 @@ const QUICK_QUESTIONS: Record<
     impact: [
       {
         id: "impact-1",
-        text: "Proyecto con proposito. Podemos movernos rapido?",
+        text: "Proyecto con propósito. ¿Podemos movernos rápido?",
         action: "send",
       },
       {
         id: "impact-2",
-        text: "Como equilibran impacto y realidad de negocio?",
+        text: "¿Cómo equilibran impacto y realidad de negocio?",
         action: "send",
       },
       {
         id: "impact-3",
-        text: "Trabajan con equipos con mision real?",
+        text: "¿Trabajan con equipos con misión real?",
         action: "send",
       },
       {

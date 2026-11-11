@@ -13,12 +13,12 @@ interface ProjectModalProps {
 export function ProjectModal({ project, onOpenContact }: ProjectModalProps) {
   const { locale } = useLocale();
 
-  const whatItMeansLabel = locale === "es" ? "Que significa" : locale === "pt" ? "O que significa" : "What it means";
+  const whatItMeansLabel = locale === "es" ? "Qué significa" : locale === "pt" ? "O que significa" : "What it means";
   const whyItMattersLabel = locale === "es" ? "Por que importa" : locale === "pt" ? "Por que importa" : "Why it matters";
   const includedLabel = locale === "es" ? "Que incluye" : locale === "pt" ? "O que inclui" : "What's included";
   const idealFitLabel = locale === "es" ? "Ideal para" : locale === "pt" ? "Ideal para" : "Ideal fit";
-  const outcomeLabel = locale === "es" ? "Resultado tipico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
-  const lessonLabel = locale === "es" ? "Leccion aprendida" : locale === "pt" ? "Lição aprendida" : "Lesson learned";
+  const outcomeLabel = locale === "es" ? "Resultado típico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
+  const lessonLabel = locale === "es" ? "Lección aprendida" : locale === "pt" ? "Lição aprendida" : "Lesson learned";
   const ctaText = locale === "es" ? "Quiero algo similar" : locale === "pt" ? "Quero algo parecido" : "I'm interested in something similar";
 
   return (

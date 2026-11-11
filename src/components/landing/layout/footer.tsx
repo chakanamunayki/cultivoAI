@@ -62,7 +62,7 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
                   <Sprout size={24} fill="currentColor" />
                 </div>
                 <span className="font-black text-2xl tracking-tight leading-none">
-                  Cultivo<span className="text-primary">AI</span>
+                  Cultivo{" "}<span className="text-primary">Labs</span>
                 </span>
               </div>
               <div className="flex items-center gap-3 text-primary font-mono text-sm">

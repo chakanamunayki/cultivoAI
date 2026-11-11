@@ -20,14 +20,6 @@ export interface SystemPromptContext {
 export interface SiteContentForPrompt {
   services: Array<{ title: string; description: string; details?: string[] }>;
   projects: Array<{ title: string; desc: string; fullDesc: string }>;
-  stories: Array<{
-    company: string;
-    industry: string;
-    before: string;
-    after: string;
-    quote: string;
-    author: string;
-  }>;
   whyUs: {
     notTitle: string;
     notItems: string[];
@@ -60,7 +52,7 @@ Cultivo Labs es Paul Ronayne, un cofundador de startups que volvió a construir 
 **Con quién trabaja (cuatro mundos):**
 - Tierra y regeneración: restauración, agricultura regenerativa, biochar y carbono, cierre de minas.
 - Comunidades autosuficientes: aldeas fuera de la red, ecocomunidades y cooperativas rurales que producen su propia comida, energía y agua.
-- Salud holística y productos naturales: este camino lo lidera Marta a través de Munayki (de munay, la palabra quechua para el amor).
+- Salud holística y productos naturales: este camino lo lidera Marta a través de Munayki (el poder del amor: munay es amor en quechua, ki es poder en japonés).
 - Naturaleza y agritech: biotecnología, agricultura vertical y en ambiente controlado, sensores, herramientas de campo.
 
 **Qué construye:**
@@ -91,7 +83,7 @@ Cultivo Labs is Paul Ronayne, a startup co-founder turned hands-on builder. He i
 **Who he works with (four worlds):**
 - Land and regeneration: restoration, regenerative farming, biochar and carbon, mine closure.
 - Self-sufficient communities: off-grid villages, eco-communities and rural cooperatives building their own food, energy and water.
-- Holistic health and natural products: this lane is led by Marta through Munayki (from munay, the Quechua word for love).
+- Holistic health and natural products: this lane is led by Marta through Munayki (the power of love: munay is Quechua for love, ki is Japanese for power).
 - Nature and agritech: biotech, vertical and controlled-environment farming, sensors, field tools.
 
 **What he builds:**
@@ -583,7 +575,6 @@ export function buildSystemPrompt(
       heading: "Contenido Dinamico del Sitio",
       services: "Servicios Disponibles",
       projects: "Proyectos",
-      stories: "Historias de Exito",
       whyUs: "Por Qué Paul",
       partnerships: "Partnerships",
       whoWeHelp: "Con Quién Trabaja",
@@ -592,7 +583,6 @@ export function buildSystemPrompt(
       heading: "Dynamic Site Content",
       services: "Available Services",
       projects: "Projects",
-      stories: "Success Stories",
       whyUs: "Why Paul",
       partnerships: "Partnerships",
       whoWeHelp: "Who He Works With",
@@ -601,7 +591,6 @@ export function buildSystemPrompt(
       heading: "Conteúdo Dinâmico do Site",
       services: "Serviços Disponíveis",
       projects: "Projetos",
-      stories: "Histórias de Sucesso",
       whyUs: "Por Que a Gente",
       partnerships: "Parcerias",
       whoWeHelp: "Quem Ajudamos",
@@ -616,9 +605,6 @@ ${JSON.stringify(siteContent.services, null, 2)}
 
 **${dynamicLabels.projects}:**
 ${JSON.stringify(siteContent.projects, null, 2)}
-
-**${dynamicLabels.stories}:**
-${JSON.stringify(siteContent.stories, null, 2)}
 
 **${dynamicLabels.whyUs}:**
 ${JSON.stringify(siteContent.whyUs, null, 2)}

@@ -1,8 +1,8 @@
 import type { AboutCopy } from "../../types";
 
 export const esAbout: AboutCopy = {
-    title: "Quién soy",
-    subtitle: "Un fundador que volvió a la tierra.",
+    title: "Quiénes somos",
+    subtitle: "Una familia que volvió a la tierra.",
     viewMoreLabel: "Ver más",
     footerNote: "**Para proyectos más grandes sumo especialistas de confianza de mi red.**",
     teamMembers: [
@@ -65,7 +65,7 @@ export const esAbout: AboutCopy = {
         name: "Marta Ronayne",
         title: "Terapeuta holística. Fundadora de Munayki.",
         description:
-          "Terapeuta holística y fundadora de Munayki, de munay, la palabra quechua para el amor. Marta trabaja con Reiki, meditación y productos naturales hechos a mano, uniendo la sabiduría ancestral con una ciencia sencilla. Lidera el trabajo en medicina holística y ancestral para el bienestar.",
+          "Terapeuta holística y fundadora de Munayki, el poder del amor. Marta trabaja con Reiki, meditación y productos naturales hechos a mano, uniendo la sabiduría ancestral con una ciencia sencilla. Lidera el trabajo en medicina holística y ancestral para el bienestar.",
         imageUrl: "/landing/photos/team/marta.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
@@ -75,7 +75,7 @@ export const esAbout: AboutCopy = {
             {
               title: "Munayki",
               content:
-                "Munayki viene de munay, la palabra quechua para el amor. Es donde comparto Reiki, meditación y los productos naturales que hago a mano.",
+                "Munayki une munay, amor en quechua, y ki, poder en japonés: el poder del amor. Es donde comparto Reiki, meditación y los productos naturales que hago a mano.",
             },
             {
               title: "Qué lidero",

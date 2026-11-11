@@ -4,7 +4,11 @@ import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import type { Locale } from "@/content/types";
 
-export function SoftwareWebAnimation({ locale: _locale = "en" }: { locale?: Locale }) {
+export function SoftwareWebAnimation({ locale = "en" }: { locale?: Locale }) {
+    const es = locale === "es";
+    const t = es
+        ? { comment: "// Datos de campo de las parcelas, al día", h1: "La tierra vuelve", domain: "tuproyecto.org", nav1: "Proyecto", nav2: "Impacto", cta: "Apoyar", pill: "Restauración · Colombia", headA: "La tierra", headB: "vuelve", stat1Label: "Árboles plantados", stat1: "48.200", stat2Label: "Parcelas", stat2: "36 · 120 ha", search: "Ver datos" }
+        : { comment: "// Field data from the restoration plots, updated daily", h1: "The land comes back", domain: "yourproject.org", nav1: "Project", nav2: "Impact", cta: "Support", pill: "Land restoration · Colombia", headA: "The land", headB: "comes back", stat1Label: "Trees planted", stat1: "48,200", stat2Label: "Plots", stat2: "36 · 120 ha", search: "See the data" };
     const [step, setStep] = useState<"coding" | "website">("coding");
     const [isHovered, setIsHovered] = useState(false);
 
@@ -91,22 +95,20 @@ export function SoftwareWebAnimation({ locale: _locale = "en" }: { locale?: Loca
                                         animate={{ y: -80 }}
                                         transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                                     >
-                                        <div className="text-[#569cd6]"><span className="text-[#c586c0]">import</span> React <span className="text-[#c586c0]">from</span> <span className="text-[#ce9178]">'react'</span>;</div>
-                                        <div className="text-[#569cd6]"><span className="text-[#c586c0]">import</span> &#123; motion &#125; <span className="text-[#c586c0]">from</span> <span className="text-[#ce9178]">'framer-motion'</span>;</div>
+                                        <div className="text-[#569cd6]"><span className="text-[#c586c0]">import</span> &#123; ImpactMap &#125; <span className="text-[#c586c0]">from</span> <span className="text-[#ce9178]">'@/components/impact-map'</span>;</div>
+                                        <div className="text-[#569cd6]"><span className="text-[#c586c0]">import</span> &#123; getPlots &#125; <span className="text-[#c586c0]">from</span> <span className="text-[#ce9178]">'@/lib/field-data'</span>;</div>
                                         <br />
-                                        <div className="text-[#4ec9b0]">export default function <span className="text-[#dcdcaa]">RetreatHero</span>() &#123;</div>
+                                        <div className="text-[#4ec9b0]">export default async function <span className="text-[#dcdcaa]">ProjectHome</span>() &#123;</div>
+                                        <div className="ml-4 text-[#c586c0]">const <span className="text-[#9cdcfe]">plots</span> <span className="text-white/80">=</span> await <span className="text-[#dcdcaa]">getPlots</span><span className="text-white/80">();</span></div>
                                         <div className="ml-4 text-[#c586c0]">return <span className="text-white/80">(</span></div>
-                                        <div className="ml-8 text-[#808080]">{"// AI: Added breathing animation to hero image and transparent navbar"}</div>
-                                        <div className="ml-8 text-[#569cd6]">&lt;<span className="text-[#4ec9b0]">motion.div</span> <span className="text-[#9cdcfe]">className</span>=<span className="text-[#ce9178]">"relative w-full h-screen bg-[#1a2b29]"</span></div>
-                                        <div className="ml-12 text-[#9cdcfe]">animate=<span className="text-[#ffd700]">&#123;&#123; scale: [1, 1.05, 1] &#125;&#125;</span></div>
-                                        <div className="ml-12 text-[#9cdcfe]">transition=<span className="text-[#ffd700]">&#123;&#123; duration: 8, repeat: Infinity &#125;&#125;</span></div>
-                                        <div className="ml-8 text-[#569cd6]">&gt;</div>
+                                        <div className="ml-8 text-[#808080]">{t.comment}</div>
+                                        <div className="ml-8 text-[#569cd6]">&lt;<span className="text-[#4ec9b0]">main</span> <span className="text-[#9cdcfe]">className</span>=<span className="text-[#ce9178]">"relative w-full h-screen"</span>&gt;</div>
                                         <div className="ml-12 text-[#569cd6]">&lt;<span className="text-[#4ec9b0]">Navbar</span> <span className="text-[#9cdcfe]">theme</span>=<span className="text-[#ce9178]">"transparent"</span> /&gt;</div>
-                                        <div className="ml-12 text-[#569cd6]">&lt;<span className="text-[#4ec9b0]">h1</span> <span className="text-[#9cdcfe]">className</span>=<span className="text-[#ce9178]">"text-white font-serif text-4xl"</span>&gt;</div>
-                                        <div className="ml-16 text-white/90">Find Your Balance</div>
+                                        <div className="ml-12 text-[#569cd6]">&lt;<span className="text-[#4ec9b0]">h1</span> <span className="text-[#9cdcfe]">className</span>=<span className="text-[#ce9178]">"text-white text-4xl"</span>&gt;</div>
+                                        <div className="ml-16 text-white/90">{t.h1}</div>
                                         <div className="ml-12 text-[#569cd6]">&lt;/<span className="text-[#4ec9b0]">h1</span>&gt;</div>
-                                        <div className="ml-12 text-[#569cd6]">&lt;<span className="text-[#4ec9b0]">BookingWidget</span> <span className="text-[#9cdcfe]">style</span>=<span className="text-[#ce9178]">"glassmorphism"</span> /&gt;</div>
-                                        <div className="ml-8 text-[#569cd6]">&lt;/<span className="text-[#4ec9b0]">motion.div</span>&gt;</div>
+                                        <div className="ml-12 text-[#569cd6]">&lt;<span className="text-[#4ec9b0]">ImpactMap</span> <span className="text-[#9cdcfe]">plots</span>=<span className="text-[#ffd700]">&#123;plots&#125;</span> /&gt;</div>
+                                        <div className="ml-8 text-[#569cd6]">&lt;/<span className="text-[#4ec9b0]">main</span>&gt;</div>
                                         <div className="ml-4 text-white/80">)</div>
                                         <div className="text-white/80">&#125;</div>
                                     </motion.div>
@@ -131,7 +133,7 @@ export function SoftwareWebAnimation({ locale: _locale = "en" }: { locale?: Loca
                                         <div className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#27c93f]" />
                                     </div>
                                     <div className="mx-auto bg-white rounded-md px-4 py-0.5 text-[7px] sm:text-[8px] text-gray-500 font-medium flex items-center gap-1 shadow-sm">
-                                        🔒 zenretreat.com
+                                        🔒 {t.domain}
                                     </div>
                                 </div>
                                 {/* Website Content */}
@@ -142,7 +144,7 @@ export function SoftwareWebAnimation({ locale: _locale = "en" }: { locale?: Loca
                                         animate={{ scale: [1, 1.05, 1] }}
                                         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
                                     >
-                                        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40 mix-blend-luminosity" />
+                                        <div className="absolute inset-0 bg-[url('/landing/hero-bg-v2.jpg')] bg-cover bg-center opacity-40 mix-blend-luminosity" />
                                         <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/30 to-transparent" />
                                     </motion.div>
 
@@ -153,12 +155,12 @@ export function SoftwareWebAnimation({ locale: _locale = "en" }: { locale?: Loca
                                         transition={{ delay: 0.2, duration: 0.5 }}
                                         className="w-full h-12 sm:h-14 flex items-center justify-between px-6 sm:px-8 relative z-20 shrink-0 border-b border-white/5"
                                     >
-                                        <div className="text-white font-serif italic text-sm sm:text-base tracking-widest">ZEN</div>
+                                        <div className="text-white font-serif italic text-sm sm:text-base tracking-widest">REGENERA</div>
                                         <div className="flex gap-4 sm:gap-6 items-center">
-                                            <div className="text-[6px] sm:text-[7px] text-white/80 uppercase tracking-widest hover:text-white transition-colors cursor-pointer hidden sm:block">Retreats</div>
-                                            <div className="text-[6px] sm:text-[7px] text-white/80 uppercase tracking-widest hover:text-white transition-colors cursor-pointer hidden sm:block">About</div>
+                                            <div className="text-[6px] sm:text-[7px] text-white/80 uppercase tracking-widest hover:text-white transition-colors cursor-pointer hidden sm:block">{t.nav1}</div>
+                                            <div className="text-[6px] sm:text-[7px] text-white/80 uppercase tracking-widest hover:text-white transition-colors cursor-pointer hidden sm:block">{t.nav2}</div>
                                             <div className="h-6 w-16 sm:h-7 sm:w-20 rounded bg-white text-black flex items-center justify-center text-[6px] sm:text-[7px] font-bold uppercase tracking-widest shadow-lg cursor-pointer hover:bg-gray-200 transition-colors">
-                                                Book
+                                                {t.cta}
                                             </div>
                                         </div>
                                     </motion.div>
@@ -169,14 +171,14 @@ export function SoftwareWebAnimation({ locale: _locale = "en" }: { locale?: Loca
                                             initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
                                             className="px-3 py-1 border border-white/20 rounded-full bg-white/5 backdrop-blur-md text-white text-[6px] sm:text-[7px] uppercase tracking-[0.2em] mb-4 sm:mb-5"
                                         >
-                                            Wellness & Recovery
+                                            {t.pill}
                                         </motion.div>
                                         <motion.h2
                                             initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
                                             className="text-white text-3xl sm:text-5xl lg:text-6xl font-serif mb-6 sm:mb-8 leading-tight drop-shadow-xl"
                                             style={{ fontFamily: "Georgia, serif" }}
                                         >
-                                            Find Your <br /><span className="italic text-[#00BCD4]">Balance</span>
+                                            {t.headA} <br /><span className="italic text-[#00BCD4]">{t.headB}</span>
                                         </motion.h2>
 
                                         {/* Widget / CTA Layout */}
@@ -185,24 +187,24 @@ export function SoftwareWebAnimation({ locale: _locale = "en" }: { locale?: Loca
                                             className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 sm:p-5 w-full max-w-[340px] sm:max-w-[480px] shadow-2xl flex flex-col sm:flex-row gap-3 items-center"
                                         >
                                             <div className="flex-1 w-full flex items-center gap-3 bg-black/30 rounded-lg p-2.5 sm:p-3 border border-white/10">
-                                                <div className="text-[14px] sm:text-[16px]">🗓️</div>
+                                                <div className="text-[14px] sm:text-[16px]">🌳</div>
                                                 <div className="flex flex-col items-start gap-1">
-                                                    <div className="text-[5px] sm:text-[6px] text-white/50 uppercase tracking-widest">Select Dates</div>
-                                                    <div className="text-[7px] sm:text-[8px] text-white font-bold">Oct 12 - Oct 19</div>
+                                                    <div className="text-[5px] sm:text-[6px] text-white/50 uppercase tracking-widest">{t.stat1Label}</div>
+                                                    <div className="text-[7px] sm:text-[8px] text-white font-bold">{t.stat1}</div>
                                                 </div>
                                             </div>
                                             <div className="flex-1 w-full flex items-center gap-3 bg-black/30 rounded-lg p-2.5 sm:p-3 border border-white/10">
-                                                <div className="text-[14px] sm:text-[16px]">🧘</div>
+                                                <div className="text-[14px] sm:text-[16px]">📍</div>
                                                 <div className="flex flex-col items-start gap-1">
-                                                    <div className="text-[5px] sm:text-[6px] text-white/50 uppercase tracking-widest">Guests</div>
-                                                    <div className="text-[7px] sm:text-[8px] text-white font-bold">2 Adults</div>
+                                                    <div className="text-[5px] sm:text-[6px] text-white/50 uppercase tracking-widest">{t.stat2Label}</div>
+                                                    <div className="text-[7px] sm:text-[8px] text-white font-bold">{t.stat2}</div>
                                                 </div>
                                             </div>
                                             <motion.div
                                                 className="w-full sm:w-auto h-10 sm:h-auto sm:self-stretch px-4 sm:px-6 bg-[#00BCD4] text-white rounded-lg flex items-center justify-center text-[7.5px] sm:text-[8px] font-bold uppercase tracking-widest cursor-pointer shadow-lg"
                                                 whileHover={{ scale: 1.05 }}
                                             >
-                                                Search
+                                                {t.search}
                                             </motion.div>
                                         </motion.div>
                                     </div>

@@ -33,11 +33,11 @@ export function WhoWeHelpSection({
   const { content, locale } = useLocale();
   const [selectedSector, setSelectedSector] = useState<Sector | null>(null);
 
-  const whatItMeansLabel = locale === "es" ? "Que significa" : locale === "pt" ? "O que significa" : "What it means";
+  const whatItMeansLabel = locale === "es" ? "Qué significa" : locale === "pt" ? "O que significa" : "What it means";
   const whyItMattersLabel = locale === "es" ? "Por que importa" : locale === "pt" ? "Por que importa" : "Why it matters";
   const includedLabel = locale === "es" ? "Que incluye" : locale === "pt" ? "O que inclui" : "What's included";
   const idealFitLabel = locale === "es" ? "Ideal para" : locale === "pt" ? "Ideal para" : "Ideal fit";
-  const outcomeLabel = locale === "es" ? "Resultado tipico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
+  const outcomeLabel = locale === "es" ? "Resultado típico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
 
   return (
     <section id="who-we-help" className="border-b border-black/10 bg-white py-16 md:py-24">

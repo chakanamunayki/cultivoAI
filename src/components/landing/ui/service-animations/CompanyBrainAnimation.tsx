@@ -8,7 +8,7 @@ type NodeId =
     | "decisions"
     | "protocols"
     | "clients"
-    | "retreats"
+    | "field"
     | "sops"
     | "playbooks"
     | "projects"
@@ -31,11 +31,11 @@ const NODES: BrainNode[] = [
     { id: "decisions", x: 215, y: 158, en: "Decisions", es: "Decisiones", pt: "Decisões" },
     { id: "protocols", x: 50, y: 78, en: "Protocols", es: "Protocolos", pt: "Protocolos" },
     { id: "clients", x: 160, y: 42, en: "Clients", es: "Clientes", pt: "Clientes" },
-    { id: "retreats", x: 290, y: 56, en: "Retreats", es: "Retiros", pt: "Retiros" },
+    { id: "field", x: 290, y: 56, en: "Field data", es: "Datos de campo", pt: "Dados de campo" },
     { id: "sops", x: 370, y: 112, en: "SOPs", es: "SOPs", pt: "SOPs" },
     { id: "playbooks", x: 380, y: 204, en: "Playbooks", es: "Manuales", pt: "Playbooks" },
     { id: "projects", x: 320, y: 262, en: "Projects", es: "Proyectos", pt: "Projetos" },
-    { id: "research", x: 200, y: 286, en: "Research", es: "Investigacion", pt: "Pesquisa" },
+    { id: "research", x: 200, y: 286, en: "Research", es: "Investigación", pt: "Pesquisa" },
     { id: "team", x: 80, y: 274, en: "Team", es: "Equipo", pt: "Time" },
     { id: "meetings", x: 24, y: 186, en: "Meetings", es: "Reuniones", pt: "Reuniões" },
     { id: "vendors", x: 112, y: 126, en: "Vendors", es: "Proveedores", pt: "Fornecedores" },
@@ -45,7 +45,7 @@ const NODES: BrainNode[] = [
 const EDGES: Array<[NodeId, NodeId]> = [
     ["decisions", "protocols"],
     ["decisions", "clients"],
-    ["decisions", "retreats"],
+    ["decisions", "field"],
     ["decisions", "sops"],
     ["decisions", "finance"],
     ["decisions", "projects"],
@@ -55,8 +55,8 @@ const EDGES: Array<[NodeId, NodeId]> = [
     ["decisions", "meetings"],
     ["decisions", "playbooks"],
     ["clients", "protocols"],
-    ["clients", "retreats"],
-    ["retreats", "playbooks"],
+    ["clients", "field"],
+    ["field", "playbooks"],
     ["sops", "playbooks"],
     ["projects", "finance"],
     ["projects", "research"],
@@ -67,7 +67,7 @@ const EDGES: Array<[NodeId, NodeId]> = [
 ];
 
 const QUERY_CYCLE: NodeId[] = [
-    "retreats",
+    "field",
     "clients",
     "projects",
     "decisions",

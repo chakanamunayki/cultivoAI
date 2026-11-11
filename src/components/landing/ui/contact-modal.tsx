@@ -36,7 +36,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
   const [isSuccess, setIsSuccess] = useState(false);
   const contactBandLabel = locale === "es" ? "Contacto directo" : locale === "pt" ? "Contato direto" : "Direct contact";
   const whatsappCtaLabel =
-    locale === "es" ? "Escribenos por WhatsApp" : locale === "pt" ? "Fale com a gente pelo WhatsApp" : "Message us on WhatsApp";
+    locale === "es" ? "Escríbenos por WhatsApp" : locale === "pt" ? "Fale com a gente pelo WhatsApp" : "Message us on WhatsApp";
   const whatsappHref = `https://wa.me/${content.footer.contactInfo.whatsapp.replace(/\+/g, "")}`;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -62,7 +62,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
       if (!emailRegex.test(email)) {
         setSubmitError(
           locale === "es"
-            ? "Por favor ingresa un email valido."
+            ? "Por favor ingresa un email válido."
             : "Please enter a valid email."
         );
         return;
@@ -143,7 +143,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
           </p>
           <p className="mt-2 text-sm font-medium text-neutral-600">
             {locale === "es"
-              ? "Si prefieres, tambien puedes escribirnos por WhatsApp usando el boton de arriba."
+              ? "Si prefieres, también puedes escribirnos por WhatsApp usando el botón de arriba."
               : locale === "pt"
               ? "Se preferir, você também pode falar com a gente pelo WhatsApp usando o botão acima."
               : "If you prefer, you can also message us on WhatsApp using the button above."}
