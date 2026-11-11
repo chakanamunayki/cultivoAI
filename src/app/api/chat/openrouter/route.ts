@@ -14,6 +14,8 @@ import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { generateText, stepCountIs, tool, type ModelMessage } from "ai";
 import { z } from "zod";
 import type { ChatContextType, Locale } from "@/content/types";
+import { withContactTools } from "@/lib/chat/contact-intent";
+import { pickReplyLocale } from "@/lib/chat/detect-message-locale";
 import {
   MAX_MESSAGE_CHARS,
   createRateLimiter,
@@ -213,10 +215,19 @@ export async function POST(request: Request) {
       );
     }
 
+    // Answer in the language the visitor writes in, not just the page's.
+    const priorTurns = sanitizeHistory(history);
+    const replyLocale = pickReplyLocale(
+      safeLocale,
+      message,
+      priorTurns.filter((turn) => turn.role === "user").map((turn) => turn.text)
+    );
+    requestLocale = replyLocale;
+
     const str = (value: unknown, max: number) =>
       typeof value === "string" ? value.slice(0, max) : undefined;
     const promptContext: SystemPromptContext = {
-      locale: safeLocale,
+      locale: replyLocale,
       entryContext: ENTRY_CONTEXTS.find((c) => c === entryContext),
       timezone: str(timezone, 100),
       pageUrl: str(pageUrl, 300),
@@ -224,12 +235,12 @@ export async function POST(request: Request) {
     };
     // Site content comes from the server's own content files, never the request.
     const systemInstruction = buildSystemPrompt(
-      buildSiteContentForPrompt(safeLocale),
+      buildSiteContentForPrompt(replyLocale),
       promptContext
     );
 
     // Convert widget history (role "model") to model messages (role "assistant").
-    const messages: ModelMessage[] = sanitizeHistory(history).map((msg) => ({
+    const messages: ModelMessage[] = priorTurns.map((msg) => ({
       role: msg.role === "model" ? "assistant" : "user",
       content: msg.text,
     }));
@@ -256,6 +267,8 @@ export async function POST(request: Request) {
       system: systemInstruction,
       messages,
       tools: chatTools,
+      // Low temperature keeps a small model on the rules and on the facts.
+      temperature: 0.3,
       // Single model call: return the tool call immediately, do not loop for a
       // second call. Keeps tool-triggering messages as fast as plain ones.
       stopWhen: stepCountIs(1),
@@ -266,19 +279,53 @@ export async function POST(request: Request) {
 
     // Forward tool calls as { name, args } so the widget's executeFunctionCall
     // runs the real client-side action (navigation, modal, lead form).
-    const functionCalls: FunctionCallResult[] = result.toolCalls.map((call) => ({
-      name: call.toolName,
-      args: (call.input as Record<string, unknown>) ?? {},
-    }));
+    // A request to book or to use WhatsApp always gets its form or button,
+    // even when the model answered in words only.
+    const functionCalls: FunctionCallResult[] = withContactTools(
+      message,
+      result.toolCalls.map((call) => ({
+        name: call.toolName,
+        args: (call.input as Record<string, unknown>) ?? {},
+      }))
+    );
 
     // Models often return a tool call with no prose. Keep the model's text when
     // present; otherwise a short confirmation, since the UI action itself is the
     // reply. Bare acknowledgement only when nothing happened at all.
     const modelText = result.text?.trim() || "";
-    const ackDone = { es: "Listo.", en: "Done.", pt: "Pronto." }[safeLocale];
-    const ackGot = { es: "Entendido.", en: "Got it.", pt: "Entendi." }[safeLocale];
-    const text =
-      modelText || (functionCalls.length > 0 ? ackDone : ackGot);
+    const called = (name: string) => functionCalls.some((c) => c.name === name);
+    const pick = (variants: Record<Locale, string>) => variants[replyLocale];
+    const fallbackText =
+      called("collect_lead_info") || called("schedule_call")
+        ? pick({
+            es: "Claro. Deja tus datos en el formulario de abajo y se los paso a Paul.",
+            en: "Of course. Leave your details in the form below and I'll pass them to Paul.",
+            pt: "Claro. Deixe os seus dados no formulário abaixo e eu passo para o Paul.",
+          })
+        : called("offer_whatsapp")
+        ? pick({
+            es: "Claro. Usa el botón de abajo para escribirle a Paul por WhatsApp.",
+            en: "Of course. Use the button below to message Paul on WhatsApp.",
+            pt: "Claro. Use o botão abaixo para falar com o Paul pelo WhatsApp.",
+          })
+        : called("navigate_to_section")
+        ? pick({
+            es: "Te llevo a esa sección.",
+            en: "Taking you to that section.",
+            pt: "Levo você para essa seção.",
+          })
+        : called("show_service_details") || called("show_project_details")
+        ? pick({
+            es: "Te lo abro aquí.",
+            en: "Opening it for you here.",
+            pt: "Abro aqui para você.",
+          })
+        : pick({
+            es: "¿Me cuentas un poco más sobre lo que necesitas?",
+            en: "Could you tell me a bit more about what you need?",
+            pt: "Pode me contar um pouco mais sobre o que você precisa?",
+          });
+    const text = modelText || fallbackText;
 
     return NextResponse.json({ text, functionCalls });
   } catch (error) {
