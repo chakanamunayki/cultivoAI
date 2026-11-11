@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { MessageCircle, Sprout } from "lucide-react";
+import { isEnabledLocale } from "@/content/enabled-locales";
 import type { Locale } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils";
@@ -11,12 +12,12 @@ interface NavProps {
   onOpenChat?: () => void;
 }
 
-// Three-way language selector, in display order.
+// Language selector, in display order. Only enabled locales are shown.
 const LOCALES: { code: Locale; label: string }[] = [
   { code: "es", label: "ES" },
   { code: "en", label: "EN" },
   { code: "pt", label: "PT" },
-];
+].filter(({ code }) => isEnabledLocale(code)) as { code: Locale; label: string }[];
 
 const CTA_LABELS: Record<Locale, string> = {
   es: "Hablemos",

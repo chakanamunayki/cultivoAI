@@ -123,7 +123,7 @@ export const esClosingSectionsContent: Pick<
       booking:
         "Genial. Podemos agendar una llamada de 15 minutos con Paul. Cuéntame un poco en qué estás trabajando y lo dejo listo.",
       story:
-        "Paul es un fundador técnico que ha lanzado productos a más de 70 países y construyó CHAK Brain solo. Equipo pequeño y senior, trabajo directo, sin handoffs. ¿Qué te gustaría saber?",
+        "Paul es un fundador técnico que ha lanzado productos a más de 70 países y construyó solo toda la plataforma de un proyecto de biotecnología y agricultura vertical. Equipo pequeño y senior, trabajo directo, sin handoffs. ¿Qué te gustaría saber?",
       service:
         "Genial, te interesa {service}. Con gusto te lo explico. ¿Qué te gustaría saber?",
       partnership:

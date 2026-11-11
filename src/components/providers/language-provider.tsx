@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useEffect, useMemo, useState } from "react";
 import { en } from "@/content/en";
+import { ENABLED_LOCALES, isEnabledLocale } from "@/content/enabled-locales";
 import { es } from "@/content/es";
 import { pt } from "@/content/pt";
 import type { Locale, SiteContent } from "@/content/types";
@@ -29,7 +30,7 @@ function storeLocale(locale: Locale): void {
 function getStoredLocale(): Locale | null {
   try {
     const value = localStorage.getItem(STORAGE_KEY);
-    return value === "es" || value === "en" || value === "pt" ? value : null;
+    return isEnabledLocale(value) ? value : null;
   } catch {
     // localStorage might be unavailable
     return null;
@@ -84,7 +85,7 @@ export function LanguageProvider({ children, defaultLocale }: LanguageProviderPr
   // 3-way selector via setLocale, so this cycles es -> en -> pt -> es to stay
   // coherent if any older caller still uses it.
   const toggleLocale = useCallback(() => {
-    const order: Locale[] = ["es", "en", "pt"];
+    const order = ENABLED_LOCALES;
     const next = order[(order.indexOf(locale) + 1) % order.length]!;
     setLocale(next);
   }, [locale, setLocale]);

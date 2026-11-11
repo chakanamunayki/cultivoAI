@@ -4,6 +4,7 @@ import "./globals.css";
 import { ModalProvider } from "@/components/landing/ui/modal-provider";
 import { LanguageProvider } from "@/components/providers/language-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { ENABLED_LOCALES, isEnabledLocale } from "@/content/enabled-locales";
 import type { Locale } from "@/content/types";
 import type { Metadata } from "next";
 
@@ -53,9 +54,9 @@ async function detectServerLocale(): Promise<Locale> {
 
   const topLanguage = ranked[0]?.tag ?? "";
 
-  // Honor the user's highest-priority language: Portuguese, then Spanish.
-  // Default to English (also covers a missing/empty header).
-  if (topLanguage.startsWith("pt")) return "pt";
+  // Honor the user's highest-priority language. Portuguese is served when enabled,
+  // otherwise falls back to Spanish (closest). Default to English.
+  if (topLanguage.startsWith("pt")) return isEnabledLocale("pt") ? "pt" : "es";
   return topLanguage.startsWith("es") ? "es" : "en";
 }
 
@@ -121,7 +122,7 @@ const jsonLd = {
     },
   ],
   areaServed: "Worldwide",
-  knowsLanguage: ["es", "en", "pt"],
+  knowsLanguage: [...ENABLED_LOCALES],
 };
 
 export default async function RootLayout({

@@ -55,7 +55,7 @@ const COMPANY_CONTEXT = {
 ## Sobre CultivoAI
 
 **Quien es:**
-CultivoAI es Paul Ronayne, el socio tecnico que construye la capa de IA y datos para innovadores en agritech y biotech. 20+ anos construyendo empresas: cofundo NBN23 (datos deportivos, alianza con FIBA, 70+ paises) y Nagi (tecnologia de seguridad acuatica en colegios y piscinas). Construyo CHAK Brain y la plataforma CHAK SaaS de punta a punta, solo. Trabajas con el directo, no con capas de agencia. Rocky y Marta apoyan lo tecnico y lo humano, pero hablas con quien construye.
+CultivoAI es Paul Ronayne, el socio tecnico que construye la capa de IA y datos para innovadores en agritech y biotech. 20+ anos construyendo empresas: cofundo NBN23 (datos deportivos, alianza con FIBA, 70+ paises) y Nagi (tecnologia de seguridad acuatica en colegios y piscinas). Construyo solo, de punta a punta, toda la plataforma de un proyecto de biotecnologia y agricultura vertical. Trabajas con el directo, no con capas de agencia. Rocky y Marta apoyan lo tecnico y lo humano, pero hablas con quien construye.
 
 **Para quien construye:**
 Equipos de agritech, biotech y laboratorios de investigacion que hacen trabajo social y ambiental real. El problema que resuelve: proteger la IP de los protocolos y convertir datos de laboratorio y campo en decisiones.
@@ -66,14 +66,14 @@ Equipos de agritech, biotech y laboratorios de investigacion que hacen trabajo s
 - Desarrollos de IA y software a medida: herramientas internas, sitios web y experiencias digitales, y asesoria tecnica de la idea a la primera version.
 - Sistemas de operacion para retiros (bienestar, cuando lo piden)
 
-**Caso de referencia: CHAK FoodTech.**
-Construimos la capa digital de una plataforma de produccion agri-biotech. Los cientificos autoran el protocolo; CHAK Brain guia a la persona que lo ejecuta paso a paso, sin exponer nunca el protocolo completo. La IP se queda en el sistema, con acceso por rol. Ese es el patron que vendemos.
+**Caso de referencia: un proyecto de biotecnologia y agricultura vertical.** (No nombres al cliente.)
+Construimos la capa digital de una plataforma de produccion agri-biotech. Los cientificos autoran el protocolo; el sistema guia a la persona que lo ejecuta paso a paso, sin exponer nunca el protocolo completo. La IP se queda en el sistema, con acceso por rol. Ese es el patron que vendemos.
 `,
   en: `
 ## About CultivoAI
 
 **Who this is:**
-CultivoAI is Paul Ronayne, the technical partner who builds the AI and data layer for agritech and biotech innovators. 20+ years building companies: co-founded NBN23 (sports data, FIBA partnership, 70+ countries) and Nagi (aquatic-safety tech deployed in schools and pools). Built CHAK Brain and the CHAK SaaS platform end to end, solo. You work with him directly, not with agency handoff layers. Rocky and Marta support the technical and human side, but you talk to the person who builds.
+CultivoAI is Paul Ronayne, the technical partner who builds the AI and data layer for agritech and biotech innovators. 20+ years building companies: co-founded NBN23 (sports data, FIBA partnership, 70+ countries) and Nagi (aquatic-safety tech deployed in schools and pools). Built the full platform for a biotech and vertical farming project end to end, solo. You work with him directly, not with agency handoff layers. Rocky and Marta support the technical and human side, but you talk to the person who builds.
 
 **Who he builds for:**
 Agritech, biotech, and research teams doing real social and environmental work. The problem he solves: protect protocol IP and turn lab and field data into decisions.
@@ -84,14 +84,14 @@ Agritech, biotech, and research teams doing real social and environmental work. 
 - Custom AI and Software Builds: internal tools, websites and digital experiences, and technical advisory from idea to version one.
 - Retreat ops systems (wellness, when asked)
 
-**Reference case: CHAK FoodTech.**
-We built the digital layer for an agri-biotech production platform. Scientists author the protocol; CHAK Brain guides the person running it step by step, without ever exposing the full protocol. The IP stays in the system, access is role-gated. That is the pattern we sell.
+**Reference case: a biotech and vertical farming project.** (Do not name the client.)
+We built the digital layer for an agri-biotech production platform. Scientists author the protocol; the system guides the person running it step by step, without ever exposing the full protocol. The IP stays in the system, access is role-gated. That is the pattern we sell.
 `,
   pt: `
 ## Sobre a CultivoAI
 
 **Quem é:**
-A CultivoAI é o Paul Ronayne, o parceiro técnico que constrói a camada de IA e dados para inovadores em agritech e biotech. Mais de 20 anos construindo empresas: cofundou a NBN23 (dados esportivos, parceria com a FIBA, mais de 70 países) e a Nagi (tecnologia de segurança aquática em escolas e piscinas). Construiu o CHAK Brain e a plataforma CHAK SaaS de ponta a ponta, sozinho. Você trabalha direto com ele, não com camadas de agência. Rocky e Marta apoiam o lado técnico e o humano, mas você fala com quem constrói.
+A CultivoAI é o Paul Ronayne, o parceiro técnico que constrói a camada de IA e dados para inovadores em agritech e biotech. Mais de 20 anos construindo empresas: cofundou a NBN23 (dados esportivos, parceria com a FIBA, mais de 70 países) e a Nagi (tecnologia de segurança aquática em escolas e piscinas). Construiu sozinho, de ponta a ponta, toda a plataforma de um projeto de biotecnologia e agricultura vertical. Você trabalha direto com ele, não com camadas de agência. Rocky e Marta apoiam o lado técnico e o humano, mas você fala com quem constrói.
 
 **Para quem ele constrói:**
 Times de agritech, biotech e laboratórios de pesquisa que fazem trabalho social e ambiental real. O problema que ele resolve: proteger a IP dos protocolos e transformar dados de laboratório e campo em decisões.
@@ -102,8 +102,8 @@ Times de agritech, biotech e laboratórios de pesquisa que fazem trabalho social
 - Desenvolvimentos de IA e software sob medida: ferramentas internas, sites e experiências digitais, e consultoria técnica da ideia à primeira versão.
 - Sistemas de operação para retiros (bem-estar, quando pedem)
 
-**Caso de referência: CHAK FoodTech.**
-Construímos a camada digital de uma plataforma de produção agri-biotech. Os cientistas criam o protocolo; o CHAK Brain guia a pessoa que o executa passo a passo, sem nunca expor o protocolo completo. A IP fica no sistema, com acesso por função. Esse é o padrão que vendemos.
+**Caso de referência: um projeto de biotecnologia e agricultura vertical.** (Não nomeie o cliente.)
+Construímos a camada digital de uma plataforma de produção agri-biotech. Os cientistas criam o protocolo; o sistema guia a pessoa que o executa passo a passo, sem nunca expor o protocolo completo. A IP fica no sistema, com acesso por função. Esse é o padrão que vendemos.
 `,
 };
 
@@ -775,13 +775,13 @@ export function buildVoiceSystemPrompt(locale: Locale): string {
 
   const companyContext = {
     es: `
-CultivoAI es Paul, el socio tecnico que construye la capa de IA y datos para agritech y biotech. Cofundo NBN23 y Nagi, y construyo CHAK Brain y la plataforma CHAK solo. Trabaja directo, sin handoffs. Rocky y Marta apoyan lo tecnico y lo humano.
+CultivoAI es Paul, el socio tecnico que construye la capa de IA y datos para agritech y biotech. Cofundo NBN23 y Nagi, y construyo solo la plataforma completa de un proyecto de biotecnologia y agricultura vertical. Trabaja directo, sin handoffs. Rocky y Marta apoyan lo tecnico y lo humano.
 `,
     en: `
-CultivoAI is Paul, the technical partner who builds the AI and data layer for agritech and biotech. He co-founded NBN23 and Nagi, and built CHAK Brain and the CHAK platform solo. He works directly, no handoffs. Rocky and Marta support the technical and human side.
+CultivoAI is Paul, the technical partner who builds the AI and data layer for agritech and biotech. He co-founded NBN23 and Nagi, and built the full platform for a biotech and vertical farming project solo. He works directly, no handoffs. Rocky and Marta support the technical and human side.
 `,
     pt: `
-A CultivoAI é o Paul, o parceiro técnico que constrói a camada de IA e dados para agritech e biotech. Cofundou a NBN23 e a Nagi, e construiu o CHAK Brain e a plataforma CHAK sozinho. Trabalha direto, sem handoffs. Rocky e Marta apoiam o lado técnico e o humano.
+A CultivoAI é o Paul, o parceiro técnico que constrói a camada de IA e dados para agritech e biotech. Cofundou a NBN23 e a Nagi, e construiu sozinho a plataforma completa de um projeto de biotecnologia e agricultura vertical. Trabalha direto, sem handoffs. Rocky e Marta apoiam o lado técnico e o humano.
 `,
   }[locale];
 

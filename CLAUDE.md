@@ -49,7 +49,7 @@ CultivoAI is a bilingual (Spanish/English) AI and automation consultancy website
 - **Database**: PostgreSQL with Drizzle ORM
 - **UI**: Custom Brutalist components (NO shadcn theming - preserve exact design)
 - **Styling**: Tailwind CSS 4 (NO dark mode - single Brutalist theme only)
-- **Internationalization**: Browser language detection (Spanish/English)
+- **Internationalization**: Browser language detection (Spanish/English). Portuguese content exists in `src/content/pt.ts` + `locales/pt/` but is hidden; re-enable by adding `"pt"` to `ENABLED_LOCALES` in `src/content/enabled-locales.ts`.
 
 ---
 
@@ -70,37 +70,35 @@ The **current landing implementation** in `src/app/page.tsx` and `src/components
 5. **Preserve the AI chat widget** - Gemini integration with function calling
 6. **Split into components** but maintain pixel-perfect visual parity
 
-### Brutalist Design Characteristics
+### Design Characteristics (as built, checked 2026-11-11)
+
+Older versions of this file described a yellow/purple palette. That is gone. The live
+site is **cyan + near-black + white**. Always read `src/app/globals.css` and the landing
+components for the truth; this summary is a guide only.
 
 ```
-- 4px black borders on everything
-- Hard shadows: shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] or shadow-[8px_8px_0px_0px_#A855F7]
-- No rounded corners (or minimal)
-- High contrast, bold typography
-- Uppercase text for headings
-- Hover effects: translate + shadow reduction
-- Selection color: bg-[#FFDE00] text-black
+- Black borders: border-2 / border-4 border-black (both common)
+- Hard offset shadows: shadow-[4px_4px_0px_0px_rgba(0,0,0,1)], 2px and 6px variants,
+  and shadow-[4px_4px_0px_0px_var(--primary)] for cyan accents
+- Softer elevation shadows also used: shadow-[0_10px_24px_rgba(15,23,42,0.08)] etc.
+- Rounded corners ARE used (rounded-full, rounded-xl, rounded-lg)
+- High contrast, bold typography, uppercase headings
+- Hover effects: translate + shadow change
 ```
 
-### Color Palette (Do NOT deviate)
+### Color Palette (source: `src/app/globals.css` `--brand-*` tokens)
 
 ```css
-/* Primary */
---yellow-primary: #FFC805;
---yellow-secondary: #FFDE00;
-
-/* Accents */
---purple: #A855F7;
---purple-dark: #9333EA;
---green-semilla: #10B981;
---green-light: #C4F9E0;
---red-accent: #EF4444;
-
-/* Neutrals */
---black: #000000;
---near-black: #1a1a1a;
---gray-bg: #F3F4F6;
---white: #FFFFFF;
+--brand-primary: #00BCD4;    /* cyan, the main accent */
+--brand-ink: #18181b;        /* near-black text; #212121 / #0c0c0c dark panels */
+--brand-background: #fafafa;
+--brand-surface: #ffffff;
+--brand-subtle: #f4f4f5;
+--brand-border: #e4e4e7;
+--brand-muted: #52525b;
+--brand-warning: #f59e0b;
+--brand-danger: #dc2626;
+/* WhatsApp button: #25D366 */
 ```
 
 ### Typography (Required fonts - load via next/font)
@@ -113,13 +111,15 @@ font-mono: 'JetBrains Mono'        /* Code, technical elements */
 
 ### Key Visual Elements (Must preserve exactly)
 
-1. **Top Marquee Bar**: Black bg, yellow text, infinite scroll animation
-2. **Navigation**: Sticky, white bg, 4px black border bottom, stretched nav items
-3. **Hero Split**: Yellow left panel, purple right panel with floating elements
-4. **Service Cards**: Black shadow offset, hover translate effect
-5. **Projects List**: Alternating layout, grayscale images with purple overlay on hover
-6. **AI Chat Widget**: Bottom-right floating, brutalist styling with shadows
-7. **Modals**: 4px black border, purple shadow offset, X close button
+Check the component itself for exact classes; do not trust colour names written here.
+
+1. **Marquee / ticker**: infinite scroll animation (integrated into the nav)
+2. **Navigation**: sticky, ES/EN selector, "Let's talk" CTA
+3. **Hero**: see `sections/hero-section.tsx`
+4. **Service Cards**: offset shadow, hover translate effect
+5. **Projects List**: see `sections/projects-section.tsx`
+6. **AI Chat Widget + WhatsApp button**: bottom-right floating
+7. **Modals**: black border, offset shadow, X close button
 
 ### Animations (Must preserve)
 

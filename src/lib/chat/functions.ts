@@ -31,7 +31,7 @@ export const chatFunctionDeclarations: Tool = {
     {
       name: "show_project_details",
       description:
-        "Opens a modal with full details about a specific project. Use when users ask about specific projects like 'CHAK FoodTech', 'Munayki', 'Raiz Capital', etc.",
+        "Opens a modal with full details about a specific project. Use when users ask about specific projects like 'Company Brain' or 'SetaSouls'.",
       parameters: {
         type: Type.OBJECT,
         properties: {

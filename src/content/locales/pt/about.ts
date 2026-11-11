@@ -12,7 +12,7 @@ export const ptAbout: AboutCopy = {
         name: "Paul Ronayne",
         title: "Fundador técnico. Sistemas de IA e dados.",
         description:
-          "Mais de 20 anos construindo empresas. Cofundei a NBN23, uma plataforma de dados esportivos que fez parceria com a FIBA e chegou a mais de 70 países, e a Nagi, tecnologia de segurança e desempenho aquático implantada em escolas e piscinas. Construí o CHAK Brain e a plataforma SaaS da CHAK de ponta a ponta, sozinho. Construo a camada de dados e IA para times de agritech e biotech.",
+          "Mais de 20 anos construindo empresas. Cofundei a NBN23, uma plataforma de dados esportivos que fez parceria com a FIBA e chegou a mais de 70 países, e a Nagi, tecnologia de segurança e desempenho aquático implantada em escolas e piscinas. Construí sozinho, de ponta a ponta, toda a plataforma de software de um projeto de biotecnologia e agricultura vertical. Construo a camada de dados e IA para times de agritech e biotech.",
         imageUrl: "/landing/photos/team/paul.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
@@ -29,7 +29,7 @@ export const ptAbout: AboutCopy = {
             {
               title: "Por que importa",
               content:
-                "Para times baseados em ciência, o difícil é proteger a IP e transformar os dados de laboratório e campo em decisões. Construí exatamente isso: o CHAK Brain e a plataforma SaaS da CHAK, sozinho, desde a criação do protocolo até a execução com acesso por função.",
+                "Para times baseados em ciência, o difícil é proteger a IP e transformar os dados de laboratório e campo em decisões. Construí exatamente isso para um projeto de biotecnologia e agricultura vertical, sozinho, desde a criação do protocolo até a execução com acesso por função.",
             },
             {
               title: "O que inclui",

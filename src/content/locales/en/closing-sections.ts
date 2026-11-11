@@ -123,7 +123,7 @@ export const enClosingSectionsContent: Pick<
       booking:
         "Great. We can set up a 15-minute call with Paul. Tell me a bit about what you're working on and I'll get it ready.",
       story:
-        "Paul is a technical founder who has shipped products to 70+ countries and built CHAK Brain solo. Small senior team, direct work, no handoffs. What would you like to know?",
+        "Paul is a technical founder who has shipped products to 70+ countries and built the full platform for a biotech and vertical farming project solo. Small senior team, direct work, no handoffs. What would you like to know?",
       service:
         "Nice, you're looking at {service}. Happy to walk you through it. What would you like to know?",
       partnership:

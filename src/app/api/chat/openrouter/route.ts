@@ -63,7 +63,7 @@ const chatTools = {
   }),
   show_project_details: tool({
     description:
-      "Opens a modal with full details about a specific project (e.g. 'CHAK FoodTech', 'Munayki', 'Raiz Capital').",
+      "Opens a modal with full details about a specific project (e.g. 'Company Brain', 'SetaSouls').",
     inputSchema: z.object({ project_title: z.string() }),
     execute: stub,
   }),
