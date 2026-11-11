@@ -38,10 +38,6 @@ export function WhoWeHelpSection({
   const includedLabel = locale === "es" ? "Que incluye" : locale === "pt" ? "O que inclui" : "What's included";
   const idealFitLabel = locale === "es" ? "Ideal para" : locale === "pt" ? "Ideal para" : "Ideal fit";
   const outcomeLabel = locale === "es" ? "Resultado tipico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
-  const sectionSubtitle =
-    locale === "es"
-      ? "Sectores y equipos con los que generamos mayor impacto"
-      : "Sectors and teams where we create the most impact";
 
   return (
     <section id="who-we-help" className="border-b border-black/10 bg-white py-16 md:py-24">
@@ -50,12 +46,13 @@ export function WhoWeHelpSection({
         <Reveal>
           <SectionHeader
             title={content.whoWeHelp.title}
-            subtitle={sectionSubtitle}
+            subtitle={content.whoWeHelp.subtitle}
             subtitleClassName="max-w-2xl"
           />
         </Reveal>
 
-        {/* Ideal / Not Ideal Grid */}
+        {/* Ideal / Not Ideal Grid (hidden when the locale has no fit lists) */}
+        {content.whoWeHelp.idealItems.length > 0 && (
         <div className="mb-16 grid gap-8 md:mb-20 md:grid-cols-2 md:gap-12">
           {/* Ideal for you if... */}
           <Reveal>
@@ -111,6 +108,7 @@ export function WhoWeHelpSection({
             </div>
           </Reveal>
         </div>
+        )}
 
         {/* Sectors We Love */}
         <Reveal delay={300}>
@@ -121,6 +119,7 @@ export function WhoWeHelpSection({
             )}
           >
             {/* Section Title with decorative style */}
+            {content.whoWeHelp.sectorsTitle && (
             <div className="-mx-6 mb-8 text-center md:-mx-8 md:mb-12 lg:-mx-12">
               <h3
                 className={landingTitleBandClass(
@@ -131,6 +130,7 @@ export function WhoWeHelpSection({
                 {content.whoWeHelp.sectorsTitle}
               </h3>
             </div>
+            )}
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-2">
               {content.whoWeHelp.sectors.map((sector, i) => {
                 const variant: LandingCardVariant = i === 0 ? "blue" : "dark";

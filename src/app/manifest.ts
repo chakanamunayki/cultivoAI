@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "CultivoAI",
-    short_name: "CultivoAI",
+    name: "Cultivo Labs",
+    short_name: "Cultivo Labs",
     description:
-      "Consultoría en IA y automatización. Padre e hijo desde Colombia para el mundo.",
+      "Tu socio tecnológico para proyectos que cuidan la tierra, las personas y las comunidades.",
     id: "/",
     start_url: "/",
     scope: "/",

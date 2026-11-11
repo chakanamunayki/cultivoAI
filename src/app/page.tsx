@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import { MessageSquare } from "lucide-react";
 import { Footer } from "@/components/landing/layout/footer";
 import { Nav } from "@/components/landing/layout/nav";
-import { AboutSection } from "@/components/landing/sections/about-section";
 import { HeroSection } from "@/components/landing/sections/hero-section";
 import { CustomCursor } from "@/components/landing/ui/custom-cursor";
 import { LazySection } from "@/components/landing/ui/lazy-section";
@@ -15,30 +14,6 @@ import type { ChatContext } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 
 // Lazy-loaded below-fold sections
-const WhatWeDoSection = dynamic(
-  () =>
-    import("@/components/landing/sections/what-we-do-section").then((m) => ({
-      default: m.WhatWeDoSection,
-    })),
-  { ssr: true }
-);
-
-const HowWeWorkSection = dynamic(
-  () =>
-    import("@/components/landing/sections/how-we-work-section").then((m) => ({
-      default: m.HowWeWorkSection,
-    })),
-  { ssr: true }
-);
-
-const WhyUsSection = dynamic(
-  () =>
-    import("@/components/landing/sections/why-us-section").then((m) => ({
-      default: m.WhyUsSection,
-    })),
-  { ssr: true }
-);
-
 const ServicesSection = dynamic(
   () =>
     import("@/components/landing/sections/services-section").then((m) => ({
@@ -55,10 +30,10 @@ const WhoWeHelpSection = dynamic(
   { ssr: true }
 );
 
-const PartnershipsSection = dynamic(
+const SemilleroSection = dynamic(
   () =>
-    import("@/components/landing/sections/partnerships-section").then((m) => ({
-      default: m.PartnershipsSection,
+    import("@/components/landing/sections/semillero-section").then((m) => ({
+      default: m.SemilleroSection,
     })),
   { ssr: true }
 );
@@ -71,6 +46,14 @@ const ProjectsSection = dynamic(
   { ssr: true }
 );
 
+const AboutSection = dynamic(
+  () =>
+    import("@/components/landing/sections/about-section").then((m) => ({
+      default: m.AboutSection,
+    })),
+  { ssr: true }
+);
+
 const ValuesSection = dynamic(
   () =>
     import("@/components/landing/sections/values-section").then((m) => ({
@@ -79,10 +62,10 @@ const ValuesSection = dynamic(
   { ssr: true }
 );
 
-const MissionSection = dynamic(
+const PartnershipsSection = dynamic(
   () =>
-    import("@/components/landing/sections/mission-section").then((m) => ({
-      default: m.MissionSection,
+    import("@/components/landing/sections/partnerships-section").then((m) => ({
+      default: m.PartnershipsSection,
     })),
   { ssr: true }
 );
@@ -154,30 +137,53 @@ function ChatButtonPlaceholder({
   );
 }
 
-// Services were consolidated from 8 cards to 4. The chat model can still emit an
-// absorbed service name; map each normalized old name to the surviving card's
-// stable animationKey so the modal still opens instead of silently no-op'ing.
+// Services were consolidated twice (8 -> 4 cards, then the Cultivo Labs rework).
+// The chat model can still emit an old service name; map each normalized old
+// name to the surviving card's stable animationKey so the modal still opens
+// instead of silently no-op'ing.
 const ABSORBED_SERVICE_ALIASES: Record<string, string> = {
-  // -> Decision and Automation Systems (animationKey "dashboards")
-  "workflow optimization": "dashboards",
-  "optimizacion de flujos": "dashboards",
-  workflow: "dashboards",
-  automation: "dashboards",
-  "ai assistants": "dashboards",
-  "asistentes ia": "dashboards",
-  asistentes: "dashboards",
-  "decision dashboards": "dashboards",
-  "dashboards de decision": "dashboards",
-  dashboard: "dashboards",
-  // -> Custom AI and Software Builds (animationKey "software-web")
-  "software, websites and digital experiences": "software-web",
-  "software, sitios web y experiencias digitales": "software-web",
-  "startup advisory": "software-web",
-  "asesoria para startups": "software-web",
-  websites: "software-web",
-  // -> Company Brain (animationKey "company-brain")
+  // -> Data, knowledge and AI systems (animationKey "company-brain")
+  "company brain": "company-brain",
+  "decision and automation": "company-brain",
+  "sistemas de decision": "company-brain",
+  "workflow optimization": "company-brain",
+  "optimizacion de flujos": "company-brain",
+  workflow: "company-brain",
+  automation: "company-brain",
+  automatizacion: "company-brain",
+  "ai assistants": "company-brain",
+  "asistentes ia": "company-brain",
+  asistentes: "company-brain",
+  "decision dashboards": "company-brain",
+  "dashboards de decision": "company-brain",
   "knowledge and content systems": "company-brain",
   "sistemas de conocimiento y contenido": "company-brain",
+  knowledge: "company-brain",
+  conocimiento: "company-brain",
+  // -> Software and platforms (animationKey "software-web")
+  "custom ai and software": "software-web",
+  "software, websites and digital experiences": "software-web",
+  "software, sitios web y experiencias digitales": "software-web",
+  websites: "software-web",
+  "sitio web": "software-web",
+  // -> Proof and records (animationKey "dashboards")
+  mrv: "dashboards",
+  impact: "dashboards",
+  impacto: "dashboards",
+  carbon: "dashboards",
+  carbono: "dashboards",
+  // -> Startup and investment readiness (animationKey "startup")
+  "startup advisory": "startup",
+  "asesoria para startups": "startup",
+  investment: "startup",
+  inversion: "startup",
+};
+
+// Projects were retitled in the rework; the chat may still ask for the old title.
+const PROJECT_ALIASES: Record<string, string> = {
+  "company brain": "company-brain",
+  "protocol ip": "company-brain",
+  "ip de los protocolos": "company-brain",
 };
 
 export default function Home() {
@@ -214,7 +220,13 @@ export default function Home() {
   const handleOpenProjectModal = useCallback(
     (projectTitle: string) => {
       const target = normalizeForMatch(projectTitle);
-      const project = content.projects.find((p) => normalizeForMatch(p.title).includes(target));
+      let project = content.projects.find((p) => normalizeForMatch(p.title).includes(target));
+      if (!project) {
+        const aliasKey = Object.keys(PROJECT_ALIASES).find((key) => target.includes(key));
+        if (aliasKey) {
+          project = content.projects.find((p) => p.animationKey === PROJECT_ALIASES[aliasKey]);
+        }
+      }
       if (project) {
         openProjectModal(project);
       }
@@ -227,7 +239,7 @@ export default function Home() {
       const target = normalizeForMatch(serviceTitle);
       let service = content.services.find((s) => normalizeForMatch(s.title).includes(target));
       if (!service) {
-        // Fall back to absorbed-name aliases from the 8->4 consolidation.
+        // Fall back to absorbed-name aliases from earlier consolidations.
         const aliasKey = Object.keys(ABSORBED_SERVICE_ALIASES).find((key) =>
           target.includes(key)
         );
@@ -269,10 +281,6 @@ export default function Home() {
 
   const handleOpenChatPartnership = useCallback(() => {
     handleOpenChat({ type: "partnership" });
-  }, [handleOpenChat]);
-
-  const handleOpenChatImpact = useCallback(() => {
-    handleOpenChat({ type: "impact" });
   }, [handleOpenChat]);
 
   const handleOpenContactModal = useCallback(() => {
@@ -346,30 +354,12 @@ export default function Home() {
         onTertiaryCta={handleScrollToServices}
       />
 
-      {/* Section 2: What We Do - Lazy loaded */}
-      <LazySection className="min-h-[400px]">
-        <WhatWeDoSection />
-      </LazySection>
-
-      {/* Section 3: About - Eager loaded (above fold) */}
-      <AboutSection />
-
-      {/* Section 3: How We Work - Lazy loaded */}
-      <LazySection className="min-h-[400px]">
-        <HowWeWorkSection />
-      </LazySection>
-
-      {/* Section 4: Why Us - Lazy loaded */}
-      <LazySection className="min-h-[400px]">
-        <WhyUsSection />
-      </LazySection>
-
-      {/* Section 6: Services - Lazy loaded */}
+      {/* Section 2: What I build */}
       <LazySection className="min-h-[600px]">
         <ServicesSection onOpenChatBooking={handleOpenChatBooking} />
       </LazySection>
 
-      {/* Section 6: Who We Help - Lazy loaded */}
+      {/* Section 3: Who I work with */}
       <LazySection className="min-h-[400px]">
         <WhoWeHelpSection
           onOpenChatQualification={handleOpenChatQualification}
@@ -377,27 +367,35 @@ export default function Home() {
         />
       </LazySection>
 
-      {/* Section 8: Partnerships - Lazy loaded */}
-      <LazySection className="min-h-[500px]">
-        <PartnershipsSection onOpenChatGeneral={handleOpenChatPartnership} />
+      {/* Section 4: Semillero teaser (full network page is phase 2) */}
+      <LazySection className="min-h-[300px]">
+        <SemilleroSection
+          onOpenChatProject={handleOpenChatPartnership}
+          onOpenChatInnovation={handleOpenChatPartnership}
+        />
       </LazySection>
 
-      {/* Section 9: Projects - Lazy loaded */}
+      {/* Section 5: Projects */}
       <LazySection className="min-h-[600px]">
         <ProjectsSection />
       </LazySection>
 
-      {/* Section 13: Values - Lazy loaded */}
+      {/* Section 6: About */}
+      <LazySection className="min-h-[400px]">
+        <AboutSection />
+      </LazySection>
+
+      {/* Section 7: How I work (merges How We Work, Why Us, Values, Mission) */}
       <LazySection className="min-h-[400px]">
         <ValuesSection />
       </LazySection>
 
-      {/* Section 14: Mission - Lazy loaded */}
-      <LazySection className="min-h-[300px]">
-        <MissionSection onOpenChatImpact={handleOpenChatImpact} />
+      {/* Section 8: Ways to work together */}
+      <LazySection className="min-h-[500px]">
+        <PartnershipsSection onOpenChatGeneral={handleOpenChatPartnership} />
       </LazySection>
 
-      {/* Section 15: What Happens Next - Lazy loaded */}
+      {/* Section 9: What happens next */}
       <LazySection className="min-h-[400px]">
         <WhatHappensNextSection onOpenChat={handleOpenChatGeneral} />
       </LazySection>

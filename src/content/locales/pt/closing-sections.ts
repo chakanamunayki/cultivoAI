@@ -2,7 +2,7 @@ import type { SiteContent } from "../../types";
 
 export const ptClosingSectionsContent: Pick<
   SiteContent,
-  "values" | "mission" | "whatHappensNext" | "footer" | "chat" | "contactForm" | "terminal"
+  "values" | "whatHappensNext" | "footer" | "chat" | "contactForm" | "terminal"
 > = {
   values: {
     title: "Nossos Valores",
@@ -27,16 +27,6 @@ export const ptClosingSectionsContent: Pick<
           "Um sistema útil exige descoberta real, primeiras versões que falham e decisões honestas. Não existe a solução mágica de duas semanas. Mas existe, sim, uma primeira versão sólida que dá para melhorar.",
       },
     ],
-  },
-
-  mission: {
-    title: "Por Que Existimos",
-    statement: [
-      "Construímos para times que fazem trabalho social e ambiental real: agritech, biotech, restauração, a ciência que de fato move a agulha.",
-      "O difícil é proteger a IP e transformar os dados de laboratório e campo em decisões. É isso que construímos, bem feito, para quem constrói algo que importa.",
-      "Quanto melhor construímos, mais longe o impacto chega.",
-    ],
-    tagline: "Não somos neutros no que construímos",
   },
 
   whatHappensNext: {
@@ -92,7 +82,7 @@ export const ptClosingSectionsContent: Pick<
       },
     ],
     contactInfo: {
-      email: "hola@cultivoai.co",
+      email: "hola@cultivolabs.com",
       whatsapp: "+573106172607",
       whatsappDisplay: "+57 310 617 2607",
       location: "Medellín, Colômbia",

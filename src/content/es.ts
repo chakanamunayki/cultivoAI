@@ -10,131 +10,83 @@ import type { SiteContent } from "./types";
 
 export const es: SiteContent = {
   nav: [
-    { label: "Nosotros", href: "#about" },
-    { label: "Servicios", href: "#services" },
-    { label: "Alianzas", href: "#partnerships" },
+    { label: "Qué construyo", href: "#services" },
+    { label: "Con quién trabajo", href: "#who-we-help" },
+    { label: "Semillero", href: "#semillero" },
     { label: "Proyectos", href: "#projects" },
-    { label: "Proceso", href: "#what-happens-next" },
+    { label: "Quién soy", href: "#about" },
   ],
 
   marquee: [
-    "Agritech",
-    "Biotech",
-    "IP de protocolos protegida",
-    "Datos de laboratorio y campo",
-    "MRV y carbono",
-    "Acceso por rol",
-    "Corre en tu infraestructura",
-    "Socio técnico senior",
-    "Colaboración directa",
-    "Colombia, para el mundo",
+    "Tierra y regeneración",
+    "Comunidades autosuficientes",
+    "Salud holística",
+    "Naturaleza y agritech",
+    "Software y datos",
+    "IA donde sirve",
+    "Impacto que se puede demostrar",
+    "Listos para invertir",
+    "Red de innovación",
+    "De Colombia al mundo",
   ],
 
   hero: {
-    tagline: "SISTEMAS DE IA Y DATOS PARA AGRITECH Y BIOTECH",
-    line1: "El socio técnico para innovadores en agritech y biotech",
-    subheadline: "Construimos la capa de datos e IA detrás de la ciencia seria. Protocolos protegidos, evidencia estructurada y datos de laboratorio y campo sobre los que tu equipo puede actuar.",
+    tagline: "TECNOLOGÍA PARA BUENOS PROYECTOS",
+    line1:
+      "Tu socio tecnológico, con las manos en la tierra, para proyectos que cuidan la tierra, las personas y las comunidades.",
+    subheadline:
+      "He cofundado y construido startups. Ahora ayudo a buenos proyectos de regeneración, vida autosuficiente, salud holística y naturaleza a construir su tecnología, encontrar las innovaciones adecuadas y prepararse para la inversión.",
     services: [],
     servicesDone: "",
     audience: [],
-    outcomes: ["IP de protocolos protegida", "Evidencia científica estructurada", "Datos listos para decidir"],
-    audienceLabel: "Hecho para:",
+    outcomes: [],
+    audienceLabel: "Para:",
     audienceChips: [
-      "Agritech",
-      "Biotech y laboratorios de investigación",
-      "Agricultura de ambiente controlado",
-      "Regenerativo, MRV y carbono",
-      "Startups con propósito",
-      "Wellness y holístico",
+      "Tierra y regeneración",
+      "Comunidades autosuficientes",
+      "Salud holística y productos naturales",
+      "Naturaleza y agritech",
     ],
-    tertiaryCta: "Ver servicios",
-    microcopy:
-      "Datos privados. Corre en tu infraestructura cuando hace falta. Un socio técnico senior, de principio a fin.",
-    terminalLabel: "Así trabajamos:",
+    tertiaryCta: "Qué construyo",
+    microcopy: "Un fundador, de principio a fin. Desde Colombia, para el mundo.",
+    terminalLabel: "Así trabajo:",
     line3: "",
     cta: "Hablemos",
     secondaryCta: "Ver proyectos",
     noDrama: "Sin caos.",
     noDramaText: "Alcance claro. Primera versión rápida. Iteración directa.",
     impactSection: {
-      text: "Desde Colombia, trabajando para todo el mundo. Colaboración directa. Alcance claro.",
+      text: "Desde Colombia, para el mundo. Colaboración directa. Alcance claro.",
       cta: "Hablemos",
     },
   },
 
   about: esAbout,
 
-  howWeWork: {
-    title: "Cómo Trabajamos",
-    subtitle: "Principios que guían cada proyecto",
-    pillars: [
-      {
-        icon: "RefreshCw",
-        title: "Win-Win o No Hay Trato",
-        description:
-          "Solo tomamos proyectos donde las expectativas son claras y ambas partes ganan. Si no podemos agregar valor real, lo diremos desde el inicio.",
-      },
-      {
-        icon: "Sprout",
-        title: "Sistemas de Punta a Punta",
-        description:
-          "Pensamos de punta a punta. Software, flujos, datos, decisiones, comunicación y diseño deben funcionar juntos, no como piezas sueltas.",
-      },
-      {
-        icon: "Users",
-        title: "Siempre humanos",
-        description:
-          "La IA es una herramienta que usamos para el bien. Construimos cuidando tono, confianza y a las personas del otro lado de la pantalla.",
-        isFullWidth: true,
-      },
-    ],
-  },
-
-  whatWeDo: {
-    title: "Cómo Ayudamos",
-    subtitle: "Integración de IA práctica para negocios reales",
-    intro:
-      "Trabajamos con equipos de agritech y biotech que generan impacto social y ambiental real. Entendemos cómo funciona la operación, conectamos lo que ya existe, protegemos la IP y damos a cada persona acceso solo a lo que le corresponde. Lo que construimos depende del proyecto: la capa de conocimiento, plataformas de datos, automatización, IA, integraciones.",
-    columns: [
-      {
-        title: "OPTIMIZAR",
-        items: [
-          "Reducir trabajo repetitivo",
-          "Crear una sola fuente de verdad",
-          "Mejorar la coordinación y el seguimiento",
-          "Automatizar reportes",
-        ],
-      },
-      {
-        title: "EXPANDIR",
-        items: [
-          "Respuestas más rápidas sin perder cercanía",
-          "Contenido y conocimiento consistentes",
-          "Mejores decisiones con señales reales",
-          "Nuevas formas de apoyar usuarios y clientes",
-        ],
-      },
-    ],
-    servicesPreview: {
-      title: "Nuestros servicios incluyen:",
-      linkText: "Ver todos los servicios",
-    },
-  },
-
+  // No se muestra en la página; se le pasa al asistente del chat como contexto.
   whyUs: {
-    notTitle: "Lo que NO somos",
+    notTitle: "Lo que NO soy",
     notItems: [
-      "Una agencia grande con handoffs y entrega junior.",
-      "Consultores guiados por hype vendiendo una tendencia.",
-      "Un equipo que te hace sentir confundido a propósito.",
+      "Una agencia grande con traspasos y un equipo junior.",
+      "Un consultor que vende la moda del momento.",
+      "Alguien que complica las cosas a propósito.",
     ],
-    yesTitle: "Lo que SÍ somos",
+    yesTitle: "Lo que SÍ soy",
     yesItems: [
-      "Un equipo senior pequeño que trabaja directo contigo.",
-      "Constructores de sistemas que lanzan versión uno rápido y luego mejoran.",
-      "Builders human-first que cuidan tono, confianza y resultados.",
-      "Desde Colombia, trabajando para el mundo.",
+      "Un cofundador de startups que diseña y construye el sistema él mismo.",
+      "Alguien que lanza una primera versión rápido y la mejora con el uso real.",
+      "Alguien que solo acepta acuerdos buenos para todos (ayni).",
+      "Desde Colombia, para Latinoamérica y el mundo.",
     ],
+  },
+
+  semillero: {
+    title: "Semillero",
+    subtitle: "Donde los buenos proyectos crecen juntos.",
+    body:
+      "Hablo cada semana con innovadores de todo el mundo: nuevas tecnologías de energía, suelo, agua y salud que buscan lugares reales donde funcionar. Y conozco proyectos en Latinoamérica que necesitan justo eso. Semillero los une, para que la buena gente y las buenas innovaciones se fortalezcan juntas.",
+    projectCta: "Tengo un proyecto",
+    innovationCta: "Tengo una innovación",
   },
 
   ...esServicesContent,

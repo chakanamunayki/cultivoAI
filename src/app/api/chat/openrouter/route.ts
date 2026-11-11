@@ -57,19 +57,19 @@ const stub = async () => ({ status: "ok" });
 const chatTools = {
   navigate_to_section: tool({
     description:
-      "Scrolls the website to a specific section. Use when users want to see a section or ask about content on the page. Valid IDs: 'hero', 'about', 'services', 'partnerships', 'projects', 'stories', 'who-we-help', 'what-happens-next'.",
+      "Scrolls the website to a specific section. Use when users want to see a section or ask about content on the page. Valid IDs: 'hero', 'services' (what I build), 'who-we-help' (who I work with), 'semillero' (innovation network), 'projects', 'about', 'values' (how I work), 'partnerships' (ways to work together), 'what-happens-next'.",
     inputSchema: z.object({ section_id: z.string() }),
     execute: stub,
   }),
   show_project_details: tool({
     description:
-      "Opens a modal with full details about a specific project (e.g. 'Company Brain', 'SetaSouls').",
+      "Opens a modal with full details about a specific project (e.g. 'Protected knowledge platform', 'SetaSouls').",
     inputSchema: z.object({ project_title: z.string() }),
     execute: stub,
   }),
   show_service_details: tool({
     description:
-      "Opens a modal with full details about a specific service. Use the site's current service names: 'Company Brain', 'Decision and Automation Systems', 'Custom AI and Software Builds', 'Retreat Ops Systems'.",
+      "Opens a modal with full details about a specific service. Use the site's current service names: 'Software and platforms', 'Data, knowledge and AI systems', 'Proof and records', 'Startup and investment readiness' (Spanish: 'Software y plataformas', 'Sistemas de datos, conocimiento e IA', 'Pruebas y registros', 'Preparación para startups e inversión').",
     inputSchema: z.object({ service_title: z.string() }),
     execute: stub,
   }),
@@ -101,7 +101,7 @@ const chatTools = {
   }),
   suggest_service: tool({
     description:
-      "Recommends a specific service when there is a clear match. Use the site's current service names, Company Brain first.",
+      "Recommends a specific service when there is a clear match. Use the site's current service names.",
     inputSchema: z.object({
       service_name: z.string(),
       reason: z.string(),

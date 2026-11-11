@@ -3,6 +3,7 @@ import type { SiteContent } from "../../types";
 export const ptWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
   whoWeHelp: {
     title: "Somos um bom encaixe?",
+    subtitle: "Setores e equipes onde geramos mais impacto",
     idealTitle: "Somos ideais para você se...",
     idealItems: [
       "Você está construindo em agritech, biotech ou trabalho científico com impacto real.",

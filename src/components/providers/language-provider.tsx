@@ -7,7 +7,7 @@ import { es } from "@/content/es";
 import { pt } from "@/content/pt";
 import type { Locale, SiteContent } from "@/content/types";
 
-const STORAGE_KEY = "cultivoai-locale";
+const STORAGE_KEY = "cultivolabs-locale";
 const SSR_DEFAULT_LOCALE: Locale = "es";
 
 interface LanguageContextValue {

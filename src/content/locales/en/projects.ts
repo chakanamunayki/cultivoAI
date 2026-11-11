@@ -1,14 +1,14 @@
 import type { SiteContent } from "../../types";
 
 export const enProjectsContent: Pick<SiteContent, "projectsTitle" | "projectsSubtitle" | "projects"> = {
-projectsTitle: "What We've Built",
-projectsSubtitle: "Selected projects from our current work",
+projectsTitle: "Projects",
+projectsSubtitle: "Selected work",
 projects: [
   {
-    title: "Company Brain: Protocol IP, Protected Through Execution",
-    desc: "We built the software for an agri-biotech production platform in Colombia: a protocol builder where scientists author and manage every recipe, and a Company Brain that guides the person running it step by step, without ever exposing the full protocol. The IP stays in the system, not in someone's phone.",
+    title: "Protected knowledge platform for a biotech and vertical farming project",
+    desc: "I built the software for an agri-biotech production platform in Colombia: a protocol builder where scientists author and manage every recipe, and a Company Brain that guides the person running it step by step, without ever exposing the full protocol. The IP stays in the system, not in someone's phone.",
     fullDesc:
-      "The platform turns a biological objective into a controlled, measurable, reproducible plant-production process, and we built the software that runs it end to end. First, the protocol builder: scientists and lab leads author, version, and manage the full protocol in one place, every step, parameter, and sequence. That library of protocols is the IP. Second, the Company Brain: when it is time to run a protocol, the Brain guides the person doing the work one step at a time, what to do now, the parameters, the frequency, the asepsis, and captures their observations back against that step. The operator executes without ever holding the whole recipe. Access is role-gated: the lab technician is guided through the steps, the commercial team sees clients, the director sees everything. Authoring and execution are one loop, and the full protocol and the accumulated data stay in the system, not in the executor's hands.",
+      "The platform turns a biological objective into a controlled, measurable, reproducible plant-production process, and I built the software that runs it end to end. First, the protocol builder: scientists and lab leads author, version, and manage the full protocol in one place, every step, parameter, and sequence. That library of protocols is the IP. Second, the Company Brain: when it is time to run a protocol, the Brain guides the person doing the work one step at a time, what to do now, the parameters, the frequency, the asepsis, and captures their observations back against that step. The operator executes without ever holding the whole recipe. Access is role-gated: the lab technician is guided through the steps, the commercial team sees clients, the director sees everything. Authoring and execution are one loop, and the full protocol and the accumulated data stay in the system, not in the executor's hands.",
     lessons: "The people running a protocol don't need the whole protocol. They need the current step. Authoring and execution are one loop, and the full recipe, the real IP, never has to leave the system.",
     status: "Active",
     image: "",

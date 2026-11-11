@@ -99,7 +99,7 @@ export async function POST(request: Request) {
     // Payload accepted by both Formspree and Web3Forms. Web3Forms also needs
     // an access_key; supply it via LEADS_FORWARD_ACCESS_KEY when using them.
     const payload: Record<string, unknown> = {
-      subject: `New CultivoAI lead: ${name || email}`,
+      subject: `New Cultivo Labs lead: ${name || email}`,
       name: name || "(no name)",
       email,
       source: clean(body.source) || "chatbot",

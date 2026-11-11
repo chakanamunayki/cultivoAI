@@ -198,13 +198,13 @@ export function VoiceConversationMode({
         if (capturedUserInfoProp?.name) {
           // Personalized greeting thanking them for form submission
           greetingText = locale === "es"
-            ? `Hola ${capturedUserInfoProp.name}! Gracias por compartir tus datos. Soy el asistente de CultivoAI. ¿En qué te puedo ayudar?`
-            : `Hi ${capturedUserInfoProp.name}! Thanks for sharing your details. I'm the CultivoAI assistant. How can I help you?`;
+            ? `Hola ${capturedUserInfoProp.name}! Gracias por compartir tus datos. Soy el asistente de Cultivo Labs. ¿En qué te puedo ayudar?`
+            : `Hi ${capturedUserInfoProp.name}! Thanks for sharing your details. I'm the Cultivo Labs assistant. How can I help you?`;
         } else {
           // Generic greeting (form was skipped or not yet filled)
           greetingText = locale === "es"
-            ? "Hola! Soy el asistente de CultivoAI. ¿En qué te puedo ayudar?"
-            : "Hi! I'm the CultivoAI assistant. How can I help you?";
+            ? "¡Hola! Soy el asistente de Cultivo Labs. Cuéntame qué estás construyendo y te ayudo en lo que pueda."
+            : "Hi! I'm the Cultivo Labs assistant. Tell me what you're building and I'll help however I can.";
         }
 
         // Small delay to ensure audio is ready

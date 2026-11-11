@@ -10,32 +10,33 @@ import { SectionHeader } from "@/components/landing/ui/section-header";
 import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils";
 
-interface MissionSectionProps {
-  onOpenChatImpact?: () => void;
+interface SemilleroSectionProps {
+  onOpenChatProject: () => void;
+  onOpenChatInnovation: () => void;
 }
 
-export function MissionSection({ onOpenChatImpact }: MissionSectionProps) {
-  const { content, locale } = useLocale();
-  const { mission } = content;
-  const impactCtaText = locale === "es" ? "Proponer proyecto" : locale === "pt" ? "Propor projeto" : "Propose project";
+// Semillero teaser. Layout and classes reuse the former Mission section.
+// The full Semillero network page is phase 2.
+export function SemilleroSection({ onOpenChatProject, onOpenChatInnovation }: SemilleroSectionProps) {
+  const { content } = useLocale();
+  const { semillero } = content;
 
   return (
-    <section id="mission" className="border-b border-black/10 bg-[#161f1c] py-16 md:py-24">
+    <section id="semillero" className="border-b border-black/10 bg-[#161f1c] py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <SectionHeader
-            title={mission.title}
-            subtitle={mission.tagline}
+            title={semillero.title}
+            subtitle={semillero.subtitle}
             subtitleClassName="text-[#FFFFFF] border-[#FFFFFF]/70"
             tone="onDark"
           />
         </Reveal>
 
-        {/* Statement - Two column layout */}
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Left: Statement text */}
+          {/* Left: body */}
           <Reveal delay={100}>
-            <div className={landingCardClass("dark", "rounded-[24px] p-6 md:p-8")}>
+            <div className={landingCardClass("dark", "h-full rounded-[24px] p-6 md:p-8")}>
               <div
                 className={landingTitleBandClass(
                   "dark",
@@ -43,23 +44,16 @@ export function MissionSection({ onOpenChatImpact }: MissionSectionProps) {
                 )}
               >
                 <h3 className="text-left text-lg font-black leading-tight tracking-tight text-[#FFFFFF] uppercase md:text-xl">
-                  {mission.title}
+                  {semillero.title}
                 </h3>
               </div>
-              <div className="space-y-4">
-                {mission.statement.map((line, index) => (
-                  <p
-                    key={index}
-                    className="text-base leading-relaxed font-semibold text-white/90 md:text-lg"
-                  >
-                    {line}
-                  </p>
-                ))}
-              </div>
+              <p className="text-base leading-relaxed font-semibold text-white/90 md:text-lg">
+                {semillero.body}
+              </p>
             </div>
           </Reveal>
 
-          {/* Right: Tagline highlight */}
+          {/* Right: tagline + two CTAs */}
           <Reveal delay={200}>
             <div className="flex h-full items-center justify-center">
               <div className={landingCardClass("blue", "w-full rounded-[24px] px-8 py-6 text-center hover:-translate-y-1 md:px-12 md:py-8")}>
@@ -70,26 +64,34 @@ export function MissionSection({ onOpenChatImpact }: MissionSectionProps) {
                   )}
                 >
                   <h3 className="text-left text-lg font-black leading-tight tracking-tight text-[#FFFFFF] uppercase md:text-xl">
-                    {mission.title}
+                    {semillero.title}
                   </h3>
                 </div>
                 <span className="text-2xl font-black tracking-tight text-[#FFFFFF] md:text-3xl lg:text-4xl">
-                  {mission.tagline}
+                  {semillero.subtitle}
                 </span>
-                {onOpenChatImpact && (
-                  <div className="mt-6">
-                    <button
-                      type="button"
-                      onClick={onOpenChatImpact}
-                      className={cn(
-                        "w-full px-6 py-3 text-sm font-semibold tracking-[0.08em] md:w-auto",
-                        landingPrimaryDarkButtonClass
-                      )}
-                    >
-                      {impactCtaText}
-                    </button>
-                  </div>
-                )}
+                <div className="mt-6 flex flex-col gap-3 md:flex-row md:justify-center">
+                  <button
+                    type="button"
+                    onClick={onOpenChatProject}
+                    className={cn(
+                      "w-full px-6 py-3 text-sm font-semibold tracking-[0.08em] md:w-auto",
+                      landingPrimaryDarkButtonClass
+                    )}
+                  >
+                    {semillero.projectCta}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onOpenChatInnovation}
+                    className={cn(
+                      "w-full px-6 py-3 text-sm font-semibold tracking-[0.08em] md:w-auto",
+                      landingPrimaryDarkButtonClass
+                    )}
+                  >
+                    {semillero.innovationCta}
+                  </button>
+                </div>
               </div>
             </div>
           </Reveal>

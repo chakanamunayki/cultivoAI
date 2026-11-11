@@ -22,7 +22,7 @@ export const chatFunctionDeclarations: Tool = {
           section_id: {
             type: Type.STRING,
             description:
-              "The ID of the section to scroll to. Valid IDs: 'hero', 'about', 'services', 'partnerships', 'projects', 'stories', 'who-we-help', 'what-happens-next'",
+              "The ID of the section to scroll to. Valid IDs: 'hero', 'services' (what I build), 'who-we-help' (who I work with), 'semillero' (innovation network), 'projects', 'about', 'values' (how I work), 'partnerships' (ways to work together), 'what-happens-next'",
           },
         },
         required: ["section_id"],
@@ -31,7 +31,7 @@ export const chatFunctionDeclarations: Tool = {
     {
       name: "show_project_details",
       description:
-        "Opens a modal with full details about a specific project. Use when users ask about specific projects like 'Company Brain' or 'SetaSouls'.",
+        "Opens a modal with full details about a specific project. Use when users ask about specific projects like 'Protected knowledge platform' or 'SetaSouls'.",
       parameters: {
         type: Type.OBJECT,
         properties: {
@@ -46,7 +46,7 @@ export const chatFunctionDeclarations: Tool = {
     {
       name: "show_service_details",
       description:
-        "Opens a modal with full details about a specific service. Use the site's current service names: 'Company Brain', 'Decision and Automation Systems', 'Custom AI and Software Builds', 'Retreat Ops Systems'.",
+        "Opens a modal with full details about a specific service. Use the site's current service names: 'Software and platforms', 'Data, knowledge and AI systems', 'Proof and records', 'Startup and investment readiness' (Spanish: 'Software y plataformas', 'Sistemas de datos, conocimiento e IA', 'Pruebas y registros', 'Preparación para startups e inversión').",
       parameters: {
         type: Type.OBJECT,
         properties: {

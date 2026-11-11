@@ -1,145 +1,148 @@
 import type { SiteContent } from "../../types";
 
-export const esServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSubtitle" | "services"> = {
-  servicesTitle: "Nuestros Servicios",
+export const esServicesContent: Pick<
+  SiteContent,
+  "servicesTitle" | "servicesTagline" | "servicesSubtitle" | "services"
+> = {
+  servicesTitle: "Qué construyo",
+  servicesTagline:
+    "La tecnología detrás de los buenos proyectos, desde la primera idea hasta la prueba de que funciona.",
   servicesSubtitle:
-    "No vendemos humo. Construimos sistemas prácticos que hacen más fácil ejecutar buen trabajo. ¿No sabes por dónde empezar? Una llamada de 15 minutos es suficiente.",
+    "Sin humo. Construyo sistemas prácticos que ayudan a los buenos proyectos a funcionar bien. ¿No sabes por dónde empezar? Quince minutos bastan.",
   services: [
     {
-      icon: "Brain",
-      title: "Cerebro de Empresa: Capa de Conocimiento Protegida",
-      eng: "Company Brain: Protected Knowledge Layer",
-      description: "La capa de conocimiento para tu IP científica y operativa. Protocolos, procesos y datos de campo se convierten en un solo cerebro estructurado y consultable, con la capa de conocimiento aislada de la capa de ejecución para que tu IP quede protegida y con acceso por rol. Listo para IoT, satélite, datos de laboratorio y campo, MRV y carbono.",
+      icon: "Monitor",
+      title: "Software y plataformas",
+      eng: "Software and platforms",
+      description:
+        "Sitios web, apps y herramientas internas, bien hechas y rápido. Una primera versión en semanas, que luego mejora con el uso real.",
       details: [
-        "Protege la IP de tus protocolos. Tu know-how se vuelve una capa de conocimiento estructurada y versionada, no PDFs sueltos ni la cabeza de las personas.",
-        "La capa de conocimiento está aislada de la capa de ejecución. Lo que el sistema sabe se limita por tenant, proyecto y rol, para que nada se filtre entre ellos.",
-        "Acceso por rol: el técnico de laboratorio ve protocolos, el equipo comercial ve clientes y propuestas, el director ve todo. Nadie ve lo que no le corresponde.",
-        "Evidencia científica estructurada, construida para escalar de 400 documentos a decenas de miles, y lista para ingerir datos de IoT, satélite, laboratorio y campo para MRV y carbono.",
-        "Privacidad por diseño: corre localmente cuando hace falta. Ningún documento tuyo sale de tu sistema al indexar.",
-      ],
-      imageUrl: "/landing/photos/services/ai-assistants.png",
-      animationKey: "company-brain",
-      modal: {
-        whatItMeans:
-          "Una capa de conocimiento protegida construida sobre tu IP científica y operativa real: protocolos, procesos, historial de proyectos, datos comerciales. Tu equipo pregunta en lenguaje natural y el cerebro responde con lo que tu negocio ya sabe, limitado a su rol.",
-        whyItMatters:
-          "La IP de tus protocolos es tu ventaja, y hoy está atrapada en PDFs, en la cabeza de personas clave, en WhatsApp. Cuando alguien no está disponible se pierde, cuando llega alguien nuevo empieza desde cero, y sin aislamiento se filtra entre roles y clientes. El Company Brain que construimos para una plataforma de producción agri-biotech en Colombia resolvió exactamente esto y sigue aprendiendo cada día que el equipo lo usa.",
-        whatsIncluded: [
-          "Ingesta de tu IP real: protocolos, procesos, comercial, proyectos (PDF, Word, Excel)",
-          "Capa de conocimiento aislada de la capa de ejecución, limitada por tenant, proyecto y rol",
-          "Acceso por rol: cada persona llega a su dominio, nada más",
-          "Listo para IoT, satélite, datos de laboratorio y campo, MRV y carbono",
-          "Privacidad por diseño: corre localmente, sin dependencia de la nube para indexar",
-        ],
-        idealFit: [
-          "Laboratorios y equipos agritech cuya IP de protocolos es el activo central",
-          "Organizaciones donde cada rol necesita contexto científico y comercial distinto sin cruzar líneas",
-          "Equipos que necesitan que su know-how se quede en la empresa cuando las personas se van",
-        ],
-        typicalOutcome:
-          "Tu IP de protocolos queda protegida, estructurada y consultable. El equipo deja de buscar en archivos y de esperar a la única persona que sabe. Las respuestas llegan en segundos, limitadas a cada rol, y el know-how se queda cuando las personas se van.",
-      },
-    },
-    {
-      icon: "BarChart3",
-      title: "Sistemas de Decisión y Automatización",
-      eng: "Decision and Automation Systems",
-      description: "La capa de ejecución que corre sobre tu conocimiento. Dashboards, automatizaciones y asistentes que convierten tus datos y protocolos en decisiones diarias y operaciones sin intervención manual.",
-      details: [
-        "Dashboards de decisión: datos de campo, laboratorio y comercial en una sola vista en vivo, para actuar sobre las señales temprano en vez de esperar al cierre de mes.",
-        "Automatizaciones que quitan trabajo repetitivo: acogida, onboarding, reportes y transiciones que corren sin que alguien los persiga.",
-        "Asistentes de IA entrenados con tu negocio: responden, califican, agendan y enrutan en WhatsApp, email y web.",
-      ],
-      imageUrl: "/landing/photos/services/decision-dashboards.jpg",
-      animationKey: "dashboards",
-      modal: {
-        whatItMeans:
-          "Los sistemas de trabajo que se apoyan sobre tu capa de conocimiento: dashboards para ver, automatizaciones para ejecutar y asistentes para responder. Todo construido sobre lo que tu negocio ya sabe.",
-        whyItMatters:
-          "Un cerebro protegido es solo la mitad del valor. La otra mitad es actuar sobre él cada día sin sumar personal. Aquí es donde el conocimiento se convierte en decisiones más rápidas y menos cosas que se caen.",
-        whatsIncluded: [
-          "Definición de KPIs y señales: qué observar y por qué",
-          "Consolidación de datos desde hojas de cálculo, bases de datos, sensores y CRMs en una sola vista en vivo",
-          "Automatización de flujos clave: acogida, onboarding, reportes, seguimiento",
-          "Asistentes de IA para soporte, calificación, agenda y cotizaciones",
-          "Integraciones con WhatsApp, email y calendarios, con una ventana corta de iteración tras el lanzamiento",
-        ],
-        idealFit: [
-          "Equipos cuyos datos están repartidos entre herramientas, archivos y dispositivos de campo",
-          "Operaciones con pasos manuales repetitivos que siguen sacando a la gente del trabajo real",
-          "Quieres actuar sobre lo que sabes a diario, no reconciliarlo cada mes",
-        ],
-        typicalOutcome:
-          "Una sola vista en vivo de la operación, flujos clave corriendo solos y respuestas más rápidas para clientes y equipo. Menos tareas manuales, decisiones más tempranas.",
-      },
-    },
-    {
-      icon: "Rocket",
-      title: "Desarrollos de IA y Software a Medida",
-      eng: "Custom AI and Software Builds",
-      description: "De la idea a la primera versión. Herramientas de IA, agentes y software a medida, construidos para cómo funciona tu operación de verdad, con guía honesta sobre qué construir y qué dejar fuera.",
-      details: [
-        "Herramientas y software interno a medida: apps para productores, herramientas de laboratorio, portales de clientes, agentes internos.",
-        "Sitios web modernos y rápidos y experiencias digitales que apoyan confianza, conversión y seguimiento.",
-        "Validación técnica y de mercado: el stack correcto, escalable desde el día uno, sin sobreconstruir.",
+        "Sitios web que explican tu proyecto con claridad y generan confianza.",
+        "Apps y herramientas internas hechas para cómo trabaja tu equipo de verdad.",
+        "Primera versión en semanas, que luego mejora con el uso real.",
       ],
       imageUrl: "/landing/photos/services/websites-digital-experiences.webp",
       animationKey: "software-web",
       modal: {
         whatItMeans:
-          "El socio de construcción para innovadores que necesitan herramientas reales, no slides. Diseñamos y lanzamos el software, los agentes y las experiencias web a medida que tu operación necesita, y te decimos claro qué construir ahora y qué después.",
+          "Diseño y construyo el software que tu proyecto necesita: sitios web, apps, herramientas de campo, portales para clientes y herramientas internas. Te digo claro qué construir ahora y qué puede esperar.",
         whyItMatters:
-          "La mayoría de los equipos agritech y biotech no tienen un fundador técnico en la sala. Ese vacío cuesta meses y vueltas incorrectas. Esta es esa persona: alguien que ha construido y lanzado productos reales, decidiendo qué importa y construyéndolo contigo.",
+          "La mayoría de los buenos proyectos no tienen un fundador técnico en la mesa. Ese vacío cuesta meses y caminos equivocados. He cofundado y construido startups, así que puedo tomar las decisiones técnicas y construir contigo.",
         whatsIncluded: [
-          "Alcance y ruta: qué construir ahora y qué después",
-          "Software a medida, herramientas internas y agentes de IA construidos alrededor de tus flujos",
-          "Sitios web modernos y experiencias digitales enfocadas en performance y conversión",
-          "Decisiones técnicas y de stack que se mantienen defendibles a medida que creces",
-          "Un plan de lanzamiento, analítica básica y una ventana corta de iteración tras el lanzamiento",
+          "Alcance y hoja de ruta: qué construir ahora y qué después",
+          "Sitios web, apps y herramientas internas hechas alrededor de tus flujos de trabajo",
+          "Decisiones técnicas que se sostienen a medida que creces",
+          "Lanzamiento, analítica básica y un periodo corto de mejoras después del lanzamiento",
         ],
         idealFit: [
-          "Equipos agritech y biotech en etapa temprana construyendo algo real",
-          "Fundadores sin socio técnico que necesitan claridad e impulso",
-          "Quieres herramientas construidas para tu operación, no soluciones genéricas que encajan a medias",
+          "Proyectos que necesitan herramientas reales, no presentaciones",
+          "Fundadores sin socio técnico que necesitan claridad y avance",
+          "Equipos que quieren herramientas hechas para su trabajo, no software genérico que encaja a medias",
         ],
         typicalOutcome:
-          "Una primera versión que sí puedes lanzar y de la que aprender, construida sobre decisiones técnicas defendibles, con menos vueltas incorrectas y menos presupuesto desperdiciado.",
+          "Una primera versión que puedes lanzar y de la que puedes aprender, construida sobre decisiones técnicas sólidas, con menos desvíos y menos presupuesto perdido.",
       },
     },
     {
-      icon: "CalendarCheck",
-      title: "Sistemas para Retiros (Bienestar)",
-      eng: "Retreat Ops Systems (Wellness)",
+      icon: "Layers",
+      title: "Sistemas de datos, conocimiento e IA",
+      eng: "Data, knowledge and AI systems",
       description:
-        "Nuestra línea de bienestar. Un sistema operativo completo para retiros: desde la primera reserva hasta el seguimiento final, con flujos claros para el equipo y una experiencia fluida para los huéspedes.",
+        "Un solo lugar para tu conocimiento, tus datos y tus decisiones. Protocolos protegidos, datos de campo y laboratorio ordenados, e IA donde de verdad ayuda.",
       details: [
-        "Reservas, pagos, facturación",
-        "Mensajería pre, durante, post retiro",
-        "Itinerarios, checklists, roles",
-        "Feedback, NPS, seguimiento",
-        "Dashboard de ocupación, ingresos, satisfacción",
+        "Tu conocimiento en un solo lugar protegido y fácil de consultar, con acceso por rol.",
+        "Datos de campo, laboratorio y sensores ordenados en vistas para decidir.",
+        "Automatizaciones y asistentes donde ahorran tiempo real. IA solo donde ayuda.",
       ],
-      imageUrl: "/landing/photos/services/health-wellness.jpg",
-      animationKey: "retreat-ops",
+      imageUrl: "/landing/photos/services/ai-assistants.png",
+      animationKey: "company-brain",
       modal: {
         whatItMeans:
-          "Nuestra línea de bienestar: un sistema de operación para retiros. Reservas, pagos, mensajería, itinerarios, checklists, feedback, seguimiento, dashboards.",
+          "Una capa protegida de conocimiento y datos construida sobre lo que tu proyecto de verdad sabe: protocolos, procesos, datos de campo y laboratorio, historia. Encima, los dashboards, automatizaciones y asistentes que lo convierten en decisiones diarias.",
         whyItMatters:
-          "Menos caos operativo. Mejor experiencia para huéspedes. El equipo recupera foco.",
+          "Tu conocimiento suele ser tu activo más valioso, y hoy vive en PDFs, en la cabeza de las personas y en WhatsApp. Cuando alguien se va, se va con esa persona. Construí exactamente esta capa para un proyecto de biotecnología y agricultura vertical, y se vuelve más útil cada día que el equipo la usa.",
         whatsIncluded: [
-          "Reservas, pagos, facturación",
-          "Mensajería pre, durante, post retiro",
-          "Itinerarios, checklists, roles",
-          "Feedback, NPS, seguimiento",
-          "Dashboard de ocupación, ingresos, satisfacción",
+          "Tus protocolos, procesos y documentos convertidos en una capa de conocimiento ordenada y versionada",
+          "Acceso por rol: cada persona ve lo que necesita, nada más",
+          "Datos de campo, laboratorio, sensores y satélite en una sola vista en vivo",
+          "Automatizaciones y asistentes de IA para el trabajo repetitivo",
+          "Privacidad desde el diseño: corre en tu propia infraestructura cuando hace falta",
         ],
         idealFit: [
-          "Retiros con operación repetible",
-          "Quieres menos mensajes sueltos, más claridad",
-          "Necesitas seguimiento sin fricción para huéspedes",
+          "Equipos cuyos protocolos o conocimiento son el activo central",
+          "Proyectos con datos dispersos entre archivos, herramientas y equipos de campo",
+          "Equipos que quieren que su conocimiento se quede cuando las personas se van",
         ],
         typicalOutcome:
-          "Una operación más clara. Menos caos. Seguimiento consistente. Mejor experiencia.",
+          "Tu conocimiento queda protegido y fácil de encontrar, tus datos se convierten en decisiones, y el equipo deja de esperar a la única persona que sabe.",
+      },
+    },
+    {
+      icon: "BarChart3",
+      title: "Pruebas y registros",
+      eng: "Proof and records",
+      description:
+        "Financiadores, compradores y socios quieren evidencia. Construyo el registro que muestra lo que hiciste y que funcionó: seguimiento de impacto, MRV para carbono y biochar, datos de restauración y supervivencia, un solo historial auditable.",
+      details: [
+        "Seguimiento de impacto en el que financiadores y socios pueden confiar.",
+        "MRV para carbono y biochar, datos de restauración y supervivencia.",
+        "Un solo historial auditable de lo que hiciste y lo que lograste.",
+      ],
+      imageUrl: "/landing/photos/services/decision-dashboards.jpg",
+      animationKey: "dashboards",
+      modal: {
+        whatItMeans:
+          "Un sistema que registra lo que tu proyecto hace en el terreno y lo que logra, de una forma que financiadores, compradores, certificadores y socios pueden verificar.",
+        whyItMatters:
+          "Un buen trabajo que no se puede demostrar es difícil de financiar y de vender. Compradores de carbono, inversores de impacto y fondos piden evidencia. Un registro limpio y auditable convierte tu trabajo en algo a lo que pueden decir que sí.",
+        whatsIncluded: [
+          "Definición de qué medir y por qué, según quién lo va a leer",
+          "Captura de datos de campo: parcelas, siembras, supervivencia, suelo, fotos, GPS",
+          "Flujos de MRV para carbono y biochar",
+          "Reportes y dashboards para financiadores, compradores y socios",
+          "Un solo historial auditable, listo para verificación",
+        ],
+        idealFit: [
+          "Proyectos de restauración, agricultura regenerativa, biochar y carbono",
+          "Equipos que reportan a financiadores, compradores o certificadores",
+          "Proyectos que tienen que demostrar que la tierra se está recuperando",
+        ],
+        typicalOutcome:
+          "Evidencia que puedes entregar a un financiador o comprador con confianza, y mucho menos tiempo armando reportes a mano.",
+      },
+    },
+    {
+      icon: "Rocket",
+      title: "Preparación para startups e inversión",
+      eng: "Startup and investment readiness",
+      description:
+        "He estado en la silla del cofundador. Te ayudo a darle forma al modelo, los números y la historia para que inversores y financiadores puedan decir que sí.",
+      details: [
+        "Un modelo de negocio que aguanta preguntas difíciles.",
+        "Números que inversores y financiadores pueden seguir.",
+        "Una historia clara, una presentación y el plan técnico que la respalda.",
+      ],
+      imageUrl: "/landing/photos/services/startup-advisory.png",
+      animationKey: "startup",
+      modal: {
+        whatItMeans:
+          "Ayuda práctica para preparar tu proyecto ante inversores, financiadores y socios: el modelo, los números, la historia y el plan técnico que lo respalda.",
+        whyItMatters:
+          "Muchos buenos proyectos se frenan porque la idea es fuerte pero el caso para invertir no lo es. He cofundado y construido startups, así que conozco las preguntas que hacen los inversores y cómo responderlas con honestidad.",
+        whatsIncluded: [
+          "Revisión del modelo de negocio y la lógica de ingresos",
+          "Modelo financiero y números clave",
+          "Historia y presentación para inversores",
+          "Plan técnico y hoja de ruta con costos",
+          "Presentaciones a través de mi red cuando el encaje es bueno",
+        ],
+        idealFit: [
+          "Fundadores que se preparan para levantar capital o aplicar a financiación",
+          "Proyectos con impacto fuerte que necesitan un caso de negocio más fuerte",
+          "Equipos que quieren la mirada de un cofundador con experiencia sin contratar uno",
+        ],
+        typicalOutcome:
+          "Un modelo, unos números y una historia que se sostienen frente a inversores y financiadores, y un plan claro de lo que va a construir el dinero.",
       },
     },
   ],

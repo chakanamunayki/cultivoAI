@@ -64,63 +64,6 @@ export const pt: SiteContent = {
 
   about: ptAbout,
 
-  howWeWork: {
-    title: "Como Trabalhamos",
-    subtitle: "Princípios que guiam cada projeto",
-    pillars: [
-      {
-        icon: "RefreshCw",
-        title: "Ganha-Ganha ou Sem Acordo",
-        description:
-          "Só aceitamos projetos onde as expectativas são claras e os dois lados ganham. Se não pudermos agregar valor real, dizemos desde o início.",
-      },
-      {
-        icon: "Sprout",
-        title: "Sistemas de Ponta a Ponta",
-        description:
-          "Pensamos de ponta a ponta. Software, fluxos, dados, decisões, comunicação e design precisam funcionar juntos, não como peças soltas.",
-      },
-      {
-        icon: "Users",
-        title: "Sempre humanos",
-        description:
-          "A IA é uma ferramenta que usamos para o bem. Construímos com cuidado com o tom, a confiança e as pessoas do outro lado da tela.",
-        isFullWidth: true,
-      },
-    ],
-  },
-
-  whatWeDo: {
-    title: "Como Ajudamos",
-    subtitle: "Integração de IA prática para negócios reais",
-    intro:
-      "Trabalhamos com times de agritech e biotech que geram impacto social e ambiental real. Entendemos como a operação funciona, conectamos o que já existe, protegemos a IP e damos a cada pessoa acesso apenas ao que é da sua alçada. O que construímos depende do projeto: a camada de conhecimento, plataformas de dados, automação, IA, integrações.",
-    columns: [
-      {
-        title: "OTIMIZAR",
-        items: [
-          "Reduzir trabalho repetitivo",
-          "Criar uma única fonte de verdade",
-          "Melhorar a coordenação e o acompanhamento",
-          "Automatizar relatórios",
-        ],
-      },
-      {
-        title: "EXPANDIR",
-        items: [
-          "Respostas mais rápidas sem perder proximidade",
-          "Conteúdo e conhecimento consistentes",
-          "Melhores decisões com sinais reais",
-          "Novas formas de apoiar usuários e clientes",
-        ],
-      },
-    ],
-    servicesPreview: {
-      title: "Os nossos serviços incluem:",
-      linkText: "Ver todos os serviços",
-    },
-  },
-
   whyUs: {
     notTitle: "O que NÃO somos",
     notItems: [
@@ -135,6 +78,15 @@ export const pt: SiteContent = {
       "Builders human-first que cuidam do tom, da confiança e dos resultados.",
       "Da Colômbia, trabalhando para o mundo.",
     ],
+  },
+
+  semillero: {
+    title: "Semillero",
+    subtitle: "Espanhol para viveiro de sementes. Onde bons projetos crescem juntos.",
+    body:
+      "Converso toda semana com inovadores do mundo todo: novas tecnologias de energia, solo, água e saúde que procuram lugares reais para funcionar. E conheço projetos na América Latina que precisam exatamente disso. O Semillero une os dois, para que boas pessoas e boas inovações se fortaleçam juntas.",
+    projectCta: "Tenho um projeto",
+    innovationCta: "Tenho uma inovação",
   },
 
   ...ptServicesContent,

@@ -92,21 +92,18 @@ function LocaleSwitcher({
 // Keep nav resilient even if content drifts: only allow links to real homepage section IDs.
 const VALID_SECTION_IDS = new Set([
   "hero",
-  "about",
-  "how-we-work",
-  "what-we-do",
-  "why-us",
   "services",
   "who-we-help",
-  "partnerships",
+  "semillero",
   "projects",
+  "about",
   "values",
-  "mission",
+  "partnerships",
   "what-happens-next",
 ]);
 
 // Desktop nav shows only these key items
-const DESKTOP_NAV_KEYS = ["services", "projects", "about"];
+const DESKTOP_NAV_KEYS = ["services", "who-we-help", "semillero", "projects", "about"];
 
 export function Nav({ onScrollTo, onOpenChat }: NavProps) {
   const { locale, setLocale, content } = useLocale();

@@ -10,131 +10,82 @@ import type { SiteContent } from "./types";
 
 export const en: SiteContent = {
   nav: [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Partners", href: "#partnerships" },
+    { label: "What I build", href: "#services" },
+    { label: "Who I work with", href: "#who-we-help" },
+    { label: "Semillero", href: "#semillero" },
     { label: "Projects", href: "#projects" },
-    { label: "Process", href: "#what-happens-next" },
+    { label: "About", href: "#about" },
   ],
 
   marquee: [
-    "Agritech",
-    "Biotech",
-    "Protocol IP protected",
-    "Lab and field data",
-    "MRV and carbon",
-    "Role-gated access",
-    "Runs on your infrastructure",
-    "Senior technical partner",
-    "Direct collaboration",
-    "Colombia, worldwide",
+    "Land and regeneration",
+    "Self-sufficient communities",
+    "Holistic health",
+    "Nature and agritech",
+    "Software and data",
+    "AI where it helps",
+    "Impact you can prove",
+    "Investor-ready",
+    "Innovation network",
+    "Colombia to the world",
   ],
 
   hero: {
-    tagline: "AI AND DATA SYSTEMS FOR AGRITECH AND BIOTECH",
-    line1: "The technical partner for agritech and biotech innovators",
-    subheadline: "We build the data and AI layer behind serious science. Protected protocols, structured evidence, and lab and field data your team can act on.",
+    tagline: "TECH FOR GOOD PROJECTS",
+    line1: "Your hands-on tech partner for projects that care for land, people and communities.",
+    subheadline:
+      "I've co-founded and built startups. Now I help good projects in regeneration, self-sufficient living, holistic health and nature build their tech, find the right innovations and get ready for investment.",
     services: [],
     servicesDone: "",
     audience: [],
-    outcomes: ["Protected protocol IP", "Structured scientific evidence", "Data ready for decisions"],
+    outcomes: [],
     audienceLabel: "Built for:",
     audienceChips: [
-      "Agritech",
-      "Biotech and research labs",
-      "Controlled-environment agriculture",
-      "Regenerative, MRV and carbon",
-      "Mission-led startups",
-      "Wellness and holistic",
+      "Land and regeneration",
+      "Self-sufficient communities",
+      "Holistic health and natural products",
+      "Nature and agritech",
     ],
-    tertiaryCta: "Explore services",
-    microcopy:
-      "Private data. Runs on your infrastructure when it needs to. One senior technical partner, start to finish.",
-    terminalLabel: "How we work:",
+    tertiaryCta: "What I build",
+    microcopy: "One founder, start to finish. Based in Colombia, working worldwide.",
+    terminalLabel: "How I work:",
     line3: "",
     cta: "Let's talk",
-    secondaryCta: "View projects",
+    secondaryCta: "See projects",
     noDrama: "No chaos.",
     noDramaText: "Clear scope. Fast version one. Direct iteration.",
     impactSection: {
-      text: "Colombia-based, working worldwide. Direct collaboration. Clear scope.",
+      text: "Based in Colombia, working worldwide. Direct collaboration. Clear scope.",
       cta: "Let's talk",
     },
   },
 
   about: enAbout,
 
-  howWeWork: {
-    title: "How We Work",
-    subtitle: "Principles that guide every project",
-    pillars: [
-      {
-        icon: "RefreshCw",
-        title: "Win-Win or No Deal",
-        description:
-          "We only take projects where expectations are clear and both sides benefit. If we cannot add real value, we will tell you early.",
-      },
-      {
-        icon: "Sprout",
-        title: "End-to-End Systems",
-        description:
-          "We think end-to-end. Software, workflows, data, decisions, communication, and design need to work together, not as separate pieces.",
-      },
-      {
-        icon: "Users",
-        title: "Always Human",
-        description:
-          "AI is a tool we use for good. We build with care for tone, trust, and real people on the other side of the screen.",
-        isFullWidth: true,
-      },
-    ],
-  },
-
-  whatWeDo: {
-    title: "How We Help",
-    subtitle: "Practical AI integration for real businesses",
-    intro:
-      "We work with agritech and biotech teams building real social and environmental impact. We understand how the operation works, connect what already exists, protect the IP, and give each person access to only what they need. What we build depends on the project: the knowledge layer, data platforms, automation, AI, integrations.",
-    columns: [
-      {
-        title: "OPTIMIZE",
-        items: [
-          "Reduce repetitive work",
-          "Create one source of truth",
-          "Improve handoffs and follow-through",
-          "Make reporting automatic",
-        ],
-      },
-      {
-        title: "EXPAND",
-        items: [
-          "Faster responses without losing warmth",
-          "Consistent content and knowledge sharing",
-          "Better decision-making with real signals",
-          "New ways to support users and customers",
-        ],
-      },
-    ],
-    servicesPreview: {
-      title: "Our services include:",
-      linkText: "View all services",
-    },
-  },
-
+  // Not rendered on the page; fed to the chat assistant as positioning context.
   whyUs: {
-    notTitle: "What we're NOT",
+    notTitle: "What I'm NOT",
     notItems: [
       "A big agency with handoffs and junior delivery.",
-      "Hype-driven consultants selling you a trend.",
-      "A team that makes you feel confused on purpose.",
+      "A hype-driven consultant selling you a trend.",
+      "Someone who makes things sound complicated on purpose.",
     ],
-    yesTitle: "What we ARE",
+    yesTitle: "What I AM",
     yesItems: [
-      "A small senior team that works directly with you.",
-      "System builders who ship version one quickly, then improve.",
-      "Human-first builders who care about tone, trust, and outcomes.",
-      "Colombia-based, working worldwide.",
+      "A startup co-founder who designs and builds the system myself.",
+      "A builder who ships version one fast, then improves it with real use.",
+      "Someone who only takes deals that are good for everyone in them (ayni).",
+      "Based in Colombia, working across Latin America and worldwide.",
     ],
+  },
+
+  semillero: {
+    title: "Semillero",
+    subtitle: "Spanish for seedbed. Where good projects grow together.",
+    body:
+      "I talk every week with innovators around the world: new energy, soil, water and health technologies looking for real places to work. And I know projects across Latin America that need exactly that. Semillero brings them together, so good people and good innovations get stronger side by side.",
+    projectCta: "I have a project",
+    innovationCta: "I have an innovation",
   },
 
   ...enServicesContent,

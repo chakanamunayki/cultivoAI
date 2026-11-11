@@ -63,6 +63,7 @@ export function WhatHappensNextSection(_props: WhatHappensNextSectionProps) {
                       </h3>
                     </div>
 
+                    {step.description && (
                     <div className="p-4 md:p-6 lg:p-8">
                       <p
                         className={cn(
@@ -73,6 +74,7 @@ export function WhatHappensNextSection(_props: WhatHappensNextSectionProps) {
                         {step.description}
                       </p>
                     </div>
+                    )}
                   </div>
                 );
               })()}

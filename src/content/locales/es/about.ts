@@ -1,50 +1,49 @@
 import type { AboutCopy } from "../../types";
 
 export const esAbout: AboutCopy = {
-    title: "Quiénes Somos",
-    subtitle: "Un fundador técnico con más de 20 años lanzando productos reales, y un equipo pequeño desde Colombia. Tomamos proyectos que generan impacto social y ambiental real.",
+    title: "Quién soy",
+    subtitle: "Un fundador que volvió a la tierra.",
     viewMoreLabel: "Ver más",
-    footerNote:
-      "**Para proyectos de mayor impacto, contamos con expertos técnicos que nos apoyan cuando es necesario.**",
+    footerNote: "**Para proyectos más grandes sumo especialistas de confianza de mi red.**",
     teamMembers: [
       {
         id: "paul",
         name: "Paul Ronayne",
-        title: "Fundador técnico. Sistemas de IA y datos.",
+        title: "Fundador. Constructor de startups. Con las manos en la tierra.",
         description:
-          "Más de 20 años construyendo empresas. Cofundé NBN23, una plataforma de datos deportivos que se asoció con FIBA y llegó a más de 70 países, y Nagi, tecnología de seguridad y rendimiento acuático desplegada en colegios y piscinas. Construí solo, de punta a punta, toda la plataforma de software de un proyecto de biotecnología y agricultura vertical. Construyo la capa de datos e IA para equipos de agritech y biotech.",
+          "Más de 20 años construyendo empresas. Cofundé NBN23, una plataforma de datos deportivos que se asoció con FIBA y llegó a más de 70 países, y Nagi, tecnología de seguridad acuática usada en colegios y piscinas. Después volví a mis raíces. Hoy vivo en Colombia y construyo tecnología para proyectos que cuidan la tierra, las personas y las comunidades, incluida la plataforma completa de un proyecto de biotecnología y agricultura vertical, construida de punta a punta, solo.",
         imageUrl: "/landing/photos/team/paul.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
         bio: {
           headline:
-            "Fundador técnico. He lanzado plataformas de datos a más de 70 países, y construyo la capa de IA y datos para agritech y biotech.",
+            "Cofundador de startups que volvió a construir con las manos, para proyectos que cuidan la tierra, las personas y las comunidades.",
           sections: [
             {
-              title: "Qué significa",
+              title: "De dónde vengo",
               content:
-                "Soy quien diseña y construye el sistema, no una capa de gestores de cuenta. Veinte años cofundando y lanzando productos: NBN23 (datos deportivos, socio de FIBA, más de 70 países) y Nagi (tecnología de seguridad y rendimiento acuático, televisión nacional española, desplegada en colegios y piscinas).",
+                "Veinte años cofundando y construyendo empresas: NBN23 (datos deportivos, socio de FIBA, más de 70 países) y Nagi (tecnología de seguridad y rendimiento acuático, en la televisión nacional española, usada en colegios y piscinas).",
             },
             {
-              title: "Por qué importa",
+              title: "Qué hago hoy",
               content:
-                "Para equipos basados en ciencia, lo difícil es proteger la IP y convertir los datos de laboratorio y campo en decisiones. Construí exactamente eso para un proyecto de biotecnología y agricultura vertical, solo, desde la creación del protocolo hasta la ejecución con acceso por rol.",
+                "Vivo en Colombia y construyo la tecnología detrás de los buenos proyectos: software, sistemas de datos y conocimiento, registros de impacto y el caso de negocio para inversores. Construí solo, de punta a punta, la plataforma completa de un proyecto de biotecnología y agricultura vertical.",
             },
             {
-              title: "Qué incluye",
+              title: "Cómo trabajo",
               content:
-                "Arquitectura práctica, diseño de aislamiento de IP, alcance del MVP y un plan de construcción con costos. Definimos el alcance juntos, lanzamos por fases y me mantengo técnico de principio a fin.",
+                "Lo diseño, lo construyo y voy al terreno. Sin gestores de cuenta, sin equipo junior. Primera versión rápido, y luego mejor con el uso real.",
             },
             {
-              title: "Ideal para",
+              title: "Con quién trabajo",
               content:
-                "Fundadores de agritech y biotech que generan impacto social y ambiental real, que quieren un socio técnico senior con quien hablar directamente, no un equipo de agencia rotativo.",
+                "Buena gente con buenos proyectos de regeneración, comunidades autosuficientes, salud holística y naturaleza y agritech, en Latinoamérica y el mundo.",
             },
             {
-              title: "Resultado típico",
+              title: "Más allá de construir",
               content:
-                "Un sistema que funciona, que protege tus protocolos, estructura tu evidencia y convierte tus datos en decisiones, construido por la persona con la que realmente hablas.",
+                "A través de Semillero conecto a innovadores con los proyectos que los necesitan, para que la buena gente y las buenas innovaciones crezcan juntas.",
             },
           ],
           linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
@@ -53,39 +52,23 @@ export const esAbout: AboutCopy = {
       {
         id: "rocky",
         name: "Rocky Ronayne",
-        title: "Especialista en sistemas IA",
+        title: "La nueva generación. Semilla.",
         description:
-          "Rocky construye flujos, asistentes y dashboards de IA que ayudan a los equipos a avanzar más rápido y con consistencia. Práctico, con criterio de diseño y enfoque en resultados.",
+          "La nueva generación. Construye con herramientas de IA junto a Paul y lleva Semilla, su propio fondo para buenos proyectos.",
         imageUrl: "/landing/photos/team/rocky.jpeg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
-          headline: "Sistemas de IA prácticos enfocados en resultados reales",
+          headline: "La nueva generación, construyendo con IA y apoyando buenos proyectos.",
           sections: [
             {
-              title: "Qué significa",
+              title: "Qué hago",
               content:
-                "Construyo flujos, asistentes y dashboards de IA que ayudan a equipos a mantener consistencia y reducir trabajo repetitivo.",
+                "Construyo con herramientas de IA junto a mi papá, Paul, en los proyectos que tomamos juntos.",
             },
             {
-              title: "Por qué importa",
-              content:
-                "Un sistema solo sirve si la gente lo usa. Me enfoco en claridad, confiabilidad y en que el siguiente paso sea obvio.",
-            },
-            {
-              title: "Qué incluye",
-              content:
-                "Versión uno simple, construida y probada de punta a punta. Notas de handoff claras e iteración según lo que aprendamos del uso real.",
-            },
-            {
-              title: "Ideal para",
-              content:
-                "Equipos que quieren ayuda práctica con IA sin complejidad, y que cuidan experiencia de usuario y tono.",
-            },
-            {
-              title: "Resultado típico",
-              content:
-                "Un flujo o asistente que reduce trabajo manual y mejora seguimiento de forma consistente semana a semana.",
+              title: "Semilla",
+              content: "Llevo Semilla, mi propio fondo para buenos proyectos.",
             },
           ],
         },
@@ -93,39 +76,24 @@ export const esAbout: AboutCopy = {
       {
         id: "marta",
         name: "Marta Ronayne",
-        title: "Líder de wellness. Practicante holística y fundadora de marca.",
+        title: "Terapeuta holística. Fundadora de Munayki.",
         description:
-          "Marta lidera nuestro trabajo en la vertical de bienestar. Fundó su propia marca de bienestar holístico y practica como facilitadora de Reiki y meditación, así los clientes de bienestar son guiados por alguien que vive ese mundo, no que solo lee sobre él.",
+          "Terapeuta holística y fundadora de Munayki. Lidera nuestro trabajo en productos naturales y medicina holística y ancestral para el bienestar.",
         imageUrl: "/landing/photos/team/marta.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
-          headline: "Una practicante holística real liderando el trabajo de la vertical de bienestar.",
+          headline: "Terapeuta holística y fundadora de Munayki.",
           sections: [
             {
-              title: "Qué significa",
+              title: "Munayki",
               content:
-                "Lidero nuestro trabajo con equipos de bienestar y holísticos. Tengo mi propia marca de bienestar holístico y facilito Reiki y meditación, así que entiendo este mundo desde adentro, no desde una diapositiva.",
+                "Munayki viene de munay, la palabra quechua para el amor. Es el hogar de la innovación alrededor de productos naturales y medicina holística y ancestral para el bienestar.",
             },
             {
-              title: "Por qué importa",
+              title: "Qué lidero",
               content:
-                "El público de bienestar nota en segundos si de verdad entiendes su mundo. Cuando una practicante real lidera el trabajo, el lenguaje, la confianza y la experiencia caen bien en vez de sentirse prestados.",
-            },
-            {
-              title: "Qué incluye",
-              content:
-                "Guía de dominio para proyectos de bienestar, marca y lenguaje que encajan con cómo piensa de verdad este público, y feedback honesto sobre lo que sí y no va a resonar con las personas.",
-            },
-            {
-              title: "Ideal para",
-              content:
-                "Marcas de bienestar, holísticas y de wellbeing que quieren un socio que viva su mundo, no solo que construya software para él.",
-            },
-            {
-              title: "Resultado típico",
-              content:
-                "Un producto y una voz en los que el público de bienestar confía, porque los moldeó alguien de esa comunidad.",
+                "Lidero nuestro trabajo en productos naturales y medicina holística y ancestral para el bienestar, para que los proyectos de este mundo los guíe alguien que lo vive.",
             },
           ],
         },

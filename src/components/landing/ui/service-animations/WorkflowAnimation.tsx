@@ -6,7 +6,7 @@ import type { Locale } from "@/content/types";
 
 // Central hub and surrounding apps layout
 const NODES = [
-    { id: "ai", label: "Cultivo AI Hub", x: 220, y: 100, type: "ai" },
+    { id: "ai", label: "Cultivo Labs Hub", x: 220, y: 100, type: "ai" },
     { id: "content", label: "Content Mgmt", x: 80, y: 40, type: "doc" },
     { id: "social", label: "Social Media", x: 360, y: 40, type: "social" },
     { id: "team", label: "Team Comms", x: 80, y: 160, type: "msg" },

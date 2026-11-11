@@ -1,5 +1,5 @@
 /**
- * CultivoAI Content System
+ * Cultivo Labs Content System
  *
  * This module exports all content-related types and utilities
  * for the bilingual (Spanish/English) landing page.

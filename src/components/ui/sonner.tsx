@@ -10,7 +10,7 @@ import {
 import { Toaster as Sonner, type ToasterProps } from "sonner"
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  // CultivoAI uses single Brutalist light theme - no dark mode
+  // Cultivo Labs uses single Brutalist light theme - no dark mode
   return (
     <Sonner
       theme="light"

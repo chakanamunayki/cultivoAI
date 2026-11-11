@@ -62,40 +62,39 @@ async function detectServerLocale(): Promise<Locale> {
 
 export const metadata: Metadata = {
   title: {
-    default: "CultivoAI - Consultoría en IA y Automatización",
-    template: "%s | CultivoAI",
+    default: "Cultivo Labs · Tu socio tecnológico para proyectos que cuidan la tierra, las personas y las comunidades",
+    template: "%s | Cultivo Labs",
   },
   description:
-    "Paul & Rocky - Padre e hijo construyendo soluciones de IA y automatización desde Colombia para el mundo. Acceso directo, sin intermediarios.",
+    "Cofundador de startups que volvió a construir con las manos. Ayudo a buenos proyectos de regeneración, comunidades autosuficientes, salud holística y naturaleza a construir su tecnología, encontrar las innovaciones adecuadas y prepararse para la inversión. Desde Colombia, para Latinoamérica y el mundo.",
   keywords: [
-    "IA",
-    "AI",
-    "Automatización",
+    "Cultivo Labs",
+    "Semillero",
+    "regeneración",
+    "comunidades autosuficientes",
+    "salud holística",
+    "agritech",
+    "MRV",
+    "startups",
     "Colombia",
-    "Consultoría",
-    "Chatbots",
-    "CRM",
-    "Integraciones",
-    "Next.js",
-    "React",
-    "TypeScript",
+    "Latinoamérica",
   ],
-  authors: [{ name: "Paul Ronayne" }, { name: "Rocky Ronayne" }],
-  creator: "CultivoAI",
+  authors: [{ name: "Paul Ronayne" }],
+  creator: "Cultivo Labs",
   openGraph: {
     type: "website",
     locale: "es_CO",
     alternateLocale: ["en_US", "pt_BR"],
-    siteName: "CultivoAI",
-    title: "CultivoAI - IA y Automatización",
+    siteName: "Cultivo Labs",
+    title: "Cultivo Labs · Tu socio tecnológico para proyectos que cuidan la tierra, las personas y las comunidades",
     description:
-      "Padre e hijo construyendo soluciones de IA desde Colombia para el mundo.",
+      "Cofundador de startups que volvió a construir con las manos. Ayudo a buenos proyectos de regeneración, comunidades autosuficientes, salud holística y naturaleza a construir su tecnología, encontrar las innovaciones adecuadas y prepararse para la inversión. Desde Colombia, para Latinoamérica y el mundo.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CultivoAI - IA y Automatización",
+    title: "Cultivo Labs · Tu socio tecnológico para proyectos que cuidan la tierra, las personas y las comunidades",
     description:
-      "Padre e hijo construyendo soluciones de IA desde Colombia para el mundo.",
+      "Cofundador de startups que volvió a construir con las manos. Ayudo a buenos proyectos de regeneración, comunidades autosuficientes, salud holística y naturaleza a construir su tecnología, encontrar las innovaciones adecuadas y prepararse para la inversión. Desde Colombia, para Latinoamérica y el mundo.",
   },
   robots: {
     index: true,
@@ -107,10 +106,10 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "CultivoAI",
+  name: "Cultivo Labs",
   description:
-    "Consultoría en IA y automatización - Padre e hijo desde Colombia",
-  url: process.env.NEXT_PUBLIC_APP_URL || "https://cultivo.ai",
+    "Hands-on tech partner for projects that care for land, people and communities. Based in Colombia, working across Latin America and worldwide.",
+  url: process.env.NEXT_PUBLIC_APP_URL || "https://cultivoai.vercel.app",
   founders: [
     {
       "@type": "Person",

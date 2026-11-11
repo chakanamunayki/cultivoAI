@@ -1,50 +1,49 @@
 import type { AboutCopy } from "../../types";
 
 export const enAbout: AboutCopy = {
-    title: "Who We Are",
-    subtitle: "A technical founder with 20+ years shipping real products, and a small team from Colombia. We take on work that makes real social and environmental impact.",
+    title: "Who I am",
+    subtitle: "A founder who went back to the land.",
     viewMoreLabel: "View more",
-    footerNote:
-      "**For larger impact projects, we have technical experts who support us when needed.**",
+    footerNote: "**For bigger projects I bring in trusted specialists from my network.**",
     teamMembers: [
       {
         id: "paul",
         name: "Paul Ronayne",
-        title: "Technical founder. AI and data systems.",
+        title: "Founder. Startup builder. Hands in the soil.",
         description:
-          "20+ years building companies. Co-founded NBN23, a sports-data platform that partnered with FIBA and reached 70+ countries, and Nagi, aquatic-safety and performance tech deployed in schools and pools. I built the full software platform for a biotech and vertical farming project end to end, solo. I build the data and AI layer for agritech and biotech teams.",
+          "20+ years building companies. I co-founded NBN23, a sports-data platform that partnered with FIBA and reached 70+ countries, and Nagi, aquatic-safety tech used in schools and pools. Then I came back to my roots. Today I live in Colombia and build tech for projects that care for land, people and communities, including the full platform for a biotech and vertical farming project, built end to end, solo.",
         imageUrl: "/landing/photos/team/paul.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
         bio: {
           headline:
-            "Technical founder. I've shipped data platforms to 70+ countries, and I build the AI and data layer for agritech and biotech.",
+            "Startup co-founder turned hands-on builder for projects that care for land, people and communities.",
           sections: [
             {
-              title: "What it means",
+              title: "Where I come from",
               content:
-                "I'm the person who designs and builds the system, not a layer of account managers. Twenty years co-founding and shipping products: NBN23 (sports data, FIBA partner, 70+ countries) and Nagi (aquatic-safety and performance tech, national Spanish TV, deployed in schools and pools).",
+                "Twenty years co-founding and building companies: NBN23 (sports data, FIBA partner, 70+ countries) and Nagi (aquatic-safety and performance tech, featured on national Spanish TV, used in schools and pools).",
             },
             {
-              title: "Why it matters",
+              title: "What I do now",
               content:
-                "For science-driven teams, the hard part is protecting the IP and turning lab and field data into decisions. I've built exactly that for a biotech and vertical farming project, solo, from protocol authoring to role-gated execution.",
+                "I live in Colombia and build the tech behind good projects: software, data and knowledge systems, impact records, and the business case for investors. I built the full platform for a biotech and vertical farming project end to end, solo.",
             },
             {
-              title: "What's included",
+              title: "How I work",
               content:
-                "Hands-on architecture, IP-isolation design, MVP scope, and a costed build plan. We define scope together, ship in phases, and I stay technical throughout.",
+                "I design it, build it and show up in the field. No account managers, no juniors. Version one fast, then better with real use.",
             },
             {
-              title: "Ideal fit",
+              title: "Who I work with",
               content:
-                "Agritech and biotech founders building real social and environmental impact, who want a senior technical partner they talk to directly, not a rotating agency team.",
+                "Good people with good projects in regeneration, self-sufficient communities, holistic health and nature and agritech, across Latin America and worldwide.",
             },
             {
-              title: "Typical outcome",
+              title: "Beyond the build",
               content:
-                "A working system that protects your protocols, structures your evidence, and turns your data into decisions, built by the person you actually talk to.",
+                "Through Semillero I connect innovators with projects that need them, so good people and good innovations grow together.",
             },
           ],
           linkedinUrl: "https://www.linkedin.com/in/paul-ronayne-69b37010a/",
@@ -53,39 +52,24 @@ export const enAbout: AboutCopy = {
       {
         id: "rocky",
         name: "Rocky Ronayne",
-        title: "AI systems specialist",
+        title: "The next generation. Semilla.",
         description:
-          "Rocky builds AI workflows, assistants, and dashboards that help teams move faster and stay consistent. Practical, design-aware, and focused on real outcomes.",
+          "The next generation. Builds with AI tools alongside Paul, and runs Semilla, his own fund for good projects.",
         imageUrl: "/landing/photos/team/rocky.jpeg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
-          headline: "Practical AI systems that support real outcomes",
+          headline: "The next generation, building with AI and backing good projects.",
           sections: [
             {
-              title: "What it means",
+              title: "What I do",
               content:
-                "I build AI workflows, assistants, and dashboards that help teams stay consistent and reduce repetitive work.",
+                "I build with AI tools alongside my dad, Paul, on the projects we take on together.",
             },
             {
-              title: "Why it matters",
+              title: "Semilla",
               content:
-                "A system is only useful if people actually use it. I focus on clarity, reliability, and making the next step obvious.",
-            },
-            {
-              title: "What's included",
-              content:
-                "A simple version one, built and tested end-to-end. Clear handoff notes, and iteration based on what we learn from real use.",
-            },
-            {
-              title: "Ideal fit",
-              content:
-                "Teams who want practical AI help without complexity, and who care about the user experience and tone.",
-            },
-            {
-              title: "Typical outcome",
-              content:
-                "A workflow or assistant that reduces manual work and keeps follow-through consistent week to week.",
+                "I run Semilla, my own fund for good projects.",
             },
           ],
         },
@@ -93,39 +77,24 @@ export const enAbout: AboutCopy = {
       {
         id: "marta",
         name: "Marta Ronayne",
-        title: "Wellness lead. Holistic practitioner and brand founder.",
+        title: "Holistic practitioner. Founder of Munayki.",
         description:
-          "Marta leads our wellness-vertical work. She founded her own holistic wellness brand and practices as a Reiki and meditation facilitator, so wellness and wellbeing clients are guided by someone who lives that world, not someone reading about it.",
+          "Holistic practitioner and founder of Munayki. Leads our work in natural products, holistic and ancestral medicine for wellness.",
         imageUrl: "/landing/photos/team/marta.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
-          headline: "A working holistic practitioner leading the wellness-vertical work.",
+          headline: "Holistic practitioner and founder of Munayki.",
           sections: [
             {
-              title: "What it means",
+              title: "Munayki",
               content:
-                "I lead our work with wellness and holistic teams. I run my own holistic wellness brand and facilitate Reiki and meditation, so I understand this world from the inside, not from a slide deck.",
+                "Munayki comes from munay, the Quechua word for love. It is the home for innovation around natural products and holistic and ancestral medicine for wellness.",
             },
             {
-              title: "Why it matters",
+              title: "What I lead",
               content:
-                "Wellness audiences can tell in seconds whether you actually understand their world. When a real practitioner leads the work, the language, the trust, and the experience land right instead of feeling borrowed.",
-            },
-            {
-              title: "What's included",
-              content:
-                "Domain guidance for wellness and wellbeing projects, brand and language that fit how these audiences really think, and honest feedback on what will and will not resonate with real people.",
-            },
-            {
-              title: "Ideal fit",
-              content:
-                "Wellness, holistic, and wellbeing brands who want a partner that lives their world, not just one that builds software for it.",
-            },
-            {
-              title: "Typical outcome",
-              content:
-                "A product and a voice that wellness audiences trust, because a member of that community shaped them.",
+                "I lead our work in natural products and holistic and ancestral medicine for wellness, so projects in this world are guided by someone who lives it.",
             },
           ],
         },

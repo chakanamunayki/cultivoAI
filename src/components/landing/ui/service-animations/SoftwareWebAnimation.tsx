@@ -82,7 +82,7 @@ export function SoftwareWebAnimation({ locale: _locale = "en" }: { locale?: Loca
                                     <div className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#ff5f56]" />
                                     <div className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#ffbd2e]" />
                                     <div className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#27c93f]" />
-                                    <span className="ml-2 text-[8px] sm:text-[9px] text-white/40 font-mono tracking-wider">page.tsx — CultivoAI</span>
+                                    <span className="ml-2 text-[8px] sm:text-[9px] text-white/40 font-mono tracking-wider">page.tsx · Cultivo Labs</span>
                                 </div>
                                 {/* IDE Code Content */}
                                 <div className="p-3 sm:p-4 font-mono text-[9px] sm:text-[12px] lg:text-[13px] leading-relaxed relative overflow-hidden flex-1">

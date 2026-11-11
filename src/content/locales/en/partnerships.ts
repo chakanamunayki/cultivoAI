@@ -4,21 +4,21 @@ export const enPartnershipsContent: Pick<
   SiteContent,
   "partnershipsTitle" | "partnershipsSubtitle" | "partnerships"
 > = {
-  partnershipsTitle: "Flexible Ways to Work Together",
+  partnershipsTitle: "Ways to work together",
   partnershipsSubtitle:
-    "Clear scope, senior delivery, priced properly. One impact-rate slot for mission-led teams when it's the right fit.",
+    "Clear scope, fair price. Room for mission-led projects when the fit is right.",
   partnerships: [
     {
-      name: "Technical Discovery Sprint",
+      name: "Discovery Sprint",
       tagline: "Start with a free call",
       description:
-        "Every project is different, from a small automation to a full platform. So we start with a free call to understand your objective. If a Discovery Sprint fits, it's scoped and priced to the work, and you leave with one clear, costed plan.",
+        "Every project is different, from a small automation to a full platform. So I start with a free call to understand your objective. If a Discovery Sprint fits, it's scoped and priced to the work, and you leave with one clear, costed plan.",
       idealFor: ["Teams with real IP and a decision to make", "Anyone unsure what to build first"],
       icon: "Hourglass",
       imageUrl: "/landing/photos/services/startup-advisory.png",
       modal: {
         whatItMeans:
-          "We start with a free call to understand your objective. If a sprint fits, it is a short, senior engagement to map your architecture, protect your IP, and scope the build, before anyone writes production code.",
+          "I start with a free call to understand your objective. If a sprint fits, it is a short, senior engagement to map your architecture, protect your IP, and scope the build, before anyone writes production code.",
         whyItMatters:
           "Most AI projects fail on a fuzzy start. The call costs you nothing and tells us both whether there is a fit. The sprint then gives you a costed, defensible plan and a clear first build, with no open-ended commitment.",
         whatsIncluded: [
@@ -29,16 +29,16 @@ export const enPartnershipsContent: Pick<
           "Costed build plan: phases, timeline, and price",
         ],
         idealFit: [
-          "Agritech and biotech teams protecting protocol IP",
+          "Projects with real IP, land or data to protect",
           "Founders who want a plan before a big build commitment",
           "Teams that need real numbers to green-light budget",
         ],
         typicalOutcome:
-          "You leave with one document: a clear, costed plan you can act on, build with us or take to anyone.",
+          "You leave with one document: a clear, costed plan you can act on, build with me or take to anyone.",
       },
     },
     {
-      name: "Standard Project",
+      name: "Standard project",
       tagline: "Businesses with budget",
       description:
         "Clear scope and defined deliverables. Fixed price agreed before starting. Established timeline. Post-delivery support included.",
@@ -96,10 +96,10 @@ export const enPartnershipsContent: Pick<
       },
     },
     {
-      name: "Partnership options",
+      name: "Partnership",
       tagline: "Right fit only",
       description:
-        "For selected projects with strong impact potential and clear alignment, we can define custom partnership terms.",
+        "For selected projects with strong impact potential and clear alignment, I can define custom partnership terms. Including innovation partnerships through Semillero.",
       idealFor: ["Impact startups", "Long-term aligned collaborations"],
       icon: "PieChart",
       imageUrl: "/landing/photos/partnerships/partnership-options.jpg",

@@ -25,10 +25,10 @@ export function ValuesSection() {
           <SectionHeader title={values.title} subtitle={values.subtitle} />
         </Reveal>
 
-        {/* 2x3 grid of values */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Values grid (2 columns for the 4 "How I work" values) */}
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
           {values.values.map((value, index) => {
-            const variant: LandingCardVariant = index === 2 ? "blue" : "dark";
+            const variant: LandingCardVariant = index === 0 ? "blue" : "dark";
             return (
               <Reveal key={value.title} delay={index * 75}>
                 <div className={landingCardClass(variant, "group h-full rounded-[22px] p-6")}>
@@ -55,6 +55,14 @@ export function ValuesSection() {
             );
           })}
         </div>
+
+        {values.closing && (
+          <Reveal delay={values.values.length * 75}>
+            <p className="mt-12 text-center text-2xl font-black tracking-tight uppercase md:mt-16 md:text-3xl lg:text-4xl">
+              {values.closing}
+            </p>
+          </Reveal>
+        )}
       </div>
     </section>
   );

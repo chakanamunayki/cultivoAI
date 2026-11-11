@@ -15,7 +15,6 @@ interface ServicesSectionProps {
 export function ServicesSection({ onOpenChatBooking }: ServicesSectionProps) {
   const { content, locale } = useLocale();
   const { openServiceModal } = useModal();
-  const ribbonText = locale === "es" ? "Flujos + Dashboards + Web" : locale === "pt" ? "Fluxos + Dashboards + Web" : "Workflows + Dashboards + Web";
 
   const handleServiceSeeMore = (service: Service) => {
     openServiceModal(service);
@@ -27,7 +26,7 @@ export function ServicesSection({ onOpenChatBooking }: ServicesSectionProps) {
         <Reveal>
           <SectionHeader
             title={content.servicesTitle}
-            subtitle={ribbonText}
+            subtitle={content.servicesTagline}
             subtitleClassName="text-white/80"
             tone="onDark"
           />

@@ -1,5 +1,5 @@
 /**
- * CultivoAI Content Type Definitions
+ * Cultivo Labs Content Type Definitions
  * Trilingual content support for Spanish (es), English (en), and Brazilian Portuguese (pt)
  */
 
@@ -186,6 +186,7 @@ export interface Sector {
 
 export interface WhoWeHelpContent {
   title: string;
+  subtitle: string;
   idealTitle: string;
   idealItems: string[];
   notIdealTitle: string;
@@ -283,16 +284,16 @@ export interface SiteContent {
   marquee: string[];
   hero: HeroCopy;
   about: AboutCopy;
-  howWeWork: HowWeWorkContent;
-  whatWeDo: WhatWeDoContent;
-  whyUs: WhyUs;
+  whyUs: WhyUs; // Not rendered on the page; still fed to the chat system prompt
   servicesTitle: string;
+  servicesTagline: string;
   servicesSubtitle: string;
   services: Service[];
   demosTitle: string;
   demosSubtitle: string;
   useCases: UseCase[];
   whoWeHelp: WhoWeHelpContent;
+  semillero: SemilleroContent;
   partnershipsTitle: string;
   partnershipsSubtitle: string;
   partnerships: Partnership[];
@@ -303,47 +304,11 @@ export interface SiteContent {
   storiesSubtitle: string;
   stories: RealStory[];
   values: ValuesContent;
-  mission: MissionContent;
   whatHappensNext: WhatHappensNextContent;
   footer: FooterCopy;
   chat: ChatCopy;
   contactForm: ContactFormCopy;
   terminal: TerminalContent;
-}
-
-/**
- * How We Work Section Types
- */
-export interface HowWeWorkPillar {
-  icon: string;
-  title: string;
-  description: string;
-  isFullWidth?: boolean;
-}
-
-export interface HowWeWorkContent {
-  title: string;
-  subtitle: string;
-  pillars: HowWeWorkPillar[];
-}
-
-/**
- * What We Do Section Types
- */
-export interface WhatWeDoColumn {
-  title: string;
-  items: string[];
-}
-
-export interface WhatWeDoContent {
-  title: string;
-  subtitle: string;
-  intro: string;
-  columns: WhatWeDoColumn[];
-  servicesPreview: {
-    title: string;
-    linkText: string;
-  };
 }
 
 /**
@@ -359,15 +324,18 @@ export interface ValuesContent {
   title: string;
   subtitle: string;
   values: Value[];
+  closing?: string;
 }
 
 /**
- * Mission Statement Section Types
+ * Semillero teaser (LATAM innovation network; full page is phase 2)
  */
-export interface MissionContent {
+export interface SemilleroContent {
   title: string;
-  statement: string[];
-  tagline: string;
+  subtitle: string;
+  body: string;
+  projectCta: string;
+  innovationCta: string;
 }
 
 /**

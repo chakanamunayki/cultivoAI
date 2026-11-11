@@ -38,7 +38,7 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
       <Reveal>
         <div className="p-8 md:p-16 text-center border-b-4 border-neutral-800">
           <h2 className="text-3xl md:text-4xl lg:text-7xl font-black uppercase mb-6 md:mb-8 tracking-tight">
-            {content.footer.cta.split(".")[0]}?
+            {content.footer.cta}
           </h2>
           <button
             type="button"

@@ -32,10 +32,10 @@ export default function AdminExportPage() {
         const blob = new Blob([JSON.stringify(data, null, 2)], {
           type: "application/json",
         });
-        downloadBlob(blob, `cultivoai-leads-${getDateStr()}.json`);
+        downloadBlob(blob, `cultivolabs-leads-${getDateStr()}.json`);
       } else {
         const blob = await res.blob();
-        downloadBlob(blob, `cultivoai-leads-${getDateStr()}.csv`);
+        downloadBlob(blob, `cultivolabs-leads-${getDateStr()}.csv`);
       }
     } catch (err) {
       console.error("Export error:", err);

@@ -184,7 +184,7 @@ export async function GET(request: Request) {
 
     // Generate filename with date
     const dateStr = new Date().toISOString().split("T")[0];
-    const filename = `cultivoai-leads-${dateStr}.csv`;
+    const filename = `cultivolabs-leads-${dateStr}.csv`;
 
     return new NextResponse(csv, {
       status: 200,

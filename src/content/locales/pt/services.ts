@@ -1,7 +1,8 @@
 import type { SiteContent } from "../../types";
 
-export const ptServicesContent: Pick<SiteContent, "servicesTitle" | "servicesSubtitle" | "services"> = {
+export const ptServicesContent: Pick<SiteContent, "servicesTitle" | "servicesTagline" | "servicesSubtitle" | "services"> = {
   servicesTitle: "Nossos Serviços",
+  servicesTagline: "Fluxos + Dashboards + Web",
   servicesSubtitle:
     "Não vendemos fumaça. Construímos sistemas práticos que facilitam executar um bom trabalho. Não sabe por onde começar? Uma conversa de 15 minutos já basta.",
   services: [
