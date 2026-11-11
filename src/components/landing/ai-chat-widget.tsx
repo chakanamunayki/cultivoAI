@@ -77,6 +77,14 @@ interface LeadInfo {
   projectDescription?: string | undefined;
 }
 
+// What a tool call from the model asks the chat UI to show under the reply.
+interface ToolCallEffects {
+  contactForm?: { name?: string; email?: string };
+  whatsAppCta?: boolean;
+}
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 interface VoiceUserInfo {
   name: string;
   email: string;
@@ -338,8 +346,7 @@ export function AIChatWidget({
     }
 
     // Email validation - must have @ and valid domain
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    if (!email.trim() || !emailRegex.test(email)) {
+    if (!email.trim() || !EMAIL_PATTERN.test(email.trim())) {
       setContactFormError(
         locale === "es"
           ? "Por favor ingresa un email válido (ej: nombre@gmail.com)"
@@ -389,19 +396,36 @@ export function AIChatWidget({
     }
   }, [contactFormData, locale, handleLeadCapture]);
 
-  // Trigger showing the contact form
-  const triggerContactForm = useCallback(() => {
+  // Trigger showing the contact form. Details the visitor already typed in the
+  // chat are pre-filled so they only have to confirm them.
+  const triggerContactForm = useCallback((prefill?: { name?: string; email?: string }) => {
     // If voice mode is open, show the voice contact form instead
     if (isVoiceModeOpen) {
       setShowVoiceContactForm(true);
       return;
     }
 
-    const askMessage = locale === "es"
-      ? "Para poder ayudarte mejor, déjame tus datos:"
+    const prefillName = prefill?.name?.trim() ?? "";
+    const prefillEmail = prefill?.email?.trim() ?? "";
+    const hasPrefill = Boolean(prefillName || prefillEmail);
+    if (hasPrefill) {
+      setContactFormData((current) => ({
+        name: prefillName || current.name,
+        email: EMAIL_PATTERN.test(prefillEmail) ? prefillEmail : current.email,
+      }));
+    }
+
+    const askMessage = hasPrefill
+      ? locale === "es"
+        ? "Confirma tus datos y se los paso a Paul:"
+        : locale === "pt"
+        ? "Confirme os seus dados e eu passo para o Paul:"
+        : "Confirm your details and I'll pass them to Paul:"
+      : locale === "es"
+      ? "Déjame tu nombre y tu email y se los paso a Paul:"
       : locale === "pt"
-      ? "Para poder te ajudar melhor, me deixa os seus dados:"
-      : "To help you better, please share your details:";
+      ? "Me deixa o seu nome e e-mail e eu passo para o Paul:"
+      : "Leave your name and email and I'll pass them to Paul:";
 
     setMessages(prev => [...prev, { role: "model", text: askMessage, showContactForm: true }]);
     setShowContactForm(true);
@@ -500,89 +524,75 @@ export function AIChatWidget({
     window.open(url, "_blank");
   }, [locale, whatsAppContext, capturedName]);
 
-  // Execute function calls from AI
+  // Execute a tool call from the AI. Page actions (scroll, modals) run here;
+  // anything shown inside the chat is returned so it lands under the reply.
   const executeFunctionCall = useCallback(
-    async (call: FunctionCall): Promise<string> => {
+    async (call: FunctionCall): Promise<ToolCallEffects> => {
       const { name, args } = call;
+      const text = (value: unknown) => (typeof value === "string" ? value : "");
 
       switch (name) {
         case "navigate_to_section": {
-          const sectionId = args.section_id as string;
-          onNavigate(sectionId);
-          return `Navigated to section: ${sectionId}`;
+          onNavigate(text(args.section_id));
+          return {};
         }
 
         case "show_project_details": {
-          const projectTitle = args.project_title as string;
-          onOpenProjectModal(projectTitle);
-          return `Opened project modal: ${projectTitle}`;
+          onOpenProjectModal(text(args.project_title));
+          return {};
         }
 
         case "show_service_details": {
-          const serviceTitle = args.service_title as string;
-          onOpenServiceModal(serviceTitle);
-          return `Opened service modal: ${serviceTitle}`;
+          onOpenServiceModal(text(args.service_title));
+          return {};
         }
 
         case "collect_lead_info": {
-          // Instead of directly capturing, trigger the inline form for accurate data entry
-          // This prevents typos and ensures proper email format
-          if (!currentLeadId) {
-            triggerContactForm();
-            return `Contact form displayed for user to fill in their details`;
-          }
-          return `Lead already captured`;
+          // The visitor confirms in the inline form rather than the model's
+          // reading of their details being saved directly: it catches typos.
+          if (currentLeadId) return { whatsAppCta: true };
+          return { contactForm: { name: text(args.name), email: text(args.email) } };
         }
 
         case "qualify_lead": {
-          const result = await handleQualifyLead({
-            budgetIndicator: args.budget_indicator as boolean,
-            timeline: args.timeline as boolean,
-            useCase: args.use_case as boolean,
-            decisionMaker: args.decision_maker as boolean,
-            sectorFit: args.sector_fit as boolean,
-            conversationSummary: args.conversation_summary as string | undefined,
+          await handleQualifyLead({
+            budgetIndicator: args.budget_indicator === true,
+            timeline: args.timeline === true,
+            useCase: args.use_case === true,
+            decisionMaker: args.decision_maker === true,
+            sectorFit: args.sector_fit === true,
+            conversationSummary: text(args.conversation_summary) || undefined,
           });
-          return `Lead qualified with score: ${result.score}/5`;
+          return {};
         }
 
         case "suggest_service": {
-          const serviceTitle = args.service_name as string;
-          onOpenServiceModal(serviceTitle);
-          return `Suggested and opened service: ${serviceTitle}`;
+          // Background only. The model recommends the service in its reply;
+          // opening a modal over an answer nobody asked to leave is jarring.
+          return {};
         }
 
         case "offer_whatsapp": {
-          const contextMessage = args.context_message as string;
-          setWhatsAppContext(contextMessage);
-          // Don't auto-open, just prepare the context
-          return `WhatsApp contact offered`;
+          setWhatsAppContext(text(args.context_message));
+          return { whatsAppCta: true };
         }
 
         case "schedule_call": {
-          if (onOpenForm) {
-            onOpenForm();
-          } else if (!currentLeadId) {
-            triggerContactForm();
-          } else {
-            openWhatsApp();
-          }
-          return `Call scheduling suggested`;
+          // Stay in the chat: capture details first, then hand off to WhatsApp.
+          if (currentLeadId) return { whatsAppCta: true };
+          return { contactForm: {} };
         }
 
         default:
-          return `Unknown function: ${name}`;
+          return {};
       }
     },
     [
       onNavigate,
       onOpenProjectModal,
       onOpenServiceModal,
-      onOpenForm,
       handleQualifyLead,
       currentLeadId,
-      triggerContactForm,
-      openWhatsApp,
     ]
   );
 
@@ -600,37 +610,12 @@ export function AIChatWidget({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: userMessage,
-          history: messages,
+          history: messages.map(({ role, text }) => ({ role, text })),
           locale,
           entryContext: context?.type as ChatContextType | undefined,
           sessionId,
           timezone,
           pageUrl: typeof window !== "undefined" ? window.location.href : undefined,
-          siteContent: {
-            services: content.services.map((s) => ({
-              title: s.title,
-              description: s.description,
-              details: s.details,
-            })),
-            projects: content.projects.map((p) => ({
-              title: p.title,
-              desc: p.desc,
-              fullDesc: p.fullDesc,
-            })),
-            whyUs: content.whyUs,
-            partnerships: content.partnerships.map((p) => ({
-              name: p.name,
-              tagline: p.tagline,
-              description: p.description,
-            })),
-            whoWeHelp: content.whoWeHelp
-              ? {
-                  idealItems: content.whoWeHelp.idealItems,
-                  notIdealItems: content.whoWeHelp.notIdealItems,
-                  sectors: content.whoWeHelp.sectors,
-                }
-              : undefined,
-          },
         }),
       });
 
@@ -648,18 +633,28 @@ export function AIChatWidget({
         throw new Error(apiError);
       }
 
-      // Handle function calls
-      if (data.functionCalls && data.functionCalls.length > 0) {
-        for (const call of data.functionCalls) {
-          await executeFunctionCall(call);
+      // Run tool calls, collecting what they want shown in the chat
+      const effects: ToolCallEffects = {};
+      for (const call of data.functionCalls ?? []) {
+        const result = await executeFunctionCall(call);
+        if (result.contactForm) {
+          effects.contactForm = { ...effects.contactForm, ...result.contactForm };
         }
+        if (result.whatsAppCta) effects.whatsAppCta = true;
       }
 
-      // Add response text
+      // The reply comes first, then the form or WhatsApp button under it
       const responseText =
         data.text ||
         (locale === "es" ? "Entendido." : locale === "pt" ? "Entendi." : "Got it.");
-      setMessages((prev) => [...prev, { role: "model", text: responseText }]);
+      const showWhatsAppCta = Boolean(effects.whatsAppCta) && !effects.contactForm;
+      setMessages((prev) => [
+        ...prev,
+        { role: "model", text: responseText, ...(showWhatsAppCta ? { showWhatsAppCta } : {}) },
+      ]);
+      if (effects.contactForm) {
+        triggerContactForm(effects.contactForm);
+      }
 
       // Log assistant response with latency
       const latencyMs = Date.now() - startTime;
@@ -687,7 +682,7 @@ export function AIChatWidget({
     } finally {
       setIsLoading(false);
     }
-  }, [messages, locale, content, context, sessionId, executeFunctionCall, logMessage]);
+  }, [messages, locale, context, sessionId, executeFunctionCall, triggerContactForm, logMessage]);
 
   const handleSend = useCallback(async () => {
     if (!input.trim() || isLoading) return;
@@ -847,7 +842,10 @@ export function AIChatWidget({
           {messages.map((msg, idx) => {
             const isLastBotMessage = msg.role === "model" && idx === messages.length - 1;
             const showSpeakerIcon = isLastBotMessage && (isPlayingAudio || isLoadingAudio);
-            const shouldShowForm = msg.showContactForm && showContactForm && !currentLeadId;
+            // Only the newest form is live, so a repeated request never shows two.
+            const isNewestForm = !messages.slice(idx + 1).some((m) => m.showContactForm);
+            const shouldShowForm =
+              msg.showContactForm && showContactForm && !currentLeadId && isNewestForm;
 
             return (
               <div key={idx} className="space-y-3">
@@ -867,7 +865,7 @@ export function AIChatWidget({
                     }}
                   >
                     <div className="flex items-start gap-2">
-                      <span className="flex-1">{msg.text}</span>
+                      <span className="flex-1 whitespace-pre-line">{msg.text}</span>
                       {showSpeakerIcon && (
                         <span className="flex-shrink-0 mt-0.5">
                           {isLoadingAudio ? (

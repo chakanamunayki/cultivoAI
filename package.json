@@ -10,6 +10,7 @@
     "start": "next start",
     "lint": "node scripts/run-with-warning-filters.cjs eslint .",
     "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --no-warnings --test \"tests/**/*.test.mjs\"",
     "check": "pnpm lint && pnpm typecheck",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

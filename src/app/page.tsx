@@ -10,8 +10,16 @@ import { CustomCursor } from "@/components/landing/ui/custom-cursor";
 import { LazySection } from "@/components/landing/ui/lazy-section";
 import { useModal } from "@/components/landing/ui/modal-provider";
 import { ModalRenderer } from "@/components/landing/ui/modal-renderer";
+import { en } from "@/content/en";
+import { es } from "@/content/es";
 import type { ChatContext } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
+import {
+  PROJECT_ALIASES,
+  SERVICE_ALIASES,
+  resolveCatalogKey,
+  type CatalogEntry,
+} from "@/lib/chat/resolve-catalog-key";
 
 // Lazy-loaded below-fold sections
 const ServicesSection = dynamic(
@@ -137,54 +145,25 @@ function ChatButtonPlaceholder({
   );
 }
 
-// Services were consolidated twice (8 -> 4 cards, then the Cultivo Labs rework).
-// The chat model can still emit an old service name; map each normalized old
-// name to the surviving card's stable animationKey so the modal still opens
-// instead of silently no-op'ing.
-const ABSORBED_SERVICE_ALIASES: Record<string, string> = {
-  // -> Data, knowledge and AI systems (animationKey "company-brain")
-  "company brain": "company-brain",
-  "decision and automation": "company-brain",
-  "sistemas de decision": "company-brain",
-  "workflow optimization": "company-brain",
-  "optimizacion de flujos": "company-brain",
-  workflow: "company-brain",
-  automation: "company-brain",
-  automatizacion: "company-brain",
-  "ai assistants": "company-brain",
-  "asistentes ia": "company-brain",
-  asistentes: "company-brain",
-  "decision dashboards": "company-brain",
-  "dashboards de decision": "company-brain",
-  "knowledge and content systems": "company-brain",
-  "sistemas de conocimiento y contenido": "company-brain",
-  knowledge: "company-brain",
-  conocimiento: "company-brain",
-  // -> Software and platforms (animationKey "software-web")
-  "custom ai and software": "software-web",
-  "software, websites and digital experiences": "software-web",
-  "software, sitios web y experiencias digitales": "software-web",
-  websites: "software-web",
-  "sitio web": "software-web",
-  // -> Proof and records (animationKey "dashboards")
-  mrv: "dashboards",
-  impact: "dashboards",
-  impacto: "dashboards",
-  carbon: "dashboards",
-  carbono: "dashboards",
-  // -> Startup and investment readiness (animationKey "startup")
-  "startup advisory": "startup",
-  "asesoria para startups": "startup",
-  investment: "startup",
-  inversion: "startup",
-};
+// Every language's titles for each card, so the chat can open a service or
+// project whichever language the model names it in. Cards are in the same order
+// in the Spanish and English files. Portuguese is hidden and still has the old
+// card set in a different order, so it is left out.
+const ALL_CONTENT = [es, en];
 
-// Projects were retitled in the rework; the chat may still ask for the old title.
-const PROJECT_ALIASES: Record<string, string> = {
-  "company brain": "company-brain",
-  "protocol ip": "company-brain",
-  "ip de los protocolos": "company-brain",
-};
+const SERVICE_CATALOG: CatalogEntry[] = es.services.map((service, index) => ({
+  key: service.animationKey ?? `service-${index}`,
+  titles: ALL_CONTENT.flatMap((c) => c.services[index]?.title ?? []),
+}));
+
+// SetaSouls has no animationKey; PROJECT_ALIASES refers to it as "setasouls".
+const projectKey = (animationKey: string | undefined, index: number) =>
+  animationKey ?? (index === 1 ? "setasouls" : `project-${index}`);
+
+const PROJECT_CATALOG: CatalogEntry[] = es.projects.map((project, index) => ({
+  key: projectKey(project.animationKey, index),
+  titles: ALL_CONTENT.flatMap((c) => c.projects[index]?.title ?? []),
+}));
 
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -192,13 +171,6 @@ export default function Home() {
   const [isChatWidgetLoaded, setIsChatWidgetLoaded] = useState(false);
   const { content } = useLocale();
   const { openProjectModal, openServiceModal, openContactModal, closeModal } = useModal();
-
-  const normalizeForMatch = useCallback((value: string) => {
-    return value
-      .normalize("NFD")
-      .replace(/\p{Diacritic}/gu, "")
-      .toLowerCase();
-  }, []);
 
   // Load chat widget after initial page paint (2-3 second delay or on first interaction)
   useEffect(() => {
@@ -219,40 +191,28 @@ export default function Home() {
 
   const handleOpenProjectModal = useCallback(
     (projectTitle: string) => {
-      const target = normalizeForMatch(projectTitle);
-      let project = content.projects.find((p) => normalizeForMatch(p.title).includes(target));
-      if (!project) {
-        const aliasKey = Object.keys(PROJECT_ALIASES).find((key) => target.includes(key));
-        if (aliasKey) {
-          project = content.projects.find((p) => p.animationKey === PROJECT_ALIASES[aliasKey]);
-        }
-      }
+      const key = resolveCatalogKey(projectTitle, PROJECT_CATALOG, PROJECT_ALIASES);
+      const project = content.projects.find(
+        (p, index) => projectKey(p.animationKey, index) === key
+      );
       if (project) {
         openProjectModal(project);
       }
     },
-    [content.projects, normalizeForMatch, openProjectModal]
+    [content.projects, openProjectModal]
   );
 
   const handleOpenServiceModal = useCallback(
     (serviceTitle: string) => {
-      const target = normalizeForMatch(serviceTitle);
-      let service = content.services.find((s) => normalizeForMatch(s.title).includes(target));
-      if (!service) {
-        // Fall back to absorbed-name aliases from earlier consolidations.
-        const aliasKey = Object.keys(ABSORBED_SERVICE_ALIASES).find((key) =>
-          target.includes(key)
-        );
-        if (aliasKey) {
-          const animationKey = ABSORBED_SERVICE_ALIASES[aliasKey];
-          service = content.services.find((s) => s.animationKey === animationKey);
-        }
-      }
+      const key = resolveCatalogKey(serviceTitle, SERVICE_CATALOG, SERVICE_ALIASES);
+      const service = content.services.find(
+        (s, index) => (s.animationKey ?? `service-${index}`) === key
+      );
       if (service) {
         openServiceModal(service);
       }
     },
-    [content.services, normalizeForMatch, openServiceModal]
+    [content.services, openServiceModal]
   );
 
   // Open chat with optional context

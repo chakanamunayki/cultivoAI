@@ -127,7 +127,7 @@ export const chatFunctionDeclarations: Tool = {
           sector_fit: {
             type: Type.BOOLEAN,
             description:
-              "True if the user's sector aligns with what we do (agritech, biotech, research labs, sustainability and regenerative projects, alternative education, mission-led startups; wellness and health when the fit is clear)",
+              "True if the user's sector aligns with the four worlds Paul works in (land and regeneration, self-sufficient communities, holistic health and natural products, nature and agritech), or they bring an innovation for Semillero",
           },
           conversation_summary: {
             type: Type.STRING,
@@ -154,7 +154,7 @@ export const chatFunctionDeclarations: Tool = {
           service_name: {
             type: Type.STRING,
             description:
-              "The name of the service to recommend, matching the site's current services in order: 'Company Brain: Protected Knowledge Layer', 'Decision and Automation Systems', 'Custom AI and Software Builds', 'Retreat Ops Systems (Wellness)'. Company Brain is the flagship offer for agritech and biotech teams protecting protocol IP.",
+              "The name of the service to recommend, matching the site's current services: 'Software and platforms', 'Data, knowledge and AI systems', 'Proof and records', 'Startup and investment readiness' (Spanish: 'Software y plataformas', 'Sistemas de datos, conocimiento e IA', 'Pruebas y registros', 'Preparación para startups e inversión').",
           },
           reason: {
             type: Type.STRING,

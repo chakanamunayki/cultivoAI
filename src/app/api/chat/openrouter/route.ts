@@ -15,8 +15,13 @@ import { generateText, stepCountIs, tool, type ModelMessage } from "ai";
 import { z } from "zod";
 import type { ChatContextType, Locale } from "@/content/types";
 import {
+  MAX_MESSAGE_CHARS,
+  createRateLimiter,
+  sanitizeHistory,
+} from "@/lib/chat/request-limits";
+import { buildSiteContentForPrompt } from "@/lib/chat/site-content";
+import {
   buildSystemPrompt,
-  type SiteContentForPrompt,
   type SystemPromptContext,
 } from "@/lib/chat/system-prompt";
 
@@ -28,16 +33,23 @@ const DEFAULT_OPENROUTER_CHAT_MODEL = "google/gemini-2.5-flash-lite";
 // shared pool is 429-prone under load, so it sits behind the reliable primary.
 const FALLBACK_CHAT_MODEL = "qwen/qwen3.8-flash";
 
-interface Message {
-  role: "user" | "model";
-  text: string;
-}
+// 20 messages a minute per visitor is far above real chat use.
+const rateLimiter = createRateLimiter(20, 60_000);
+
+const ENTRY_CONTEXTS: ChatContextType[] = [
+  "general",
+  "booking",
+  "story",
+  "service",
+  "partnership",
+  "qualification",
+  "impact",
+];
 
 interface ChatRequest {
   message: string;
-  history: Message[];
+  history: unknown;
   locale: Locale;
-  siteContent: SiteContentForPrompt;
   entryContext?: ChatContextType;
   sessionId?: string;
   timezone?: string;
@@ -75,10 +87,10 @@ const chatTools = {
   }),
   collect_lead_info: tool({
     description:
-      "Captures contact information when the user shows genuine interest in being contacted, booking a call, or receiving a proposal. Only call this AFTER the user has expressed clear interest.",
+      "Shows a short contact form in the chat so the user can leave their name and email. Call it when the user asks to be contacted, wants a call or a proposal, or gives their contact details. Pass any name and email the user already gave so the form is pre-filled. Only call this AFTER the user has expressed clear interest.",
     inputSchema: z.object({
-      name: z.string(),
-      email: z.string(),
+      name: z.string().optional(),
+      email: z.string().optional(),
       company: z.string().optional(),
       phone: z.string().optional(),
       interested_services: z.array(z.string()).optional(),
@@ -101,7 +113,7 @@ const chatTools = {
   }),
   suggest_service: tool({
     description:
-      "Recommends a specific service when there is a clear match. Use the site's current service names.",
+      "Records which service fits the user, for follow-up. Invisible to the user. Use the site's current service names.",
     inputSchema: z.object({
       service_name: z.string(),
       reason: z.string(),
@@ -110,13 +122,13 @@ const chatTools = {
   }),
   offer_whatsapp: tool({
     description:
-      "Offers to continue on WhatsApp. Use after qualifying a lead, when the user asks for direct contact, or if they prefer messaging.",
+      "Shows a WhatsApp button under your reply. Use when the user asks for direct contact or prefers messaging. context_message is a one-line summary of what they want, pre-filled in WhatsApp.",
     inputSchema: z.object({ context_message: z.string() }),
     execute: stub,
   }),
   schedule_call: tool({
     description:
-      "Suggests booking a call with Paul. Use for qualified leads (score 3+) with complex projects or who need detailed discussion.",
+      "Use when the user wants to book a call with Paul. Shows the contact form in the chat (or a WhatsApp button if their details are already captured) so Paul can arrange the call.",
     inputSchema: z.object({
       reason: z.string(),
       urgency: z.string().optional(),
@@ -153,58 +165,74 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error: "AI service not configured",
-          text: "Lo siento, el servicio de IA no esta configurado.",
+          text: "Lo siento, el servicio de IA no está configurado.",
         },
         { status: 500 }
       );
     }
 
     const body: ChatRequest = await request.json();
-    const {
-      message,
-      history,
-      locale,
-      siteContent,
-      entryContext,
-      sessionId,
-      timezone,
-      pageUrl,
-    } = body;
+    const { history, locale, entryContext, sessionId, timezone, pageUrl } = body;
 
+    const safeLocale: Locale =
+      locale === "en" ? "en" : locale === "pt" ? "pt" : "es";
+    requestLocale = safeLocale;
+
+    const message = typeof body.message === "string" ? body.message.trim() : "";
     if (!message) {
       return NextResponse.json(
         { error: "Message is required" },
         { status: 400 }
       );
     }
-    const safeLocale: Locale =
-      locale === "en" ? "en" : locale === "pt" ? "pt" : "es";
-    requestLocale = safeLocale;
-    const safeHistory = Array.isArray(history) ? history : [];
-
-    if (!siteContent) {
+    if (message.length > MAX_MESSAGE_CHARS) {
+      const tooLong = {
+        es: "Ese mensaje es demasiado largo. ¿Me lo resumes en unas líneas?",
+        en: "That message is too long. Could you sum it up in a few lines?",
+        pt: "Essa mensagem é longa demais. Pode resumir em algumas linhas?",
+      }[safeLocale];
       return NextResponse.json(
-        { error: "Site content is required" },
-        { status: 400 }
+        { error: "Message is too long", text: tooLong },
+        { status: 413 }
       );
     }
 
+    const callerId =
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      request.headers.get("x-real-ip") ||
+      "unknown";
+    if (!rateLimiter.allow(callerId)) {
+      const slowDown = {
+        es: "Vas muy rápido. Espera un momento y vuelve a intentarlo, o escribe por WhatsApp.",
+        en: "That's a lot of messages at once. Give it a moment and try again, or use WhatsApp.",
+        pt: "São muitas mensagens de uma vez. Espere um momento e tente de novo, ou use o WhatsApp.",
+      }[safeLocale];
+      return NextResponse.json(
+        { error: "Too many requests", text: slowDown },
+        { status: 429 }
+      );
+    }
+
+    const str = (value: unknown, max: number) =>
+      typeof value === "string" ? value.slice(0, max) : undefined;
     const promptContext: SystemPromptContext = {
       locale: safeLocale,
-      entryContext,
-      timezone,
-      pageUrl,
-      sessionId,
+      entryContext: ENTRY_CONTEXTS.find((c) => c === entryContext),
+      timezone: str(timezone, 100),
+      pageUrl: str(pageUrl, 300),
+      sessionId: str(sessionId, 100),
     };
-    const systemInstruction = buildSystemPrompt(siteContent, promptContext);
+    // Site content comes from the server's own content files, never the request.
+    const systemInstruction = buildSystemPrompt(
+      buildSiteContentForPrompt(safeLocale),
+      promptContext
+    );
 
     // Convert widget history (role "model") to model messages (role "assistant").
-    const messages: ModelMessage[] = safeHistory
-      .filter((msg) => msg?.text)
-      .map((msg) => ({
-        role: msg.role === "model" ? "assistant" : "user",
-        content: msg.text,
-      }));
+    const messages: ModelMessage[] = sanitizeHistory(history).map((msg) => ({
+      role: msg.role === "model" ? "assistant" : "user",
+      content: msg.text,
+    }));
     messages.push({ role: "user", content: message });
 
     const openrouter = createOpenRouter({ apiKey });
@@ -257,9 +285,9 @@ export async function POST(request: Request) {
     const status = getErrorStatus(error);
     const isQuota = status === 429;
     const quotaText = {
-      es: "Estamos con alta demanda del servicio de IA. Intenta de nuevo en unos segundos o usa WhatsApp.",
-      en: "We're at high AI capacity right now. Please try again in a few seconds or use WhatsApp.",
-      pt: "Estamos com alta demanda do serviço de IA. Tente de novo em alguns segundos ou use o WhatsApp.",
+      es: "El servicio de IA está muy ocupado ahora mismo. Intenta de nuevo en unos segundos o usa WhatsApp.",
+      en: "The AI service is busy right now. Please try again in a few seconds or use WhatsApp.",
+      pt: "O serviço de IA está muito ocupado agora. Tente de novo em alguns segundos ou use o WhatsApp.",
     }[requestLocale];
     const genericText = {
       es: "Lo siento, hubo un error procesando tu mensaje. Por favor intenta de nuevo.",
