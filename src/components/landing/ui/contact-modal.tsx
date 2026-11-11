@@ -36,7 +36,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
   const [isSuccess, setIsSuccess] = useState(false);
   const contactBandLabel = locale === "es" ? "Contacto directo" : locale === "pt" ? "Contato direto" : "Direct contact";
   const whatsappCtaLabel =
-    locale === "es" ? "Escríbenos por WhatsApp" : locale === "pt" ? "Fale com a gente pelo WhatsApp" : "Message us on WhatsApp";
+    locale === "es" ? "Escríbeme por WhatsApp" : locale === "pt" ? "Fale com a gente pelo WhatsApp" : "Message me on WhatsApp";
   const whatsappHref = `https://wa.me/${content.footer.contactInfo.whatsapp.replace(/\+/g, "")}`;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -139,14 +139,14 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
             {locale === "es" ? "Enviado" : locale === "pt" ? "Enviado" : "Sent"}
           </p>
           <p className="mt-2 text-xl font-black tracking-tight text-black">
-            {locale === "es" ? "Gracias. Te escribimos pronto." : locale === "pt" ? "Obrigado. A gente entra em contato em breve." : "Thanks. We’ll reach out soon."}
+            {locale === "es" ? "Gracias. Te escribo pronto." : locale === "pt" ? "Obrigado. A gente entra em contato em breve." : "Thanks. I’ll get back to you soon."}
           </p>
           <p className="mt-2 text-sm font-medium text-neutral-600">
             {locale === "es"
-              ? "Si prefieres, también puedes escribirnos por WhatsApp usando el botón de arriba."
+              ? "Si prefieres, también puedes escribirme por WhatsApp con el botón de arriba."
               : locale === "pt"
               ? "Se preferir, você também pode falar com a gente pelo WhatsApp usando o botão acima."
-              : "If you prefer, you can also message us on WhatsApp using the button above."}
+              : "If you prefer, you can also message me on WhatsApp using the button above."}
           </p>
           <button
             type="button"

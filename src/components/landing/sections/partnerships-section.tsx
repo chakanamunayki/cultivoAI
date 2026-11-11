@@ -23,7 +23,7 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
   const { content, locale } = useLocale();
   const { openPartnershipModal } = useModal();
   const impactCardCta =
-    locale === "es" ? "Proponer proyecto de impacto" : locale === "pt" ? "Propor projeto de impacto" : "Propose an impact project";
+    locale === "es" ? "Cuéntame tu proyecto de impacto" : locale === "pt" ? "Propor projeto de impacto" : "Tell me about your impact project";
 
   const handlePartnershipClick = (partnership: Partnership) => {
     openPartnershipModal(partnership);
@@ -139,8 +139,8 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
             )}
           >
             {locale === "es"
-              ? "Tienes un presupuesto ajustado? Hablemos."
-              : "Working with a tight budget? Let's talk."}
+              ? "¿No sabes qué opción encaja? Hablemos."
+              : "Not sure which option fits? Let's talk."}
           </button>
         </Reveal>
       </div>

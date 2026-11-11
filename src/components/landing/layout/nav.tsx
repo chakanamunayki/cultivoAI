@@ -38,8 +38,8 @@ const PANEL_CONTACT_LABELS: Record<Locale, string> = {
 };
 
 const PANEL_HEADLINES: Record<Locale, string> = {
-  es: "Construyamos algo útil",
-  en: "Let us build something useful",
+  es: "Construyamos algo útil juntos",
+  en: "Let's build something useful together",
   pt: "Vamos construir algo útil",
 };
 

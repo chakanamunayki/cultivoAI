@@ -41,12 +41,12 @@ const QUICK_QUESTIONS: Record<
     general: [
       {
         id: "general-1",
-        text: "¿Cómo protegemos la IP de nuestros protocolos?",
+        text: "¿Qué construye Paul?",
         action: "send",
       },
       {
         id: "general-2",
-        text: "¿Qué es el Company Brain?",
+        text: "¿Qué es Semillero?",
         action: "send",
       },
       {
@@ -68,17 +68,17 @@ const QUICK_QUESTIONS: Record<
     booking: [
       {
         id: "booking-1",
-        text: "¿Agendamos 15 min? Bloqueo principal: [X].",
+        text: "¿Puedo agendar 15 minutos con Paul?",
         action: "send",
       },
       {
         id: "booking-2",
-        text: "¿Hay fit para charla de proyecto esta semana?",
+        text: "¿Puedo hablar con Paul esta semana?",
         action: "send",
       },
       {
         id: "booking-3",
-        text: "¿Qué enviamos antes de la llamada?",
+        text: "¿Qué envío antes de la llamada?",
         action: "send",
       },
       {
@@ -100,7 +100,7 @@ const QUICK_QUESTIONS: Record<
       },
       {
         id: "services-2",
-        text: "¿Cómo aislamos la IP de la ejecución?",
+        text: "¿Cómo demuestro el impacto de mi proyecto?",
         action: "send",
       },
       {
@@ -149,17 +149,17 @@ const QUICK_QUESTIONS: Record<
     qualification: [
       {
         id: "qualification-1",
-        text: "Sé directo: ¿somos fit?",
+        text: "Sé directo: ¿mi proyecto encaja?",
         action: "send",
       },
       {
         id: "qualification-2",
-        text: "¿Qué vuelve a un lead prioridad?",
+        text: "¿Qué tipo de proyectos acepta Paul?",
         action: "send",
       },
       {
         id: "qualification-3",
-        text: "¿Qué suele indicar no fit?",
+        text: "¿Cuándo Paul no es la persona indicada?",
         action: "send",
       },
       {
@@ -181,12 +181,12 @@ const QUICK_QUESTIONS: Record<
       },
       {
         id: "impact-2",
-        text: "¿Cómo equilibran impacto y realidad de negocio?",
+        text: "¿Cómo equilibra Paul impacto y negocio?",
         action: "send",
       },
       {
         id: "impact-3",
-        text: "¿Trabajan con equipos con misión real?",
+        text: "¿Paul trabaja con proyectos con propósito real?",
         action: "send",
       },
       {
@@ -205,12 +205,12 @@ const QUICK_QUESTIONS: Record<
     general: [
       {
         id: "general-1",
-        text: "How do we protect our protocol IP?",
+        text: "What does Paul build?",
         action: "send",
       },
       {
         id: "general-2",
-        text: "What is the Company Brain?",
+        text: "What is Semillero?",
         action: "send",
       },
       {
@@ -232,17 +232,17 @@ const QUICK_QUESTIONS: Record<
     booking: [
       {
         id: "booking-1",
-        text: "Book 15 min? Main blocker: [X].",
+        text: "Can I book 15 minutes with Paul?",
         action: "send",
       },
       {
         id: "booking-2",
-        text: "Fit for a project chat this week?",
+        text: "Can I talk to Paul this week?",
         action: "send",
       },
       {
         id: "booking-3",
-        text: "What should we send before the call?",
+        text: "What should I send before the call?",
         action: "send",
       },
       {
@@ -264,7 +264,7 @@ const QUICK_QUESTIONS: Record<
       },
       {
         id: "services-2",
-        text: "How do we isolate IP from execution?",
+        text: "How can I prove my project's impact?",
         action: "send",
       },
       {
@@ -313,17 +313,17 @@ const QUICK_QUESTIONS: Record<
     qualification: [
       {
         id: "qualification-1",
-        text: "Be direct: are we a fit?",
+        text: "Be direct: is my project a fit?",
         action: "send",
       },
       {
         id: "qualification-2",
-        text: "What makes a lead high priority?",
+        text: "What kind of projects does Paul take on?",
         action: "send",
       },
       {
         id: "qualification-3",
-        text: "What usually signals no fit?",
+        text: "When is Paul not the right fit?",
         action: "send",
       },
       {
@@ -345,12 +345,12 @@ const QUICK_QUESTIONS: Record<
       },
       {
         id: "impact-2",
-        text: "How do you balance impact and business reality?",
+        text: "How does Paul balance impact and business?",
         action: "send",
       },
       {
         id: "impact-3",
-        text: "Do you work with genuinely mission-led teams?",
+        text: "Does Paul work with genuinely mission-led projects?",
         action: "send",
       },
       {

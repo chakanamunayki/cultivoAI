@@ -20,7 +20,7 @@ export const enPartnershipsContent: Pick<
         whatItMeans:
           "I start with a free call to understand your objective. If a sprint fits, it is a short, senior engagement to map your architecture, protect your IP, and scope the build, before anyone writes production code.",
         whyItMatters:
-          "Most AI projects fail on a fuzzy start. The call costs you nothing and tells us both whether there is a fit. The sprint then gives you a costed, defensible plan and a clear first build, with no open-ended commitment.",
+          "Most projects go wrong at a fuzzy start. The call costs you nothing and tells us both whether there is a fit. The sprint then gives you a costed, defensible plan and a clear first build, with no open-ended commitment.",
         whatsIncluded: [
           "A free intro call to understand your objective and size the sprint",
           "Architecture gap map: what you have, what's missing, what to build",
@@ -87,7 +87,7 @@ export const enPartnershipsContent: Pick<
           "A plan to grow the system as momentum builds",
         ],
         idealFit: [
-          "Mission-aligned teams with tight budgets",
+          "Mission-led projects with real impact",
           "Projects where outcomes matter more than polish on day one",
           "Teams willing to collaborate closely and iterate",
         ],

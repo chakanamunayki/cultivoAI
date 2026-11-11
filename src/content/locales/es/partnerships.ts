@@ -20,7 +20,7 @@ export const esPartnershipsContent: Pick<
         whatItMeans:
           "Empiezo con una llamada gratis para entender tu objetivo. Si un sprint encaja, es un trabajo corto y senior para mapear tu arquitectura, proteger tu IP y definir el alcance del desarrollo, antes de que nadie escriba código de producción.",
         whyItMatters:
-          "La mayoría de los proyectos de IA fallan por un inicio difuso. La llamada no te cuesta nada y nos dice a ambos si hay encaje. El sprint luego te da un plan costeado y defendible y un primer desarrollo claro, sin compromiso abierto.",
+          "La mayoría de los proyectos se tuercen por un inicio difuso. La llamada no te cuesta nada y nos dice a ambos si hay encaje. El sprint luego te da un plan costeado y defendible y un primer desarrollo claro, sin compromiso abierto.",
         whatsIncluded: [
           "Una llamada inicial gratis para entender tu objetivo y dimensionar el sprint",
           "Mapa de brechas de arquitectura: qué tienes, qué falta, qué construir",
@@ -87,7 +87,7 @@ export const esPartnershipsContent: Pick<
           "Plan para crecer el sistema a medida que haya impulso",
         ],
         idealFit: [
-          "Equipos alineados a misión con presupuesto ajustado",
+          "Proyectos con propósito e impacto real",
           "Proyectos donde los resultados importan más que el pulido del día uno",
           "Equipos dispuestos a colaborar de cerca e iterar",
         ],
