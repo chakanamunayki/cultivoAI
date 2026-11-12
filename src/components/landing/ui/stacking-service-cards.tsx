@@ -7,7 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import type { Locale, Service } from "@/content/types";
 import { cn } from "@/lib/utils";
 import { AiAssistantsAnimation } from "./service-animations/AiAssistantsAnimation";
-import { CompanyBrainAnimation } from "./service-animations/CompanyBrainAnimation";
+import { DataKnowledgeAnimation } from "./service-animations/DataKnowledgeAnimation";
 import { InvestmentReadinessAnimation } from "./service-animations/InvestmentReadinessAnimation";
 import { KnowledgeAnimation } from "./service-animations/KnowledgeAnimation";
 import { ProofRecordsAnimation } from "./service-animations/ProofRecordsAnimation";
@@ -20,7 +20,7 @@ type AnimationComponent = React.ComponentType<{ locale?: Locale }>;
 const SERVICE_ANIMATIONS: Record<string, AnimationComponent> = {
   "workflow": WorkflowAnimation,
   "ai-assistants": AiAssistantsAnimation,
-  "company-brain": CompanyBrainAnimation,
+  "company-brain": DataKnowledgeAnimation,
   "retreat-ops": RetreatOpsAnimation,
   "dashboards": ProofRecordsAnimation,
   "knowledge": KnowledgeAnimation,

@@ -38,7 +38,17 @@ export const HATCH_INK = {
     "repeating-linear-gradient(135deg, rgba(12,12,12,0.8) 0 1.5px, transparent 1.5px 4.5px)",
 };
 
-const REDUCED_QUERY = "(prefers-reduced-motion: reduce)";
+/**
+ * The six-plot field map that recurs across the panels: a hand-jittered 4x3
+ * lattice in a 240x128 box, so the plots share uneven field boundaries.
+ */
+export const PLOT_LATTICE = [
+  [[5, 9], [82, 4], [161, 11], [235, 5]],
+  [[9, 65], [77, 60], [167, 67], [231, 61]],
+  [[4, 123], [87, 125], [157, 119], [236, 124]],
+] as const;
+
+const REDUCED_QUERY ="(prefers-reduced-motion: reduce)";
 
 function subscribeReduced(callback: () => void) {
   const mediaQuery = window.matchMedia(REDUCED_QUERY);

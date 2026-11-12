@@ -14,6 +14,7 @@ import {
   PanelFrame,
   PanelHeader,
   PAPER,
+  PLOT_LATTICE,
   SampleTag,
   TEXT_LABEL,
   TEXT_VALUE,
@@ -91,12 +92,7 @@ const PLANTED = 20;
 const ROWS = 4;
 const COLS = 5;
 
-// A hand-jittered 4x3 lattice, so the six plots share uneven field boundaries.
-const L = [
-  [[5, 9], [82, 4], [161, 11], [235, 5]],
-  [[9, 65], [77, 60], [167, 67], [231, 61]],
-  [[4, 123], [87, 125], [157, 119], [236, 124]],
-] as const;
+const L = PLOT_LATTICE;
 
 const lerp = (a: Pt, b: Pt, t: number): Pt => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
 
