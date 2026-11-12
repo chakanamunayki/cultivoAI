@@ -153,7 +153,7 @@ export function WhoWeHelpSection({
                     {/* Visual Header */}
                     <div
                       className={cn(
-                        "relative flex h-32 items-center justify-center overflow-hidden border-b bg-neutral-200 md:h-36 lg:h-44",
+                        "relative flex aspect-[16/9] items-center justify-center overflow-hidden border-b bg-neutral-200",
                         variant === "blue" ? "border-white/15" : "border-white/10"
                       )}
                     >
