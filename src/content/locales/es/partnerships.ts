@@ -2,18 +2,26 @@ import type { SiteContent } from "../../types";
 
 export const esPartnershipsContent: Pick<
   SiteContent,
-  "partnershipsTitle" | "partnershipsSubtitle" | "partnerships"
+  "partnershipsTitle" | "partnershipsSubtitle" | "partnerships" | "partnershipsExtras"
 > = {
   partnershipsTitle: "Formas de trabajar juntos",
   partnershipsSubtitle:
-    "Alcance claro, precio justo. Espacio para proyectos con propósito cuando el encaje es bueno.",
+    "Empieza con una conversación. Luego, tres pasos simples, cada uno con un alcance claro y un precio acordado contigo antes de empezar.",
+  partnershipsExtras: {
+    termsLabel: "Precio",
+    missionLine:
+      "¿Un proyecto con propósito o una innovación para Semillero? Los términos pueden ajustarse cuando el encaje es bueno.",
+    missionCta: "Cuéntamelo",
+    closingCta: "Empecemos con una conversación",
+  },
   partnerships: [
     {
       name: "Sprint de descubrimiento",
-      tagline: "Empieza con una llamada gratis",
+      tagline: "1 · Empieza aquí",
       description:
-        "Cada proyecto es diferente, desde una automatización pequeña hasta una plataforma completa. Por eso empiezo con una llamada gratis para entender tu objetivo. Si un Sprint de Descubrimiento encaja, se define y se cotiza según el trabajo, y te vas con un plan claro y costeado.",
-      idealFor: ["Equipos con IP real y una decisión que tomar", "Cualquiera que no sepa qué construir primero"],
+        "Primero, una conversación gratis sobre tu objetivo. Si un sprint encaja, paso de dos a cuatro semanas con tu equipo mapeando lo que tienes, lo que falta y qué construir primero. Te llevas un plan costeado que es tuyo.",
+      terms: "Precio fijo, acordado contigo después de esa primera conversación.",
+      idealFor: ["Proyectos con IP, tierra o datos que proteger", "Cualquiera que no sepa qué construir primero"],
       icon: "Hourglass",
       imageUrl: "/landing/photos/services/startup-advisory.png",
       modal: {
@@ -38,90 +46,63 @@ export const esPartnershipsContent: Pick<
       },
     },
     {
-      name: "Proyecto estándar",
-      tagline: "Negocios con presupuesto",
+      name: "Construcción",
+      tagline: "2 · La primera versión",
       description:
-        "Alcance claro y entregables definidos. Precio fijo acordado antes de empezar. Cronograma establecido. Soporte incluido post-entrega.",
-      idealFor: ["Empresas que saben lo que necesitan", "Recursos para invertir"],
+        "Construyo la primera versión a partir del plan: software y plataformas, sistemas de datos e IA, o el registro que demuestra tu impacto. Luego mejora con el uso real.",
+      terms: "Precio fijo, acordado contigo antes de empezar.",
+      idealFor: ["Equipos con un plan o una especificación clara"],
       icon: "Briefcase",
       imageUrl: "/landing/photos/partnerships/standard-project.jpg",
       modal: {
         whatItMeans:
-          "Una construcción con alcance claro, entregables definidos y responsabilidades claras.",
+          "La primera versión de lo que se planeó en el sprint, con alcance claro, cronograma y un precio fijo acordado contigo antes de empezar.",
         whyItMatters:
-          "Si necesitas previsibilidad, este modelo mantiene decisiones rápidas y entrega alineada a un objetivo claro.",
+          "Sabes qué recibes, cuándo y cuánto cuesta. Sin facturas abiertas ni sorpresas a mitad de camino.",
         whatsIncluded: [
-          "Descubrimiento corto para definir alcance y criterios de éxito",
-          "Plan de entrega con hitos y ownership claro",
-          "Construcción, pruebas y lanzamiento de lo acordado",
-          "Documentación básica y entrega",
-          "Ventana pequeña post-lanzamiento para ajustes y fixes",
+          "Construido a partir del plan acordado en el sprint",
+          "Avances que puedes ver y probar mientras construyo",
+          "Construcción, pruebas y lanzamiento del alcance acordado",
+          "Documentación y una entrega bien hecha",
+          "Un periodo corto después del lanzamiento para corregir y ajustar",
         ],
         idealFit: [
-          "Equipos que ya saben lo que necesitan (o pueden decidir rápido)",
-          "Proyectos donde claridad y velocidad importan",
-          "Organizaciones listas para invertir en buena entrega",
+          "Equipos que terminaron un sprint o ya tienen una especificación clara",
+          "Proyectos donde lo que más importa es tener una primera versión funcionando",
+          "Organizaciones listas para invertir en hacerlo bien",
         ],
         typicalOutcome:
-          "Un sistema lanzado, con alcance y entrega claros desde el día uno.",
+          "Una primera versión funcionando en tus manos, documentada y lista para crecer.",
       },
     },
     {
-      name: "Tarifas de impacto",
-      tagline: "Equipos con misión",
+      name: "Acompañamiento",
+      tagline: "3 · Que siga creciendo",
       description:
-        "Mismo nivel de calidad. Precio reducido significativamente. Condiciones flexibles. A cambio: testimonial, caso de estudio, o referidos.",
-      idealFor: ["Startups pre-revenue", "Proyectos con misión social"],
-      icon: "HeartHandshake",
-      imageUrl: "/landing/photos/partnerships/impact-friendly.jpg",
-      modal: {
-        whatItMeans:
-          "Tarifas reducidas para equipos con misión cuando el impacto es real y las expectativas están claras.",
-        whyItMatters:
-          "Mucho trabajo de alto impacto empieza lean. Este modelo permite construir sistemas útiles sin estirar al equipo más de lo saludable.",
-        whatsIncluded: [
-          "Mismo nivel de calidad, con alcance más lean",
-          "Prioridades claras: primera versión primero, luego mejorar",
-          "Colaboración flexible para restricciones reales",
-          "Acuerdo de intercambio justo (testimonial, caso de estudio, referidos)",
-          "Plan para crecer el sistema a medida que haya impulso",
-        ],
-        idealFit: [
-          "Proyectos con propósito e impacto real",
-          "Proyectos donde los resultados importan más que el pulido del día uno",
-          "Equipos dispuestos a colaborar de cerca e iterar",
-        ],
-        typicalOutcome:
-          "Una primera versión que arranca con impulso y tiene camino para crecer.",
-      },
-    },
-    {
-      name: "Alianza",
-      tagline: "Solo si hay encaje real",
-      description:
-        "Para proyectos seleccionados con alto potencial de impacto y alineación clara, puedo definir términos de alianza personalizados. Incluidas alianzas de innovación a través de Semillero.",
-      idealFor: ["Startups de impacto", "Colaboraciones alineadas de largo plazo"],
-      icon: "PieChart",
+        "Cuando ya está en marcha, lo mantengo funcionando y mejorando mes a mes. En proyectos más grandes, puedo seguir como tu socio tecnológico, con las manos en el trabajo.",
+      terms: "Mensual, acordado contigo. Con 30 días de aviso para ambas partes.",
+      idealFor: ["Equipos con un sistema en uso del que dependen"],
+      icon: "TrendingUp",
       imageUrl: "/landing/photos/partnerships/partnership-options.jpg",
       modal: {
         whatItMeans:
-          "Un modelo de colaboración personalizado para casos donde la alineación es fuerte y los incentivos deben permanecer conectados en el tiempo.",
+          "Un acuerdo mensual para mantener tu sistema funcionando, arreglar lo que falle y sumar lo que tu equipo necesite.",
         whyItMatters:
-          "Cuando un proyecto tiene impacto real y potencial real, los modelos rígidos pueden frenar. Términos flexibles mantienen la relación win-win.",
+          "Los sistemas que nadie cuida se dejan de usar. Un plan mensual pequeño mantiene el tuyo útil mientras cambian tu trabajo y tu equipo.",
         whatsIncluded: [
-          "Chequeo honesto de alineación (impacto, ejecución, expectativas)",
-          "Plan por fases con entregables claros en cada etapa",
-          "Términos que mantienen incentivos alineados mientras evoluciona",
-          "Puntos de revisión regulares para ajustar alcance y prioridades",
-          "Enfoque en utilidad a largo plazo, no en apariencias a corto plazo",
+          "Monitoreo y correcciones",
+          "Actualizaciones cuando cambian tus protocolos, tus datos o tu equipo",
+          "Una revisión periódica de lo que funciona y lo que no",
+          "Pequeñas mejoras cada mes, acordadas con antelación",
+          "En proyectos grandes: yo como tu socio tecnológico, con las manos en el trabajo",
         ],
         idealFit: [
-          "Startups de impacto con potencial fuerte y foco claro",
-          "Equipos buscando colaboración de largo plazo, no solo un proyecto",
-          "Situaciones donde la flexibilidad crea mejores resultados",
+          "Equipos con un sistema en uso del que dependen",
+          "Proyectos que siguen creciendo después de la primera versión",
+          "Fundadores que quieren un socio técnico sin contratar a alguien a tiempo completo",
         ],
         typicalOutcome:
-          "Una colaboración que crece por fases, mantiene honestidad sobre las decisiones y construye algo útil con el tiempo.",
+          "Un sistema que sigue el ritmo de tu trabajo, y una persona que lo conoce a fondo.",
       },
     },
   ],

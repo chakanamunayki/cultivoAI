@@ -2,18 +2,26 @@ import type { SiteContent } from "../../types";
 
 export const enPartnershipsContent: Pick<
   SiteContent,
-  "partnershipsTitle" | "partnershipsSubtitle" | "partnerships"
+  "partnershipsTitle" | "partnershipsSubtitle" | "partnerships" | "partnershipsExtras"
 > = {
   partnershipsTitle: "Ways to work together",
   partnershipsSubtitle:
-    "Clear scope, fair price. Room for mission-led projects when the fit is right.",
+    "It starts with a conversation. Then three simple steps, each with a clear scope and a price agreed with you before any work begins.",
+  partnershipsExtras: {
+    termsLabel: "Price",
+    missionLine:
+      "Mission-led project or a Semillero innovation? Terms can flex when the fit is right.",
+    missionCta: "Tell me about it",
+    closingCta: "Let's start with a conversation",
+  },
   partnerships: [
     {
       name: "Discovery Sprint",
-      tagline: "Start with a free call",
+      tagline: "1 · Start here",
       description:
-        "Every project is different, from a small automation to a full platform. So I start with a free call to understand your objective. If a Discovery Sprint fits, it's scoped and priced to the work, and you leave with one clear, costed plan.",
-      idealFor: ["Teams with real IP and a decision to make", "Anyone unsure what to build first"],
+        "First, a free conversation about your goal. If a sprint fits, I spend two to four weeks with your team mapping what you have, what's missing and what to build first. You leave with a costed plan that is yours to keep.",
+      terms: "Fixed price, agreed with you after that first conversation.",
+      idealFor: ["Projects with real IP, land or data to protect", "Anyone unsure what to build first"],
       icon: "Hourglass",
       imageUrl: "/landing/photos/services/startup-advisory.png",
       modal: {
@@ -38,90 +46,63 @@ export const enPartnershipsContent: Pick<
       },
     },
     {
-      name: "Standard project",
-      tagline: "Businesses with budget",
+      name: "Build",
+      tagline: "2 · Version one",
       description:
-        "Clear scope and defined deliverables. Fixed price agreed before starting. Established timeline. Post-delivery support included.",
-      idealFor: ["Companies that know what they need", "Resources to invest"],
+        "I build version one from the plan: software and platforms, data and AI systems, or the record that proves your impact. Then it gets better with real use.",
+      terms: "Fixed price, agreed with you before I start.",
+      idealFor: ["Teams with a plan or a clear spec"],
       icon: "Briefcase",
       imageUrl: "/landing/photos/partnerships/standard-project.jpg",
       modal: {
         whatItMeans:
-          "A clear-scope build with defined deliverables, timeline, and responsibilities.",
+          "Version one of what the sprint planned, with a clear scope, a timeline and a fixed price agreed with you before I start.",
         whyItMatters:
-          "If you need predictability, this model keeps decision-making fast and delivery aligned to a clear target.",
+          "You know what you are getting, when, and what it costs. No open-ended bill and no surprises halfway through.",
         whatsIncluded: [
-          "A short discovery to define scope and success criteria",
-          "A delivery plan with milestones and clear ownership",
-          "Build, test, and launch of the agreed deliverables",
-          "Basic documentation and handoff",
-          "A small post-launch support window for fixes and tuning",
+          "Built from the plan agreed in the sprint",
+          "Milestones you can see and test as I go",
+          "Build, testing and launch of the agreed scope",
+          "Documentation and a proper handover",
+          "A short window after launch to fix and tune",
         ],
         idealFit: [
-          "Teams who know what they need (or can decide quickly)",
-          "Projects where clarity and speed matter",
-          "Organizations ready to invest in quality delivery",
+          "Teams that have finished a sprint, or already have a clear spec",
+          "Projects where a working version one matters most",
+          "Organisations ready to invest in doing it properly",
         ],
         typicalOutcome:
-          "A shipped system with clear scope, clear handoff, and the foundation to iterate responsibly.",
+          "A working version one in your hands, documented and ready to grow.",
       },
     },
     {
-      name: "Impact-friendly rates",
-      tagline: "Mission-aligned teams",
+      name: "Ongoing support",
+      tagline: "3 · Keep it growing",
       description:
-        "Same quality level. Significantly reduced price. Flexible conditions. In exchange: testimonial, case study, or referrals.",
-      idealFor: ["Pre-revenue startups", "Projects with social mission"],
-      icon: "HeartHandshake",
-      imageUrl: "/landing/photos/partnerships/impact-friendly.jpg",
-      modal: {
-        whatItMeans:
-          "Reduced rates for mission-led teams when the impact is real and expectations are clear.",
-        whyItMatters:
-          "High-impact work often starts lean. This model makes it possible to build useful systems without stretching the team past their limits.",
-        whatsIncluded: [
-          "The same delivery quality, with a leaner scope",
-          "Clear priorities: version one first, then improve",
-          "Flexible collaboration to match real constraints",
-          "Agreement on a fair exchange (testimonial, case study, referrals)",
-          "A plan to grow the system as momentum builds",
-        ],
-        idealFit: [
-          "Mission-led projects with real impact",
-          "Projects where outcomes matter more than polish on day one",
-          "Teams willing to collaborate closely and iterate",
-        ],
-        typicalOutcome:
-          "A focused version one that creates momentum, with a clear path to expand when resources allow.",
-      },
-    },
-    {
-      name: "Partnership",
-      tagline: "Right fit only",
-      description:
-        "For selected projects with strong impact potential and clear alignment, I can define custom partnership terms. Including innovation partnerships through Semillero.",
-      idealFor: ["Impact startups", "Long-term aligned collaborations"],
-      icon: "PieChart",
+        "Once it is live, I keep it running and improving month by month. For bigger projects, I can stay on as your hands-on tech partner.",
+      terms: "Monthly, agreed with you. 30 days' notice either side.",
+      idealFor: ["Teams with a live system they rely on"],
+      icon: "TrendingUp",
       imageUrl: "/landing/photos/partnerships/partnership-options.jpg",
       modal: {
         whatItMeans:
-          "A custom collaboration model for the rare cases where alignment is strong and incentives should stay connected over time.",
+          "A monthly arrangement to keep your system running, fix what breaks and add what your team needs next.",
         whyItMatters:
-          "When a project has real upside and real impact, rigid models can slow progress. Custom terms keep the relationship win-win.",
+          "Systems that nobody looks after stop being used. A small monthly plan keeps yours useful as your work and your team change.",
         whatsIncluded: [
-          "A candid alignment check (impact, execution, and expectations)",
-          "A phased plan with clear deliverables at each step",
-          "Terms that keep incentives aligned as the project evolves",
-          "Regular review points to adjust scope and priorities",
-          "A focus on long-term usefulness, not short-term optics",
+          "Monitoring and fixes",
+          "Updates as your protocols, data or team change",
+          "A regular review of what is working and what is not",
+          "Small improvements each month, agreed in advance",
+          "For bigger projects: me as your hands-on tech partner",
         ],
         idealFit: [
-          "Impact startups with strong potential and clear focus",
-          "Teams looking for long-term collaboration, not a one-off",
-          "Situations where flexibility creates better outcomes",
+          "Teams with a live system they rely on",
+          "Projects that keep growing after version one",
+          "Founders who want a technical partner without a full-time hire",
         ],
         typicalOutcome:
-          "A partnership that ships in phases, stays honest about tradeoffs, and grows a useful system over time.",
+          "A system that keeps up with your work, and one person who knows it inside out.",
       },
     },
   ],

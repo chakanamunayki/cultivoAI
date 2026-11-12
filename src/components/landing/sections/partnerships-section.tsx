@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import {
   landingCardClass,
   landingPrimaryBlueButtonClass,
@@ -11,7 +10,6 @@ import {
 import { useModal } from "@/components/landing/ui/modal-provider";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { SectionHeader } from "@/components/landing/ui/section-header";
-import type { Partnership } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils";
 
@@ -22,12 +20,14 @@ interface PartnershipsSectionProps {
 export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionProps) {
   const { content, locale } = useLocale();
   const { openPartnershipModal } = useModal();
-  const impactCardCta =
-    locale === "es" ? "Cuéntame tu proyecto de impacto" : locale === "pt" ? "Propor projeto de impacto" : "Tell me about your impact project";
-
-  const handlePartnershipClick = (partnership: Partnership) => {
-    openPartnershipModal(partnership);
-  };
+  const extras = content.partnershipsExtras;
+  const detailsLabel =
+    locale === "es" ? "Ver detalles ->" : locale === "pt" ? "Ver detalhes ->" : "View details ->";
+  const closingCta =
+    extras?.closingCta ??
+    (locale === "es"
+      ? "¿No sabes qué opción encaja? Hablemos."
+      : "Not sure which option fits? Let's talk.");
 
   return (
     <div id="partnerships" className="border-b border-white/10 bg-[#212121]">
@@ -41,93 +41,107 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
           />
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3">
           {content.partnerships.map((partner, i) => {
-            const variant: LandingCardVariant = i === 1 ? "blue" : "dark";
+            // The first step is where everyone starts, so it carries the accent.
+            const variant: LandingCardVariant = i === 0 ? "blue" : "dark";
+            const isBlue = variant === "blue";
 
             return (
-              <Reveal key={i} delay={i * 100}>
+              <Reveal key={partner.name} delay={i * 100}>
                 <article
                   className={landingCardClass(
                     variant,
-                    "group flex h-full w-full flex-col justify-between overflow-hidden rounded-[22px] p-6 text-left hover:-translate-y-1"
+                    "group flex h-full w-full flex-col overflow-hidden rounded-[22px] p-6 text-left hover:-translate-y-1"
                   )}
                 >
                   <h3
                     className={landingTitleBandClass(
                       variant,
-                      "-mx-6 -mt-6 mb-4 px-6 py-2.5 text-xl leading-tight font-black tracking-tight"
+                      "-mx-6 -mt-6 mb-5 px-6 py-2.5 text-xl leading-tight font-black tracking-tight"
                     )}
                   >
                     {partner.name}
                   </h3>
-                  <div>
-                    {partner.imageUrl ? (
-                      <div className="relative mb-4 aspect-[3/2] w-full overflow-hidden rounded-[16px] border border-black/10 bg-neutral-200">
-                        <Image
-                          src={partner.imageUrl}
-                          alt={partner.name}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                        />
-                      </div>
-                    ) : null}
-                    <p
-                      className={`mb-4 text-sm font-medium ${
-                        variant === "blue" ? "text-[#eef9f5]" : "text-white/80"
-                      }`}
-                    >
-                      {partner.tagline}
-                    </p>
-                    <p
-                      className={`mb-4 text-sm leading-relaxed ${
-                        variant === "blue" ? "text-[#e6f6f0]" : "text-white/85"
-                      }`}
-                    >
-                      {partner.description}
-                    </p>
-                    {partner.idealFor[0] && (
-                      <p
-                        className={`text-sm font-medium ${
-                          variant === "blue" ? "text-[#FFFFFF]" : "text-white/75"
-                        }`}
-                      >
-                        {partner.idealFor[0]}
-                      </p>
+                  <p
+                    className={cn(
+                      "mb-3 text-xs font-semibold tracking-[0.08em] uppercase",
+                      isBlue ? "text-white" : "text-[#00BCD4]"
                     )}
-                  </div>
-                  <div className="mt-6 space-y-2">
-                    <button
-                      type="button"
-                      onClick={() => handlePartnershipClick(partner)}
-                      className={cn(
-                        "w-full rounded-lg px-4 py-2.5 text-center text-xs font-semibold tracking-[0.07em]",
-                        variant === "dark"
-                          ? landingPrimaryBlueButtonClass
-                          : landingPrimaryDarkButtonClass
-                      )}
-                    >
-                      {locale === "es" ? "Ver detalles ->" : locale === "pt" ? "Ver detalhes ->" : "View details ->"}
-                    </button>
-                    {i === 1 && (
-                      <button
-                        type="button"
-                        onClick={onOpenChatGeneral}
+                  >
+                    {partner.tagline}
+                  </p>
+                  <p
+                    className={cn(
+                      "text-[15px] leading-relaxed",
+                      isBlue ? "text-white" : "text-white/85"
+                    )}
+                  >
+                    {partner.description}
+                  </p>
+
+                  <div className="mt-auto pt-6">
+                    {partner.terms && (
+                      <div
                         className={cn(
-                          "w-full rounded-lg px-4 py-2.5 text-center text-xs font-semibold tracking-[0.07em]",
-                          landingPrimaryDarkButtonClass
+                          "mb-5 border-t pt-4",
+                          isBlue ? "border-white/30" : "border-white/10"
                         )}
                       >
-                        {impactCardCta}
-                      </button>
+                        {extras?.termsLabel && (
+                          <p
+                            className={cn(
+                              "mb-1 text-[11px] font-semibold tracking-[0.08em] uppercase",
+                              isBlue ? "text-white/85" : "text-white/60"
+                            )}
+                          >
+                            {extras.termsLabel}
+                          </p>
+                        )}
+                        <p
+                          className={cn(
+                            "text-sm leading-relaxed font-medium",
+                            isBlue ? "text-white" : "text-white/85"
+                          )}
+                        >
+                          {partner.terms}
+                        </p>
+                      </div>
                     )}
+                    <button
+                      type="button"
+                      onClick={() => openPartnershipModal(partner)}
+                      className={cn(
+                        "w-full rounded-lg px-4 py-2.5 text-center text-xs font-semibold tracking-[0.07em]",
+                        isBlue ? landingPrimaryDarkButtonClass : landingPrimaryBlueButtonClass
+                      )}
+                    >
+                      {detailsLabel}
+                    </button>
                   </div>
                 </article>
               </Reveal>
             );
           })}
         </div>
+
+        {extras && (
+          <Reveal delay={300}>
+            <div className="mt-8 flex flex-col gap-4 rounded-[22px] border border-white/15 bg-white/[0.04] p-6 shadow-[0_14px_30px_rgba(0,0,0,0.3)] md:flex-row md:items-center md:justify-between md:gap-8">
+              <p className="text-base leading-relaxed text-white/85">{extras.missionLine}</p>
+              <button
+                type="button"
+                onClick={onOpenChatGeneral}
+                className={cn(
+                  "shrink-0 px-6 py-2.5 text-center text-xs font-semibold tracking-[0.07em]",
+                  landingPrimaryBlueButtonClass
+                )}
+              >
+                {extras.missionCta}
+              </button>
+            </div>
+          </Reveal>
+        )}
 
         <Reveal delay={300} className="mt-12 text-center">
           <button
@@ -138,9 +152,7 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
               landingPrimaryDarkButtonClass
             )}
           >
-            {locale === "es"
-              ? "¿No sabes qué opción encaja? Hablemos."
-              : "Not sure which option fits? Let's talk."}
+            {closingCta}
           </button>
         </Reveal>
       </div>

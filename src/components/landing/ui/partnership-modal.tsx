@@ -34,8 +34,8 @@ export function PartnershipModal({ partnership, onOpenContact }: PartnershipModa
 
   const chatCtaText = locale === "es" ? "Hablemos de esto" : locale === "pt" ? "Vamos falar sobre isso" : "Let's talk about this";
   const whatItMeansLabel = locale === "es" ? "Qué significa" : locale === "pt" ? "O que significa" : "What it means";
-  const whyItMattersLabel = locale === "es" ? "Por que importa" : locale === "pt" ? "Por que importa" : "Why it matters";
-  const includedLabel = locale === "es" ? "Que incluye" : locale === "pt" ? "O que inclui" : "What's included";
+  const whyItMattersLabel = locale === "es" ? "Por qué importa" : locale === "pt" ? "Por que importa" : "Why it matters";
+  const includedLabel = locale === "es" ? "Qué incluye" : locale === "pt" ? "O que inclui" : "What's included";
   const idealFitLabel = locale === "es" ? "Ideal para" : locale === "pt" ? "Ideal para" : "Ideal fit";
   const outcomeLabel = locale === "es" ? "Resultado típico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
 

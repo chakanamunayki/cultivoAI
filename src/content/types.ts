@@ -145,7 +145,16 @@ export interface Partnership {
   idealFor: string[];
   icon: string;
   imageUrl?: string; // Landing visual tile/banner
+  /** How the price is agreed for this step. Never a figure. */
+  terms?: string;
   modal: ModalExpansion;
+}
+
+export interface PartnershipsExtras {
+  termsLabel: string;
+  missionLine: string;
+  missionCta: string;
+  closingCta: string;
 }
 
 export interface Step {
@@ -307,6 +316,7 @@ export interface SiteContent {
   partnershipsTitle: string;
   partnershipsSubtitle: string;
   partnerships: Partnership[];
+  partnershipsExtras?: PartnershipsExtras;
   projectsTitle: string;
   projectsSubtitle: string;
   projects: Project[];
