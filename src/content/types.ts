@@ -134,6 +134,8 @@ export interface ProjectInProgress {
   status: string;
   title: string;
   desc: string;
+  /** Short labelled lines under the description. */
+  details?: { label: string; text: string }[];
 }
 
 export interface Partnership {

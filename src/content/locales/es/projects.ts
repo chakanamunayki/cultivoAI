@@ -12,12 +12,48 @@ projectsInProgress: [
   {
     status: "Consorcio en formación",
     title: "Restauración después de la minería, Colombia",
-    desc: "Un solo registro de la semilla a la supervivencia: propagación de nativas, restauración en campo con comunidades y monitoreo satelital. Yo construyo ese registro.",
+    desc: "En Colombia, las minas deben restaurar la tierra que usaron y demostrar, año tras año, que funcionó. Hoy esa prueba está repartida entre viveros, equipos de campo e informes satelitales.",
+    details: [
+      {
+        label: "Las nuevas reglas",
+        text: "El decreto de cierre de minas de 2026 (Decreto 0742) hace del monitoreo poscierre parte de todo plan de cierre, y el nuevo manual de compensación (Resolución 0305) obliga a la autoridad a revisar la restauración al menos una vez al año.",
+      },
+      {
+        label: "Tres partes, un registro",
+        text: "Propagación de plantas nativas, restauración en campo con comunidades locales y monitoreo satelital de la supervivencia.",
+      },
+      {
+        label: "Mi parte",
+        text: "El registro: software que une cada lote de plantas, del vivero al campo, con cuántas sobreviven, y lo convierte en los informes de cumplimiento que pide la autoridad. Se construye mientras se hace el trabajo, no al final.",
+      },
+      {
+        label: "Siguiente paso",
+        text: "El consorcio está cerrando su nota conceptual y preparando solicitudes de financiación para 2027.",
+      },
+    ],
   },
   {
     status: "Primeras conversaciones",
     title: "Biochar y cáñamo en los Andes, Ecuador",
-    desc: "Una cooperativa andina con un modelo circular: el biochar se vuelve compost, el cáñamo se cultiva con una comunidad indígena y los residuos vuelven a la tierra como remoción de carbono.",
+    desc: "Una cooperativa a 3.200 metros en los Andes de Ecuador, con un modelo donde cada resultado alimenta al siguiente.",
+    details: [
+      {
+        label: "El ciclo",
+        text: "El biochar de hornos artesanales se vuelve compost, el compost alimenta un laboratorio de semilla de cáñamo con licencia, el cáñamo se cultiva en el campo y los residuos vuelven como biochar y remoción de carbono.",
+      },
+      {
+        label: "La comunidad",
+        text: "Dos comunidades de la sierra hacen el trabajo. Familias de una comenzaron a formarse en biochar a finales de 2025, y una comunidad indígena kichwa cultiva el cáñamo. La mitad de los ingresos de carbono previstos va a los agricultores y a un fondo comunitario, y se prevé un fideicomiso de tierras para que la tierra siga en manos locales.",
+      },
+      {
+        label: "Por qué importa",
+        text: "El grano de cáñamo busca alimentar a 100 familias en una zona donde más de la mitad de los niños sufre desnutrición crónica, y la fibra se convierte en bloques de construcción bajos en carbono para vivienda.",
+      },
+      {
+        label: "Dónde puedo aportar",
+        text: "Convertir el modelo en un caso que se pueda financiar: números que se sostengan, presupuestos limpios y la evidencia que piden los financiadores y los compradores de carbono.",
+      },
+    ],
   },
 ],
 projects: [

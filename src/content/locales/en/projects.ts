@@ -12,12 +12,48 @@ projectsInProgress: [
   {
     status: "Consortium forming",
     title: "Restoration after mining, Colombia",
-    desc: "One record from seed to survival: native-plant propagation, field restoration with communities and satellite monitoring. I build that record.",
+    desc: "Mines in Colombia have to restore the land they used and prove, year after year, that it worked. Today that proof is scattered across nurseries, field teams and satellite reports.",
+    details: [
+      {
+        label: "The new rules",
+        text: "Colombia's 2026 mine-closure decree (Decreto 0742) makes monitoring after closure part of every closure plan, and the new compensation manual (Resolución 0305) has the authorities checking restoration at least once a year.",
+      },
+      {
+        label: "Three parts, one record",
+        text: "Native-plant propagation, field restoration with local communities and satellite monitoring of survival.",
+      },
+      {
+        label: "My part",
+        text: "The record: software that links each batch of plants, from nursery to field, to how many survive, and turns it into the compliance reports the authorities ask for. It is built as the work happens, not at the end.",
+      },
+      {
+        label: "Next step",
+        text: "The consortium is finalising its concept note and preparing funding applications for 2027.",
+      },
+    ],
   },
   {
     status: "Early conversations",
     title: "Biochar and hemp in the Andes, Ecuador",
-    desc: "An Andean cooperative with a circular model: biochar becomes compost, hemp is grown with an indigenous community, and the residues go back into the land as carbon removal.",
+    desc: "A cooperative at 3,200 metres in the Ecuadorian Andes, with a model where every output feeds the next.",
+    details: [
+      {
+        label: "The loop",
+        text: "Biochar from small kilns becomes compost, the compost feeds a licensed hemp seed lab, the hemp is grown in the field, and the residues go back in as biochar and carbon removal.",
+      },
+      {
+        label: "The community",
+        text: "Two highland communities do the work. Families in one began training to make biochar in late 2025, and an indigenous Kichwa community grows the hemp. Half of the planned carbon income goes to the farmers and a community fund, and a land trust is planned to keep the land in local hands.",
+      },
+      {
+        label: "Why it matters",
+        text: "The hemp grain aims to feed 100 families in an area where more than half of children are chronically malnourished, and the fibre becomes low-carbon building blocks for housing.",
+      },
+      {
+        label: "Where I can help",
+        text: "Turning the model into a fundable case: numbers that hold up, clean budgets and the evidence that grant makers and carbon buyers ask for.",
+      },
+    ],
   },
 ],
 projects: [

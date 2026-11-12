@@ -217,6 +217,20 @@ export function ProjectsSection() {
                     {item.title}
                   </h4>
                   <p className="text-base leading-relaxed text-white/85">{item.desc}</p>
+                  {item.details && item.details.length > 0 && (
+                    <dl className="mt-5 space-y-4 border-t border-white/10 pt-5">
+                      {item.details.map((detail) => (
+                        <div key={detail.label}>
+                          <dt className="mb-1 text-[11px] font-semibold tracking-[0.08em] text-[#00BCD4] uppercase">
+                            {detail.label}
+                          </dt>
+                          <dd className="text-sm leading-relaxed text-white/80 md:text-[15px]">
+                            {detail.text}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  )}
                 </div>
               ))}
             </div>
