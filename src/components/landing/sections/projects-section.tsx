@@ -11,14 +11,14 @@ import {
 import { useModal } from "@/components/landing/ui/modal-provider";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { SectionHeader } from "@/components/landing/ui/section-header";
-import { ProtocolBrainAnimation } from "@/components/landing/ui/service-animations/ProtocolBrainAnimation";
+import { ProtectedKnowledgeAnimation } from "@/components/landing/ui/service-animations/ProtectedKnowledgeAnimation";
 import type { Locale, Project } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils";
 
 // Bespoke animations a project card can render in place of a static image.
 const PROJECT_ANIMATIONS: Record<string, ComponentType<{ locale?: Locale }>> = {
-  "company-brain": ProtocolBrainAnimation,
+  "company-brain": ProtectedKnowledgeAnimation,
 };
 
 export function ProjectsSection() {
