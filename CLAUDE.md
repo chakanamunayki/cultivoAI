@@ -38,7 +38,7 @@ pnpm update next@latest
 
 ## Project Overview
 
-CultivoAI is a bilingual (Spanish/English) AI and automation consultancy website for a father-son duo (Paul & Rocky) based in Colombia. The site uses a **Neo-Brutalist design** with an integrated Gemini AI chat assistant.
+CultivoAI is a bilingual (Spanish/English) AI and automation consultancy website for a father-son duo (Paul & Rocky) based in Colombia. The site began as a Neo-Brutalist design and has since moved to a **soft dark-card look** (rounded corners, soft shadows) in cyan, near-black and white, with an integrated Gemini AI chat assistant.
 
 ### Tech Stack
 
@@ -47,8 +47,8 @@ CultivoAI is a bilingual (Spanish/English) AI and automation consultancy website
 - **AI Integration (Backend)**: Vercel AI SDK 5 + OpenRouter (for other AI features)
 - **Authentication**: BetterAuth with Google OAuth
 - **Database**: PostgreSQL with Drizzle ORM
-- **UI**: Custom Brutalist components (NO shadcn theming - preserve exact design)
-- **Styling**: Tailwind CSS 4 (NO dark mode - single Brutalist theme only)
+- **UI**: Custom landing components (NO shadcn theming - preserve the existing design)
+- **Styling**: Tailwind CSS 4 (NO dark mode - single theme only)
 - **Internationalization**: Browser language detection (Spanish/English). Portuguese content exists in `src/content/pt.ts` + `locales/pt/` but is hidden; re-enable by adding `"pt"` to `ENABLED_LOCALES` in `src/content/enabled-locales.ts`.
 
 ---
@@ -57,7 +57,14 @@ CultivoAI is a bilingual (Spanish/English) AI and automation consultancy website
 
 ### CRITICAL: Design Preservation Rules
 
-**DO NOT CHANGE THE DESIGN. EVER. NOT A SINGLE PIXEL.**
+**Do not restyle existing sections unless Paul asks for it.**
+
+**Style direction (updated 2026-11-11): the site is no longer brutalist.** New or reworked UI
+uses rounded corners, soft blurred shadows and no hard black borders or zero-blur offset
+shadows. The palette (cyan, near-black, white) and Space Grotesk stay. Take the look from
+`src/components/landing/ui/landing-card-styles.ts` and the live sections. Hard offset shadows
+survive only in older pieces (chat widget, voice mode, `demos/`); leave those as they are and
+do not copy them into new work.
 
 Historical note: older docs referenced `docs/template/App.tsx` as the visual source of truth, but that file is **not present** in this repo anymore.
 
@@ -65,10 +72,10 @@ The **current landing implementation** in `src/app/page.tsx` and `src/components
 
 1. **Preserve ALL visual elements exactly** - colors, shadows, borders, animations, spacing
 2. **Preserve ALL effects** - hover states, transitions, scroll animations, marquee
-3. **Preserve the Brutalist theme ONLY** - No theme switcher, no Rocket/Playful theme
+3. **One theme only** - No theme switcher, no Rocket/Playful theme
 4. **NO dark mode toggle** - Single theme, no light/dark switching
 5. **Preserve the AI chat widget** - Gemini integration with function calling
-6. **Split into components** but maintain pixel-perfect visual parity
+6. **Split into components** but keep visual parity with what is already there
 
 ### Design Characteristics (as built, checked 2026-11-11)
 
@@ -77,14 +84,20 @@ site is **cyan + near-black + white**. Always read `src/app/globals.css` and the
 components for the truth; this summary is a guide only.
 
 ```
-- Black borders: border-2 / border-4 border-black (both common)
-- Hard offset shadows: shadow-[4px_4px_0px_0px_rgba(0,0,0,1)], 2px and 6px variants,
-  and shadow-[4px_4px_0px_0px_var(--primary)] for cyan accents
-- Softer elevation shadows also used: shadow-[0_10px_24px_rgba(15,23,42,0.08)] etc.
-- Rounded corners ARE used (rounded-full, rounded-xl, rounded-lg)
-- High contrast, bold typography, uppercase headings
-- Hover effects: translate + shadow change
+- Dark cards: bg-[#212121], rounded-[24px] / rounded-[30px], thin border-white/15,
+  soft shadows such as shadow-[0_14px_30px_rgba(0,0,0,0.3)]
+- Cyan title bands on cards; white surfaces with soft shadows
+  (shadow-[0_10px_24px_rgba(15,23,42,0.08)] etc.) in modals
+- Rounded corners everywhere: rounded-full, rounded-2xl, rounded-[16px], rounded-[20px]
+- High contrast, bold typography, uppercase labels and title bands
+- Hover effects: small translate + shadow change
+- Legacy only (chat widget, voice mode, demos/): border-2 / border-4 border-black and
+  hard offset shadows like shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
 ```
+
+**Radius gotcha:** `globals.css` still sets `--radius-sm`, `-md`, `-lg` and `-xl` to `0px`, so
+`rounded-sm` through `rounded-xl` render square. Use `rounded-2xl`, `rounded-full` or an
+explicit value such as `rounded-[12px]`.
 
 ### Color Palette (source: `src/app/globals.css` `--brand-*` tokens)
 
@@ -104,7 +117,7 @@ components for the truth; this summary is a guide only.
 ### Typography (Required fonts - load via next/font)
 
 ```css
-font-grotesk: 'Space Grotesk'     /* Primary for Brutalist - headings, nav */
+font-grotesk: 'Space Grotesk'     /* Primary - headings, nav */
 font-sans: 'Inter'                 /* Body text */
 font-mono: 'JetBrains Mono'        /* Code, technical elements */
 ```
@@ -116,10 +129,12 @@ Check the component itself for exact classes; do not trust colour names written 
 1. **Marquee / ticker**: infinite scroll animation (integrated into the nav)
 2. **Navigation**: sticky, ES/EN selector, "Let's talk" CTA
 3. **Hero**: see `sections/hero-section.tsx`
-4. **Service Cards**: offset shadow, hover translate effect
+4. **Service Cards**: stacking dark cards with a soft shadow, each with a looping motion
+   panel (see `ui/stacking-service-cards.tsx` and `ui/service-animations/`, shared pieces in
+   `service-animations/panel-kit.tsx`)
 5. **Projects List**: see `sections/projects-section.tsx`
 6. **AI Chat Widget + WhatsApp button**: bottom-right floating
-7. **Modals**: black border, offset shadow, X close button
+7. **Modals**: rounded white surfaces with soft shadows, X close button
 
 ### Animations (Must preserve)
 
@@ -211,7 +226,7 @@ All text content must have Spanish and English versions:
 
 - Package: `@google/genai`
 - Model: `gemini-2.5-flash`
-- Styling: Brutalist theme (see `AIChatWidget` component in template)
+- Styling: see `src/components/landing/ai-chat-widget.tsx`
 - Position: Fixed bottom-right (`fixed bottom-6 right-6 z-[60]`)
 
 ### Function Calling
@@ -230,16 +245,12 @@ show_project_details(project_title: string)
 show_service_details(service_title: string)
 ```
 
-### Chat Widget Styling (Brutalist)
+### Chat Widget Styling
 
-```
-Container: bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]
-Header: bg-[#FFC805] border-b-4 border-black
-User messages: bg-black text-white font-bold
-Bot messages: bg-white border-2 border-black shadow-[4px_4px_0px_0px_#A855F7]
-Input: bg-[#F3F4F6] border-2 border-black focus:shadow-[2px_2px_0px_0px_#A855F7]
-Send button: bg-[#A855F7] text-white border-2 border-black
-```
+The widget still carries the earlier brutalist styling: black borders and hard black offset
+shadows, with cyan accents. The yellow (`#FFC805`) and purple (`#A855F7`) values that used to
+be listed here are no longer in the code. Read `ai-chat-widget.tsx` for the exact classes, and
+do not restyle it unless Paul asks.
 
 ### Environment Variable
 
@@ -274,7 +285,7 @@ src/
 │   │   └── export/               # Export functionality
 │   ├── dashboard/                # User dashboard
 │   │   └── page.tsx              # User dashboard page
-│   ├── page.tsx                  # Landing page (Brutalist design)
+│   ├── page.tsx                  # Landing page
 │   └── layout.tsx                # Root layout with fonts
 ├── components/
 │   ├── landing/                  # CultivoAI landing page components
@@ -354,10 +365,11 @@ pnpm db:studio    # Open Drizzle Studio
 
 ### CRITICAL RULES
 
-1. **PRESERVE THE BRUTALIST DESIGN EXACTLY**
+1. **PRESERVE THE EXISTING DESIGN; BUILD NEW WORK IN THE SOFT LOOK**
    - Reference `src/app/page.tsx` and `src/components/landing/**` for all visual decisions
-   - Copy class names exactly - do not "improve" or "clean up" styling
-   - Maintain all animations, hover effects, shadows, borders
+   - Do not "improve" or "clean up" the styling of existing sections unless asked
+   - New or reworked UI: rounded corners and soft shadows, not brutalist borders and
+     offset shadows (see "Style direction" above)
 
 2. **ALWAYS run lint and typecheck** after changes:
    ```bash
@@ -367,7 +379,7 @@ pnpm db:studio    # Open Drizzle Studio
 3. **NEVER start the dev server yourself**
 
 4. **NO dark mode, NO theme switching**
-   - Single Brutalist theme only
+   - Single theme only
    - Remove any dark mode utilities or providers
 
 5. **Bilingual content**
