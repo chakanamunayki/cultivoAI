@@ -77,6 +77,7 @@ projects: [
         "Step-by-step execution guidance: the operator sees the current step, its parameters and frequency, nothing more",
         "Observations captured back against each step as the work happens",
         "Role-gated access, so the full protocol and the data stay protected in the system",
+        "The Brain answers on Telegram: the team asks, logs and gets the next step from the chat they already use, with skills for specific jobs",
       ],
       idealFit: [
         "Labs and agri-biotech teams whose protocol IP is the core asset",

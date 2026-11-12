@@ -57,7 +57,7 @@ Cultivo Labs es Paul Ronayne, un cofundador de startups que volvió a construir 
 
 **Qué construye:**
 - Software y plataformas: sitios web, apps y herramientas internas. Primera versión en semanas, luego mejora con el uso real.
-- Sistemas de datos, conocimiento e IA: un solo lugar para el conocimiento, los datos y las decisiones. Protocolos protegidos, datos de campo y laboratorio ordenados, IA solo donde ayuda.
+- Sistemas de datos, conocimiento e IA: un cerebro compartido para el conocimiento, el negocio y el mercado, los datos y las decisiones, con acceso por rol (cada persona ve su parte, quien dirige ve el panorama completo de uno o varios proyectos). Se le habla por WhatsApp o Telegram, con habilidades para tareas concretas y conexión con otras apps y dispositivos, sin dashboards que aprender. Protocolos protegidos, datos de campo y laboratorio ordenados, IA solo donde ayuda.
 - Pruebas y registros: seguimiento de impacto, MRV para carbono y biochar, datos de restauración y supervivencia, un historial auditable para financiadores, compradores y socios.
 - Preparación para startups e inversión: modelo, números e historia para que inversores y financiadores puedan decir que sí.
 
@@ -88,7 +88,7 @@ Cultivo Labs is Paul Ronayne, a startup co-founder turned hands-on builder. He i
 
 **What he builds:**
 - Software and platforms: websites, apps and internal tools. Version one in weeks, then improved with real use.
-- Data, knowledge and AI systems: one place for know-how, data and decisions. Protocols protected, field and lab data structured, AI only where it actually helps.
+- Data, knowledge and AI systems: one shared brain for know-how, business and market knowledge, data and decisions, with access by role (each person sees their part, whoever runs it sees the full picture across one project or several). People talk to it on WhatsApp or Telegram, with skills for specific jobs and connections to other apps and devices, no dashboard to learn. Protocols protected, field and lab data structured, AI only where it actually helps.
 - Proof and records: impact tracking, MRV for carbon and biochar, restoration and survival data, one auditable history for funders, buyers and partners.
 - Startup and investment readiness: the model, the numbers and the story so investors and funders can say yes.
 
@@ -864,10 +864,10 @@ A Cultivo Labs é o Paul, o parceiro técnico que constrói a camada de IA e dad
 
   const leadCapture = {
     es: `
-Lo que Paul construye: Software y plataformas (sitios web, apps y herramientas internas), Sistemas de datos, conocimiento e IA (conocimiento protegido, datos de campo y laboratorio, IA donde ayuda), Pruebas y registros (seguimiento de impacto, MRV para carbono y biochar), y Preparación para startups e inversión (modelo, números e historia para inversores).
+Lo que Paul construye: Software y plataformas (sitios web, apps y herramientas internas), Sistemas de datos, conocimiento e IA (un cerebro compartido con acceso por rol, conocimiento del negocio y del mercado, datos de campo y laboratorio, IA donde ayuda), Pruebas y registros (seguimiento de impacto, MRV para carbono y biochar), y Preparación para startups e inversión (modelo, números e historia para inversores).
 `,
     en: `
-What Paul builds: Software and platforms (websites, apps and internal tools), Data, knowledge and AI systems (protected know-how, field and lab data, AI where it helps), Proof and records (impact tracking, MRV for carbon and biochar), and Startup and investment readiness (model, numbers and story for investors).
+What Paul builds: Software and platforms (websites, apps and internal tools), Data, knowledge and AI systems (one shared brain with access by role, business and market knowledge, field and lab data, AI where it helps), Proof and records (impact tracking, MRV for carbon and biochar), and Startup and investment readiness (model, numbers and story for investors).
 `,
     pt: `
 Serviços, começando pelo principal: Company Brain (a camada de conhecimento protegida que isola a IP dos protocolos e dá acesso por função), Sistemas de Decisão e Automação (dashboards, automação de fluxos e assistentes de IA), Desenvolvimentos de IA e Software sob Medida (ferramentas internas, web e consultoria técnica), e Sistemas para Retiros (bem-estar).

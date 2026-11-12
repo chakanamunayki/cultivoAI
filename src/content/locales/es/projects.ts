@@ -77,6 +77,7 @@ projects: [
         "Guía de ejecución paso a paso: el operador ve el paso actual, sus parámetros y frecuencia, nada más",
         "Observaciones capturadas contra cada paso a medida que se hace el trabajo",
         "Acceso por rol, para que el protocolo completo y los datos se queden protegidos en el sistema",
+        "El Brain responde por Telegram: el equipo pregunta, registra y recibe el siguiente paso desde el chat que ya usa, con habilidades para tareas concretas",
       ],
       idealFit: [
         "Laboratorios y equipos agri-biotech cuya IP de protocolos es el activo central",

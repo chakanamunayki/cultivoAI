@@ -47,23 +47,24 @@ export const enServicesContent: Pick<
       title: "Data, knowledge and AI systems",
       eng: "Data, knowledge and AI systems",
       description:
-        "One place for your know-how, your data and your decisions. Protocols protected, field and lab data structured, AI used where it actually helps.",
+        "One shared brain for your project: your know-how, your business and market knowledge, your data and your decisions. Protocols protected, field and lab data structured, AI used where it actually helps.",
       details: [
-        "Your know-how in one protected, searchable place, with access by role.",
+        "One shared brain with access by role: each person sees their part, whoever runs the project sees the whole picture.",
         "Field, lab and sensor data structured into views you can decide from.",
-        "Automations and assistants where they save real time. AI only where it helps.",
+        "Talk to it on WhatsApp or Telegram: ask, log field notes and get the next step.",
       ],
       imageUrl: "/landing/photos/services/ai-assistants.png",
       animationKey: "company-brain",
       modal: {
         whatItMeans:
-          "A protected knowledge and data layer built on what your project really knows: protocols, processes, field and lab data, history. On top of it, the dashboards, automations and assistants that turn it into daily decisions.",
+          "A protected, shared brain built on what your project really knows: protocols and processes, field and lab data, business and market knowledge, history. On top of it, the dashboards, automations and assistants that turn it into daily decisions.",
         whyItMatters:
-          "Your know-how is often your most valuable asset, and today it lives in PDFs, in people's heads and in WhatsApp. When someone leaves, it leaves with them. I built exactly this layer for a biotech and vertical farming project, and it keeps getting more useful every day the team uses it.",
+          "Your know-how is often your most valuable asset, and today it lives in PDFs, in people's heads and in WhatsApp. When someone leaves, it leaves with them. And most people won't open another dashboard, so the brain comes to the chat app they already use. I built exactly this layer for a biotech and vertical farming project, and it keeps getting more useful every day the team uses it.",
         whatsIncluded: [
-          "Your protocols, processes and documents turned into one structured, versioned knowledge layer",
-          "Role-based access: each person sees what they need, nothing more",
+          "Your protocols, processes, documents and business and market knowledge turned into one structured, versioned brain",
+          "Access by role: each person sees the part they need, and whoever runs it sees the full picture across one project or several",
           "Field, lab, sensor and satellite data in one live view",
+          "Talk to it on WhatsApp or Telegram, with skills for your own workflows and connections to your other apps and devices",
           "Automations and AI assistants for the repetitive work",
           "Privacy by design: runs on your own infrastructure when it needs to",
         ],

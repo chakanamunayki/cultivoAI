@@ -48,23 +48,24 @@ export const esServicesContent: Pick<
       title: "Sistemas de datos, conocimiento e IA",
       eng: "Data, knowledge and AI systems",
       description:
-        "Un solo lugar para tu conocimiento, tus datos y tus decisiones. Protocolos protegidos, datos de campo y laboratorio ordenados, e IA donde de verdad ayuda.",
+        "Un cerebro compartido para tu proyecto: tu conocimiento, el negocio y el mercado, tus datos y tus decisiones. Protocolos protegidos y datos ordenados, con IA donde de verdad ayuda.",
       details: [
-        "Tu conocimiento en un solo lugar protegido y fácil de consultar, con acceso por rol.",
+        "Un cerebro compartido con acceso por rol: cada persona ve su parte, y quien dirige ve el panorama completo.",
         "Datos de campo, laboratorio y sensores ordenados en vistas para decidir.",
-        "Automatizaciones y asistentes donde ahorran tiempo real. IA solo donde ayuda.",
+        "Háblale por WhatsApp o Telegram: pregunta, registra notas de campo y recibe el siguiente paso.",
       ],
       imageUrl: "/landing/photos/services/ai-assistants.png",
       animationKey: "company-brain",
       modal: {
         whatItMeans:
-          "Una capa protegida de conocimiento y datos construida sobre lo que tu proyecto de verdad sabe: protocolos, procesos, datos de campo y laboratorio, historia. Encima, los dashboards, automatizaciones y asistentes que lo convierten en decisiones diarias.",
+          "Un cerebro compartido y protegido, construido sobre lo que tu proyecto de verdad sabe: protocolos y procesos, datos de campo y laboratorio, conocimiento del negocio y del mercado, historia. Encima, los dashboards, automatizaciones y asistentes que lo convierten en decisiones diarias.",
         whyItMatters:
-          "Tu conocimiento suele ser tu activo más valioso, y hoy vive en PDFs, en la cabeza de las personas y en WhatsApp. Cuando alguien se va, se va con esa persona. Construí exactamente esta capa para un proyecto de biotecnología y agricultura vertical, y se vuelve más útil cada día que el equipo la usa.",
+          "Tu conocimiento suele ser tu activo más valioso, y hoy vive en PDFs, en la cabeza de las personas y en WhatsApp. Cuando alguien se va, se va con esa persona. Y la mayoría de la gente no va a abrir otro dashboard, así que el cerebro llega a la app de chat que ya usa. Construí exactamente esta capa para un proyecto de biotecnología y agricultura vertical, y se vuelve más útil cada día que el equipo la usa.",
         whatsIncluded: [
-          "Tus protocolos, procesos y documentos convertidos en una capa de conocimiento ordenada y versionada",
-          "Acceso por rol: cada persona ve lo que necesita, nada más",
+          "Tus protocolos, procesos, documentos y conocimiento del negocio y del mercado convertidos en un solo cerebro ordenado y versionado",
+          "Acceso por rol: cada persona ve la parte que necesita, y quien dirige ve el panorama completo de uno o varios proyectos",
           "Datos de campo, laboratorio, sensores y satélite en una sola vista en vivo",
+          "Háblale por WhatsApp o Telegram, con habilidades para tus propios flujos de trabajo y conexión con tus otras apps y dispositivos",
           "Automatizaciones y asistentes de IA para el trabajo repetitivo",
           "Privacidad desde el diseño: corre en tu propia infraestructura cuando hace falta",
         ],
