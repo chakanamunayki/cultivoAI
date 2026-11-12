@@ -126,6 +126,14 @@ export interface Project {
   url?: string;
   stats?: ProjectStat[];
   modal: ModalExpansion;
+  /** Kept in the content but left off the site and out of the chat. */
+  hidden?: boolean;
+}
+
+export interface ProjectInProgress {
+  status: string;
+  title: string;
+  desc: string;
 }
 
 export interface Partnership {
@@ -300,6 +308,9 @@ export interface SiteContent {
   projectsTitle: string;
   projectsSubtitle: string;
   projects: Project[];
+  /** Unnamed work in progress, shown as small cards under the projects. */
+  projectsInProgressTitle?: string;
+  projectsInProgress?: ProjectInProgress[];
   storiesTitle: string;
   storiesSubtitle: string;
   stories: RealStory[];

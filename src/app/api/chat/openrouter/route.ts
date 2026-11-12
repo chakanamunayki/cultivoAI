@@ -77,7 +77,7 @@ const chatTools = {
   }),
   show_project_details: tool({
     description:
-      "Opens a modal with full details about a specific project (e.g. 'Protected knowledge platform', 'SetaSouls').",
+      "Opens a modal with full details about a specific project (e.g. 'Protected knowledge platform').",
     inputSchema: z.object({ project_title: z.string() }),
     execute: stub,
   }),

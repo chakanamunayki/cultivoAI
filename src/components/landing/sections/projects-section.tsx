@@ -192,6 +192,37 @@ export function ProjectsSection() {
           );
         })}
       </div>
+
+      {/* Work in progress: small, unnamed, not clickable */}
+      {content.projectsInProgress && content.projectsInProgress.length > 0 && (
+        <div className="px-6 pb-10 md:px-8 md:pb-12 lg:px-10 lg:pb-14">
+          <Reveal>
+            <h3 className="mb-5 text-2xl font-black tracking-tight text-[#18181b] uppercase md:mb-6 md:text-3xl">
+              {content.projectsInProgressTitle}
+            </h3>
+            <div className="grid gap-6 md:grid-cols-2">
+              {content.projectsInProgress.map((item) => (
+                <div
+                  key={item.title}
+                  className={landingCardClass(
+                    "dark",
+                    "flex flex-col rounded-[20px] p-6 hover:translate-y-0 hover:bg-[#212121] md:p-8"
+                  )}
+                >
+                  <span className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-[#00BCD4]/40 bg-[#00BCD4]/10 px-3 py-1 text-[11px] font-semibold tracking-[0.08em] text-[#00BCD4] uppercase">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#00BCD4]" />
+                    {item.status}
+                  </span>
+                  <h4 className="mb-3 text-xl leading-tight font-black tracking-tight md:text-2xl">
+                    {item.title}
+                  </h4>
+                  <p className="text-base leading-relaxed text-white/85">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      )}
     </div>
   );
 }

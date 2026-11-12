@@ -97,6 +97,7 @@ export const en: SiteContent = {
   ...enPartnershipsContent,
 
   ...enProjectsContent,
+  projects: enProjectsContent.projects.filter((project) => !project.hidden),
 
   ...enStoriesContent,
 

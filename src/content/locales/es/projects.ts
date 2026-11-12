@@ -1,8 +1,25 @@
 import type { SiteContent } from "../../types";
 
-export const esProjectsContent: Pick<SiteContent, "projectsTitle" | "projectsSubtitle" | "projects"> = {
+export const esProjectsContent: Pick<
+  SiteContent,
+  "projectsTitle" | "projectsSubtitle" | "projects" | "projectsInProgressTitle" | "projectsInProgress"
+> = {
 projectsTitle: "Proyectos",
 projectsSubtitle: "Trabajo seleccionado",
+// Sin nombres a propósito: ningún socio se nombra hasta que lo apruebe.
+projectsInProgressTitle: "En marcha ahora",
+projectsInProgress: [
+  {
+    status: "Consorcio en formación",
+    title: "Restauración después de la minería, Colombia",
+    desc: "Un solo registro de la semilla a la supervivencia: propagación de nativas, restauración en campo con comunidades y monitoreo satelital. Yo construyo ese registro.",
+  },
+  {
+    status: "Primeras conversaciones",
+    title: "Biochar y cáñamo en los Andes, Ecuador",
+    desc: "Una cooperativa andina con un modelo circular: el biochar se vuelve compost, el cáñamo se cultiva con una comunidad indígena y los residuos vuelven a la tierra como remoción de carbono.",
+  },
+],
 projects: [
   {
     title: "Plataforma de conocimiento protegido para un proyecto de biotecnología y agricultura vertical",
@@ -35,6 +52,8 @@ projects: [
     },
   },
   {
+    // Hidden until it is relaunched as the Munayki site.
+    hidden: true,
     title: "SetaSouls. Sitio web de marca holística",
     desc: "98 en rendimiento. 100 en SEO. 100 en buenas prácticas. Diseño, velocidad y posicionamiento construidos juntos desde el inicio.",
     fullDesc:

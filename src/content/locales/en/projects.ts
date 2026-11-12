@@ -1,8 +1,25 @@
 import type { SiteContent } from "../../types";
 
-export const enProjectsContent: Pick<SiteContent, "projectsTitle" | "projectsSubtitle" | "projects"> = {
+export const enProjectsContent: Pick<
+  SiteContent,
+  "projectsTitle" | "projectsSubtitle" | "projects" | "projectsInProgressTitle" | "projectsInProgress"
+> = {
 projectsTitle: "Projects",
 projectsSubtitle: "Selected work",
+// Unnamed on purpose: no partner names until they agree.
+projectsInProgressTitle: "What I'm working on now",
+projectsInProgress: [
+  {
+    status: "Consortium forming",
+    title: "Restoration after mining, Colombia",
+    desc: "One record from seed to survival: native-plant propagation, field restoration with communities and satellite monitoring. I build that record.",
+  },
+  {
+    status: "Early conversations",
+    title: "Biochar and hemp in the Andes, Ecuador",
+    desc: "An Andean cooperative with a circular model: biochar becomes compost, hemp is grown with an indigenous community, and the residues go back into the land as carbon removal.",
+  },
+],
 projects: [
   {
     title: "Protected knowledge platform for a biotech and vertical farming project",
@@ -35,6 +52,8 @@ projects: [
     },
   },
   {
+    // Hidden until it is relaunched as the Munayki site.
+    hidden: true,
     title: "SetaSouls. Holistic Brand Website",
     desc: "98 performance. 100 SEO. 100 best practices. Design, speed, and search visibility built together from the start.",
     fullDesc:
