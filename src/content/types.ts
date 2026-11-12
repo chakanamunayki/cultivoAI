@@ -15,12 +15,14 @@ export type ChatContextType =
   | "service"
   | "partnership"
   | "qualification"
-  | "impact";
+  | "impact"
+  | "project";
 
 export interface ChatContext {
   type: ChatContextType;
   serviceTitle?: string;
   partnershipName?: string;
+  projectTitle?: string;
 }
 
 export interface NavItem {
@@ -151,7 +153,6 @@ export interface Partnership {
 }
 
 export interface PartnershipsExtras {
-  termsLabel: string;
   missionLine: string;
   missionCta: string;
   closingCta: string;
@@ -268,7 +269,9 @@ export interface ChatContextualGreetings {
   booking: string;
   story: string;
   service: string; // Use {service} as placeholder for service title
-  partnership: string; // Use {partnership} as placeholder for partnership name
+  partnership: string; // Generic, used when no step is named
+  partnershipNamed?: string; // Use {partnership} as placeholder for the step name
+  project?: string; // Use {project} as placeholder for the project title
   qualification: string;
   impact: string;
   formFallback: string; // "Prefer a form?" prompt

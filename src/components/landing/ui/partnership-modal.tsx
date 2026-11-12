@@ -11,7 +11,7 @@ import {
   TrendingUp,
   type LucideIcon,
 } from "lucide-react";
-import type { Partnership } from "@/content/types";
+import type { ChatContext, Partnership } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 
 // Map icon names to Lucide components
@@ -25,10 +25,10 @@ const iconMap: Record<string, LucideIcon> = {
 
 interface PartnershipModalProps {
   partnership: Partnership;
-  onOpenContact?: () => void;
+  onOpenChat?: (context: ChatContext) => void;
 }
 
-export function PartnershipModal({ partnership, onOpenContact }: PartnershipModalProps) {
+export function PartnershipModal({ partnership, onOpenChat }: PartnershipModalProps) {
   const { locale } = useLocale();
   const Icon = iconMap[partnership.icon] ?? Briefcase;
 
@@ -146,7 +146,7 @@ export function PartnershipModal({ partnership, onOpenContact }: PartnershipModa
       {/* CTA - Green button with chat icon */}
       <button
         type="button"
-        onClick={onOpenContact}
+        onClick={() => onOpenChat?.({ type: "partnership", partnershipName: partnership.name })}
         className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-[#00BCD4] px-8 py-3.5 text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_28px_rgba(15,23,42,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.28)]"
       >
         <MessageSquare size={20} />

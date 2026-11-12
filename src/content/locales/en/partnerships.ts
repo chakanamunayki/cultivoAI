@@ -8,7 +8,6 @@ export const enPartnershipsContent: Pick<
   partnershipsSubtitle:
     "It starts with a conversation. Then three simple steps, each with a clear scope and a price agreed with you before any work begins.",
   partnershipsExtras: {
-    termsLabel: "Price",
     missionLine:
       "Mission-led project or a Semillero innovation? Terms can flex when the fit is right.",
     missionCta: "Tell me about it",

@@ -2,15 +2,15 @@
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { ArrowRight } from "lucide-react";
-import type { Project } from "@/content/types";
+import type { ChatContext, Project } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 
 interface ProjectModalProps {
   project: Project;
-  onOpenContact?: () => void;
+  onOpenChat?: (context: ChatContext) => void;
 }
 
-export function ProjectModal({ project, onOpenContact }: ProjectModalProps) {
+export function ProjectModal({ project, onOpenChat }: ProjectModalProps) {
   const { locale } = useLocale();
 
   const whatItMeansLabel = locale === "es" ? "Qué significa" : locale === "pt" ? "O que significa" : "What it means";
@@ -132,7 +132,7 @@ export function ProjectModal({ project, onOpenContact }: ProjectModalProps) {
           )}
           <button
             type="button"
-            onClick={onOpenContact}
+            onClick={() => onOpenChat?.({ type: "project", projectTitle: project.title })}
             className="flex-1 rounded-xl bg-[#00BCD4] px-6 py-3.5 text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_28px_rgba(15,23,42,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.28)]"
           >
             {ctaText}

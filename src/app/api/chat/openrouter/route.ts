@@ -46,6 +46,7 @@ const ENTRY_CONTEXTS: ChatContextType[] = [
   "partnership",
   "qualification",
   "impact",
+  "project",
 ];
 
 interface ChatRequest {

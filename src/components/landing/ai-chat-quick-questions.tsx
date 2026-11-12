@@ -31,6 +31,7 @@ const ENTRY_CONTEXT_TO_SET: Record<ChatContextType, QuickQuestionSet> = {
   partnership: "partnership",
   qualification: "qualification",
   impact: "impact",
+  project: "general",
 };
 
 const QUICK_QUESTIONS: Record<

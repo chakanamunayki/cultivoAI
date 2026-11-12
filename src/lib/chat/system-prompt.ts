@@ -620,6 +620,11 @@ export function buildSystemPrompt(
         en: "The user is interested in mission-driven, real-impact projects. Focus on understanding their project and how the tech helps. Do not lead with discounts.",
         pt: "O usuário tem interesse em projetos com propósito e impacto real. Foque em entender o projeto dele e como a camada técnica ajuda. Não lidere com descontos.",
       },
+      project: {
+        es: "El usuario vio un proyecto del portafolio y quiere algo parecido. Tu saludo nombra el proyecto. Entiende qué está construyendo y conéctalo con lo que Paul hizo en ese proyecto.",
+        en: "The user looked at a portfolio project and wants something similar. Your greeting names the project. Understand what they are building and connect it to what Paul did on that project.",
+        pt: "O usuário viu um projeto do portfólio e quer algo parecido. A sua saudação nomeia o projeto. Entenda o que ele está construindo e conecte com o que o Paul fez nesse projeto.",
+      },
     };
     const entryLabel = isSpanish
       ? "Contexto de Entrada"

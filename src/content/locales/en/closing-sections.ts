@@ -131,6 +131,10 @@ export const enClosingSectionsContent: Pick<
         "Nice, you're looking at {service}. Happy to walk you through it. What would you like to know?",
       partnership:
         "Glad you're curious about working together. Tell me a bit about what you have in mind, a project or an innovation, and I'll take it from there.",
+      partnershipNamed:
+        "Nice, you're looking at the {partnership} step. Tell me a bit about what you have in mind and I'll explain how it works.",
+      project:
+        "Nice, you were looking at {project}. What are you building? Tell me and we'll see if something similar fits.",
       qualification:
         "Happy to see if there's a fit. Tell me a little about what you're building.",
       impact:

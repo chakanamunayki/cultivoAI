@@ -88,16 +88,6 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
                           isBlue ? "border-white/30" : "border-white/10"
                         )}
                       >
-                        {extras?.termsLabel && (
-                          <p
-                            className={cn(
-                              "mb-1 text-[11px] font-semibold tracking-[0.08em] uppercase",
-                              isBlue ? "text-white/85" : "text-white/60"
-                            )}
-                          >
-                            {extras.termsLabel}
-                          </p>
-                        )}
                         <p
                           className={cn(
                             "text-sm leading-relaxed font-medium",

@@ -16,7 +16,7 @@ import {
   landingPrimaryBlueButtonClass,
   landingTitleBandClass,
 } from "@/components/landing/ui/landing-card-styles";
-import type { Service } from "@/content/types";
+import type { ChatContext, Service } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils";
 
@@ -33,10 +33,10 @@ const iconMap: Record<string, LucideIcon> = {
 
 interface ServiceModalProps {
   service: Service;
-  onOpenContact?: () => void;
+  onOpenChat?: (context: ChatContext) => void;
 }
 
-export function ServiceModal({ service, onOpenContact }: ServiceModalProps) {
+export function ServiceModal({ service, onOpenChat }: ServiceModalProps) {
   const { locale } = useLocale();
   const Icon = iconMap[service.icon] ?? Zap;
 
@@ -171,7 +171,7 @@ export function ServiceModal({ service, onOpenContact }: ServiceModalProps) {
         <div className="mt-12 flex gap-4">
           <button
             type="button"
-            onClick={onOpenContact}
+            onClick={() => onOpenChat?.({ type: "service", serviceTitle: service.title })}
             className={cn(
               "w-full px-8 py-3.5 text-sm font-semibold tracking-[0.08em] md:w-auto",
               landingPrimaryBlueButtonClass

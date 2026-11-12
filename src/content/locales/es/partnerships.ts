@@ -8,7 +8,6 @@ export const esPartnershipsContent: Pick<
   partnershipsSubtitle:
     "Empieza con una conversación. Luego, tres pasos simples, cada uno con un alcance claro y un precio acordado contigo antes de empezar.",
   partnershipsExtras: {
-    termsLabel: "Precio",
     missionLine:
       "¿Un proyecto con propósito o una innovación para Semillero? Los términos pueden ajustarse cuando el encaje es bueno.",
     missionCta: "Cuéntamelo",

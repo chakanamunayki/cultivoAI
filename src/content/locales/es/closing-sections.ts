@@ -131,6 +131,10 @@ export const esClosingSectionsContent: Pick<
         "Genial, te interesa {service}. Con gusto te lo explico. ¿Qué te gustaría saber?",
       partnership:
         "Me alegra que te interese trabajar juntos. Cuéntame un poco qué tienes en mente, un proyecto o una innovación, y seguimos desde ahí.",
+      partnershipNamed:
+        "Genial, te interesa el paso {partnership}. Cuéntame un poco qué tienes en mente y te explico cómo funciona.",
+      project:
+        "Genial, viste el proyecto {project}. ¿Qué estás construyendo tú? Cuéntame y vemos si algo parecido encaja.",
       qualification:
         "Con gusto vemos si hay encaje. Cuéntame un poco qué estás construyendo.",
       impact:

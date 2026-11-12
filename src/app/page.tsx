@@ -283,7 +283,11 @@ export default function Home() {
       <CustomCursor />
 
       {/* Modal Renderer */}
-      <ModalRenderer onOpenContact={handleOpenContactModal} onChatClick={handleOpenChatGeneral} />
+      <ModalRenderer
+        onOpenContact={handleOpenContactModal}
+        onChatClick={handleOpenChatGeneral}
+        onOpenChatWithContext={handleOpenChat}
+      />
 
       {/* AI Chat Widget - lazy loaded */}
       {isChatWidgetLoaded ? (

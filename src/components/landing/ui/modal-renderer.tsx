@@ -7,14 +7,16 @@ import { PartnershipModal } from "@/components/landing/ui/partnership-modal";
 import { ProjectModal } from "@/components/landing/ui/project-modal";
 import { ServiceModal } from "@/components/landing/ui/service-modal";
 import { TeamMemberModal } from "@/components/landing/ui/team-member-modal";
-import type { Partnership, Project, Service, TeamMember } from "@/content/types";
+import type { ChatContext, Partnership, Project, Service, TeamMember } from "@/content/types";
 
 interface ModalRendererProps {
   onOpenContact?: () => void;
   onChatClick?: () => void;
+  /** Service, step and project buttons open the chat with that item as context. */
+  onOpenChatWithContext?: (context: ChatContext) => void;
 }
 
-export function ModalRenderer({ onOpenContact, onChatClick }: ModalRendererProps) {
+export function ModalRenderer({ onOpenContact, onChatClick, onOpenChatWithContext }: ModalRendererProps) {
   const { modalData, closeModal, isOpen } = useModal();
   const modalSize = modalData.type === "project" ? "wide" : "default";
   const modalVariant = modalData.type === "teamMember" ? "soft" : "softDark";
@@ -26,21 +28,21 @@ export function ModalRenderer({ onOpenContact, onChatClick }: ModalRendererProps
           <ProjectModal
             key={(modalData.data as Project).title}
             project={modalData.data as Project}
-            {...(onOpenContact && { onOpenContact })}
+            {...(onOpenChatWithContext && { onOpenChat: onOpenChatWithContext })}
           />
         );
       case "service":
         return (
           <ServiceModal
             service={modalData.data as Service}
-            {...(onOpenContact && { onOpenContact })}
+            {...(onOpenChatWithContext && { onOpenChat: onOpenChatWithContext })}
           />
         );
       case "partnership":
         return (
           <PartnershipModal
             partnership={modalData.data as Partnership}
-            {...(onOpenContact && { onOpenContact })}
+            {...(onOpenChatWithContext && { onOpenChat: onOpenChatWithContext })}
           />
         );
       case "contact":

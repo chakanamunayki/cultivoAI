@@ -14,6 +14,7 @@ import {
 import type { ChatContext, ChatContextType } from "@/content/types";
 import { useAudioPlayer } from "@/hooks/use-audio-player";
 import { useLocale } from "@/hooks/use-locale";
+import { chatGreeting } from "@/lib/chat/chat-greeting";
 import {
   buildWhatsAppMessage,
   getWhatsAppUrl,
@@ -163,30 +164,8 @@ export function AIChatWidget({
 
   // Get contextual greeting based on context type
   const getContextualGreeting = useCallback(
-    (ctx: ChatContext | null | undefined): string => {
-      if (!ctx) {
-        return content.chat.contextualGreetings.general;
-      }
-
-      const greetings = content.chat.contextualGreetings;
-
-      switch (ctx.type) {
-        case "booking":
-          return greetings.booking;
-        case "story":
-          return greetings.story;
-        case "service":
-          return greetings.service.replace("{service}", ctx.serviceTitle || "");
-        case "partnership":
-          return greetings.partnership.replace("{partnership}", ctx.partnershipName || "");
-        case "qualification":
-          return greetings.qualification;
-        case "impact":
-          return greetings.impact;
-        default:
-          return greetings.general;
-      }
-    },
+    (ctx: ChatContext | null | undefined): string =>
+      chatGreeting(content.chat.contextualGreetings, ctx),
     [content.chat.contextualGreetings]
   );
 
