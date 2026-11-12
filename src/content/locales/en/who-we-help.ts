@@ -24,6 +24,7 @@ export const enWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
         description:
           "Off-grid villages, eco-communities and rural cooperatives building their own food, energy and water. I help with the systems that keep them running and growing.",
         icon: "Home",
+        imageUrl: "/landing/photos/sectors/communities.jpg",
         chatButtonLabel: "Let's talk",
       },
       {

@@ -25,6 +25,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
         description:
           "Aldeas fuera de la red, ecocomunidades y cooperativas rurales que producen su propia comida, energía y agua. Ayudo con los sistemas que las mantienen funcionando y creciendo.",
         icon: "Home",
+        imageUrl: "/landing/photos/sectors/communities.jpg",
         chatButtonLabel: "Hablemos",
       },
       {
