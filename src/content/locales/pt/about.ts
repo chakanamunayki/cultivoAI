@@ -96,7 +96,7 @@ export const ptAbout: AboutCopy = {
         title: "Líder de bem-estar. Praticante holística e fundadora de marca.",
         description:
           "Marta lidera nosso trabalho na vertical de bem-estar. Fundou a própria marca de bem-estar holístico e atua como facilitadora de Reiki e meditação, então os clientes de bem-estar são guiados por alguém que vive esse mundo, não que apenas lê sobre ele.",
-        imageUrl: "/landing/photos/team/marta.jpg",
+        imageUrl: "/landing/photos/team/marta-new.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {

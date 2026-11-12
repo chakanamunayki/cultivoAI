@@ -66,7 +66,7 @@ export const esAbout: AboutCopy = {
         title: "Terapeuta holística. Fundadora de Munayki.",
         description:
           "Terapeuta holística y fundadora de Munayki, el poder del amor. Marta trabaja con Reiki, meditación y productos naturales hechos a mano, uniendo la sabiduría ancestral con una ciencia sencilla. Lidera el trabajo en medicina holística y ancestral para el bienestar.",
-        imageUrl: "/landing/photos/team/marta.jpg",
+        imageUrl: "/landing/photos/team/marta-new.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {

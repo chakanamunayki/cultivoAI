@@ -66,7 +66,7 @@ export const enAbout: AboutCopy = {
         title: "Holistic practitioner. Founder of Munayki.",
         description:
           "Holistic practitioner and founder of Munayki, the power of love. Marta works with Reiki, meditation and natural products she makes by hand, bringing ancestral wisdom and simple science together. She leads the work in holistic and ancestral medicine for wellness.",
-        imageUrl: "/landing/photos/team/marta.jpg",
+        imageUrl: "/landing/photos/team/marta-new.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {

@@ -27,7 +27,7 @@ export function TeamMemberModal({ member, onOpenContact }: TeamMemberModalProps)
           src={member.imageUrl}
           alt={member.name}
           fill
-          className="object-cover filter grayscale contrast-125 rounded-[18px] shadow-[inset_10px_10px_20px_#d0d0d0,inset_-10px_-10px_20px_#ffffff]"
+          className="object-cover object-[50%_12%] md:object-center filter grayscale contrast-125 rounded-[18px] shadow-[inset_10px_10px_20px_#d0d0d0,inset_-10px_-10px_20px_#ffffff]"
         />
       </div>
 
