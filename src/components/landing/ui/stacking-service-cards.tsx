@@ -8,8 +8,8 @@ import type { Locale, Service } from "@/content/types";
 import { cn } from "@/lib/utils";
 import { AiAssistantsAnimation } from "./service-animations/AiAssistantsAnimation";
 import { CompanyBrainAnimation } from "./service-animations/CompanyBrainAnimation";
-import { DashboardAnimation } from "./service-animations/DashboardAnimation";
 import { KnowledgeAnimation } from "./service-animations/KnowledgeAnimation";
+import { ProofRecordsAnimation } from "./service-animations/ProofRecordsAnimation";
 import { RetreatOpsAnimation } from "./service-animations/RetreatOpsAnimation";
 import { SoftwareWebAnimation } from "./service-animations/SoftwareWebAnimation";
 import { StartupAdvisoryAnimation } from "./service-animations/StartupAdvisoryAnimation";
@@ -22,7 +22,7 @@ const SERVICE_ANIMATIONS: Record<string, AnimationComponent> = {
   "ai-assistants": AiAssistantsAnimation,
   "company-brain": CompanyBrainAnimation,
   "retreat-ops": RetreatOpsAnimation,
-  "dashboards": DashboardAnimation,
+  "dashboards": ProofRecordsAnimation,
   "knowledge": KnowledgeAnimation,
   "startup": StartupAdvisoryAnimation,
   "software-web": SoftwareWebAnimation,
