@@ -1,6 +1,7 @@
 "use client";
 
-import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone, Sprout } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { BrandMark } from "@/components/landing/ui/brand-mark";
 import type { SocialLink } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 import { Reveal } from "../ui/reveal";
@@ -58,9 +59,7 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
           <Reveal>
             <div className="space-y-6">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary border-2 border-white rounded-xl flex items-center justify-center text-primary-foreground shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)] transform -rotate-6">
-                  <Sprout size={24} fill="currentColor" />
-                </div>
+                <BrandMark className="h-10 w-10 text-primary" />
                 <span className="font-black text-2xl tracking-tight leading-none">
                   Cultivo{" "}<span className="text-primary">Labs</span>
                 </span>

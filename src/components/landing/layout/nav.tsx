@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { MessageCircle, Sprout } from "lucide-react";
+import { MessageCircle } from "lucide-react";
+import { BrandMark } from "@/components/landing/ui/brand-mark";
 import { isEnabledLocale } from "@/content/enabled-locales";
 import type { Locale } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
@@ -228,9 +229,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
               aria-label={HOME_ARIA_LABELS[locale]}
               className="flex items-center gap-2.5"
             >
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border-2 border-white/80 bg-primary text-primary-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,0.25)] -rotate-6 shrink-0">
-                <Sprout size={17} fill="currentColor" />
-              </span>
+              <BrandMark className="h-8 w-8 text-[#00BCD4] md:h-9 md:w-9" />
               <span className="text-lg leading-none font-black tracking-[-0.02em] md:text-2xl">
                 Cultivo{" "}<span className="text-[#00BCD4]">Labs</span>
               </span>

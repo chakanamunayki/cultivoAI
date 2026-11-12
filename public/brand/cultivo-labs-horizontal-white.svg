@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="360" viewBox="0 0 640 144">
+<rect width="640" height="144" fill="#18181B"/>
+<g transform="translate(8 8) scale(1.12)" color="#FFFFFF">
+<path d="M10 82 H78" stroke="currentColor" stroke-width="11" stroke-linecap="round" fill="none"/>
+<path d="M27 62 H78" stroke="currentColor" stroke-width="11" stroke-linecap="round" fill="none"/>
+<path d="M44 42 H78" stroke="currentColor" stroke-width="11" stroke-linecap="round" fill="none"/>
+<path d="M61 22 H78" stroke="currentColor" stroke-width="11" stroke-linecap="round" fill="none"/>
+</g>
+<text x="142" y="94" fill="#FFFFFF" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="54" font-weight="600" letter-spacing="-1.8">Cultivo</text>
+<text x="329" y="94" fill="#FFFFFF" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="54" font-weight="400" letter-spacing="-1.8">Labs</text>
+</svg>
