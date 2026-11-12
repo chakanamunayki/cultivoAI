@@ -52,6 +52,11 @@ export const esClosingSectionsContent: Pick<
       },
       {
         number: "3",
+        title: "Si hace falta un plan, hago un Sprint de descubrimiento",
+        description: "De dos a cuatro semanas, y un plan costeado que es tuyo.",
+      },
+      {
+        number: "4",
         title: "Construyo la primera versión y la mejoramos juntos",
         description: "",
       },

@@ -236,7 +236,8 @@ All "we" becomes "I" in this section.
 
 1. EN: **I reply quickly.** A direct answer and a clear next step. ES: **Respondo rápido.** Una respuesta directa y un siguiente paso claro.
 2. EN: **If there's a fit, we have a 15-minute chat.** We find the real bottleneck and the smallest useful next step. ES: **Si hay encaje, hablamos 15 minutos.** Encontramos el cuello de botella real y el paso útil más pequeño.
-3. EN: **I build version one and we improve it together.** ES: **Construyo la primera versión y la mejoramos juntos.**
+3. EN: **If you need a plan, I run a Discovery Sprint.** Two to four weeks, and a costed plan that is yours to keep. ES: **Si hace falta un plan, hago un Sprint de descubrimiento.** De dos a cuatro semanas, y un plan costeado que es tuyo.
+4. EN: **I build version one and we improve it together.** ES: **Construyo la primera versión y la mejoramos juntos.**
 
 **Footer line**
 - EN: Cultivo Labs. Tech for projects that care for land, people and communities. Colombia, working worldwide.
