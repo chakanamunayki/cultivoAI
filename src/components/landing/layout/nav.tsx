@@ -367,12 +367,14 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
               </p>
 
               <div className="mt-8 space-y-4 text-base font-semibold md:text-lg">
-                <a
-                  href={`mailto:${content.footer.contactInfo.email}`}
-                  className="block transition-colors hover:text-[#00BCD4]"
-                >
-                  {content.footer.contactInfo.email}
-                </a>
+                {content.footer.contactInfo.email ? (
+                  <a
+                    href={`mailto:${content.footer.contactInfo.email}`}
+                    className="block transition-colors hover:text-[#00BCD4]"
+                  >
+                    {content.footer.contactInfo.email}
+                  </a>
+                ) : null}
                 <a
                   href={`https://wa.me/${content.footer.contactInfo.whatsapp.replace(/\+/g, "")}`}
                   target="_blank"

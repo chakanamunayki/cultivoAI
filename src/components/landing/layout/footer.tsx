@@ -106,15 +106,17 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
                 {content.footer.contactTitle}
               </h3>
               <ul className="space-y-3">
-                <li>
-                  <a
-                    href={`mailto:${content.footer.contactInfo.email}`}
-                    className="flex items-center gap-3 text-neutral-300 hover:text-primary transition-colors group"
-                  >
-                    <Mail size={18} className="group-hover:scale-110 transition-transform" />
-                    <span className="font-mono text-sm">{content.footer.contactInfo.email}</span>
-                  </a>
-                </li>
+                {content.footer.contactInfo.email ? (
+                  <li>
+                    <a
+                      href={`mailto:${content.footer.contactInfo.email}`}
+                      className="flex items-center gap-3 text-neutral-300 hover:text-primary transition-colors group"
+                    >
+                      <Mail size={18} className="group-hover:scale-110 transition-transform" />
+                      <span className="font-mono text-sm">{content.footer.contactInfo.email}</span>
+                    </a>
+                  </li>
+                ) : null}
                 <li>
                   <a
                     href={`https://wa.me/${content.footer.contactInfo.whatsapp.replace(/\+/g, "")}`}

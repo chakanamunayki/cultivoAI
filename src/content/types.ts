@@ -238,7 +238,8 @@ export interface SocialLink {
 }
 
 export interface FooterContactInfo {
-  email: string;
+  /** Leave out until the mailbox works: the nav and footer only show it when set. */
+  email?: string;
   whatsapp: string;
   whatsappDisplay: string;
   location: string;

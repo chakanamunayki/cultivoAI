@@ -90,7 +90,6 @@ export const enClosingSectionsContent: Pick<
       },
     ],
     contactInfo: {
-      email: "hola@cultivolabs.com",
       whatsapp: "+573106172607",
       whatsappDisplay: "+57 310 617 2607",
       location: "Medellin, Colombia",
