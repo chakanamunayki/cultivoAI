@@ -8,11 +8,11 @@ import type { Locale, Service } from "@/content/types";
 import { cn } from "@/lib/utils";
 import { AiAssistantsAnimation } from "./service-animations/AiAssistantsAnimation";
 import { CompanyBrainAnimation } from "./service-animations/CompanyBrainAnimation";
+import { InvestmentReadinessAnimation } from "./service-animations/InvestmentReadinessAnimation";
 import { KnowledgeAnimation } from "./service-animations/KnowledgeAnimation";
 import { ProofRecordsAnimation } from "./service-animations/ProofRecordsAnimation";
 import { RetreatOpsAnimation } from "./service-animations/RetreatOpsAnimation";
 import { SoftwareWebAnimation } from "./service-animations/SoftwareWebAnimation";
-import { StartupAdvisoryAnimation } from "./service-animations/StartupAdvisoryAnimation";
 import { WorkflowAnimation } from "./service-animations/WorkflowAnimation";
 
 type AnimationComponent = React.ComponentType<{ locale?: Locale }>;
@@ -24,7 +24,7 @@ const SERVICE_ANIMATIONS: Record<string, AnimationComponent> = {
   "retreat-ops": RetreatOpsAnimation,
   "dashboards": ProofRecordsAnimation,
   "knowledge": KnowledgeAnimation,
-  "startup": StartupAdvisoryAnimation,
+  "startup": InvestmentReadinessAnimation,
   "software-web": SoftwareWebAnimation,
 };
 
