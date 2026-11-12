@@ -6,24 +6,16 @@ import { motion, useScroll, useTransform, type MotionValue } from "framer-motion
 import { ArrowUpRight } from "lucide-react";
 import type { Locale, Service } from "@/content/types";
 import { cn } from "@/lib/utils";
-import { AiAssistantsAnimation } from "./service-animations/AiAssistantsAnimation";
 import { DataKnowledgeAnimation } from "./service-animations/DataKnowledgeAnimation";
 import { InvestmentReadinessAnimation } from "./service-animations/InvestmentReadinessAnimation";
-import { KnowledgeAnimation } from "./service-animations/KnowledgeAnimation";
 import { ProofRecordsAnimation } from "./service-animations/ProofRecordsAnimation";
-import { RetreatOpsAnimation } from "./service-animations/RetreatOpsAnimation";
 import { SoftwarePlatformsAnimation } from "./service-animations/SoftwarePlatformsAnimation";
-import { WorkflowAnimation } from "./service-animations/WorkflowAnimation";
 
 type AnimationComponent = React.ComponentType<{ locale?: Locale }>;
 
 const SERVICE_ANIMATIONS: Record<string, AnimationComponent> = {
-  "workflow": WorkflowAnimation,
-  "ai-assistants": AiAssistantsAnimation,
   "company-brain": DataKnowledgeAnimation,
-  "retreat-ops": RetreatOpsAnimation,
   "dashboards": ProofRecordsAnimation,
-  "knowledge": KnowledgeAnimation,
   "startup": InvestmentReadinessAnimation,
   "software-web": SoftwarePlatformsAnimation,
 };
