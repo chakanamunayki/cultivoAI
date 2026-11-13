@@ -75,12 +75,12 @@ export const enAbout: AboutCopy = {
             {
               title: "Munayki",
               content:
-                "Munayki joins munay, Quechua for love, with ki, Japanese for power: the power of love. It's where I share Reiki, meditation and the natural products I make by hand.",
+                "Munayki joins munay, Quechua for love, with ki, Japanese for power: the power of love. It's where Marta shares Reiki, meditation and the natural products she makes by hand.",
             },
             {
-              title: "What I lead",
+              title: "What she leads",
               content:
-                "I lead the work in natural products and holistic and ancestral medicine for wellness, so projects in this world are guided by someone who lives it.",
+                "She leads the work in natural products and holistic and ancestral medicine for wellness, so projects in this world are guided by someone who lives it.",
             },
           ],
         },

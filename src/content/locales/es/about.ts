@@ -75,12 +75,12 @@ export const esAbout: AboutCopy = {
             {
               title: "Munayki",
               content:
-                "Munayki une munay, amor en quechua, y ki, poder en japonés: el poder del amor. Es donde comparto Reiki, meditación y los productos naturales que hago a mano.",
+                "Munayki une munay, amor en quechua, y ki, poder en japonés: el poder del amor. Es donde Marta comparte Reiki, meditación y los productos naturales que hace a mano.",
             },
             {
-              title: "Qué lidero",
+              title: "Qué lidera",
               content:
-                "Lidero el trabajo en productos naturales y medicina holística y ancestral para el bienestar, para que los proyectos de este mundo los guíe alguien que lo vive.",
+                "Lidera el trabajo en productos naturales y medicina holística y ancestral para el bienestar, para que los proyectos de este mundo los guíe alguien que lo vive.",
             },
           ],
         },
