@@ -1,6 +1,5 @@
 "use client";
 
-import { Code2 } from "lucide-react";
 import { useModal } from "@/components/landing/ui/modal-provider";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { SectionHeader } from "@/components/landing/ui/section-header";
@@ -44,12 +43,6 @@ export function ServicesSection({ onOpenChatBooking }: ServicesSectionProps) {
             <div className="absolute -top-16 -left-16 h-36 w-36 rounded-full bg-[#00BCD4]/25 opacity-70 blur-2xl" />
 
             <div className="z-10 w-full flex-1">
-              <div className="mb-4 flex items-center gap-4 text-[#00BCD4]">
-                <Code2 size={24} />
-                <span className="font-mono text-base font-semibold md:text-lg">
-                  SYSTEM.INIT_CALL()
-                </span>
-              </div>
               <p className="text-xl leading-tight font-semibold text-[#FFFFFF] md:text-2xl lg:text-3xl">
                 {content.servicesSubtitle}
               </p>
