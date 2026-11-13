@@ -82,8 +82,6 @@ const VALID_SECTION_IDS = new Set([
 ]);
 
 // Desktop nav shows only these key items
-const DESKTOP_NAV_KEYS = ["services", "who-we-help", "semillero", "projects", "about"];
-
 export function Nav({ onScrollTo, onOpenChat }: NavProps) {
   const { locale, setLocale, content, ui } = useLocale();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -103,10 +101,6 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
     }
     return false;
   });
-
-  const desktopNavItems = navItems.filter((item) =>
-    DESKTOP_NAV_KEYS.some((key) => item.href.includes(key))
-  );
 
   useEffect(() => {
     const hero = document.getElementById("hero");
@@ -214,17 +208,6 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
             </button>
 
             <div className="hidden items-center gap-2 lg:flex">
-              {desktopNavItems.map((item) => (
-                <button
-                  type="button"
-                  key={item.label}
-                  onClick={() => scrollTo(item.href)}
-                  className="rounded-full px-4 py-2 text-sm font-semibold tracking-wide uppercase transition-colors hover:bg-black/10"
-                >
-                  {item.label}
-                </button>
-              ))}
-
               <LocaleSwitcher
                 locale={locale}
                 onSelect={selectLocale}
