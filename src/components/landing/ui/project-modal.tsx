@@ -132,7 +132,7 @@ export function ProjectModal({ project, onOpenChat }: ProjectModalProps) {
           )}
           <button
             type="button"
-            onClick={() => onOpenChat?.({ type: "project", projectTitle: project.title })}
+            onClick={() => onOpenChat?.({ type: "project", projectTitle: project.chatName ?? project.title })}
             className="flex-1 rounded-xl bg-[#00BCD4] px-6 py-3.5 text-sm font-semibold tracking-[0.08em] text-[#18181b] uppercase shadow-[0_14px_28px_rgba(15,23,42,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.28)]"
           >
             {ctaText}

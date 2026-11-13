@@ -122,7 +122,7 @@ export const esClosingSectionsContent: Pick<
       partnershipNamed:
         "Genial, te interesa el paso {partnership}. Cuéntame un poco qué tienes en mente y te explico cómo funciona.",
       project:
-        "Genial, viste el proyecto {project}. ¿Qué estás construyendo tú? Cuéntame y vemos si algo parecido encaja.",
+        "Genial, viste nuestro trabajo en {project}. ¿Qué estás construyendo tú? Cuéntanos y vemos si algo parecido encaja.",
       qualification:
         "Con gusto vemos si hay encaje. Cuéntame un poco qué estás construyendo.",
       qualificationSector:

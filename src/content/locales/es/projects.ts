@@ -63,6 +63,7 @@ projectsInProgress: [
 projects: [
   {
     title: "Plataforma de conocimiento protegido para un proyecto de biotecnología y agricultura vertical",
+    chatName: "la plataforma de conocimiento protegido",
     desc: "Construí el software de una plataforma de producción agri-biotech en Colombia: un constructor de protocolos donde los científicos crean y gestionan cada receta, y un Company Brain que guía paso a paso a quien lo ejecuta, sin exponer nunca el protocolo completo. La IP se queda en el sistema, no en el teléfono de alguien.",
     fullDesc:
       "La plataforma convierte un objetivo biológico en un proceso de producción vegetal controlado, medible y reproducible, y construí el software que lo hace funcionar de punta a punta. Primero, el constructor de protocolos: los científicos y líderes de laboratorio crean, versionan y gestionan el protocolo completo en un solo lugar, cada paso, parámetro y secuencia. Esa biblioteca de protocolos es la IP. Segundo, el Company Brain: cuando llega el momento de ejecutar un protocolo, el Brain guía a quien hace el trabajo paso a paso, qué hacer ahora, los parámetros, la frecuencia, la asepsia, y captura sus observaciones contra ese paso. El operador ejecuta sin tener nunca la receta completa. El acceso es por rol: el técnico de laboratorio es guiado por los pasos, el equipo comercial ve clientes, el director ve todo. Creación y ejecución son un solo loop, y el protocolo completo y los datos acumulados se quedan en el sistema, no en las manos del operador.",

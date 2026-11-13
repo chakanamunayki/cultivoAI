@@ -106,6 +106,8 @@ export interface ProjectStat {
 
 export interface Project {
   title: string;
+  /** Short name the chat greeting uses when the title is long. */
+  chatName?: string;
   desc: string;
   fullDesc: string;
   lessons: string;

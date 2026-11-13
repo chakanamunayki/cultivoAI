@@ -122,7 +122,7 @@ export const enClosingSectionsContent: Pick<
       partnershipNamed:
         "Nice, you're looking at the {partnership} step. Tell me a bit about what you have in mind and I'll explain how it works.",
       project:
-        "Nice, you were looking at {project}. What are you building? Tell me and we'll see if something similar fits.",
+        "Nice, you were looking at our work on {project}. What are you building? Tell us and we'll see if something similar fits.",
       qualification:
         "Happy to see if there's a fit. Tell me a little about what you're building.",
       qualificationSector:

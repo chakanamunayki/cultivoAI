@@ -68,3 +68,19 @@ test("greetings have no em dashes or leftover placeholders", () => {
     }
   }
 });
+
+test("the project greeting speaks as we", () => {
+  assert.match(chatGreeting(g.es, { type: "project", projectTitle: "X" }), /Cuéntanos/);
+  assert.match(chatGreeting(g.en, { type: "project", projectTitle: "X" }), /Tell us/);
+});
+
+test("every visible project has a short name for the chat greeting", async () => {
+  const { enProjectsContent } = await import("../../src/content/locales/en/projects.ts");
+  const { esProjectsContent } = await import("../../src/content/locales/es/projects.ts");
+  for (const content of [enProjectsContent, esProjectsContent]) {
+    for (const project of content.projects.filter((p) => !p.hidden)) {
+      const name = project.chatName ?? project.title;
+      assert.ok(name.length <= 45, `"${name}" is too long for the chat greeting`);
+    }
+  }
+});
