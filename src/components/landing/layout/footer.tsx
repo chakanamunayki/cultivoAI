@@ -44,7 +44,7 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
           <button
             type="button"
             onClick={onContactClick}
-            className="inline-flex items-center gap-3 rounded-xl bg-[#FFFFFF] px-8 py-4 text-lg font-semibold tracking-[0.06em] text-[#00BCD4] uppercase shadow-[0_16px_30px_rgba(15,23,42,0.3)] transition-all hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_20px_36px_rgba(15,23,42,0.36)]"
+            className="inline-flex items-center gap-3 rounded-xl bg-[#FFFFFF] px-8 py-4 text-lg font-semibold tracking-[0.06em] text-[#18181b] uppercase shadow-[0_16px_30px_rgba(15,23,42,0.3)] transition-all hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_20px_36px_rgba(15,23,42,0.36)]"
           >
             <MessageCircle size={24} />
             {content.footer.ctaButton}
@@ -163,7 +163,7 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
       {/* Copyright */}
       <div className="border-t border-white/10 p-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-neutral-600 text-xs md:text-sm font-bold uppercase">
+          <p className="text-neutral-400 text-xs md:text-sm font-bold uppercase">
             {content.footer.copyright}
           </p>
         </div>
