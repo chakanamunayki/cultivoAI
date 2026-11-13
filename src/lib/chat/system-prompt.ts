@@ -59,7 +59,7 @@ Cultivo Labs es Paul Ronayne, un cofundador de startups que volvió a construir 
 **Con quién trabajamos (cuatro mundos):**
 - Tierra y regeneración: restauración, agricultura regenerativa, biochar y carbono, cierre de minas.
 - Comunidades autosuficientes: aldeas fuera de la red, ecocomunidades y cooperativas rurales que producen su propia comida, energía y agua.
-- Salud holística y productos naturales: este camino lo lidera Marta a través de Munayki (el poder del amor: munay es amor en quechua, ki es poder en japonés).
+- Salud holística y productos naturales: este camino lo lidera Marta a través de Munay-Ki (el poder del amor: munay es amor en quechua, ki es poder en japonés).
 - Naturaleza y agritech: biotecnología, agricultura vertical y en ambiente controlado, sensores, herramientas de campo.
 
 **Qué construimos:**
@@ -73,7 +73,7 @@ Nuestra red de innovación en Latinoamérica ("semillero" es un vivero de semill
 
 **La familia:**
 - Rocky Ronayne, hijo de Paul: la nueva generación. Construye con herramientas de IA junto a Paul y lleva Semilla, su propio fondo para buenos proyectos.
-- Marta Ronayne, esposa de Paul: terapeuta holística y fundadora de Munayki. Lidera el trabajo en productos naturales y medicina holística y ancestral para el bienestar.
+- Marta Ronayne, esposa de Paul: terapeuta holística y fundadora de Munay-Ki. Lidera el trabajo en productos naturales y medicina holística y ancestral para el bienestar.
 
 **Cómo trabajamos:**
 Ayni (palabra andina para la reciprocidad: cada acuerdo tiene que ser bueno para todos), cultivar y no extraer, honestidad antes que ventas, y las manos en la tierra (diseñamos, construimos y vamos al terreno).
@@ -90,7 +90,7 @@ Cultivo Labs is Paul Ronayne, a startup co-founder turned hands-on builder, and 
 **Who we work with (four worlds):**
 - Land and regeneration: restoration, regenerative farming, biochar and carbon, mine closure.
 - Self-sufficient communities: off-grid villages, eco-communities and rural cooperatives building their own food, energy and water.
-- Holistic health and natural products: this lane is led by Marta through Munayki (the power of love: munay is Quechua for love, ki is Japanese for power).
+- Holistic health and natural products: this lane is led by Marta through Munay-Ki (the power of love: munay is Quechua for love, ki is Japanese for power).
 - Nature and agritech: biotech, vertical and controlled-environment farming, sensors, field tools.
 
 **What we build:**
@@ -104,7 +104,7 @@ Our innovation network for Latin America ("semillero" is Spanish for seedbed). I
 
 **The family:**
 - Rocky Ronayne, Paul's son: the next generation. Builds with AI tools alongside Paul and runs Semilla, his own fund for good projects.
-- Marta Ronayne, Paul's wife: holistic practitioner and founder of Munayki. Leads the work in natural products and holistic and ancestral medicine for wellness.
+- Marta Ronayne, Paul's wife: holistic practitioner and founder of Munay-Ki. Leads the work in natural products and holistic and ancestral medicine for wellness.
 
 **How we work:**
 Ayni (an Andean word for reciprocity: every deal has to be good for everyone in it), cultivate not extract, honesty before sales, and hands in the dirt (we design it, build it and show up in the field).
@@ -276,7 +276,7 @@ const QUALIFICATION_CRITERIA = {
 - Tienen presupuesto (o un plan realista) y están dispuestos a hablar de alcance
 - Listos para empezar en 1 a 3 meses
 - Valoran la comunicación directa con quien construye
-- Sectores: tierra y regeneración, comunidades autosuficientes, salud holística y productos naturales (con Munayki), naturaleza y agritech. Innovadores con tecnología para estos mundos encajan en Semillero.
+- Sectores: tierra y regeneración, comunidades autosuficientes, salud holística y productos naturales (con Munay-Ki), naturaleza y agritech. Innovadores con tecnología para estos mundos encajan en Semillero.
 
 **Indicadores de alta prioridad:**
 - Mencionan presupuesto o están dispuestos a discutirlo (+1)
@@ -301,7 +301,7 @@ const QUALIFICATION_CRITERIA = {
 - Have budget (or a realistic plan) and are willing to discuss scope
 - Ready to start within 1 to 3 months
 - Value direct communication with the person who builds
-- Sectors: land and regeneration, self-sufficient communities, holistic health and natural products (with Munayki), nature and agritech. Innovators with technology for these worlds fit Semillero.
+- Sectors: land and regeneration, self-sufficient communities, holistic health and natural products (with Munay-Ki), nature and agritech. Innovators with technology for these worlds fit Semillero.
 
 **High priority indicators:**
 - Mention budget or are willing to discuss it (+1)
@@ -603,8 +603,8 @@ export function buildSystemPrompt(
         pt: "O usuário quer agendar um horário com o Paul. Foque em entender o projeto dele e qualificá-lo.",
       },
       story: {
-        es: "El usuario está interesado en la historia. Comparte quiénes somos: Paul y su trayectoria, la familia (Rocky con Semilla, Marta con Munayki) y cómo trabajamos.",
-        en: "The user is interested in the story. Share who we are: Paul and his track record, the family (Rocky with Semilla, Marta with Munayki) and how we work.",
+        es: "El usuario está interesado en la historia. Comparte quiénes somos: Paul y su trayectoria, la familia (Rocky con Semilla, Marta con Munay-Ki) y cómo trabajamos.",
+        en: "The user is interested in the story. Share who we are: Paul and his track record, the family (Rocky with Semilla, Marta with Munay-Ki) and how we work.",
         pt: "O usuário tem interesse na nossa história. Fale sobre o time familiar e como trabalhamos.",
       },
       service: {
@@ -870,10 +870,10 @@ export function buildVoiceSystemPrompt(locale: Locale): string {
 
   const companyContext = {
     es: `
-Cultivo Labs es Paul, un cofundador de startups que hoy es socio tecnológico de buenos proyectos que cuidan la tierra, las personas y las comunidades: tierra y regeneración, comunidades autosuficientes, salud holística y productos naturales, y naturaleza y agritech. Cofundó NBN23 y Nagi, y construyó solo la plataforma completa de un proyecto de biotecnología y agricultura vertical. Trabaja directo, sin intermediarios. También lleva Semillero, una red que une innovadores con proyectos en Latinoamérica. Rocky lleva Semilla, su fondo para buenos proyectos, y Marta lidera Munayki, el camino de productos naturales y medicina holística y ancestral.
+Cultivo Labs es Paul, un cofundador de startups que hoy es socio tecnológico de buenos proyectos que cuidan la tierra, las personas y las comunidades: tierra y regeneración, comunidades autosuficientes, salud holística y productos naturales, y naturaleza y agritech. Cofundó NBN23 y Nagi, y construyó solo la plataforma completa de un proyecto de biotecnología y agricultura vertical. Trabaja directo, sin intermediarios. También lleva Semillero, una red que une innovadores con proyectos en Latinoamérica. Rocky lleva Semilla, su fondo para buenos proyectos, y Marta lidera Munay-Ki, el camino de productos naturales y medicina holística y ancestral.
 `,
     en: `
-Cultivo Labs is Paul, a startup co-founder who is now the hands-on tech partner for good projects that care for land, people and communities: land and regeneration, self-sufficient communities, holistic health and natural products, and nature and agritech. He co-founded NBN23 and Nagi, and built the full platform for a biotech and vertical farming project solo. He works directly, no handoffs. He also runs Semillero, a network that brings innovators together with projects in Latin America. Rocky runs Semilla, his fund for good projects, and Marta leads Munayki, the lane for natural products and holistic and ancestral medicine.
+Cultivo Labs is Paul, a startup co-founder who is now the hands-on tech partner for good projects that care for land, people and communities: land and regeneration, self-sufficient communities, holistic health and natural products, and nature and agritech. He co-founded NBN23 and Nagi, and built the full platform for a biotech and vertical farming project solo. He works directly, no handoffs. He also runs Semillero, a network that brings innovators together with projects in Latin America. Rocky runs Semilla, his fund for good projects, and Marta leads Munay-Ki, the lane for natural products and holistic and ancestral medicine.
 `,
     pt: `
 A Cultivo Labs é o Paul, o parceiro técnico que constrói a camada de IA e dados para agritech e biotech. Cofundou a NBN23 e a Nagi, e construiu sozinho a plataforma completa de um projeto de biotecnologia e agricultura vertical. Trabalha direto, sem handoffs. Rocky e Marta apoiam o lado técnico e o humano.

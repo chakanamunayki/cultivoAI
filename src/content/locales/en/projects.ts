@@ -93,7 +93,7 @@ projects: [
     },
   },
   {
-    // Hidden until it is relaunched as the Munayki site.
+    // Hidden until it is relaunched as the Munay-Ki site.
     hidden: true,
     title: "SetaSouls. Holistic Brand Website",
     desc: "98 performance. 100 SEO. 100 best practices. Design, speed, and search visibility built together from the start.",

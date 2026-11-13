@@ -29,12 +29,11 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
         chatButtonLabel: "Hablemos",
       },
       {
-        name: "Salud holística y productos naturales, con Munayki",
+        name: "Salud holística y productos naturales, con Munay-Ki",
         description:
-          "Innovación alrededor de productos naturales y medicina holística y ancestral para el bienestar. Este camino lo lidera Marta a través de Munayki, el poder del amor (munay es amor en quechua, ki es poder en japonés).",
+          "Innovación alrededor de productos naturales y medicina holística y ancestral para el bienestar. Este camino lo lidera Marta a través de Munay-Ki, el poder del amor (munay es amor en quechua, ki es poder en japonés).",
         icon: "Heart",
         imageUrl: "/landing/photos/sectors/munayki-logo-dark.jpg",
-        badge: "Munayki",
         chatButtonLabel: "Hablemos",
       },
       {

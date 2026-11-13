@@ -44,31 +44,21 @@ export function SemilleroSection({ onOpenChatProject, onOpenChatInnovation }: Se
 
           {/* Right: two CTAs */}
           <Reveal delay={200}>
-            <div className="flex h-full items-center justify-center">
-              <div className={landingCardClass("blue", "w-full rounded-[24px] px-8 py-6 text-center hover:-translate-y-1 md:px-12 md:py-8")}>
-                <div className="flex flex-col gap-3 md:flex-row md:justify-center">
-                  <button
-                    type="button"
-                    onClick={onOpenChatProject}
-                    className={cn(
-                      "w-full px-6 py-3 text-sm font-semibold tracking-[0.08em] md:w-auto",
-                      landingPrimaryDarkButtonClass
-                    )}
-                  >
-                    {semillero.projectCta}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={onOpenChatInnovation}
-                    className={cn(
-                      "w-full px-6 py-3 text-sm font-semibold tracking-[0.08em] md:w-auto",
-                      landingPrimaryDarkButtonClass
-                    )}
-                  >
-                    {semillero.innovationCta}
-                  </button>
-                </div>
-              </div>
+            <div className={landingCardClass("blue", "flex h-full flex-col justify-center gap-3 rounded-[24px] p-6 text-center hover:-translate-y-1 md:p-8")}>
+              <button
+                type="button"
+                onClick={onOpenChatProject}
+                className={cn("w-full px-6 py-3 text-sm font-semibold tracking-[0.08em]", landingPrimaryDarkButtonClass)}
+              >
+                {semillero.projectCta}
+              </button>
+              <button
+                type="button"
+                onClick={onOpenChatInnovation}
+                className={cn("w-full px-6 py-3 text-sm font-semibold tracking-[0.08em]", landingPrimaryDarkButtonClass)}
+              >
+                {semillero.innovationCta}
+              </button>
             </div>
           </Reveal>
         </div>

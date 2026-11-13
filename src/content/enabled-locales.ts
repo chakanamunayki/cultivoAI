@@ -7,7 +7,7 @@ import type { Locale } from "./types";
  *
  * Before re-enabling, refresh Portuguese to match ES/EN: the PT copy itself,
  * the PT chat prompt in src/lib/chat/system-prompt.ts, the missing PT `ui`
- * labels (PT falls back to English), the Munayki and Discovery Sprint images,
+ * labels (PT falls back to English), the Munay-Ki and Discovery Sprint images,
  * and the headings that now speak as "we". PT still has the old who-we-help fit
  * lists and sector detail fields, which the page no longer renders.
  */

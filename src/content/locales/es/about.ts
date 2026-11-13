@@ -63,19 +63,19 @@ export const esAbout: AboutCopy = {
       {
         id: "marta",
         name: "Marta Ronayne",
-        title: "Terapeuta holística. Fundadora de Munayki.",
+        title: "Terapeuta holística. Fundadora de Munay-Ki.",
         description:
-          "Terapeuta holística y fundadora de Munayki, el poder del amor. Marta trabaja con Reiki, meditación y productos naturales hechos a mano, uniendo la sabiduría ancestral con una ciencia sencilla. Lidera el trabajo en medicina holística y ancestral para el bienestar.",
+          "Terapeuta holística y fundadora de Munay-Ki, el poder del amor. Marta trabaja con Reiki, meditación y productos naturales hechos a mano, uniendo la sabiduría ancestral con una ciencia sencilla. Lidera el trabajo en medicina holística y ancestral para el bienestar.",
         imageUrl: "/landing/photos/team/marta-new.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
-          headline: "Terapeuta holística y fundadora de Munayki.",
+          headline: "Terapeuta holística y fundadora de Munay-Ki.",
           sections: [
             {
-              title: "Munayki",
+              title: "Munay-Ki",
               content:
-                "Munayki une munay, amor en quechua, y ki, poder en japonés: el poder del amor. Es donde Marta comparte Reiki, meditación y los productos naturales que hace a mano.",
+                "Munay-Ki une munay, amor en quechua, y ki, poder en japonés: el poder del amor. Es donde Marta comparte Reiki, meditación y los productos naturales que hace a mano.",
             },
             {
               title: "Qué lidera",

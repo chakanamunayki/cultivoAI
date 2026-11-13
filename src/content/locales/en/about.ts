@@ -63,19 +63,19 @@ export const enAbout: AboutCopy = {
       {
         id: "marta",
         name: "Marta Ronayne",
-        title: "Holistic practitioner. Founder of Munayki.",
+        title: "Holistic practitioner. Founder of Munay-Ki.",
         description:
-          "Holistic practitioner and founder of Munayki, the power of love. Marta works with Reiki, meditation and natural products she makes by hand, bringing ancestral wisdom and simple science together. She leads the work in holistic and ancestral medicine for wellness.",
+          "Holistic practitioner and founder of Munay-Ki, the power of love. Marta works with Reiki, meditation and natural products she makes by hand, bringing ancestral wisdom and simple science together. She leads the work in holistic and ancestral medicine for wellness.",
         imageUrl: "/landing/photos/team/marta-new.jpg",
         accentColor: "bg-primary",
         shadowColor: "bg-black",
         bio: {
-          headline: "Holistic practitioner and founder of Munayki.",
+          headline: "Holistic practitioner and founder of Munay-Ki.",
           sections: [
             {
-              title: "Munayki",
+              title: "Munay-Ki",
               content:
-                "Munayki joins munay, Quechua for love, with ki, Japanese for power: the power of love. It's where Marta shares Reiki, meditation and the natural products she makes by hand.",
+                "Munay-Ki joins munay, Quechua for love, with ki, Japanese for power: the power of love. It's where Marta shares Reiki, meditation and the natural products she makes by hand.",
             },
             {
               title: "What she leads",
