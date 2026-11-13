@@ -16,6 +16,7 @@ export const en: SiteContent = {
     { label: "Who we work with", href: "#who-we-help" },
     { label: "Semillero", href: "#semillero" },
     { label: "Projects", href: "#projects" },
+    { label: "How to start", href: "#partnerships" },
   ],
 
   marquee: [

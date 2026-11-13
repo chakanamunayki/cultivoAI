@@ -95,7 +95,7 @@ export const enClosingSectionsContent: Pick<
       { label: "Semillero", href: "#semillero" },
       { label: "Projects", href: "#projects" },
       { label: "Who we are", href: "#about" },
-      { label: "Ways to work together", href: "#partnerships" },
+      { label: "How to start", href: "#partnerships" },
     ],
     quickLinksTitle: "Navigation",
     contactTitle: "Contact",
