@@ -31,7 +31,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
       {
         name: "Salud holística y productos naturales, con Munay-Ki",
         description:
-          "Innovación alrededor de productos naturales y medicina holística y ancestral para el bienestar. Este camino lo lidera Marta a través de Munay-Ki, el poder del amor (munay es amor en quechua, ki es poder en japonés).",
+          "Innovación alrededor de productos naturales y medicina holística y ancestral para el bienestar. Este camino lo lidera Marta a través de Munay-Ki, el poder del amor.",
         icon: "Heart",
         imageUrl: "/landing/photos/sectors/munayki-logo-dark.jpg",
         chatButtonLabel: "Hablemos",

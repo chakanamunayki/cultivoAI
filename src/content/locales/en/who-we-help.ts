@@ -30,7 +30,7 @@ export const enWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
       {
         name: "Holistic health and natural products, with Munay-Ki",
         description:
-          "Innovation around natural products and holistic and ancestral medicine for wellness. This lane is led by Marta through Munay-Ki, the power of love (munay is Quechua for love, ki is Japanese for power).",
+          "Innovation around natural products and holistic and ancestral medicine for wellness. This lane is led by Marta through Munay-Ki, the power of love.",
         icon: "Heart",
         imageUrl: "/landing/photos/sectors/munayki-logo-dark.jpg",
         chatButtonLabel: "Let's talk",

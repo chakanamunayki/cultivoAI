@@ -75,7 +75,7 @@ export const enAbout: AboutCopy = {
             {
               title: "Munay-Ki",
               content:
-                "Munay-Ki joins munay, Quechua for love, with ki, Japanese for power: the power of love. It's where Marta shares Reiki, meditation and the natural products she makes by hand.",
+                "Munay-Ki means the power of love: the unconditional love the Creator has for all of creation. The name comes from the initiation rites of the Andes. It's where Marta shares Reiki, meditation and the natural products she makes by hand.",
             },
             {
               title: "What she leads",

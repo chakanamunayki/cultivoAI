@@ -75,7 +75,7 @@ export const esAbout: AboutCopy = {
             {
               title: "Munay-Ki",
               content:
-                "Munay-Ki une munay, amor en quechua, y ki, poder en japonés: el poder del amor. Es donde Marta comparte Reiki, meditación y los productos naturales que hace a mano.",
+                "Munay-Ki significa el poder del amor: el amor incondicional del Creador por toda la creación. El nombre viene de los ritos de iniciación de los Andes. Es donde Marta comparte Reiki, meditación y los productos naturales que hace a mano.",
             },
             {
               title: "Qué lidera",

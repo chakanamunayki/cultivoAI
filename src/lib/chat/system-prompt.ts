@@ -59,7 +59,7 @@ Cultivo Labs es Paul Ronayne, un cofundador de startups que volvió a construir 
 **Con quién trabajamos (cuatro mundos):**
 - Tierra y regeneración: restauración, agricultura regenerativa, biochar y carbono, cierre de minas.
 - Comunidades autosuficientes: aldeas fuera de la red, ecocomunidades y cooperativas rurales que producen su propia comida, energía y agua.
-- Salud holística y productos naturales: este camino lo lidera Marta a través de Munay-Ki (el poder del amor: munay es amor en quechua, ki es poder en japonés).
+- Salud holística y productos naturales: este camino lo lidera Marta a través de Munay-Ki (el poder del amor: el amor incondicional del Creador por toda la creación; el nombre viene de los ritos de iniciación de los Andes).
 - Naturaleza y agritech: biotecnología, agricultura vertical y en ambiente controlado, sensores, herramientas de campo.
 
 **Qué construimos:**
@@ -90,7 +90,7 @@ Cultivo Labs is Paul Ronayne, a startup co-founder turned hands-on builder, and 
 **Who we work with (four worlds):**
 - Land and regeneration: restoration, regenerative farming, biochar and carbon, mine closure.
 - Self-sufficient communities: off-grid villages, eco-communities and rural cooperatives building their own food, energy and water.
-- Holistic health and natural products: this lane is led by Marta through Munay-Ki (the power of love: munay is Quechua for love, ki is Japanese for power).
+- Holistic health and natural products: this lane is led by Marta through Munay-Ki (the power of love: the unconditional love the Creator has for all of creation; the name comes from the initiation rites of the Andes).
 - Nature and agritech: biotech, vertical and controlled-environment farming, sensors, field tools.
 
 **What we build:**
