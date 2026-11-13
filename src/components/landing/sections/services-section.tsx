@@ -58,7 +58,7 @@ export function ServicesSection({ onOpenChatBooking }: ServicesSectionProps) {
             <button
               type="button"
               onClick={onOpenChatBooking}
-              className="relative z-10 w-full rounded-xl bg-[#00BCD4] px-6 py-3.5 text-lg font-semibold tracking-[0.06em] text-[#FFFFFF] uppercase shadow-[0_14px_28px_rgba(15,23,42,0.24)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.3)] md:w-auto md:px-10 md:py-5 md:text-xl"
+              className="relative z-10 w-full rounded-xl bg-[#00BCD4] px-6 py-3.5 text-lg font-semibold tracking-[0.06em] text-[#18181b] uppercase shadow-[0_14px_28px_rgba(15,23,42,0.24)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.3)] md:w-auto md:px-10 md:py-5 md:text-xl"
             >
               {ui.bookCall}
             </button>

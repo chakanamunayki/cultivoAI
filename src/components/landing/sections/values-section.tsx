@@ -38,14 +38,14 @@ export function ValuesSection() {
                       "-mx-6 mb-4 px-6 py-2.5"
                     )}
                   >
-                    <h3 className="text-lg font-black leading-tight text-[#FFFFFF] md:text-xl">
+                    <h3 className="text-lg font-black leading-tight md:text-xl">
                       {value.title}
                     </h3>
                   </div>
                   <p
                     className={cn(
                       "text-sm leading-relaxed md:text-base",
-                      variant === "blue" ? "text-[#eef9f5]" : "text-white/85"
+                      variant === "blue" ? "text-[#18181b]/85" : "text-white/85"
                     )}
                   >
                     {value.description}

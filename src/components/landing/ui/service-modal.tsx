@@ -157,8 +157,8 @@ export function ServiceModal({ service, onOpenChat }: ServiceModalProps) {
             <ul className="space-y-2 px-5 pb-6 pt-4 md:px-6 md:pb-7 md:pt-5">
               {service.modal.idealFit.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-white/95" />
-                  <span className="text-base leading-relaxed font-semibold text-white/95 md:text-lg">
+                  <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-[#18181b]" />
+                  <span className="text-base leading-relaxed font-semibold md:text-lg">
                     {item}
                   </span>
                 </li>

@@ -96,7 +96,7 @@ export function ProjectsSection() {
                     className={cn(
                       "max-w-2xl text-lg font-semibold md:text-xl",
                       project.stats ? "mb-0" : "mb-6 md:mb-8",
-                      variant === "blue" ? "text-[#eef9f5]" : "text-white/90"
+                      variant === "blue" ? "text-[#18181b]/85" : "text-white/90"
                     )}
                   >
                     {project.desc}
@@ -135,7 +135,7 @@ export function ProjectsSection() {
                       className={cn(
                         "mb-6 inline-flex items-center gap-2 border-2 px-5 py-2.5 text-sm font-black uppercase tracking-[0.1em] transition-all hover:-translate-y-0.5 md:mb-8",
                         variant === "blue"
-                          ? "border-white bg-white/10 text-white hover:bg-white hover:text-black"
+                          ? "border-[#18181b] bg-black/5 text-[#18181b] hover:bg-[#18181b] hover:text-white"
                           : "border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black"
                       )}
                     >
@@ -156,7 +156,7 @@ export function ProjectsSection() {
                     <p
                       className={cn(
                         "px-4 pb-4 pt-3 text-sm font-medium italic md:px-6 md:pb-6 md:pt-4 md:text-base",
-                        lessonVariant === "blue" ? "text-white/95" : "text-white/90"
+                        lessonVariant === "blue" ? "text-[#18181b]/85" : "text-white/90"
                       )}
                     >
                       &quot;{project.lessons}&quot;

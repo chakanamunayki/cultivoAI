@@ -179,7 +179,7 @@ export function WhoWeHelpSection({
                         <div
                           className={`absolute right-0 bottom-0 left-0 flex items-center justify-center gap-1 border-t px-2 py-1.5 text-[10px] font-semibold tracking-[0.08em] uppercase ${variant === "blue"
                               ? "border-white/15 bg-[#212121] text-[#FFFFFF]"
-                              : "border-[#00BCD4]/35 bg-[#00BCD4] text-[#FFFFFF]"
+                              : "border-[#00BCD4]/35 bg-[#00BCD4] text-[#18181b]"
                             }`}
                         >
                           <Check size={10} className="shrink-0" strokeWidth={3} />
@@ -190,7 +190,7 @@ export function WhoWeHelpSection({
                     {/* Content */}
                     <div className="flex flex-grow flex-col p-5 md:p-6">
                       <p
-                        className={`mb-4 flex-grow text-sm leading-relaxed ${variant === "blue" ? "text-[#eef9f5]" : "text-white/85"
+                        className={`mb-4 flex-grow text-sm leading-relaxed ${variant === "blue" ? "text-[#18181b]/85" : "text-white/85"
                           }`}
                       >
                         {sector.description}

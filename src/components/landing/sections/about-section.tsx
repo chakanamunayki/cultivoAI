@@ -125,7 +125,7 @@ export function AboutSection() {
               <div className="border-b border-white/10 bg-[#1f1f1f] px-6 py-2 text-xs font-semibold tracking-[0.08em] text-[#FFFFFF] uppercase md:px-8">
                 {noteLabel}
               </div>
-              <p className="px-6 py-4 text-base font-semibold text-[#FFFFFF] md:px-8 md:py-6 md:text-lg">
+              <p className="px-6 py-4 text-base font-semibold text-[#18181b] md:px-8 md:py-6 md:text-lg">
                 {content.about.footerNote.replace(/\*\*/g, "")}
               </p>
             </div>

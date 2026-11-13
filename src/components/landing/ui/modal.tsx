@@ -31,7 +31,7 @@ export function Modal({
   const closeButtonClass = isSoft
     ? "absolute top-4 right-4 bg-white/95 text-neutral-700 border border-white/80 p-2.5 rounded-full hover:bg-white hover:text-neutral-900 transition-all z-50 shadow-[0_10px_20px_rgba(15,23,42,0.18)] cursor-pointer"
     : isSoftDark
-      ? "absolute top-4 right-4 bg-[#00BCD4] text-white border border-white/30 p-2.5 rounded-full hover:-translate-y-0.5 hover:bg-[#00BCD4] transition-all z-50 shadow-[0_10px_20px_rgba(15,23,42,0.22)] cursor-pointer"
+      ? "absolute top-4 right-4 bg-[#00BCD4] text-[#18181b] border border-white/30 p-2.5 rounded-full hover:-translate-y-0.5 hover:bg-[#00BCD4] transition-all z-50 shadow-[0_10px_20px_rgba(15,23,42,0.22)] cursor-pointer"
     : "absolute top-4 right-4 bg-red-500 text-white border-2 border-black p-2 hover:bg-red-600 hover:translate-y-1 transition-all z-50 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-pointer";
 
   return (

@@ -43,7 +43,7 @@ export function SemilleroSection({ onOpenChatProject, onOpenChatInnovation }: Se
                   "-mx-6 mb-4 px-6 py-2.5 text-left md:-mx-8 md:px-8"
                 )}
               >
-                <h3 className="text-left text-lg font-black leading-tight tracking-tight text-[#FFFFFF] uppercase md:text-xl">
+                <h3 className="text-left text-lg font-black leading-tight tracking-tight uppercase md:text-xl">
                   {semillero.title}
                 </h3>
               </div>
@@ -63,11 +63,11 @@ export function SemilleroSection({ onOpenChatProject, onOpenChatInnovation }: Se
                     "-mx-8 mb-4 px-8 py-2.5 text-left md:-mx-12 md:px-12"
                   )}
                 >
-                  <h3 className="text-left text-lg font-black leading-tight tracking-tight text-[#FFFFFF] uppercase md:text-xl">
+                  <h3 className="text-left text-lg font-black leading-tight tracking-tight uppercase md:text-xl">
                     {semillero.title}
                   </h3>
                 </div>
-                <span className="text-2xl font-black tracking-tight text-[#FFFFFF] md:text-3xl lg:text-4xl">
+                <span className="text-2xl font-black tracking-tight text-[#18181b] md:text-3xl lg:text-4xl">
                   {semillero.subtitle}
                 </span>
                 <div className="mt-6 flex flex-col gap-3 md:flex-row md:justify-center">

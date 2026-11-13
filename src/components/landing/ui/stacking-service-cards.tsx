@@ -67,7 +67,7 @@ function StackedServiceCard({
           "border-white/15 bg-[#212121] text-[#FFFFFF] shadow-[0_20px_40px_rgba(0,0,0,0.34)] ring-1 ring-white/5 hover:-translate-y-1 hover:bg-[#1b1b1b] hover:shadow-[0_24px_44px_rgba(0,0,0,0.42)]"
         )}
       >
-        <div className="-mx-5 -mt-5 mb-5 flex items-center justify-center gap-4 border-b border-[#00BCD4]/35 bg-[#00BCD4] px-5 py-3 text-sm font-bold tracking-[0.08em] text-[#FFFFFF] uppercase md:-mx-7 md:-mt-7 md:px-7 md:py-3.5 md:text-base lg:-mx-8 lg:-mt-8 lg:px-8">
+        <div className="-mx-5 -mt-5 mb-5 flex items-center justify-center gap-4 border-b border-[#00BCD4]/35 bg-[#00BCD4] px-5 py-3 text-sm font-bold tracking-[0.08em] text-[#18181b] uppercase md:-mx-7 md:-mt-7 md:px-7 md:py-3.5 md:text-base lg:-mx-8 lg:-mt-8 lg:px-8">
           <span className="opacity-60">0{index + 1}</span>
           <span>{service.title}</span>
         </div>

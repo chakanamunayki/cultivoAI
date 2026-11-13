@@ -388,7 +388,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
 
           <div className="bg-[#00BCD4] px-6 pt-28 pb-10 text-[#111111] md:px-12 md:pt-36">
             <div className="mx-auto flex h-full w-full max-w-[520px] flex-col">
-              <p className="text-xs font-semibold tracking-[0.12em] text-black/[0.60] uppercase">
+              <p className="text-xs font-semibold tracking-[0.12em] text-black/[0.70] uppercase">
                 {ui.nav.menu}
               </p>
               <div className="mt-6 flex flex-col gap-3 md:gap-4">

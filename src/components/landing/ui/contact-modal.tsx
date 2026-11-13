@@ -97,7 +97,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
       {/* Header */}
       <div className="mb-8 overflow-hidden rounded-[18px] border border-black/10 bg-[#f1f1f1] p-0 shadow-[0_10px_24px_rgba(15,23,42,0.08)]">
         <div className="border-b border-[#00BCD4]/35 bg-[#00BCD4] px-6 py-2.5">
-          <p className="text-xs font-semibold tracking-[0.08em] text-[#FFFFFF] uppercase">
+          <p className="text-xs font-semibold tracking-[0.08em] text-[#18181b] uppercase">
             {contactBandLabel}
           </p>
         </div>
@@ -284,7 +284,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
           <p className="mb-4 text-sm font-medium text-neutral-600">{content.contactForm.chatPrompt}</p>
           <button
             onClick={onChatClick}
-            className="inline-flex items-center gap-2 rounded-xl bg-[#00BCD4] px-6 py-3 text-sm font-semibold tracking-[0.08em] text-[#FFFFFF] uppercase shadow-[0_10px_20px_rgba(15,23,42,0.2)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_14px_26px_rgba(15,23,42,0.25)]"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#00BCD4] px-6 py-3 text-sm font-semibold tracking-[0.08em] text-[#18181b] uppercase shadow-[0_10px_20px_rgba(15,23,42,0.2)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_14px_26px_rgba(15,23,42,0.25)]"
           >
             <MessageSquare size={20} />
             Chat

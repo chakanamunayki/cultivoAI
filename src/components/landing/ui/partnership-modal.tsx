@@ -91,14 +91,14 @@ export function PartnershipModal({ partnership, onOpenChat }: PartnershipModalPr
         {/* Why it matters + Typical outcome */}
         <div className="grid gap-6 md:grid-cols-2">
           <div className="overflow-hidden rounded-[20px] border border-black/10 bg-[#f1f1f1] p-0 shadow-[0_10px_24px_rgba(15,23,42,0.08)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#f5f5f5] hover:shadow-[0_14px_28px_rgba(15,23,42,0.14)]">
-            <h3 className="border-b border-[#00BCD4]/35 bg-[#00BCD4] px-5 py-2.5 text-xs font-semibold tracking-[0.07em] text-[#FFFFFF] uppercase md:px-6">
+            <h3 className="border-b border-[#00BCD4]/35 bg-[#00BCD4] px-5 py-2.5 text-xs font-semibold tracking-[0.07em] text-[#18181b] uppercase md:px-6">
               {whyItMattersLabel}
             </h3>
             <p className="px-5 pb-6 pt-4 text-base leading-relaxed font-medium text-[#3c3c3c] md:px-6 md:pb-7 md:pt-5 md:text-lg">
               {partnership.modal.whyItMatters}
             </p>
           </div>
-          <div className="overflow-hidden rounded-[20px] border border-[#00BCD4] bg-[#00BCD4] p-0 text-[#FFFFFF] shadow-[0_14px_28px_rgba(15,23,42,0.2)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.26)]">
+          <div className="overflow-hidden rounded-[20px] border border-[#00BCD4] bg-[#00BCD4] p-0 text-[#18181b] shadow-[0_14px_28px_rgba(15,23,42,0.2)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.26)]">
             <h3 className="border-b border-black/10 bg-[#e6e6e6] px-5 py-2.5 text-xs font-semibold tracking-[0.07em] text-[#2f2f2f] uppercase md:px-6">
               {outcomeLabel}
             </h3>
@@ -110,7 +110,7 @@ export function PartnershipModal({ partnership, onOpenChat }: PartnershipModalPr
 
         {/* What's included */}
         <div className="overflow-hidden rounded-[20px] border border-black/10 bg-[#f3f3f3] p-0 shadow-[0_10px_24px_rgba(15,23,42,0.08)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#f7f7f7] hover:shadow-[0_14px_28px_rgba(15,23,42,0.14)]">
-          <h3 className="border-b border-[#00BCD4]/35 bg-[#00BCD4] px-5 py-2.5 text-xs font-semibold tracking-[0.07em] text-[#FFFFFF] uppercase md:px-6">
+          <h3 className="border-b border-[#00BCD4]/35 bg-[#00BCD4] px-5 py-2.5 text-xs font-semibold tracking-[0.07em] text-[#18181b] uppercase md:px-6">
             {includedLabel}
           </h3>
           <ul className="space-y-2 px-5 pb-6 pt-4 md:px-6 md:pb-7 md:pt-5">
@@ -127,7 +127,7 @@ export function PartnershipModal({ partnership, onOpenChat }: PartnershipModalPr
 
         {/* Ideal fit */}
         <div className="overflow-hidden rounded-[20px] border border-black/10 bg-[#f1f1f1] p-0 shadow-[0_10px_24px_rgba(15,23,42,0.08)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#f5f5f5] hover:shadow-[0_14px_28px_rgba(15,23,42,0.14)]">
-          <h3 className="border-b border-[#00BCD4]/35 bg-[#00BCD4] px-5 py-2.5 text-xs font-semibold tracking-[0.07em] text-[#FFFFFF] uppercase md:px-6">
+          <h3 className="border-b border-[#00BCD4]/35 bg-[#00BCD4] px-5 py-2.5 text-xs font-semibold tracking-[0.07em] text-[#18181b] uppercase md:px-6">
             {idealFitLabel}
           </h3>
           <ul className="space-y-2 px-5 pb-6 pt-4 md:px-6 md:pb-7 md:pt-5">
@@ -147,7 +147,7 @@ export function PartnershipModal({ partnership, onOpenChat }: PartnershipModalPr
       <button
         type="button"
         onClick={() => onOpenChat?.({ type: "partnership", partnershipName: partnership.name })}
-        className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-[#00BCD4] px-8 py-3.5 text-sm font-semibold tracking-[0.08em] text-white uppercase shadow-[0_14px_28px_rgba(15,23,42,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.28)]"
+        className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-[#00BCD4] px-8 py-3.5 text-sm font-semibold tracking-[0.08em] text-[#18181b] uppercase shadow-[0_14px_28px_rgba(15,23,42,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:shadow-[0_18px_34px_rgba(15,23,42,0.28)]"
       >
         <MessageSquare size={20} />
         {chatCtaText}

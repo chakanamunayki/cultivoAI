@@ -53,7 +53,7 @@ export function WhatHappensNextSection(_props: WhatHappensNextSectionProps) {
                           "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border text-lg font-black md:h-12 md:w-12 md:text-2xl",
                           variant === "blue"
                             ? "border-white/25 bg-white/10 text-white"
-                            : "border-white/20 bg-black/20 text-white"
+                            : "border-black/15 bg-white/25 text-[#18181b]"
                         )}
                       >
                         {step.number}
@@ -68,7 +68,7 @@ export function WhatHappensNextSection(_props: WhatHappensNextSectionProps) {
                       <p
                         className={cn(
                           "text-sm md:text-base",
-                          variant === "blue" ? "text-[#eef9f5]" : "text-white/85"
+                          variant === "blue" ? "text-[#18181b]/85" : "text-white/85"
                         )}
                       >
                         {step.description}

@@ -65,7 +65,7 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
                   <p
                     className={cn(
                       "mb-3 text-xs font-semibold tracking-[0.08em] uppercase",
-                      isBlue ? "text-white" : "text-[#00BCD4]"
+                      isBlue ? "text-[#18181b]" : "text-[#00BCD4]"
                     )}
                   >
                     {partner.tagline}
@@ -73,7 +73,7 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
                   <p
                     className={cn(
                       "text-[15px] leading-relaxed",
-                      isBlue ? "text-white" : "text-white/85"
+                      isBlue ? "text-[#18181b]/85" : "text-white/85"
                     )}
                   >
                     {partner.description}
@@ -84,13 +84,13 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
                       <div
                         className={cn(
                           "mb-5 border-t pt-4",
-                          isBlue ? "border-white/30" : "border-white/10"
+                          isBlue ? "border-black/15" : "border-white/10"
                         )}
                       >
                         <p
                           className={cn(
                             "text-sm leading-relaxed font-medium",
-                            isBlue ? "text-white" : "text-white/85"
+                            isBlue ? "text-[#18181b]/85" : "text-white/85"
                           )}
                         >
                           {partner.terms}
