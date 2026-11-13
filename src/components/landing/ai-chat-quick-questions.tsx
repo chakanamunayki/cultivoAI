@@ -52,7 +52,7 @@ const QUICK_QUESTIONS: Record<
       },
       {
         id: "general-3",
-        text: "¿Cómo funciona el Sprint de Descubrimiento?",
+        text: "¿Cómo funciona el Sprint de descubrimiento?",
         action: "send",
       },
       {
@@ -123,12 +123,12 @@ const QUICK_QUESTIONS: Record<
     partnership: [
       {
         id: "partnership-1",
-        text: "¿Cómo empieza el Sprint de Descubrimiento?",
+        text: "¿Cómo empieza el Sprint de descubrimiento?",
         action: "send",
       },
       {
         id: "partnership-2",
-        text: "¿Qué incluye la llamada gratis de scoping?",
+        text: "¿Qué incluye la primera llamada gratis?",
         action: "send",
       },
       {
@@ -292,7 +292,7 @@ const QUICK_QUESTIONS: Record<
       },
       {
         id: "partnership-2",
-        text: "What does the free scoping call include?",
+        text: "What does the free first call include?",
         action: "send",
       },
       {
