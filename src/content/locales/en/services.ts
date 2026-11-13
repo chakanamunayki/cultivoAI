@@ -20,7 +20,6 @@ export const enServicesContent: Pick<
         "Apps and internal tools built around how your team actually works.",
         "Version one in weeks, then improved with real use.",
       ],
-      imageUrl: "/landing/photos/services/websites-digital-experiences.webp",
       animationKey: "software-web",
       modal: {
         whatItMeans:
@@ -53,7 +52,6 @@ export const enServicesContent: Pick<
         "Field, lab and sensor data structured into views you can decide from.",
         "Talk to it on WhatsApp or Telegram: ask, log field notes and get the next step.",
       ],
-      imageUrl: "/landing/photos/services/ai-assistants.png",
       animationKey: "company-brain",
       modal: {
         whatItMeans:
@@ -88,7 +86,6 @@ export const enServicesContent: Pick<
         "MRV for carbon and biochar, restoration and survival data.",
         "One auditable history of what you did and what it achieved.",
       ],
-      imageUrl: "/landing/photos/services/decision-dashboards.jpg",
       animationKey: "dashboards",
       modal: {
         whatItMeans:
@@ -122,7 +119,6 @@ export const enServicesContent: Pick<
         "Numbers investors and funders can follow.",
         "A clear story, a deck and the tech plan behind it.",
       ],
-      imageUrl: "/landing/photos/services/startup-advisory.png",
       animationKey: "startup",
       modal: {
         whatItMeans:

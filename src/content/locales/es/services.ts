@@ -21,7 +21,6 @@ export const esServicesContent: Pick<
         "Apps y herramientas internas hechas para cómo trabaja tu equipo de verdad.",
         "Primera versión en semanas, que luego mejora con el uso real.",
       ],
-      imageUrl: "/landing/photos/services/websites-digital-experiences.webp",
       animationKey: "software-web",
       modal: {
         whatItMeans:
@@ -54,7 +53,6 @@ export const esServicesContent: Pick<
         "Datos de campo, laboratorio y sensores ordenados en vistas para decidir.",
         "Háblale por WhatsApp o Telegram: pregunta, registra notas de campo y recibe el siguiente paso.",
       ],
-      imageUrl: "/landing/photos/services/ai-assistants.png",
       animationKey: "company-brain",
       modal: {
         whatItMeans:
@@ -89,7 +87,6 @@ export const esServicesContent: Pick<
         "MRV para carbono y biochar, datos de restauración y supervivencia.",
         "Un solo historial auditable de lo que hiciste y lo que lograste.",
       ],
-      imageUrl: "/landing/photos/services/decision-dashboards.jpg",
       animationKey: "dashboards",
       modal: {
         whatItMeans:
@@ -123,7 +120,6 @@ export const esServicesContent: Pick<
         "Números que inversores y financiadores pueden seguir.",
         "Una historia clara, una presentación y el plan técnico que la respalda.",
       ],
-      imageUrl: "/landing/photos/services/startup-advisory.png",
       animationKey: "startup",
       modal: {
         whatItMeans:

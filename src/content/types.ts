@@ -92,7 +92,7 @@ export interface Service {
   eng: string; // English subtitle
   description: string;
   details: string[];
-  imageUrl: string;
+  imageUrl?: string; // Fallback still image when there is no animation or video (PT only)
   imageFit?: "cover" | "contain";
   videoUrl?: string; // Optional looping video clip (replaces image when set)
   animationKey?: string; // Maps to a bespoke illustration animation component

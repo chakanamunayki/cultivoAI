@@ -132,7 +132,7 @@ function StackedServiceCard({
                   playsInline
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-              ) : (
+              ) : service.imageUrl ? (
                 <motion.div style={{ scale: imageScale }} className="absolute inset-0">
                   <Image
                     src={service.imageUrl}
@@ -144,7 +144,7 @@ function StackedServiceCard({
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1100px"
                   />
                 </motion.div>
-              )}
+              ) : null}
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
           </div>
