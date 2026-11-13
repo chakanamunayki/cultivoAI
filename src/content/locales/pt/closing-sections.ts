@@ -2,7 +2,7 @@ import type { SiteContent } from "../../types";
 
 export const ptClosingSectionsContent: Pick<
   SiteContent,
-  "values" | "whatHappensNext" | "footer" | "chat" | "contactForm" | "terminal"
+  "values" | "whatHappensNext" | "footer" | "chat" | "contactForm"
 > = {
   values: {
     title: "Nossos Valores",
@@ -154,21 +154,4 @@ export const ptClosingSectionsContent: Pick<
     chatPrompt: "Prefere começar pelo chat? Use o assistente.",
   },
 
-  terminal: {
-    sectionTitle: "É assim que trabalhamos",
-    summary: "Sem caos. Escopo claro. Versão um rápida. Iteração direta.",
-    welcomeLine1: "Último acesso: ",
-    welcomeLine2: "Suíte de Automação Cultivo AI v2.5.0",
-    script: [
-      { text: "Iniciando descoberta...", type: "command", delay: 800 },
-      { text: "Mapeando os seus protocolos...", type: "info", delay: 600 },
-      { text: "Isolando a camada de IP...", type: "info", delay: 700 },
-      { text: "Desenhando o acesso por função...", type: "ai", delay: 700 },
-      { text: "Estruturando dados de laboratório e campo...", type: "command", delay: 700 },
-      { text: "Construindo a camada de conhecimento...", type: "info", delay: 700 },
-      { text: "Lançando e testando...", type: "success", delay: 700 },
-      { text: "Medindo resultados...", type: "event", delay: 700 },
-      { text: "Iterando com o seu time...", type: "success", delay: 2500 },
-    ],
-  },
 };

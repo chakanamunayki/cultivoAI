@@ -5,7 +5,6 @@ import { esProjectsContent } from "./locales/es/projects";
 import { esServicesContent } from "./locales/es/services";
 import { esStoriesContent } from "./locales/es/stories";
 import { esUi } from "./locales/es/ui";
-import { esUseCasesContent } from "./locales/es/use-cases";
 import { esWhoWeHelpContent } from "./locales/es/who-we-help";
 import type { SiteContent } from "./types";
 
@@ -38,10 +37,7 @@ export const es: SiteContent = {
       "Tu socio tecnológico para proyectos que cuidan la tierra, las personas y las comunidades.",
     subheadline:
       "He cofundado y construido startups. Ahora ayudo a buenos proyectos de regeneración, vida autosuficiente, salud holística y naturaleza a construir su tecnología, encontrar las innovaciones adecuadas y prepararse para la inversión.",
-    services: [],
-    servicesDone: "",
     audience: [],
-    outcomes: [],
     audienceLabel: "Para:",
     audienceChips: [
       "Tierra y regeneración",
@@ -51,16 +47,9 @@ export const es: SiteContent = {
     ],
     tertiaryCta: "Qué construimos",
     microcopy: "Un fundador, de principio a fin. Desde Colombia, para el mundo.",
-    terminalLabel: "Así trabajo:",
-    line3: "",
     cta: "Hablemos",
     secondaryCta: "Ver proyectos",
-    noDrama: "Sin caos.",
     noDramaText: "Alcance claro. Primera versión rápida. Iteración directa.",
-    impactSection: {
-      text: "Desde Colombia, para el mundo. Colaboración directa. Alcance claro.",
-      cta: "Hablemos",
-    },
   },
 
   about: esAbout,
@@ -95,7 +84,6 @@ export const es: SiteContent = {
 
   ...esServicesContent,
 
-  ...esUseCasesContent,
 
   ...esWhoWeHelpContent,
 

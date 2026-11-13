@@ -2,7 +2,7 @@ import type { SiteContent } from "../../types";
 
 export const enClosingSectionsContent: Pick<
   SiteContent,
-  "values" | "whatHappensNext" | "footer" | "chat" | "contactForm" | "terminal"
+  "values" | "whatHappensNext" | "footer" | "chat" | "contactForm"
 > = {
   values: {
     title: "How we work",
@@ -159,21 +159,4 @@ export const enClosingSectionsContent: Pick<
     chatPrompt: "Prefer to start in chat first? Use the assistant.",
   },
 
-  terminal: {
-    sectionTitle: "How I work",
-    summary: "No chaos. Clear scope. Fast version one. Direct iteration.",
-    welcomeLine1: "Last login: ",
-    welcomeLine2: "Cultivo Labs v3.0.0",
-    script: [
-      { text: "Starting discovery...", type: "command", delay: 800 },
-      { text: "Mapping how the project works...", type: "info", delay: 600 },
-      { text: "Protecting what matters...", type: "info", delay: 700 },
-      { text: "Designing access by role...", type: "ai", delay: 700 },
-      { text: "Structuring field and lab data...", type: "command", delay: 700 },
-      { text: "Building version one...", type: "info", delay: 700 },
-      { text: "Shipping and testing...", type: "success", delay: 700 },
-      { text: "Measuring results...", type: "event", delay: 700 },
-      { text: "Improving it together...", type: "success", delay: 2500 },
-    ],
-  },
 };

@@ -31,30 +31,18 @@ export interface NavItem {
   href: string;
 }
 
-export interface ImpactSection {
-  text: string;
-  cta: string;
-}
-
 export interface HeroCopy {
   tagline: string;
   line1: string;
   subheadline: string;
-  services: string[];
-  servicesDone: string;
   audience?: string[]; // Deprecated: legacy word-stagger line (kept for backward compat)
-  outcomes: string[];
   audienceLabel: string;
   audienceChips: string[];
   tertiaryCta: string;
   microcopy: string;
-  terminalLabel: string;
-  line3: string;
   cta: string;
   secondaryCta: string;
-  noDrama: string;
   noDramaText: string;
-  impactSection: ImpactSection;
 }
 
 export interface TeamMemberBio {
@@ -156,20 +144,11 @@ export interface Partnership {
 export interface PartnershipsExtras {
   missionLine: string;
   missionCta: string;
-  closingCta: string;
 }
 
 export interface Step {
   action: string;
   result: string;
-}
-
-export interface UseCase {
-  id: string;
-  title: string;
-  description: string;
-  scenario: string;
-  steps: Step[];
 }
 
 export interface RealStory {
@@ -314,9 +293,6 @@ export interface SiteContent {
   servicesTagline: string;
   servicesSubtitle: string;
   services: Service[];
-  demosTitle: string;
-  demosSubtitle: string;
-  useCases: UseCase[];
   whoWeHelp: WhoWeHelpContent;
   semillero: SemilleroContent;
   partnershipsTitle: string;
@@ -337,7 +313,6 @@ export interface SiteContent {
   footer: FooterCopy;
   chat: ChatCopy;
   contactForm: ContactFormCopy;
-  terminal: TerminalContent;
   /** Interface labels (buttons, aria labels, modal headings). Optional so the hidden PT content can omit it; it falls back to English. */
   ui?: UiLabels;
 }
@@ -356,6 +331,15 @@ export interface UiLabels {
     panelHeadline: string;
   };
   directContact: string;
+  chatWidget: {
+    bookCallTitle: string;
+    voiceButton: string;
+    voiceModeAria: string;
+    voiceTitle: string;
+    whatsappTitle: string;
+    arrangeCall: string;
+    thinking: string;
+  };
   closeModalAria: string;
   openWhatsAppAria: string;
   openChatAria: string;
@@ -418,24 +402,6 @@ export interface SemilleroContent {
   body: string;
   projectCta: string;
   innovationCta: string;
-}
-
-/**
- * Code Terminal Animation Content
- */
-export interface TerminalScriptLine {
-  text: string;
-  type: 'command' | 'success' | 'info' | 'error' | 'event' | 'ai';
-  delay: number;
-  className?: string;
-}
-
-export interface TerminalContent {
-  sectionTitle: string;
-  summary: string;
-  welcomeLine1: string;
-  welcomeLine2: string;
-  script: TerminalScriptLine[];
 }
 
 /**

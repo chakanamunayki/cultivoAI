@@ -106,14 +106,20 @@ const SERVICE_CATALOG: CatalogEntry[] = es.services.map((service, index) => ({
   titles: ALL_CONTENT.flatMap((c) => c.services[index]?.title ?? []),
 }));
 
-// SetaSouls has no animationKey; PROJECT_ALIASES refers to it as "setasouls".
 const projectKey = (animationKey: string | undefined, index: number) =>
-  animationKey ?? (index === 1 ? "setasouls" : `project-${index}`);
+  animationKey ?? `project-${index}`;
 
-const PROJECT_CATALOG: CatalogEntry[] = es.projects.map((project, index) => ({
-  key: projectKey(project.animationKey, index),
-  titles: ALL_CONTENT.flatMap((c) => c.projects[index]?.title ?? []),
-}));
+// Hidden projects stay out, so the chat can't open them.
+const PROJECT_CATALOG: CatalogEntry[] = es.projects.flatMap((project, index) =>
+  project.hidden
+    ? []
+    : [
+        {
+          key: projectKey(project.animationKey, index),
+          titles: ALL_CONTENT.flatMap((c) => c.projects[index]?.title ?? []),
+        },
+      ]
+);
 
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -314,7 +320,7 @@ export default function Home() {
 
       {/* Section 9: What happens next */}
       <LazySection className="min-h-[400px]">
-        <WhatHappensNextSection onOpenChat={handleOpenChatGeneral} />
+        <WhatHappensNextSection />
       </LazySection>
 
       {/* Footer */}

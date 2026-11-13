@@ -4,7 +4,6 @@ import { ptPartnershipsContent } from "./locales/pt/partnerships";
 import { ptProjectsContent } from "./locales/pt/projects";
 import { ptServicesContent } from "./locales/pt/services";
 import { ptStoriesContent } from "./locales/pt/stories";
-import { ptUseCasesContent } from "./locales/pt/use-cases";
 import { ptWhoWeHelpContent } from "./locales/pt/who-we-help";
 import type { SiteContent } from "./types";
 
@@ -34,10 +33,7 @@ export const pt: SiteContent = {
     tagline: "SISTEMAS DE IA E DADOS PARA AGRITECH E BIOTECH",
     line1: "O parceiro técnico para inovadores em agritech e biotech",
     subheadline: "Construímos a camada de dados e IA por trás da ciência séria. Protocolos protegidos, evidência estruturada e dados de laboratório e campo sobre os quais o seu time pode agir.",
-    services: [],
-    servicesDone: "",
     audience: [],
-    outcomes: ["IP de protocolos protegida", "Evidência científica estruturada", "Dados prontos para decidir"],
     audienceLabel: "Feito para:",
     audienceChips: [
       "Agritech",
@@ -50,16 +46,9 @@ export const pt: SiteContent = {
     tertiaryCta: "Ver serviços",
     microcopy:
       "Dados privados. Roda na sua infraestrutura quando é preciso. Um parceiro técnico sênior, do início ao fim.",
-    terminalLabel: "É assim que trabalhamos:",
-    line3: "",
     cta: "Vamos conversar",
     secondaryCta: "Ver projetos",
-    noDrama: "Sem caos.",
     noDramaText: "Escopo claro. Primeira versão rápida. Iteração direta.",
-    impactSection: {
-      text: "Da Colômbia, trabalhando para o mundo inteiro. Colaboração direta. Escopo claro.",
-      cta: "Vamos conversar",
-    },
   },
 
   about: ptAbout,
@@ -91,7 +80,6 @@ export const pt: SiteContent = {
 
   ...ptServicesContent,
 
-  ...ptUseCasesContent,
 
   ...ptWhoWeHelpContent,
 

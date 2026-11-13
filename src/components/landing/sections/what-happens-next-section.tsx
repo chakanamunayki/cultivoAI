@@ -10,13 +10,7 @@ import { SectionHeader } from "@/components/landing/ui/section-header";
 import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils";
 
-// Props kept for backwards compatibility even though CTA was removed
-
-interface WhatHappensNextSectionProps {
-  onOpenChat?: () => void;
-}
-
-export function WhatHappensNextSection(_props: WhatHappensNextSectionProps) {
+export function WhatHappensNextSection() {
   const { content } = useLocale();
 
   return (

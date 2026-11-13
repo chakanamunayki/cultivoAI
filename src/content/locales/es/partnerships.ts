@@ -11,7 +11,6 @@ export const esPartnershipsContent: Pick<
     missionLine:
       "¿Un proyecto con propósito o una innovación para Semillero? Los términos pueden ajustarse cuando el encaje es bueno.",
     missionCta: "Cuéntamelo",
-    closingCta: "Empecemos con una conversación",
   },
   partnerships: [
     {

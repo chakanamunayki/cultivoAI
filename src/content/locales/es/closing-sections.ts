@@ -2,7 +2,7 @@ import type { SiteContent } from "../../types";
 
 export const esClosingSectionsContent: Pick<
   SiteContent,
-  "values" | "whatHappensNext" | "footer" | "chat" | "contactForm" | "terminal"
+  "values" | "whatHappensNext" | "footer" | "chat" | "contactForm"
 > = {
   values: {
     title: "Cómo trabajamos",
@@ -159,21 +159,4 @@ export const esClosingSectionsContent: Pick<
     chatPrompt: "¿Prefieres empezar por chat? Usa el asistente.",
   },
 
-  terminal: {
-    sectionTitle: "Así trabajo",
-    summary: "Sin caos. Alcance claro. Primera versión rápida. Iteración directa.",
-    welcomeLine1: "Último acceso: ",
-    welcomeLine2: "Cultivo Labs v3.0.0",
-    script: [
-      { text: "Iniciando descubrimiento...", type: "command", delay: 800 },
-      { text: "Entendiendo cómo funciona el proyecto...", type: "info", delay: 600 },
-      { text: "Protegiendo lo que importa...", type: "info", delay: 700 },
-      { text: "Diseñando acceso por rol...", type: "ai", delay: 700 },
-      { text: "Ordenando datos de campo y laboratorio...", type: "command", delay: 700 },
-      { text: "Construyendo la primera versión...", type: "info", delay: 700 },
-      { text: "Lanzando y probando...", type: "success", delay: 700 },
-      { text: "Midiendo resultados...", type: "event", delay: 700 },
-      { text: "Mejorándolo juntos...", type: "success", delay: 2500 },
-    ],
-  },
 };

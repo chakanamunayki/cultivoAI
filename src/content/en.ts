@@ -5,7 +5,6 @@ import { enProjectsContent } from "./locales/en/projects";
 import { enServicesContent } from "./locales/en/services";
 import { enStoriesContent } from "./locales/en/stories";
 import { enUi } from "./locales/en/ui";
-import { enUseCasesContent } from "./locales/en/use-cases";
 import { enWhoWeHelpContent } from "./locales/en/who-we-help";
 import type { SiteContent } from "./types";
 
@@ -37,10 +36,7 @@ export const en: SiteContent = {
     line1: "Your hands-on tech partner for projects that care for land, people and communities.",
     subheadline:
       "I've co-founded and built startups. Now I help good projects in regeneration, self-sufficient living, holistic health and nature build their tech, find the right innovations and get ready for investment.",
-    services: [],
-    servicesDone: "",
     audience: [],
-    outcomes: [],
     audienceLabel: "Built for:",
     audienceChips: [
       "Land and regeneration",
@@ -50,16 +46,9 @@ export const en: SiteContent = {
     ],
     tertiaryCta: "What we build",
     microcopy: "One founder, start to finish. Based in Colombia, working worldwide.",
-    terminalLabel: "How I work:",
-    line3: "",
     cta: "Let's talk",
     secondaryCta: "See projects",
-    noDrama: "No chaos.",
     noDramaText: "Clear scope. Fast version one. Direct iteration.",
-    impactSection: {
-      text: "Based in Colombia, working worldwide. Direct collaboration. Clear scope.",
-      cta: "Let's talk",
-    },
   },
 
   about: enAbout,
@@ -94,7 +83,6 @@ export const en: SiteContent = {
 
   ...enServicesContent,
 
-  ...enUseCasesContent,
 
   ...enWhoWeHelpContent,
 

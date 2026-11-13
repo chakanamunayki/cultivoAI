@@ -110,17 +110,8 @@ export function AIChatWidget({
   const { content, locale, ui } = useLocale();
   // Pick a string for the active locale. Portuguese falls back to English only if
   // a pt value is not supplied.
-  const tt = useCallback(
-    (es: string, en: string, pt: string) =>
-      locale === "es" ? es : locale === "pt" ? pt : en,
-    [locale]
-  );
   const fifteenMinLabel = "15 MIN";
-  const fifteenMinTitle = tt(
-    "Agendar charla de 15 minutos",
-    "Book a 15-minute project chat",
-    "Agendar conversa de 15 minutos"
-  );
+  const fifteenMinTitle = ui.chatWidget.bookCallTitle;
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -751,11 +742,11 @@ export function AIChatWidget({
               <button
                 onClick={openVoiceMode}
                 className="px-3 py-1.5 bg-primary text-primary-foreground border-2 border-black hover:bg-primary/90 hover:scale-105 transition-all font-bold text-xs uppercase"
-                aria-label={tt("Modo de voz", "Voice mode", "Modo de voz")}
-                title={tt("Conversación por voz", "Voice conversation", "Conversa por voz")}
+                aria-label={ui.chatWidget.voiceModeAria}
+                title={ui.chatWidget.voiceTitle}
               >
                 <Phone size={16} className="inline mr-1" />
-                VOZ
+                {ui.chatWidget.voiceButton}
               </button>
             )}
             {/* WhatsApp button */}
@@ -763,7 +754,7 @@ export function AIChatWidget({
               onClick={() => openWhatsApp()}
               className="text-[#25D366] hover:scale-110 transition-transform"
               aria-label="WhatsApp"
-              title={tt("Contactar por WhatsApp", "Contact via WhatsApp", "Falar pelo WhatsApp")}
+              title={ui.chatWidget.whatsappTitle}
             >
               <WhatsAppIcon size={20} />
             </button>
@@ -852,11 +843,7 @@ export function AIChatWidget({
                       className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold uppercase text-sm px-4 py-2.5 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all"
                     >
                       <WhatsAppIcon size={18} />
-                      {tt(
-                        "Coordinar llamada",
-                        "Arrange a call",
-                        "Marcar conversa"
-                      )}
+                      {ui.chatWidget.arrangeCall}
                     </button>
                   </div>
                 )}
@@ -868,7 +855,7 @@ export function AIChatWidget({
               <div className="bg-secondary text-secondary-foreground border-2 border-black p-3 flex items-center gap-2">
                 <Loader2 size={16} className="animate-spin" />
                 <span className="text-sm font-bold">
-                  {tt("Pensando...", "Thinking...", "Pensando...")}
+                  {ui.chatWidget.thinking}
                 </span>
               </div>
             </div>
@@ -892,8 +879,8 @@ export function AIChatWidget({
               <button
                 onClick={openVoiceMode}
                 className="p-3 border-2 border-black transition-all bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-                aria-label={tt("Modo de voz", "Voice mode", "Modo de voz")}
-                title={tt("Conversación por voz", "Voice conversation", "Conversa por voz")}
+                aria-label={ui.chatWidget.voiceModeAria}
+                title={ui.chatWidget.voiceTitle}
               >
                 <Mic size={20} />
               </button>

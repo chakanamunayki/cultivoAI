@@ -11,7 +11,6 @@ export const enPartnershipsContent: Pick<
     missionLine:
       "Mission-led project or a Semillero innovation? Terms can flex when the fit is right.",
     missionCta: "Tell me about it",
-    closingCta: "Let's start with a conversation",
   },
   partnerships: [
     {

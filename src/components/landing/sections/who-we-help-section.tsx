@@ -1,13 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import {
-  ArrowRight,
-  Check,
-  X,
-  Lightbulb,
-} from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import {
   landingCardClass,
   landingPrimaryBlueButtonClass,
@@ -17,7 +11,6 @@ import {
 } from "@/components/landing/ui/landing-card-styles";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { SectionHeader } from "@/components/landing/ui/section-header";
-import type { Sector } from "@/content/types";
 import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils";
 
@@ -30,14 +23,7 @@ export function WhoWeHelpSection({
   onOpenChatQualification,
   onOpenChatWithSector,
 }: WhoWeHelpSectionProps) {
-  const { content, locale } = useLocale();
-  const [selectedSector, setSelectedSector] = useState<Sector | null>(null);
-
-  const whatItMeansLabel = locale === "es" ? "Qué significa" : locale === "pt" ? "O que significa" : "What it means";
-  const whyItMattersLabel = locale === "es" ? "Por qué importa" : locale === "pt" ? "Por que importa" : "Why it matters";
-  const includedLabel = locale === "es" ? "Qué incluye" : locale === "pt" ? "O que inclui" : "What's included";
-  const idealFitLabel = locale === "es" ? "Ideal para" : locale === "pt" ? "Ideal para" : "Ideal fit";
-  const outcomeLabel = locale === "es" ? "Resultado típico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
+  const { content } = useLocale();
 
   return (
     <section id="who-we-help" className="border-b border-black/10 bg-white py-16 md:py-24">
@@ -50,65 +36,6 @@ export function WhoWeHelpSection({
             subtitleClassName="max-w-2xl"
           />
         </Reveal>
-
-        {/* Ideal / Not Ideal Grid (hidden when the locale has no fit lists) */}
-        {content.whoWeHelp.idealItems.length > 0 && (
-        <div className="mb-16 grid gap-8 md:mb-20 md:grid-cols-2 md:gap-12">
-          {/* Ideal for you if... */}
-          <Reveal>
-            <div className={landingCardClass("blue", "rounded-[24px] p-6 hover:-translate-y-1 md:p-8 lg:p-10")}>
-              <h3
-                className={landingTitleBandClass(
-                  "blue",
-                  "-mx-6 mb-6 px-6 py-3 text-2xl font-black tracking-tight uppercase md:-mx-8 md:mb-8 md:px-8 md:text-3xl lg:-mx-10 lg:px-10"
-                )}
-              >
-                {content.whoWeHelp.idealTitle}
-              </h3>
-              <ul className="space-y-4">
-                {content.whoWeHelp.idealItems.map((item, i) => (
-                  <li key={i} className="group flex items-start gap-4">
-                    <Check
-                      size={24}
-                      className="shrink-0 rounded-lg border border-white/25 bg-white/10 p-1 text-[#FFFFFF] transition-transform group-hover:scale-105"
-                    />
-                    <span className="text-base font-semibold transition-colors group-hover:text-white md:text-lg">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-
-          {/* Not ideal if... */}
-          <Reveal delay={200}>
-            <div className={landingCardClass("dark", "rounded-[24px] p-6 hover:-translate-y-1 md:p-8 lg:p-10")}>
-              <h3
-                className={landingTitleBandClass(
-                  "dark",
-                  "-mx-6 mb-6 px-6 py-3 text-2xl font-black tracking-tight uppercase md:-mx-8 md:mb-8 md:px-8 md:text-3xl lg:-mx-10 lg:px-10"
-                )}
-              >
-                {content.whoWeHelp.notIdealTitle}
-              </h3>
-              <ul className="space-y-4">
-                {content.whoWeHelp.notIdealItems.map((item, i) => (
-                  <li key={i} className="group flex items-start gap-4">
-                    <X
-                      size={24}
-                      className="shrink-0 rounded-lg border border-red-200 bg-red-500/90 p-1 text-white transition-transform group-hover:scale-105"
-                    />
-                    <span className="text-base font-semibold text-white/90 transition-colors group-hover:text-red-200 md:text-lg">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-        </div>
-        )}
 
         {/* Sectors We Love */}
         <Reveal delay={300}>
@@ -197,25 +124,6 @@ export function WhoWeHelpSection({
                       </p>
                       {/* Action Buttons */}
                       <div className="mt-auto space-y-2">
-                        {sector.detailsButtonLabel && (
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setSelectedSector(sector);
-                            }}
-                            className={cn(
-                              "flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2.5 text-xs font-semibold tracking-[0.06em]",
-                              variant === "dark"
-                                ? landingPrimaryBlueButtonClass
-                                : landingPrimaryDarkButtonClass,
-                              "shadow-[0_8px_16px_rgba(17,24,39,0.24)]"
-                            )}
-                          >
-                            {sector.detailsButtonLabel}
-                            <ArrowRight size={14} />
-                          </button>
-                        )}
                         {sector.chatButtonLabel && (
                           <button
                             type="button"
@@ -242,192 +150,6 @@ export function WhoWeHelpSection({
             </div>
           </div>
         </Reveal>
-
-        {/* Sector Details Modal */}
-        {selectedSector && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
-            onClick={() => setSelectedSector(null)}
-          >
-            <div
-              className="animate-in zoom-in-95 max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-[26px] border border-white/15 bg-[#212121] pr-2 shadow-[0_24px_70px_rgba(0,0,0,0.46)] ring-1 ring-white/5 duration-200 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Modal Header */}
-              <div className="relative border-b border-black/10">
-                {selectedSector.imageUrl ? (
-                  <div className="relative h-36 overflow-hidden bg-neutral-200 md:h-44">
-                    <Image
-                      src={selectedSector.imageUrl}
-                      alt={selectedSector.name}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 768px"
-                    />
-                    <div className="absolute inset-0 bg-black/35" />
-                  </div>
-                ) : (
-                  <div className="h-28 bg-[#00BCD4]" />
-                )}
-
-                <div className="absolute inset-0 flex items-start justify-between p-4 md:p-6">
-                  <div className="flex items-center">
-                    <h3 className="text-xl font-black tracking-tight text-white drop-shadow-sm md:text-2xl">
-                      {selectedSector.name}
-                    </h3>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setSelectedSector(null)}
-                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/50 bg-white/95 text-neutral-700 shadow-[0_10px_20px_rgba(15,23,42,0.2)] transition-all hover:bg-white hover:text-neutral-900"
-                  >
-                    <X size={20} strokeWidth={3} />
-                  </button>
-                </div>
-              </div>
-
-              {/* Modal Content */}
-              <div className="space-y-5 p-4 md:p-6">
-                {/* What it means (lead) */}
-                <div className={landingCardClass("dark", "overflow-hidden rounded-[16px] p-0")}>
-                  <h4
-                    className={landingTitleBandClass(
-                      "dark",
-                      "px-5 py-2.5 text-xs font-semibold tracking-[0.07em] uppercase"
-                    )}
-                  >
-                    {whatItMeansLabel}
-                  </h4>
-                  <p className="px-5 pb-5 pt-4 text-base leading-relaxed font-semibold text-white/90 md:text-lg">
-                    {selectedSector.modal?.whatItMeans ?? selectedSector.description}
-                  </p>
-                </div>
-
-                {/* Why it matters + Typical outcome */}
-                {(selectedSector.modal?.whyItMatters || selectedSector.modal?.typicalOutcome) && (
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <div className={landingCardClass("dark", "overflow-hidden rounded-[16px] p-0")}>
-                      <h4
-                        className={landingTitleBandClass(
-                          "dark",
-                          "px-5 py-2.5 text-xs font-semibold tracking-[0.07em] uppercase"
-                        )}
-                      >
-                        {whyItMattersLabel}
-                      </h4>
-                      <p className="px-5 pb-5 pt-4 text-base leading-relaxed font-medium text-white/90">
-                        {selectedSector.modal?.whyItMatters}
-                      </p>
-                    </div>
-                    <div className={landingCardClass("blue", "overflow-hidden rounded-[16px] p-0")}>
-                      <h4
-                        className={landingTitleBandClass(
-                          "blue",
-                          "px-5 py-2.5 text-xs font-semibold tracking-[0.07em] uppercase"
-                        )}
-                      >
-                        {outcomeLabel}
-                      </h4>
-                      <p className="px-5 pb-5 pt-4 text-base leading-relaxed font-semibold">
-                        {selectedSector.modal?.typicalOutcome}
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {/* What's included */}
-                {((selectedSector.modal?.whatsIncluded?.length ?? 0) > 0 ||
-                  (selectedSector.howWeHelp?.length ?? 0) > 0) && (
-                    <div className={landingCardClass("dark", "overflow-hidden rounded-[16px] p-0")}>
-                      <h4
-                        className={landingTitleBandClass(
-                          "dark",
-                          "px-5 py-2.5 text-xs font-semibold tracking-[0.07em] uppercase"
-                        )}
-                      >
-                        {includedLabel}
-                      </h4>
-                      <ul className="space-y-2 px-5 pb-5 pt-4">
-                        {(selectedSector.modal?.whatsIncluded ?? selectedSector.howWeHelp ?? []).map(
-                          (item, i) => (
-                            <li key={i} className="flex items-start gap-3">
-                              <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-white" />
-                              <span className="text-sm font-medium text-white/90">{item}</span>
-                            </li>
-                          )
-                        )}
-                      </ul>
-                    </div>
-                  )}
-
-                {/* Ideal fit */}
-                {((selectedSector.modal?.idealFit?.length ?? 0) > 0 ||
-                  (selectedSector.whoWeHelp?.length ?? 0) > 0) && (
-                    <div className={landingCardClass("blue", "overflow-hidden rounded-[16px] p-0")}>
-                      <h4
-                        className={landingTitleBandClass(
-                          "blue",
-                          "px-5 py-2.5 text-xs font-semibold tracking-[0.07em] uppercase"
-                        )}
-                      >
-                        {idealFitLabel}
-                      </h4>
-                      <ul className="space-y-2 px-5 pb-5 pt-4">
-                        {(selectedSector.modal?.idealFit ?? selectedSector.whoWeHelp ?? []).map(
-                          (item, i) => (
-                            <li key={i} className="flex items-start gap-3">
-                              <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-white/95" />
-                              <span className="text-sm font-semibold text-white/95">{item}</span>
-                            </li>
-                          )
-                        )}
-                      </ul>
-                    </div>
-                  )}
-
-                {/* Example Projects */}
-                {selectedSector.exampleProjects && selectedSector.exampleProjects.length > 0 && (
-                  <div className={landingCardClass("dark", "overflow-hidden rounded-[16px] p-0")}>
-                    <div className={landingTitleBandClass("dark", "flex items-center gap-2 px-5 py-2.5")}>
-                      <Lightbulb size={18} className="text-white" />
-                      <h4 className="text-xs font-semibold tracking-[0.07em] text-white uppercase">
-                        {locale === "es" ? "Ejemplos de proyectos" : locale === "pt" ? "Exemplos de projetos" : "Example projects"}
-                      </h4>
-                    </div>
-                    <ul className="space-y-2 px-5 pb-5 pt-4">
-                      {selectedSector.exampleProjects.map((item, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-white/15 text-xs font-semibold text-white">
-                            {i + 1}
-                          </div>
-                          <span className="text-sm font-medium text-white/90">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* CTA Button */}
-                {selectedSector.chatButtonLabel && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSelectedSector(null);
-                      onOpenChatWithSector?.(selectedSector.name);
-                    }}
-                    className={cn(
-                      "flex w-full items-center justify-center gap-2 px-6 py-3.5 text-lg font-semibold tracking-[0.06em]",
-                      landingPrimaryBlueButtonClass
-                    )}
-                  >
-                    {selectedSector.chatButtonLabel}
-                    <ArrowRight size={20} />
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* CTA */}
         <Reveal delay={400}>

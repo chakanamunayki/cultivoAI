@@ -21,7 +21,6 @@ const projects = [
       "Protected knowledge platform for a biotech and vertical farming project",
     ],
   },
-  { key: "setasouls", titles: ["SetaSouls. Sitio web de marca holística", "SetaSouls. Holistic Brand Website"] },
 ];
 
 test("an English service name opens the right card on the Spanish page", () => {
@@ -51,8 +50,11 @@ test("the short project name from the chat tool description opens the project in
     resolveCatalogKey("plataforma de conocimiento protegido", projects, PROJECT_ALIASES),
     "company-brain"
   );
-  assert.equal(resolveCatalogKey("SetaSouls", projects, PROJECT_ALIASES), "setasouls");
-  assert.equal(resolveCatalogKey("the SetaSouls website", projects, PROJECT_ALIASES), "setasouls");
+});
+
+test("a hidden project left out of the catalog opens nothing", () => {
+  assert.equal(resolveCatalogKey("SetaSouls", projects, PROJECT_ALIASES), undefined);
+  assert.equal(resolveCatalogKey("holistic brand website", projects, PROJECT_ALIASES), undefined);
 });
 
 test("an unrelated or empty name opens nothing", () => {

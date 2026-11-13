@@ -124,7 +124,7 @@ export const SERVICE_ALIASES: Record<string, string> = {
   inversores: "startup",
 };
 
-// Values are project keys: the animationKey, or "setasouls" for the project
+// Values are project keys: the animationKey, or project-<index> for a project
 // that has none (see the caller in src/app/page.tsx).
 export const PROJECT_ALIASES: Record<string, string> = {
   "company brain": "company-brain",
@@ -137,8 +137,4 @@ export const PROJECT_ALIASES: Record<string, string> = {
   biotecnologia: "company-brain",
   "vertical farming": "company-brain",
   "agricultura vertical": "company-brain",
-  setasouls: "setasouls",
-  "seta souls": "setasouls",
-  holistic: "setasouls",
-  holistica: "setasouls",
 };

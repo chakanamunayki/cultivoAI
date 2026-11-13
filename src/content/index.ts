@@ -12,7 +12,7 @@ import type { Locale, SiteContent } from "./types";
 
 // Re-export types
 export type { Locale, SiteContent, NavItem, HeroCopy, Service, Project } from "./types";
-export type { Partnership, UseCase, Step, RealStory } from "./types";
+export type { Partnership, Step, RealStory } from "./types";
 export type { WhyUs, FooterCopy, ChatCopy, ContactFormCopy, AboutCopy } from "./types";
 
 // Re-export content
