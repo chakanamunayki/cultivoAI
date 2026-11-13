@@ -114,7 +114,7 @@ export const esClosingSectionsContent: Pick<
       booking:
         "Genial. Podemos agendar una llamada de 15 minutos con Paul. Cuéntame un poco en qué estás trabajando y lo dejo listo.",
       story:
-        "Paul es un cofundador de startups que ha lanzado productos a más de 70 países y construyó solo toda la plataforma de un proyecto de biotecnología y agricultura vertical. Trabaja directo contigo, sin intermediarios. ¿Qué te gustaría saber?",
+        "Paul es un cofundador de startups que ha lanzado productos a más de 70 países y construyó solo toda la plataforma de un proyecto de biotecnología y agricultura vertical. Trabajas directo con nosotros, sin intermediarios. ¿Qué te gustaría saber?",
       service:
         "Genial, te interesa {service}. Con gusto te lo explico. ¿Qué te gustaría saber?",
       partnership:
