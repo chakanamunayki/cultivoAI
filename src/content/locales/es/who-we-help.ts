@@ -33,7 +33,7 @@ export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
         description:
           "Innovación alrededor de productos naturales y medicina holística y ancestral para el bienestar. Este camino lo lidera Marta a través de Munayki, el poder del amor (munay es amor en quechua, ki es poder en japonés).",
         icon: "Heart",
-        imageUrl: "/landing/photos/sectors/health-wellness.jpg",
+        imageUrl: "/landing/photos/sectors/munayki-logo-dark.jpg",
         badge: "Munayki",
         chatButtonLabel: "Hablemos",
       },
