@@ -202,8 +202,9 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
               className="flex items-center gap-2.5"
             >
               <BrandMark className="h-8 w-8 text-[#00BCD4] md:h-9 md:w-9" />
-              <span className="text-lg leading-none font-bold tracking-[0.06em] uppercase md:text-2xl">
-                Cultivo{" "}<span className="text-[#00BCD4]">Labs</span>
+              <span className="flex items-baseline gap-1.5 leading-none">
+                <span className="text-xl font-bold tracking-[-0.03em] md:text-[26px]">Cultivo</span>
+                <span className="font-mono text-sm font-medium tracking-[0.04em] text-[#00BCD4] md:text-base">labs</span>
               </span>
             </button>
 

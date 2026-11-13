@@ -60,8 +60,9 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <BrandMark className="h-10 w-10 text-primary" />
-                <span className="font-bold text-2xl tracking-[0.06em] uppercase leading-none">
-                  Cultivo{" "}<span className="text-primary">Labs</span>
+                <span className="flex items-baseline gap-1.5 leading-none">
+                  <span className="text-[28px] font-bold tracking-[-0.03em]">Cultivo</span>
+                  <span className="font-mono text-base font-medium tracking-[0.04em] text-primary">labs</span>
                 </span>
               </div>
               <div className="flex items-center gap-3 text-primary font-mono text-sm">
