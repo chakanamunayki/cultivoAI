@@ -18,15 +18,10 @@ interface PartnershipsSectionProps {
 }
 
 export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionProps) {
-  const { content, locale, ui } = useLocale();
+  const { content, ui } = useLocale();
   const { openPartnershipModal } = useModal();
   const extras = content.partnershipsExtras;
   const detailsLabel = `${ui.viewDetails} ->`;
-  const closingCta =
-    extras?.closingCta ??
-    (locale === "es"
-      ? "¿No sabes qué opción encaja? Hablemos."
-      : "Not sure which option fits? Let's talk.");
 
   return (
     <div id="partnerships" className="border-b border-white/10 bg-[#212121]">
@@ -131,19 +126,6 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
             </div>
           </Reveal>
         )}
-
-        <Reveal delay={300} className="mt-12 text-center">
-          <button
-            type="button"
-            onClick={onOpenChatGeneral}
-            className={cn(
-              "px-8 py-3.5 text-lg font-semibold tracking-[0.06em]",
-              landingPrimaryDarkButtonClass
-            )}
-          >
-            {closingCta}
-          </button>
-        </Reveal>
       </div>
     </div>
   );
