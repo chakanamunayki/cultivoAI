@@ -3,7 +3,6 @@
 import {
   landingCardClass,
   landingPrimaryDarkButtonClass,
-  landingTitleBandClass,
 } from "@/components/landing/ui/landing-card-styles";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { SectionHeader } from "@/components/landing/ui/section-header";
@@ -37,40 +36,17 @@ export function SemilleroSection({ onOpenChatProject, onOpenChatInnovation }: Se
           {/* Left: body */}
           <Reveal delay={100}>
             <div className={landingCardClass("dark", "h-full rounded-[24px] p-6 md:p-8")}>
-              <div
-                className={landingTitleBandClass(
-                  "dark",
-                  "-mx-6 mb-4 px-6 py-2.5 text-left md:-mx-8 md:px-8"
-                )}
-              >
-                <h3 className="text-left text-lg font-black leading-tight tracking-tight uppercase md:text-xl">
-                  {semillero.title}
-                </h3>
-              </div>
               <p className="text-base leading-relaxed font-semibold text-white/90 md:text-lg">
                 {semillero.body}
               </p>
             </div>
           </Reveal>
 
-          {/* Right: tagline + two CTAs */}
+          {/* Right: two CTAs */}
           <Reveal delay={200}>
             <div className="flex h-full items-center justify-center">
               <div className={landingCardClass("blue", "w-full rounded-[24px] px-8 py-6 text-center hover:-translate-y-1 md:px-12 md:py-8")}>
-                <div
-                  className={landingTitleBandClass(
-                    "blue",
-                    "-mx-8 mb-4 px-8 py-2.5 text-left md:-mx-12 md:px-12"
-                  )}
-                >
-                  <h3 className="text-left text-lg font-black leading-tight tracking-tight uppercase md:text-xl">
-                    {semillero.title}
-                  </h3>
-                </div>
-                <span className="text-2xl font-black tracking-tight text-[#18181b] md:text-3xl lg:text-4xl">
-                  {semillero.subtitle}
-                </span>
-                <div className="mt-6 flex flex-col gap-3 md:flex-row md:justify-center">
+                <div className="flex flex-col gap-3 md:flex-row md:justify-center">
                   <button
                     type="button"
                     onClick={onOpenChatProject}
