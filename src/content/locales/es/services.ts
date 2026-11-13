@@ -4,7 +4,7 @@ export const esServicesContent: Pick<
   SiteContent,
   "servicesTitle" | "servicesTagline" | "servicesSubtitle" | "services"
 > = {
-  servicesTitle: "Qué construyo",
+  servicesTitle: "Qué construimos",
   servicesTagline:
     "La tecnología detrás de los buenos proyectos, desde la primera idea hasta la prueba de que funciona.",
   servicesSubtitle:

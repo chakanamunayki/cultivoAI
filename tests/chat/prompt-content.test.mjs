@@ -18,7 +18,7 @@ test("the chat gets the projects in progress, with their status and details", ()
   const [first] = out.projectsInProgress;
   assert.equal(first.title, "Restoration after mining, Colombia");
   assert.equal(first.status, "Consortium forming");
-  assert.ok(first.details.some((d) => d.label === "My part"));
+  assert.ok(first.details.some((d) => d.label === "Our part"));
 });
 
 test("hidden projects stay out of the chat", () => {

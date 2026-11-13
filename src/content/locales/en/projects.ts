@@ -7,7 +7,7 @@ export const enProjectsContent: Pick<
 projectsTitle: "Projects",
 projectsSubtitle: "Selected work",
 // Unnamed on purpose: no partner names until they agree.
-projectsInProgressTitle: "What I'm working on now",
+projectsInProgressTitle: "What we're working on now",
 projectsInProgress: [
   {
     status: "Consortium forming",
@@ -23,7 +23,7 @@ projectsInProgress: [
         text: "Native-plant propagation, field restoration with local communities and satellite monitoring of survival.",
       },
       {
-        label: "My part",
+        label: "Our part",
         text: "The record: software that links each batch of plants, from nursery to field, to how many survive, and turns it into the compliance reports the authorities ask for. It is built as the work happens, not at the end.",
       },
       {
@@ -51,10 +51,10 @@ projectsInProgress: [
       },
       {
         label: "Alongside it",
-        text: "An off-grid village linked to the project, now looking for investment. It would use the biochar to grow hemp and as a material for building its homes.",
+        text: "An off-grid village linked to the project, now looking for investment.",
       },
       {
-        label: "Where I can help",
+        label: "Where we can help",
         text: "Turning the model into a fundable case: numbers that hold up, clean budgets and the evidence that grant makers and carbon buyers ask for.",
       },
     ],

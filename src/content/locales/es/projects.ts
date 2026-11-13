@@ -23,7 +23,7 @@ projectsInProgress: [
         text: "Propagación de plantas nativas, restauración en campo con comunidades locales y monitoreo satelital de la supervivencia.",
       },
       {
-        label: "Mi parte",
+        label: "Nuestra parte",
         text: "El registro: software que une cada lote de plantas, del vivero al campo, con cuántas sobreviven, y lo convierte en los informes de cumplimiento que pide la autoridad. Se construye mientras se hace el trabajo, no al final.",
       },
       {
@@ -51,10 +51,10 @@ projectsInProgress: [
       },
       {
         label: "Junto a él",
-        text: "Una aldea fuera de la red ligada al proyecto, que ahora busca inversión. Usaría el biochar para cultivar cáñamo y como material para construir sus casas.",
+        text: "Una aldea fuera de la red ligada al proyecto, que ahora busca inversión.",
       },
       {
-        label: "Dónde puedo aportar",
+        label: "Dónde podemos aportar",
         text: "Convertir el modelo en un caso que se pueda financiar: números que se sostengan, presupuestos limpios y la evidencia que piden los financiadores y los compradores de carbono.",
       },
     ],

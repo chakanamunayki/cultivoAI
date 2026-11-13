@@ -5,7 +5,7 @@ export const enClosingSectionsContent: Pick<
   "values" | "whatHappensNext" | "footer" | "chat" | "contactForm" | "terminal"
 > = {
   values: {
-    title: "How I work",
+    title: "How we work",
     subtitle: "What doesn't change, whatever the project.",
     values: [
       {
@@ -42,7 +42,7 @@ export const enClosingSectionsContent: Pick<
     steps: [
       {
         number: "1",
-        title: "I reply quickly",
+        title: "We reply quickly",
         description: "A direct answer and a clear next step.",
       },
       {
@@ -52,12 +52,12 @@ export const enClosingSectionsContent: Pick<
       },
       {
         number: "3",
-        title: "If you need a plan, I run a Discovery Sprint",
+        title: "If you need a plan, we run a Discovery Sprint",
         description: "Two to four weeks, and a costed plan that is yours to keep.",
       },
       {
         number: "4",
-        title: "I build version one and we improve it together",
+        title: "We build version one and improve it together",
         description: "",
       },
     ],
@@ -90,11 +90,11 @@ export const enClosingSectionsContent: Pick<
     },
     quickLinks: [
       { label: "Home", href: "#hero" },
-      { label: "What I build", href: "#services" },
-      { label: "Who I work with", href: "#who-we-help" },
+      { label: "What we build", href: "#services" },
+      { label: "Who we work with", href: "#who-we-help" },
       { label: "Semillero", href: "#semillero" },
       { label: "Projects", href: "#projects" },
-      { label: "About", href: "#about" },
+      { label: "Who we are", href: "#about" },
       { label: "Ways to work together", href: "#partnerships" },
     ],
     quickLinksTitle: "Navigation",

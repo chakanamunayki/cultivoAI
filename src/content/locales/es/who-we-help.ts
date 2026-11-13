@@ -2,7 +2,7 @@ import type { SiteContent } from "../../types";
 
 export const esWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
   whoWeHelp: {
-    title: "Con quién trabajo",
+    title: "Con quién trabajamos",
     subtitle:
       "Buena gente con buenos proyectos y buenas intenciones. Cuatro mundos que conozco bien:",
     // Las listas de encaje no están en la copia v1; los arrays vacíos ocultan ese bloque.

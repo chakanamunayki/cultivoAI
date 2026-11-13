@@ -2,7 +2,7 @@ import type { SiteContent } from "../../types";
 
 export const enWhoWeHelpContent: Pick<SiteContent, "whoWeHelp"> = {
   whoWeHelp: {
-    title: "Who I work with",
+    title: "Who we work with",
     subtitle: "Good people with good projects and good intentions. Four worlds I know well:",
     // Fit lists are not in the v1 copy; empty arrays hide that block.
     idealTitle: "",

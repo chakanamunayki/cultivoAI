@@ -5,7 +5,7 @@ export const esClosingSectionsContent: Pick<
   "values" | "whatHappensNext" | "footer" | "chat" | "contactForm" | "terminal"
 > = {
   values: {
-    title: "Cómo trabajo",
+    title: "Cómo trabajamos",
     subtitle: "Lo que no cambia, sea cual sea el proyecto.",
     values: [
       {
@@ -37,12 +37,12 @@ export const esClosingSectionsContent: Pick<
   },
 
   whatHappensNext: {
-    title: "¿Qué pasa cuando me escribes?",
+    title: "¿Qué pasa cuando nos escribes?",
     subtitle: "Simple. Sin sorpresas.",
     steps: [
       {
         number: "1",
-        title: "Respondo rápido",
+        title: "Respondemos rápido",
         description: "Una respuesta directa y un siguiente paso claro.",
       },
       {
@@ -52,12 +52,12 @@ export const esClosingSectionsContent: Pick<
       },
       {
         number: "3",
-        title: "Si hace falta un plan, hago un Sprint de descubrimiento",
+        title: "Si hace falta un plan, hacemos un Sprint de descubrimiento",
         description: "De dos a cuatro semanas, y un plan costeado que es tuyo.",
       },
       {
         number: "4",
-        title: "Construyo la primera versión y la mejoramos juntos",
+        title: "Construimos la primera versión y la mejoramos juntos",
         description: "",
       },
     ],
@@ -90,8 +90,8 @@ export const esClosingSectionsContent: Pick<
     },
     quickLinks: [
       { label: "Inicio", href: "#hero" },
-      { label: "Qué construyo", href: "#services" },
-      { label: "Con quién trabajo", href: "#who-we-help" },
+      { label: "Qué construimos", href: "#services" },
+      { label: "Con quién trabajamos", href: "#who-we-help" },
       { label: "Semillero", href: "#semillero" },
       { label: "Proyectos", href: "#projects" },
       { label: "Quiénes somos", href: "#about" },
@@ -99,7 +99,7 @@ export const esClosingSectionsContent: Pick<
     ],
     quickLinksTitle: "Navegación",
     contactTitle: "Contacto",
-    socialTitle: "Sígueme",
+    socialTitle: "Síguenos",
   },
 
   chat: {

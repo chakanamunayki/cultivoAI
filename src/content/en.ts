@@ -11,9 +11,9 @@ import type { SiteContent } from "./types";
 
 export const en: SiteContent = {
   nav: [
-    { label: "About", href: "#about" },
-    { label: "What I build", href: "#services" },
-    { label: "Who I work with", href: "#who-we-help" },
+    { label: "Who we are", href: "#about" },
+    { label: "What we build", href: "#services" },
+    { label: "Who we work with", href: "#who-we-help" },
     { label: "Semillero", href: "#semillero" },
     { label: "Projects", href: "#projects" },
   ],
@@ -47,7 +47,7 @@ export const en: SiteContent = {
       "Holistic health and natural products",
       "Nature and agritech",
     ],
-    tertiaryCta: "What I build",
+    tertiaryCta: "What we build",
     microcopy: "One founder, start to finish. Based in Colombia, working worldwide.",
     terminalLabel: "How I work:",
     line3: "",
