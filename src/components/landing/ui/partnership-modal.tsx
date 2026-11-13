@@ -41,9 +41,9 @@ export function PartnershipModal({ partnership, onOpenChat }: PartnershipModalPr
 
   return (
     <div className="max-h-[92vh] overflow-y-auto bg-[#212121] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">
-      {/* Header */}
-      <div className="relative overflow-hidden border-b border-black/10">
-        {partnership.imageUrl ? (
+      {/* Header: photo with the title over it, or a cyan band with the title in flow */}
+      {partnership.imageUrl ? (
+        <div className="relative overflow-hidden border-b border-black/10">
           <div className="relative h-44 bg-neutral-200 md:h-56">
             <Image
               src={partnership.imageUrl}
@@ -54,28 +54,44 @@ export function PartnershipModal({ partnership, onOpenChat }: PartnershipModalPr
             />
             <div className="absolute inset-0 bg-black/40" />
           </div>
-        ) : (
-          <div className="h-24 bg-[#00BCD4] md:h-28" />
-        )}
 
-        <div className="absolute inset-0 flex items-end gap-4 p-6 md:p-8">
-          <div className="rounded-xl border border-white/40 bg-white/90 p-4 text-[#00BCD4] shadow-[0_12px_24px_rgba(15,23,42,0.25)] backdrop-blur-sm">
+          <div className="absolute inset-0 flex items-end gap-4 p-6 md:p-8">
+            <div className="rounded-xl border border-white/40 bg-white/90 p-4 text-[#00BCD4] shadow-[0_12px_24px_rgba(15,23,42,0.25)] backdrop-blur-sm">
+              <Icon size={28} />
+            </div>
+            <div className="pb-1">
+              <Dialog.Title asChild>
+                <h2 className="text-3xl leading-none font-black tracking-tight text-white md:text-5xl">
+                  {partnership.name}
+                </h2>
+              </Dialog.Title>
+              <Dialog.Description asChild>
+                <p className="mt-2 text-sm font-semibold tracking-[0.08em] text-[#FFFFFF] uppercase md:text-base">
+                  {partnership.tagline}
+                </p>
+              </Dialog.Description>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="flex items-center gap-4 bg-[#00BCD4] py-6 pr-16 pl-6 md:py-8 md:pr-20 md:pl-8">
+          <div className="shrink-0 rounded-xl bg-white p-3 text-[#00BCD4] md:p-4 shadow-[0_12px_24px_rgba(15,23,42,0.18)]">
             <Icon size={28} />
           </div>
-          <div className="pb-1">
+          <div className="min-w-0">
             <Dialog.Title asChild>
-              <h2 className="text-3xl leading-none font-black tracking-tight text-white md:text-5xl">
+              <h2 className="text-2xl leading-none font-black tracking-tight text-[#18181b] sm:text-3xl md:text-5xl">
                 {partnership.name}
               </h2>
             </Dialog.Title>
             <Dialog.Description asChild>
-              <p className="mt-2 text-sm font-semibold tracking-[0.08em] text-[#FFFFFF] uppercase md:text-base">
+              <p className="mt-2 text-sm font-semibold tracking-[0.08em] text-[#18181b] uppercase md:text-base">
                 {partnership.tagline}
               </p>
             </Dialog.Description>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="space-y-5 p-8 md:p-12">
         {/* What it means */}

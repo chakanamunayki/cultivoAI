@@ -22,7 +22,6 @@ export const enPartnershipsContent: Pick<
       terms: "Fixed price, agreed with you after that first conversation.",
       idealFor: ["Projects with real IP, land or data to protect", "Anyone unsure what to build first"],
       icon: "Hourglass",
-      imageUrl: "/landing/photos/services/startup-advisory.png",
       modal: {
         whatItMeans:
           "I start with a free call to understand your objective. If a sprint fits, it is a short, senior engagement to map your architecture, protect your IP, and scope the build, before anyone writes production code.",

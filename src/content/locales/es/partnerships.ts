@@ -22,7 +22,6 @@ export const esPartnershipsContent: Pick<
       terms: "Precio fijo, acordado contigo después de esa primera conversación.",
       idealFor: ["Proyectos con IP, tierra o datos que proteger", "Cualquiera que no sepa qué construir primero"],
       icon: "Hourglass",
-      imageUrl: "/landing/photos/services/startup-advisory.png",
       modal: {
         whatItMeans:
           "Empiezo con una llamada gratis para entender tu objetivo. Si un sprint encaja, es un trabajo corto y senior para mapear tu arquitectura, proteger tu IP y definir el alcance del desarrollo, antes de que nadie escriba código de producción.",
