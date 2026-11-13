@@ -34,10 +34,10 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
   };
 
   return (
-    <footer className="bg-black text-white border-t-4 border-primary">
+    <footer className="bg-black text-white border-t border-white/10">
       {/* CTA Section */}
       <Reveal>
-        <div className="p-8 md:p-16 text-center border-b-4 border-neutral-800">
+        <div className="p-8 md:p-16 text-center border-b border-white/10">
           <h2 className="text-3xl md:text-4xl lg:text-7xl font-black uppercase mb-6 md:mb-8 tracking-tight">
             {content.footer.cta}
           </h2>
@@ -77,7 +77,7 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
           {/* Column 2: Quick Links */}
           <Reveal>
             <div className="space-y-4">
-              <h3 className="font-black uppercase text-lg tracking-tight border-b-2 border-primary pb-2 inline-block">
+              <h3 className="font-black uppercase text-lg tracking-tight border-b border-white/10 pb-2 inline-block">
                 {content.footer.quickLinksTitle}
               </h3>
               <ul className="space-y-2">
@@ -102,7 +102,7 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
           {/* Column 3: Contact Info */}
           <Reveal>
             <div className="space-y-4">
-              <h3 className="font-black uppercase text-lg tracking-tight border-b-2 border-primary pb-2 inline-block">
+              <h3 className="font-black uppercase text-lg tracking-tight border-b border-white/10 pb-2 inline-block">
                 {content.footer.contactTitle}
               </h3>
               <ul className="space-y-3">
@@ -135,7 +135,7 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
           {/* Column 4: Social Links */}
           <Reveal>
             <div className="space-y-4">
-              <h3 className="font-black uppercase text-lg tracking-tight border-b-2 border-primary pb-2 inline-block">
+              <h3 className="font-black uppercase text-lg tracking-tight border-b border-white/10 pb-2 inline-block">
                 {content.footer.socialTitle}
               </h3>
               <ul className="space-y-3">
@@ -161,7 +161,7 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
       </div>
 
       {/* Copyright */}
-      <div className="border-t-2 border-neutral-800 p-6">
+      <div className="border-t border-white/10 p-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-neutral-600 text-xs md:text-sm font-bold uppercase">
             {content.footer.copyright}
