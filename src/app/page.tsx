@@ -209,10 +209,10 @@ export default function Home() {
 
   // Handler for sector-specific chat
   const handleOpenChatWithSector = useCallback(
-    (_sectorName: string) => {
-      handleOpenChatQualification();
+    (sectorName: string) => {
+      handleOpenChat({ type: "qualification", sectorName });
     },
-    [handleOpenChatQualification]
+    [handleOpenChat]
   );
 
   // Form fallback handler

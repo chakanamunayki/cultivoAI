@@ -23,6 +23,7 @@ export interface ChatContext {
   serviceTitle?: string;
   partnershipName?: string;
   projectTitle?: string;
+  sectorName?: string;
 }
 
 export interface NavItem {
@@ -273,6 +274,7 @@ export interface ChatContextualGreetings {
   partnershipNamed?: string; // Use {partnership} as placeholder for the step name
   project?: string; // Use {project} as placeholder for the project title
   qualification: string;
+  qualificationSector?: string; // Use {sector} as placeholder for the sector name
   impact: string;
   formFallback: string; // "Prefer a form?" prompt
 }

@@ -125,6 +125,8 @@ export const enClosingSectionsContent: Pick<
         "Nice, you were looking at {project}. What are you building? Tell me and we'll see if something similar fits.",
       qualification:
         "Happy to see if there's a fit. Tell me a little about what you're building.",
+      qualificationSector:
+        "Nice, you're looking at {sector}. Tell me a little about what you're building and we'll see if there's a fit.",
       impact:
         "Love that you're drawn to purpose-first work. Tell me what you're building and I'll help however I can.",
       formFallback: "Prefer a quick call with Paul? Share your details.",

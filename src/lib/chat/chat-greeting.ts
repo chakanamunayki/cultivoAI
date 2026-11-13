@@ -2,7 +2,8 @@ import type { ChatContext, ChatContextualGreetings } from "../../content/types";
 
 /**
  * The chat's opening line for how the visitor arrived. When they came from a
- * modal, the greeting names the service, step or project, and because the
+ * modal or a sector button, the greeting names the service, step, project or
+ * sector, and because the
  * greeting is the first turn in the history, the model sees that name too.
  */
 export function chatGreeting(
@@ -25,7 +26,9 @@ export function chatGreeting(
         ? greetings.project.replace("{project}", ctx.projectTitle)
         : greetings.general;
     case "qualification":
-      return greetings.qualification;
+      return ctx.sectorName && greetings.qualificationSector
+        ? greetings.qualificationSector.replace("{sector}", ctx.sectorName)
+        : greetings.qualification;
     case "impact":
       return greetings.impact;
     default:

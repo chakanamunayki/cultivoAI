@@ -35,10 +35,24 @@ test("a project modal names the project and asks about something similar", () =>
   assert.match(es1, /parecido/);
 });
 
+test("a sector button names the sector and asks about fit", () => {
+  const en1 = chatGreeting(g.en, { type: "qualification", sectorName: "Land and regeneration" });
+  assert.match(en1, /Land and regeneration/);
+  assert.match(en1, /fit/);
+  const es1 = chatGreeting(g.es, { type: "qualification", sectorName: "Tierra y regeneración" });
+  assert.match(es1, /Tierra y regeneración/);
+  assert.match(es1, /encaje/);
+});
+
+test("qualification without a sector keeps the generic greeting", () => {
+  assert.equal(chatGreeting(g.es, { type: "qualification" }), g.es.qualification);
+});
+
 test("a named greeting falls back when the locale has no named variant", () => {
-  const { partnershipNamed: _p, project: _q, ...older } = g.en;
+  const { partnershipNamed: _p, project: _q, qualificationSector: _s, ...older } = g.en;
   assert.equal(chatGreeting(older, { type: "partnership", partnershipName: "Build" }), g.en.partnership);
   assert.equal(chatGreeting(older, { type: "project", projectTitle: "X" }), g.en.general);
+  assert.equal(chatGreeting(older, { type: "qualification", sectorName: "X" }), g.en.qualification);
 });
 
 test("greetings have no em dashes or leftover placeholders", () => {
@@ -47,6 +61,7 @@ test("greetings have no em dashes or leftover placeholders", () => {
       { type: "service", serviceTitle: "A" },
       { type: "partnership", partnershipName: "B" },
       { type: "project", projectTitle: "C" },
+      { type: "qualification", sectorName: "D" },
     ]) {
       const text = chatGreeting(set, ctx);
       assert.doesNotMatch(text, /—|\{\w+\}/);

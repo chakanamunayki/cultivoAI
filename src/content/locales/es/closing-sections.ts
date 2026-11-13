@@ -125,6 +125,8 @@ export const esClosingSectionsContent: Pick<
         "Genial, viste el proyecto {project}. ¿Qué estás construyendo tú? Cuéntame y vemos si algo parecido encaja.",
       qualification:
         "Con gusto vemos si hay encaje. Cuéntame un poco qué estás construyendo.",
+      qualificationSector:
+        "Genial, te interesa {sector}. Cuéntame un poco qué estás construyendo y vemos si hay encaje.",
       impact:
         "Me encanta que te interese el trabajo con propósito. Cuéntame qué estás construyendo y te ayudo en lo que pueda.",
       formFallback: "¿Prefieres una llamada rápida con Paul? Deja tus datos.",
