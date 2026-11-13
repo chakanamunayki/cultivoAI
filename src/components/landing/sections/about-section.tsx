@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Linkedin } from "lucide-react";
+import { ArrowRight, Linkedin } from "lucide-react";
 import { useModal } from "@/components/landing/ui/modal-provider";
 import { Reveal } from "@/components/landing/ui/reveal";
 import { SectionHeader } from "@/components/landing/ui/section-header";
@@ -108,7 +108,8 @@ export function AboutSection() {
                       onClick={() => handleViewMore(member)}
                       className="inline-flex items-center gap-1 rounded-lg bg-[#1f1f1f] px-4 py-2.5 text-xs font-semibold tracking-[0.06em] text-white uppercase shadow-[0_8px_18px_rgba(17,24,39,0.24)] transition-all hover:-translate-y-0.5 hover:bg-[#111]"
                     >
-                      {content.about.viewMoreLabel} {"->"}
+                      {content.about.viewMoreLabel}
+                      <ArrowRight size={14} aria-hidden="true" />
                     </button>
                     )}
                   </div>

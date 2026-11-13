@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import {
   landingCardClass,
   landingPrimaryBlueButtonClass,
@@ -21,7 +22,6 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
   const { content, ui } = useLocale();
   const { openPartnershipModal } = useModal();
   const extras = content.partnershipsExtras;
-  const detailsLabel = `${ui.viewDetails} ->`;
 
   return (
     <div id="partnerships" className="border-b border-white/10 bg-[#212121]">
@@ -96,11 +96,12 @@ export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionPr
                       type="button"
                       onClick={() => openPartnershipModal(partner)}
                       className={cn(
-                        "w-full rounded-lg px-4 py-2.5 text-center text-xs font-semibold tracking-[0.07em]",
+                        "inline-flex w-full items-center justify-center gap-1 rounded-lg px-4 py-2.5 text-center text-xs font-semibold tracking-[0.07em]",
                         isBlue ? landingPrimaryDarkButtonClass : landingPrimaryBlueButtonClass
                       )}
                     >
-                      {detailsLabel}
+                      {ui.viewDetails}
+                      <ArrowRight size={14} aria-hidden="true" />
                     </button>
                   </div>
                 </article>
