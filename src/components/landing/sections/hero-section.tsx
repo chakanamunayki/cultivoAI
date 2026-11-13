@@ -73,7 +73,7 @@ export function HeroSection({ onPrimaryCta, onSecondaryCta, onTertiaryCta }: Her
             <button
               type="button"
               onClick={onPrimaryCta}
-              className="inline-flex items-center gap-2 rounded-full bg-[#00BCD4] px-5 py-3 text-sm font-bold tracking-[0.07em] text-[#111111] uppercase transition-colors hover:bg-[#00BCD4] md:text-base"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#00BCD4] px-5 py-3 text-sm font-bold tracking-[0.07em] text-[#111111] uppercase transition-colors hover:bg-[#00BCD4] md:text-base"
             >
               <MessageCircle size={18} />
               {content.hero.cta}
@@ -82,7 +82,7 @@ export function HeroSection({ onPrimaryCta, onSecondaryCta, onTertiaryCta }: Her
             <button
               type="button"
               onClick={onSecondaryCta}
-              className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-black/25 px-5 py-3 text-sm font-bold tracking-[0.07em] text-white uppercase transition-colors hover:bg-black/40 md:text-base"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/35 bg-black/25 px-5 py-3 text-sm font-bold tracking-[0.07em] text-white uppercase transition-colors hover:bg-black/40 md:text-base"
             >
               <Telescope size={18} />
               {content.hero.secondaryCta}

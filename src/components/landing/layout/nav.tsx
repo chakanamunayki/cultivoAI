@@ -236,7 +236,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
                 type="button"
                 onClick={handleChatClick}
                 className={cn(
-                  "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold tracking-[0.04em] uppercase transition-colors",
+                  "inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-bold tracking-[0.04em] uppercase transition-colors",
                   headerStyle.ctaButton
                 )}
               >
@@ -371,7 +371,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
                 <button
                   type="button"
                   onClick={handleChatClick}
-                  className="inline-flex items-center gap-2 rounded-full bg-[#00BCD4] px-5 py-2.5 text-sm font-bold tracking-[0.08em] text-neutral-950 uppercase transition-colors hover:bg-[#00BCD4]"
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#00BCD4] px-5 py-2.5 text-sm font-bold tracking-[0.08em] text-neutral-950 uppercase transition-colors hover:bg-[#00BCD4]"
                 >
                   <MessageCircle size={16} />
                   {ctaLabel}
