@@ -17,7 +17,7 @@ export const enPartnershipsContent: Pick<
       name: "Discovery Sprint",
       tagline: "1 · Start here",
       description:
-        "First, a free conversation about your goal. If a sprint fits, I spend two to four weeks with your team mapping what you have, what's missing and what to build first. You leave with a costed plan that is yours to keep.",
+        "First, a free conversation about your goal. If a sprint fits, I spend as long as it needs with your team, agreed with you up front, mapping what you have, what's missing and what to build first. You leave with a costed plan that is yours to keep.",
       terms: "Fixed price, agreed with you after that first conversation.",
       idealFor: ["Projects with real IP, land or data to protect", "Anyone unsure what to build first"],
       icon: "Hourglass",

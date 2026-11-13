@@ -17,7 +17,7 @@ export const esPartnershipsContent: Pick<
       name: "Sprint de descubrimiento",
       tagline: "1 · Empieza aquí",
       description:
-        "Primero, una conversación gratis sobre tu objetivo. Si un sprint encaja, paso de dos a cuatro semanas con tu equipo mapeando lo que tienes, lo que falta y qué construir primero. Te llevas un plan costeado que es tuyo.",
+        "Primero, una conversación gratis sobre tu objetivo. Si un sprint encaja, paso con tu equipo el tiempo que haga falta, acordado contigo antes de empezar, mapeando lo que tienes, lo que falta y qué construir primero. Te llevas un plan costeado que es tuyo.",
       terms: "Precio fijo, acordado contigo después de esa primera conversación.",
       idealFor: ["Proyectos con IP, tierra o datos que proteger", "Cualquiera que no sepa qué construir primero"],
       icon: "Hourglass",

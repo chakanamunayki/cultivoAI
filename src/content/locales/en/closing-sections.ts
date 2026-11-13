@@ -53,7 +53,7 @@ export const enClosingSectionsContent: Pick<
       {
         number: "3",
         title: "If you need a plan, we run a Discovery Sprint",
-        description: "Two to four weeks, and a costed plan that is yours to keep.",
+        description: "As long as it needs, and a costed plan that is yours to keep.",
       },
       {
         number: "4",

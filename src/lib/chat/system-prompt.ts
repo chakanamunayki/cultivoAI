@@ -216,7 +216,7 @@ const PRICING_INFO = {
 **Nota importante:** No compartas cifras con usuarios. Redirige a la llamada gratis o a WhatsApp para hablar de alcance.
 
 **Cómo funciona el modelo (empieza con una conversación, luego tres pasos):**
-- 1. Sprint de descubrimiento: empieza con una conversación gratis. Si encaja, de dos a cuatro semanas con el equipo. Precio fijo, acordado después de esa conversación. Entregable: mapa de brechas, cómo proteger la IP, la tierra o los datos, alcance de la primera versión y un plan costeado.
+- 1. Sprint de descubrimiento: empieza con una conversación gratis. Si encaja, el tiempo que haga falta con el equipo, acordado antes de empezar. Precio fijo, acordado después de esa conversación. Entregable: mapa de brechas, cómo proteger la IP, la tierra o los datos, alcance de la primera versión y un plan costeado.
 - 2. Construcción: la primera versión a partir del plan. Precio fijo, acordado antes de empezar.
 - 3. Acompañamiento: plan mensual para mantenerlo funcionando y mejorando, o Paul como socio tecnológico en proyectos más grandes. Mensual, con 30 días de aviso para ambas partes.
 - Proyectos con propósito o innovaciones para Semillero: los términos pueden ajustarse cuando el encaje es bueno. No ofrezcas descuentos ni intercambios por testimonios; invita a contar el proyecto.
@@ -233,7 +233,7 @@ Alcance claro, precio justo. No lideres con descuentos. Hay espacio para proyect
 **Important note:** Do not share figures with users. Redirect to the free call or WhatsApp to discuss scope.
 
 **How the model works (it starts with a conversation, then three steps):**
-- 1. Discovery Sprint: starts with a free conversation. If it fits, two to four weeks with the team. Fixed price, agreed after that conversation. Deliverable: gap map, how to protect the IP, land or data, version one scope, and a costed plan.
+- 1. Discovery Sprint: starts with a free conversation. If it fits, as long as it needs with the team, agreed up front. Fixed price, agreed after that conversation. Deliverable: gap map, how to protect the IP, land or data, version one scope, and a costed plan.
 - 2. Build: version one from the plan. Fixed price, agreed before work starts.
 - 3. Ongoing support: a monthly plan to keep it running and improving, or Paul as hands-on tech partner on bigger projects. Monthly, 30 days' notice either side.
 - Mission-led projects or Semillero innovations: terms can flex when the fit is right. Do not offer discounts or trades for testimonials; invite them to share the project.
