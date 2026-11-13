@@ -50,6 +50,10 @@ projectsInProgress: [
         text: "The hemp grain aims to feed 100 families in an area where more than half of children are chronically malnourished, and the fibre becomes low-carbon building blocks for housing.",
       },
       {
+        label: "Alongside it",
+        text: "An off-grid village linked to the project, now looking for investment. It would use the biochar to grow hemp and as a material for building its homes.",
+      },
+      {
         label: "Where I can help",
         text: "Turning the model into a fundable case: numbers that hold up, clean budgets and the evidence that grant makers and carbon buyers ask for.",
       },

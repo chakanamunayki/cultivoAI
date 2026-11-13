@@ -50,6 +50,10 @@ projectsInProgress: [
         text: "El grano de cáñamo busca alimentar a 100 familias en una zona donde más de la mitad de los niños sufre desnutrición crónica, y la fibra se convierte en bloques de construcción bajos en carbono para vivienda.",
       },
       {
+        label: "Junto a él",
+        text: "Una aldea fuera de la red ligada al proyecto, que ahora busca inversión. Usaría el biochar para cultivar cáñamo y como material para construir sus casas.",
+      },
+      {
         label: "Dónde puedo aportar",
         text: "Convertir el modelo en un caso que se pueda financiar: números que se sostengan, presupuestos limpios y la evidencia que piden los financiadores y los compradores de carbono.",
       },
