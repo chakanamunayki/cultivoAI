@@ -139,29 +139,19 @@ export function Footer({ onContactClick, onScrollTo }: FooterProps) {
                 {content.footer.socialTitle}
               </h3>
               <ul className="space-y-3">
-                {content.footer.socialLinks.map((social) => (
+                {content.footer.socialLinks.filter((social) => !social.comingSoon).map((social) => (
                   <li key={social.platform}>
-                    {social.comingSoon ? (
-                      <span className="flex items-center gap-3 text-neutral-600 cursor-not-allowed">
+                    <a
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-neutral-300 hover:text-primary transition-colors group"
+                    >
+                      <span className="group-hover:scale-110 transition-transform">
                         {socialIcons[social.platform]}
-                        <span className="font-bold text-sm">{social.label}</span>
-                        <span className="text-xs bg-neutral-800 px-2 py-0.5 rounded font-mono">
-                          PRONTO
-                        </span>
                       </span>
-                    ) : (
-                      <a
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 text-neutral-300 hover:text-primary transition-colors group"
-                      >
-                        <span className="group-hover:scale-110 transition-transform">
-                          {socialIcons[social.platform]}
-                        </span>
-                        <span className="font-bold text-sm">{social.label}</span>
-                      </a>
-                    )}
+                      <span className="font-bold text-sm">{social.label}</span>
+                    </a>
                   </li>
                 ))}
               </ul>

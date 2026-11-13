@@ -11,15 +11,15 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ project, onOpenChat }: ProjectModalProps) {
-  const { locale } = useLocale();
+  const { ui } = useLocale();
 
-  const whatItMeansLabel = locale === "es" ? "Qué significa" : locale === "pt" ? "O que significa" : "What it means";
-  const whyItMattersLabel = locale === "es" ? "Por que importa" : locale === "pt" ? "Por que importa" : "Why it matters";
-  const includedLabel = locale === "es" ? "Que incluye" : locale === "pt" ? "O que inclui" : "What's included";
-  const idealFitLabel = locale === "es" ? "Ideal para" : locale === "pt" ? "Ideal para" : "Ideal fit";
-  const outcomeLabel = locale === "es" ? "Resultado típico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
-  const lessonLabel = locale === "es" ? "Lección aprendida" : locale === "pt" ? "Lição aprendida" : "Lesson learned";
-  const ctaText = locale === "es" ? "Quiero algo similar" : locale === "pt" ? "Quero algo parecido" : "I'm interested in something similar";
+  const whatItMeansLabel = ui.detail.whatItMeans;
+  const whyItMattersLabel = ui.detail.whyItMatters;
+  const includedLabel = ui.detail.included;
+  const idealFitLabel = ui.detail.idealFit;
+  const outcomeLabel = ui.detail.outcome;
+  const lessonLabel = ui.detail.lesson;
+  const ctaText = ui.projectModalCta;
 
   return (
     <div className="max-h-[92vh] overflow-y-auto bg-[#212121] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">
@@ -126,7 +126,7 @@ export function ProjectModal({ project, onOpenChat }: ProjectModalProps) {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#00BCD4] px-6 py-3.5 text-sm font-semibold tracking-[0.08em] text-[#00BCD4] uppercase transition-all hover:-translate-y-0.5 hover:bg-[#00BCD4] hover:text-white sm:w-auto"
             >
-              {locale === "es" ? "Ver sitio" : locale === "pt" ? "Ver site" : "Visit site"}
+              {ui.detail.visitSite}
               <ArrowRight size={15} />
             </a>
           )}

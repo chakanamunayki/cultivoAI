@@ -20,39 +20,17 @@ const LOCALES: { code: Locale; label: string }[] = [
   { code: "pt", label: "PT" },
 ].filter(({ code }) => isEnabledLocale(code)) as { code: Locale; label: string }[];
 
-const CTA_LABELS: Record<Locale, string> = {
-  es: "Hablemos",
-  en: "Let's Talk",
-  pt: "Vamos conversar",
-};
-
-const HOME_ARIA_LABELS: Record<Locale, string> = {
-  es: "Ir al inicio",
-  en: "Go to home section",
-  pt: "Ir para o início",
-};
-
-const PANEL_CONTACT_LABELS: Record<Locale, string> = {
-  es: "Contacto directo",
-  en: "Direct contact",
-  pt: "Contato direto",
-};
-
-const PANEL_HEADLINES: Record<Locale, string> = {
-  es: "Construyamos algo útil juntos",
-  en: "Let's build something useful together",
-  pt: "Vamos construir algo útil",
-};
-
 // Segmented ES / EN / PT control. Container styling is passed in so it can match
 // either the blended-over-hero header or the solid header, and the dark menu panel.
 function LocaleSwitcher({
   locale,
   onSelect,
   containerClass,
+  ariaLabel,
   compact = false,
 }: {
   locale: Locale;
+  ariaLabel: string;
   onSelect: (next: Locale) => void;
   containerClass: string;
   compact?: boolean;
@@ -64,7 +42,7 @@ function LocaleSwitcher({
         containerClass
       )}
       role="group"
-      aria-label="Language"
+      aria-label={ariaLabel}
     >
       {LOCALES.map(({ code, label }) => {
         const active = code === locale;
@@ -107,11 +85,11 @@ const VALID_SECTION_IDS = new Set([
 const DESKTOP_NAV_KEYS = ["services", "who-we-help", "semillero", "projects", "about"];
 
 export function Nav({ onScrollTo, onOpenChat }: NavProps) {
-  const { locale, setLocale, content } = useLocale();
+  const { locale, setLocale, content, ui } = useLocale();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isOverHero, setIsOverHero] = useState(true);
 
-  const ctaLabel = CTA_LABELS[locale];
+  const ctaLabel = ui.nav.cta;
 
   const selectLocale = (next: Locale) => {
     setLocale(next);
@@ -226,7 +204,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
             <button
               type="button"
               onClick={() => scrollTo("hero")}
-              aria-label={HOME_ARIA_LABELS[locale]}
+              aria-label={ui.nav.homeAria}
               className="flex items-center gap-2.5"
             >
               <BrandMark className="h-8 w-8 text-[#00BCD4] md:h-9 md:w-9" />
@@ -250,6 +228,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
               <LocaleSwitcher
                 locale={locale}
                 onSelect={selectLocale}
+                ariaLabel={ui.nav.languageAria}
                 containerClass={headerStyle.subtleButton}
               />
 
@@ -269,7 +248,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
                 type="button"
                 onClick={() => setIsMobileMenuOpen((prev) => !prev)}
                 aria-expanded={isMobileMenuOpen}
-                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-label={isMobileMenuOpen ? ui.nav.closeMenuAria : ui.nav.openMenuAria}
                 className={cn(
                   "relative h-11 w-11 rounded-full border transition-colors",
                   headerStyle.subtleButton
@@ -300,6 +279,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
               <LocaleSwitcher
                 locale={locale}
                 onSelect={selectLocale}
+                ariaLabel={ui.nav.languageAria}
                 containerClass={headerStyle.subtleButton}
                 compact
               />
@@ -308,7 +288,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
                 type="button"
                 onClick={() => setIsMobileMenuOpen((prev) => !prev)}
                 aria-expanded={isMobileMenuOpen}
-                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-label={isMobileMenuOpen ? ui.nav.closeMenuAria : ui.nav.openMenuAria}
                 className={cn(
                   "relative h-11 w-11 rounded-full border transition-colors",
                   headerStyle.subtleButton
@@ -357,10 +337,10 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
 
             <div className="relative z-10 mx-auto flex h-full w-full max-w-[760px] flex-col">
               <p className="text-xs font-semibold tracking-[0.12em] text-white/[0.70] uppercase">
-                {PANEL_CONTACT_LABELS[locale]}
+                {ui.directContact}
               </p>
               <h2 className="mt-4 text-4xl leading-[0.95] font-black tracking-[-0.03em] md:text-6xl">
-                {PANEL_HEADLINES[locale]}
+                {ui.nav.panelHeadline}
               </h2>
               <p className="mt-4 max-w-xl text-base text-white/[0.75] md:text-lg">
                 {content.hero.microcopy}
@@ -398,6 +378,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
                 <LocaleSwitcher
                   locale={locale}
                   onSelect={selectLocale}
+                  ariaLabel={ui.nav.languageAria}
                   containerClass="border-white/30 text-white"
                 />
               </div>
@@ -407,7 +388,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
           <div className="bg-[#00BCD4] px-6 pt-28 pb-10 text-[#111111] md:px-12 md:pt-36">
             <div className="mx-auto flex h-full w-full max-w-[520px] flex-col">
               <p className="text-xs font-semibold tracking-[0.12em] text-black/[0.60] uppercase">
-                {locale === "es" ? "Menu" : "Menu"}
+                {ui.nav.menu}
               </p>
               <div className="mt-6 flex flex-col gap-3 md:gap-4">
                 {navItems.map((item) => (

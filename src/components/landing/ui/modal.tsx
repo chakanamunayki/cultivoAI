@@ -2,6 +2,7 @@
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
+import { useLocale } from "@/hooks/use-locale";
 
 interface ModalProps {
   isOpen: boolean;
@@ -18,6 +19,7 @@ export function Modal({
   size = "default",
   variant = "brutalist",
 }: ModalProps) {
+  const { ui } = useLocale();
   const maxWidthClass = size === "wide" ? "max-w-6xl" : "max-w-4xl";
   const isSoft = variant === "soft";
   const isSoftDark = variant === "softDark";
@@ -47,7 +49,7 @@ export function Modal({
           <Dialog.Close asChild>
             <button
               className={closeButtonClass}
-              aria-label="Close modal"
+              aria-label={ui.closeModalAria}
             >
               <X size={24} />
             </button>

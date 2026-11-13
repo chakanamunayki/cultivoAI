@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { Locale, Service } from "@/content/types";
+import { useLocale } from "@/hooks/use-locale";
 import { cn } from "@/lib/utils";
 import { DataKnowledgeAnimation } from "./service-animations/DataKnowledgeAnimation";
 import { InvestmentReadinessAnimation } from "./service-animations/InvestmentReadinessAnimation";
@@ -48,7 +49,8 @@ function StackedServiceCard({
   const usesContainImage = service.imageFit === "contain";
   const imageScale = useTransform(scrollYProgress, [0, 1], usesContainImage ? [1, 1] : [1.08, 1]);
   const cardScale = useTransform(progress, range, [1, targetScale]);
-  const seeMoreLabel = locale === "es" ? "Ver más" : locale === "pt" ? "Ver mais" : "See more";
+  const { ui } = useLocale();
+  const seeMoreLabel = ui.seeMore;
 
   return (
     <div className="sticky top-0 flex min-h-screen w-full items-center justify-center py-2 md:py-8">

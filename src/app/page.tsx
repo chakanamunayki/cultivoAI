@@ -115,10 +115,14 @@ function ChatButtonPlaceholder({
   onClick,
   whatsappUrl,
   chatLabel,
+  whatsappAriaLabel,
+  chatAriaLabel,
 }: {
   onClick: () => void;
   whatsappUrl: string;
   chatLabel: string;
+  whatsappAriaLabel: string;
+  chatAriaLabel: string;
 }) {
   return (
     <div className="font-grotesk fixed right-6 bottom-6 z-[60] flex flex-col items-end [[data-menu-open]_&]:hidden">
@@ -128,14 +132,14 @@ function ChatButtonPlaceholder({
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex h-[58px] w-[58px] items-center justify-center rounded-xl bg-[#25D366] text-[#0b2d1f] shadow-[0_10px_20px_rgba(15,23,42,0.26)] transition-all hover:-translate-y-0.5 hover:bg-[#34e073] hover:shadow-[0_14px_26px_rgba(15,23,42,0.32)]"
-          aria-label="Open WhatsApp"
+          aria-label={whatsappAriaLabel}
         >
           <WhatsAppIcon />
         </a>
         <button
           onClick={onClick}
           className="bg-primary text-primary-foreground hover:bg-primary/90 flex items-center gap-2 border-4 border-black p-4 font-bold uppercase transition-all hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-          aria-label="Open chat"
+          aria-label={chatAriaLabel}
         >
           <MessageSquare size={24} />
           <span className="hidden md:inline">{chatLabel}</span>
@@ -169,7 +173,7 @@ export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatContext, setChatContext] = useState<ChatContext | null>(null);
   const [isChatWidgetLoaded, setIsChatWidgetLoaded] = useState(false);
-  const { content } = useLocale();
+  const { content, ui } = useLocale();
   const { openProjectModal, openServiceModal, openContactModal, closeModal } = useModal();
 
   // Load chat widget after initial page paint (2-3 second delay or on first interaction)
@@ -305,6 +309,8 @@ export default function Home() {
           onClick={handlePlaceholderClick}
           whatsappUrl={whatsappUrl}
           chatLabel={content.footer.ctaButton}
+          whatsappAriaLabel={ui.openWhatsAppAria}
+          chatAriaLabel={ui.openChatAria}
         />
       )}
 

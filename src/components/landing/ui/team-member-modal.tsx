@@ -13,8 +13,8 @@ interface TeamMemberModalProps {
 
 export function TeamMemberModal({ member, onOpenContact }: TeamMemberModalProps) {
   const { bio } = member;
-  const { locale } = useLocale();
-  const ctaText = locale === "es" ? "Hablemos" : locale === "pt" ? "Vamos conversar" : "Let's talk";
+  const { ui } = useLocale();
+  const ctaText = ui.teamMemberCta;
 
   // Members without a bio have no "View more" button, so this is only a safety net.
   if (!bio) return null;
@@ -127,7 +127,7 @@ export function TeamMemberModal({ member, onOpenContact }: TeamMemberModalProps)
               className="inline-flex items-center gap-2 rounded-lg bg-[#FF0000] px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_18px_rgba(127,29,29,0.28)] transition-all hover:-translate-y-0.5 hover:bg-[#dc0000] hover:shadow-[0_10px_22px_rgba(127,29,29,0.34)]"
             >
               <Play className="w-4 h-4" />
-              {bio.videoLabel || "Watch Video"}
+              {bio.videoLabel || ui.watchVideo}
             </a>
           )}
         </div>

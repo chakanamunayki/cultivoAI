@@ -4,6 +4,7 @@ import { enPartnershipsContent } from "./locales/en/partnerships";
 import { enProjectsContent } from "./locales/en/projects";
 import { enServicesContent } from "./locales/en/services";
 import { enStoriesContent } from "./locales/en/stories";
+import { enUi } from "./locales/en/ui";
 import { enUseCasesContent } from "./locales/en/use-cases";
 import { enWhoWeHelpContent } from "./locales/en/who-we-help";
 import type { SiteContent } from "./types";
@@ -61,6 +62,8 @@ export const en: SiteContent = {
   },
 
   about: enAbout,
+
+  ui: enUi,
 
   // Not rendered on the page; fed to the chat assistant as positioning context.
   whyUs: {

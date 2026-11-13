@@ -4,8 +4,9 @@ import { createContext, useCallback, useEffect, useMemo, useState } from "react"
 import { en } from "@/content/en";
 import { ENABLED_LOCALES, isEnabledLocale } from "@/content/enabled-locales";
 import { es } from "@/content/es";
+import { enUi } from "@/content/locales/en/ui";
 import { pt } from "@/content/pt";
-import type { Locale, SiteContent } from "@/content/types";
+import type { Locale, SiteContent, UiLabels } from "@/content/types";
 
 const STORAGE_KEY = "cultivolabs-locale";
 const SSR_DEFAULT_LOCALE: Locale = "es";
@@ -15,6 +16,8 @@ interface LanguageContextValue {
   setLocale: (locale: Locale) => void;
   toggleLocale: () => void;
   content: SiteContent;
+  /** Interface labels; the hidden PT content has none and falls back to English. */
+  ui: UiLabels;
 }
 
 export const LanguageContext = createContext<LanguageContextValue | null>(null);
@@ -91,6 +94,7 @@ export function LanguageProvider({ children, defaultLocale }: LanguageProviderPr
   }, [locale, setLocale]);
 
   const content = contentMap[locale];
+  const ui = content.ui ?? enUi;
 
   // Memoize the context value to prevent unnecessary re-renders
   const value = useMemo<LanguageContextValue>(
@@ -99,8 +103,9 @@ export function LanguageProvider({ children, defaultLocale }: LanguageProviderPr
       setLocale,
       toggleLocale,
       content,
+      ui,
     }),
-    [locale, setLocale, toggleLocale, content]
+    [locale, setLocale, toggleLocale, content, ui]
   );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;

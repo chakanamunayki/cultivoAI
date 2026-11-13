@@ -4,6 +4,7 @@ import { esPartnershipsContent } from "./locales/es/partnerships";
 import { esProjectsContent } from "./locales/es/projects";
 import { esServicesContent } from "./locales/es/services";
 import { esStoriesContent } from "./locales/es/stories";
+import { esUi } from "./locales/es/ui";
 import { esUseCasesContent } from "./locales/es/use-cases";
 import { esWhoWeHelpContent } from "./locales/es/who-we-help";
 import type { SiteContent } from "./types";
@@ -62,6 +63,8 @@ export const es: SiteContent = {
   },
 
   about: esAbout,
+
+  ui: esUi,
 
   // No se muestra en la página; se le pasa al asistente del chat como contexto.
   whyUs: {

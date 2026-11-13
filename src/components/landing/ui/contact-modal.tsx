@@ -29,14 +29,13 @@ function WhatsAppIcon({ size = 18 }: { size?: number }) {
 }
 
 export function ContactModal({ onChatClick }: ContactModalProps) {
-  const { content, locale } = useLocale();
+  const { content, locale, ui } = useLocale();
   const { closeModal } = useModal();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
-  const contactBandLabel = locale === "es" ? "Contacto directo" : locale === "pt" ? "Contato direto" : "Direct contact";
-  const whatsappCtaLabel =
-    locale === "es" ? "Escríbeme por WhatsApp" : locale === "pt" ? "Fale com a gente pelo WhatsApp" : "Message me on WhatsApp";
+  const contactBandLabel = ui.directContact;
+  const whatsappCtaLabel = ui.contactForm.whatsappCta;
   const whatsappHref = `https://wa.me/${content.footer.contactInfo.whatsapp.replace(/\+/g, "")}`;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -54,26 +53,18 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
       const description = String(formData.get("description") ?? "").trim();
 
       if (!name) {
-        setSubmitError(locale === "es" ? "Por favor ingresa tu nombre." : locale === "pt" ? "Por favor, digite o seu nome." : "Please enter your name.");
+        setSubmitError(ui.contactForm.errorName);
         return;
       }
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
       if (!emailRegex.test(email)) {
-        setSubmitError(
-          locale === "es"
-            ? "Por favor ingresa un email válido."
-            : "Please enter a valid email."
-        );
+        setSubmitError(ui.contactForm.errorEmail);
         return;
       }
 
       if (!projectType) {
-        setSubmitError(
-          locale === "es"
-            ? "Por favor selecciona un tipo de proyecto."
-            : "Please select a project type."
-        );
+        setSubmitError(ui.contactForm.errorProjectType);
         return;
       }
 
@@ -93,9 +84,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
       const message =
         error instanceof Error && error.message
           ? error.message
-          : locale === "es"
-            ? "Hubo un error enviando el formulario. Intenta de nuevo."
-            : "There was an error submitting the form. Please try again.";
+          : ui.contactForm.errorGeneric;
       setSubmitError(message);
     } finally {
       setIsSubmitting(false);
@@ -136,17 +125,13 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
       {isSuccess ? (
         <div className="rounded-[18px] border border-black/10 bg-[#f1f1f1] p-6 shadow-[0_10px_24px_rgba(15,23,42,0.08)]">
           <p className="text-sm font-semibold tracking-[0.06em] text-[#00A3B7] uppercase">
-            {locale === "es" ? "Enviado" : locale === "pt" ? "Enviado" : "Sent"}
+            {ui.contactForm.sentLabel}
           </p>
           <p className="mt-2 text-xl font-black tracking-tight text-black">
-            {locale === "es" ? "Gracias. Te escribo pronto." : locale === "pt" ? "Obrigado. A gente entra em contato em breve." : "Thanks. I’ll get back to you soon."}
+            {ui.contactForm.sentTitle}
           </p>
           <p className="mt-2 text-sm font-medium text-neutral-600">
-            {locale === "es"
-              ? "Si prefieres, también puedes escribirme por WhatsApp con el botón de arriba."
-              : locale === "pt"
-              ? "Se preferir, você também pode falar com a gente pelo WhatsApp usando o botão acima."
-              : "If you prefer, you can also message me on WhatsApp using the button above."}
+            {ui.contactForm.sentWhatsappHint}
           </p>
           <button
             type="button"
@@ -156,7 +141,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
               landingPrimaryBlueButtonClass
             )}
           >
-            {locale === "es" ? "Cerrar" : locale === "pt" ? "Fechar" : "Close"}
+            {ui.contactForm.close}
           </button>
         </div>
       ) : (
@@ -263,7 +248,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
           {isSubmitting ? (
             <span className="inline-flex items-center justify-center gap-2">
               <Loader2 size={16} className="animate-spin" />
-              {locale === "es" ? "Enviando..." : locale === "pt" ? "Enviando..." : "Sending..."}
+              {ui.contactForm.sending}
             </span>
           ) : (
             content.contactForm.submitButton

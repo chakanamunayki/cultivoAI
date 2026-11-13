@@ -18,11 +18,10 @@ interface PartnershipsSectionProps {
 }
 
 export function PartnershipsSection({ onOpenChatGeneral }: PartnershipsSectionProps) {
-  const { content, locale } = useLocale();
+  const { content, locale, ui } = useLocale();
   const { openPartnershipModal } = useModal();
   const extras = content.partnershipsExtras;
-  const detailsLabel =
-    locale === "es" ? "Ver detalles ->" : locale === "pt" ? "Ver detalhes ->" : "View details ->";
+  const detailsLabel = `${ui.viewDetails} ->`;
   const closingCta =
     extras?.closingCta ??
     (locale === "es"

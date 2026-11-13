@@ -22,7 +22,7 @@ const PROJECT_ANIMATIONS: Record<string, ComponentType<{ locale?: Locale }>> = {
 };
 
 export function ProjectsSection() {
-  const { content, locale } = useLocale();
+  const { content, locale, ui } = useLocale();
   const { openProjectModal } = useModal();
 
   const handleProjectClick = (project: Project) => {
@@ -136,7 +136,7 @@ export function ProjectsSection() {
                           : "border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black"
                       )}
                     >
-                      {locale === "es" ? "Ver sitio" : locale === "pt" ? "Ver site" : "Visit site"}
+                      {ui.detail.visitSite}
                       <ArrowRight size={14} />
                     </a>
                   )}
@@ -148,7 +148,7 @@ export function ProjectsSection() {
                         "block px-4 py-2 text-xs font-semibold tracking-[0.07em] uppercase md:px-6"
                       )}
                     >
-                      {locale === "es" ? "Lección aprendida:" : locale === "pt" ? "Lição aprendida:" : "Lesson Learned:"}
+                      {ui.detail.lesson}:
                     </span>
                     <p
                       className={cn(

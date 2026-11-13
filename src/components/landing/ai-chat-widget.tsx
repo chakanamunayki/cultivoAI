@@ -121,7 +121,7 @@ export function AIChatWidget({
   context,
   onOpenForm,
 }: AIChatWidgetProps) {
-  const { content, locale } = useLocale();
+  const { content, locale, ui } = useLocale();
   // Pick a string for the active locale. Portuguese falls back to English only if
   // a pt value is not supplied.
   const tt = useCallback(
@@ -742,7 +742,7 @@ export function AIChatWidget({
           <button
             onClick={() => openWhatsApp()}
             className="inline-flex h-[58px] w-[58px] items-center justify-center rounded-xl bg-[#25D366] text-[#0b2d1f] shadow-[0_10px_20px_rgba(15,23,42,0.26)] transition-all hover:-translate-y-0.5 hover:bg-[#34e073] hover:shadow-[0_14px_26px_rgba(15,23,42,0.32)]"
-            aria-label="Open WhatsApp"
+            aria-label={ui.openWhatsAppAria}
             title={tt("Contactar por WhatsApp", "Contact via WhatsApp", "Falar pelo WhatsApp")}
           >
             <WhatsAppIcon size={24} />
@@ -750,7 +750,7 @@ export function AIChatWidget({
           <button
             onClick={() => onToggle(true)}
             className="bg-primary text-primary-foreground p-4 border-4 border-black hover:bg-primary/90 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-2 font-bold uppercase"
-            aria-label="Open chat"
+            aria-label={ui.openChatAria}
           >
             <MessageSquare size={24} />
             <span className="hidden md:inline">{chatToggleLabel}</span>
@@ -809,7 +809,7 @@ export function AIChatWidget({
             <button
               onClick={() => onToggle(false)}
               className="text-black hover:scale-110 transition-transform"
-              aria-label="Close chat"
+              aria-label={ui.closeChatAria}
             >
               <Minimize2 size={20} />
             </button>

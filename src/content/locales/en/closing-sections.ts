@@ -81,23 +81,11 @@ export const enClosingSectionsContent: Pick<
         url: "https://wa.me/573106172607",
         label: "WhatsApp",
       },
-      {
-        platform: "instagram",
-        url: "#",
-        label: "Instagram",
-        comingSoon: true,
-      },
-      {
-        platform: "facebook",
-        url: "#",
-        label: "Facebook",
-        comingSoon: true,
-      },
     ],
     contactInfo: {
       whatsapp: "+573106172607",
       whatsappDisplay: "+57 310 617 2607",
-      location: "Medellin, Colombia",
+      location: "Medellín, Colombia",
       locationSecondary: "Worldwide",
     },
     quickLinks: [

@@ -37,14 +37,14 @@ interface ServiceModalProps {
 }
 
 export function ServiceModal({ service, onOpenChat }: ServiceModalProps) {
-  const { locale } = useLocale();
+  const { ui } = useLocale();
   const Icon = iconMap[service.icon] ?? Zap;
 
-  const ctaText = locale === "es" ? "Estoy interesado" : locale === "pt" ? "Tenho interesse" : "I'm interested";
-  const whyItMattersLabel = locale === "es" ? "Por que importa" : locale === "pt" ? "Por que importa" : "Why it matters";
-  const includedLabel = locale === "es" ? "Que incluye" : locale === "pt" ? "O que inclui" : "What's included";
-  const idealFitLabel = locale === "es" ? "Ideal para" : locale === "pt" ? "Ideal para" : "Ideal fit";
-  const outcomeLabel = locale === "es" ? "Resultado típico" : locale === "pt" ? "Resultado típico" : "Typical outcome";
+  const ctaText = ui.serviceModalCta;
+  const whyItMattersLabel = ui.detail.whyItMatters;
+  const includedLabel = ui.detail.included;
+  const idealFitLabel = ui.detail.idealFit;
+  const outcomeLabel = ui.detail.outcome;
 
   return (
     <div className="max-h-[92vh] overflow-y-auto bg-[#212121] pr-2 [scrollbar-gutter:stable] [scrollbar-width:thin] [scrollbar-color:#9ca3af_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">

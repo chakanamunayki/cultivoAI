@@ -336,6 +336,59 @@ export interface SiteContent {
   chat: ChatCopy;
   contactForm: ContactFormCopy;
   terminal: TerminalContent;
+  /** Interface labels (buttons, aria labels, modal headings). Optional so the hidden PT content can omit it; it falls back to English. */
+  ui?: UiLabels;
+}
+
+/**
+ * Small interface labels that used to be hardcoded in components.
+ */
+export interface UiLabels {
+  nav: {
+    cta: string;
+    homeAria: string;
+    languageAria: string;
+    openMenuAria: string;
+    closeMenuAria: string;
+    menu: string;
+    panelHeadline: string;
+  };
+  directContact: string;
+  closeModalAria: string;
+  openWhatsAppAria: string;
+  openChatAria: string;
+  closeChatAria: string;
+  /** Section headings shared by the service, project and partnership modals. */
+  detail: {
+    whatItMeans: string;
+    whyItMatters: string;
+    included: string;
+    idealFit: string;
+    outcome: string;
+    lesson: string;
+    visitSite: string;
+  };
+  serviceModalCta: string;
+  projectModalCta: string;
+  partnershipModalCta: string;
+  teamMemberCta: string;
+  watchVideo: string;
+  seeMore: string;
+  viewDetails: string;
+  bookCall: string;
+  aboutNote: string;
+  contactForm: {
+    whatsappCta: string;
+    sending: string;
+    sentLabel: string;
+    sentTitle: string;
+    sentWhatsappHint: string;
+    close: string;
+    errorName: string;
+    errorEmail: string;
+    errorProjectType: string;
+    errorGeneric: string;
+  };
 }
 
 /**
