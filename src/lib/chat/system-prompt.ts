@@ -20,6 +20,13 @@ export interface SystemPromptContext {
 export interface SiteContentForPrompt {
   services: Array<{ title: string; description: string; details?: string[] }>;
   projects: Array<{ title: string; desc: string; fullDesc: string }>;
+  /** Unfinished work shown under "What I'm working on now". */
+  projectsInProgress?: Array<{
+    status: string;
+    title: string;
+    desc: string;
+    details: Array<{ label: string; text: string }>;
+  }>;
   whyUs: {
     notTitle: string;
     notItems: string[];
@@ -640,6 +647,8 @@ export function buildSystemPrompt(
       heading: "Contenido Dinámico del Sitio",
       services: "Servicios Disponibles",
       projects: "Proyectos",
+      projectsInProgress:
+        "Proyectos en marcha ahora (aún no terminados: preséntalos como trabajo en curso, nunca como resultados entregados, y no nombres a ningún socio)",
       whyUs: "Por Qué Paul",
       partnerships: "Formas de Trabajar Juntos",
       whoWeHelp: "Con Quién Trabaja",
@@ -648,6 +657,8 @@ export function buildSystemPrompt(
       heading: "Dynamic Site Content",
       services: "Available Services",
       projects: "Projects",
+      projectsInProgress:
+        "Projects in progress now (not finished: present them as work under way, never as delivered results, and do not name any partner)",
       whyUs: "Why Paul",
       partnerships: "Ways to Work Together",
       whoWeHelp: "Who He Works With",
@@ -656,6 +667,8 @@ export function buildSystemPrompt(
       heading: "Conteúdo Dinâmico do Site",
       services: "Serviços Disponíveis",
       projects: "Projetos",
+      projectsInProgress:
+        "Projetos em andamento (ainda não terminados: apresente como trabalho em curso, nunca como resultados entregues, e não nomeie nenhum parceiro)",
       whyUs: "Por Que a Gente",
       partnerships: "Parcerias",
       whoWeHelp: "Quem Ajudamos",
@@ -670,7 +683,7 @@ ${JSON.stringify(siteContent.services, null, 2)}
 
 **${dynamicLabels.projects}:**
 ${JSON.stringify(siteContent.projects, null, 2)}
-
+${siteContent.projectsInProgress ? `\n**${dynamicLabels.projectsInProgress}:**\n${JSON.stringify(siteContent.projectsInProgress, null, 2)}\n` : ""}
 **${dynamicLabels.whyUs}:**
 ${JSON.stringify(siteContent.whyUs, null, 2)}
 
