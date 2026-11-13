@@ -2,7 +2,7 @@
 
 import type { ComponentType } from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import {
   landingCardClass,
   landingTitleBandClass,
@@ -52,11 +52,14 @@ export function ProjectsSection() {
             ? PROJECT_ANIMATIONS[project.animationKey]
             : undefined;
           const hasVisual = Boolean(project.image) || Boolean(ProjectAnimation);
+          const titleId = `project-title-${i}`;
 
           return (
-            <button
-              type="button"
+            // The whole card opens the project for mouse users; keyboard and
+            // screen reader users get the real "See more" button below.
+            <article
               key={i}
+              aria-labelledby={titleId}
               className={landingCardClass(
                 variant,
                 "group grid w-full cursor-pointer overflow-hidden rounded-[24px] text-left lg:grid-cols-12 hover:-translate-y-1"
@@ -86,7 +89,7 @@ export function ProjectsSection() {
                       ))}
                     </div>
                   </div>
-                  <h3 className="mb-4 text-3xl leading-tight font-black tracking-tight md:mb-6 md:text-4xl lg:text-5xl">
+                  <h3 id={titleId} className="mb-4 text-3xl leading-tight font-black tracking-tight md:mb-6 md:text-4xl lg:text-5xl">
                     {project.title}
                   </h3>
                   <p
@@ -159,6 +162,24 @@ export function ProjectsSection() {
                       &quot;{project.lessons}&quot;
                     </p>
                   </div>
+
+                  <button
+                    type="button"
+                    aria-describedby={titleId}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleProjectClick(project);
+                    }}
+                    className={cn(
+                      "mt-6 inline-flex w-fit items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold tracking-[0.06em] uppercase shadow-[0_8px_18px_rgba(15,23,42,0.24)] transition-all hover:-translate-y-0.5 md:mt-8 md:text-base",
+                      variant === "blue"
+                        ? "bg-[#212121] text-white hover:bg-[#181818]"
+                        : "bg-[#00BCD4] text-[#111111] hover:bg-[#00BCD4]"
+                    )}
+                  >
+                    {ui.seeMore}
+                    <ArrowUpRight size={18} />
+                  </button>
                 </Reveal>
               </div>
               {hasVisual && (
@@ -188,7 +209,7 @@ export function ProjectsSection() {
                   )}
                 </div>
               )}
-            </button>
+            </article>
           );
         })}
       </div>

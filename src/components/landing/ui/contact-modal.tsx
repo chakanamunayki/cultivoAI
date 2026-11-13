@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Loader2, MessageSquare } from "lucide-react";
 import { landingPrimaryBlueButtonClass } from "@/components/landing/ui/landing-card-styles";
@@ -34,6 +34,7 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const fieldId = useId();
   const contactBandLabel = ui.directContact;
   const whatsappCtaLabel = ui.contactForm.whatsappCta;
   const whatsappHref = `https://wa.me/${content.footer.contactInfo.whatsapp.replace(/\+/g, "")}`;
@@ -148,10 +149,14 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
         <form onSubmit={handleSubmit} className="space-y-6">
         {/* Name */}
         <div className="rounded-[16px] border border-black/10 bg-[#f2f2f2] p-4 shadow-[0_8px_20px_rgba(15,23,42,0.08)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#f5f5f5] hover:shadow-[0_12px_24px_rgba(15,23,42,0.12)]">
-          <label className="mb-2 block text-xs font-semibold tracking-[0.07em] text-[#4f4f4f] uppercase">
+          <label
+            htmlFor={`${fieldId}-name`}
+            className="mb-2 block text-xs font-semibold tracking-[0.07em] text-[#4f4f4f] uppercase"
+          >
             {content.contactForm.nameLabel} *
           </label>
           <input
+            id={`${fieldId}-name`}
             type="text"
             name="name"
             required
@@ -164,10 +169,14 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
 
         {/* Email */}
         <div className="rounded-[16px] border border-black/10 bg-[#f2f2f2] p-4 shadow-[0_8px_20px_rgba(15,23,42,0.08)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#f5f5f5] hover:shadow-[0_12px_24px_rgba(15,23,42,0.12)]">
-          <label className="mb-2 block text-xs font-semibold tracking-[0.07em] text-[#4f4f4f] uppercase">
+          <label
+            htmlFor={`${fieldId}-email`}
+            className="mb-2 block text-xs font-semibold tracking-[0.07em] text-[#4f4f4f] uppercase"
+          >
             {content.contactForm.emailLabel} *
           </label>
           <input
+            id={`${fieldId}-email`}
             type="email"
             name="email"
             required
@@ -180,10 +189,14 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
 
         {/* WhatsApp */}
         <div className="rounded-[16px] border border-black/10 bg-[#f2f2f2] p-4 shadow-[0_8px_20px_rgba(15,23,42,0.08)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#f5f5f5] hover:shadow-[0_12px_24px_rgba(15,23,42,0.12)]">
-          <label className="mb-2 block text-xs font-semibold tracking-[0.07em] text-[#4f4f4f] uppercase">
+          <label
+            htmlFor={`${fieldId}-whatsapp`}
+            className="mb-2 block text-xs font-semibold tracking-[0.07em] text-[#4f4f4f] uppercase"
+          >
             {content.contactForm.whatsappLabel}
           </label>
           <input
+            id={`${fieldId}-whatsapp`}
             type="tel"
             name="whatsapp"
             autoComplete="tel"
@@ -195,10 +208,14 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
 
         {/* Project Type */}
         <div className="rounded-[16px] border border-black/10 bg-[#f2f2f2] p-4 shadow-[0_8px_20px_rgba(15,23,42,0.08)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#f5f5f5] hover:shadow-[0_12px_24px_rgba(15,23,42,0.12)]">
-          <label className="mb-2 block text-xs font-semibold tracking-[0.07em] text-[#4f4f4f] uppercase">
+          <label
+            htmlFor={`${fieldId}-projectType`}
+            className="mb-2 block text-xs font-semibold tracking-[0.07em] text-[#4f4f4f] uppercase"
+          >
             {content.contactForm.projectTypeLabel} *
           </label>
           <select
+            id={`${fieldId}-projectType`}
             name="projectType"
             required
             disabled={isSubmitting}
@@ -215,10 +232,14 @@ export function ContactModal({ onChatClick }: ContactModalProps) {
 
         {/* Description */}
         <div className="rounded-[16px] border border-black/10 bg-[#f2f2f2] p-4 shadow-[0_8px_20px_rgba(15,23,42,0.08)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#f5f5f5] hover:shadow-[0_12px_24px_rgba(15,23,42,0.12)]">
-          <label className="mb-2 block text-xs font-semibold tracking-[0.07em] text-[#4f4f4f] uppercase">
+          <label
+            htmlFor={`${fieldId}-description`}
+            className="mb-2 block text-xs font-semibold tracking-[0.07em] text-[#4f4f4f] uppercase"
+          >
             {content.contactForm.descriptionLabel}
           </label>
           <textarea
+            id={`${fieldId}-description`}
             name="description"
             rows={4}
             disabled={isSubmitting}

@@ -320,6 +320,7 @@ export function Nav({ onScrollTo, onOpenChat }: NavProps) {
 
       <div
         data-custom-cursor-region
+        inert={!isMobileMenuOpen}
         className={cn(
           "fixed inset-0 z-40 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
           isMobileMenuOpen ? "translate-y-0" : "-translate-y-[110%] pointer-events-none"
