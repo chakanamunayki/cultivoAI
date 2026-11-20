@@ -365,6 +365,12 @@ export interface UiLabels {
   viewDetails: string;
   bookCall: string;
   aboutNote: string;
+  aboutCarousel: {
+    label: string;
+    previous: string;
+    next: string;
+    goTo: string;
+  };
   contactForm: {
     whatsappCta: string;
     sending: string;

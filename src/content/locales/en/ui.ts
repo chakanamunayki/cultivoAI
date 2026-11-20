@@ -42,6 +42,12 @@ export const enUi: UiLabels = {
   viewDetails: "View details",
   bookCall: "Book a 15-minute call",
   aboutNote: "Note",
+  aboutCarousel: {
+    label: "The team",
+    previous: "Previous person",
+    next: "Next person",
+    goTo: "Show",
+  },
   contactForm: {
     whatsappCta: "Message me on WhatsApp",
     sending: "Sending...",
