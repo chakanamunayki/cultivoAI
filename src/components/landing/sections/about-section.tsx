@@ -81,7 +81,14 @@ export function AboutSection() {
     >
       <div className="mx-auto max-w-[1600px]">
         <Reveal>
-          <SectionHeader title={content.about.title} subtitle={content.about.subtitle} />
+          <SectionHeader
+            title={content.about.title}
+            subtitle={content.about.subtitle}
+            className="mb-6 md:mb-8"
+          />
+          <p className="mb-12 max-w-3xl text-base leading-relaxed text-[#3a3a3a] md:mb-16 md:text-lg">
+            {content.about.intro}
+          </p>
         </Reveal>
 
         {/* Mobile: the whole row fades in once (cards off to the side would otherwise fade in late).

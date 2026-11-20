@@ -3,6 +3,8 @@ import type { AboutCopy } from "../../types";
 export const enAbout: AboutCopy = {
     title: "Who we are",
     subtitle: "A family that went back to the land.",
+    intro:
+      "We're a family doing what we love together: business, tech and holistic health, for people and projects that care for land and community. Different ages, different skills, the same values. We combine what we know to help that good work take root and grow.",
     viewMoreLabel: "View more",
     footerNote: "**For bigger projects I bring in trusted specialists from my network.**",
     teamMembers: [

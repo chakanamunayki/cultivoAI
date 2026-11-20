@@ -3,6 +3,8 @@ import type { AboutCopy } from "../../types";
 export const esAbout: AboutCopy = {
     title: "Quiénes somos",
     subtitle: "Una familia que volvió a la tierra.",
+    intro:
+      "Somos una familia que trabaja unida en lo que ama: los negocios, la tecnología y la salud holística, al servicio de personas y proyectos que cuidan la tierra y la comunidad. Distintas edades, distintos oficios, los mismos valores. Sumamos lo que sabemos para que ese buen trabajo eche raíces y crezca.",
     viewMoreLabel: "Ver más",
     footerNote: "**Para proyectos más grandes sumo especialistas de confianza de mi red.**",
     teamMembers: [
