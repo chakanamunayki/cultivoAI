@@ -3,6 +3,8 @@ import type { AboutCopy } from "../../types";
 export const ptAbout: AboutCopy = {
     title: "Quem Somos",
     subtitle: "Um fundador técnico com mais de 20 anos lançando produtos reais, e um time pequeno na Colômbia. Aceitamos projetos que geram impacto social e ambiental real.",
+    intro:
+      "Somos uma família que trabalha unida naquilo que ama: negócios, tecnologia e saúde holística, a serviço de pessoas e projetos que cuidam da terra e da comunidade. Idades diferentes, habilidades diferentes, os mesmos valores. Somamos o que sabemos para que esse bom trabalho crie raízes e cresça.",
     viewMoreLabel: "Ver mais",
     footerNote:
       "**Para projetos de maior impacto, contamos com especialistas técnicos que nos apoiam quando é necessário.**",

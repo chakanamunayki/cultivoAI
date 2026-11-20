@@ -73,6 +73,8 @@ export interface TeamMember {
 export interface AboutCopy {
   title: string;
   subtitle: string;
+  /** Short paragraph between the header and the team photos. */
+  intro: string;
   teamMembers: TeamMember[];
   footerNote: string;
   viewMoreLabel: string;
