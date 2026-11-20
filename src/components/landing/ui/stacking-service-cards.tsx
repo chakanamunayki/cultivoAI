@@ -53,7 +53,9 @@ function StackedServiceCard({
   const seeMoreLabel = ui.seeMore;
 
   return (
-    <div className="sticky top-0 flex min-h-screen w-full items-center justify-center py-2 md:py-8">
+    // Phones (under md): no stacking. Cards scroll one after another, height from content.
+    // md and up: sticky wrapper + shrink-on-scroll stack.
+    <div className="flex w-full items-center justify-center py-3 md:sticky md:top-0 md:min-h-screen md:py-8">
       <motion.article
         ref={containerRef}
         onClick={() => onSeeMore(service)}
@@ -63,7 +65,7 @@ function StackedServiceCard({
           zIndex: index + 1,
         }}
         className={cn(
-          "relative -top-[12%] flex flex-col min-h-[860px] w-[94%] max-w-6xl origin-top cursor-pointer overflow-hidden rounded-[30px] border p-5 transition-all duration-200 md:h-[82vh] md:min-h-[640px] md:p-7 lg:p-8",
+          "relative -top-[12%] flex flex-col w-[94%] max-w-6xl max-md:!top-0 max-md:![transform:none] origin-top cursor-pointer overflow-hidden rounded-[30px] border p-5 transition-all duration-200 md:h-[82vh] md:min-h-[640px] md:p-7 lg:p-8",
           "border-white/15 bg-[#212121] text-[#FFFFFF] shadow-[0_20px_40px_rgba(0,0,0,0.34)] ring-1 ring-white/5 hover:-translate-y-1 hover:bg-[#1b1b1b] hover:shadow-[0_24px_44px_rgba(0,0,0,0.42)]"
         )}
       >
@@ -75,11 +77,12 @@ function StackedServiceCard({
         <div className="grid min-h-0 flex-1 gap-5 md:gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-stretch">
           <div className="order-2 flex min-h-0 flex-col lg:order-1">
             <div className="min-h-0 pr-1 lg:max-h-[360px] lg:overflow-y-auto lg:pr-2 lg:[scrollbar-width:thin] lg:[scrollbar-color:#9ca3af_transparent] lg:[&::-webkit-scrollbar]:w-1.5 lg:[&::-webkit-scrollbar-track]:bg-transparent lg:[&::-webkit-scrollbar-thumb]:rounded-full lg:[&::-webkit-scrollbar-thumb]:bg-[#9ca3af]">
-              <h3 className="text-2xl leading-tight font-black tracking-tight md:text-3xl">
+              {/* Phones: title already shows in the cyan strip above. */}
+              <h3 className="hidden text-2xl leading-tight font-black tracking-tight md:block md:text-3xl">
                 {service.title}
               </h3>
 
-              <ul className="mt-4 space-y-2 md:mt-5">
+              <ul className="space-y-2 md:mt-5">
                 {service.details.map((detail) => (
                   <li key={detail} className="flex items-start gap-3">
                     <span
@@ -114,7 +117,10 @@ function StackedServiceCard({
           <div className="order-1 lg:order-2">
             <div
               className={cn(
-                "relative h-[280px] overflow-hidden rounded-[20px] border border-black/10 md:h-[340px] lg:h-full lg:min-h-[420px]",
+                // Phones: height grows with screen width (280-470px) so stacked panels like
+                // Proof and records keep their bottom on wider phones. The 470 cap stays
+                // under the panels' 480px container breakpoint, which adds content.
+                "relative h-[clamp(280px,calc(60vw_+_30px),470px)] overflow-hidden rounded-[20px] border border-black/10 md:h-[340px] lg:h-full lg:min-h-[420px]",
                 !service.animationKey && !service.videoUrl && usesContainImage ? "bg-white/95" : ""
               )}
             >
